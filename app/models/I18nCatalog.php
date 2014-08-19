@@ -233,6 +233,7 @@ class I18nCatalog extends BaseI18nCatalog
         return array(
             'draft' => array(
                 'title',
+                'slug_' . $this->source_language,
             ),
             'reviewable' => array(
                 'po_contents',
@@ -252,6 +253,7 @@ class I18nCatalog extends BaseI18nCatalog
         return array(
             'info' => array(
                 'title',
+                'slug_' . $this->source_language,
                 'about',
             ),
             'i18n' => array(
@@ -278,6 +280,8 @@ class I18nCatalog extends BaseI18nCatalog
         return array_merge(
             parent::attributeLabels(), array(
                 'title' => Yii::t('model', 'Title'),
+                'slug' => Yii::t('model', 'Nice link'),
+                'slug_en' => Yii::t('model', 'English Nice link'),
                 'about' => Yii::t('model', 'About'),
                 'file' => Yii::t('model', 'File'),
             )
@@ -305,6 +309,7 @@ class I18nCatalog extends BaseI18nCatalog
 
         $response->id = $this->id;
         $response->title = $this->title;
+        $response->slug = $this->slug;
         $response->about = $this->about;
 
         return $response;

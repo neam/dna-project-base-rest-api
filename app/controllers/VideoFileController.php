@@ -84,7 +84,7 @@ class VideoFileController extends Controller
 
     /**
      * Translate workflow
-     * @param $id
+     * @param int|string $id the model id or slug.
      * @param $step
      * @param $translateInto
      */
@@ -177,6 +177,7 @@ class VideoFileController extends Controller
 
     protected function videofileSections($videofile)
     {
+        $sections = array();
         return $sections;
     }
 
@@ -205,7 +206,7 @@ class VideoFileController extends Controller
 
     /**
      * Renders the view page.
-     * @param int $id the model ID.
+     * @param int|string $id the model id or slug.
      */
     public function actionView($id)
     {
@@ -344,13 +345,19 @@ class VideoFileController extends Controller
     }
 
     /**
-     * @param $id
+     * Returns a VideoFile model by it's id or slug in requested language.
+     * @param int|string $id the model id or slug.
      * @return VideoFile
      * @throws CHttpException
      */
     public function loadModel($id)
     {
-        $model = VideoFile::model()->findByPk($id);
+        if (is_int($id) || ctype_digit($id)) {
+            $model = VideoFile::model()->findByPk($id);
+        } else {
+            $language = Yii::app()->getRequest()->getParam('lang', Yii::app()->getLanguage());
+            $model = VideoFile::model()->findByattributes(array("slug_{$language}" => $id));
+        }
         if ($model === null) {
             throw new CHttpException(404, Yii::t('model', 'The requested page does not exist.'));
         }
@@ -421,7 +428,7 @@ class VideoFileController extends Controller
 
     /**
      * Action for downloading all video subtitles as a zip file.
-     * @param int $id model id.
+     * @param int|string $id the model id or slug.
      * @throws CException if the zip archive cannot be created.
      */
     public function actionDownloadSubtitles($id)

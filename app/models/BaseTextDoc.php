@@ -106,7 +106,6 @@
  * @property integer $processed_media_id_fa
  *
  * Relations of table "text_doc" available as properties of the model:
- * @property P3Media $processedMediaIdFa
  * @property Account $owner
  * @property Node $node
  * @property P3Media $originalMedia
@@ -121,6 +120,7 @@
  * @property P3Media $processedMediaIdEnGb
  * @property P3Media $processedMediaIdEnUs
  * @property P3Media $processedMediaIdEs
+ * @property P3Media $processedMediaIdFa
  * @property P3Media $processedMediaIdFi
  * @property P3Media $processedMediaIdFil
  * @property P3Media $processedMediaIdFr
@@ -204,7 +204,6 @@ abstract class BaseTextDoc extends ActiveRecord
     {
         return array_merge(
             parent::relations(), array(
-                'processedMediaIdFa' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_fa'),
                 'owner' => array(self::BELONGS_TO, 'Account', 'owner_id'),
                 'node' => array(self::BELONGS_TO, 'Node', 'node_id'),
                 'originalMedia' => array(self::BELONGS_TO, 'P3Media', 'original_media_id'),
@@ -219,6 +218,7 @@ abstract class BaseTextDoc extends ActiveRecord
                 'processedMediaIdEnGb' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_en_gb'),
                 'processedMediaIdEnUs' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_en_us'),
                 'processedMediaIdEs' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_es'),
+                'processedMediaIdFa' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_fa'),
                 'processedMediaIdFi' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_fi'),
                 'processedMediaIdFil' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_fil'),
                 'processedMediaIdFr' => array(self::BELONGS_TO, 'P3Media', 'processed_media_id_fr'),

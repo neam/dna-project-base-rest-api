@@ -19,7 +19,7 @@ foreach ($models AS $model => $table) {
         "codeModel" => "FullModelCode",
         "generator" => 'vendor.phundament.gii-template-collection.fullModel.FullModelGenerator',
         "templates" => array(
-            'default' => dirname(__FILE__) . '/../../../../vendor/phundament/gii-template-collection/fullModel/templates/default',
+            'default' => dirname(__FILE__) . '/../../../vendor/phundament/gii-template-collection/fullModel/templates/default',
         ),
         "model" => array(
             "baseClass" => "ActiveRecord",

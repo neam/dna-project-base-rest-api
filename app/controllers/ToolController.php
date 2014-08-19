@@ -65,7 +65,7 @@ class ToolController extends Controller
 
     /**
      * Renders the view page.
-     * @param int $id model ID.
+     * @param int|string $id the model id or slug.
      */
     public function actionView($id)
     {
@@ -195,9 +195,19 @@ class ToolController extends Controller
         $this->render('admin', array('model' => $model,));
     }
 
+    /**
+     * @param int|string $id the model id or slug.
+     * @return Tool
+     * @throws CHttpException
+     */
     public function loadModel($id)
     {
-        $model = Tool::model()->findByPk($id);
+        if (is_int($id) || ctype_digit($id)) {
+            $model = Tool::model()->findByPk($id);
+        } else {
+            $language = Yii::app()->getRequest()->getParam('lang', Yii::app()->getLanguage());
+            $model = Tool::model()->findByattributes(array("slug_{$language}" => $id));
+        }
         if ($model === null) {
             throw new CHttpException(404, Yii::t('model', 'The requested page does not exist.'));
         }

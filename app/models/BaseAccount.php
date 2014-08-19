@@ -13,6 +13,11 @@
  * @property integer $status
  * @property string $create_at
  * @property string $lastvisit_at
+ * @property string $salt
+ * @property string $passwordStrategy
+ * @property integer $requireNewPassword
+ * @property string $lastLoginAt
+ * @property string $lastActiveAt
  *
  * Relations of table "account" available as properties of the model:
  * @property Changeset[] $changesets
@@ -65,12 +70,14 @@ abstract class BaseAccount extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('username, password, email, activkey, superuser, status, lastvisit_at', 'default', 'setOnEmpty' => true, 'value' => null),
-                array('superuser, status', 'numerical', 'integerOnly' => true),
+                array('create_at, salt', 'required'),
+                array('username, password, email, activkey, superuser, status, lastvisit_at, passwordStrategy, requireNewPassword, lastLoginAt, lastActiveAt', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('superuser, status, requireNewPassword', 'numerical', 'integerOnly' => true),
                 array('username', 'length', 'max' => 20),
                 array('password, email, activkey', 'length', 'max' => 128),
-                array('lastvisit_at', 'safe'),
-                array('id, username, password, email, activkey, superuser, status, create_at, lastvisit_at', 'safe', 'on' => 'search'),
+                array('salt, passwordStrategy', 'length', 'max' => 255),
+                array('lastvisit_at, lastLoginAt, lastActiveAt', 'safe'),
+                array('id, username, password, email, activkey, superuser, status, create_at, lastvisit_at, salt, passwordStrategy, requireNewPassword, lastLoginAt, lastActiveAt', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -143,6 +150,11 @@ abstract class BaseAccount extends ActiveRecord
             'status' => Yii::t('model', 'Status'),
             'create_at' => Yii::t('model', 'Create At'),
             'lastvisit_at' => Yii::t('model', 'Lastvisit At'),
+            'salt' => Yii::t('model', 'Salt'),
+            'passwordStrategy' => Yii::t('model', 'Password Strategy'),
+            'requireNewPassword' => Yii::t('model', 'Require New Password'),
+            'lastLoginAt' => Yii::t('model', 'Last Login At'),
+            'lastActiveAt' => Yii::t('model', 'Last Active At'),
         );
     }
 
@@ -161,6 +173,11 @@ abstract class BaseAccount extends ActiveRecord
         $criteria->compare('t.status', $this->status);
         $criteria->compare('t.create_at', $this->create_at, true);
         $criteria->compare('t.lastvisit_at', $this->lastvisit_at, true);
+        $criteria->compare('t.salt', $this->salt, true);
+        $criteria->compare('t.passwordStrategy', $this->passwordStrategy, true);
+        $criteria->compare('t.requireNewPassword', $this->requireNewPassword);
+        $criteria->compare('t.lastLoginAt', $this->lastLoginAt, true);
+        $criteria->compare('t.lastActiveAt', $this->lastActiveAt, true);
 
 
         return $criteria;

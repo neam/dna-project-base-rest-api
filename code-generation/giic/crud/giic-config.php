@@ -20,7 +20,7 @@ foreach ($cruds AS $model => $table) {
         "codeModel" => "FullCrudCode",
         "generator" => 'vendor.phundament.gii-template-collection.fullCrud.FullCrudGenerator',
         "templates" => array(
-            'hybrid' => dirname(__FILE__) . '/../../../../vendor/phundament/gii-template-collection/fullCrud/templates/hybrid',
+            'hybrid' => dirname(__FILE__) . '/../../../vendor/phundament/gii-template-collection/fullCrud/templates/hybrid',
         ),
         "model" => array(
             "model" => "application.models." . $model,
