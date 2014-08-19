@@ -70,7 +70,7 @@ abstract class BaseAccount extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('create_at, salt', 'required'),
+//                array('create_at, salt', 'required'),
                 array('username, password, email, activkey, superuser, status, lastvisit_at, passwordStrategy, requireNewPassword, lastLoginAt, lastActiveAt', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('superuser, status, requireNewPassword', 'numerical', 'integerOnly' => true),
                 array('username', 'length', 'max' => 20),
