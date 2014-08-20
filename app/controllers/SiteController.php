@@ -3,7 +3,7 @@
 class SiteController extends Controller
 {
 
-    public $defaultAction = 'index';
+    public $defaultAction = 'home';
 
     public function accessRules()
     {
@@ -61,6 +61,16 @@ class SiteController extends Controller
     {
         $this->requireProfileLanguages();
         $this->render('index');
+    }
+
+    /**
+     * Displays the public landing page.
+     */
+    public function actionHome()
+    {
+        $this->layout = WebApplication::LAYOUT_FLUID;
+        user()->setReturnUrl(app()->createUrl('/dashboard/index')); // after login
+        $this->render('home');
     }
 
     /**

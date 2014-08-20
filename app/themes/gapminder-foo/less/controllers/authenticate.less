@@ -17,8 +17,10 @@
       }
 
       .container-lead {
-        margin-top: 50px;
-        margin-bottom: 50px;
+        @media only screen and (min-width: @screen-sm-min) {
+          margin-top: 50px;
+          margin-bottom: 50px;
+        }
       }
     }
 

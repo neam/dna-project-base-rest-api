@@ -247,6 +247,8 @@ class ActiveRecord extends CActiveRecord
 
             $criteria = new CDbCriteria();
 
+            $criteria->distinct = true;
+
             $criteria->params[':account_id'] = $user->id;
 
             // Public items ...

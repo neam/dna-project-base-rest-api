@@ -5,8 +5,9 @@ $I = new WebGuy\MemberSteps($scenario);
 $I->wantTo('upload a profile picture');
 $I->login('max', 'test');
 
+$I->selectLanguages(array('Swedish', 'English', 'Bulgarian'));
+
 $I->amOnPage(ProfilePage::$URL);
-$I->selectLanguages(array('Swedish', 'English'));
 $I->click('Upload');
 $I->waitForText('Create File');
 # switch to iframe

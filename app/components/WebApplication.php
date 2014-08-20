@@ -15,6 +15,7 @@ class WebApplication extends CWebApplication
     const LAYOUT_REGULAR = '//layouts/regular';
     const LAYOUT_MINIMAL = '//layouts/minimal';
     const LAYOUT_NARROW = '//layouts/narrow';
+    const LAYOUT_FLUID = '//layouts/fluid';
 
     /**
 	 * Initializes the application.
@@ -132,14 +133,12 @@ class WebApplication extends CWebApplication
     }
 
     /**
-     * Returns the user role specific home URL (overrides CApplication::getHomeUrl)
-     * @return string
+     * @inheritDoc
      */
     public function getHomeUrl()
     {
-        return !user()->isAdmin() && (user()->isTranslator || user()->isReviewer)
-            ? app()->createUrl('/dashboard/index')
-            : app()->createUrl('/site/index');
+        $route = user()->isGuest ? '/' : '/dashboard/index';
+        return app()->createUrl($route);
     }
 
     /**
@@ -170,5 +169,14 @@ class WebApplication extends CWebApplication
         }
 
         return TbHtml::link($label, $url, $htmlOptions);
+    }
+
+    /**
+     * Returns the Gapminder.org URL.
+     * @return string
+     */
+    public function getGapminderOrgUrl()
+    {
+        return 'http://www.gapminder.org'; // TODO: Resolve URL dynamically.
     }
 }

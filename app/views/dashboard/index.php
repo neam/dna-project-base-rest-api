@@ -1,108 +1,264 @@
-<?php
-/** @var DashboardController $this */
-/** @var Account $model */
-/** @var string $modelClass */
-?>
-<div class="dashboard-controller index-action">
-    <div class="dashboard-profile">
-        <div class="row">
-            <div class="profile-info">
-                <div class="row">
-                    <div class="profile-picture hidden-xs">
-                        <?php echo TbHtml::link($model->profile->renderPicture(), array('/profile/edit')); ?>
+<div class="dashboard-controller index-action gapminder-friends">
+    <section class="section-wide-primary">
+        <div class="gapminder-friends-logo">
+            <?php echo TbHtml::image(baseUrl('/images/gapminder-friends-large.png')); ?>
+        </div>
+    </section>
+    <section class="section-wide-primary">
+        <div class="splash">
+            <h2><?php echo Yii::t('app', 'building a fact-based world view together'); ?></h2>
+        </div>
+    </section>
+    <section class="section-wide-secondary">
+        <div class="container">
+            <div class="column-narrow">
+                <div class="wide-profile">
+                    <div class="profile-picture">
+                        <?php echo user()->renderPicture('wide-profile-info-picture'); ?>
                     </div>
-                    <div class="profile-facts">
-                        <div class="profile-top-bar">
-                            <div class="profile-points">
-                                <?php echo TbHtml::icon(TbHtml::ICON_RECORD); ?>
-                                <?php echo Yii::t('app', '{pointCount} points', array(
-                                    '{pointCount}' => 0 // TODO: Get points dynamically.
-                                )); ?>
-                            </div>
-                            <div class="profile-actions">
-                                <?php echo TbHtml::link(TbHtml::icon(TbHtml::ICON_COG), array('/profile/edit')); ?>
-                            </div>
-                        </div>
-                        <h1 class="profile-name hidden-xs"><?php echo $model->profile->fullName; ?></h1>
-                        <?php /*
-                        <span class="profile-title"><?php echo 'Project Manager at Nord Software'; // TODO: Get title dynamically. ?></span>
-                        */ ?>
-                    </div>
-                </div>
-            </div>
-            <?php /*
-            <div class="recent-updates">
-                <div class="updates-top-bar">
-                    <div class="updates-title">
-                        <h2 class="updates-heading"><?php echo Yii::t('app', 'Recent Updates'); ?></h2>
-                    </div>
-                    <div class="updates-view-all">
-                        <?php echo TbHtml::link(
-                            Yii::t('app', 'View all ({updateCount})', array(
-                                '{updateCount}' => 0, // TODO: Get update count dynamically.
-                            )),
-                            '#', // TODO: Add link.
+                    <div class="profile-info">
+                        <span class="info-heading"><?php echo user()->getFullName(); ?></span>
+                        <p><?php echo Yii::t('app', 'We would like to suggest new tasks for you.'); ?></p>
+                        <?php echo TbHtml::linkButton(
+                            Yii::t('app', 'My Tasks'),
                             array(
-                                'class' => 'view-all-link',
+                                'url' => array('/dashboard/tasks'),
+                                'color' => TbHtml::BUTTON_COLOR_PRIMARY,
+                                'size' => TbHtml::BUTTON_SIZE_SM,
                             )
                         ); ?>
                     </div>
                 </div>
-                <div class="updates">
-                    <div class="updates-content">
-                        <ul class="updates-list">
-                            <?php // TODO: Render the two most recent updates. ?>
-                            <li>
-                                <div class="update-image">
-                                    <?php echo TbHtml::image('http://placehold.it/80x45'); ?>
-                                </div>
-                                <div class="update-info">
-                                    <span class="update-title"><?php echo 'Congratulations!'; ?></span>
-                                    <span class="update-description"><?php echo 'Your video has been viewed 201,400 times!'; ?></span>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="update-image">
-                                    <?php echo TbHtml::image('http://placehold.it/80x45'); ?>
-                                </div>
-                                <div class="update-info">
-                                    <span class="update-title"><?php echo 'You have earned an achievement!'; ?></span>
-                                    <span class="update-description"><?php echo 'This achievement is awarded to users that have translated 30 videos.'; ?></span>
-                                </div>
-                            </li>
-                        </ul>
+            </div>
+        </div>
+    </section>
+    <section class="section-wide-primary section-wide-border-bottom">
+        <div class="container">
+            <ul class="friends-menu">
+                <li><?php echo TbHtml::link(Yii::t('app', 'News')); ?></li>
+                <li><?php echo TbHtml::link(Yii::t('app', 'Sneak Peeks')); ?></li>
+                <li><?php echo TbHtml::link(Yii::t('app', 'Members')); ?></li>
+                <li><?php echo TbHtml::link(Yii::t('app', 'About')); ?></li>
+            </ul>
+        </div>
+    </section>
+    <?php /* TODO: Uncomment this section when news articles have been implemented.
+    <section class="section-wide-primary">
+        <div class="container">
+            <h2><?php echo Yii::t('app', 'News'); ?></h2>
+            <ul class="news-list">
+                <li>
+                    <div class="news-item">
+                        <span class="item-title"><?php echo TbHtml::link('Three New Sneak Peeks Available', '#'); ?></span>
+                        <span class="item-date">June 7</span>
                     </div>
+                </li>
+                <li>
+                    <div class="news-item">
+                        <span class="item-title"><?php echo TbHtml::link('New Video on IQ-centricity', '#'); ?></span>
+                        <span class="item-date">June 5</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="news-item">
+                        <span class="item-title"><?php echo TbHtml::link('Foo bar baz', '#'); ?></span>
+                        <span class="item-date">June 3</span>
+                    </div>
+                </li>
+            </ul>
+            <div class="view-all">
+                <?php echo TbHtml::link(
+                    Yii::t('app', 'More News...'),
+                    array(
+                        'color' => TbHtml::BUTTON_COLOR_LINK,
+                        'size' => TbHtml::BUTTON_SIZE_SM,
+                        'url' => '#',
+                    )
+                ); ?>
+            </div>
+        </div>
+    </section>
+    */ ?>
+    <section class="section-wide-primary">
+        <div class="container">
+            <h2><?php echo Yii::t('app', 'Sneak Peeks'); ?></h2>
+            <p><?php echo Yii::t('app', '<strong>Please don’t share!</strong> Sneak Peaks show new content under development which is not yet publicly available. Please evaluate it, but refrain from prematurely spreading it publicly.'); ?></p>
+        </div>
+    </section>
+    <section class="section-wide-secondary">
+        <div class="container">
+            <ul class="sneak-peeks">
+                <li class="sneak-peek">
+                    <div class="sneak-peek-thumbnail">
+                        <img src="http://placehold.it/110x70">
+                    </div>
+                    <div class="sneak-peek-info">
+                        <span class="info-item-type">Video</span>
+                        <span class="info-title">How Large Is the Gap Between the Rich and the Poor</span>
+                        <span class="info-meta">VERSION 1, June 2, 2014</span>
+                    </div>
+                    <div class="sneak-peek-actions">
+                        <?php echo TbHtml::linkButton(
+                            Yii::t('app', 'Translate'),
+                            array(
+                                'color' => TbHtml::BUTTON_COLOR_PRIMARY,
+                                'block' => true,
+                                'size' => TbHtml::BUTTON_SIZE_SM,
+                            )
+                        ); ?>
+                    </div>
+                </li>
+                <li class="sneak-peek">
+                    <div class="sneak-peek-thumbnail">
+                        <img src="http://placehold.it/110x70">
+                    </div>
+                    <div class="sneak-peek-info">
+                        <span class="info-item-type">Tool</span>
+                        <span class="info-title">Income Mountains</span>
+                        <span class="info-meta">VERSION 2, June 4, 2014</span>
+                    </div>
+                    <div class="sneak-peek-actions">
+                        <?php echo TbHtml::linkButton(
+                            Yii::t('app', 'Evaluate'),
+                            array(
+                                'color' => TbHtml::BUTTON_COLOR_PRIMARY,
+                                'block' => true,
+                                'size' => TbHtml::BUTTON_SIZE_SM,
+                            )
+                        ); ?>
+                    </div>
+                </li>
+                <li class="sneak-peek">
+                    <div class="sneak-peek-thumbnail">
+                        <img src="http://placehold.it/110x70">
+                    </div>
+                    <div class="sneak-peek-info">
+                        <span class="info-item-type">Video</span>
+                        <span class="info-title">Is There a Correlation Between Income and Lifespan</span>
+                        <span class="info-meta">VERSION 7, June 2, 2014</span>
+                    </div>
+                    <div class="sneak-peek-actions">
+                        <?php echo TbHtml::linkButton(
+                            Yii::t('app', 'Evaluate'),
+                            array(
+                                'color' => TbHtml::BUTTON_COLOR_PRIMARY,
+                                'block' => true,
+                                'size' => TbHtml::BUTTON_SIZE_SM,
+                            )
+                        ); ?>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="section-wide-primary section-wide-condensed section-wide-border-bottom">
+        <div class="container">
+            <div class="view-all">
+                <?php echo TbHtml::link(
+                    Yii::t('app', 'All Sneak Peeks'),
+                    array(
+                        'color' => TbHtml::BUTTON_COLOR_LINK,
+                        'size' => TbHtml::BUTTON_SIZE_SM,
+                        'url' => '#',
+                    )
+                ); ?>
+            </div>
+        </div>
+    </section>
+    <section class="section-wide-primary">
+        <div class="container">
+            <h2><?php echo Yii::t('app', 'Members'); ?></h2>
+            <h3 class="no-margin-bottom"><?php echo Yii::t('app', 'Find Members'); ?></h3>
+        </div>
+    </section>
+    <section class="section-wide-secondary">
+        <div class="container">
+            <div class="member-search">
+                <div class="search-field">
+                    <?php echo TbHtml::textField(
+                        'search',
+                        '',
+                        array(
+                            'class' => 'form-control-condensed',
+                            'placeholder' => Yii::t('app', 'Search'),
+                        )
+                    ); ?>
+                </div>
+                <div class="search-button">
+                    <?php echo TbHtml::submitButton(
+                        Yii::t('app', TbHtml::icon(TbHtml::ICON_SEARCH)),
+                        array(
+                            'class' => 'btn-condensed',
+                        )
+                    ); ?>
+                </div>
+                <div class="search-filters">
+                    <?php echo TbHtml::dropDownList(
+                        'filters',
+                        '',
+                        array('Filters', 'Foo', 'Bar', 'Baz'),
+                        array(
+                            'class' => 'form-control-condensed',
+                        )
+                    ); ?>
                 </div>
             </div>
-            */ ?>
         </div>
-    </div>
-    <?php if (Yii::app()->user->isGroupAdmin() || Yii::app()->user->isAdmin()): ?>
-        <div class="dashboard-tasks-container">
-            <div class="tasks-top-bar">
-                <div class="top-bar-title">
-                    <h2 class="tasks-heading"><?php echo Yii::t('app', 'Quick Start'); ?></h2>
-                </div>
+    </section>
+    <section class="section-wide-primary section-wide-condensed">
+        <div class="container">
+            <div class="view-all">
+                <?php echo TbHtml::link(
+                    Yii::t('app', 'Members'),
+                    array(
+                        'color' => TbHtml::BUTTON_COLOR_LINK,
+                        'size' => TbHtml::BUTTON_SIZE_SM,
+                        'url' => '#',
+                    )
+                ); ?>
             </div>
-            <?php echo $this->renderItemActionDropdown(Yii::t('app', 'Browse...'), 'browse', true); ?>
-            <?php echo $this->renderItemActionDropdown(Yii::t('app', 'Create New...'), 'add'); ?>
         </div>
-    <?php endif; ?>
-    <div class="dashboard-tasks-container">
-        <?php $this->widget(
-            '\DashboardTaskList',
-            array(
-                'type' => DashboardTaskList::TYPE_STARTED,
-                'account' => $model,
-            )
-        ); ?>
-        <hr>
-        <?php $this->widget(
-            '\DashboardTaskList',
-            array(
-                'type' => DashboardTaskList::TYPE_NEW,
-                'account' => $model,
-            )
-        ); ?>
-    </div>
+    </section>
+    <section class="section-wide-primary">
+        <div class="container">
+            <h3><?php echo Yii::t('app', 'Groups'); ?></h3>
+            <p><?php echo Yii::t('app', 'Join a group and we will assign you with tasks that better suit your skills.'); ?></p>
+        </div>
+    </section>
+    <section class="section-wide-secondary">
+        <div class="container">
+            <?php $this->widget('app.widgets.LandingPageGroups', array(
+                'groups' => array(
+                    'Translators' => array(
+                        'title' => Yii::t('app', 'Translators'),
+                        'link' => array(
+                            'text' => Yii::t('app', 'Help translate...'),
+                            'url' => '#',
+                        )
+                    ),
+                    'Developers' => array(
+                        'title' => Yii::t('app', 'Developers'),
+                        'link' => array(
+                            'text' => Yii::t('app', 'Develop free software...'),
+                            'url' => '#',
+                        )
+                    ),
+                )
+            )); ?>
+        </div>
+    </section>
+    <section class="section-wide-primary section-wide-condensed">
+        <div class="container">
+            <div class="view-all">
+                <?php echo TbHtml::link(
+                    Yii::t('app', 'Groups'),
+                    array(
+                        'color' => TbHtml::BUTTON_COLOR_LINK,
+                        'size' => TbHtml::BUTTON_SIZE_SM,
+                        'url' => '#',
+                    )
+                ); ?>
+            </div>
+        </div>
+    </section>
 </div>

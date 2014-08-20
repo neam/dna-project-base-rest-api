@@ -9769,7 +9769,12 @@ Styleguide 5
 }
 .layout-narrow {
   width: inherit;
-  margin: 40px 0;
+  margin: 10px 0;
+}
+@media only screen and (min-width: 768px) {
+  .layout-narrow {
+    margin: 40px 0;
+  }
 }
 .layout-narrow .body {
   text-align: center;
@@ -9882,9 +9887,11 @@ Styleguide 5
   text-transform: uppercase;
   text-align: center;
 }
-.authenticate-controller.login-action .form-container .container-lead {
-  margin-top: 50px;
-  margin-bottom: 50px;
+@media only screen and (min-width: 768px) {
+  .authenticate-controller.login-action .form-container .container-lead {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
 }
 .authenticate-controller.login-action .form-actions {
   margin-left: -15px;
@@ -13597,6 +13604,8 @@ fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .p
   border-bottom: none;
 }
 .profile-controller.edit-action .profile-summary .summary-picture {
+  float: left;
+  width: 33.33333333333333%;
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -13605,7 +13614,7 @@ fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .p
 @media (min-width: 768px) {
   .profile-controller.edit-action .profile-summary .summary-picture {
     float: left;
-    width: 25%;
+    width: 33.33333333333333%;
   }
 }
 @media (min-width: 992px) {
@@ -13621,6 +13630,8 @@ fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .p
   }
 }
 .profile-controller.edit-action .profile-summary .summary-info {
+  float: left;
+  width: 66.66666666666666%;
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -13629,7 +13640,7 @@ fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .p
 @media (min-width: 768px) {
   .profile-controller.edit-action .profile-summary .summary-info {
     float: left;
-    width: 41.66666666666667%;
+    width: 66.66666666666666%;
   }
 }
 @media (min-width: 992px) {
@@ -13665,12 +13676,6 @@ fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .p
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
-}
-@media (min-width: 768px) {
-  .profile-controller.edit-action .profile-summary .summary-roles {
-    float: left;
-    width: 33.33333333333333%;
-  }
 }
 @media (min-width: 992px) {
   .profile-controller.edit-action .profile-summary .summary-roles {
@@ -14122,37 +14127,37 @@ fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .p
     width: 25%;
   }
 }
-.registration-controller {
+.signup-controller {
   font-weight: 100;
 }
-.registration-controller label {
+.signup-controller label {
   font-weight: 400;
 }
-.registration-controller.register-action .registration-heading {
+.signup-controller.index-action .registration-heading {
   margin: 0;
   margin-bottom: 50px;
 }
-.registration-controller.register-action .radio {
+.signup-controller.index-action .radio {
   padding-left: 0;
 }
-.registration-controller.register-action .registration-container {
+.signup-controller.index-action .registration-container {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
 }
 @media (min-width: 992px) {
-  .registration-controller.register-action .registration-container {
+  .signup-controller.index-action .registration-container {
     float: left;
     width: 66.66666666666666%;
   }
 }
 @media (min-width: 992px) {
-  .registration-controller.register-action .registration-container {
+  .signup-controller.index-action .registration-container {
     margin-left: 16.666666666666664%;
   }
 }
-.registration-controller.register-action .registration-container .container-right {
+.signup-controller.index-action .registration-container .container-right {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -14160,24 +14165,24 @@ fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .p
   padding-left: 40px;
 }
 @media (min-width: 992px) {
-  .registration-controller.register-action .registration-container .container-right {
+  .signup-controller.index-action .registration-container .container-right {
     float: left;
     width: 50%;
   }
 }
-.registration-controller.register-action .registration-container .container-left {
+.signup-controller.index-action .registration-container .container-left {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
 }
 @media (min-width: 992px) {
-  .registration-controller.register-action .registration-container .container-left {
+  .signup-controller.index-action .registration-container .container-left {
     float: left;
     width: 50%;
   }
 }
-.registration-controller.register-action .registration-container .container-left .container-inner {
+.signup-controller.index-action .registration-container .container-left .container-inner {
   min-height: 20px;
   padding: 19px;
   margin-bottom: 20px;
@@ -14192,21 +14197,21 @@ fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .p
   border-radius: 2px;
   padding: 30px;
 }
-.registration-controller.register-action .registration-container .container-left .container-inner blockquote {
+.signup-controller.index-action .registration-container .container-left .container-inner blockquote {
   border-color: #ddd;
   border-color: rgba(0, 0, 0, 0.15);
 }
-.registration-controller.register-action .registration-container .container-left .container-inner blockquote {
+.signup-controller.index-action .registration-container .container-left .container-inner blockquote {
   border-color: #ddd;
   border-color: rgba(0, 0, 0, 0.15);
 }
-.registration-controller.register-action .registration-container .brand-logo {
+.signup-controller.index-action .registration-container .brand-logo {
   text-align: center;
 }
-.registration-controller.register-action .registration-container .benefits {
+.signup-controller.index-action .registration-container .benefits {
   margin-top: 50px;
 }
-.registration-controller.register-action .registration-container .benefits .benefit {
+.signup-controller.index-action .registration-container .benefits .benefit {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -14214,42 +14219,42 @@ fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .p
   margin-bottom: 20px;
 }
 @media (min-width: 992px) {
-  .registration-controller.register-action .registration-container .benefits .benefit {
+  .signup-controller.index-action .registration-container .benefits .benefit {
     float: left;
     width: 100%;
   }
 }
-.registration-controller.register-action .registration-container .benefits .benefit:last-child {
+.signup-controller.index-action .registration-container .benefits .benefit:last-child {
   margin-bottom: 0;
 }
-.registration-controller.register-action .registration-container .benefits .benefit .benefit-image {
+.signup-controller.index-action .registration-container .benefits .benefit .benefit-image {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
 }
 @media (min-width: 992px) {
-  .registration-controller.register-action .registration-container .benefits .benefit .benefit-image {
+  .signup-controller.index-action .registration-container .benefits .benefit .benefit-image {
     float: left;
     width: 33.33333333333333%;
   }
 }
-.registration-controller.register-action .registration-container .benefits .benefit .benefit-description {
+.signup-controller.index-action .registration-container .benefits .benefit .benefit-description {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
 }
 @media (min-width: 992px) {
-  .registration-controller.register-action .registration-container .benefits .benefit .benefit-description {
+  .signup-controller.index-action .registration-container .benefits .benefit .benefit-description {
     float: left;
     width: 66.66666666666666%;
   }
 }
-.registration-controller.register-action .registration-container .form-actions {
-  margin: 50px 0 30px;
+.signup-controller.index-action .registration-container .form-actions {
+  margin: 50px 0 0;
 }
-.registration-controller.registrationsuccess-action .message-container {
+.signup-controller.done-action .message-container {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -14257,37 +14262,37 @@ fieldset[disabled] .item-controller.prepareforreview-action .item-top-actions .p
   text-align: center;
 }
 @media (min-width: 992px) {
-  .registration-controller.registrationsuccess-action .message-container {
+  .signup-controller.done-action .message-container {
     float: left;
     width: 33.33333333333333%;
   }
 }
 @media (min-width: 992px) {
-  .registration-controller.registrationsuccess-action .message-container {
+  .signup-controller.done-action .message-container {
     margin-left: 33.33333333333333%;
   }
 }
-.registration-controller.registrationsuccess-action .message-container .page-actions {
+.signup-controller.done-action .message-container .page-actions {
   margin-top: 50px;
 }
-.registration-controller.activated-action .message-container {
+.signup-controller.activated-action .message-container {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
 }
 @media (min-width: 992px) {
-  .registration-controller.activated-action .message-container {
+  .signup-controller.activated-action .message-container {
     float: left;
     width: 50%;
   }
 }
 @media (min-width: 992px) {
-  .registration-controller.activated-action .message-container {
+  .signup-controller.activated-action .message-container {
     margin-left: 25%;
   }
 }
-.registration-controller.activated-action .page-actions {
+.signup-controller.activated-action .page-actions {
   margin-top: 50px;
 }
 .site-controller .item-type-introduction .intro-head {
@@ -16806,6 +16811,11 @@ Styleguide 9
   vertical-align: middle;
 }
 @media (max-width: 767px) {
+  .btn {
+    font-size: 13px;
+  }
+}
+@media (max-width: 767px) {
   .navbar .navbar-brand {
     border-right: none;
     padding: 20.5px 15px;
@@ -16845,6 +16855,14 @@ Styleguide 9
   }
 }
 @media (max-width: 767px) {
+  .authenticate-controller.login-action .login-links {
+    font-size: 13px;
+  }
+  .authenticate-controller.login-action .form-actions .stay-logged-in-action .checkbox {
+    margin: 15px 0;
+  }
+}
+@media (max-width: 767px) {
   .dashboard-controller.index-action .dashboard-profile .profile-info .profile-facts .profile-top-bar {
     margin-bottom: 10px;
   }
@@ -16860,6 +16878,15 @@ Styleguide 9
   }
 }
 @media (max-width: 767px) {
+  .item-controller.edit-action .item-row .row-column .item-well .item-content .content-secondary .item-actions .step-action-buttons .btn,
+  .item-controller.translate-action .item-row .row-column .item-well .item-content .content-secondary .item-actions .step-action-buttons .btn {
+    position: relative;
+    float: left;
+    width: 50%;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
   .item-controller.edit-action .item-top-actions .preview-button,
   .item-controller.translate-action .item-top-actions .preview-button {
     display: none;
@@ -16886,6 +16913,22 @@ Styleguide 9
   .profile-controller.edit-action .profile-summary {
     padding-bottom: 0;
   }
+  .profile-controller.edit-action .profile-summary .summary-picture img {
+    width: 100%;
+    height: auto;
+  }
+  .profile-controller.edit-action .profile-summary .summary-info .summary-heading {
+    font-size: 26px;
+    margin-bottom: 3px;
+  }
+  .profile-controller.edit-action .profile-summary .summary-info .summary-lead {
+    margin-bottom: 1px;
+  }
+  .profile-controller.edit-action .profile-summary .summary-info .summary-badges {
+    font-size: 36px;
+    line-height: 1;
+    font-weight: 400;
+  }
   .profile-controller.edit-action .profile-actions .btn {
     position: relative;
     float: left;
@@ -16897,7 +16940,13 @@ Styleguide 9
 }
 @media (min-width: 768px) {
   .profile-controller.edit-action .profile-summary .summary-info .summary-heading {
-    margin-top: 50px;
+    margin-top: 10px;
+  }
+}
+@media (max-width: 767px) {
+  .signup-controller.index-action .registration-container .form-actions {
+    margin-top: 30px;
+    text-align: right;
   }
 }
 @media (min-width: 768px) {

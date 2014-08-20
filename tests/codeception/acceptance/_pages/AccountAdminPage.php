@@ -13,6 +13,8 @@ class AccountAdminPage
     public static $viewLinkPrefix = '#viewLink_';
     public static $activateLinkPrefix = '#activateLink_';
 
+    public static $headingText = 'Accounts Manage';
+
     /**
      * Basic route example for your current URL
      * You can append any additional parameter to URL

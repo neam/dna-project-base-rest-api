@@ -1133,12 +1133,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-simplicity-theme.git",
-                "reference": "e1e9d16230c57f1d30d877c46a7324084077e03a"
+                "reference": "da2b773cf6cc73aa76d549f0947e4c5e00b85a00"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-simplicity-theme/zipball/e1e9d16230c57f1d30d877c46a7324084077e03a",
-                "reference": "e1e9d16230c57f1d30d877c46a7324084077e03a",
+                "url": "https://api.github.com/repos/neam/yii-simplicity-theme/zipball/da2b773cf6cc73aa76d549f0947e4c5e00b85a00",
+                "reference": "da2b773cf6cc73aa76d549f0947e4c5e00b85a00",
                 "shasum": ""
             },
             "require": {
@@ -1168,7 +1168,7 @@
             "keywords": [
                 "yii"
             ],
-            "time": "2014-08-13 12:36:47"
+            "time": "2014-08-19 08:30:15"
         },
         {
             "name": "neam/yii-workflow-core",
@@ -1295,12 +1295,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-workflow-ui.git",
-                "reference": "f28b7d259cf498309950e39ab42d3fa42aaf739c"
+                "reference": "f4c611eac23cad87506a418d1f2ce68adec780b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-workflow-ui/zipball/f28b7d259cf498309950e39ab42d3fa42aaf739c",
-                "reference": "f28b7d259cf498309950e39ab42d3fa42aaf739c",
+                "url": "https://api.github.com/repos/neam/yii-workflow-ui/zipball/f4c611eac23cad87506a418d1f2ce68adec780b2",
+                "reference": "f4c611eac23cad87506a418d1f2ce68adec780b2",
                 "shasum": ""
             },
             "require": {
@@ -1337,7 +1337,7 @@
             "keywords": [
                 "yii"
             ],
-            "time": "2014-08-14 06:14:27"
+            "time": "2014-08-15 10:34:10"
         },
         {
             "name": "nordsoftware/yii-account",
@@ -2127,7 +2127,7 @@
                 {
                     "name": "Tobias Munk",
                     "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.phundament.com"
+                    "homepage": "http://www.usrbin.de"
                 }
             ],
             "description": "Yii Framework Active Record Behavior for tree structures",

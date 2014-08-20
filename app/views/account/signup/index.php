@@ -1,11 +1,12 @@
 <?php
 /* @var \nordsoftware\yii_account\controllers\SignupController $this */
 /* @var \nordsoftware\yii_account\models\form\SignupForm $model */
-/* @var AppProfile $profile */
+/* @var Profile $profile */
 /* @var TbActiveForm $form */
 ?>
+<div style="display: none">Testing 123</div>
 <?php $this->pageTitle = Yii::app()->name . ' - ' . Yii::t('user', 'Registration'); ?>
-<div class="registration-controller register-action">
+<div class="signup-controller index-action">
     <div class="row">
         <div class="registration-container">
             <div class="brand-logo">
@@ -23,10 +24,6 @@
                                 '\TbActiveForm',
                                 array(
                                     'id' => $this->formId,
-                                    'enableAjaxValidation' => true,
-                                    'clientOptions' => array(
-                                        'validateOnSubmit' => true,
-                                    ),
                                 )
                             ); ?>
                             <?php echo $form->errorSummary($model); ?>
@@ -58,7 +55,7 @@
                         <?php endif; ?>
                     </div>
                 </div>
-                <div class="container-right">
+                <div class="container-right hidden-xs">
                     <p><?php echo Yii::t('app', 'Thank you for deciding to join the Gapminder community!'); ?></p>
                     <p><?php echo Yii::t('app', 'By joining, you will get'); ?></p>
                     <div class="benefits">

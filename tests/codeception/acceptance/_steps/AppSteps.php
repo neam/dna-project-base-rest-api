@@ -16,8 +16,14 @@ class AppSteps extends \WebGuy
     function switchLanguage($language)
     {
         $I = $this;
-        $I->click('.navbar .language-menu');
-        $I->click($language, '.navbar .language-menu');
+        $I->amGoingTo("switch language to $language");
+        $I->executeInSmallScreen(function () use ($I) {
+            $I->toggleMobileNavigation();
+        });
+        $I->waitForElementVisible(\HomePage::$languageMenu);
+        $I->click(\HomePage::$languageMenu);
+        $I->waitForText($language, 20, \HomePage::$languageMenu);
+        $I->click($language, \HomePage::$languageMenu);
     }
 
     function seeFieldIsEmpty($field)
@@ -25,6 +31,16 @@ class AppSteps extends \WebGuy
         $I = $this;
         $I->amGoingTo("check that the field is empty");
         $I->seeInField($field, '');
+    }
+
+    /**
+     * Toggles the navigation used by mobile layouts
+     */
+    function toggleMobileNavigation()
+    {
+        $I = $this;
+        $I->amGoingTo("toggle the navigation");
+        $I->click(\MobilePage::$navbarToggle);
     }
 
 }

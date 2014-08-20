@@ -14,6 +14,9 @@ class LoginPage
     public static $passwordField = '#nordsoftware_yii_account_models_form_LoginForm_password';
     public static $submitButton = '#loginForm button[type=submit]';
 
+    public static $submitButtonText = 'Login';
+    public static $signUpButtonText = 'Create an account';
+
     /**
      * Basic route example for your current URL
      * You can append any additional parameter to URL

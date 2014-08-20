@@ -133,27 +133,65 @@ trait UsersTrait
     function login($username, $password)
     {
         $I = $this;
-        $I->amOnPage(LoginPage::$URL);
+        $I->amOnPage(HomePage::$URL);
+
+        $I->executeInSmallScreen(function () use ($I) {
+            $I->toggleMobileNavigation();
+        });
+
+        $I->waitForElementVisible(HomePage::$loginLink, 20);
+        $I->click(HomePage::$loginLink);
+
+        $I->waitForText(LoginPage::$submitButtonText, 20);
         $I->fillField(LoginPage::$usernameField, $username);
         $I->fillField(LoginPage::$passwordField, $password);
         $I->click(LoginPage::$submitButton);
+        $I->waitForElementNotVisible(LoginPage::$submitButton, 30);
+        $I->dontSeeInCurrentUrl(LoginPage::$URL);
     }
 
     function logout()
     {
         $I = $this;
         $I->amOnPage(HomePage::$URL);
-        $I->waitForElementVisible(HomePage::$accountMenuLink, 10);
-        $I->click(HomePage::$accountMenuLink);
-        $I->waitForElementVisible(HomePage::$logoutLink, 10);
-        $I->click(HomePage::$logoutLink);
+
+        $iHaveASmallScreen = $I->haveASmallScreen();
+
+        if ($iHaveASmallScreen) {
+
+            $I->toggleMobileNavigation();
+            $I->waitForElementVisible(HomePage::$logoutLinkMobile, 20);
+            $I->click(HomePage::$logoutLinkMobile);
+
+        } else {
+
+            $I->waitForElementVisible(HomePage::$accountMenuLink, 20);
+            $I->click(HomePage::$accountMenuLink);
+            $I->waitForElementVisible(HomePage::$logoutLink, 20);
+            $I->click(HomePage::$logoutLink);
+
+        }
+
+        $I->waitForText(HomePage::$homePageMessage, 20);
+
+        if ($iHaveASmallScreen) {
+            $I->toggleMobileNavigation();
+        }
+        $I->waitForElementVisible(HomePage::$loginLink, 20);
+        $I->seeElement(HomePage::$loginLink);
     }
 
     function register($username, $password, $verifyPassword, $email, $acceptTerms = true)
     {
         $I = $this;
         $I->amGoingTo("Register user $username");
-        $I->amOnPage(RegistrationPage::$URL);
+        $I->amOnPage(HomePage::$URL);
+
+        $I->waitForText(HomePage::$joinButtonText, 20);
+        $I->click(HomePage::$joinButtonText);
+
+        $I->waitForElementVisible(RegistrationPage::$formId);
+
         $I->fillField(RegistrationPage::$usernameField, $username);
         $I->fillField(RegistrationPage::$emailField, $email);
         $I->fillField(RegistrationPage::$passwordField, $password);
@@ -182,8 +220,7 @@ trait UsersTrait
         $I->wait(1);
 
         $I->click(RegistrationPage::$submitButton);
-
-        $I->waitForText('Thank you for your registration.', 30); // secs
+        $I->waitForText(RegistrationPage::$afterRegistrationText, 30); // secs
 
         // TODO activate account using mailcatcher
     }
@@ -248,7 +285,9 @@ trait UsersTrait
         $I = $this;
         $I->amOnPage(AccountAdminPage::$URL);
         $I->click(AccountAdminPage::generateViewLinkSelector($username));
-        $I->click(AccountViewPage::generateToggleGroupRoleLinkSelector($group, $role));
+        $selector = AccountViewPage::generateToggleGroupRoleLinkSelector($group, $role);
+        $I->waitForElementVisible($selector, 20);
+        $I->click($selector);
     }
 
     function addGroupRoleToAccount($username, $group, $role)

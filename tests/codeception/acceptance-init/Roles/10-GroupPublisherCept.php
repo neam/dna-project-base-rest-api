@@ -10,6 +10,7 @@ $I->wantTo('perform actions and see result');
 $I->login('publisher', 'test');
 
 $I->amOnPage(SnapshotBrowsePage::$URL);
+$I->waitForText('Sample Snapshot');
 $I->see('Sample Snapshot');
 $I->click(
     SnapshotBrowsePage::$publishButtonText,

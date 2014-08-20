@@ -2,8 +2,8 @@
 
 class HomePage
 {
-    // include url of current page
-    static $URL = '/';
+    // Default home-page
+    static $URL = 'site/home';
 
     /**
      * Declare UI map for this page here. CSS or XPath allowed.
@@ -12,7 +12,12 @@ class HomePage
      */
     public static $loginLink = '#loginLink';
     public static $logoutLink = '#logoutLink';
+    public static $logoutLinkMobile = '#logoutLinkMobile';
     public static $accountMenuLink = '#accountMenuLink';
+    public static $languageMenu = '.navbar .language-menu';
+
+    public static $homePageMessage = 'building a fact-based world view together';
+    public static $joinButtonText = 'Join now';
 
     /**
      * Basic route example for your current URL

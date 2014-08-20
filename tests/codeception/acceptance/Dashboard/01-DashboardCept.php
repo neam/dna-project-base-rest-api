@@ -6,7 +6,7 @@ $I->wantTo('test the dashboard');
 
 $I->login('martha', 'test');
 $I->selectLanguages(array('Portuguese', 'Swedish', 'English'));
-$I->amOnPage(DashboardPage::$URL);
+$I->gotoMyTasksPage();
 $I->see('Started Tasks (0)');
 $I->see('New Tasks (3)'); // one per language
 $I->logout();
@@ -45,7 +45,8 @@ $I->click('Translators', VideoFileBrowsePage::modelContext('Dashboard test video
 $I->logout();
 
 $I->login('martha', 'test');
-$I->amOnPage(DashboardPage::$URL);
+$I->gotoMyTasksPage();
+
 $I->see('Started Tasks (0)');
 $I->see('New Tasks (6)'); // one per language
 $I->see(DashboardPage::$startTaskButton);
@@ -57,7 +58,7 @@ $I->click(
 );
 
 $I->click('Stop Translating');
-$I->amOnPage(DashboardPage::$URL);
+$I->gotoMyTasksPage();
 $I->see('Started Tasks (0)');
 $I->see('New Tasks (6)');
 
@@ -68,7 +69,7 @@ $I->click(
 
 $I->fillField(VideoFileEditPage::$titleFieldPt, 'Vídeo de teste do Dashboard');
 $I->click(VideoFileEditPage::$submitButton);
-$I->amOnPage(DashboardPage::$URL);
+$I->gotoMyTasksPage();
 // This is how it currently works, task in JIRA: https://gapminder.atlassian.net/browse/CMS-923
 $I->see('Started Tasks (3)');
 $I->see('New Tasks (3)');

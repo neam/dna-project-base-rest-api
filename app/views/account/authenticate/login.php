@@ -1,6 +1,6 @@
 <?php
-/* @var \nordsoftware\yii_account\controllers\AuthenticateController $this */
-/* @var \nordsoftware\yii_account\models\form\LoginForm $model */
+/** @var \nordsoftware\yii_account\controllers\AuthenticateController $this */
+/** @var \nordsoftware\yii_account\models\form\LoginForm $model */
 ?>
 <?php $this->pageTitle = Yii::app()->name . ' - ' . Yii::t('user', 'Login'); ?>
 <div class="authenticate-controller login-action">

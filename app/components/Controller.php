@@ -19,7 +19,6 @@ class Controller extends CController
     function init()
     {
         parent::init();
-        Yii::app()->homeUrl = $this->createUrl('/');
     }
 
     /**
@@ -113,4 +112,13 @@ class Controller extends CController
         }
     }
 
+    /**
+     * Returns a brand URL.
+     * @return string
+     */
+    public function getBrandUrl()
+    {
+        $app = app();
+        return user()->isGuest ? $app->getGapminderOrgUrl() : $app->homeUrl;
+    }
 }

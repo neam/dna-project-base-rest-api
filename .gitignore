@@ -36,4 +36,5 @@ tests/codeception/unit/CodeGuy.php
 app/js/config.js
 /build
 testing
+npm-debug.log
 tmp

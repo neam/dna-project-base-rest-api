@@ -20,6 +20,9 @@ class RegistrationPage
     public static $formId = '#signupForm';
     public static $errorClass = '.has-error';
 
+    public static $introText = 'Thank you for deciding to join the Gapminder community!';
+    public static $afterRegistrationText = 'Thank you for your registration.';
+
     /**
      * Basic route example for your current URL
      * You can append any additional parameter to URL
