@@ -62,7 +62,7 @@ class Changeset extends BaseChangeset
                 ->group('account.id, group.id')
                 ->bindValue(':nodeId', $this->node_id)
                 ->queryAll();
-            if (!empty($rows)) {
+            if (!empty($rows) && $this->node) {
                 $decodedContents = json_decode($this->contents, true);
                 if (is_array($decodedContents)) {
                     $emailData = array();
@@ -77,7 +77,7 @@ class Changeset extends BaseChangeset
                                     // todo: this probably needs refactoring after mandrill integration is done
                                     $emailData[Group::TRANSLATORS][] = array(
                                         'email' => $row['email'],
-                                        'title' => $row['_title'],
+                                        'title' => '', // todo get the translatable items title; $this->node->item()->title
                                         'link' => '', // todo: link to the translatable item workflow in correct language
                                     );
                                 }
