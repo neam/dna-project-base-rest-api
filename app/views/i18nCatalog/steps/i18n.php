@@ -17,7 +17,7 @@
     ); ?>
     <?php echo $form->textAreaControlGroup(
         $model,
-        'po_contents_' . $model->source_language,
+        'po_contents',
         array(
             'class' => Html::ITEM_FORM_FIELD_CLASS,
             'disabled' => !$this->canEditSourceLanguage(),
