@@ -103,7 +103,7 @@ class I18nCatalogController extends Controller
             $this->saveAndContinueOnSuccess($model);
             $this->populateWorkflowData(
                 $model,
-                "translate",
+                'translate_into_' . $translateInto,
                 Yii::t(
                     'app',
                     'Translate into {translateIntoLanguage}',
@@ -113,7 +113,7 @@ class I18nCatalogController extends Controller
             );
             $stepCaptions = $model->flowStepCaptions();
             $this->render(
-                '/_item/edit',
+                'vendor.neam.yii-workflow-ui.themes.simplicity.views._item.edit',
                 array(
                     'model' => $model,
                     'step' => $step,
