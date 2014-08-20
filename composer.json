@@ -170,7 +170,7 @@
                 "short_open_tag=on"
             ],
             "nginx-includes": [
-                "deploy/nginx.inc.conf"
+                "deploy/nginx-fastcgi-custom-configuration.conf"
             ],
             "compile": [
                 "bash deploy/post-buildstep.sh"

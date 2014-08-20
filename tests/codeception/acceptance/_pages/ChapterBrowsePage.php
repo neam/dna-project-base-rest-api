@@ -3,7 +3,7 @@
 class ChapterBrowsePage extends ItemBrowsePage
 {
     // include url of current page
-    static $URL = '?r=chapter/browse';
+    static $URL = 'chapter/browse';
 
     public static function modelContext($title)
     {

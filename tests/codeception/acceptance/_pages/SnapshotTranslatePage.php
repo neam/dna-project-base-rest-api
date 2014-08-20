@@ -3,7 +3,7 @@
 class SnapshotTranslatePage
 {
     // include url of current page
-    static $URL = '?r=snapshot/translate';
+    static $URL = 'snapshot/translate';
 
     /**
      * @var array the flowSteps of the translation workflow

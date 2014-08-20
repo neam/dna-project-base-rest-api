@@ -3,7 +3,7 @@
 class ChapterEditPage extends ItemEditPage
 {
     // include url of current page
-    static $URL = '?r=chapter/edit';
+    static $URL = 'chapter/edit';
 
     /**
      * Declare UI map for this page here. CSS or XPath allowed.

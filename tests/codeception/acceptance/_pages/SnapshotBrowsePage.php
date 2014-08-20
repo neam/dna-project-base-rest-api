@@ -3,7 +3,7 @@
 class SnapshotBrowsePage extends ItemBrowsePage
 {
     // include url of current page
-    static $URL = '?r=snapshot/browse';
+    static $URL = 'snapshot/browse';
 
     static function modelContext($title)
     {
