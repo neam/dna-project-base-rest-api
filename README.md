@@ -18,7 +18,7 @@ This web application is used by the community as well as Gapminder staff to auth
 
 * Follow "Reset the database" below
 * Follow "Update to the latest changes" below
-* Now your CMS installation should be accessible on [http://localhost:11111]() and you should be able to login with admin/admin
+* Now your CMS installation should be accessible on [http://127.0.0.1:12121/friends/]() (Non-proxied version at [http://localhost:11111]()) and you should be able to login with admin/admin
 * Note: You might need to use dos2unix in order to fix bash script line endings in order to run shell-scripts
 
 ## Useful commands
@@ -56,7 +56,7 @@ Alternatively, you can run these commands inside the web container (where all of
 
 Before running any commands below, step in to the root of the cms codebase `/code/` and make all environment variables available:
 
-    cd /code/
+    cd /code/cms/
     for file in /app/.profile.d/*; do source $file; done
 
 ## Update to the latest changes
@@ -147,7 +147,7 @@ Then, do the following before attempting to run any tests:
     source /tmp/db-config.sh
     echo "DROP DATABASE IF EXISTS $DB_NAME; CREATE DATABASE $DB_NAME;" | mysql -h$DB_HOST -P$DB_PORT -u$DB_USER --password=$DB_PASSWORD
 
-    export CMS_HOST=127.0.0.1:11111 # change if you have used another WEB_PORT when setting up the local dev environment
+    export CMS_HOST=127.0.0.1:12121/friends
     ./generate-local-codeception-config.sh
     vendor/bin/codecept build
 
@@ -342,7 +342,9 @@ You will also need to run the following once after the initial push:
     SENTRY_DSN=$SENTRY_DSN \
     SAUCE_USERNAME=$SAUCE_USERNAME \
     SAUCE_ACCESS_KEY=$SAUCE_ACCESS_KEY \
-    CMS_BASE_URL=$CMS_BASE_URL
+    CMS_BASE_URL=$CMS_BASE_URL \
+    CMS_HOST=$CMS_HOST \
+    NGINX_VHOSTS_CUSTOM_CONFIGURATION=deploy/nginx-vhosts-custom-configuration.conf.erb
 
     # add persistent folder to running container (not recommended dokku-practice, but necessary until p3media is replaced with a fully network-based-solution)
 
@@ -466,7 +468,7 @@ This should be a unique identifier of the current deployment. It is used in dist
 
 Type: PHP Constant
 
-When true, this enables `YII_DEBUG` (currently broken though) and sets display_errors to true.
+When true, this enables `YII_DEBUG` and sets display_errors to true.
 
 #### DEBUG_REDIRECTS (default: `false`)
 

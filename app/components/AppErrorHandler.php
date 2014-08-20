@@ -23,7 +23,14 @@ class AppErrorHandler extends SentryErrorHandler
                     'loggedEventIds' => $this->getSentryClient()->getLoggedEventIds(),
                 )
             );
-            header("Location: " . Yii::app()->request->baseUrl . "/site/error?$ids");
+
+            if (strpos(Yii::app()->request->requestUri, "site/error") === false) {
+                header("Location: " . Yii::app()->request->baseUrl . "/site/error?$ids");
+            } else {
+                // Error when loading site/error - we can't do much but throw an exception about the error
+                throw new CException("Error when loading site/error: " . print_r($error, true));
+            }
+
 
         }
 
