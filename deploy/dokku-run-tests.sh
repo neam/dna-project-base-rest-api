@@ -58,7 +58,7 @@ source _set-codeception-group-args.sh
     ./generate-local-codeception-config.sh
     vendor/bin/codecept build
 
-    # reset the test database to a clean db satet
+    # reset the test database to a clean db state
     export CONFIG_ENVIRONMENT=test
     export DATA=clean-db
     connectionID=dbTest ../shell-scripts/reset-db.sh
@@ -76,8 +76,17 @@ source _set-codeception-group-args.sh
     #mysqldump --user="$DB_USER" --password="$DB_PASSWORD" --host="$DB_HOST" --port="$DB_PORT" --no-create-db db > codeception/_data/dump.sql
     vendor/bin/codecept run acceptance --env=$env $CODECEPTION_GROUP_ARGS --debug --fail-fast
 
+# run acceptance tests on a small-screen chrome, "mobile"
+
+    # reset the test database to a clean db state
+    connectionID=dbTest ../shell-scripts/reset-db.sh
+
+    export env=cms-saucelabs-chrome-win8-small
+    vendor/bin/codecept run acceptance-init --env=$env $CODECEPTION_GROUP_ARGS --debug --fail-fast
+    vendor/bin/codecept run acceptance --env=$env $CODECEPTION_GROUP_ARGS --debug --fail-fast
+
 # run api tests
 
-    vendor/bin/codecept run api -g data:$DATA --debug --fail-fast
+    vendor/bin/codecept run api $CODECEPTION_GROUP_ARGS --debug --fail-fast
 
 exit 0
