@@ -23,8 +23,8 @@ $I->executeJS('window.scrollTo(0,0);'); // Workaround for WebDriver issue where 
 $I->click(SnapshotEditPage::$goToNextFieldButton);
 
 // Thumbnail - Select existing uploaded file
-$I->selectSelect2Option("#Snapshot_thumbnail_media_id", 'phundament.png');
-$I->seeSelect2OptionIsSelected('#Snapshot_thumbnail_media_id', 'phundament.png');
+$I->selectSelect2Option(SnapshotEditPage::$thumbnailField, 'phundament.png');
+$I->seeSelect2OptionIsSelected(SnapshotEditPage::$thumbnailField, 'phundament.png');
 
 // Vizabi state is missing
 // TODO: Make the required field count update dynamically
