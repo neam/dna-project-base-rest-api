@@ -157,7 +157,7 @@ class WebApplication extends CWebApplication
      * @param array $htmlOptions
      * @return string
      */
-    public function renderFooterLink($label, $paramKey, array $htmlOptions = array())
+    public function renderPageLink($label, $paramKey, array $htmlOptions = array())
     {
         $url = '#';
         $label = Yii::t('app', $label);
