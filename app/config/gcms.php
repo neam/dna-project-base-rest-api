@@ -166,7 +166,7 @@ $gcmsConfig = array(
             'urlFormat' => 'path',
             'showScriptName' => false,
             'rules' => array(
-                '/' => 'site/index',
+                '/' => 'site/home',
             ),
         ),
         'db' => array(
