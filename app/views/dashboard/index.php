@@ -18,7 +18,7 @@
                     </div>
                     <div class="profile-info">
                         <span class="info-heading"><?php echo user()->getFullName(); ?></span>
-                        <p><?php echo Yii::t('app', 'We would like to suggest new tasks for you.'); ?></p>
+                        <p><?php echo Yii::t('app', 'We have suggested some new tasks for you.'); ?></p>
                         <?php echo TbHtml::linkButton(
                             Yii::t('app', 'My Tasks'),
                             array(
@@ -35,15 +35,14 @@
     <section class="section-wide-primary section-wide-border-bottom">
         <div class="container">
             <ul class="friends-menu">
-                <li><?php echo TbHtml::link(Yii::t('app', 'News')); ?></li>
-                <li><?php echo TbHtml::link(Yii::t('app', 'Sneak Peaks')); ?></li>
-                <li><?php echo TbHtml::link(Yii::t('app', 'Members')); ?></li>
-                <li><?php echo TbHtml::link(Yii::t('app', 'About')); ?></li>
+                <li><?php echo TbHtml::link(Yii::t('app', 'News'), '#news'); ?></li>
+                <li><?php echo TbHtml::link(Yii::t('app', 'Sneak Peeks'), '#sneak-peeks'); ?></li>
+                <li><?php echo TbHtml::link(Yii::t('app', 'Members'), '#members'); ?></li>
+                <li><?php echo TbHtml::link(Yii::t('app', 'About'), '#about'); ?></li>
             </ul>
         </div>
     </section>
-    <?php /* TODO: Uncomment this section when news articles have been implemented.
-    <section class="section-wide-primary">
+    <section class="section-wide-primary section-wide-border-bottom" id="news">
         <div class="container">
             <h2><?php echo Yii::t('app', 'News'); ?></h2>
             <ul class="news-list">
@@ -78,11 +77,10 @@
             </div>
         </div>
     </section>
-    */ ?>
-    <section class="section-wide-primary">
+    <section class="section-wide-primary" id="sneak-peeks">
         <div class="container">
             <h2><?php echo Yii::t('app', 'Sneak Peeks'); ?></h2>
-            <p><?php echo Yii::t('app', '<strong>Please don’t share!</strong> Sneak Peaks show new content under development which is not yet publicly available. Please evaluate it, but refrain from prematurely spreading it publicly.'); ?></p>
+            <p><?php echo Yii::t('app', '<strong>Please don’t share!</strong> Sneak Peeks show new content under development which is not yet publicly available. Please evaluate it, but refrain from prematurely spreading it publicly.'); ?></p>
         </div>
     </section>
     <section class="section-wide-secondary">
@@ -165,7 +163,7 @@
             </div>
         </div>
     </section>
-    <section class="section-wide-primary">
+    <section class="section-wide-primary" id="members">
         <div class="container">
             <h2><?php echo Yii::t('app', 'Members'); ?></h2>
             <h3 class="no-margin-bottom"><?php echo Yii::t('app', 'Find Members'); ?></h3>
@@ -219,7 +217,7 @@
             </div>
         </div>
     </section>
-    <section class="section-wide-primary">
+    <section class="section-wide-primary" id="groups">
         <div class="container">
             <h3><?php echo Yii::t('app', 'Groups'); ?></h3>
             <p><?php echo Yii::t('app', 'Join a group and we will assign you with tasks that better suit your skills.'); ?></p>
@@ -261,9 +259,44 @@
             </div>
         </div>
     </section>
-    <section class="section-wide-primary section-wide-condensed">
+    <section class="section-wide-primary section-wide-condensed section-wide-border-bottom">
         <div class="container">
-
+            <h3><?php echo Yii::t('app', 'Close to you'); ?></h3>
+            <p><?php echo Yii::t('app', 'There’s a locale Gapminder community'); ?></p>
+            <ul class="button-list">
+                <?php foreach (array('Gapminder Sweden', 'Gapminder Stockholm') as $group): ?>
+                    <li><?php echo TbHtml::link($group, '#'); ?></li>
+                <?php endforeach; ?>
+            </ul>
+            <div class="view-all">
+                <?php echo TbHtml::link(
+                    Yii::t('app', 'Places'),
+                    array(
+                        'color' => TbHtml::BUTTON_COLOR_LINK,
+                        'size' => TbHtml::BUTTON_SIZE_SM,
+                        'url' => '#',
+                    )
+                ); ?>
+            </div>
+            <h3><?php echo Yii::t('app', 'Help Grow Our Friendship'); ?></h3>
+            <p><?php echo Yii::t('app', 'We are now 786 registered Gapminder friends, but we know many more would like to contribute if they only knew they could.'); ?></p>
+            <?php echo TbHtml::linkButton(
+                Yii::t('app', 'Invite friends'),
+                array(
+                    'url' => '#',
+                    'color' => TbHtml::BUTTON_COLOR_PRIMARY,
+                    'size' => TbHtml::BUTTON_SIZE_SM,
+                    'class' => 'invite-friends'
+                )
+            ); ?>
         </div>
     </section>
+    <section class="section-wide-primary" id="about">
+        <div class="container">
+            <h2><?php echo t('app', 'About Gapminder Friends'); ?></h2>
+            <p><?php echo t('app', 'If you like Gapminder’s mission&mdash;<em>to fight devastating ignorance with a fact-based worldview that everyone can understand</em>&mdash;you are already a Gapminder Friend. You will just have to sign up (you can use Facebook or similar); solve a task (translate some text, evaluate upcoming material, or simply spread the word); and voilà, you have become an Ignorance Fighter. Gapminder is a non-profit foundation, and we are thankful for every contribution, and keep track who does what to make sure your effort is recognized.'); ?>
+            <p><?php echo TbHtml::link(t('app', 'Read more about Gapminder...'), '#'); ?></p>
+        </div>
+    </section>
+
 </div>

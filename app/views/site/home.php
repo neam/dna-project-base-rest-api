@@ -19,7 +19,7 @@
     </section>
     <section class="section-wide-primary">
         <div class="container">
-            <h2><?php echo t('app', 'Sneak Peaks'); ?></h2>
+            <h2><?php echo t('app', 'Sneak Peeks'); ?></h2>
             <p><?php echo t('app', 'Access new content under development, which is not yet publicly available. Help evaluate new videos and tools before we publish them to the world.'); ?></p>
         </div>
     </section>
