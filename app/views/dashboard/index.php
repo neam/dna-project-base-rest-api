@@ -36,7 +36,7 @@
         <div class="container">
             <ul class="friends-menu">
                 <li><?php echo TbHtml::link(Yii::t('app', 'News')); ?></li>
-                <li><?php echo TbHtml::link(Yii::t('app', 'Sneak Peeks')); ?></li>
+                <li><?php echo TbHtml::link(Yii::t('app', 'Sneak Peaks')); ?></li>
                 <li><?php echo TbHtml::link(Yii::t('app', 'Members')); ?></li>
                 <li><?php echo TbHtml::link(Yii::t('app', 'About')); ?></li>
             </ul>
@@ -259,6 +259,11 @@
                     )
                 ); ?>
             </div>
+        </div>
+    </section>
+    <section class="section-wide-primary section-wide-condensed">
+        <div class="container">
+
         </div>
     </section>
 </div>
