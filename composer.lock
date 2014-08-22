@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "eeeff6813c637ad64035ac6c14a656c4",
+    "hash": "46d5913d50a3b0876b6db13b6f087f76",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1133,12 +1133,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-simplicity-theme.git",
-                "reference": "da2b773cf6cc73aa76d549f0947e4c5e00b85a00"
+                "reference": "7b0109f142bb991248705b8e09819514b09d0a53"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-simplicity-theme/zipball/da2b773cf6cc73aa76d549f0947e4c5e00b85a00",
-                "reference": "da2b773cf6cc73aa76d549f0947e4c5e00b85a00",
+                "url": "https://api.github.com/repos/neam/yii-simplicity-theme/zipball/7b0109f142bb991248705b8e09819514b09d0a53",
+                "reference": "7b0109f142bb991248705b8e09819514b09d0a53",
                 "shasum": ""
             },
             "require": {
@@ -1168,7 +1168,7 @@
             "keywords": [
                 "yii"
             ],
-            "time": "2014-08-19 08:30:15"
+            "time": "2014-08-22 09:36:53"
         },
         {
             "name": "neam/yii-workflow-core",
