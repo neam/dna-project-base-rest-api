@@ -26,5 +26,6 @@ extensions:
         Codeception\Extension\SauceExtension:
             username: <%= ENV['SAUCE_USERNAME'] %>
             accesskey: <%= ENV['SAUCE_ACCESS_KEY'] %>
-            #build: 'Local Test'
+            build: <%= ENV['SAUCE_METADATA_BUILD'] %>
+            tags: <%= ENV['SAUCE_METADATA_TAGS'] %>
 <% end %>

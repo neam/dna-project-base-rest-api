@@ -21,6 +21,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/motin/Codeception"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/motin/sauceExtension.git"
         }
     ],
     "minimum-stability": "stable",
@@ -29,7 +33,7 @@
     },
     "require-dev": {
         "codeception/codeception": "dev-non-numeric-branch-2.0",
-        "psychomieze/sauceextension": "dev-master"
+        "psychomieze/sauceextension": "dev-additional-metadata"
     },
     "scripts": {
     }

@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4854621d0d19614a6cf6fde187c72fc4",
+    "hash": "ce2f26ef5fdb7ebc30606ecad818c1dd",
     "packages": [
 
     ],
@@ -779,16 +779,16 @@
         },
         {
             "name": "psychomieze/sauceextension",
-            "version": "dev-master",
+            "version": "dev-additional-metadata",
             "source": {
                 "type": "git",
-                "url": "https://github.com/psychomieze/sauceExtension.git",
-                "reference": "c63f08091a82be8c895d2350ca0f0466a88be477"
+                "url": "https://github.com/motin/sauceExtension.git",
+                "reference": "3b406212b2987ceeda7287157d8681d01a1e9c7b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/psychomieze/sauceExtension/zipball/c63f08091a82be8c895d2350ca0f0466a88be477",
-                "reference": "c63f08091a82be8c895d2350ca0f0466a88be477",
+                "url": "https://api.github.com/repos/motin/sauceExtension/zipball/3b406212b2987ceeda7287157d8681d01a1e9c7b",
+                "reference": "3b406212b2987ceeda7287157d8681d01a1e9c7b",
                 "shasum": ""
             },
             "require": {
@@ -804,7 +804,6 @@
                     "Codeception\\Extension\\": "extensions/sauce/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-3.0"
             ],
@@ -818,11 +817,14 @@
             ],
             "description": "Codeception extension to support automated testing via sauce labs.",
             "keywords": [
-                "SauceLabs",
                 "codeception",
+                "saucelabs",
                 "selenium"
             ],
-            "time": "2014-07-04 08:27:37"
+            "support": {
+                "source": "https://github.com/motin/sauceExtension/tree/additional-metadata"
+            },
+            "time": "2014-08-25 15:09:09"
         },
         {
             "name": "sauce/sausage",
