@@ -20,7 +20,7 @@ modules:
         WebDriver:
             url: http://foo.com/the-url-property-of-WebDriver-needs-to-be-set-for-codecept-build-to-work-but-should-be-overwritten-by-env-config-during-actual-testing.php
             browser: 'chrome'
-            <% if ENV.has_key? "SAUCELABS" and ENV['SAUCELABS'].to_s != "" %>
+            <% if ENV.has_key? "SAUCELABS" and ENV['SAUCELABS'].to_s == "1" %>
             host: '<%= ENV['SAUCE_USERNAME'] %>:<%= ENV['SAUCE_ACCESS_KEY'] %>@ondemand.saucelabs.com'
             port: 80
             <% else %>
