@@ -66,14 +66,14 @@ source _set-codeception-group-args.sh
 
     # set saucelabs-specific env vars (note: saucelabs ui only allows useful filtering for short tags - 10 chars and less)
     export SAUCE_METADATA_BUILD=$CI_BUILD_ID
-    export SAUCE_METADATA_TAGS=cms,data:$DATA,coverage:$COVERAGE,deployment:$ENV,base_url:$CMS_BASE_URL
+    export SAUCE_METADATA_DEFAULT_TAGS=cms,data:$DATA,coverage:$COVERAGE,deployment:$ENV,base_url:$CMS_BASE_URL
     export CMS_HOST=$CMS_BASE_URL # todo - use CMS_BASE_URL in codeception config instead
 
 # run acceptance tests
 
     # generate local test config
     export SAUCELABS=1
-    export SAUCE_METADATA_TAGS=desktop,$SAUCE_METADATA_TAGS
+    export SAUCE_METADATA_TAGS=desktop,$SAUCE_METADATA_DEFAULT_TAGS
     ./generate-local-codeception-config.sh
     vendor/bin/codecept build
 
@@ -92,7 +92,7 @@ source _set-codeception-group-args.sh
 
     # generate local test config
     export SAUCELABS=1
-    export SAUCE_METADATA_TAGS=small-screen,$SAUCE_METADATA_TAGS
+    export SAUCE_METADATA_TAGS=small-screen,$SAUCE_METADATA_DEFAULT_TAGS
     ./generate-local-codeception-config.sh
     vendor/bin/codecept build
 
