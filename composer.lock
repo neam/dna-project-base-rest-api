@@ -1295,12 +1295,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-workflow-ui.git",
-                "reference": "f4c611eac23cad87506a418d1f2ce68adec780b2"
+                "reference": "1ef08c0a3a73807b3acd731924c5349ff5bced0d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-workflow-ui/zipball/f4c611eac23cad87506a418d1f2ce68adec780b2",
-                "reference": "f4c611eac23cad87506a418d1f2ce68adec780b2",
+                "url": "https://api.github.com/repos/neam/yii-workflow-ui/zipball/1ef08c0a3a73807b3acd731924c5349ff5bced0d",
+                "reference": "1ef08c0a3a73807b3acd731924c5349ff5bced0d",
                 "shasum": ""
             },
             "require": {
@@ -1337,7 +1337,7 @@
             "keywords": [
                 "yii"
             ],
-            "time": "2014-08-15 10:34:10"
+            "time": "2014-08-26 13:01:37"
         },
         {
             "name": "nordsoftware/yii-account",
