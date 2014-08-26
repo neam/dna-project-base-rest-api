@@ -39,9 +39,6 @@ echo "Running tests with coverage '$COVERAGE' in config environment '$CONFIG_ENV
 export COMPOSER_NO_INTERACTION=1
 php ../composer.phar install --dev --prefer-dist
 
-# set ci env var
-export CI=1
-
 # set the codeception test group arguments depending on DATA and COVERAGE
 source _set-codeception-group-args.sh
 
@@ -52,6 +49,7 @@ source _set-codeception-group-args.sh
     echo "DROP DATABASE IF EXISTS $DB_NAME; CREATE DATABASE $DB_NAME;" | mysql -h$DB_HOST -P$DB_PORT -u$DB_USER --password=$DB_PASSWORD
 
     # generate local test config
+    export SAUCELABS=0
     ./generate-local-codeception-config.sh
     vendor/bin/codecept build
 
@@ -74,6 +72,7 @@ source _set-codeception-group-args.sh
 # run acceptance tests
 
     # generate local test config
+    export SAUCELABS=1
     export SAUCE_METADATA_TAGS=desktop,$SAUCE_METADATA_TAGS
     ./generate-local-codeception-config.sh
     vendor/bin/codecept build
@@ -92,6 +91,7 @@ source _set-codeception-group-args.sh
 # run acceptance tests on a small-screen chrome, "mobile"
 
     # generate local test config
+    export SAUCELABS=1
     export SAUCE_METADATA_TAGS=small-screen,$SAUCE_METADATA_TAGS
     ./generate-local-codeception-config.sh
     vendor/bin/codecept build

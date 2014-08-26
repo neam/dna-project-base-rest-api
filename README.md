@@ -224,7 +224,7 @@ Also, make sure that `DATA`, `COVERAGE` and `CODECEPTION_GROUP_ARGS` are set app
 Generate configuration as if running in ci:
 
     cd tests
-    export CI=1
+    export SAUCELABS=1
     export SAUCE_ACCESS_KEY=replaceme
     export SAUCE_USERNAME=gapminder
     export SAUCE_METADATA_BUILD=local-saucelabs-testing

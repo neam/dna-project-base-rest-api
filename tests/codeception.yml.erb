@@ -18,7 +18,7 @@ modules:
             dump: codeception/_data/dump.sql
             populate: true
             cleanup: true
-<% if ENV.has_key? "CI" and ENV['CI'].to_s != "" %>
+<% if ENV.has_key? "SAUCELABS" and ENV['SAUCELABS'].to_s != "" %>
 extensions:
     enabled:
         - Codeception\Extension\SauceExtension
