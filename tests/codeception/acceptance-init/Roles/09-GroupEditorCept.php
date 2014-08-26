@@ -2,7 +2,7 @@
 $scenario->group('data:clean-db,coverage:full');
 
 $I = new WebGuy\MemberSteps($scenario);
-$I->wantTo('perform actions and see result');
+$I->wantTo('prepare a item for publishing');
 
 /*
  * Can edit everything in the group and see items suggested to group

@@ -2,7 +2,7 @@
 $scenario->group('data:clean-db,coverage:full');
 
 $I = new WebGuy\MemberSteps($scenario);
-$I->wantTo('perform actions and see result');
+$I->wantTo('publish a item');
 
 /*
  * Can toggle Item visibility to PUBLIC in assigned group

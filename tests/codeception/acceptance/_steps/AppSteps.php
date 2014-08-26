@@ -43,4 +43,12 @@ class AppSteps extends \WebGuy
         $I->click(\MobilePage::$navbarToggle);
     }
 
+    function wantTo($text)
+    {
+        if ($this->haveASmallScreen()) {
+            $text .= ' on a small screen';
+        }
+        parent::wantTo($text);
+    }
+
 }

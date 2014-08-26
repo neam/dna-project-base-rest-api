@@ -17,7 +17,7 @@ modules:
         WebDriver:
             url: http://foo.com/the-url-property-of-WebDriver-needs-to-be-set-for-codecept-build-to-work-but-should-be-overwritten-by-env-config-during-actual-testing.php
             browser: 'chrome'
-            <% if ENV.has_key? "CI" and ENV['CI'].to_s != "" %>
+            <% if ENV.has_key? "SAUCELABS" and ENV['SAUCELABS'].to_s == "1" %>
             host: '<%= ENV['SAUCE_USERNAME'] %>:<%= ENV['SAUCE_ACCESS_KEY'] %>@ondemand.saucelabs.com'
             port: 80
             <% else %>
@@ -67,7 +67,6 @@ env:
                         platform: 'Windows 8.1'
                         version: '34'
 
-
     cms-saucelabs-chrome-win8-small:
         modules:
             config:
@@ -80,6 +79,21 @@ env:
                     capabilities:
                         unexpectedAlertBehaviour: 'accept'
                         platform: 'Windows 8.1'
+                        version: '34'
+
+    cms-saucelabs-chrome-win7-small-oblong:
+        modules:
+            config:
+                WebHelper:
+                    small-screen: true
+                WebDriver:
+                    url: http://<%= ENV['CMS_HOST'] %>
+                    browser: 'chrome'
+                    window_size: 400x1200
+                    capabilities:
+                        screen-resolution: 1920x1200
+                        unexpectedAlertBehaviour: 'accept'
+                        platform: 'Windows 7'
                         version: '34'
 
     cms-saucelabs-chrome-winxp:

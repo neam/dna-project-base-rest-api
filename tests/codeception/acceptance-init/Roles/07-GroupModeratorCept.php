@@ -2,7 +2,7 @@
 $scenario->group('data:clean-db,coverage:full');
 
 $I = new WebGuy\MemberSteps($scenario);
-$I->wantTo('perform actions and see result');
+$I->wantTo('do things as a moderator');
 
 /*
  * Can assign some roles and revert changes that users have made.
