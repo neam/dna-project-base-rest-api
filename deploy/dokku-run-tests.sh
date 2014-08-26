@@ -96,7 +96,7 @@ source _set-codeception-group-args.sh
     ./generate-local-codeception-config.sh
     vendor/bin/codecept build
 
-    export env=cms-saucelabs-chrome-win8-small
+    export env=cms-saucelabs-chrome-win7-small-oblong
     vendor/bin/codecept run acceptance-init --env=$env $CODECEPTION_GROUP_ARGS --debug --fail-fast
     #mysqldump --user="$DB_USER" --password="$DB_PASSWORD" --host="$DB_HOST" --port="$DB_PORT" --no-create-db db > codeception/_data/dump.sql
     vendor/bin/codecept run acceptance --env=$env $CODECEPTION_GROUP_ARGS --debug --fail-fast
