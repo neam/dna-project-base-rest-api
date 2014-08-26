@@ -11,6 +11,13 @@ class Controller extends CController
      */
     public $layout = WorkflowUi::LAYOUT_REGULAR;
 
+    /**
+     * Setting this attribute to something that !empty() evaluates as true will
+     * change the navigation-bars brand to the contents of this attribute
+     * @var mixed
+     */
+    public $homeBrandLabel = false;
+
     use SimplicityControllerTrait;
 
     /**
