@@ -59,7 +59,6 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $this->requireProfileLanguages();
         $this->render('index');
     }
 
