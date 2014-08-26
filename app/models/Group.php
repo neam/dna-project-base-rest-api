@@ -26,6 +26,7 @@ class Group extends BaseGroup
     const GAPMINDER_RUSSIA = 'GapminderRussia';
     const GAPMINDER_STATEMINDER = 'GapminderStateminder';
     const GAPMINDER_NORGE = 'GapminderNorge';
+    const SNEAK_PEEKS = 'SneakPeeks';
 
     // Skill groups
     const TRANSLATORS = 'Translators';
