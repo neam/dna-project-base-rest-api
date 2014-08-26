@@ -2,8 +2,6 @@
 
 class WebUser extends \nordsoftware\yii_account\components\WebUser
 {
-    const PROFILE_RETURN_URL = 'profileReturnUrl';
-
     /**
      * @var Account
      */
@@ -256,34 +254,6 @@ class WebUser extends \nordsoftware\yii_account\components\WebUser
         } else {
             return false;
         }
-    }
-
-    /**
-     * Returns the profile return URL.
-     * @return string
-     */
-    public function getProfileReturnUrl()
-    {
-        return Yii::app()->session[self::PROFILE_RETURN_URL];
-    }
-
-    /**
-     * Sets the profile return URL.
-     * @param string $url
-     */
-    public function setProfileReturnUrl($url)
-    {
-        Yii::app()->session[self::PROFILE_RETURN_URL] = $url;
-    }
-
-    /**
-     * Redirects to the profile return URL and resets it.
-     */
-    public function gotoProfileReturnUrl()
-    {
-        $returnUrl = !empty($this->profileReturnUrl) ? $this->profileReturnUrl : request()->url;
-        $this->setProfileReturnUrl(null); // reset return URL
-        Yii::app()->controller->redirect($returnUrl);
     }
 
     /**

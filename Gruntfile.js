@@ -57,7 +57,8 @@ module.exports = function(grunt) {
         },
         clean: {
             scripts: 'www/js',
-            build: 'build'
+            build: 'build',
+            assets: ['www/assets/*', '!www/assets/.gitignore']
         },
         copy: {
             scripts: {
@@ -175,7 +176,7 @@ module.exports = function(grunt) {
         watch: {
             styles: {
                 files: ['vendor/neam/yii-simplicity-theme/less/**/*.less'],
-                tasks: ['less', 'less_imports'],
+                tasks: ['less', 'less_imports', 'clean:assets'],
                 options: {
                     spawn: false
                 }
@@ -195,7 +196,7 @@ module.exports = function(grunt) {
     });
 
     // Define tasks
-    grunt.registerTask('default', ['less', 'less_imports', 'watch']);
+    grunt.registerTask('default', ['clean:assets', 'less', 'less_imports', 'watch']);
     grunt.registerTask('createRjsConfig', ['bower']);
     grunt.registerTask('copyScripts', ['clean:scripts', 'copy:scripts']);
     grunt.registerTask('build', ['copy:build', 'clean:scripts', 'requirejs', 'clean:build']);

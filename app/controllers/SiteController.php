@@ -59,7 +59,6 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $this->requireProfileLanguages();
         $this->render('index');
     }
 
@@ -70,6 +69,7 @@ class SiteController extends Controller
     {
         $this->layout = WebApplication::LAYOUT_FLUID;
         user()->setReturnUrl(app()->createUrl('/dashboard/index')); // after login
+        $this->homeBrandLabel = Yii::t('app', 'Gapminder.org Home');
         $this->render('home');
     }
 

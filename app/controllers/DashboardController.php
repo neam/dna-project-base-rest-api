@@ -40,6 +40,7 @@ class DashboardController extends Controller
     public function actionIndex()
     {
         $this->layout = WebApplication::LAYOUT_FLUID;
+        $this->homeBrandLabel = Yii::t('app', 'Gapminder.org Home');
         $this->render('index');
     }
 
@@ -48,8 +49,6 @@ class DashboardController extends Controller
      */
     public function actionTasks()
     {
-        $this->requireProfileLanguages();
-
         $model = Account::model()->findByPk(user()->id);
 
         $this->buildBreadcrumbs(array(

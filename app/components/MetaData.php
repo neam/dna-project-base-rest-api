@@ -167,6 +167,7 @@ class Metadata
             Group::GAPMINDER_RUSSIA => 'Gapminder Russia',
             Group::GAPMINDER_STATEMINDER => 'Gapminder Stateminder',
             Group::GAPMINDER_NORGE => 'Gapminder Norge',
+            Group::SNEAK_PEEKS => 'Sneak Peeks',
         );
     }
 

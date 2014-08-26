@@ -66,20 +66,18 @@ source _set-codeception-group-args.sh
 
     # set saucelabs-specific env vars (note: saucelabs ui only allows useful filtering for short tags - 10 chars and less)
     export SAUCE_METADATA_BUILD=$CI_BUILD_ID
-    export SAUCE_METADATA_TAGS=cms,data:$DATA,coverage:$COVERAGE,deployment:$ENV,base_url:$CMS_BASE_URL
+    export SAUCE_METADATA_DEFAULT_TAGS=cms,data:$DATA,coverage:$COVERAGE,deployment:$ENV,base_url:$CMS_BASE_URL
     export CMS_HOST=$CMS_BASE_URL # todo - use CMS_BASE_URL in codeception config instead
 
-# run acceptance tests
+# run acceptance tests on a small-screen chrome, "mobile"
 
     # generate local test config
     export SAUCELABS=1
-    export SAUCE_METADATA_TAGS=desktop,$SAUCE_METADATA_TAGS
+    export SAUCE_METADATA_TAGS=small-screen,$SAUCE_METADATA_DEFAULT_TAGS
     ./generate-local-codeception-config.sh
     vendor/bin/codecept build
 
-    export env=cms-saucelabs-chrome-win8
-    #export env=cms-saucelabs-firefox-win7
-    #export env=cms-saucelabs-chrome-osx-108
+    export env=cms-saucelabs-chrome-win7-small-oblong
     vendor/bin/codecept run acceptance-init --env=$env $CODECEPTION_GROUP_ARGS --debug --fail-fast
     #mysqldump --user="$DB_USER" --password="$DB_PASSWORD" --host="$DB_HOST" --port="$DB_PORT" --no-create-db db > codeception/_data/dump.sql
     vendor/bin/codecept run acceptance --env=$env $CODECEPTION_GROUP_ARGS --debug --fail-fast
@@ -88,15 +86,17 @@ source _set-codeception-group-args.sh
 
     ../deploy/dokku-reset-db.sh
 
-# run acceptance tests on a small-screen chrome, "mobile"
+# run acceptance tests on a desktop-sized screen
 
     # generate local test config
     export SAUCELABS=1
-    export SAUCE_METADATA_TAGS=small-screen,$SAUCE_METADATA_TAGS
+    export SAUCE_METADATA_TAGS=desktop,$SAUCE_METADATA_DEFAULT_TAGS
     ./generate-local-codeception-config.sh
     vendor/bin/codecept build
 
-    export env=cms-saucelabs-chrome-win8-small
+    export env=cms-saucelabs-chrome-win8
+    #export env=cms-saucelabs-firefox-win7
+    #export env=cms-saucelabs-chrome-osx-108
     vendor/bin/codecept run acceptance-init --env=$env $CODECEPTION_GROUP_ARGS --debug --fail-fast
     #mysqldump --user="$DB_USER" --password="$DB_PASSWORD" --host="$DB_HOST" --port="$DB_PORT" --no-create-db db > codeception/_data/dump.sql
     vendor/bin/codecept run acceptance --env=$env $CODECEPTION_GROUP_ARGS --debug --fail-fast

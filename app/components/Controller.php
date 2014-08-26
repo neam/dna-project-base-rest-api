@@ -11,6 +11,13 @@ class Controller extends CController
      */
     public $layout = WorkflowUi::LAYOUT_REGULAR;
 
+    /**
+     * Setting this attribute to something that !empty() evaluates as true will
+     * change the navigation-bars brand to the contents of this attribute
+     * @var mixed
+     */
+    public $homeBrandLabel = false;
+
     use SimplicityControllerTrait;
 
     /**
@@ -97,19 +104,6 @@ class Controller extends CController
             );
         }
         return $languages;
-    }
-
-    /**
-     * Forces the user to set a profile language, and sets Yii::app()->user->profileReturnUrl.
-     * @param string|null $returnUrl the return URL used after saving the profile. Defaults to the current request URL.
-     */
-    public function requireProfileLanguages($returnUrl = null)
-    {
-        if (Yii::app()->user->isTranslator && count(Yii::app()->user->translatableLanguages) < 1) {
-            Yii::app()->user->profileReturnUrl = isset($returnUrl) ? $returnUrl : request()->url;
-            Yii::app()->user->setFlash('warning', Yii::t('app', 'Please set at least one language before translating.'));
-            $this->redirect(array('/profile/edit'));
-        }
     }
 
     /**
