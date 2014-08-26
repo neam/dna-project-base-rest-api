@@ -85,9 +85,9 @@ source _set-codeception-group-args.sh
     #mysqldump --user="$DB_USER" --password="$DB_PASSWORD" --host="$DB_HOST" --port="$DB_PORT" --no-create-db db > codeception/_data/dump.sql
     vendor/bin/codecept run acceptance --env=$env $CODECEPTION_GROUP_ARGS --debug --fail-fast
 
-# reset the test database to a clean db state prior to running acceptance tests anew
+# reset the database to a clean db state prior to running acceptance tests anew
 
-    connectionID=dbTest ./dokku-reset-db.sh
+    ../deploy/dokku-reset-db.sh
 
 # run acceptance tests on a small-screen chrome, "mobile"
 
