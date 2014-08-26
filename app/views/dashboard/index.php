@@ -32,6 +32,7 @@
             </div>
         </div>
     </section>
+    <?php /*
     <section class="section-wide-primary section-wide-border-bottom">
         <div class="container">
             <ul class="friends-menu">
@@ -42,6 +43,7 @@
             </ul>
         </div>
     </section>
+
     <section class="section-wide-primary section-wide-border-bottom" id="news">
         <div class="container">
             <h2><?php echo Yii::t('app', 'News'); ?></h2>
@@ -217,6 +219,7 @@
             </div>
         </div>
     </section>
+
     <section class="section-wide-primary" id="groups">
         <div class="container">
             <h3><?php echo Yii::t('app', 'Groups'); ?></h3>
@@ -245,6 +248,7 @@
             )); ?>
         </div>
     </section>
+
     <section class="section-wide-primary section-wide-condensed">
         <div class="container">
             <div class="view-all">
@@ -291,6 +295,7 @@
             ); ?>
         </div>
     </section>
+    */ ?>
     <section class="section-wide-primary" id="about">
         <div class="container">
             <h2><?php echo t('app', 'About Gapminder Friends'); ?></h2>
