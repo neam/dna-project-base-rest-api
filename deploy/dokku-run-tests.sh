@@ -69,7 +69,24 @@ source _set-codeception-group-args.sh
     export SAUCE_METADATA_DEFAULT_TAGS=cms,data:$DATA,coverage:$COVERAGE,deployment:$ENV,base_url:$CMS_BASE_URL
     export CMS_HOST=$CMS_BASE_URL # todo - use CMS_BASE_URL in codeception config instead
 
-# run acceptance tests
+# run acceptance tests on a small-screen chrome, "mobile"
+
+    # generate local test config
+    export SAUCELABS=1
+    export SAUCE_METADATA_TAGS=small-screen,$SAUCE_METADATA_DEFAULT_TAGS
+    ./generate-local-codeception-config.sh
+    vendor/bin/codecept build
+
+    export env=cms-saucelabs-chrome-win7-small-oblong
+    vendor/bin/codecept run acceptance-init --env=$env $CODECEPTION_GROUP_ARGS --debug --fail-fast
+    #mysqldump --user="$DB_USER" --password="$DB_PASSWORD" --host="$DB_HOST" --port="$DB_PORT" --no-create-db db > codeception/_data/dump.sql
+    vendor/bin/codecept run acceptance --env=$env $CODECEPTION_GROUP_ARGS --debug --fail-fast
+
+# reset the database to a clean db state prior to running acceptance tests anew
+
+    ../deploy/dokku-reset-db.sh
+
+# run acceptance tests on a desktop-sized screen
 
     # generate local test config
     export SAUCELABS=1
@@ -80,23 +97,6 @@ source _set-codeception-group-args.sh
     export env=cms-saucelabs-chrome-win8
     #export env=cms-saucelabs-firefox-win7
     #export env=cms-saucelabs-chrome-osx-108
-    vendor/bin/codecept run acceptance-init --env=$env $CODECEPTION_GROUP_ARGS --debug --fail-fast
-    #mysqldump --user="$DB_USER" --password="$DB_PASSWORD" --host="$DB_HOST" --port="$DB_PORT" --no-create-db db > codeception/_data/dump.sql
-    vendor/bin/codecept run acceptance --env=$env $CODECEPTION_GROUP_ARGS --debug --fail-fast
-
-# reset the database to a clean db state prior to running acceptance tests anew
-
-    ../deploy/dokku-reset-db.sh
-
-# run acceptance tests on a small-screen chrome, "mobile"
-
-    # generate local test config
-    export SAUCELABS=1
-    export SAUCE_METADATA_TAGS=small-screen,$SAUCE_METADATA_DEFAULT_TAGS
-    ./generate-local-codeception-config.sh
-    vendor/bin/codecept build
-
-    export env=cms-saucelabs-chrome-win7-small-oblong
     vendor/bin/codecept run acceptance-init --env=$env $CODECEPTION_GROUP_ARGS --debug --fail-fast
     #mysqldump --user="$DB_USER" --password="$DB_PASSWORD" --host="$DB_HOST" --port="$DB_PORT" --no-create-db db > codeception/_data/dump.sql
     vendor/bin/codecept run acceptance --env=$env $CODECEPTION_GROUP_ARGS --debug --fail-fast
