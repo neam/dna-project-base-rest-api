@@ -189,7 +189,7 @@ To run the acceptance suites:
 To run the the API suite:
 
     touch testing
-    vendor/bin/codecept run api -g data:$DATA --debug --fail-fast
+    vendor/bin/codecept run api $CODECEPTION_GROUP_ARGS --debug --fail-fast
     rm testing
 
 All tests can be run in sequence (for both clean-db and user-generated) by running the `_test.sh` script:
@@ -231,6 +231,7 @@ Generate configuration as if running in ci:
     export SAUCE_METADATA_TAGS=cms,data:$DATA,deployment:local,base_url:$CMS_HOST #todo: use CMS_BASE_URL instead
     # generate codeception config
     ./generate-local-codeception-config.sh
+    vendor/bin/codecept build
 
 Then, run the tests:
 
@@ -244,6 +245,7 @@ Then, run the tests:
     vendor/bin/codecept run acceptance-init --env=$env $CODECEPTION_GROUP_ARGS --debug --fail-fast
     #mysqldump --user="$DB_USER" --password="$DB_PASSWORD" --host="$DB_HOST" --port="$DB_PORT" --no-create-db db > codeception/_data/dump.sql
     vendor/bin/codecept run acceptance --env=$env $CODECEPTION_GROUP_ARGS --debug --fail-fast
+    vendor/bin/codecept run api $CODECEPTION_GROUP_ARGS --debug --fail-fast
 
 ### Hints for test developers
 
