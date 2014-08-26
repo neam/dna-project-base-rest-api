@@ -69,6 +69,9 @@ source _set-codeception-group-args.sh
     export SAUCE_METADATA_DEFAULT_TAGS=cms,data:$DATA,coverage:$COVERAGE,deployment:$ENV,base_url:$CMS_BASE_URL
     export CMS_HOST=$CMS_BASE_URL # todo - use CMS_BASE_URL in codeception config instead
 
+    # take an initial db dump before any tests have been run (it is used below to restore the database before the desktop-sized tests are run)
+    mysqldump --user="$DB_USER" --password="$DB_PASSWORD" --host="$DB_HOST" --port="$DB_PORT" --no-create-db db > /tmp/pre-acceptance-tests-dump.sql
+
 # run acceptance tests on a small-screen chrome, "mobile"
 
     # generate local test config
@@ -82,9 +85,9 @@ source _set-codeception-group-args.sh
     #mysqldump --user="$DB_USER" --password="$DB_PASSWORD" --host="$DB_HOST" --port="$DB_PORT" --no-create-db db > codeception/_data/dump.sql
     vendor/bin/codecept run acceptance --env=$env $CODECEPTION_GROUP_ARGS --debug --fail-fast
 
-# reset the database to a clean db state prior to running acceptance tests anew
+# reset the database prior to running acceptance tests anew
 
-    ../deploy/dokku-reset-db.sh
+    mysql -A --host="$DB_HOST" --port="$DB_PORT" --user="$DB_USER" --password="$DB_PASSWORD" "$DB_NAME" < /tmp/pre-acceptance-tests-dump.sql
 
 # run acceptance tests on a desktop-sized screen
 
