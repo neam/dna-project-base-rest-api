@@ -18,7 +18,7 @@ modules:
             dump: codeception/_data/dump.sql
             populate: true
             cleanup: true
-<% if ENV.has_key? "CI" and ENV['CI'].to_s != "" %>
+<% if ENV.has_key? "SAUCELABS" and ENV['SAUCELABS'].to_s == "1" %>
 extensions:
     enabled:
         - Codeception\Extension\SauceExtension
@@ -26,5 +26,6 @@ extensions:
         Codeception\Extension\SauceExtension:
             username: <%= ENV['SAUCE_USERNAME'] %>
             accesskey: <%= ENV['SAUCE_ACCESS_KEY'] %>
-            #build: 'Local Test'
+            build: <%= ENV['SAUCE_METADATA_BUILD'] %>
+            tags: <%= ENV['SAUCE_METADATA_TAGS'] %>
 <% end %>

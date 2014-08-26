@@ -215,16 +215,20 @@ Ensure that you have Java installed and then start [the selenium server](http://
 
 ## Running tests locally against Saucelabs
 
-First deploy the code to dokku (see "Deploy using Dokku" below), so that the env vars `DOKKU_HOST` and `CMS_HOST` are available.
+First deploy the code to dokku (see "Deploy using Dokku" below), so that the env vars `DOKKU_HOST`, `CMS_HOST`, and `CMS_APPNAME` are available.
 
-Follow the instructions under "Set up an SSH tunnel to be able to access the deployed database locally"
+Also, make sure that `DATA`, `COVERAGE` and `CODECEPTION_GROUP_ARGS` are set appropriately.
+
+(Not currently necessary: Follow the instructions under "Set up an SSH tunnel to be able to access the deployed database locally")
 
 Generate configuration as if running in ci:
 
     cd tests
-    export CI=1
+    export SAUCELABS=1
     export SAUCE_ACCESS_KEY=replaceme
     export SAUCE_USERNAME=gapminder
+    export SAUCE_METADATA_BUILD=local-saucelabs-testing
+    export SAUCE_METADATA_TAGS=cms,data:$DATA,deployment:local,base_url:$CMS_HOST #todo: use CMS_BASE_URL instead
     # generate codeception config
     ./generate-local-codeception-config.sh
 
@@ -237,15 +241,15 @@ Then, run the tests:
     export env=cms-saucelabs-chrome-win8
     export env=cms-saucelabs-firefox-win7
     export env=cms-saucelabs-chrome-osx-108
-    vendor/bin/codecept run acceptance-init --env=$env -g data:$DATA --debug --fail-fast
+    vendor/bin/codecept run acceptance-init --env=$env $CODECEPTION_GROUP_ARGS --debug --fail-fast
     #mysqldump --user="$DB_USER" --password="$DB_PASSWORD" --host="$DB_HOST" --port="$DB_PORT" --no-create-db db > codeception/_data/dump.sql
-    vendor/bin/codecept run acceptance --env=$env -g data:$DATA --debug --fail-fast
+    vendor/bin/codecept run acceptance --env=$env $CODECEPTION_GROUP_ARGS --debug --fail-fast
 
 ### Hints for test developers
 
 To run an individual test, in this example an acceptance test:
 
-     vendor/bin/codecept run acceptance-init --env=cms-local-chrome -g data:$DATA --debug --fail-fast 04-VerifyCleanDbCept.php
+     vendor/bin/codecept run acceptance-init --env=cms-local-chrome $CODECEPTION_GROUP_ARGS --debug --fail-fast 04-VerifyCleanDbCept.php
 
 In general, consult the documentation at http://codeception.com/docs/modules/WebDriver and related Codeception docs.
 
