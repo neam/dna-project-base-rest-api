@@ -45,6 +45,7 @@ source _set-codeception-group-args.sh
 # run unit tests (against a test database)
 
     # make sure the db_test database exists and is empty
+    export DB_NAME_ORG=$DB_NAME
     export DB_NAME=db_test
     echo "DROP DATABASE IF EXISTS $DB_NAME; CREATE DATABASE $DB_NAME;" | mysql -h$DB_HOST -P$DB_PORT -u$DB_USER --password=$DB_PASSWORD
 
@@ -62,6 +63,9 @@ source _set-codeception-group-args.sh
     ../app/yiic mysqldump --connectionID=dbTest --dumpPath=tests/codeception/_data/
     vendor/bin/codecept run unit $CODECEPTION_GROUP_ARGS --fail-fast
 
+    # restore DB_NAME
+    export DB_NAME=$DB_NAME_ORG
+
 # prepare acceptance tests
 
     # set saucelabs-specific env vars (note: saucelabs ui only allows useful filtering for short tags - 10 chars and less)
@@ -70,7 +74,7 @@ source _set-codeception-group-args.sh
     export CMS_HOST=$CMS_BASE_URL # todo - use CMS_BASE_URL in codeception config instead
 
     # take an initial db dump before any tests have been run (it is used below to restore the database before the desktop-sized tests are run)
-    mysqldump --user="$DB_USER" --password="$DB_PASSWORD" --host="$DB_HOST" --port="$DB_PORT" --no-create-db db > /tmp/pre-acceptance-tests-dump.sql
+    mysqldump --user="$DB_USER" --password="$DB_PASSWORD" --host="$DB_HOST" --port="$DB_PORT" --no-create-db "$DB_NAME" > /tmp/pre-acceptance-tests-dump.sql
 
 # run acceptance tests on a small-screen chrome, "mobile"
 
