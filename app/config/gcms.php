@@ -97,6 +97,14 @@ $gcmsConfig = array(
                         ),
                         'type' => 'jpg',
                     ),
+                    'item-list-thumbnail' => array(
+                        'name' => 'Item Thumbnail',
+                        'commands' => array(
+                            'resize' => array(110, 70, 2),
+                            'quality' => '85',
+                        ),
+                        'type' => 'jpg',
+                    ),
                     'wide-profile-info-picture' => array(
                         'name' => 'Wide Profile Info Picture',
                         'commands' => array(
