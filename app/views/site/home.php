@@ -37,14 +37,14 @@
                         'title' => Yii::t('app', 'Translators'),
                         'link' => array(
                             'text' => Yii::t('app', 'Help translate...'),
-                            'url' => '#',
+                            'url' => '',
                         )
                     ),
                     'Developers' => array(
                         'title' => Yii::t('app', 'Developers'),
                         'link' => array(
                             'text' => Yii::t('app', 'Develop free software...'),
-                            'url' => '#',
+                            'url' => '',
                         )
                     ),
                 )
