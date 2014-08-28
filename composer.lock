@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "46d5913d50a3b0876b6db13b6f087f76",
+    "hash": "9f4f2346f08748fda8f97afacaf77b5a",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1341,16 +1341,16 @@
         },
         {
             "name": "nordsoftware/yii-account",
-            "version": "1.2.1",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nordsoftware/yii-account.git",
-                "reference": "ad6cf21abe1e4e4b6eab960ab966a3265d240fb7"
+                "reference": "a6f3d13d50e4a6801185227d21c84caee1236284"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nordsoftware/yii-account/zipball/ad6cf21abe1e4e4b6eab960ab966a3265d240fb7",
-                "reference": "ad6cf21abe1e4e4b6eab960ab966a3265d240fb7",
+                "url": "https://api.github.com/repos/nordsoftware/yii-account/zipball/a6f3d13d50e4a6801185227d21c84caee1236284",
+                "reference": "a6f3d13d50e4a6801185227d21c84caee1236284",
                 "shasum": ""
             },
             "require": {
@@ -1387,10 +1387,10 @@
             ],
             "description": "Extension that provides basic account functionality for the Yii PHP framework.",
             "support": {
-                "source": "https://github.com/nordsoftware/yii-account/tree/1.2.1",
+                "source": "https://github.com/nordsoftware/yii-account/tree/1.2.2",
                 "issues": "https://github.com/nordsoftware/yii-account/issues"
             },
-            "time": "2014-06-11 13:13:27"
+            "time": "2014-08-28 11:09:03"
         },
         {
             "name": "nordsoftware/yii-emailer",
@@ -2127,7 +2127,7 @@
                 {
                     "name": "Tobias Munk",
                     "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.usrbin.de"
+                    "homepage": "http://www.phundament.com"
                 }
             ],
             "description": "Yii Framework Active Record Behavior for tree structures",
