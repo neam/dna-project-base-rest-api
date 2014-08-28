@@ -1,3 +1,8 @@
+<?php
+/**
+ * @var DashboardController $this
+ */
+?>
 <div class="dashboard-controller index-action gapminder-friends">
     <section class="section-wide-primary">
         <div class="gapminder-friends-logo">
@@ -79,6 +84,7 @@
             </div>
         </div>
     </section>
+    */ ?>
     <section class="section-wide-primary" id="sneak-peeks">
         <div class="container">
             <h2><?php echo Yii::t('app', 'Sneak Peeks'); ?></h2>
@@ -87,70 +93,14 @@
     </section>
     <section class="section-wide-secondary">
         <div class="container">
-            <ul class="sneak-peeks">
-                <li class="sneak-peek">
-                    <div class="sneak-peek-thumbnail">
-                        <img src="http://placehold.it/110x70">
-                    </div>
-                    <div class="sneak-peek-info">
-                        <span class="info-item-type">Video</span>
-                        <span class="info-title">How Large Is the Gap Between the Rich and the Poor</span>
-                        <span class="info-meta">VERSION 1, June 2, 2014</span>
-                    </div>
-                    <div class="sneak-peek-actions">
-                        <?php echo TbHtml::linkButton(
-                            Yii::t('app', 'Translate'),
-                            array(
-                                'color' => TbHtml::BUTTON_COLOR_PRIMARY,
-                                'block' => true,
-                                'size' => TbHtml::BUTTON_SIZE_SM,
-                            )
-                        ); ?>
-                    </div>
-                </li>
-                <li class="sneak-peek">
-                    <div class="sneak-peek-thumbnail">
-                        <img src="http://placehold.it/110x70">
-                    </div>
-                    <div class="sneak-peek-info">
-                        <span class="info-item-type">Tool</span>
-                        <span class="info-title">Income Mountains</span>
-                        <span class="info-meta">VERSION 2, June 4, 2014</span>
-                    </div>
-                    <div class="sneak-peek-actions">
-                        <?php echo TbHtml::linkButton(
-                            Yii::t('app', 'Evaluate'),
-                            array(
-                                'color' => TbHtml::BUTTON_COLOR_PRIMARY,
-                                'block' => true,
-                                'size' => TbHtml::BUTTON_SIZE_SM,
-                            )
-                        ); ?>
-                    </div>
-                </li>
-                <li class="sneak-peek">
-                    <div class="sneak-peek-thumbnail">
-                        <img src="http://placehold.it/110x70">
-                    </div>
-                    <div class="sneak-peek-info">
-                        <span class="info-item-type">Video</span>
-                        <span class="info-title">Is There a Correlation Between Income and Lifespan</span>
-                        <span class="info-meta">VERSION 7, June 2, 2014</span>
-                    </div>
-                    <div class="sneak-peek-actions">
-                        <?php echo TbHtml::linkButton(
-                            Yii::t('app', 'Evaluate'),
-                            array(
-                                'color' => TbHtml::BUTTON_COLOR_PRIMARY,
-                                'block' => true,
-                                'size' => TbHtml::BUTTON_SIZE_SM,
-                            )
-                        ); ?>
-                    </div>
-                </li>
-            </ul>
+            <?php $this->widget('\ItemsInGroup', array(
+                'group' => Group::SNEAK_PEEKS,
+                'limit' => 3,
+                'listHtmlOptions' => array('class' => 'sneak-peeks')
+            )); ?>
         </div>
     </section>
+    <?php /*
     <section class="section-wide-primary section-wide-condensed section-wide-border-bottom">
         <div class="container">
             <div class="view-all">
