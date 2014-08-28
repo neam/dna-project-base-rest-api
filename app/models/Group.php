@@ -50,6 +50,16 @@ class Group extends BaseGroup
         return parent::getItemLabel();
     }
 
+    public function relations()
+    {
+        return array_merge(
+            array(
+                'memberCount' => array(self::STAT, 'GroupHasAccount', 'group_id'),
+            ),
+            parent::relations()
+        );
+    }
+
     public function behaviors()
     {
         return array_merge(

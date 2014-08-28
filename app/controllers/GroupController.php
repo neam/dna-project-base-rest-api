@@ -67,8 +67,7 @@ class GroupController extends Controller
     public function actionView($id)
     {
         $model = $this->loadModel($id);
-        // todo: create the view
-        $this->render('view', array('model' => $model,));
+        $this->render('view', array('model' => $model));
     }
 
     public function actionCreate()
