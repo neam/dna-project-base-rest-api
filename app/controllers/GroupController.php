@@ -20,8 +20,14 @@ class GroupController extends Controller
             array(
                 'allow',
                 'actions' => array(
-                    'index',
                     'view',
+                ),
+                'users' => array('*'),
+            ),
+            array(
+                'allow',
+                'actions' => array(
+                    'index',
                     'create',
                     'update',
                     'editableSaver',
@@ -61,6 +67,7 @@ class GroupController extends Controller
     public function actionView($id)
     {
         $model = $this->loadModel($id);
+        // todo: create the view
         $this->render('view', array('model' => $model,));
     }
 
