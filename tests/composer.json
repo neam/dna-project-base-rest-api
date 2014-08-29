@@ -32,8 +32,8 @@
         "php": ">=5.4.0"
     },
     "require-dev": {
-        "codeception/codeception": "dev-non-numeric-branch-2.0",
-        "psychomieze/sauceextension": "dev-additional-metadata"
+        "psychomieze/sauceextension": "dev-additional-metadata",
+        "codeception/codeception": "dev-non-numeric-branch-2.0"
     },
     "scripts": {
     }
