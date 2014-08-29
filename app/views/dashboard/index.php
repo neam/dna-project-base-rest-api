@@ -1,3 +1,8 @@
+<?php
+/**
+ * @var DashboardController $this
+ */
+?>
 <div class="dashboard-controller index-action gapminder-friends">
     <section class="section-wide-primary">
         <div class="gapminder-friends-logo">
@@ -17,7 +22,11 @@
                         <?php echo user()->renderPicture('wide-profile-info-picture'); ?>
                     </div>
                     <div class="profile-info">
-                        <span class="info-heading"><?php echo user()->getFullName(); ?></span>
+                        <span class="info-heading">
+                            <?php echo isset(user()->model->profile->fullName)
+                                ? user()->fullName
+                                : user()->name; ?>
+                        </span>
                         <p><?php echo Yii::t('app', 'We have suggested some new tasks for you.'); ?></p>
                         <?php echo TbHtml::linkButton(
                             Yii::t('app', 'My Tasks'),
@@ -79,6 +88,7 @@
             </div>
         </div>
     </section>
+    */ ?>
     <section class="section-wide-primary" id="sneak-peeks">
         <div class="container">
             <h2><?php echo Yii::t('app', 'Sneak Peeks'); ?></h2>
@@ -87,70 +97,14 @@
     </section>
     <section class="section-wide-secondary">
         <div class="container">
-            <ul class="sneak-peeks">
-                <li class="sneak-peek">
-                    <div class="sneak-peek-thumbnail">
-                        <img src="http://placehold.it/110x70">
-                    </div>
-                    <div class="sneak-peek-info">
-                        <span class="info-item-type">Video</span>
-                        <span class="info-title">How Large Is the Gap Between the Rich and the Poor</span>
-                        <span class="info-meta">VERSION 1, June 2, 2014</span>
-                    </div>
-                    <div class="sneak-peek-actions">
-                        <?php echo TbHtml::linkButton(
-                            Yii::t('app', 'Translate'),
-                            array(
-                                'color' => TbHtml::BUTTON_COLOR_PRIMARY,
-                                'block' => true,
-                                'size' => TbHtml::BUTTON_SIZE_SM,
-                            )
-                        ); ?>
-                    </div>
-                </li>
-                <li class="sneak-peek">
-                    <div class="sneak-peek-thumbnail">
-                        <img src="http://placehold.it/110x70">
-                    </div>
-                    <div class="sneak-peek-info">
-                        <span class="info-item-type">Tool</span>
-                        <span class="info-title">Income Mountains</span>
-                        <span class="info-meta">VERSION 2, June 4, 2014</span>
-                    </div>
-                    <div class="sneak-peek-actions">
-                        <?php echo TbHtml::linkButton(
-                            Yii::t('app', 'Evaluate'),
-                            array(
-                                'color' => TbHtml::BUTTON_COLOR_PRIMARY,
-                                'block' => true,
-                                'size' => TbHtml::BUTTON_SIZE_SM,
-                            )
-                        ); ?>
-                    </div>
-                </li>
-                <li class="sneak-peek">
-                    <div class="sneak-peek-thumbnail">
-                        <img src="http://placehold.it/110x70">
-                    </div>
-                    <div class="sneak-peek-info">
-                        <span class="info-item-type">Video</span>
-                        <span class="info-title">Is There a Correlation Between Income and Lifespan</span>
-                        <span class="info-meta">VERSION 7, June 2, 2014</span>
-                    </div>
-                    <div class="sneak-peek-actions">
-                        <?php echo TbHtml::linkButton(
-                            Yii::t('app', 'Evaluate'),
-                            array(
-                                'color' => TbHtml::BUTTON_COLOR_PRIMARY,
-                                'block' => true,
-                                'size' => TbHtml::BUTTON_SIZE_SM,
-                            )
-                        ); ?>
-                    </div>
-                </li>
-            </ul>
+            <?php $this->widget('\ItemsInGroup', array(
+                'group' => Group::SNEAK_PEEKS,
+                'limit' => 3,
+                'listHtmlOptions' => array('class' => 'sneak-peeks')
+            )); ?>
         </div>
     </section>
+    <?php /*
     <section class="section-wide-primary section-wide-condensed section-wide-border-bottom">
         <div class="container">
             <div class="view-all">
@@ -219,7 +173,7 @@
             </div>
         </div>
     </section>
-
+    */ ?>
     <section class="section-wide-primary" id="groups">
         <div class="container">
             <h3><?php echo Yii::t('app', 'Groups'); ?></h3>
@@ -234,21 +188,19 @@
                         'title' => Yii::t('app', 'Translators'),
                         'link' => array(
                             'text' => Yii::t('app', 'Help translate...'),
-                            'url' => '#',
                         )
                     ),
                     'Developers' => array(
                         'title' => Yii::t('app', 'Developers'),
                         'link' => array(
                             'text' => Yii::t('app', 'Develop free software...'),
-                            'url' => '#',
                         )
                     ),
                 )
             )); ?>
         </div>
     </section>
-
+    <?php /*
     <section class="section-wide-primary section-wide-condensed">
         <div class="container">
             <div class="view-all">
