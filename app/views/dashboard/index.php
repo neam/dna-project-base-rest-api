@@ -173,7 +173,7 @@
             </div>
         </div>
     </section>
-
+    */ ?>
     <section class="section-wide-primary" id="groups">
         <div class="container">
             <h3><?php echo Yii::t('app', 'Groups'); ?></h3>
@@ -188,21 +188,19 @@
                         'title' => Yii::t('app', 'Translators'),
                         'link' => array(
                             'text' => Yii::t('app', 'Help translate...'),
-                            'url' => '#',
                         )
                     ),
                     'Developers' => array(
                         'title' => Yii::t('app', 'Developers'),
                         'link' => array(
                             'text' => Yii::t('app', 'Develop free software...'),
-                            'url' => '#',
                         )
                     ),
                 )
             )); ?>
         </div>
     </section>
-
+    <?php /*
     <section class="section-wide-primary section-wide-condensed">
         <div class="container">
             <div class="view-all">
