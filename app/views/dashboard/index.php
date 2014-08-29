@@ -22,7 +22,11 @@
                         <?php echo user()->renderPicture('wide-profile-info-picture'); ?>
                     </div>
                     <div class="profile-info">
-                        <span class="info-heading"><?php echo user()->getFullName(); ?></span>
+                        <span class="info-heading">
+                            <?php echo isset(user()->model->profile->fullName)
+                                ? user()->fullName
+                                : user()->name; ?>
+                        </span>
                         <p><?php echo Yii::t('app', 'We have suggested some new tasks for you.'); ?></p>
                         <?php echo TbHtml::linkButton(
                             Yii::t('app', 'My Tasks'),
