@@ -109,7 +109,7 @@ class PasswordController extends \nordsoftware\yii_account\controllers\PasswordC
         $accountClass = $this->module->getClassName(Module::CLASS_ACCOUNT);
         /** @var \nordsoftware\yii_account\models\ar\Account $account */
         $account = \CActiveRecord::model($accountClass)->findByPk(Yii::app()->user->id);
-        if ($account == null) {
+        if ($account === null) {
             throw new CHttpException(404, Yii::t('model', 'The requested page does not exist.'));
         }
         $this->redirect(
