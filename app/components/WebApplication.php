@@ -137,8 +137,7 @@ class WebApplication extends CWebApplication
      */
     public function getHomeUrl()
     {
-        $route = user()->isGuest ? '/' : '/dashboard/index';
-        return app()->createUrl($route);
+        return app()->createUrl('/');
     }
 
     /**

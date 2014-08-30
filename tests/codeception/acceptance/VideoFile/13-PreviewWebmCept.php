@@ -24,4 +24,4 @@ $I->click('Edit', VideoFileBrowsePage::modelContext($videoTitle));
 $I->see($videoTitle, 'h1');
 $I->click('Preview');
 $I->seeInTitle('Preview');
-$I->seeElement('.mejs-video');
+$I->seeElement(VideoFileViewPage::$videoContainer);
