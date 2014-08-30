@@ -2127,7 +2127,7 @@
                 {
                     "name": "Tobias Munk",
                     "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.usrbin.de"
+                    "homepage": "http://www.phundament.com"
                 }
             ],
             "description": "Yii Framework Active Record Behavior for tree structures",
@@ -3021,6 +3021,7 @@
         "schmunk42/giic": 20,
         "phundament/gii-template-collection": 20
     },
+    "prefer-stable": false,
     "platform": {
         "php": ">=5.4.0"
     },
