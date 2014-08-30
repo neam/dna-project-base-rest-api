@@ -52,7 +52,7 @@ class LandingPageGroups extends CWidget
         foreach ($groupIds as $i => $groupId) {
             $groupIdParam = ":groupId{$i}";
             $queries[] = $db->createCommand()
-                ->select('CONCAT_WS(" ", profile.first_name, profile.last_name) AS name, profile.picture_media_id, group.title AS group_title, role.title AS role_title')
+                ->select('CONCAT_WS(" ", profile.first_name, profile.last_name) AS name, profile.picture_media_id, group.id AS group_id, group.title AS group_title, role.title AS role_title')
                 ->from('account')
                 ->join('profile', '`profile`.`user_id` = `account`.`id`')
                 ->join('group_has_account', '`group_has_account`.`account_id` = `account`.`id`')
@@ -82,6 +82,9 @@ class LandingPageGroups extends CWidget
             }
             $row['title'] = MetaData::groupRoleTitleToLabel($row['role_title']);
             $this->groups[$groupName]['members'][] = $row;
+            if (empty($this->groups[$groupName]['link']['url'])) {
+                $this->groups[$groupName]['link']['url'] = $this->controller->createUrl('group/view', array('id' => $row['group_id']));
+            }
         }
     }
 } 

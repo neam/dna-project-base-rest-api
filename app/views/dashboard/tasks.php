@@ -4,78 +4,42 @@
 /** @var string $modelClass */
 ?>
 <div class="dashboard-controller tasks-action">
-    <div class="dashboard-profile">
-        <div class="row">
-            <div class="profile-info">
-                <div class="row">
-                    <div class="profile-picture hidden-xs">
-                        <?php echo TbHtml::link($model->profile->renderPicture(), array('/profile/edit')); ?>
-                    </div>
-                    <div class="profile-facts">
-                        <div class="profile-top-bar">
-                            <div class="profile-points">
-                                <?php echo TbHtml::icon(TbHtml::ICON_RECORD); ?>
-                                <?php echo Yii::t('app', '{pointCount} points', array(
-                                    '{pointCount}' => 0 // TODO: Get points dynamically.
-                                )); ?>
-                            </div>
-                            <div class="profile-actions">
-                                <?php echo TbHtml::link(TbHtml::icon(TbHtml::ICON_COG), array('/profile/edit')); ?>
-                            </div>
-                        </div>
-                        <h1 class="profile-name hidden-xs"><?php echo $model->profile->fullName; ?></h1>
-                        <?php /*
-                        <span class="profile-title"><?php echo 'Project Manager at Nord Software'; // TODO: Get title dynamically. ?></span>
-                        */ ?>
-                    </div>
-                </div>
+    <div class="dashboard-profile-wrapper">
+        <div class="dashboard-profile">
+            <div class="profile-image">
+                <?php echo $model->profile->renderPicture(); ?>
             </div>
-            <?php /*
-            <div class="recent-updates">
-                <div class="updates-top-bar">
-                    <div class="updates-title">
-                        <h2 class="updates-heading"><?php echo Yii::t('app', 'Recent Updates'); ?></h2>
-                    </div>
-                    <div class="updates-view-all">
-                        <?php echo TbHtml::link(
-                            Yii::t('app', 'View all ({updateCount})', array(
-                                '{updateCount}' => 0, // TODO: Get update count dynamically.
-                            )),
-                            '#', // TODO: Add link.
-                            array(
-                                'class' => 'view-all-link',
-                            )
-                        ); ?>
+            <div class="profile-facts">
+                <div class="row">
+                    <div class="content-wrapper">
+                        <h2 class="name">
+                            <?php echo isset($model->profile->fullName) ? $model->profile->fullName : $model->username; ?>
+                        </h2>
+                        <span class="lives-in"><?php echo $model->profile->lives_in; ?></span>
                     </div>
                 </div>
-                <div class="updates">
-                    <div class="updates-content">
-                        <ul class="updates-list">
-                            <?php // TODO: Render the two most recent updates. ?>
-                            <li>
-                                <div class="update-image">
-                                    <?php echo TbHtml::image('http://placehold.it/80x45'); ?>
-                                </div>
-                                <div class="update-info">
-                                    <span class="update-title"><?php echo 'Congratulations!'; ?></span>
-                                    <span class="update-description"><?php echo 'Your video has been viewed 201,400 times!'; ?></span>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="update-image">
-                                    <?php echo TbHtml::image('http://placehold.it/80x45'); ?>
-                                </div>
-                                <div class="update-info">
-                                    <span class="update-title"><?php echo 'You have earned an achievement!'; ?></span>
-                                    <span class="update-description"><?php echo 'This achievement is awarded to users that have translated 30 videos.'; ?></span>
-                                </div>
-                            </li>
+                <div class="row">
+                    <div class="content-wrapper">
+                        <ul class="groups">
+                            <?php foreach ($model->groupHasAccounts as $gha): ?>
+                                <li>
+                                    <div class="group">
+                                        <strong class="group-name"><?php echo $gha->group->title; ?></strong><br />
+                                        <span class="group-role"><?php echo $gha->role->title; ?></span>
+                                    </div>
+                                </li>
+                            <?php endforeach; ?>
                         </ul>
                     </div>
                 </div>
             </div>
-            */ ?>
+            <div class="profile-actions">
+                <div class="actions btn-group-vertical">
+                    <?php echo TbHtml::link(t('app', 'Edit Profile'), array('/profile/edit'), array('class' => 'btn btn-link')); ?>
+                </div>
+            </div>
         </div>
+
     </div>
     <?php if (Yii::app()->user->isGroupAdmin() || Yii::app()->user->isAdmin()): ?>
         <div class="dashboard-tasks-container">

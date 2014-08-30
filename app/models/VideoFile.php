@@ -205,6 +205,7 @@ class VideoFile extends BaseVideoFile
                 'clip_mp4_media_id' => Yii::t('model', 'Video File (.mp4)'),
                 'subtitles' => Yii::t('model', 'Subtitles'),
                 'youtube_url' => Yii::t('model', 'YouTube URL'),
+                __CLASS__ => Yii::t('model', 'Video'),
             )
         );
     }

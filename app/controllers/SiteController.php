@@ -68,9 +68,12 @@ class SiteController extends Controller
     public function actionHome()
     {
         $this->layout = WebApplication::LAYOUT_FLUID;
-        user()->setReturnUrl(app()->createUrl('/dashboard/index')); // after login
         $this->homeBrandLabel = Yii::t('app', 'Gapminder.org Home');
-        $this->render('home');
+        if (user()->isGuest) {
+            $this->render('home');
+        } else {
+            $this->render('/dashboard/index');
+        }
     }
 
     /**

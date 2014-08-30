@@ -72,6 +72,19 @@ class Profile extends BaseProfile
     }
 
     /**
+     * Override magic isset so that fullName does not appear to be set when it consists
+     * of only a single space, that happens when both first_name and last_name is not set
+     */
+    public function __isset($attribute)
+    {
+        // The method getFullName below
+        if ($attribute === 'fullName') {
+            return $this->getFullName() !== ' ';
+        }
+        return parent::__isset($attribute);
+    }
+
+    /**
      * Returns the full name.
      * @return string
      */
