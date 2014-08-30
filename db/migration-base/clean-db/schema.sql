@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.35, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.37, for debian-linux-gnu (x86_64)
 --
 -- Host: 172.17.42.1    Database: db
 -- ------------------------------------------------------
--- Server version	5.5.37-MariaDB-1~quantal-log
+-- Server version	5.5.38-MariaDB-1~quantal-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -107,10 +107,10 @@ DROP TABLE IF EXISTS `SourceMessage`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `SourceMessage` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `category` varchar(32) COLLATE utf8_bin DEFAULT NULL,
+  `category` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `message` text COLLATE utf8_bin,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=173 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -130,10 +130,69 @@ CREATE TABLE `account` (
   `status` int(1) NOT NULL DEFAULT '0',
   `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastvisit_at` timestamp NULL DEFAULT NULL,
+  `salt` varchar(255) COLLATE utf8_bin NOT NULL,
+  `passwordStrategy` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT 'legacy',
+  `requireNewPassword` tinyint(1) NOT NULL DEFAULT '0',
+  `lastLoginAt` timestamp NULL DEFAULT NULL,
+  `lastActiveAt` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_username` (`username`),
   UNIQUE KEY `user_email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `account_login_history`
+--
+
+DROP TABLE IF EXISTS `account_login_history`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `account_login_history` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `accountId` int(11) NOT NULL DEFAULT '0',
+  `success` tinyint(1) NOT NULL DEFAULT '0',
+  `numFailedAttempts` int(11) NOT NULL DEFAULT '0',
+  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `account_password_history`
+--
+
+DROP TABLE IF EXISTS `account_password_history`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `account_password_history` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `accountId` int(11) NOT NULL,
+  `salt` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `account_token`
+--
+
+DROP TABLE IF EXISTS `account_token`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `account_token` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `accountId` int(11) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `createdAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `expiresAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `status` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `accountId_token` (`accountId`,`token`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -148,7 +207,7 @@ CREATE TABLE `action` (
   `action` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `label` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -186,7 +245,7 @@ CREATE TABLE `changeset` (
   KEY `fk_changeset_node1_idx` (`node_id`),
   CONSTRAINT `fk_changeset_node1` FOREIGN KEY (`node_id`) REFERENCES `node` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_changeset_users1` FOREIGN KEY (`user_id`) REFERENCES `account` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=207 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -264,7 +323,7 @@ CREATE TABLE `chapter` (
   CONSTRAINT `fk_chapter_node1` FOREIGN KEY (`node_id`) REFERENCES `node` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_chapter_p3_media1` FOREIGN KEY (`thumbnail_media_id`) REFERENCES `p3_media` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_chapter_users1` FOREIGN KEY (`owner_id`) REFERENCES `account` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -349,7 +408,7 @@ CREATE TABLE `chapter_qa_state` (
   `title_proofed` tinyint(1) DEFAULT NULL,
   `translate_into_fa_validation_progress` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -841,7 +900,7 @@ CREATE TABLE `edge` (
   KEY `fk_node_has_node_node1_idx` (`from_node_id`),
   CONSTRAINT `fk_node_has_node_node1` FOREIGN KEY (`from_node_id`) REFERENCES `node` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_node_has_node_node2` FOREIGN KEY (`to_node_id`) REFERENCES `node` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -866,7 +925,7 @@ CREATE TABLE `email_message` (
   `status` int(11) NOT NULL DEFAULT '0',
   `sentTime` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -955,7 +1014,7 @@ DROP TABLE IF EXISTS `exam_question_alternative`;
 CREATE TABLE `exam_question_alternative` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `version` int(11) NOT NULL DEFAULT '1',
-  `slug` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_en` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `_markup` text COLLATE utf8_bin,
   `correct` tinyint(1) DEFAULT NULL,
   `exam_question_id` bigint(20) DEFAULT NULL,
@@ -964,6 +1023,49 @@ CREATE TABLE `exam_question_alternative` (
   `owner_id` int(11) DEFAULT NULL,
   `node_id` bigint(20) DEFAULT NULL,
   `exam_question_alternative_qa_state_id` bigint(20) DEFAULT NULL,
+  `slug_ar` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_bg` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_ca` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_cs` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_da` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_de` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_en_gb` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_en_us` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_el` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_es` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_fa` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_fi` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_fil` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_fr` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_hi` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_hr` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_hu` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_id` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_iw` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_it` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_ja` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_ko` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_lt` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_lv` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_nl` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_no` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_pl` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_pt` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_pt_br` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_pt_pt` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_ro` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_ru` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_sk` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_sl` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_sr` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_sv` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_th` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_tr` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_uk` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_vi` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_zh` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_zh_cn` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `slug_zh_tw` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_exam_question_alternative_exam_question1_idx` (`exam_question_id`),
   KEY `fk_exam_question_alternative_node1_idx` (`node_id`),
@@ -1405,7 +1507,7 @@ CREATE TABLE `group` (
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1429,7 +1531,7 @@ CREATE TABLE `group_has_account` (
   CONSTRAINT `fk_group_has_account_account1` FOREIGN KEY (`account_id`) REFERENCES `account` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_group_has_account_group1` FOREIGN KEY (`group_id`) REFERENCES `group` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_group_has_account_role1` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1560,7 +1662,7 @@ CREATE TABLE `html_chunk` (
   CONSTRAINT `fk_html_chunk_node1` FOREIGN KEY (`node_id`) REFERENCES `node` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_html_chunk_users1` FOREIGN KEY (`owner_id`) REFERENCES `account` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `html_chunk_qa_state_id_fk` FOREIGN KEY (`html_chunk_qa_state_id`) REFERENCES `html_chunk_qa_state` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1629,7 +1731,7 @@ CREATE TABLE `html_chunk_qa_state` (
   `markup_proofed` tinyint(1) DEFAULT NULL,
   `translate_into_fa_validation_progress` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1646,7 +1748,7 @@ CREATE TABLE `i18n_catalog` (
   `title` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `about` text COLLATE utf8_bin,
   `i18n_category` varchar(255) COLLATE utf8_bin DEFAULT NULL,
-  `_po_contents` text COLLATE utf8_bin,
+  `po_contents` text COLLATE utf8_bin,
   `pot_import_media_id` int(11) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
@@ -1664,7 +1766,7 @@ CREATE TABLE `i18n_catalog` (
   CONSTRAINT `fk_po_file_p3_media1` FOREIGN KEY (`pot_import_media_id`) REFERENCES `p3_media` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_po_file_users1` FOREIGN KEY (`owner_id`) REFERENCES `account` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `po_file_qa_state_id_fk` FOREIGN KEY (`i18n_catalog_qa_state_id`) REFERENCES `i18n_catalog_qa_state` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1737,7 +1839,7 @@ CREATE TABLE `i18n_catalog_qa_state` (
   `po_contents_proofed` tinyint(1) DEFAULT NULL,
   `translate_into_fa_validation_progress` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1980,7 +2082,7 @@ CREATE TABLE `node` (
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=909 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2002,7 +2104,7 @@ CREATE TABLE `node_has_group` (
   KEY `fk_node_has_group_group1_idx` (`group_id`),
   CONSTRAINT `fk_node_has_group_group1` FOREIGN KEY (`group_id`) REFERENCES `group` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_node_has_group_node1` FOREIGN KEY (`node_id`) REFERENCES `node` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2042,7 +2144,7 @@ CREATE TABLE `p3_media` (
   UNIQUE KEY `p3_media_name_id_unique` (`name_id`),
   KEY `fk_p3_media_p3_media1_idx` (`tree_parent_id`),
   CONSTRAINT `fk_p3_media_p3_media1` FOREIGN KEY (`tree_parent_id`) REFERENCES `p3_media` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2273,7 +2375,7 @@ CREATE TABLE `page` (
   CONSTRAINT `fk_page_page1` FOREIGN KEY (`cloned_from_id`) REFERENCES `page` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_page_users1` FOREIGN KEY (`owner_id`) REFERENCES `account` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `page_qa_state_id_fk` FOREIGN KEY (`page_qa_state_id`) REFERENCES `page_qa_state` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2344,7 +2446,7 @@ CREATE TABLE `page_qa_state` (
   `title_proofed` tinyint(1) DEFAULT NULL,
   `translate_into_fa_validation_progress` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2373,7 +2475,7 @@ CREATE TABLE `profile` (
   KEY `fk_profiles_p3_media1_idx` (`picture_media_id`),
   CONSTRAINT `fk_profiles_p3_media1` FOREIGN KEY (`picture_media_id`) REFERENCES `p3_media` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `user_profile_id` FOREIGN KEY (`user_id`) REFERENCES `account` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2415,7 +2517,7 @@ CREATE TABLE `role` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2492,7 +2594,7 @@ CREATE TABLE `section` (
   CONSTRAINT `fk_section_page1` FOREIGN KEY (`page_id`) REFERENCES `page` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_section_section1` FOREIGN KEY (`cloned_from_id`) REFERENCES `section` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `section_qa_state_id_fk` FOREIGN KEY (`section_qa_state_id`) REFERENCES `section_qa_state` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2563,7 +2665,7 @@ CREATE TABLE `section_qa_state` (
   `title_proofed` tinyint(1) DEFAULT NULL,
   `translate_into_fa_validation_progress` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2930,7 +3032,7 @@ CREATE TABLE `snapshot` (
   CONSTRAINT `fk_snapshot_tool1` FOREIGN KEY (`tool_id`) REFERENCES `tool` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_snapshot_users1` FOREIGN KEY (`owner_id`) REFERENCES `account` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `snapshot_qa_state_id_fk` FOREIGN KEY (`snapshot_qa_state_id`) REFERENCES `snapshot_qa_state` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3003,7 +3105,7 @@ CREATE TABLE `snapshot_qa_state` (
   `title_proofed` tinyint(1) DEFAULT NULL,
   `translate_into_fa_validation_progress` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3272,7 +3374,7 @@ CREATE TABLE `tbl_audit_trail` (
   KEY `idx_audit_trail_model` (`model`),
   KEY `idx_audit_trail_field` (`field`),
   KEY `idx_audit_trail_action` (`action`)
-) ENGINE=InnoDB AUTO_INCREMENT=495 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3482,7 +3584,7 @@ CREATE TABLE `text_doc` (
   CONSTRAINT `fk_word_file_p3_media2_zh_tw` FOREIGN KEY (`processed_media_id_zh_tw`) REFERENCES `p3_media` (`id`),
   CONSTRAINT `fk_word_file_word_file1` FOREIGN KEY (`cloned_from_id`) REFERENCES `text_doc` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `text_doc_qa_state_id_fk` FOREIGN KEY (`text_doc_qa_state_id`) REFERENCES `text_doc_qa_state` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3557,7 +3659,7 @@ CREATE TABLE `text_doc_qa_state` (
   `title_proofed` tinyint(1) DEFAULT NULL,
   `translate_into_fa_validation_progress` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3636,7 +3738,7 @@ CREATE TABLE `tool` (
   CONSTRAINT `fk_tool_tool1` FOREIGN KEY (`cloned_from_id`) REFERENCES `tool` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_tool_users1` FOREIGN KEY (`owner_id`) REFERENCES `account` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `tool_qa_state_id_fk` FOREIGN KEY (`tool_qa_state_id`) REFERENCES `tool_qa_state` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3709,7 +3811,7 @@ CREATE TABLE `tool_qa_state` (
   `ref_approved` tinyint(1) DEFAULT NULL,
   `ref_proofed` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4014,7 +4116,7 @@ CREATE TABLE `video_file` (
   `thumbnail_media_id` int(11) DEFAULT NULL,
   `clip_webm_media_id` int(11) DEFAULT NULL,
   `clip_mp4_media_id` int(11) DEFAULT NULL,
-  `_subtitles` text COLLATE utf8_bin,
+  `subtitles` text COLLATE utf8_bin,
   `subtitles_import_media_id` int(11) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
@@ -4064,6 +4166,7 @@ CREATE TABLE `video_file` (
   `slug_zh_cn` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `slug_zh_tw` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `slug_fa` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `youtube_url` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_video_file_p3_media3_idx` (`thumbnail_media_id`),
   KEY `fk_video_file_video_file1_idx` (`cloned_from_id`),
@@ -4081,7 +4184,7 @@ CREATE TABLE `video_file` (
   CONSTRAINT `fk_video_file_users1` FOREIGN KEY (`owner_id`) REFERENCES `account` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_video_file_video_file1` FOREIGN KEY (`cloned_from_id`) REFERENCES `video_file` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `video_file_qa_state_id_fk` FOREIGN KEY (`video_file_qa_state_id`) REFERENCES `video_file_qa_state` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4163,8 +4266,10 @@ CREATE TABLE `video_file_qa_state` (
   `title_proofed` tinyint(1) DEFAULT NULL,
   `subtitles_proofed` tinyint(1) DEFAULT NULL,
   `translate_into_fa_validation_progress` int(11) DEFAULT NULL,
+  `youtube_url_approved` tinyint(1) DEFAULT NULL,
+  `youtube_url_proofed` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4257,7 +4362,7 @@ CREATE TABLE `waffle` (
   CONSTRAINT `fk_waffle_waffle1` FOREIGN KEY (`cloned_from_id`) REFERENCES `waffle` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_waffle_waffle_publisher1` FOREIGN KEY (`waffle_publisher_id`) REFERENCES `waffle_publisher` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `waffle_qa_state_id_fk` FOREIGN KEY (`waffle_qa_state_id`) REFERENCES `waffle_qa_state` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4294,7 +4399,7 @@ CREATE TABLE `waffle_category` (
   CONSTRAINT `fk_waffle_category_waffle1` FOREIGN KEY (`waffle_id`) REFERENCES `waffle` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_waffle_category_waffle_category1` FOREIGN KEY (`cloned_from_id`) REFERENCES `waffle_category` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `waffle_category_qa_state_id_fk` FOREIGN KEY (`waffle_category_qa_state_id`) REFERENCES `waffle_category_qa_state` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4371,7 +4476,7 @@ CREATE TABLE `waffle_category_qa_state` (
   `list_name_proofed` tinyint(1) DEFAULT NULL,
   `translate_into_fa_validation_progress` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4405,7 +4510,7 @@ CREATE TABLE `waffle_category_thing` (
   CONSTRAINT `fk_waffle_category_thing_waffle_category1` FOREIGN KEY (`waffle_category_id`) REFERENCES `waffle_category` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_waffle_category_thing_waffle_category_thing1` FOREIGN KEY (`cloned_from_id`) REFERENCES `waffle_category_thing` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `waffle_category_thing_qa_state_id_fk` FOREIGN KEY (`waffle_category_thing_qa_state_id`) REFERENCES `waffle_category_thing_qa_state` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=201 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4478,7 +4583,7 @@ CREATE TABLE `waffle_category_thing_qa_state` (
   `name_proofed` tinyint(1) DEFAULT NULL,
   `translate_into_fa_validation_progress` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=201 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4627,7 +4732,7 @@ CREATE TABLE `waffle_indicator` (
   CONSTRAINT `fk_waffle_indicator_node1` FOREIGN KEY (`node_id`) REFERENCES `node` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_waffle_indicator_waffle_indicator1` FOREIGN KEY (`cloned_from_id`) REFERENCES `waffle_indicator` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `waffle_indicator_qa_state_id_fk` FOREIGN KEY (`waffle_indicator_qa_state_id`) REFERENCES `waffle_indicator_qa_state` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4700,7 +4805,7 @@ CREATE TABLE `waffle_indicator_qa_state` (
   `name_proofed` tinyint(1) DEFAULT NULL,
   `translate_into_fa_validation_progress` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4738,7 +4843,7 @@ CREATE TABLE `waffle_publisher` (
   CONSTRAINT `fk_waffle_data_source_p3_media20` FOREIGN KEY (`image_large_media_id`) REFERENCES `p3_media` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_waffle_data_source_waffle_data_source10` FOREIGN KEY (`cloned_from_id`) REFERENCES `waffle_publisher` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `waffle_publisher_qa_state_id_fk` FOREIGN KEY (`waffle_publisher_qa_state_id`) REFERENCES `waffle_publisher_qa_state` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4809,7 +4914,7 @@ CREATE TABLE `waffle_publisher_qa_state` (
   `name_proofed` tinyint(1) DEFAULT NULL,
   `translate_into_fa_validation_progress` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4894,7 +4999,7 @@ CREATE TABLE `waffle_qa_state` (
   `po_contents_proofed` tinyint(1) DEFAULT NULL,
   `translate_into_fa_validation_progress` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4929,7 +5034,7 @@ CREATE TABLE `waffle_tag` (
   CONSTRAINT `fk_waffle_tag_node1` FOREIGN KEY (`node_id`) REFERENCES `node` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_waffle_tag_waffle_tag1` FOREIGN KEY (`cloned_from_id`) REFERENCES `waffle_tag` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `waffle_tag_qa_state_id_fk` FOREIGN KEY (`waffle_tag_qa_state_id`) REFERENCES `waffle_tag_qa_state` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5002,7 +5107,7 @@ CREATE TABLE `waffle_tag_qa_state` (
   `name_proofed` tinyint(1) DEFAULT NULL,
   `translate_into_fa_validation_progress` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5037,7 +5142,7 @@ CREATE TABLE `waffle_unit` (
   CONSTRAINT `fk_waffle_unit_node1` FOREIGN KEY (`node_id`) REFERENCES `node` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_waffle_unit_waffle_unit1` FOREIGN KEY (`cloned_from_id`) REFERENCES `waffle_unit` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `waffle_unit_qa_state_id_fk` FOREIGN KEY (`waffle_unit_qa_state_id`) REFERENCES `waffle_unit_qa_state` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5110,7 +5215,7 @@ CREATE TABLE `waffle_unit_qa_state` (
   `name_proofed` tinyint(1) DEFAULT NULL,
   `translate_into_fa_validation_progress` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5141,4 +5246,3 @@ CREATE TABLE `waffle_unit_qa_state` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-07-15 18:33:28

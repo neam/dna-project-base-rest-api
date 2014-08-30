@@ -48,8 +48,8 @@ UNLOCK TABLES;
 
 LOCK TABLES `Message` WRITE;
 /*!40000 ALTER TABLE `Message` DISABLE KEYS */;
-INSERT INTO `Message` (`id`, `language`, `translation`) VALUES (173,'pt_br','Corrente');
-INSERT INTO `Message` (`id`, `language`, `translation`) VALUES (174,'pt_br','Cadeia');
+INSERT INTO `Message` (`id`, `language`, `translation`) VALUES (1,'pt_br','Corrente');
+INSERT INTO `Message` (`id`, `language`, `translation`) VALUES (2,'pt_br','Cadeia');
 /*!40000 ALTER TABLE `Message` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -68,8 +68,8 @@ UNLOCK TABLES;
 
 LOCK TABLES `SourceMessage` WRITE;
 /*!40000 ALTER TABLE `SourceMessage` DISABLE KEYS */;
-INSERT INTO `SourceMessage` (`id`, `category`, `message`) VALUES (173,'i18n_catalog-4-metal-po_contents','Chain');
-INSERT INTO `SourceMessage` (`id`, `category`, `message`) VALUES (174,'i18n_catalog-4-restaurant-po_contents','Chain');
+INSERT INTO `SourceMessage` (`id`, `category`, `message`) VALUES (1,'i18n_catalog-4-metal-po_contents','Chain');
+INSERT INTO `SourceMessage` (`id`, `category`, `message`) VALUES (2,'i18n_catalog-4-restaurant-po_contents','Chain');
 /*!40000 ALTER TABLE `SourceMessage` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -507,23 +507,14 @@ LOCK TABLES `migration` WRITE;
 /*!40000 ALTER TABLE `migration` DISABLE KEYS */;
 INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m000000_000000_base_clean-db',1400000000,'clean-db');
 INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m000000_000000_base_core',1400000000,'core');
-INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140520_110350_alter_source_message',1400000000,'core');
-INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140603_132628_alter_account_table',1400000000,'core');
-INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140603_140546_create_account_token_table',1400000000,'core');
-INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140610_075257_create_account_login_history_table',1400000000,'core');
-INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140610_075351_create_account_password_history_table',1400000000,'core');
-INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140611_131806_add_youtube_field',1400000000,'core');
-INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140611_142637_qa_attributes',1400000000,'core');
 INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140617_135018_add_admin_account',1400000000,'clean-db');
-INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140618_114100_i18n',1400000000,'core');
-INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140711_110643_i18n',1400000000,'core');
 INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140814_131556_add_item_slug_unique_indexes',1400000000,'core');
 INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140818_055730_i18n',1400000000,'core');
 INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140818_055732_add_item_slug_unique_indexes',1400000000,'core');
 INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140820_120803_insert_i18n_catalog_translations',1400000000,'clean-db');
 INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140830_171708_no_latin1_in_schema',1400000000,'core');
 INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140830_173626_default_utf8_for_schema',1400000000,'core');
-INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140830_223340_fixed_apply_time_for_clean_db_migration_table',1409438116,'clean-db');
+INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140830_223340_fixed_apply_time_for_clean_db_migration_table',1409439175,'clean-db');
 /*!40000 ALTER TABLE `migration` ENABLE KEYS */;
 UNLOCK TABLES;
 
