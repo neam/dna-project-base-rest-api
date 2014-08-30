@@ -10,7 +10,7 @@ mysqldump -h$DB_HOST -P$DB_PORT -u$DB_USER --password=$DB_PASSWORD --no-create-i
 
 # dump the current schema
 app/yiic mysqldump --dumpPath=db --dumpFile=migration-results/$DATA/schema.sql --data=false --schema=true
-app/yiic mysqldump --dumpPath=db --dumpFile=migration-results/$DATA/data.sql --data=true --schema=false
+app/yiic mysqldump --dumpPath=db --dumpFile=migration-results/$DATA/data.sql --data=true --schema=false --compact=false
 
 # perform some clean-up on the dump files so that it needs to be committed less often
 function cleanupdump {

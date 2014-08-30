@@ -48,7 +48,8 @@ UNLOCK TABLES;
 
 LOCK TABLES `Message` WRITE;
 /*!40000 ALTER TABLE `Message` DISABLE KEYS */;
-INSERT INTO `Message` VALUES (173,'pt_br','Corrente'),(174,'pt_br','Cadeia');
+INSERT INTO `Message` (`id`, `language`, `translation`) VALUES (173,'pt_br','Corrente');
+INSERT INTO `Message` (`id`, `language`, `translation`) VALUES (174,'pt_br','Cadeia');
 /*!40000 ALTER TABLE `Message` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -67,7 +68,8 @@ UNLOCK TABLES;
 
 LOCK TABLES `SourceMessage` WRITE;
 /*!40000 ALTER TABLE `SourceMessage` DISABLE KEYS */;
-INSERT INTO `SourceMessage` VALUES (173,'i18n_catalog-4-metal-po_contents','Chain'),(174,'i18n_catalog-4-restaurant-po_contents','Chain');
+INSERT INTO `SourceMessage` (`id`, `category`, `message`) VALUES (173,'i18n_catalog-4-metal-po_contents','Chain');
+INSERT INTO `SourceMessage` (`id`, `category`, `message`) VALUES (174,'i18n_catalog-4-restaurant-po_contents','Chain');
 /*!40000 ALTER TABLE `SourceMessage` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -86,7 +88,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
-INSERT INTO `account` VALUES (1,'admin','$2a$12$dyixOdTUCj3lcHhP0w.owu2esQMRb2vkedMx4tb3inn6OMYHZLium','webmaster@example.com','d6aef338ea9d2ea49a0f62705ef51ecc',1,1,'2014-03-25 22:04:20',NULL,'$2a$12$dyixOdTUCj3lcHhP0w.oww','bcrypt',0,NULL,NULL);
+INSERT INTO `account` (`id`, `username`, `password`, `email`, `activkey`, `superuser`, `status`, `create_at`, `lastvisit_at`, `salt`, `passwordStrategy`, `requireNewPassword`, `lastLoginAt`, `lastActiveAt`) VALUES (1,'admin','$2a$12$dyixOdTUCj3lcHhP0w.owu2esQMRb2vkedMx4tb3inn6OMYHZLium','webmaster@example.com','d6aef338ea9d2ea49a0f62705ef51ecc',1,1,'2014-03-25 22:04:20',NULL,'$2a$12$dyixOdTUCj3lcHhP0w.oww','bcrypt',0,NULL,NULL);
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -123,7 +125,25 @@ UNLOCK TABLES;
 
 LOCK TABLES `action` WRITE;
 /*!40000 ALTER TABLE `action` DISABLE KEYS */;
-INSERT INTO `action` VALUES (1,'List','Lists an item in the group'),(2,'Unlist','Unlists an item from the group'),(3,'Suggest','Suggest an item to be listed in the group'),(4,'Publish/Replace','Share with anyone, making the item public for the first time / Publishing this version as the official version, replacing a previous version'),(5,'Unpublish/Revert','Unshare with anyone, revert to previous version if such exists'),(6,'Add','Adds a temporary empty item to the database'),(7,'Remove','Remove item from the database'),(8,'Browse','Browse amongst items'),(9,'View','View items'),(10,'PrepareForReview','Prepare item for review, by stepping through fields required for IN_REVIEW'),(11,'Preview','Preview the current content'),(12,'Evaluate','Evaluating an item in Preview-mode by grading and commenting on it\'s fields or the total itemVersion'),(13,'Proofread','Review and improve language'),(14,'PrepareForPublishing','Prepare for publishing, by stepping through fields required for PUBLIC'),(15,'Approve','Approving the full content by stepping to next field approved==false'),(16,'Translate','Translate to languages that you added to our profile'),(17,'TranslateUnrestricted','Translate to all languages'),(18,'Edit','Look at and edit all fields, no obvious goal'),(19,'Clone','Creates a new itemVersion with incremented version number and goes to \"edit\" workFlow');
+INSERT INTO `action` (`id`, `action`, `label`) VALUES (1,'List','Lists an item in the group');
+INSERT INTO `action` (`id`, `action`, `label`) VALUES (2,'Unlist','Unlists an item from the group');
+INSERT INTO `action` (`id`, `action`, `label`) VALUES (3,'Suggest','Suggest an item to be listed in the group');
+INSERT INTO `action` (`id`, `action`, `label`) VALUES (4,'Publish/Replace','Share with anyone, making the item public for the first time / Publishing this version as the official version, replacing a previous version');
+INSERT INTO `action` (`id`, `action`, `label`) VALUES (5,'Unpublish/Revert','Unshare with anyone, revert to previous version if such exists');
+INSERT INTO `action` (`id`, `action`, `label`) VALUES (6,'Add','Adds a temporary empty item to the database');
+INSERT INTO `action` (`id`, `action`, `label`) VALUES (7,'Remove','Remove item from the database');
+INSERT INTO `action` (`id`, `action`, `label`) VALUES (8,'Browse','Browse amongst items');
+INSERT INTO `action` (`id`, `action`, `label`) VALUES (9,'View','View items');
+INSERT INTO `action` (`id`, `action`, `label`) VALUES (10,'PrepareForReview','Prepare item for review, by stepping through fields required for IN_REVIEW');
+INSERT INTO `action` (`id`, `action`, `label`) VALUES (11,'Preview','Preview the current content');
+INSERT INTO `action` (`id`, `action`, `label`) VALUES (12,'Evaluate','Evaluating an item in Preview-mode by grading and commenting on it\'s fields or the total itemVersion');
+INSERT INTO `action` (`id`, `action`, `label`) VALUES (13,'Proofread','Review and improve language');
+INSERT INTO `action` (`id`, `action`, `label`) VALUES (14,'PrepareForPublishing','Prepare for publishing, by stepping through fields required for PUBLIC');
+INSERT INTO `action` (`id`, `action`, `label`) VALUES (15,'Approve','Approving the full content by stepping to next field approved==false');
+INSERT INTO `action` (`id`, `action`, `label`) VALUES (16,'Translate','Translate to languages that you added to our profile');
+INSERT INTO `action` (`id`, `action`, `label`) VALUES (17,'TranslateUnrestricted','Translate to all languages');
+INSERT INTO `action` (`id`, `action`, `label`) VALUES (18,'Edit','Look at and edit all fields, no obvious goal');
+INSERT INTO `action` (`id`, `action`, `label`) VALUES (19,'Clone','Creates a new itemVersion with incremented version number and goes to \"edit\" workFlow');
 /*!40000 ALTER TABLE `action` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -376,7 +396,25 @@ UNLOCK TABLES;
 
 LOCK TABLES `group` WRITE;
 /*!40000 ALTER TABLE `group` DISABLE KEYS */;
-INSERT INTO `group` VALUES (1,'GapminderOrg',NULL,NULL),(2,'School',NULL,NULL),(3,'DollarStreet',NULL,NULL),(4,'HumanNumbers',NULL,NULL),(5,'IgnoranceProject',NULL,NULL),(6,'GapminderInternal',NULL,NULL),(7,'GapminderGlobal',NULL,NULL),(8,'GapminderSverige',NULL,NULL),(9,'GapminderEspanaSalud',NULL,NULL),(10,'GapminderEspanaBarcelona',NULL,NULL),(11,'GapminderUnitedKingdom',NULL,NULL),(12,'GapminderRussia',NULL,NULL),(13,'GapminderStateminder',NULL,NULL),(14,'GapminderNorge',NULL,NULL),(15,'SneakPeeks',NULL,NULL),(16,'Translators',NULL,NULL),(17,'Reviewers',NULL,NULL),(18,'Proofreaders',NULL,NULL),(19,'Developers',NULL,NULL);
+INSERT INTO `group` (`id`, `title`, `created`, `modified`) VALUES (1,'GapminderOrg',NULL,NULL);
+INSERT INTO `group` (`id`, `title`, `created`, `modified`) VALUES (2,'School',NULL,NULL);
+INSERT INTO `group` (`id`, `title`, `created`, `modified`) VALUES (3,'DollarStreet',NULL,NULL);
+INSERT INTO `group` (`id`, `title`, `created`, `modified`) VALUES (4,'HumanNumbers',NULL,NULL);
+INSERT INTO `group` (`id`, `title`, `created`, `modified`) VALUES (5,'IgnoranceProject',NULL,NULL);
+INSERT INTO `group` (`id`, `title`, `created`, `modified`) VALUES (6,'GapminderInternal',NULL,NULL);
+INSERT INTO `group` (`id`, `title`, `created`, `modified`) VALUES (7,'GapminderGlobal',NULL,NULL);
+INSERT INTO `group` (`id`, `title`, `created`, `modified`) VALUES (8,'GapminderSverige',NULL,NULL);
+INSERT INTO `group` (`id`, `title`, `created`, `modified`) VALUES (9,'GapminderEspanaSalud',NULL,NULL);
+INSERT INTO `group` (`id`, `title`, `created`, `modified`) VALUES (10,'GapminderEspanaBarcelona',NULL,NULL);
+INSERT INTO `group` (`id`, `title`, `created`, `modified`) VALUES (11,'GapminderUnitedKingdom',NULL,NULL);
+INSERT INTO `group` (`id`, `title`, `created`, `modified`) VALUES (12,'GapminderRussia',NULL,NULL);
+INSERT INTO `group` (`id`, `title`, `created`, `modified`) VALUES (13,'GapminderStateminder',NULL,NULL);
+INSERT INTO `group` (`id`, `title`, `created`, `modified`) VALUES (14,'GapminderNorge',NULL,NULL);
+INSERT INTO `group` (`id`, `title`, `created`, `modified`) VALUES (15,'SneakPeeks',NULL,NULL);
+INSERT INTO `group` (`id`, `title`, `created`, `modified`) VALUES (16,'Translators',NULL,NULL);
+INSERT INTO `group` (`id`, `title`, `created`, `modified`) VALUES (17,'Reviewers',NULL,NULL);
+INSERT INTO `group` (`id`, `title`, `created`, `modified`) VALUES (18,'Proofreaders',NULL,NULL);
+INSERT INTO `group` (`id`, `title`, `created`, `modified`) VALUES (19,'Developers',NULL,NULL);
 /*!40000 ALTER TABLE `group` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -467,7 +505,24 @@ UNLOCK TABLES;
 
 LOCK TABLES `migration` WRITE;
 /*!40000 ALTER TABLE `migration` DISABLE KEYS */;
-INSERT INTO `migration` VALUES ('m000000_000000_base_clean-db',1409435706,'clean-db'),('m000000_000000_base_core',1409435706,'core'),('m140520_110350_alter_source_message',1409435706,'core'),('m140603_132628_alter_account_table',1409435706,'core'),('m140603_140546_create_account_token_table',1409435706,'core'),('m140610_075257_create_account_login_history_table',1409435706,'core'),('m140610_075351_create_account_password_history_table',1409435706,'core'),('m140611_131806_add_youtube_field',1409435706,'core'),('m140611_142637_qa_attributes',1409435706,'core'),('m140617_135018_add_admin_account',1409435706,'clean-db'),('m140618_114100_i18n',1409435706,'core'),('m140711_110643_i18n',1409435706,'core'),('m140814_131556_add_item_slug_unique_indexes',1409435707,'core'),('m140818_055730_i18n',1409435707,'core'),('m140818_055732_add_item_slug_unique_indexes',1409435708,'core'),('m140820_120803_insert_i18n_catalog_translations',1409435708,'clean-db'),('m140830_171708_no_latin1_in_schema',1409435708,'core'),('m140830_173626_default_utf8_for_schema',1409435708,'core');
+INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m000000_000000_base_clean-db',1409435706,'clean-db');
+INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m000000_000000_base_core',1409435706,'core');
+INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140520_110350_alter_source_message',1409435706,'core');
+INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140603_132628_alter_account_table',1409435706,'core');
+INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140603_140546_create_account_token_table',1409435706,'core');
+INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140610_075257_create_account_login_history_table',1409435706,'core');
+INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140610_075351_create_account_password_history_table',1409435706,'core');
+INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140611_131806_add_youtube_field',1409435706,'core');
+INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140611_142637_qa_attributes',1409435706,'core');
+INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140617_135018_add_admin_account',1409435706,'clean-db');
+INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140618_114100_i18n',1409435706,'core');
+INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140711_110643_i18n',1409435706,'core');
+INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140814_131556_add_item_slug_unique_indexes',1409435707,'core');
+INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140818_055730_i18n',1409435707,'core');
+INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140818_055732_add_item_slug_unique_indexes',1409435708,'core');
+INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140820_120803_insert_i18n_catalog_translations',1409435708,'clean-db');
+INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140830_171708_no_latin1_in_schema',1409435708,'core');
+INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140830_173626_default_utf8_for_schema',1409435708,'core');
 /*!40000 ALTER TABLE `migration` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -567,7 +622,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `profile` WRITE;
 /*!40000 ALTER TABLE `profile` DISABLE KEYS */;
-INSERT INTO `profile` VALUES (1,'Administrator','Admin',NULL,NULL,NULL,0,NULL,NULL,'sv',NULL,NULL,NULL,NULL);
+INSERT INTO `profile` (`user_id`, `first_name`, `last_name`, `public_profile`, `picture_media_id`, `website`, `others_may_contact_me`, `about`, `lives_in`, `language1`, `language2`, `language3`, `language4`, `language5`) VALUES (1,'Administrator','Admin',NULL,NULL,NULL,0,NULL,NULL,'sv',NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `profile` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -586,7 +641,19 @@ UNLOCK TABLES;
 
 LOCK TABLES `role` WRITE;
 /*!40000 ALTER TABLE `role` DISABLE KEYS */;
-INSERT INTO `role` VALUES (1,'Developer'),(2,'SuperAdministrator'),(3,'Authenticated'),(4,'Guest'),(5,'GroupAdministrator'),(6,'GroupPublisher'),(7,'GroupEditor'),(8,'GroupApprover'),(9,'GroupModerator'),(10,'GroupContributor'),(11,'GroupReviewer'),(12,'GroupTranslator'),(13,'GroupMember');
+INSERT INTO `role` (`id`, `title`) VALUES (1,'Developer');
+INSERT INTO `role` (`id`, `title`) VALUES (2,'SuperAdministrator');
+INSERT INTO `role` (`id`, `title`) VALUES (3,'Authenticated');
+INSERT INTO `role` (`id`, `title`) VALUES (4,'Guest');
+INSERT INTO `role` (`id`, `title`) VALUES (5,'GroupAdministrator');
+INSERT INTO `role` (`id`, `title`) VALUES (6,'GroupPublisher');
+INSERT INTO `role` (`id`, `title`) VALUES (7,'GroupEditor');
+INSERT INTO `role` (`id`, `title`) VALUES (8,'GroupApprover');
+INSERT INTO `role` (`id`, `title`) VALUES (9,'GroupModerator');
+INSERT INTO `role` (`id`, `title`) VALUES (10,'GroupContributor');
+INSERT INTO `role` (`id`, `title`) VALUES (11,'GroupReviewer');
+INSERT INTO `role` (`id`, `title`) VALUES (12,'GroupTranslator');
+INSERT INTO `role` (`id`, `title`) VALUES (13,'GroupMember');
 /*!40000 ALTER TABLE `role` ENABLE KEYS */;
 UNLOCK TABLES;
 
