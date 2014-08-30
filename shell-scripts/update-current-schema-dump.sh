@@ -3,10 +3,25 @@
 script_path=`dirname $0`
 cd $script_path/../
 
-app/yiic mysqldump --dumpPath=db --dumpFile=current-schema.sql --data=false
+# document the current database table defaults
+app/yiic config exportDbConfig --connectionID=db > /tmp/db-config.sh
+source /tmp/db-config.sh
+mysqldump -h$DB_HOST -P$DB_PORT -u$DB_USER --password=$DB_PASSWORD --no-create-info --skip-triggers --no-data --databases $DB_NAME > db/migration-results/$DATA/create-db.sql
 
-# perform some clean-up on the dump file so that it needs to be committed less often
-sed -i '/-- Dump completed on/d' db/current-schema.sql
-sed -i 's/AUTO_INCREMENT=[0-9]*\b/\/\*AUTO_INCREMENT omitted\*\//' db/current-schema.sql
+# dump the current schema
+app/yiic mysqldump --dumpPath=db --dumpFile=migration-results/$DATA/schema.sql --data=false --schema=true
+app/yiic mysqldump --dumpPath=db --dumpFile=migration-results/$DATA/data.sql --data=true --schema=false
+
+# perform some clean-up on the dump files so that it needs to be committed less often
+function cleanupdump {
+
+    sed -i '/-- Dump completed on/d' $1
+    sed -i 's/AUTO_INCREMENT=[0-9]*\b/\/\*AUTO_INCREMENT omitted\*\//' $1
+
+}
+
+cleanupdump db/migration-results/$DATA/create-db.sql
+cleanupdump db/migration-results/$DATA/schema.sql
+cleanupdump db/migration-results/$DATA/data.sql
 
 exit 0
