@@ -4,6 +4,11 @@
 Yii::setPathOfAlias('Account', dirname(__FILE__));
 Yii::import('Account.*');
 
+/**
+ * Note: This class must replicate the functionality of \nordsoftware\yii_account\models\ar\Account
+ * Until that functionality is implemented entirely as behaviors/traits, we must manually make sure
+ * that the validation rules, behavior settings, constants etc are up to date with the upstream model class
+ */
 class Account extends BaseAccount
 {
     const PASSWORD_MIN_LENGTH = 4;
@@ -79,8 +84,15 @@ class Account extends BaseAccount
      */
     public function rules()
     {
+        $parentRules = parent::rules();
+
+        // the \nordsoftware\yii_account\models\ar\Account schema states that create_at and salt are required
+        // but the extension chooses to validate against the model before setting these values...
+        // thus we need to manually remove this validation rule for yii-account sign-up form to work as expected
+        unset($parentRules[array_search(array('create_at, salt', 'required'), $parentRules)]);
+
         return array_merge(
-            parent::rules(),
+            $parentRules,
             array(
                 array('username', 'length', 'min' => self::USERNAME_MIN_LENGTH),
                 array('password', 'length', 'min' => self::PASSWORD_MIN_LENGTH),
