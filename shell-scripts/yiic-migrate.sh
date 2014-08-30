@@ -7,4 +7,4 @@ set -o errexit
 script_path=`dirname $0`
 
 $script_path/../app/yiic migrate $@
-$script_path/update-current-schema-dump.sh
+$script_path/update-current-schema-dumps.sh
