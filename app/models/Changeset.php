@@ -72,8 +72,8 @@ class Changeset extends BaseChangeset
                                 $languageProgressKey = "translate_into_{$language}_validation_progress";
                                 if ($language !== null
                                     && isset($decodedContents['after'][$languageProgressKey])
-                                    && (int)$decodedContents['after'][$languageProgressKey] !== 100)
-                                {
+                                    && (int) $decodedContents['after'][$languageProgressKey] !== 100
+                                ) {
                                     // todo: this probably needs refactoring after mandrill integration is done
                                     $emailData[Group::TRANSLATORS][] = array(
                                         'email' => $row['email'],

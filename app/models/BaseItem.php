@@ -112,8 +112,7 @@ abstract class BaseItem extends ActiveRecord
     public function relations()
     {
         return array_merge(
-            parent::relations(), array(
-            )
+            parent::relations(), array()
         );
     }
 
