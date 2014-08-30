@@ -1133,12 +1133,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-simplicity-theme.git",
-                "reference": "fde3b404c7d93f12b852bf461388e3fc05bc7eb6"
+                "reference": "d4a7b80d83a54e35cb38ae94eca1bc603f79044f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-simplicity-theme/zipball/fde3b404c7d93f12b852bf461388e3fc05bc7eb6",
-                "reference": "fde3b404c7d93f12b852bf461388e3fc05bc7eb6",
+                "url": "https://api.github.com/repos/neam/yii-simplicity-theme/zipball/d4a7b80d83a54e35cb38ae94eca1bc603f79044f",
+                "reference": "d4a7b80d83a54e35cb38ae94eca1bc603f79044f",
                 "shasum": ""
             },
             "require": {
