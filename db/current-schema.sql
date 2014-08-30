@@ -224,7 +224,7 @@ CREATE TABLE `account_login_history` (
   `numFailedAttempts` int(11) NOT NULL DEFAULT '0',
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB /*AUTO_INCREMENT omitted*/ DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB /*AUTO_INCREMENT omitted*/ DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -237,11 +237,11 @@ DROP TABLE IF EXISTS `account_password_history`;
 CREATE TABLE `account_password_history` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `accountId` int(11) NOT NULL,
-  `salt` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
+  `salt` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `password` varchar(255) CHARACTER SET latin1 NOT NULL,
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB /*AUTO_INCREMENT omitted*/ DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB /*AUTO_INCREMENT omitted*/ DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -254,14 +254,14 @@ DROP TABLE IF EXISTS `account_token`;
 CREATE TABLE `account_token` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `accountId` int(11) NOT NULL,
-  `type` varchar(255) NOT NULL,
-  `token` varchar(255) NOT NULL,
+  `type` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `token` varchar(255) CHARACTER SET latin1 NOT NULL,
   `createdAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `expiresAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `status` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `accountId_token` (`accountId`,`token`)
-) ENGINE=InnoDB /*AUTO_INCREMENT omitted*/ DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB /*AUTO_INCREMENT omitted*/ DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
