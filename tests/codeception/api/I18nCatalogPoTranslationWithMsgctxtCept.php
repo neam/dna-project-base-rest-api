@@ -1,5 +1,5 @@
 <?php
-$scenario->group('data:user-generated,coverage:basic');
+$scenario->group('data:clean-db,coverage:basic');
 $I = new ApiGuy($scenario);
 $I->wantTo('check .po file translations containing msgctxt for i18nCatalog items retrieved via the REST API');
 
