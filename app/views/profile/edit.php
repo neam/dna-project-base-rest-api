@@ -175,6 +175,13 @@
                 'color' => TbHtml::BUTTON_COLOR_LINK,
             )
         ); ?>
+        <?php echo TbHtml::linkButton(
+            Yii::t('app', 'Change password'),
+            array(
+                'url' => array('/account/password/exchange'),
+                'color' => TbHtml::BUTTON_COLOR_LINK,
+            )
+        ); ?>
         <?php echo TbHtml::submitButton(
             Yii::t('model', 'Save'),
             array(
