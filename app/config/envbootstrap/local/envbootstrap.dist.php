@@ -54,17 +54,28 @@ if (DATABASE_URL === null) {
     define("YII_DB_NAME", trim($url['path'], '/'));
 }
 
+// Mailcatcher is used for local SMTP by default
+define("MAILCATCHER_HOST", LOCAL_SERVICES_IP);
+define("MAILCATCHER_HTTP_PORT", "1080");
+define("MAILCATCHER_SMTP_PORT", "1025");
+
 // Support setting smtp constants based on SMTP_URL environment variable - Format: smtp://username:urlencodedpassword@host:587?encryption=tls
 define("SMTP_URL", null);
 
 if (SMTP_URL === null) {
-    // Local devs are encouraged to use Google's SMTP server with their own accounts: https://www.digitalocean.com/community/articles/how-to-use-google-s-smtp-server
-    // todo: configure this to use mailcatcher
+    define("SMTP_HOST", MAILCATCHER_HOST);
+    define("SMTP_USERNAME", null);
+    define("SMTP_PASSWORD", null);
+    define("SMTP_PORT", MAILCATCHER_SMTP_PORT);
+    define("SMTP_ENCRYPTION", null);
+    // Note: To send real emails locally devs can use Google's SMTP server with their own accounts: https://www.digitalocean.com/community/articles/how-to-use-google-s-smtp-server
+    /*
     define("SMTP_HOST", "smtp.gmail.com");
     define("SMTP_USERNAME", "foo");
     define("SMTP_PASSWORD", "bar");
     define("SMTP_PORT", "587");
     define("SMTP_ENCRYPTION", "tls");
+     */
 } else {
     // get the environment variable and parse it:
     $url = parse_url(SMTP_URL);
