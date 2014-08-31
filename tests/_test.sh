@@ -6,14 +6,17 @@ set -x;
 set -o errexit
 
 script_path=`dirname $0`
+cd $script_path
 
 export COVERAGE=full
 
-export CMS_HOST=localhost:12121/friends
-$script_path/generate-local-codeception-config.sh
-vendor/bin/codecept build
+../app/yiic config exportDbConfig --connectionID=dbTest | tee /tmp/config.sh
+source /tmp/config.sh
+echo "DROP DATABASE IF EXISTS $DB_NAME; CREATE DATABASE $DB_NAME;" | mysql -h$DB_HOST -P$DB_PORT -u$DB_USER --password=$DB_PASSWORD
 
-cd $script_path
+export CMS_HOST=localhost:12121/friends
+./generate-local-codeception-config.sh
+vendor/bin/codecept build
 
 export DATA=clean-db
 source _set-codeception-group-args.sh
