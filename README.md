@@ -351,6 +351,9 @@ You will also need to run the following once after the initial push:
     SAUCE_ACCESS_KEY=$SAUCE_ACCESS_KEY \
     CMS_BASE_URL=$CMS_BASE_URL \
     CMS_HOST=$CMS_HOST \
+    MAILCATCHER_HOST=$DOKKU_HOST \
+    MAILCATCHER_HOST=1080 \
+    MAILCATCHER_HOST=1025 \
     NGINX_VHOSTS_CUSTOM_CONFIGURATION=deploy/nginx-vhosts-custom-configuration.conf.erb
 
     # add persistent folder to running container (not recommended dokku-practice, but necessary until p3media is replaced with a fully network-based-solution)
@@ -540,7 +543,17 @@ The relevant constants are:
 
 Alternatively, database connection details can be supplied by setting the DATABASE_URL configuration directive in the format `mysql2://username:password@host:port/db`
 
-Note: Developers are encouraged to use MAMP for easy MySQL set-up locally.
+#### MAILCATCHER_*-constants
+
+Type: PHP Constant(s)
+
+Determines what backing service to use as SMTP while running tests.
+
+The relevant constants are:
+
+ * MAILCATCHER_HOST
+ * MAILCATCHER_HTTP_PORT
+ * MAILCATCHER_SMTP_PORT
 
 #### SMTP_URL or SMTP_*-constants
 

@@ -54,7 +54,7 @@ if (DATABASE_URL === null) {
     define("YII_DB_NAME", trim($url['path'], '/'));
 }
 
-// Mailcatcher is used for local SMTP by default
+// Mailcatcher is used as SMTP while running tests
 define("MAILCATCHER_HOST", LOCAL_SERVICES_IP);
 define("MAILCATCHER_HTTP_PORT", "1080");
 define("MAILCATCHER_SMTP_PORT", "1025");
@@ -63,6 +63,7 @@ define("MAILCATCHER_SMTP_PORT", "1025");
 define("SMTP_URL", null);
 
 if (SMTP_URL === null) {
+    // Mailcatcher is used for local SMTP by default
     define("SMTP_HOST", MAILCATCHER_HOST);
     define("SMTP_USERNAME", null);
     define("SMTP_PASSWORD", null);
