@@ -26,17 +26,19 @@ define("BRAND_DOMAIN", 'gapminder.local');
 
 // ==== Defines infrastructure = all backing services, usernames, api:s, servers, ports etc depending on environment ====
 
+// Different hosts based on running from inside docker container or locally
+if (substr(getcwd(), 0, 5) == "/code") {
+    define("LOCAL_SERVICES_IP", "172.17.42.1");
+} else {
+    define("LOCAL_SERVICES_IP", "127.0.0.1");
+}
+
 // Support setting main db constants based on DATABASE_URL environment variable
 define("DATABASE_URL", null);
 
 if (DATABASE_URL === null) {
     define("YII_DB_SCHEME", "mysql");
-    // Different db hosts based on running from inside docker container or locally
-    if (substr(getcwd(), 0, 5) == "/code") {
-        define("YII_DB_HOST", "172.17.42.1");
-    } else {
-        define("YII_DB_HOST", "127.0.0.1");
-    }
+    define("YII_DB_HOST", LOCAL_SERVICES_IP);
     define("YII_DB_PORT", "13306");
     define("YII_DB_USER", "root");
     define("YII_DB_PASSWORD", "changeme");
