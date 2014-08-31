@@ -67,7 +67,7 @@ Then, run the following to update your local environment:
 
     php composer.phar --prefer-source install
     npm install
-    bower install --allow-root
+    bower install --allow-root --config.interactive=false
     shell-scripts/yiic-migrate.sh
 
 ## Reset the database

@@ -25,7 +25,7 @@ set -o errexit
 
 # install bower dependencies
 npm install -g bower
-bower install --allow-root
+bower install --allow-root --config.interactive=false
 
 # generate the js app
 #cp app/js/config.dist.js app/js/config.js
