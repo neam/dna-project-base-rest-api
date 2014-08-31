@@ -78,9 +78,7 @@ class SignupController extends \nordsoftware\yii_account\controllers\SignupContr
                             $this->redirect(array('/account/authenticate/login'));
                         }
 
-                        if (!$this->sendActivationMail($account)) {
-                            throw new CException('Failed sending activation email');
-                        }
+                        $this->sendActivationMail($account);
 
                         $this->redirect(array('done'));
 
