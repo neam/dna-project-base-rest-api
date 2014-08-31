@@ -143,8 +143,9 @@ Then, do the following before attempting to run any tests:
     cd tests
     php ../composer.phar install
 
-    ../app/yiic config exportDbConfig --connectionID=dbTest | tee /tmp/db-config.sh
-    source /tmp/db-config.sh
+    ../app/yiic config exportDbConfig --connectionID=dbTest | tee /tmp/config.sh
+    ../app/yiic config exportEnvbootstrapConfig --connectionID=dbTest | tee -a /tmp/config.sh
+    source /tmp/config.sh
     echo "DROP DATABASE IF EXISTS $DB_NAME; CREATE DATABASE $DB_NAME;" | mysql -h$DB_HOST -P$DB_PORT -u$DB_USER --password=$DB_PASSWORD
 
     export CMS_HOST=127.0.0.1:12121/friends

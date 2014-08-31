@@ -18,6 +18,9 @@ modules:
             dump: codeception/_data/dump.sql
             populate: true
             cleanup: true
+        MailCatcher:
+            url: 'http://<%= ENV['MAILCATCHER_HOST'] %>'
+            port: '<%= ENV['MAILCATCHER_HTTP_PORT'] %>'
 <% if ENV.has_key? "SAUCELABS" and ENV['SAUCELABS'].to_s == "1" %>
 extensions:
     enabled:
