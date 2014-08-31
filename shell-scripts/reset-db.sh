@@ -64,3 +64,9 @@ app/yiic migrate --connectionID=$connectionID --interactive=0 # > /dev/null
 app/yiic databaseviewgenerator --connectionID=$connectionID item
 app/yiic databaseviewgenerator --connectionID=$connectionID itemTable
 
+if [ "$connectionID" != "dbTest" ]; then
+
+    shell-scripts/update-current-schema-dumps.sh
+
+fi
+

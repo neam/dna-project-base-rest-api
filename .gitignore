@@ -38,3 +38,4 @@ app/js/config.js
 testing
 npm-debug.log
 tmp
+db/migration-results/user-generated/data.sql
