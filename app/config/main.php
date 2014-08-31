@@ -248,6 +248,7 @@ $mainConfig = array(
     // application components
     'components' => array(
         'request' => array(
+            'class' => 'HttpRequest',
             'baseUrl'    => $baseUrl,
         ),
         'authManager' => array(
