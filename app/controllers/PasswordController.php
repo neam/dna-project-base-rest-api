@@ -28,6 +28,7 @@ class PasswordController extends \nordsoftware\yii_account\controllers\PasswordC
                 'actions' => array(
                     'forgot',
                     'reset',
+                    'sent',
                 )
             ),
             // Logged in users can do whatever they want to.
