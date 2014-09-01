@@ -55,31 +55,42 @@ class SignupController extends \nordsoftware\yii_account\controllers\SignupContr
                 $account->attributes = $model->attributes;
 
                 if ($account->validate()) {
-                    if (!$account->save(false/* already validated */)) {
-                        $this->fatalError();
-                    }
 
-                    // Create a profile model
-                    if (!$this->createProfile($account->id)) {
-                        $this->fatalError(Yii::t('error', 'Failed to create a profile.'));
-                    }
+                    $transaction = Yii::app()->db->beginTransaction();
 
-                    $account->assignDefaultGroupRoles();
+                    try {
 
-                    $model->createHistoryEntry($account->id, $account->salt, $account->password);
+                        if (!$account->save(false /* already validated */)) {
+                            $this->fatalError();
+                        }
 
-                    if (!$this->module->enableActivation) {
-                        $account->saveAttributes(array('status' => \nordsoftware\yii_account\models\ar\Account::STATUS_ACTIVATED));
-                        $this->redirect(array('/account/authenticate/login'));
-                    }
+                        // Create a profile model
+                        if (!$this->createProfile($account->id)) {
+                            $this->fatalError(Yii::t('error', 'Failed to create a profile.'));
+                        }
 
-                    if (defined('CONFIG_ENVIRONMENT') && CONFIG_ENVIRONMENT !== 'test') {
+                        $account->assignDefaultGroupRoles();
+
+                        $model->createHistoryEntry($account->id, $account->salt, $account->password);
+
+                        if (!$this->module->enableActivation) {
+                            $account->saveAttributes(array('status' => \nordsoftware\yii_account\models\ar\Account::STATUS_ACTIVATED));
+                            $this->redirect(array('/account/authenticate/login'));
+                        }
+
                         $this->sendActivationMail($account);
-                    } else {
-                        $account->save();
+
+                        $this->redirect(array('done'));
+
+                        $transaction->commit();
+
+                    } catch (Exception $e) {
+
+                        $transaction->rollback();
+                        throw new Exception('Account set-up error [' . $e->getMessage() . ']', 500, $e);
+
                     }
 
-                    $this->redirect(array('done'));
                 }
 
                 // todo: figure out how to avoid this, the problem is that password validation is done on the account

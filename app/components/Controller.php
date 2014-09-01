@@ -56,7 +56,7 @@ class Controller extends CController
                 $url = $this->createUrl($route, array_splice($url, 1));
             }
 
-            Yii::log("Development mode redirect", "flow", "checks");
+            Yii::log("Development mode redirect", "flow", __METHOD__);
             echo CHtml::link("Development mode - Click to continue to automatic redirect: $url (Terminate: $terminate Status-code: $statusCode)", $url);
             Yii::app()->end($status = 0, $terminate);
         } else {

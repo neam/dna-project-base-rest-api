@@ -28,6 +28,7 @@ class PasswordController extends \nordsoftware\yii_account\controllers\PasswordC
                 'actions' => array(
                     'forgot',
                     'reset',
+                    'sent',
                 )
             ),
             // Logged in users can do whatever they want to.
@@ -57,38 +58,52 @@ class PasswordController extends \nordsoftware\yii_account\controllers\PasswordC
             if ($model->validate()) {
                 $accountClass = $this->module->getClassName(Module::CLASS_ACCOUNT);
 
-                /** @var \nordsoftware\yii_account\models\ar\Account $account */
-                $account = \CActiveRecord::model($accountClass)->findByAttributes(array('email' => $model->email));
+                $transaction = Yii::app()->db->beginTransaction();
 
-                $token = $this->module->generateToken(Module::TOKEN_RESET_PASSWORD, $account->id);
+                try {
 
-                $resetUrl = $this->createAbsoluteUrl('/account/password/reset', array('token' => $token));
+                    /** @var \nordsoftware\yii_account\models\ar\Account $account */
+                    $account = \CActiveRecord::model($accountClass)->findByAttributes(array('email' => $model->email));
 
-                $fromEmail = Yii::app()->params['signupEmail'];
-                $fromName = Yii::t('app', 'Gapminder Community');
+                    $token = $this->module->generateToken(Module::TOKEN_RESET_PASSWORD, $account->id);
 
-                $config = array();
-                $config['from'] = $fromEmail;
+                    $resetUrl = $this->createAbsoluteUrl('/account/password/reset', array('token' => $token));
 
-                $config['headers'] = array();
-                $config['headers'][] = 'From: ' . "$fromName <$fromEmail>";
-                $config['headers'][] = 'Reply-To: ' . "$fromName <$fromEmail>";
+                    $fromEmail = Yii::app()->params['signupEmail'];
+                    $fromName = Yii::t('app', 'Gapminder Community');
 
-                $this->module->sendMail(
-                    $account->email,
-                    $this->emailSubject,
-                    $this->renderPartial(
-                        'application.views.email.resetPassword',
-                        array(
-                            'resetUrl' => $resetUrl,
-                            'username' => $account->username,
+                    $config = array();
+                    $config['from'] = $fromEmail;
+
+                    $config['headers'] = array();
+                    $config['headers'][] = 'From: ' . "$fromName <$fromEmail>";
+                    $config['headers'][] = 'Reply-To: ' . "$fromName <$fromEmail>";
+
+                    $this->module->sendMail(
+                        $account->email,
+                        $this->emailSubject,
+                        $this->renderPartial(
+                            'application.views.email.resetPassword',
+                            array(
+                                'resetUrl' => $resetUrl,
+                                'username' => $account->username,
+                            ),
+                            true
                         ),
-                        true
-                    ),
-                    $config
-                );
+                        $config
+                    );
 
-                $this->redirect('sent');
+                    $transaction->commit();
+
+                    $this->redirect(array('sent'));
+
+                } catch (Exception $e) {
+
+                    $transaction->rollback();
+                    throw new Exception('Password reset failed [' . $e->getMessage() . ']', 500, $e);
+
+                }
+
             }
         }
 
