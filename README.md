@@ -342,8 +342,8 @@ You will also need to run the following once after the initial push:
     CMS_BASE_URL=$CMS_BASE_URL \
     CMS_HOST=$CMS_HOST \
     MAILCATCHER_HOST=$DOKKU_HOST \
-    MAILCATCHER_HOST=1080 \
-    MAILCATCHER_HOST=1025 \
+    MAILCATCHER_HTTP_PORT=1080 \
+    MAILCATCHER_SMTP_PORT=1025 \
     NGINX_VHOSTS_CUSTOM_CONFIGURATION=deploy/nginx-vhosts-custom-configuration.conf.erb
 
     # add persistent folder to running container (not recommended dokku-practice, but necessary until p3media is replaced with a fully network-based-solution)
