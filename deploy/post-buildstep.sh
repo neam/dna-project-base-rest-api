@@ -23,8 +23,8 @@ chmod -R 777 www/runtime/
 # fail on any error
 set -o errexit
 
-# install bower dependencies
-node_modules/.bin/bower install --allow-root
+# install bower dependencies (bower_components are committed when dokku is deployed nowadays)
+#node_modules/.bin/bower install --allow-root
 
 # generate the js app
 #cp app/js/config.dist.js app/js/config.js
