@@ -5,7 +5,7 @@ $I = new WebGuy\MemberSteps($scenario);
 $I->wantTo('create a video and make sure that only I see it.');
 
 // Max logs in.
-$I->login('max', 'test');
+$I->login('max', 'testtest');
 
 // Max creates a new video file.
 $I->createVideoFile(
@@ -32,5 +32,5 @@ $I->dontSee(VideoFileViewPage::$noVideoMessage);
 
 $I->logout();
 
-$I->login('ola', 'test');
+$I->login('ola', 'testtest');
 $I->dontSeeVideoFile('Max video');

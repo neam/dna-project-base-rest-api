@@ -9,7 +9,7 @@ $I->wantTo('create a item and edit it');
 /*
  * Default role when logged in, can edit own items
  */
-$I->login('authenticated', 'test');
+$I->login('authenticated', 'testtest');
 
 $I->createChapter(
     array(

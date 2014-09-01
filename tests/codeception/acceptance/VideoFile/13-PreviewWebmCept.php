@@ -4,7 +4,7 @@ $scenario->group('data:clean-db,coverage:full');
 $I = new WebGuy\MemberSteps($scenario);
 $I->wantTo('create a video, attach a .webm video, and make sure it is rendered on the preview page. (Inactive)');
 
-$I->login('max', 'test');
+$I->login('max', 'testtest');
 $videoTitle = '.webm Video';
 $I->createVideoFile(
     array(

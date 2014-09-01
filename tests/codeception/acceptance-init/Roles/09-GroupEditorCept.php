@@ -7,7 +7,7 @@ $I->wantTo('prepare a item for publishing');
 /*
  * Can edit everything in the group and see items suggested to group
  */
-$I->login('editor', 'test');
+$I->login('editor', 'testtest');
 
 $I->amOnPage(SnapshotBrowsePage::$URL);
 $I->see('Sample Snapshot');

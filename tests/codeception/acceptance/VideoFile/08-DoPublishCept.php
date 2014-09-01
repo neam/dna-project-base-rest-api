@@ -1,5 +1,7 @@
 <?php
-//$scenario->group('data:clean-db,coverage:full');
+$scenario->group('data:clean-db,coverage:full');
 
-$I = new WebGuy($scenario);
-$I->wantTo('perform actions and see result');
+$I = new WebGuy\MemberSteps($scenario);
+$I->wantTo('publish a video');
+
+$I->login('max', 'testtest');

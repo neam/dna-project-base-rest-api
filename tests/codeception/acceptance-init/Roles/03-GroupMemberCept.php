@@ -7,5 +7,5 @@ $I->wantTo('do things as a member');
 /*
  * Default role in relation to group when account has been added to the group
  */
-$I->login('member', 'test');
+$I->login('member', 'testtest');
 
