@@ -80,9 +80,9 @@ class SignupController extends \nordsoftware\yii_account\controllers\SignupContr
 
                         $this->sendActivationMail($account);
 
-                        $this->redirect(array('done'));
-
                         $transaction->commit();
+
+                        $this->redirect(array('done'));
 
                     } catch (Exception $e) {
 
