@@ -268,16 +268,6 @@ A useful method while developing tests locally is pauseExecution(). It only has 
 
 Happy test development!
 
-## Managing project dependencies
-
-Composer, npm and bower are used to manage dependencies. Check their respective documentation for how they are used. For npm, we use shrinkwrap (built-in) and clingwrap (`npm install -g clingwrap`) in order to lock down dependencies. After ordinary modifications to package.json and `npm install`, run the following:
-
-    npm prune
-    npm shrinkwrap
-    clingwrap npmbegone
-
-Then, commit the changes to `npm-shrinkwrap.json` (npm's equivalent to `composer.lock`) using git.
-
 ## Deploy
 
 Builds and runs with PHP 5.4.26, Nginx 1.4.3. However note that php cli runs version 5.4.6 (default Ubuntu Quantal).
