@@ -5,6 +5,9 @@ $scenario->group('data:user-generated,coverage:basic');
 $I = new WebGuy\MemberSteps($scenario);
 $I->wantTo('verify that registering a user works');
 
+// clear old emails from MailCatcher
+$I->resetEmails();
+
 $datetime = date("YmdHis");
 
 $I->register('testa' . $datetime, 'testtest', 'testtest', 'dev+testa' . $datetime . '@gapminder.org', true);
