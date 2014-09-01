@@ -24,8 +24,7 @@ chmod -R 777 www/runtime/
 set -o errexit
 
 # install bower dependencies
-npm install -g bower
-bower install --allow-root
+node_modules/.bin/bower install --allow-root
 
 # generate the js app
 #cp app/js/config.dist.js app/js/config.js
