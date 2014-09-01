@@ -9,8 +9,8 @@ $datetime = date("YmdHis");
 
 $I->register('testa' . $datetime, 'testtest', 'testtest', 'dev+testa' . $datetime . '@gapminder.org', true);
 
-// TODO: Verify that can't login - currently login is enabled immediately:
-//$I->cantLogin();
+// Verify that can't login
+$I->cantLogin('testa' . $datetime, 'testtest', 'Your account has not yet been activated.');
 
 // TODO: Activate the account by having an admin activate it manually
 
@@ -20,8 +20,8 @@ $I->logout();
 
 $I->register('testb' . $datetime, 'testtest', 'testtest', 'dev+testb' . $datetime . '@gapminder.org', true);
 
-// TODO: Verify that login can't be made
-//$I->cantLogin();
+// Verify that can't login
+$I->cantLogin('testb' . $datetime, 'testtest', 'Your account has not yet been activated.');
 
 // TODO: Activate the account by clicking the activation link in the email
 

@@ -130,7 +130,7 @@ trait UsersTrait
     );
 
 
-    function login($username, $password)
+    function attemptLogin($username, $password)
     {
         $I = $this;
         $I->amOnPage(HomePage::$URL);
@@ -146,8 +146,22 @@ trait UsersTrait
         $I->fillField(LoginPage::$usernameField, $username);
         $I->fillField(LoginPage::$passwordField, $password);
         $I->click(LoginPage::$submitButton);
+    }
+
+    function login($username, $password)
+    {
+        $I = $this;
+        $I->attemptLogin($username, $password);
         $I->waitForElementNotVisible(LoginPage::$submitButton, 30);
         $I->dontSeeInCurrentUrl(LoginPage::$URL);
+    }
+
+    function cantLogin($username, $password, $expectedError)
+    {
+        $I = $this;
+        $I->attemptLogin($username, $password);
+        $I->waitForText($expectedError, 10);
+        $I->seeInCurrentUrl(LoginPage::$URL);
     }
 
     function logout()
