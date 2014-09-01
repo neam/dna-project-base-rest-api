@@ -12,7 +12,7 @@ $I->wantTo('translate a video');
 // This is already done by default, so "adding" it again would toggle it off using the current implementation
 //$I->addGroupRoleToAccount('martha', Group::TRANSLATORS, Role::GROUP_TRANSLATOR);
 
-$I->login('martha', 'test');
+$I->login('martha', 'testtest');
 $I->amOnPage(ProfilePage::$URL);
 
 $I->selectSelect2Option('#Profile_language1', 'Portuguese');
@@ -34,7 +34,7 @@ $I->dontSee('Max video');
 $I->logout();
 
 
-$I->login('max', 'test');
+$I->login('max', 'testtest');
 $I->amOnPage(VideoFileBrowsePage::$URL);
 $I->see('Max video');
 
@@ -76,7 +76,7 @@ $I->click('Translators', $videoContext);
 $I->logout();
 
 $I->amGoingTo('login as Martha and translate "Max video" into portuguese');
-$I->login('martha', 'test');
+$I->login('martha', 'testtest');
 $I->amOnPage(VideoFileBrowsePage::$URL);
 $I->see('Max video');
 

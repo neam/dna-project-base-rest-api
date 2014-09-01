@@ -7,7 +7,7 @@ $I->wantTo('create a item as a contributor');
 /*
  * Can create items in the group
  */
-$I->login('contributor', 'test');
+$I->login('contributor', 'testtest');
 
 $I->createSnapshot(
     array(

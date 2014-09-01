@@ -3,7 +3,7 @@ $scenario->group('data:clean-db,coverage:full');
 
 $I = new WebGuy\MemberSteps($scenario);
 $I->wantTo('upload a profile picture');
-$I->login('max', 'test');
+$I->login('max', 'testtest');
 
 $I->selectLanguages(array('Swedish', 'English', 'Bulgarian'));
 

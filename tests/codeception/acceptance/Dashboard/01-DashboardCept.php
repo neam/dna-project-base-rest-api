@@ -4,14 +4,14 @@ $scenario->group('data:clean-db,coverage:full');
 $I = new WebGuy\MemberSteps($scenario);
 $I->wantTo('test the dashboard');
 
-$I->login('martha', 'test');
+$I->login('martha', 'testtest');
 $I->selectLanguages(array('Portuguese', 'Swedish', 'English'));
 $I->gotoMyTasksPage();
 $I->see('Started Tasks (0)');
 $I->see('New Tasks (3)'); // one per language
 $I->logout();
 
-$I->login('max', 'test');
+$I->login('max', 'testtest');
 $subtitles = <<<EOD
 1
 00:00:03,399 --> 00:00:10,800
@@ -44,7 +44,7 @@ $I->amOnPage(VideoFileBrowsePage::$URL);
 $I->click('Translators', VideoFileBrowsePage::modelContext('Dashboard test video'));
 $I->logout();
 
-$I->login('martha', 'test');
+$I->login('martha', 'testtest');
 $I->gotoMyTasksPage();
 
 $I->see('Started Tasks (0)');

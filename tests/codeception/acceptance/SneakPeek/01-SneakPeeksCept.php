@@ -4,7 +4,7 @@ $scenario->group('data:clean-db,coverage:full');
 $I = new WebGuy\MemberSteps($scenario);
 $I->wantTo('test that sneak peeks are visible on the homepage for registered users');
 
-$I->login('max', 'test');
+$I->login('max', 'testtest');
 $I->createVideoFile(
     array(
         'info' => array(
@@ -28,7 +28,7 @@ $I->createVideoFile(
 $I->logout();
 
 
-$I->login('member', 'test');
+$I->login('member', 'testtest');
 $I->am('member');
 $I->amOnPage(HomePage::$URL);
 $I->dontSee('Sneak Peek video');
@@ -38,7 +38,7 @@ $I->logout();
 $I->amOnPage(HomePage::$URL);
 $I->dontSee('Sneak Peek video');
 
-$I->login('max', 'test');
+$I->login('max', 'testtest');
 $I->amOnPage(HomePage::$URL);
 $I->dontSee('Sneak Peek video');
 
@@ -58,7 +58,7 @@ $I->logout();
 $I->amOnPage(HomePage::$URL);
 $I->dontSee('Max video');
 
-$I->login('member', 'test');
+$I->login('member', 'testtest');
 $I->amOnPage(HomePage::$URL);
 $I->waitForText('Sneak Peek video', 20, HomePage::$sneakPeeks);
 $I->see('Sneak Peek video', HomePage::$sneakPeeks);

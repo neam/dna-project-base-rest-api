@@ -9,4 +9,4 @@ $I->wantTo('perform actions as a administrator');
 /*
  * All rights within group, including assigning group moderators, editors etc
  */
-$I->login('administrator', 'test');
+$I->login('administrator', 'testtest');

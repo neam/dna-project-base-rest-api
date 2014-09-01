@@ -4,7 +4,7 @@ $scenario->group('data:clean-db,coverage:full');
 $I = new WebGuy\MemberSteps($scenario);
 $I->wantTo('publish a snapshot');
 
-$I->login('max', 'test');
+$I->login('max', 'testtest');
 
 $vizabiState = <<<EOD
 {
@@ -74,7 +74,7 @@ $I->click('GapminderOrg', $modelContext);
 $I->logout();
 
 // Publish
-$I->login('ola', 'test');
+$I->login('ola', 'testtest');
 $I->amOnPage(SnapshotBrowsePage::$URL);
 $I->see('Test snapshot');
 $I->click('Publish');

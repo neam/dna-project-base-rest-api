@@ -7,4 +7,4 @@ $I->wantTo('translate a item into one of my languages');
 /*
  * Can translate items in the group
  */
-$I->login('translator', 'test');
+$I->login('translator', 'testtest');

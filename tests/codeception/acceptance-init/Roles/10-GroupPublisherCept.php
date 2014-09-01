@@ -7,7 +7,7 @@ $I->wantTo('publish a item');
 /*
  * Can toggle Item visibility to PUBLIC in assigned group
  */
-$I->login('publisher', 'test');
+$I->login('publisher', 'testtest');
 
 $I->amOnPage(SnapshotBrowsePage::$URL);
 $I->waitForText('Sample Snapshot');

@@ -4,7 +4,7 @@ $scenario->group('data:clean-db,coverage:full');
 $I = new WebGuy\MemberSteps($scenario);
 $I->wantTo('create a new snapshot');
 
-$I->login('max', 'test');
+$I->login('max', 'testtest');
 
 $I->createSnapshot(
     array(
