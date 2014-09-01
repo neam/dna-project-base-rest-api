@@ -15,6 +15,18 @@ $config['components']['email'] = array(
     ),
 );
 
+// Use mailcatcher when running from within continuous integration
+if (defined('CONFIG_ENVIRONMENT') && CONFIG_ENVIRONMENT === 'ci') {
+    $config['components']['email']['smtpOptions'] = array(
+        'host' => MAILCATCHER_HOST,
+        'username' => null,
+        'password' => null,
+        'port' => MAILCATCHER_SMTP_PORT,
+        'timeout' => 2,
+        'encryption' => null
+    );
+}
+
 // Allow but inactivate email sending and warn when no SMTP_HOST
 if (SMTP_HOST === null) {
     $config['components']['email']['dryRun'] = true;

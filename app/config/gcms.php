@@ -277,4 +277,8 @@ require($applicationDirectory . '/../vendor/neam/yii-simplicity-theme/config/yii
 require($applicationDirectory . '/../vendor/neam/yii-restricted-access/config/yii-restricted-access.php');
 require($applicationDirectory . '/../vendor/neam/yii-workflow-task-list/config/yii-workflow-task-list.php');
 
+// Extension overrides
+$config['aliases']['simplicity-theme.app-views.layout-elements._menu'] = 'application.views.layout-elements._menu';
+$config['aliases']['simplicity-theme.app-views.layout-elements._footer'] = 'application.views.layout-elements._footer';
+
 return $gcmsConfig;

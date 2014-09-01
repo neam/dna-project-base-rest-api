@@ -26,17 +26,19 @@ define("BRAND_DOMAIN", 'gapminder.local');
 
 // ==== Defines infrastructure = all backing services, usernames, api:s, servers, ports etc depending on environment ====
 
+// Different hosts based on running from inside docker container or locally
+if (substr(getcwd(), 0, 5) == "/code") {
+    define("LOCAL_SERVICES_IP", "172.17.42.1");
+} else {
+    define("LOCAL_SERVICES_IP", "127.0.0.1");
+}
+
 // Support setting main db constants based on DATABASE_URL environment variable
 define("DATABASE_URL", null);
 
 if (DATABASE_URL === null) {
     define("YII_DB_SCHEME", "mysql");
-    // Different db hosts based on running from inside docker container or locally
-    if (substr(getcwd(), 0, 5) == "/code") {
-        define("YII_DB_HOST", "172.17.42.1");
-    } else {
-        define("YII_DB_HOST", "127.0.0.1");
-    }
+    define("YII_DB_HOST", LOCAL_SERVICES_IP);
     define("YII_DB_PORT", "13306");
     define("YII_DB_USER", "root");
     define("YII_DB_PASSWORD", "changeme");
@@ -52,17 +54,29 @@ if (DATABASE_URL === null) {
     define("YII_DB_NAME", trim($url['path'], '/'));
 }
 
+// Mailcatcher is used as SMTP while running tests
+define("MAILCATCHER_HOST", LOCAL_SERVICES_IP);
+define("MAILCATCHER_HTTP_PORT", "1080");
+define("MAILCATCHER_SMTP_PORT", "1025");
+
 // Support setting smtp constants based on SMTP_URL environment variable - Format: smtp://username:urlencodedpassword@host:587?encryption=tls
 define("SMTP_URL", null);
 
 if (SMTP_URL === null) {
-    // Local devs are encouraged to use Google's SMTP server with their own accounts: https://www.digitalocean.com/community/articles/how-to-use-google-s-smtp-server
-    // todo: configure this to use mailcatcher
+    // Mailcatcher is used for local SMTP by default
+    define("SMTP_HOST", MAILCATCHER_HOST);
+    define("SMTP_USERNAME", null);
+    define("SMTP_PASSWORD", null);
+    define("SMTP_PORT", MAILCATCHER_SMTP_PORT);
+    define("SMTP_ENCRYPTION", null);
+    // Note: To send real emails locally devs can use Google's SMTP server with their own accounts: https://www.digitalocean.com/community/articles/how-to-use-google-s-smtp-server
+    /*
     define("SMTP_HOST", "smtp.gmail.com");
     define("SMTP_USERNAME", "foo");
     define("SMTP_PASSWORD", "bar");
     define("SMTP_PORT", "587");
     define("SMTP_ENCRYPTION", "tls");
+     */
 } else {
     // get the environment variable and parse it:
     $url = parse_url(SMTP_URL);
@@ -96,6 +110,7 @@ error_reporting(E_ALL);
 
 if (DEV) {
     if (!defined('YII_DEBUG')) define('YII_DEBUG', true);
+    if (!defined('YII_TRACE_LEVEL')) define('YII_TRACE_LEVEL', 3);
     ini_set("display_errors", true);
 } else {
     if (!defined('YII_DEBUG')) define('YII_DEBUG', false);

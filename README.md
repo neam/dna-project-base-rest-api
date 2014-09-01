@@ -67,7 +67,7 @@ Then, run the following to update your local environment:
 
     php composer.phar --prefer-source install
     npm install
-    bower install --allow-root
+    bower install --allow-root --config.interactive=false
     shell-scripts/yiic-migrate.sh
 
 ## Reset the database
@@ -143,8 +143,9 @@ Then, do the following before attempting to run any tests:
     cd tests
     php ../composer.phar install
 
-    ../app/yiic config exportDbConfig --connectionID=dbTest | tee /tmp/db-config.sh
-    source /tmp/db-config.sh
+    ../app/yiic config exportDbConfig --connectionID=dbTest | tee /tmp/config.sh
+    ../app/yiic config exportEnvbootstrapConfig --connectionID=dbTest | tee -a /tmp/config.sh
+    source /tmp/config.sh
     echo "DROP DATABASE IF EXISTS $DB_NAME; CREATE DATABASE $DB_NAME;" | mysql -h$DB_HOST -P$DB_PORT -u$DB_USER --password=$DB_PASSWORD
 
     export CMS_HOST=127.0.0.1:12121/friends
@@ -267,16 +268,6 @@ A useful method while developing tests locally is pauseExecution(). It only has 
 
 Happy test development!
 
-## Managing project dependencies
-
-Composer, npm and bower are used to manage dependencies. Check their respective documentation for how they are used. For npm, we use shrinkwrap (built-in) and clingwrap (`npm install -g clingwrap`) in order to lock down dependencies. After ordinary modifications to package.json and `npm install`, run the following:
-
-    npm prune
-    npm shrinkwrap
-    clingwrap npmbegone
-
-Then, commit the changes to `npm-shrinkwrap.json` (npm's equivalent to `composer.lock`) using git.
-
 ## Deploy
 
 Builds and runs with PHP 5.4.26, Nginx 1.4.3. However note that php cli runs version 5.4.6 (default Ubuntu Quantal).
@@ -350,6 +341,9 @@ You will also need to run the following once after the initial push:
     SAUCE_ACCESS_KEY=$SAUCE_ACCESS_KEY \
     CMS_BASE_URL=$CMS_BASE_URL \
     CMS_HOST=$CMS_HOST \
+    MAILCATCHER_HOST=$DOKKU_HOST \
+    MAILCATCHER_HTTP_PORT=1080 \
+    MAILCATCHER_SMTP_PORT=1025 \
     NGINX_VHOSTS_CUSTOM_CONFIGURATION=deploy/nginx-vhosts-custom-configuration.conf.erb
 
     # add persistent folder to running container (not recommended dokku-practice, but necessary until p3media is replaced with a fully network-based-solution)
@@ -539,7 +533,17 @@ The relevant constants are:
 
 Alternatively, database connection details can be supplied by setting the DATABASE_URL configuration directive in the format `mysql2://username:password@host:port/db`
 
-Note: Developers are encouraged to use MAMP for easy MySQL set-up locally.
+#### MAILCATCHER_*-constants
+
+Type: PHP Constant(s)
+
+Determines what backing service to use as SMTP while running tests.
+
+The relevant constants are:
+
+ * MAILCATCHER_HOST
+ * MAILCATCHER_HTTP_PORT
+ * MAILCATCHER_SMTP_PORT
 
 #### SMTP_URL or SMTP_*-constants
 

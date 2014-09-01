@@ -6,61 +6,61 @@ trait UsersTrait
     public $groupUsers = array(
         array(
             'name' => 'authenticated',
-            'password' => 'test',
+            'password' => 'testtest',
             'email' => 'dev+authenticated@gapminder.org',
             'groupRoles' => array(),
         ),
         array(
             'name' => 'member',
-            'password' => 'test',
+            'password' => 'testtest',
             'email' => 'dev+member@gapminder.org',
             'groupRoles' => array('GapminderOrg' => array('GroupMember')),
         ),
         array(
             'name' => 'translator',
-            'password' => 'test',
+            'password' => 'testtest',
             'email' => 'dev+translator@gapminder.org',
             'groupRoles' => array('GapminderOrg' => array('GroupTranslator')),
         ),
         array(
             'name' => 'reviewer',
-            'password' => 'test',
+            'password' => 'testtest',
             'email' => 'dev+reviewer@gapminder.org',
             'groupRoles' => array('GapminderOrg' => array('GroupReviewer')),
         ),
         array(
             'name' => 'contributor',
-            'password' => 'test',
+            'password' => 'testtest',
             'email' => 'dev+contributor@gapminder.org',
             'groupRoles' => array('GapminderOrg' => array('GroupContributor')),
         ),
         array(
             'name' => 'moderator',
-            'password' => 'test',
+            'password' => 'testtest',
             'email' => 'dev+moderator@gapminder.org',
             'groupRoles' => array('GapminderOrg' => array('GroupModerator')),
         ),
         array(
             'name' => 'approver',
-            'password' => 'test',
+            'password' => 'testtest',
             'email' => 'dev+approver@gapminder.org',
             'groupRoles' => array('GapminderOrg' => array('GroupApprover')),
         ),
         array(
             'name' => 'editor',
-            'password' => 'test',
+            'password' => 'testtest',
             'email' => 'dev+editor@gapminder.org',
             'groupRoles' => array('GapminderOrg' => array('GroupEditor')),
         ),
         array(
             'name' => 'publisher',
-            'password' => 'test',
+            'password' => 'testtest',
             'email' => 'dev+publisher@gapminder.org',
             'groupRoles' => array('GapminderOrg' => array('GroupPublisher')),
         ),
         array(
             'name' => 'administrator',
-            'password' => 'test',
+            'password' => 'testtest',
             'email' => 'dev+administrator@gapminder.org',
             'groupRoles' => array('GapminderOrg' => array('GroupAdministrator')),
         ),
@@ -70,7 +70,7 @@ trait UsersTrait
     public $staff = array(
         array(
             'name' => 'ola',
-            'password' => 'test',
+            'password' => 'testtest',
             'email' => 'dev+ola@gapminder.org',
             'groupRoles' => array(
                 'GapminderInternal' => array('GroupAdministrator'),
@@ -79,7 +79,7 @@ trait UsersTrait
         ),
         array(
             'name' => 'max',
-            'password' => 'test',
+            'password' => 'testtest',
             'email' => 'dev+max@gapminder.org',
             'groupRoles' => array(
                 'GapminderInternal' => array('GroupModerator'),
@@ -88,7 +88,7 @@ trait UsersTrait
         ),
         array(
             'name' => 'fernanda',
-            'password' => 'test',
+            'password' => 'testtest',
             'email' => 'dev+fernanda@gapminder.org',
             'groupRoles' => array(
                 'GapminderInternal' => array('GroupEditor'),
@@ -96,7 +96,7 @@ trait UsersTrait
         ),
         array(
             'name' => 'julia',
-            'password' => 'test',
+            'password' => 'testtest',
             'email' => 'dev+julia@gapminder.org',
             'groupRoles' => array(
                 'GapminderInternal' => array('GroupContributor'),
@@ -104,7 +104,7 @@ trait UsersTrait
         ),
         array(
             'name' => 'mattias',
-            'password' => 'test',
+            'password' => 'testtest',
             'email' => 'dev+mattias@gapminder.org',
             'groupRoles' => array(
                 'GapminderInternal' => array('GroupMember'),
@@ -115,7 +115,7 @@ trait UsersTrait
     public $externalUsers = array(
         array(
             'name' => 'jack',
-            'password' => 'test',
+            'password' => 'testtest',
             'email' => 'dev+jackexternal@gapminder.org',
             'groupRoles' => array(
                 'Proofreaders' => array('GroupReviewer'),
@@ -123,7 +123,7 @@ trait UsersTrait
         ),
         array(
             'name' => 'martha',
-            'password' => 'test',
+            'password' => 'testtest',
             'email' => 'dev+marthaexternal@gapminder.org',
             'groupRoles' => array(),
         ),

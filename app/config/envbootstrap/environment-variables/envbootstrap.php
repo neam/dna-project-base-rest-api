@@ -45,6 +45,11 @@ if (DATABASE_URL === null) {
     define("YII_DB_NAME", trim($url['path'], '/'));
 }
 
+// Mailcatcher is used as SMTP while running tests
+setenv("MAILCATCHER_HOST", $default = null, $required = true);
+setenv("MAILCATCHER_HTTP_PORT", $default = "1080", $required = false);
+setenv("MAILCATCHER_SMTP_PORT", $default = "1025", $required = false);
+
 // Require setting smtp constants based on SMTP_URL environment variable
 setenv("SMTP_URL", $default = null, $required = true); // smtp://username:password@host:587?encryption=tls
 

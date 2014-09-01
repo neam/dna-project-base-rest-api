@@ -84,10 +84,6 @@
             "url": "https://github.com/motin/yii-consoletools"
         },
         {
-            "type": "vcs",
-            "url": "https://github.com/motin/yii-sentry"
-        },
-        {
             "type": "composer",
             "url": "http://packages.phundament.com"
         }
@@ -135,7 +131,7 @@
         "schmunk42/relation": "1.*",
         "yiisoft/yii": "1.1.15 as dev-master",
         "mikehaertl/translatable": "~1.1.0",
-        "crisu83/yii-sentry": "dev-hold-logged-event-ids-in-memory as 1.3.0",
+        "crisu83/yii-sentry": "dev-master as 1.3.0",
         "alchemy/zippy": "*",
         "nordsoftware/yii-account": "1.2.2",
         "nordsoftware/yii-emailer": "1.2.*",

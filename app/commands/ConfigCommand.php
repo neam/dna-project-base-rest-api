@@ -38,7 +38,24 @@ class ConfigCommand extends CConsoleCommand
     }
 
     /**
-     * Drops all tables from the database.
+     * Used to expose the currently loaded envbootstrap config to the shell
+     * Add config vars as necessary for shell scripts to run properly
+     * @param bool $verbose
+     */
+    public function actionExportEnvbootstrapConfig($verbose = false)
+    {
+
+        foreach (array(
+                     "MAILCATCHER_HOST",
+                     "MAILCATCHER_HTTP_PORT",
+                     "MAILCATCHER_SMTP_PORT"
+                 ) as $var) {
+            echo "export $var=" . constant($var) . "\n";
+        }
+
+    }
+
+    /**
      * @param bool $verbose
      */
     public function actionExportDbConfig($verbose = false)
