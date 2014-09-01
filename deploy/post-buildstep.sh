@@ -27,8 +27,9 @@ set -o errexit
 #node_modules/.bin/bower install --allow-root
 
 # generate the js app
+# npm install -g grunt
 #cp app/js/config.dist.js app/js/config.js
-#node_modules/.bin/grunt build
+#grunt build
 
 # necessary for user data backup uploads
 deploy/install-s3cmd.sh
