@@ -106,6 +106,12 @@ class ProfileController extends Controller
 
             if ($model->save() && $model->profile->save()) {
                 setFlash(TbHtml::ALERT_COLOR_SUCCESS, t('app', 'Your account information has been updated.'));
+
+                $returnUrl = request()->getQuery('returnUrl', false);
+                if ($returnUrl) {
+                    $this->redirect($this->createUrl($returnUrl));
+                }
+
                 $this->refresh();
             }
         }
