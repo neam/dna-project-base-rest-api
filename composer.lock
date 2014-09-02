@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "46d5913d50a3b0876b6db13b6f087f76",
+    "hash": "5e663e460d1ec939b9a3a197095bc040",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -278,16 +278,16 @@
         },
         {
             "name": "crisu83/yii-sentry",
-            "version": "dev-hold-logged-event-ids-in-memory",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/motin/yii-sentry.git",
-                "reference": "0c6bef30539d77fa9539a132791f27c20a74da2a"
+                "url": "https://github.com/crisu83/yii-sentry.git",
+                "reference": "c43499e427bd803206a1970944605db03f079697"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/motin/yii-sentry/zipball/0c6bef30539d77fa9539a132791f27c20a74da2a",
-                "reference": "0c6bef30539d77fa9539a132791f27c20a74da2a",
+                "url": "https://api.github.com/repos/crisu83/yii-sentry/zipball/c43499e427bd803206a1970944605db03f079697",
+                "reference": "c43499e427bd803206a1970944605db03f079697",
                 "shasum": ""
             },
             "require": {
@@ -302,6 +302,7 @@
                     "components/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -320,10 +321,7 @@
                 "sentry",
                 "yii"
             ],
-            "support": {
-                "source": "https://github.com/motin/yii-sentry/tree/hold-logged-event-ids-in-memory"
-            },
-            "time": "2014-08-18 10:28:28"
+            "time": "2014-08-18 16:13:25"
         },
         {
             "name": "crisu83/yiistrap",
@@ -2975,7 +2973,7 @@
         {
             "alias": "1.3.0",
             "alias_normalized": "1.3.0.0",
-            "version": "dev-hold-logged-event-ids-in-memory",
+            "version": "9999999-dev",
             "package": "crisu83/yii-sentry"
         },
         {
