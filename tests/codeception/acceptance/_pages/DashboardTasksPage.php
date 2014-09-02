@@ -1,10 +1,9 @@
 <?php
 
-class ProfilePage
+class DashboardTasksPage
 {
     // include url of current page
-    static $URL = 'profile/edit';
-
+    static $URL = 'dashboard/tasks';
 
     /**
      * Declare UI map for this page here. CSS or XPath allowed.
@@ -12,17 +11,17 @@ class ProfilePage
      * public static $formSubmitButton = "#mainForm input[type=submit]";
      */
 
-    static $accountUpdatedText = 'Your account information has been updated.';
+    static $profileLanguageTaskText = 'You need to have at least one language set in your profile before you can start contributing.';
 
     /**
      * Basic route example for your current URL
      * You can append any additional parameter to URL
      * and use it in tests like: EditPage::route('/123-post');
      */
-    public static function route($param)
-    {
-       return static::$URL.$param;
-    }
+     public static function route($param)
+     {
+        return static::$URL.$param;
+     }
 
     /**
      * @var WebGuy;
@@ -35,7 +34,7 @@ class ProfilePage
     }
 
     /**
-     * @return ProfilePage
+     * @return DashboardPage
      */
     public static function of(WebGuy $I)
     {
