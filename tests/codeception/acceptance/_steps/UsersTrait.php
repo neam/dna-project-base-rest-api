@@ -309,21 +309,36 @@ trait UsersTrait
     {
         $I = $this;
 
-        $I->amOnPage(\ProfilePage::$URL);
+        $I->amOnPage(ProfilePage::$URL);
+        $I->selectLanguagesOnCurrentPage($languages);
+        $I->waitForText(ProfilePage::$accountUpdatedText, 20);
 
-        for ($i = 0, $num = 1; $i < count($languages); $i++, $num++) {
-            $I->selectSelect2Option("#Profile_language{$num}", $languages[$i]);
-        }
-
-        $I->click('Save');
-
-        $I->waitForText('Your account information has been updated.', 20);
-
-        $I->amOnPage(\ProfilePage::$URL);
-
+        $I->amOnPage(ProfilePage::$URL);
         for ($i = 0, $num = 1; $i < count($languages); $i++, $num++) {
             $I->seeSelect2OptionIsSelected("#Profile_language{$num}", $languages[$i]);
         }
+    }
+
+    function completeProfileLanguagesTask($languages)
+    {
+        $I = $this;
+        $I->amOnPage(DashboardTasksPage::$URL);
+        $I->waitForText('Required tasks', 20);
+        $I->see(DashboardTasksPage::$profileLanguageTaskText);
+        $I->click('Go to profile');
+        $I->waitForText('First Language', 20);
+        $I->selectLanguagesOnCurrentPage($languages);
+        $I->waitForText(ProfilePage::$accountUpdatedText, 20);
+        $I->seeInCurrentUrl(DashboardTasksPage::$URL);
+    }
+
+    function selectLanguagesOnCurrentPage($languages)
+    {
+        $I = $this;
+        for ($i = 0, $num = 1; $i < count($languages); $i++, $num++) {
+            $I->selectSelect2Option("#Profile_language{$num}", $languages[$i]);
+        }
+        $I->click('Save');
     }
 
 }
