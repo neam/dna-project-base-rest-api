@@ -14,6 +14,8 @@ class LoginPage
     public static $passwordField = '#nordsoftware_yii_account_models_form_LoginForm_password';
     public static $submitButton = '#loginForm button[type=submit]';
 
+    public static $formId = '#loginForm';
+
     public static $submitButtonText = 'Login';
     public static $signUpButtonText = 'Create an account';
 

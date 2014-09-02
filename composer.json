@@ -133,7 +133,7 @@
         "mikehaertl/translatable": "~1.1.0",
         "crisu83/yii-sentry": "dev-master as 1.3.0",
         "alchemy/zippy": "*",
-        "nordsoftware/yii-account": "1.2.1",
+        "nordsoftware/yii-account": "dev-develop",
         "nordsoftware/yii-emailer": "1.2.*",
         "nordsoftware/yii-utils": "@dev",
         "crisu83/yii-formatter": "@dev",

@@ -166,4 +166,16 @@ class SignupController extends \nordsoftware\yii_account\controllers\SignupContr
         $this->render('//account/signup/done');
     }
 
+    /**
+     * Triggered after account has been activated.
+     * Override to customize the action, to for instance render a
+     * confirmation page, sign-in automatically or similar
+     *
+     * @param Account $account the account ar.
+     */
+    public function afterActivate($account)
+    {
+        $this->render('//account/signup/activated');
+    }
+
 }
