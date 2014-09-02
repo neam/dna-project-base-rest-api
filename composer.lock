@@ -329,12 +329,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/crisu83/yiistrap.git",
-                "reference": "7bd82a12ff1b541abc21049e93e761bc89656b86"
+                "reference": "730fd9cde214d7ff9115cc36a025e54b3e216c94"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/crisu83/yiistrap/zipball/7bd82a12ff1b541abc21049e93e761bc89656b86",
-                "reference": "7bd82a12ff1b541abc21049e93e761bc89656b86",
+                "url": "https://api.github.com/repos/crisu83/yiistrap/zipball/730fd9cde214d7ff9115cc36a025e54b3e216c94",
+                "reference": "730fd9cde214d7ff9115cc36a025e54b3e216c94",
                 "shasum": ""
             },
             "require": {
@@ -382,7 +382,7 @@
                 "bootstrap",
                 "yii"
             ],
-            "time": "2014-07-21 11:08:24"
+            "time": "2014-08-20 04:38:41"
         },
         {
             "name": "crisu83/yiistrap-widgets",
@@ -1088,12 +1088,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-restricted-access.git",
-                "reference": "48548c7cc54dec9b381e9a5915766793fc16cdce"
+                "reference": "cdb611f03f10fac8479bc3589854da88232ac298"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-restricted-access/zipball/48548c7cc54dec9b381e9a5915766793fc16cdce",
-                "reference": "48548c7cc54dec9b381e9a5915766793fc16cdce",
+                "url": "https://api.github.com/repos/neam/yii-restricted-access/zipball/cdb611f03f10fac8479bc3589854da88232ac298",
+                "reference": "cdb611f03f10fac8479bc3589854da88232ac298",
                 "shasum": ""
             },
             "require": {
@@ -1123,7 +1123,7 @@
             "keywords": [
                 "yii"
             ],
-            "time": "2014-08-13 07:49:21"
+            "time": "2014-09-02 13:53:36"
         },
         {
             "name": "neam/yii-simplicity-theme",
@@ -1174,12 +1174,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-workflow-core.git",
-                "reference": "7bd8f2ddd9f03a49b4c815f1c411a83f008f9e33"
+                "reference": "2b7a75e26abfd6ac0a5b8b2a7c60f45002fe6a3c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-workflow-core/zipball/7bd8f2ddd9f03a49b4c815f1c411a83f008f9e33",
-                "reference": "7bd8f2ddd9f03a49b4c815f1c411a83f008f9e33",
+                "url": "https://api.github.com/repos/neam/yii-workflow-core/zipball/2b7a75e26abfd6ac0a5b8b2a7c60f45002fe6a3c",
+                "reference": "2b7a75e26abfd6ac0a5b8b2a7c60f45002fe6a3c",
                 "shasum": ""
             },
             "require": {
@@ -1207,7 +1207,7 @@
             "keywords": [
                 "yii"
             ],
-            "time": "2014-08-14 05:34:32"
+            "time": "2014-08-26 09:45:24"
         },
         {
             "name": "neam/yii-workflow-progress-tracking",
@@ -1293,12 +1293,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-workflow-ui.git",
-                "reference": "1ef08c0a3a73807b3acd731924c5349ff5bced0d"
+                "reference": "53cb542abf1c7c1b5f3a4aa1408224459f0b2e5a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-workflow-ui/zipball/1ef08c0a3a73807b3acd731924c5349ff5bced0d",
-                "reference": "1ef08c0a3a73807b3acd731924c5349ff5bced0d",
+                "url": "https://api.github.com/repos/neam/yii-workflow-ui/zipball/53cb542abf1c7c1b5f3a4aa1408224459f0b2e5a",
+                "reference": "53cb542abf1c7c1b5f3a4aa1408224459f0b2e5a",
                 "shasum": ""
             },
             "require": {
@@ -1335,7 +1335,7 @@
             "keywords": [
                 "yii"
             ],
-            "time": "2014-08-26 13:01:37"
+            "time": "2014-09-02 09:13:02"
         },
         {
             "name": "nordsoftware/yii-account",
