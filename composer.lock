@@ -1339,16 +1339,16 @@
         },
         {
             "name": "nordsoftware/yii-account",
-            "version": "1.2.2",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nordsoftware/yii-account.git",
-                "reference": "a6f3d13d50e4a6801185227d21c84caee1236284"
+                "reference": "d1730debe46f07cac21b3685e7b4d37c2a134191"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nordsoftware/yii-account/zipball/a6f3d13d50e4a6801185227d21c84caee1236284",
-                "reference": "a6f3d13d50e4a6801185227d21c84caee1236284",
+                "url": "https://api.github.com/repos/nordsoftware/yii-account/zipball/d1730debe46f07cac21b3685e7b4d37c2a134191",
+                "reference": "d1730debe46f07cac21b3685e7b4d37c2a134191",
                 "shasum": ""
             },
             "require": {
@@ -1385,10 +1385,10 @@
             ],
             "description": "Extension that provides basic account functionality for the Yii PHP framework.",
             "support": {
-                "source": "https://github.com/nordsoftware/yii-account/tree/1.2.2",
+                "source": "https://github.com/nordsoftware/yii-account/tree/develop",
                 "issues": "https://github.com/nordsoftware/yii-account/issues"
             },
-            "time": "2014-08-28 11:09:03"
+            "time": "2014-09-02 10:31:26"
         },
         {
             "name": "nordsoftware/yii-emailer",
@@ -3011,6 +3011,7 @@
         "weavora/wrest": 20,
         "codemix/hybridauthmanager": 20,
         "crisu83/yii-sentry": 20,
+        "nordsoftware/yii-account": 20,
         "nordsoftware/yii-utils": 20,
         "crisu83/yii-formatter": 20,
         "jalle19/yii-ga": 20,
