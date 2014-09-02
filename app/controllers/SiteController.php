@@ -107,6 +107,7 @@ class SiteController extends Controller
             $error['message'] = "Internal Server Error";
             $error['code'] = $code;
             $error['loggedEventIds'] = isset($_GET['loggedEventIds']) ? $_GET['loggedEventIds'] : array();
+            $error['error'] = isset($_GET['error']) ? $_GET['error'] : array();
             $this->render('error', $error);
         } else {
             $error['message'] = "Precondition Failed";
