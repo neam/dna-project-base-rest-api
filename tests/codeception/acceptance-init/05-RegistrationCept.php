@@ -34,8 +34,12 @@ $I->cantLogin('testb' . $datetime, 'testtest', 'Your account has not yet been ac
 // Activate the account by clicking the activation link in the email
 $matches = $I->grabMatchesFromLastEmailTo($email, '@<a href="([^"]*)">.*?activate.*?</a>@');
 $activationLink = html_entity_decode($matches[1], null, 'UTF-8');
-$I->amOnPage($activationLink); // TODO: Find a way to visit the activation link successfully
-$I->see('Click on the link below to sign in');
+$I->executeInSelenium(function (\WebDriver $webdriver) use ($activationLink) {
+    $webdriver->get($activationLink);
+});
+//TODO: Use instead of executeInSelenium above after our PR gets accepted:
+//$I->navigateTo($activationLink);
+$I->waitForText('Click on the link below to sign in', 10);
 $I->click('Sign In');
 $I->seeInCurrentUrl(LoginPage::$URL);
 
