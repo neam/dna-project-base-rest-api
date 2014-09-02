@@ -229,6 +229,15 @@ class WebUser extends \nordsoftware\yii_account\components\WebUser
     }
 
     /**
+     * Checks if the user is a translator.
+     * @return bool
+     */
+    public function getIsEditor()
+    {
+        return $this->hasRole(Role::GROUP_EDITOR);
+    }
+
+    /**
      * Checks if the user is a reviewer.
      * @return bool
      */

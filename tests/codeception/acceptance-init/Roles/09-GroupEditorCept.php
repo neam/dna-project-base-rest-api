@@ -9,13 +9,15 @@ $I->wantTo('prepare a item for publishing');
  */
 $I->login('editor', 'testtest');
 
-$I->amOnPage(SnapshotBrowsePage::$URL);
+$I->amOnPage(DashboardPage::$URL);
+$I->click('Browse...');
+$I->click('Snapshots');
+
 $I->see('Sample Snapshot');
 $I->click(
     SnapshotBrowsePage::$prepareForPublishingButtonText,
     SnapshotBrowsePage::modelContext('Sample Snapshot')
 );
-
 
 // Thumbnail and vizabi state is missing
 $I->waitForText('2 required fields missing', 10);

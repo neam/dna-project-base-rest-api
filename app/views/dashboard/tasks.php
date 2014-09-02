@@ -41,7 +41,7 @@
         </div>
 
     </div>
-    <?php if (Yii::app()->user->isGroupAdmin() || Yii::app()->user->isAdmin()): ?>
+    <?php if (Yii::app()->user->isGroupAdmin() || Yii::app()->user->isAdmin() || Yii::app()->user->isEditor): ?>
         <div class="dashboard-tasks-container">
             <div class="tasks-top-bar">
                 <div class="top-bar-title">
