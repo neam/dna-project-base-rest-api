@@ -3,7 +3,7 @@ $scenario->group('data:clean-db,coverage:basic');
 
 $I = new WebGuy\MemberSteps($scenario);
 
-$I->wantTo('verify that registering a user works');
+$I->wantTo('complete required profile language task');
 
 $datetime = date("YmdHis");
 
