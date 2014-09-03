@@ -132,7 +132,7 @@ class I18nCatalogController extends Controller
                 )
             );
 
-            $this->redirect(array('/account/tasks'));
+            $this->redirect(array('/profile/tasks'));
         }
     }
 

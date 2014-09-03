@@ -1,9 +1,9 @@
 <?php
 
-class AccountTasksPage
+class MyTasksPage
 {
     // include url of current page
-    static $URL = 'account/tasks';
+    static $URL = 'profile/tasks';
 
     /**
      * Declare UI map for this page here. CSS or XPath allowed.
@@ -41,7 +41,7 @@ class AccountTasksPage
     }
 
     /**
-     * @return AccountTasksPage
+     * @return MyTasksPage
      */
     public static function of(WebGuy $I)
     {
