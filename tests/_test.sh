@@ -2,11 +2,16 @@
 
 set -x;
 
-# fail on any error
-set -o errexit
-
-script_path=`dirname $0`
-cd $script_path
+if [ "$0" == "-bash" ]; then
+    echo "Assuming running sourced from within web container"
+    echo "Note: When sourcing this script, you must reside within the tests folder"
+    script_path=/code/cms/tests
+else
+    script_path=`dirname $0`
+    cd $script_path
+    # fail on any error
+    set -o errexit
+fi
 
 # run composer install on both app and tests directories
 cd $script_path/..
