@@ -74,7 +74,7 @@ trait UsersTrait
             'email' => 'dev+ola@gapminder.org',
             'groupRoles' => array(
                 'GapminderInternal' => array('GroupAdministrator'),
-                'GapminderOrg' => array('GroupAdministrator'), // For Snapshot publishing. Remove when publishing works for other groups too
+                'GapminderOrg' => array('GroupAdministrator'), // For item publishing
             ),
         ),
         array(
@@ -83,7 +83,7 @@ trait UsersTrait
             'email' => 'dev+max@gapminder.org',
             'groupRoles' => array(
                 'GapminderInternal' => array('GroupModerator'),
-                'GapminderOrg' => array('GroupModerator'), // For Snapshot publishing. Remove when publishing works for other groups too
+                'GapminderOrg' => array('GroupModerator'), // For item publishing
             ),
         ),
         array(

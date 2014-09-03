@@ -4,7 +4,7 @@ $scenario->group('data:clean-db,coverage:full');
 $I = new WebGuy\MemberSteps($scenario);
 $I->wantTo('publish an i18n catalog');
 
-$I->login('admin', 'admin');
+$I->login('max', 'testtest');
 
 $poContents = <<<EOD
 # The context for chain here is \'metal\' (eg. a metal chain)
@@ -37,10 +37,10 @@ $I->seeInCurrentUrl(I18nCatalogEditPage::$URL);
 // Add to group
 $I->amOnPage(I18nCatalogBrowsePage::$URL);
 $I->click('GapminderOrg', $modelContext);
-//$I->logout();
+$I->logout();
 
 // Publish
-//$I->login('ola', 'testtest');
+$I->login('ola', 'testtest');
 $I->amOnPage(I18nCatalogBrowsePage::$URL);
 $I->see('Test i18n catalog');
 $I->click('Publish');
