@@ -49,15 +49,12 @@ To run these commands locally, the following binaries must be installed locally 
 The following environment variable also needs to be set:
 
     export LOCAL_SERVICES_IP=127.0.0.1
+    export SELENIUM_HOST=$LOCAL_SERVICES_IP
+    export SELENIUM_PORT=4444
 
 Alternatively, you can run these commands inside the web container (where all of the above are already installed). Enter by running:
 
     ../virtual-machines/vagrant/cms/scripts/ssh.sh
-
-Before running any commands below, step in to the root of the cms codebase `/code/` and make all environment variables available:
-
-    cd /code/cms/
-    for file in /app/.profile.d/*; do source $file; done
 
 ## Update to the latest changes
 
@@ -122,33 +119,39 @@ We group all tests based on how much testing coverage is required, so that build
 
 ### Running tests locally
 
-First, decide whether or not to run tests against a clean database or with user generated data:
+#### Using the _test.sh script
+
+Note: To run the tests, you need to have a selenium server running locally (see below in readme).
+
+All tests can be run in sequence (for both clean-db and user-generated) by running the `_test.sh` script:
+
+    tests/_test.sh
+
+It will default to `COVERAGE=full`. To override, set the COVERAGE env var before running the script, for instance:
+
+    export COVERAGE=basic
+    tests/_test.sh
+
+#### Step-by-step
+
+This section is relevant when the `_test.sh` script doesn't work as expected, or when you want to run only certain parts of the tests.
+
+First, decide whether or not to run tests against a clean database or with user generated data (to run against both, the routine below needs to be run twice):
 
     export DATA=clean-db
     OR
     export DATA=user-generated # be sure to have s3cmd configured properly as per above
 
-If you are running these commands locally, set the following environment variables:
-
-    export SELENIUM_HOST=$LOCAL_SERVICES_IP
-    export SELENIUM_PORT=4444
-
-Or, if you are running these commands from within the web container:
-
-    export SELENIUM_HOST=$LOCAL_SERVICES_IP
-    export SELENIUM_PORT=14444
-
 Then, do the following before attempting to run any tests:
 
     cd tests
-    php ../composer.phar install
+    php ../composer.phar install --prefer-source
 
     ../app/yiic config exportDbConfig --connectionID=dbTest | tee /tmp/config.sh
     ../app/yiic config exportEnvbootstrapConfig --connectionID=dbTest | tee -a /tmp/config.sh
     source /tmp/config.sh
     echo "DROP DATABASE IF EXISTS $DB_NAME; CREATE DATABASE $DB_NAME;" | mysql -h$DB_HOST -P$DB_PORT -u$DB_USER --password=$DB_PASSWORD
 
-    export CMS_HOST=127.0.0.1:12121/friends
     ./generate-local-codeception-config.sh
     vendor/bin/codecept build
 
@@ -181,7 +184,7 @@ Note: For the remaining tests, you need to have a selenium server running locall
 
 To run the acceptance suites:
 
-    touch testing # this activates a special flag in envbootstrap.php that makes the test db the default db
+    touch testing # this activates a special flag in envbootstrap.php that makes the test db the default db (See note below)
     vendor/bin/codecept run acceptance-init --env=cms-local-chrome $CODECEPTION_GROUP_ARGS --debug --fail-fast
     ../app/yiic mysqldump --connectionID=dbTest --dumpPath=tests/codeception/_data/
     vendor/bin/codecept run acceptance --env=cms-local-chrome $CODECEPTION_GROUP_ARGS --debug --fail-fast
@@ -192,10 +195,6 @@ To run the the API suite:
     touch testing
     vendor/bin/codecept run api $CODECEPTION_GROUP_ARGS --debug --fail-fast
     rm testing
-
-All tests can be run in sequence (for both clean-db and user-generated) by running the `_test.sh` script:
-
-    ./_test.sh
 
 Note: The `touch testing` makes the app default to "test" CONFIG_ENVIRONMENT, which means it will use the TEST_DB_* parameters for database access and have captcha disabled in the registration form.
 

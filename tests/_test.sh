@@ -8,7 +8,13 @@ set -o errexit
 script_path=`dirname $0`
 cd $script_path
 
-export COVERAGE=full
+php ../composer.phar install --prefer-source
+
+# defaults
+
+if [ "$COVERAGE" == "" ]; then
+    export COVERAGE=full
+fi
 
 ../app/yiic config exportDbConfig --connectionID=dbTest | tee /tmp/config.sh
 ../app/yiic config exportEnvbootstrapConfig --connectionID=dbTest | tee -a /tmp/config.sh
@@ -21,7 +27,7 @@ vendor/bin/codecept build
 
 export DATA=clean-db
 source _set-codeception-group-args.sh
-connectionID=dbTest $script_path/../shell-scripts/reset-db.sh
+connectionID=dbTest ../shell-scripts/reset-db.sh
 
 ../app/yiic mysqldump --connectionID=dbTest --dumpPath=tests/codeception/_data/
 vendor/bin/codecept run unit $CODECEPTION_GROUP_ARGS --debug --fail-fast
@@ -34,7 +40,7 @@ rm testing
 
 export DATA=user-generated
 source _set-codeception-group-args.sh
-connectionID=dbTest $script_path/../shell-scripts/reset-db.sh
+connectionID=dbTest ../shell-scripts/reset-db.sh
 
 ../app/yiic mysqldump --connectionID=dbTest --dumpPath=tests/codeception/_data/
 vendor/bin/codecept run unit $CODECEPTION_GROUP_ARGS --debug --fail-fast
