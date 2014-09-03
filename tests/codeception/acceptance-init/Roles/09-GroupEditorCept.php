@@ -9,7 +9,7 @@ $I->wantTo('prepare a item for publishing');
  */
 $I->login('editor', 'testtest');
 
-$I->amOnPage(DashboardPage::$URL);
+$I->amOnPage(MyTasksPage::$URL);
 $I->click('Browse...');
 $I->click('Snapshots');
 

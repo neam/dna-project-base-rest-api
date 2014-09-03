@@ -20,9 +20,22 @@ class ProfileController extends Controller
             array(
                 'allow',
                 'actions' => array(
+                    'tasks',
+                    'translations',
+                    'profile',
+                    'history',
                     'edit',
+                    'view',
+                    'profile',
                 ),
                 'users' => array('@'),
+            ),
+            array(
+                'allow',
+                'actions' => array(
+                    'profile',
+                ),
+                'users' => array('*'),
             ),
             array(
                 'deny',
@@ -51,10 +64,165 @@ class ProfileController extends Controller
         return true;
     }
 
+    /**
+     * Renders the tasks page.
+     */
+    public function actionTasks()
+    {
+        $model = Account::model()->findByPk(user()->id);
+
+        $this->buildBreadcrumbs(array(
+            Yii::t('app', 'Dashboard'),
+        ));
+
+        $this->render(
+            'tasks',
+            array(
+                'model' => $model,
+            )
+        );
+    }
+
+    /**
+     * Creates a dropdown button for the given controller action.
+     * @param string $label
+     * @param string $controllerAction
+     * @param bool $modelLabelPlural whether the model label is pluralized (e.g. Videos). Defaults to false (singular).
+     * @param array $htmlOptions
+     * @return string
+     */
+    protected function renderItemActionDropdown($label, $controllerAction, $modelLabelPlural = false, $htmlOptions = array())
+    {
+        if (!isset($htmlOptions['size'])) {
+            $htmlOptions['size'] = TbHtml::BUTTON_SIZE_SM; // default button size
+        }
+
+        $links = array();
+
+        $modelLabelPluralNumber = $modelLabelPlural ? 2 : 1;
+
+        foreach (DataModel::qaModels() as $modelClass => $tableName) {
+            $links[] = array(
+                'label' => Yii::t('app', DataModel::modelLabels()[$modelClass], $modelLabelPluralNumber),
+                'url' => $this->createUrl('/' . lcfirst($modelClass) . '/' . $controllerAction)
+            );
+        }
+
+        return TbHtml::buttonDropdown(
+            $label,
+            $links,
+            $htmlOptions
+        );
+    }
+
+    /**
+     * Displays the translations page.
+     */
+    public function actionTranslations()
+    {
+        $id = Yii::app()->user->id;
+        $model = Account::model()->findByPk(user()->id);
+        $this->render('translations', array('model' => $model,));
+    }
+
+    /**
+     * Displays the history page.
+     */
+    public function actionHistory()
+    {
+        $id = Yii::app()->user->id;
+        $model = Account::model()->findByPk(user()->id);
+
+        $userChangedItems = new Item('search');
+        $userChangedItems->unsetAttributes();
+        $userChangedItems->setAttribute("user_id", Yii::app()->user->id);
+        $dataProvider = $userChangedItems->search();
+
+        $this->render('history', array('model' => $model, 'dataProvider' => $dataProvider));
+    }
+
+    /**
+     * Displays a public profile page.
+     * @param integer $id account ID
+     */
+    public function actionProfile($id)
+    {
+        $model = Account::model()->findByPk($id);
+        $this->render('profile', array('model' => $model,));
+    }
+
+    /**
+     * Displays a profile page.
+     * @param integer $id account ID
+     */
     public function actionView($id)
     {
         $model = $this->loadModel($id);
-        $this->render('view', array('model' => $model,));
+
+        $groups = array_merge(MetaData::projectGroups(), MetaData::topicGroups(), MetaData::skillGroups());
+        $groupRoles = MetaData::groupRoles();
+
+        $rawData = array();
+
+        $id = 1;
+        foreach ($groups as $groupName => $groupLabel) {
+            // TODO fix this, must use stdClass because of the stupid TbToggleColumn
+            $row = new stdClass();
+
+            $row->id = $id++;
+            $row->accountId = $model->id;
+            $row->groupName = $groupName;
+            $row->groupLabel = $groupLabel;
+
+            foreach ($groupRoles as $roleName => $roleLabel) {
+                $row->$roleName = $model->groupRoleIsActive($groupName, $roleName);
+            }
+
+            $rawData[] = $row;
+        }
+
+        $dataProvider = new CArrayDataProvider(
+            $rawData,
+            array(
+                'id' => 'permissions',
+                'pagination' => false,
+            )
+        );
+
+        $columns = array();
+
+        $columns[] = array(
+            'class' => 'CDataColumn',
+            'header' => Yii::t('admin', 'Group name'),
+            'name' => 'groupLabel',
+        );
+
+        $groupModeratorRoles = MetaData::groupModeratorRoles();
+        foreach ($groupRoles as $roleName => $roleLabel) {
+            if (Yii::app()->user->checkAccess('GrantGroupAdminPermissions')
+                || (isset($groupModeratorRoles[$roleName]) && Yii::app()->user->checkAccess('GrantGroupModeratorPermissions'))
+            ) {
+                $columns[] = array(
+                    'class' => 'GroupRoleToggleColumn',
+                    'displayText' => false,
+                    'header' => $roleLabel,
+                    'name' => $roleName,
+                    'toggleAction' => 'account/toggleRole',
+                    'value' => function ($data) use ($roleName) {
+                            return $data->$roleName;
+                        },
+                );
+            }
+        }
+
+        $this->render(
+            'view',
+            array(
+                'columns' => $columns,
+                'dataProvider' => $dataProvider,
+                'model' => $model,
+            )
+        );
     }
 
     public function actionCreate()
