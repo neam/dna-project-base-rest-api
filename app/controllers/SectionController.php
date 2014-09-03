@@ -67,7 +67,7 @@ class SectionController extends Controller
         $this->render('view', array('model' => $model,));
     }
 
-    public function actionAdd($pageId)
+    public function actionAddToPage($pageId)
     {
         $model = new Section();
         $model->page_id = $pageId;
