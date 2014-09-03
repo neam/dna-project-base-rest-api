@@ -369,8 +369,13 @@ class VideoFile extends BaseVideoFile
 
         if ($includeRelated) {
             $response->related = array();
-            foreach ($this->related as $related) {
-                $response->related[] = $related->item()->getAllAttributes(false);
+            foreach ($this->related as $relatedNodes) {
+                try {
+                    $related = $relatedNodes->item();
+                    $response->related[] = $related->getAllAttributes(false);
+                } catch (NodeItemExistsButIsRestricted $e) {
+                    // Ignore restricted nodes
+                }
             }
         }
 
