@@ -8,6 +8,10 @@ set -o errexit
 script_path=`dirname $0`
 cd $script_path
 
+# run composer install on both app and tests directories
+cd $script_path/..
+php composer.phar install --prefer-source
+cd $script_path
 php ../composer.phar install --prefer-source
 
 # defaults
