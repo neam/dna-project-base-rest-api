@@ -20,6 +20,14 @@ class SectionController extends Controller
     public function accessRules()
     {
         return array_merge($this->itemAccessRules(), array(
+            array('allow',
+                'actions' => array(
+                    'addToPage',
+                ),
+                'expression' => function () {
+                        return $this->checkAccess('Add');
+                    },
+            ),
             array(
                 'allow',
                 'actions' => array(
@@ -70,7 +78,6 @@ class SectionController extends Controller
     public function actionAddToPage($pageId)
     {
         $model = new Section();
-        $model->page_id = $pageId;
 
         if ($model->save()) {
 
@@ -82,7 +89,6 @@ class SectionController extends Controller
                 $edge->save();
             }
 
-            $this->redirect(array('/section/continueAuthoring', 'id' => $model->id));
         }
 
         $this->redirect(Yii::app()->request->urlReferrer);

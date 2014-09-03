@@ -31,7 +31,7 @@
         $model,
         'sections',
         CHtml::listData(
-            Section::model()->findAll('page_id = :page_id', array(':page_id' => $model->id)),
+            Item::model()->findAllByAttributes(array('model_class' => array('Section'))),
             'node_id',
             'itemLabel'
         ),
