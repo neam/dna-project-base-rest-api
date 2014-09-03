@@ -49,15 +49,12 @@ To run these commands locally, the following binaries must be installed locally 
 The following environment variable also needs to be set:
 
     export LOCAL_SERVICES_IP=127.0.0.1
+    export SELENIUM_HOST=$LOCAL_SERVICES_IP
+    export SELENIUM_PORT=4444
 
 Alternatively, you can run these commands inside the web container (where all of the above are already installed). Enter by running:
 
     ../virtual-machines/vagrant/cms/scripts/ssh.sh
-
-Before running any commands below, step in to the root of the cms codebase `/code/` and make all environment variables available:
-
-    cd /code/cms/
-    for file in /app/.profile.d/*; do source $file; done
 
 ## Update to the latest changes
 
@@ -128,16 +125,6 @@ First, decide whether or not to run tests against a clean database or with user 
     OR
     export DATA=user-generated # be sure to have s3cmd configured properly as per above
 
-If you are running these commands locally, set the following environment variables:
-
-    export SELENIUM_HOST=$LOCAL_SERVICES_IP
-    export SELENIUM_PORT=4444
-
-Or, if you are running these commands from within the web container:
-
-    export SELENIUM_HOST=$LOCAL_SERVICES_IP
-    export SELENIUM_PORT=14444
-
 Then, do the following before attempting to run any tests:
 
     cd tests
@@ -148,7 +135,6 @@ Then, do the following before attempting to run any tests:
     source /tmp/config.sh
     echo "DROP DATABASE IF EXISTS $DB_NAME; CREATE DATABASE $DB_NAME;" | mysql -h$DB_HOST -P$DB_PORT -u$DB_USER --password=$DB_PASSWORD
 
-    export CMS_HOST=127.0.0.1:12121/friends
     ./generate-local-codeception-config.sh
     vendor/bin/codecept build
 
