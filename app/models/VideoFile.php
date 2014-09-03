@@ -369,6 +369,7 @@ class VideoFile extends BaseVideoFile
 
         if ($includeRelated) {
             $response->related = array();
+            // TODO: Refactor this and the corresponding logic in Snapshot into a yii-relational-graph-db trait or at least ItemTrait
             foreach ($this->related as $relatedNodes) {
                 try {
                     $related = $relatedNodes->item();
