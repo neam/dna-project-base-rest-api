@@ -78,5 +78,6 @@
     <b><?php echo CHtml::encode($model->getAttributeLabel('download_link_qa_state_id')); ?>:</b>
     <?php echo CHtml::encode($model->download_link_qa_state_id); ?>
     <br />
-    */ ?>
+    */
+    ?>
 </div>

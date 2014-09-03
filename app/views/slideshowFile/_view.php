@@ -389,7 +389,8 @@
     <b><?php echo CHtml::encode($data->getAttributeLabel('processed_media_id_zh_tw')); ?>:</b>
     <?php echo CHtml::encode($data->processed_media_id_zh_tw); ?>
     <br />
-    */ ?>
+    */
+?>
 <?php if (Yii::app()->user->checkAccess('SlideshowFile.*')): ?>
     <div class="admin-container hide">
         <?php echo CHtml::link('<i class="glyphicon-edit"></i> ' . Yii::t('model', 'Edit {model}', array('{model}' => Yii::t('model', 'Slideshow File'))), array('slideshowFile/continueAuthoring', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>

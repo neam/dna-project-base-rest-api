@@ -20,12 +20,14 @@
     <section class="section-wide-primary">
         <div class="container">
             <h2><?php echo t('app', 'Sneak Peeks'); ?></h2>
+
             <p><?php echo t('app', 'Access new content under development, which is not yet publicly available. Help evaluate new videos and tools before we publish them to the world.'); ?></p>
         </div>
     </section>
     <section class="section-wide-primary">
         <div class="container">
             <h2><?php echo t('app', 'Groups'); ?></h2>
+
             <p><?php echo t('app', 'Join a group and we will give you tasks that better fit your skills.'); ?></p>
         </div>
     </section>
@@ -52,7 +54,9 @@
     <section class="section-wide-primary">
         <div class="container">
             <h2><?php echo t('app', 'About Gapminder Friends'); ?></h2>
+
             <p><?php echo t('app', 'If you like Gapminder’s mission&mdash;<em>to fight devastating ignorance with a fact-based worldview that everyone can understand</em>&mdash;you are already a Gapminder Friend. You will just have to sign up (you can use Facebook or similar); solve a task (translate some text, evaluate upcoming material, or simply spread the word); and voilà, you have become an Ignorance Fighter. Gapminder is a non-profit foundation, and we are thankful for every contribution, and keep track who does what to make sure your effort is recognized.'); ?>
+
             <p><?php echo app()->renderPageLink(t('app', 'Read more about Gapminder...'), 'about'); ?></p>
         </div>
     </section>

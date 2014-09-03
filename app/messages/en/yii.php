@@ -17,5 +17,5 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  '{class} does not have relation "{name}".' => '',
+    '{class} does not have relation "{name}".' => '',
 );

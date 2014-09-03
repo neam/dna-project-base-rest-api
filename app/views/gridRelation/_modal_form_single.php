@@ -7,10 +7,9 @@ $this->beginWidget('\TbModal', array('id' => $modalId));
     <script>
         $(document).ready(function () {
             // Enables checkbox click from whole tr row:
-            $('#<?php echo $modalId; ?>').on('click', 'td', function(e){
+            $('#<?php echo $modalId; ?>').on('click', 'td', function (e) {
                 var cb = $(this).parent().find('input').get(0);
-                if(e.target != cb)
-                {
+                if (e.target != cb) {
                     $('.modal input[type=checkbox]').attr('checked', false);
                     cb.checked = !cb.checked;
                 }
@@ -60,7 +59,7 @@ $this->beginWidget('\TbModal', array('id' => $modalId));
         <?php
         $allRelated = new Item('search');
         $allRelated->unsetAttributes();
-        $allRelated->setAttribute("model_class",$toType);
+        $allRelated->setAttribute("model_class", $toType);
         if (isset($_GET["Item"])) {
             $allRelated->attributes = $_GET["Item"];
         }

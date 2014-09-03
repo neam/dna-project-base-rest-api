@@ -9,7 +9,7 @@
             <small><?php echo $this->getViewActionLabel(); ?></small>
         <?php endif; ?>
     </h1>
-    
+
     <b><?php echo CHtml::encode($model->getAttributeLabel('id')); ?>:</b>
     <?php echo CHtml::link(CHtml::encode($model->id), array('waffleUnit/view', 'id' => $model->id)); ?>
     <br/>

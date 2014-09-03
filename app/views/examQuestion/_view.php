@@ -2,12 +2,12 @@
 /* @var ExamQuestionController|WorkflowUiControllerTrait $this */
 /* @var ExamQuestion|ItemTrait $data */
 ?>
-<div class="admin-container hide">
-    <?php echo TbHtml::link(
-        '<i class="glyphicon-eye-open"></i> ' . Yii::t('model', 'View {model}', array('{model}' => Yii::t('model', 'Exam Question'))),
-        array('examQuestion/view', 'id' => $data->id), array('class' => 'btn')
-    ); ?>
-</div>
+    <div class="admin-container hide">
+        <?php echo TbHtml::link(
+            '<i class="glyphicon-eye-open"></i> ' . Yii::t('model', 'View {model}', array('{model}' => Yii::t('model', 'Exam Question'))),
+            array('examQuestion/view', 'id' => $data->id), array('class' => 'btn')
+        ); ?>
+    </div>
 <?php $this->widget(
     'ItemDetails',
     array(
@@ -209,7 +209,8 @@ TODO: If needed, the following attributes can be simply added to the ItemDetails
 <b><?php echo CHtml::encode($data->getAttributeLabel('slug_zh_tw')); ?>:</b>
 <?php echo CHtml::encode($data->slug_zh_tw); ?>
 <br />
-*/ ?>
+*/
+?>
 <?php if (Yii::app()->user->checkAccess('ExamQuestion.*')): ?>
     <div class="admin-container hide">
         <?php echo CHtml::link(

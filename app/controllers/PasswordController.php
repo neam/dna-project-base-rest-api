@@ -142,7 +142,7 @@ class PasswordController extends \nordsoftware\yii_account\controllers\PasswordC
     {
         $tokenModel = $this->loadToken(Module::TOKEN_CHANGE_PASSWORD, $token);
 
-        if ($this->module->hasTokenExpired($tokenModel, 3600/* 1h */)) {
+        if ($this->module->hasTokenExpired($tokenModel, 3600 /* 1h */)) {
             $this->accessDenied();
         }
 

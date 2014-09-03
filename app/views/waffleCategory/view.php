@@ -94,5 +94,6 @@
     <b><?php echo CHtml::encode($model->getAttributeLabel('waffle_category_qa_state_id')); ?>:</b>
     <?php echo CHtml::encode($model->waffle_category_qa_state_id); ?>
     <br />
-    */ ?>
+    */
+    ?>
 </div>

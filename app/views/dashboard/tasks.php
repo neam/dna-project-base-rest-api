@@ -24,7 +24,7 @@
                             <?php foreach ($model->groupHasAccounts as $gha): ?>
                                 <li>
                                     <div class="group">
-                                        <strong class="group-name"><?php echo $gha->group->title; ?></strong><br />
+                                        <strong class="group-name"><?php echo $gha->group->title; ?></strong><br/>
                                         <span class="group-role"><?php echo $gha->role->title; ?></span>
                                     </div>
                                 </li>
@@ -54,57 +54,57 @@
     <?php endif; ?>
     <div class="dashboard-tasks-container">
         <?php if (Yii::app()->user->isTranslator && empty(Yii::app()->user->translatableLanguages)): ?>
-        <div>
-            <div class="tasks-top-bar">
-                <div class="top-bar-title">
-                    <h2 class="tasks-heading"><?php echo Yii::t('app', 'Required tasks'); ?></h2>
+            <div>
+                <div class="tasks-top-bar">
+                    <div class="top-bar-title">
+                        <h2 class="tasks-heading"><?php echo Yii::t('app', 'Required tasks'); ?></h2>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="tasks">
-                    <ul class="tasks-list">
-                        <div class="list-items">
-                            <li class="tasks-list-item">
-                                <div class="task">
-                                    <div class="task-thumbnail">
-                                        <div class="thumbnail-container">
-                                            <img src="http://placehold.it/210x120" alt="task placeholder">
+                <div class="row">
+                    <div class="tasks">
+                        <ul class="tasks-list">
+                            <div class="list-items">
+                                <li class="tasks-list-item">
+                                    <div class="task">
+                                        <div class="task-thumbnail">
+                                            <div class="thumbnail-container">
+                                                <img src="http://placehold.it/210x120" alt="task placeholder">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="task-info">
-                                        <div class="task-top-bar">
-                                            <div class="task-action-text">
+                                        <div class="task-info">
+                                            <div class="task-top-bar">
+                                                <div class="task-action-text">
                                             <span class="action-heading">
                                                 <?php echo Yii::t('app', 'Complete your profile'); ?>
                                             </span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="task-title">
-                                            <h3 class="task-heading">
-                                                <?php echo Yii::t('app', 'You need to have at least one language set in your profile before you can start contributing.'); ?>
-                                            </h3>
-                                        </div>
-                                        <div class="task-bottom-bar">
-                                            <div class="task-progress">&nbsp;</div>
-                                            <div class="task-actions">
-                                                <?php echo TbHtml::linkButton(
-                                                    Yii::t('app', 'Go to profile'),
-                                                    array(
-                                                        'color' => TbHtml::BUTTON_COLOR_PRIMARY,
-                                                        'url' => $this->createUrl('/profile/edit', array('returnUrl' => '/dashboard/tasks')),
-                                                    )
-                                                ); ?>
+                                            <div class="task-title">
+                                                <h3 class="task-heading">
+                                                    <?php echo Yii::t('app', 'You need to have at least one language set in your profile before you can start contributing.'); ?>
+                                                </h3>
+                                            </div>
+                                            <div class="task-bottom-bar">
+                                                <div class="task-progress">&nbsp;</div>
+                                                <div class="task-actions">
+                                                    <?php echo TbHtml::linkButton(
+                                                        Yii::t('app', 'Go to profile'),
+                                                        array(
+                                                            'color' => TbHtml::BUTTON_COLOR_PRIMARY,
+                                                            'url' => $this->createUrl('/profile/edit', array('returnUrl' => '/dashboard/tasks')),
+                                                        )
+                                                    ); ?>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </li>
-                        </div>
-                    </ul>
+                                </li>
+                            </div>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-        <hr/>
+            <hr/>
         <?php endif; ?>
         <?php $this->widget(
             'app.widgets.DashboardTaskList',

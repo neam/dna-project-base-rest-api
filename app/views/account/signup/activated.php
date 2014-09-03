@@ -10,6 +10,7 @@
             <h2 class="heading-small"><?php echo Yii::t('app', 'Congratulations!'); ?></h2>
             <?php // NOTE! parts of the following text is used by acceptance tests to test activation success. ?>
             <p><?php echo Yii::t('app', 'You have successfully become a member of the Gapminder community! Click on the link below to sign in.'); ?></p>
+
             <div class="page-actions">
                 <?php echo TbHtml::linkButton(
                     Yii::t('app', 'Sign In'),

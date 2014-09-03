@@ -116,7 +116,8 @@ class SiteController extends Controller
         }
     }
 
-    public function actionSleeper() {
+    public function actionSleeper()
+    {
 
         sleep(30);
         die("I woke up after 30 seconds");

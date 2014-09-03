@@ -4,107 +4,110 @@
 /* @var AppActiveForm|TbActiveForm $form */
 ?>
 <div class="profile-controller edit-action">
-    <?php $form = $this->beginWidget('\AppActiveForm', array(
-        'id' => 'profile-form',
-        'enableAjaxValidation' => true,
-        'clientOptions' => array(
-            'validateOnChange' => true,
-            'validateOnType' => false,
-            'validateOnSubmit' => true,
-        ),
-        'layout' => TbHtml::FORM_LAYOUT_VERTICAL,
-        'htmlOptions' => array(
-            'class' => 'dirtyforms',
-        ),
-    )); ?>
-    <section class="profile-summary">
-        <div class="summary-picture">
-            <?php echo $model->profile->renderPicture(); ?>
+<?php $form = $this->beginWidget('\AppActiveForm', array(
+    'id' => 'profile-form',
+    'enableAjaxValidation' => true,
+    'clientOptions' => array(
+        'validateOnChange' => true,
+        'validateOnType' => false,
+        'validateOnSubmit' => true,
+    ),
+    'layout' => TbHtml::FORM_LAYOUT_VERTICAL,
+    'htmlOptions' => array(
+        'class' => 'dirtyforms',
+    ),
+)); ?>
+<section class="profile-summary">
+    <div class="summary-picture">
+        <?php echo $model->profile->renderPicture(); ?>
+    </div>
+    <div class="summary-info">
+        <h1 class="summary-heading"><?php echo $model->profile->fullName; ?></h1>
+        <span
+            class="summary-lead"><?php echo Yii::t('app', 'Gapminder Member'); // TODO: Get appropriate title. ?></span>
+        <span class="summary-badges">* * *</span>
+    </div>
+    <div class="summary-role hidden-xs hidden-sm">
+        <?php // TODO: Roles. ?>
+    </div>
+</section>
+<section class="personal-information">
+    <h2 class="profile-section-heading"><?php echo Yii::t('app', 'Personal Information'); ?></h2>
+
+    <div class="profile-row">
+        <div class="profile-col-4">
+            <?php echo $form->textFieldControlGroup($model->profile, 'first_name', array('maxlength' => 255, 'class' => 'span9')); ?>
+            <?php echo $form->textFieldControlGroup($model->profile, 'last_name', array('maxlength' => 255, 'class' => 'span9')); ?>
+            <?php echo $form->textFieldControlGroup($model->profile, 'website', array('maxlength' => 255, 'class' => 'span9')); ?>
         </div>
-        <div class="summary-info">
-            <h1 class="summary-heading"><?php echo $model->profile->fullName; ?></h1>
-            <span class="summary-lead"><?php echo Yii::t('app', 'Gapminder Member'); // TODO: Get appropriate title. ?></span>
-            <span class="summary-badges">* * *</span>
+        <div class="profile-col-4">
+            <?php echo $form->textFieldControlGroup(
+                $model,
+                'username',
+                array(
+                    'class' => 'span9',
+                    'maxlength' => 255,
+                )
+            ); ?>
+            <?php echo $form->textFieldControlGroup($model->profile, 'lives_in', array('maxlength' => 255, 'class' => 'span9')); ?>
+            <?php echo $form->textFieldControlGroup($model, 'email', array('maxlength' => 255, 'class' => 'span9')); ?>
         </div>
-        <div class="summary-role hidden-xs hidden-sm">
-            <?php // TODO: Roles. ?>
+        <div class="profile-col-4">
+            <?php echo $form->textAreaControlGroup(
+                $model->profile,
+                'about',
+                array(
+                    'ControlGroups' => 6,
+                    'cols' => 50,
+                    'class' => 'profile-about-field',
+                )
+            ); ?>
         </div>
-    </section>
-    <section class="personal-information">
-        <h2 class="profile-section-heading"><?php echo Yii::t('app', 'Personal Information'); ?></h2>
-        <div class="profile-row">
-            <div class="profile-col-4">
-                <?php echo $form->textFieldControlGroup($model->profile, 'first_name', array('maxlength' => 255, 'class' => 'span9')); ?>
-                <?php echo $form->textFieldControlGroup($model->profile, 'last_name', array('maxlength' => 255, 'class' => 'span9')); ?>
-                <?php echo $form->textFieldControlGroup($model->profile, 'website', array('maxlength' => 255, 'class' => 'span9')); ?>
-            </div>
-            <div class="profile-col-4">
-                <?php echo $form->textFieldControlGroup(
-                    $model,
-                    'username',
+    </div>
+    <div class="profile-row">
+        <div class="profile-col-4">
+            <?php echo $form->select2ControlGroup(
+                $model->profile,
+                'picture_media_id',
+                $model->profile->getPictureOptions(),
+                array(
+                    'empty' => Yii::t('app', 'None'),
+                    'thumbnails' => true,
+                )
+            ); ?>
+        </div>
+        <div class="profile-col-4">
+            <label class="control-label"><?php echo Yii::t('account', '&nbsp;'); ?></label>
+
+            <div>
+                <?php echo TbHtml::button(
+                    Yii::t('app', 'Upload'),
                     array(
-                        'class' => 'span9',
-                        'maxlength' => 255,
+                        'block' => true,
+                        'class' => 'upload-btn',
+                        'data-toggle' => 'modal',
+                        'data-target' => '#' . $form->id . '-modal',
                     )
                 ); ?>
-                <?php echo $form->textFieldControlGroup($model->profile, 'lives_in', array('maxlength' => 255, 'class' => 'span9')); ?>
-                <?php echo $form->textFieldControlGroup($model, 'email', array('maxlength' => 255, 'class' => 'span9')); ?>
-            </div>
-            <div class="profile-col-4">
-                <?php echo $form->textAreaControlGroup(
-                    $model->profile,
-                    'about',
-                    array(
-                        'ControlGroups' => 6,
-                        'cols' => 50,
-                        'class' => 'profile-about-field',
-                    )
-                ); ?>
             </div>
         </div>
-        <div class="profile-row">
-            <div class="profile-col-4">
-                <?php echo $form->select2ControlGroup(
-                    $model->profile,
-                    'picture_media_id',
-                    $model->profile->getPictureOptions(),
-                    array(
-                        'empty' => Yii::t('app', 'None'),
-                        'thumbnails' => true,
-                    )
-                ); ?>
-            </div>
-            <div class="profile-col-4">
-                <label class="control-label"><?php echo Yii::t('account', '&nbsp;'); ?></label>
-                <div>
-                    <?php echo TbHtml::button(
-                        Yii::t('app', 'Upload'),
-                        array(
-                            'block' => true,
-                            'class' => 'upload-btn',
-                            'data-toggle' => 'modal',
-                            'data-target' => '#' . $form->id . '-modal',
-                        )
-                    ); ?>
-                </div>
-            </div>
+    </div>
+    <?php $this->renderPartial(
+        '//p3Media/_modal_form',
+        array(
+            'formId' => $form->id,
+            'inputSelector' => "#Profile_picture_media_id",
+            'model' => new P3Media(),
+            'pk' => 'id',
+            'field' => 'itemLabel',
+        )
+    ); ?>
+    <div class="profile-row">
+        <div class="profile-col-12">
+            <?php echo $form->checkBoxControlGroup($model->profile, 'others_may_contact_me'); ?>
         </div>
-        <?php $this->renderPartial(
-            '//p3Media/_modal_form',
-            array(
-                'formId' => $form->id,
-                'inputSelector' => "#Profile_picture_media_id",
-                'model' => new P3Media(),
-                'pk' => 'id',
-                'field' => 'itemLabel',
-            )
-        ); ?>
-        <div class="profile-row">
-            <div class="profile-col-12">
-                <?php echo $form->checkBoxControlGroup($model->profile, 'others_may_contact_me'); ?>
-            </div>
-            <div class="profile-col-12">
-                <?php /*
+        <div class="profile-col-12">
+            <?php /*
                 <?php echo TbHtml::linkButton(
                     Yii::t('account', 'Change password'),
                     array(
@@ -113,48 +116,49 @@
                         'url' => array('user/profile/changepassword', 'returnUrl' => Yii::app()->request->url),
                     )
                 ); ?>
-                */ ?>
-            </div>
+                */
+            ?>
         </div>
-    </section>
-    <section class="profile-languages">
-        <div class="profile-row">
-            <div class="profile-col-12">
-                <h2 class="profile-section-heading"><?php echo Yii::t('app', 'Languages'); ?></h2>
-            </div>
-            <div class="profile-col-4">
-                <?php echo $form->select2ControlGroup(
-                    $model->profile,
-                    'language1',
-                    Html::getLanguages(),
-                    array(
-                        'empty' => Yii::t('app', 'None'),
-                    )
-                ); ?>
-            </div>
-            <div class="profile-col-4">
-                <?php echo $form->select2ControlGroup(
-                    $model->profile,
-                    'language2',
-                    Html::getLanguages(),
-                    array(
-                        'empty' => Yii::t('app', 'None'),
-                    )
-                ); ?>
-            </div>
-            <div class="profile-col-4">
-                <?php echo $form->select2ControlGroup(
-                    $model->profile,
-                    'language3',
-                    Html::getLanguages(),
-                    array(
-                        'empty' => Yii::t('app', 'None'),
-                    )
-                ); ?>
-            </div>
+    </div>
+</section>
+<section class="profile-languages">
+    <div class="profile-row">
+        <div class="profile-col-12">
+            <h2 class="profile-section-heading"><?php echo Yii::t('app', 'Languages'); ?></h2>
         </div>
-    </section>
-    <?php /*
+        <div class="profile-col-4">
+            <?php echo $form->select2ControlGroup(
+                $model->profile,
+                'language1',
+                Html::getLanguages(),
+                array(
+                    'empty' => Yii::t('app', 'None'),
+                )
+            ); ?>
+        </div>
+        <div class="profile-col-4">
+            <?php echo $form->select2ControlGroup(
+                $model->profile,
+                'language2',
+                Html::getLanguages(),
+                array(
+                    'empty' => Yii::t('app', 'None'),
+                )
+            ); ?>
+        </div>
+        <div class="profile-col-4">
+            <?php echo $form->select2ControlGroup(
+                $model->profile,
+                'language3',
+                Html::getLanguages(),
+                array(
+                    'empty' => Yii::t('app', 'None'),
+                )
+            ); ?>
+        </div>
+    </div>
+</section>
+<?php /*
     <section class="account-history">
         <h2 class="profile-section-heading"><?php echo Yii::t('app', 'History'); ?></h2>
         <?php echo TbHtml::linkButton(
@@ -164,32 +168,33 @@
             )
         ); ?>
     </section>
-    */ ?>
-    <section class="profile-actions">
-        <?php echo TbHtml::linkButton(
-            Yii::t('app', 'Cancel'),
-            array(
-                'url' => !empty(Yii::app()->request->returnUrl)
-                        ? Yii::app()->request->returnUrl
-                        : array('/dashboard/index'),
-                'color' => TbHtml::BUTTON_COLOR_LINK,
-            )
-        ); ?>
-        <?php echo TbHtml::linkButton(
-            Yii::t('app', 'Change password'),
-            array(
-                'url' => array('/account/password/exchange'),
-                'color' => TbHtml::BUTTON_COLOR_LINK,
-            )
-        ); ?>
-        <?php echo TbHtml::submitButton(
-            Yii::t('model', 'Save'),
-            array(
-                'color' => TbHtml::BUTTON_COLOR_PRIMARY,
-            )
-        ); ?>
-    </section>
-    <?php /*
+    */
+?>
+<section class="profile-actions">
+    <?php echo TbHtml::linkButton(
+        Yii::t('app', 'Cancel'),
+        array(
+            'url' => !empty(Yii::app()->request->returnUrl)
+                    ? Yii::app()->request->returnUrl
+                    : array('/dashboard/index'),
+            'color' => TbHtml::BUTTON_COLOR_LINK,
+        )
+    ); ?>
+    <?php echo TbHtml::linkButton(
+        Yii::t('app', 'Change password'),
+        array(
+            'url' => array('/account/password/exchange'),
+            'color' => TbHtml::BUTTON_COLOR_LINK,
+        )
+    ); ?>
+    <?php echo TbHtml::submitButton(
+        Yii::t('model', 'Save'),
+        array(
+            'color' => TbHtml::BUTTON_COLOR_PRIMARY,
+        )
+    ); ?>
+</section>
+<?php /*
     <?php $this->renderPartial('profile/_flowbar', array('model' => $model)); ?>
     <div class="after-flowbar">
         <div class="alerts">
@@ -282,6 +287,7 @@
                 ); ?>
             </div>
         </div>
-        */ ?>
-    <?php $this->endWidget(); ?>
+        */
+?>
+<?php $this->endWidget(); ?>
 </div>

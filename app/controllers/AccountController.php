@@ -78,9 +78,9 @@ class AccountController extends Controller
                     'addToGroup',
                     'removeFromGroup',
                 ),
-                'expression' => function() {
-                    return Yii::app()->user->checkAccess('GrantPermission');
-                }
+                'expression' => function () {
+                        return Yii::app()->user->checkAccess('GrantPermission');
+                    }
             ),
             array(
                 'deny',
@@ -208,9 +208,9 @@ class AccountController extends Controller
                     'header' => $roleLabel,
                     'name' => $roleName,
                     'toggleAction' => 'account/toggleRole',
-                    'value' => function($data) use ($roleName) {
-                        return $data->$roleName;
-                    },
+                    'value' => function ($data) use ($roleName) {
+                            return $data->$roleName;
+                        },
                 );
             }
         }

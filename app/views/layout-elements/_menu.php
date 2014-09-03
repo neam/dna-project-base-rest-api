@@ -37,8 +37,7 @@ if (!empty($this->homeBrandLabel)) {
                 'htmlOptions' => array(
                     'class' => 'navbar-left',
                 ),
-                'items' => array(
-                ),
+                'items' => array(),
             ),
             array(
                 'class' => '\TbNav',
@@ -60,8 +59,8 @@ if (!empty($this->homeBrandLabel)) {
                     ),
                     array(
                         'label' => isset(user()->model->profile->picture_media_id)
-                            ? user()->renderPicture('user-profile-picture-mini') . user()->name
-                            : user()->name,
+                                ? user()->renderPicture('user-profile-picture-mini') . user()->name
+                                : user()->name,
                         'visible' => !Yii::app()->user->isGuest,
                         'id' => 'accountMenuLink',
                         'items' => array(

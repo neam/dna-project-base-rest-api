@@ -169,7 +169,7 @@ class WaffleController extends AppRestController
         $response->sources = $translatedCommand->queryAll();
         */
 
-        $this->sendResponse(200, (array)$response);
+        $this->sendResponse(200, (array) $response);
     }
 
     /**
@@ -284,6 +284,6 @@ class WaffleController extends AppRestController
             $response->sources[] = $translatedDataSource;
         }
 
-        $this->sendResponse(200, (array)$response);
+        $this->sendResponse(200, (array) $response);
     }
 }

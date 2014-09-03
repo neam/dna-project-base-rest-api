@@ -11,7 +11,7 @@
 <?php $this->widget(
     'ItemDetails',
     array(
-        'model'=> $data,
+        'model' => $data,
         'attributes' => array(
             'id',
             'version',
@@ -211,7 +211,8 @@
 <?php echo CHtml::encode($data->processed_media_id_zh_tw); ?>
 <br />
 
-*/ ?>
+*/
+?>
 <?php if (Yii::app()->user->checkAccess('PoFile.*')): ?>
     <div class="admin-container hide">
         <?php echo TbHtml::link(

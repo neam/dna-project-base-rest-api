@@ -17,7 +17,8 @@
         <?php echo Yii::t('app', 'No markup to render'); ?>
     </div>
 <?php
-endif; ?>
+endif;
+?>
 
 <?php if ($this->actionIsEvaluate()): ?>
     <?php $this->widget(

@@ -56,7 +56,9 @@
                 </div>
                 <div class="container-right hidden-xs">
                     <p><?php echo Yii::t('app', 'Thank you for deciding to join the Gapminder community!'); ?></p>
+
                     <p><?php echo Yii::t('app', 'By joining, you will get'); ?></p>
+
                     <div class="benefits">
                         <div class="row">
                             <div class="benefit">

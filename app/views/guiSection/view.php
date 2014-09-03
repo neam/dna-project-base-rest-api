@@ -99,5 +99,6 @@
     <b><?php echo CHtml::encode($model->getAttributeLabel('gui_section_qa_state_id')); ?>:</b>
     <?php echo CHtml::encode($model->gui_section_qa_state_id); ?>
     <br />
-    */ ?>
+    */
+    ?>
 </div>

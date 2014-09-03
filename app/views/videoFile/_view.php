@@ -2,31 +2,31 @@
 /* @var VideoFileController|WorkflowUiControllerTrait $this */
 /* @var VideoFile $data */
 ?>
-<div class="view">
-    <?php $this->widget('VideoPlayer', array('videoFile' => $data)); ?>
-    <?php if ($this->actionIsEvaluate()): ?>
-        <?php $this->widget(
-            'ModalCommentsWidget',
-            array(
-                'model' => $data,
-                'attribute' => 'clip',
-            )
-        ); ?>
-    <?php endif; ?>
+    <div class="view">
+        <?php $this->widget('VideoPlayer', array('videoFile' => $data)); ?>
+        <?php if ($this->actionIsEvaluate()): ?>
+            <?php $this->widget(
+                'ModalCommentsWidget',
+                array(
+                    'model' => $data,
+                    'attribute' => 'clip',
+                )
+            ); ?>
+        <?php endif; ?>
 
-    <?php if (Yii::app()->user->checkAccess('VideoFile.*')): ?>
-        <div class="admin-container hide">
-            <?php echo TbHtml::link('<i class="glyphicon-edit"></i> ' . Yii::t('model', 'Edit {model}', array('{model}' => Yii::t('model', 'Video File'))), array('videoFile/continueAuthoring', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
-        </div>
-    <?php endif; ?>
+        <?php if (Yii::app()->user->checkAccess('VideoFile.*')): ?>
+            <div class="admin-container hide">
+                <?php echo TbHtml::link('<i class="glyphicon-edit"></i> ' . Yii::t('model', 'Edit {model}', array('{model}' => Yii::t('model', 'Video File'))), array('videoFile/continueAuthoring', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
+            </div>
+        <?php endif; ?>
 
-    <?php if (Yii::app()->user->checkAccess('Developer')): ?>
-        <div class="admin-container hide">
-            <h3>Developer access</h3>
-            <?php echo TbHtml::link('<i class="glyphicon-edit"></i> ' . Yii::t('model', 'Update {model}', array('{model}' => Yii::t('model', 'Video File'))), array('videoFile/update', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
-        </div>
-    <?php endif; ?>
-</div>
+        <?php if (Yii::app()->user->checkAccess('Developer')): ?>
+            <div class="admin-container hide">
+                <h3>Developer access</h3>
+                <?php echo TbHtml::link('<i class="glyphicon-edit"></i> ' . Yii::t('model', 'Update {model}', array('{model}' => Yii::t('model', 'Video File'))), array('videoFile/update', 'id' => $data->id, 'returnUrl' => Yii::app()->request->url), array('class' => 'btn')); ?>
+            </div>
+        <?php endif; ?>
+    </div>
 
 <?php // TODO: Refactor this. ?>
 <?php if (isset($step)): ?>

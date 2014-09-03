@@ -5,6 +5,7 @@
 <div class="site-controller index-action">
     <div class="alert alert-info">
         <h4><?php print Yii::t('app', 'Welcome to Gapminder Content Management System (CMS)'); ?></h4>
+
         <p><?php print Yii::t('app', 'We are developing new tools for writing, publishing and translating material. This web site is not intended for public use yet, but feel free to snoop around.'); ?></p>
         <?php if (Yii::app()->user->isGuest): ?>
             <p><?php print Yii::t('app', 'To help out reviewing and/or translating content, {login-link}', array('{login-link}' => CHtml::link(Yii::t('app', 'login or sign-up here'), Yii::app()->user->loginUrl))) ?></p>

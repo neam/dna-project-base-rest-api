@@ -14,6 +14,7 @@
         </div>
         <div class="picture-upload">
             <label class="control-label"><?php echo Yii::t('account', '&nbsp;'); ?></label>
+
             <div>
                 <?php echo TbHtml::button(
                     Yii::t('app', 'Upload new'),
@@ -38,6 +39,7 @@
         )
     ); ?>
     <h3 class="fields-heading"><?php echo Yii::t('app', 'Languages'); ?> <?php echo Html::hintTooltip(Yii::t('app', 'Please list the languages you can help us translate into (sorted by proficiency).')); ?></h3>
+
     <div class="row-fluid">
         <?php $this->widget('frontend.widgets.SelectProfileLanguage.SelectProfileLanguage', array(
             'model' => $model,
@@ -70,6 +72,7 @@
         <div class="password">
             <div class="form-group">
                 <label class="control-label"><?php echo Yii::t('account', '&nbsp;'); ?></label>
+
                 <div>
                     <?php echo TbHtml::linkButton(
                         Yii::t('account', 'Change password'),

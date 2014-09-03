@@ -4,7 +4,7 @@ $noItemsLabel = Yii::t('app', 'No {models}', array('{models}' => $label));
 $fromLabel = Yii::t('app', $model->getModelLabel(), 1);
 ?>
 <?php if ($items): ?>
-    <h3><?php echo Yii::t("model", "List of ". $label ." in this ". lcfirst($fromLabel)); ?></h3>
+    <h3><?php echo Yii::t("model", "List of " . $label . " in this " . lcfirst($fromLabel)); ?></h3>
     <ul>
         <?php foreach ($items as $item):
             if (get_class($item) == "Node") {
@@ -34,7 +34,7 @@ $fromLabel = Yii::t('app', $model->getModelLabel(), 1);
                 <?php
                 $this->widget("\TbButton", array(
                     "label" => Yii::t("model", "Remove {$toLabel} from {$fromLabel}"),
-                    "url" => array("deleteEdge", "id" => $model->{$model->tableSchema->primaryKey}, "from" => $model->node()->id, "to" => $realItem->node_id,  "relation" => $relation, "returnUrl" => Yii::app()->request->url),
+                    "url" => array("deleteEdge", "id" => $model->{$model->tableSchema->primaryKey}, "from" => $model->node()->id, "to" => $realItem->node_id, "relation" => $relation, "returnUrl" => Yii::app()->request->url),
                     "size" => "small",
                     "color" => TbHtml::BUTTON_COLOR_DANGER,
                 ));

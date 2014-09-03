@@ -219,7 +219,8 @@
 <b><?php echo CHtml::encode($data->getAttributeLabel('slug_zh_tw')); ?>:</b>
 <?php echo CHtml::encode($data->slug_zh_tw); ?>
 <br />
-*/ ?>
+*/
+?>
 <?php if (Yii::app()->user->checkAccess('DataSource.*')): ?>
     <div class="admin-container hide">
         <?php echo TbHtml::link(

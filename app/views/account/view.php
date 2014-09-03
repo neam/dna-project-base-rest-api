@@ -7,7 +7,7 @@
 <div class="account-controller view-action">
     <h1>
         <?php echo $model->username; ?>
-        <small><?php echo Yii::t('model', 'account') ;?></small>
+        <small><?php echo Yii::t('model', 'account'); ?></small>
     </h1>
 
     <h2><?php echo Yii::t('admin', 'Permissions'); ?></h2>

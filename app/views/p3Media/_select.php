@@ -100,11 +100,11 @@ $input = $this->widget('\GtcRelation', array(
     </div>
 </div>
 <?php $this->beginClip('modal:' . $formId . '-modal'); ?>
-    <?php $this->renderPartial('//p3Media/_modal_form', array(
-        'formId' => $formId,
-        'inputSelector' => "#{$modelClass}_{$attribute}",
-        'model' => new P3Media,
-        'pk' => 'id',
-        'field' => 'itemLabel',
-    )); ?>
+<?php $this->renderPartial('//p3Media/_modal_form', array(
+    'formId' => $formId,
+    'inputSelector' => "#{$modelClass}_{$attribute}",
+    'model' => new P3Media,
+    'pk' => 'id',
+    'field' => 'itemLabel',
+)); ?>
 <?php $this->endClip(); ?>

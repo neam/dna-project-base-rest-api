@@ -17,9 +17,9 @@ $sections = $this->chapterSections($model);
 
     <?php // TODO: Refactor this inline JavaScript. ?>
     <script>
-        $(function() {
-            $(document).ready(function() {
-                $('.bs-docs-sidebar li a').click(function(event) {
+        $(function () {
+            $(document).ready(function () {
+                $('.bs-docs-sidebar li a').click(function (event) {
                     event.preventDefault();
                 });
 
@@ -34,7 +34,7 @@ $sections = $this->chapterSections($model);
 
                 $('.bs-docs-sidebar li a').smoothScroll({
                     offset: -57,
-                    afterScroll: function(e) {
+                    afterScroll: function (e) {
                         // Necessary to do manually
                         changeHashWithoutScrolling(e.scrollTarget);
                     }
@@ -55,7 +55,7 @@ $sections = $this->chapterSections($model);
                  }, 100);
                  */
 
-                $('#P3WidgetContainerShowControls').click(function() {
+                $('#P3WidgetContainerShowControls').click(function () {
                     $('.admin-container').toggleClass('hide show', 0);
                 });
             });

@@ -17,7 +17,7 @@
                     'color' => TbHtml::BUTTON_COLOR_DANGER,
                     'class' => 'action-button',
                     'submit' => array('delete', 'id' => $model->{$model->tableSchema->primaryKey},
-                    'returnUrl' => (Yii::app()->request->getParam('returnUrl')) ? Yii::app()->request->getParam('returnUrl') : $this->createUrl('admin')),
+                        'returnUrl' => (Yii::app()->request->getParam('returnUrl')) ? Yii::app()->request->getParam('returnUrl') : $this->createUrl('admin')),
                     'confirm' => Yii::t('model', 'Do you want to delete this item?'),
                 )
             ); ?>
