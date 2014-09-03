@@ -211,6 +211,11 @@ $gcmsConfig = array(
         'messages' => array(
             'class' => 'CPhpMessageSource',
         ),
+        // Yii core static messages
+        'coreMessages' => array(
+            'basePath' => null,
+            'forceTranslation' => true, // This is necessary to be able to override messages in the default language (en_us currently)
+        ),
         // Db messages - component 1 - used for output in views
         'displayedMessages' => array(
             'class' => 'CDbMessageSource',
