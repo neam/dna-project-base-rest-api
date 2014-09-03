@@ -66,8 +66,8 @@ if (!empty($this->homeBrandLabel)) {
                         'id' => 'accountMenuLink',
                         'items' => array(
                             array(
-                                'label' => Yii::t('app', 'Dashboard'),
-                                'url' => array('/dashboard/index'),
+                                'label' => Yii::t('app', 'My Tasks'),
+                                'url' => array('/dashboard/tasks'),
                                 'visible' => !Yii::app()->user->isGuest
                             ),
                             /*
