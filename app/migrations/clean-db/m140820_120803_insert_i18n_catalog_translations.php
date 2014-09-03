@@ -5,22 +5,6 @@ class m140820_120803_insert_i18n_catalog_translations extends EDbMigration
     public function up()
     {
 
-        $this->insert(
-            'i18n_catalog',
-            array(
-                'id' => 1,
-                'version' => 1,
-                'title' => 'i18n Catalog Number 1 for tests',
-                'about' => 'This is for testing only',
-                'i18n_category' => 'foo',
-                'po_contents' => '',
-                'slug_en' => 'i18n-catalog-number-1-for-tests',
-                'created' => '2014-03-26 13:07:02',
-                'modified' => '2014-08-28 20:30:57',
-                'owner_id' => 1,
-            )
-        );
-
         $this->update(
             'i18n_catalog',
             array(
