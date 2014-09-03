@@ -57,14 +57,13 @@ class PasswordController extends \nordsoftware\yii_account\controllers\PasswordC
 
             if ($model->validate()) {
                 $accountClass = $this->module->getClassName(Module::CLASS_ACCOUNT);
-
                 $transaction = Yii::app()->db->beginTransaction();
 
                 try {
-
                     /** @var \nordsoftware\yii_account\models\ar\Account $account */
                     $account = \CActiveRecord::model($accountClass)->findByAttributes(array('email' => $model->email));
 
+                    /** @var \nordsoftware\yii_account\models\ar\AccountToken $token */
                     $token = $this->module->generateToken(Module::TOKEN_RESET_PASSWORD, $account->id);
 
                     $resetUrl = $this->createAbsoluteUrl('/account/password/reset', array('token' => $token));
@@ -73,8 +72,9 @@ class PasswordController extends \nordsoftware\yii_account\controllers\PasswordC
                     $fromName = Yii::t('app', 'Gapminder Community');
 
                     $config = array();
-
                     $config['from'] = array($fromEmail => $fromName);
+
+                    $this->emailSubject = Yii::t('app', 'Reset your Gapminder password');
 
                     $this->module->sendMail(
                         $account->email,
@@ -93,14 +93,10 @@ class PasswordController extends \nordsoftware\yii_account\controllers\PasswordC
                     $transaction->commit();
 
                     $this->redirect(array('sent'));
-
                 } catch (Exception $e) {
-
                     $transaction->rollback();
                     throw new Exception('Password reset failed [' . $e->getMessage() . ']', 500, $e);
-
                 }
-
             }
         }
 
