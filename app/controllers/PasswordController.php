@@ -73,11 +73,8 @@ class PasswordController extends \nordsoftware\yii_account\controllers\PasswordC
                     $fromName = Yii::t('app', 'Gapminder Community');
 
                     $config = array();
-                    $config['from'] = $fromEmail;
 
-                    $config['headers'] = array();
-                    $config['headers'][] = 'From: ' . "$fromName <$fromEmail>";
-                    $config['headers'][] = 'Reply-To: ' . "$fromName <$fromEmail>";
+                    $config['from'] = array($fromEmail => $fromName);
 
                     $this->module->sendMail(
                         $account->email,
