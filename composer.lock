@@ -329,12 +329,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/crisu83/yiistrap.git",
-                "reference": "730fd9cde214d7ff9115cc36a025e54b3e216c94"
+                "reference": "7bd82a12ff1b541abc21049e93e761bc89656b86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/crisu83/yiistrap/zipball/730fd9cde214d7ff9115cc36a025e54b3e216c94",
-                "reference": "730fd9cde214d7ff9115cc36a025e54b3e216c94",
+                "url": "https://api.github.com/repos/crisu83/yiistrap/zipball/7bd82a12ff1b541abc21049e93e761bc89656b86",
+                "reference": "7bd82a12ff1b541abc21049e93e761bc89656b86",
                 "shasum": ""
             },
             "require": {
@@ -382,7 +382,7 @@
                 "bootstrap",
                 "yii"
             ],
-            "time": "2014-08-20 04:38:41"
+            "time": "2014-07-21 11:08:24"
         },
         {
             "name": "crisu83/yiistrap-widgets",
@@ -1088,12 +1088,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-restricted-access.git",
-                "reference": "cdb611f03f10fac8479bc3589854da88232ac298"
+                "reference": "48548c7cc54dec9b381e9a5915766793fc16cdce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-restricted-access/zipball/cdb611f03f10fac8479bc3589854da88232ac298",
-                "reference": "cdb611f03f10fac8479bc3589854da88232ac298",
+                "url": "https://api.github.com/repos/neam/yii-restricted-access/zipball/48548c7cc54dec9b381e9a5915766793fc16cdce",
+                "reference": "48548c7cc54dec9b381e9a5915766793fc16cdce",
                 "shasum": ""
             },
             "require": {
@@ -1123,7 +1123,7 @@
             "keywords": [
                 "yii"
             ],
-            "time": "2014-09-02 13:53:36"
+            "time": "2014-08-13 07:49:21"
         },
         {
             "name": "neam/yii-simplicity-theme",
@@ -1131,12 +1131,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-simplicity-theme.git",
-                "reference": "d4a7b80d83a54e35cb38ae94eca1bc603f79044f"
+                "reference": "cfcbea86f86a35e6f728aeadd9dbbc94fd4b5dfa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-simplicity-theme/zipball/d4a7b80d83a54e35cb38ae94eca1bc603f79044f",
-                "reference": "d4a7b80d83a54e35cb38ae94eca1bc603f79044f",
+                "url": "https://api.github.com/repos/neam/yii-simplicity-theme/zipball/cfcbea86f86a35e6f728aeadd9dbbc94fd4b5dfa",
+                "reference": "cfcbea86f86a35e6f728aeadd9dbbc94fd4b5dfa",
                 "shasum": ""
             },
             "require": {
@@ -1166,7 +1166,7 @@
             "keywords": [
                 "yii"
             ],
-            "time": "2014-08-29 11:27:57"
+            "time": "2014-09-03 09:59:52"
         },
         {
             "name": "neam/yii-workflow-core",
@@ -1174,12 +1174,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-workflow-core.git",
-                "reference": "2b7a75e26abfd6ac0a5b8b2a7c60f45002fe6a3c"
+                "reference": "7bd8f2ddd9f03a49b4c815f1c411a83f008f9e33"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-workflow-core/zipball/2b7a75e26abfd6ac0a5b8b2a7c60f45002fe6a3c",
-                "reference": "2b7a75e26abfd6ac0a5b8b2a7c60f45002fe6a3c",
+                "url": "https://api.github.com/repos/neam/yii-workflow-core/zipball/7bd8f2ddd9f03a49b4c815f1c411a83f008f9e33",
+                "reference": "7bd8f2ddd9f03a49b4c815f1c411a83f008f9e33",
                 "shasum": ""
             },
             "require": {
@@ -1207,7 +1207,7 @@
             "keywords": [
                 "yii"
             ],
-            "time": "2014-08-26 09:45:24"
+            "time": "2014-08-14 05:34:32"
         },
         {
             "name": "neam/yii-workflow-progress-tracking",
@@ -1251,12 +1251,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-workflow-task-list.git",
-                "reference": "b43a641232c743d99c129ba477660a8580b17cea"
+                "reference": "b9879d8ad9f9f6391b170d6f0b2780def63d794b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-workflow-task-list/zipball/b43a641232c743d99c129ba477660a8580b17cea",
-                "reference": "b43a641232c743d99c129ba477660a8580b17cea",
+                "url": "https://api.github.com/repos/neam/yii-workflow-task-list/zipball/b9879d8ad9f9f6391b170d6f0b2780def63d794b",
+                "reference": "b9879d8ad9f9f6391b170d6f0b2780def63d794b",
                 "shasum": ""
             },
             "require": {
@@ -1285,7 +1285,7 @@
             "keywords": [
                 "yii"
             ],
-            "time": "2014-08-13 14:45:39"
+            "time": "2014-09-03 10:01:03"
         },
         {
             "name": "neam/yii-workflow-ui",
