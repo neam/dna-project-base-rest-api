@@ -123,14 +123,18 @@ We group all tests based on how much testing coverage is required, so that build
 
 Note: To run the tests, you need to have a selenium server running locally (see below in readme).
 
-All tests can be run in sequence (for both clean-db and user-generated) by running the `_test.sh` script:
+All tests can be run in sequence (for both clean-db and user-generated) by running the following:
 
-    tests/_test.sh
+    cd tests
+    source _before-test.sh
+    bash _test.sh
 
 It will default to `COVERAGE=full`. To override, set the COVERAGE env var before running the script, for instance:
 
+    cd tests
     export COVERAGE=basic
-    tests/_test.sh
+    source _before-test.sh
+    bash _test.sh
 
 #### Step-by-step
 
