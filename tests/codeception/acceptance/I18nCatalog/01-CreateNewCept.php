@@ -6,6 +6,19 @@ $I->wantTo('create a new i18n catalog');
 
 $I->login('max', 'testtest');
 
+$poContents = <<<EOD
+# The context for chain here is \'metal\' (eg. a metal chain)
+msgctxt "metal"
+msgid "Chain"
+msgstr ""
+
+# The context for chain here is \'restaurant\' (eg. the restaurant chain)
+msgctxt "restaurant"
+msgid "Chain"
+msgstr ""
+
+EOD;
+
 $I->createI18nCatalog(
     array(
         'info' => array(
@@ -13,7 +26,7 @@ $I->createI18nCatalog(
         ),
         'i18n' => array(
             I18nCatalogEditPage::$i18nCategoryField => 'foo-category',
-            I18nCatalogEditPage::$poContentsField => '',
+            I18nCatalogEditPage::$poContentsField => $poContents,
         ),
     )
 );

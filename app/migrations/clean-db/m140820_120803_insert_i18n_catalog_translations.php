@@ -5,23 +5,6 @@ class m140820_120803_insert_i18n_catalog_translations extends EDbMigration
     public function up()
     {
 
-        $this->update(
-            'i18n_catalog',
-            array(
-                'po_contents' => '# The context for chain here is \'metal\' (eg. a metal chain)
-msgctxt "metal"
-msgid "Chain"
-msgstr ""
-
-# The context for chain here is \'restaurant\' (eg. the restaurant chain)
-msgctxt "restaurant"
-msgid "Chain"
-msgstr ""
-'
-            ),
-            'id=1'
-        );
-
         $this->insert(
             'SourceMessage',
             array(
