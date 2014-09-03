@@ -1088,12 +1088,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-restricted-access.git",
-                "reference": "cdb611f03f10fac8479bc3589854da88232ac298"
+                "reference": "3e0aa10c002f185a9835aa843e3833b8b598b05f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-restricted-access/zipball/cdb611f03f10fac8479bc3589854da88232ac298",
-                "reference": "cdb611f03f10fac8479bc3589854da88232ac298",
+                "url": "https://api.github.com/repos/neam/yii-restricted-access/zipball/3e0aa10c002f185a9835aa843e3833b8b598b05f",
+                "reference": "3e0aa10c002f185a9835aa843e3833b8b598b05f",
                 "shasum": ""
             },
             "require": {
@@ -1123,7 +1123,7 @@
             "keywords": [
                 "yii"
             ],
-            "time": "2014-09-02 13:53:36"
+            "time": "2014-09-02 14:49:15"
         },
         {
             "name": "neam/yii-simplicity-theme",
