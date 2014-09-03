@@ -208,6 +208,8 @@ Ensure that you have Java installed and then start [the selenium server](http://
     # if you haven't downloaded the server already
     wget http://selenium-release.storage.googleapis.com/2.42/selenium-server-standalone-2.42.2.jar
 
+    # if you don't have the chromedriver installed, download it from here: http://chromedriver.storage.googleapis.com/index.html?path=2.10/
+
     # start the selenium server
     java -jar selenium-server-standalone-2.42.2.jar
 
