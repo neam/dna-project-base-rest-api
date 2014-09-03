@@ -18,6 +18,7 @@ setenv("TERMS_PAGE_ID", $default = 1, $required = false);
 setenv("ABOUT_PAGE_ID", $default = 2, $required = false);
 setenv("CC_PAGE_ID", $default = 3, $required = false);
 setenv("PRIVACY_POLICY_PAGE_ID", $default = 4, $required = false);
+setenv("HOME_ABOUT_SECTION_ID", $default = 5, $required = false);
 
 // ==== Identity-related constants ====
 

@@ -2688,7 +2688,6 @@ CREATE TABLE `section` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `version` int(11) NOT NULL DEFAULT '1',
   `cloned_from_id` bigint(20) DEFAULT NULL,
-  `page_id` bigint(20) NOT NULL,
   `_title` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `slug_en` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `_menu_label` varchar(255) COLLATE utf8_bin DEFAULT NULL,
@@ -2742,13 +2741,11 @@ CREATE TABLE `section` (
   `slug_fa` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_section_node1_idx` (`node_id`),
-  KEY `fk_section_page1_idx` (`page_id`),
   KEY `section_qa_state_id_fk` (`section_qa_state_id`),
   KEY `fk_section_section1_idx` (`cloned_from_id`),
   KEY `fk_section_account1_idx` (`owner_id`),
   CONSTRAINT `fk_section_account1` FOREIGN KEY (`owner_id`) REFERENCES `account` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_section_node1` FOREIGN KEY (`node_id`) REFERENCES `node` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_section_page1` FOREIGN KEY (`page_id`) REFERENCES `page` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_section_section1` FOREIGN KEY (`cloned_from_id`) REFERENCES `section` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `section_qa_state_id_fk` FOREIGN KEY (`section_qa_state_id`) REFERENCES `section_qa_state` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
