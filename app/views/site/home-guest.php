@@ -1,3 +1,8 @@
+<?php
+/**
+ * @var SiteController $this
+ */
+?>
 <div class="site-controller index-action gapminder-friends">
     <section class="section-wide-primary">
         <div class="gapminder-friends-logo">
@@ -51,7 +56,7 @@
             )); ?>
         </div>
     </section>
-    <section class="section-wide-primary">
+    <section class="section-wide-primary" id="about">
         <div class="container">
             <h2><?php echo t('app', 'About Gapminder Friends'); ?></h2>
 
@@ -60,4 +65,5 @@
             <p><?php echo app()->renderPageLink(t('app', 'Read more about Gapminder...'), 'about'); ?></p>
         </div>
     </section>
+
 </div>

@@ -1,9 +1,9 @@
 <?php
 /**
- * @var DashboardController $this
+ * @var SiteController $this
  */
 ?>
-<div class="dashboard-controller index-action gapminder-friends">
+<div class="site-controller index-action gapminder-friends">
 <section class="section-wide-primary">
     <div class="gapminder-friends-logo">
         <?php echo TbHtml::image(baseUrl('/images/gapminder-friends-large.png')); ?>
