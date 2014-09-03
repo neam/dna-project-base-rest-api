@@ -131,8 +131,10 @@ All tests can be run in sequence (for both clean-db and user-generated) by runni
 
 It will default to `COVERAGE=full`. To override, set the COVERAGE env var before running the script, for instance:
 
+    cd tests
     export COVERAGE=basic
-    tests/_test.sh
+    source _before-test.sh
+    bash _test.sh
 
 #### Step-by-step
 
