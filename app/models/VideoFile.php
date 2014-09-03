@@ -369,8 +369,14 @@ class VideoFile extends BaseVideoFile
 
         if ($includeRelated) {
             $response->related = array();
-            foreach ($this->related as $related) {
-                $response->related[] = $related->item()->getAllAttributes(false);
+            // TODO: Refactor this and the corresponding logic in Snapshot into a yii-relational-graph-db trait or at least ItemTrait
+            foreach ($this->related as $relatedNodes) {
+                try {
+                    $related = $relatedNodes->item();
+                    $response->related[] = $related->getAllAttributes(false);
+                } catch (NodeItemExistsButIsRestricted $e) {
+                    // Ignore restricted nodes
+                }
             }
         }
 

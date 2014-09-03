@@ -77,4 +77,14 @@ class U
         return $return;
     }
 
+    /**
+     * U::inspection(__METHOD__, func_get_args());
+     * @param type $method
+     * @param type $args
+     */
+    static public function inspection($method, $args)
+    {
+        Yii::log($method . " params: " . print_r($args, true), "inspection", $method);
+    }
+
 }

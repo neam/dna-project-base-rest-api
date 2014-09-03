@@ -26,6 +26,11 @@ class I18nCatalog extends BaseI18nCatalog
         parent::init();
     }
 
+    public function getItemLabel()
+    {
+        return (string) !empty($this->title) ? $this->title : "I18n Catalog #" . $this->id;
+    }
+
     public function behaviors()
     {
         return array_merge(
@@ -60,8 +65,9 @@ class I18nCatalog extends BaseI18nCatalog
 
     public function validateFile($attribute)
     {
-        if (is_null($this->pot_import_media_id)) {
-            $this->addError($attribute, Yii::t('app', '!validateFile'));
+        if (!is_null($this->pot_import_media_id)) {
+            // Should not throw an exception or cause an error until we actually have implemented a check of the file to import
+            //$this->addError($attribute, Yii::t('app', '!validateFile'));
         }
     }
 

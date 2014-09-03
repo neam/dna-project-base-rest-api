@@ -36,7 +36,7 @@ env:
         modules:
             config:
                 WebDriver:
-                    url: http://<%= ENV['CMS_HOST'] %>
+                    url: http://<%= ENV['CMS_BASE_URL'] %>
                     browser: 'chrome'
 
     cms-local-chrome-small:
@@ -45,7 +45,7 @@ env:
                 WebHelper:
                     small-screen: true
                 WebDriver:
-                    url: http://<%= ENV['CMS_HOST'] %>
+                    url: http://<%= ENV['CMS_BASE_URL'] %>
                     browser: 'chrome'
                     window_size: 400x800
 
@@ -53,7 +53,7 @@ env:
         modules:
             config:
                 WebDriver:
-                    url: http://<%= ENV['CMS_HOST'] %>
+                    url: http://<%= ENV['CMS_BASE_URL'] %>
                     browser: 'chrome'
                     capabilities:
                         unexpectedAlertBehaviour: 'accept'
@@ -66,7 +66,7 @@ env:
                 WebHelper:
                     small-screen: true
                 WebDriver:
-                    url: http://<%= ENV['CMS_HOST'] %>
+                    url: http://<%= ENV['CMS_BASE_URL'] %>
                     browser: 'chrome'
                     window_size: 400x800
                     capabilities:
@@ -80,7 +80,7 @@ env:
                 WebHelper:
                     small-screen: true
                 WebDriver:
-                    url: http://<%= ENV['CMS_HOST'] %>
+                    url: http://<%= ENV['CMS_BASE_URL'] %>
                     browser: 'chrome'
                     window_size: 400x1200
                     capabilities:
@@ -93,7 +93,7 @@ env:
         modules:
             config:
                 WebDriver:
-                    url: http://<%= ENV['CMS_HOST'] %>
+                    url: http://<%= ENV['CMS_BASE_URL'] %>
                     browser: 'chrome'
                     capabilities:
                         unexpectedAlertBehaviour: 'accept'
@@ -104,7 +104,7 @@ env:
         modules:
             config:
                 WebDriver:
-                    url: http://<%= ENV['CMS_HOST'] %>
+                    url: http://<%= ENV['CMS_BASE_URL'] %>
                     browser: 'firefox'
                     capabilities:
                         unexpectedAlertBehaviour: 'accept'
@@ -115,7 +115,7 @@ env:
         modules:
             config:
                 WebDriver:
-                    url: http://<%= ENV['CMS_HOST'] %>
+                    url: http://<%= ENV['CMS_BASE_URL'] %>
                     browser: 'iphone'
                     capabilities:
                         unexpectedAlertBehaviour: 'accept'

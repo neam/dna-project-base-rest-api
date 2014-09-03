@@ -30,6 +30,7 @@ fi
 source /tmp/config.sh
 echo "DROP DATABASE IF EXISTS $DB_NAME; CREATE DATABASE $DB_NAME;" | mysql -h$DB_HOST -P$DB_PORT -u$DB_USER --password=$DB_PASSWORD
 
-export CMS_HOST=localhost:12121/friends
+export CMS_BASE_URL=127.0.0.1:12121/friends
+export CMS_HOST=$LOCAL_SERVICES_IP:11111 # $LOCAL_SERVICES_IP is necessary since API testing is done directly through curl
 ./generate-local-codeception-config.sh
 vendor/bin/codecept build
