@@ -336,14 +336,14 @@ trait UsersTrait
     function completeProfileLanguagesTask($languages)
     {
         $I = $this;
-        $I->amOnPage(DashboardTasksPage::$URL);
+        $I->amOnPage(AccountTasksPage::$URL);
         $I->waitForText('Required tasks', 20);
-        $I->see(DashboardTasksPage::$profileLanguageTaskText);
+        $I->see(AccountTasksPage::$profileLanguageTaskText);
         $I->click('Go to profile');
         $I->waitForText('First Language', 20);
         $I->selectLanguagesOnCurrentPage($languages);
         $I->waitForText(ProfilePage::$accountUpdatedText, 20);
-        $I->seeInCurrentUrl(DashboardTasksPage::$URL);
+        $I->seeInCurrentUrl(AccountTasksPage::$URL);
     }
 
     function selectLanguagesOnCurrentPage($languages)

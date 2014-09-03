@@ -49,12 +49,12 @@ $I->gotoMyTasksPage();
 
 $I->see('Started Tasks (0)');
 $I->see('New Tasks (6)'); // one per language
-$I->see(DashboardPage::$startTaskButton);
-$I->dontSee(DashboardPage::$continueTaskButton);
+$I->see(AccountTasksPage::$startTaskButton);
+$I->dontSee(AccountTasksPage::$continueTaskButton);
 
 $I->click(
-    DashboardPage::$startTaskButton,
-    DashboardPage::translateModelContext('Dashboard test video', 'VideoFile', 'pt')
+    AccountTasksPage::$startTaskButton,
+    AccountTasksPage::translateModelContext('Dashboard test video', 'VideoFile', 'pt')
 );
 
 $I->click('Stop Translating');
@@ -63,8 +63,8 @@ $I->see('Started Tasks (0)');
 $I->see('New Tasks (6)');
 
 $I->click(
-    DashboardPage::$startTaskButton,
-    DashboardPage::translateModelContext('Dashboard test video', 'VideoFile', 'pt')
+    AccountTasksPage::$startTaskButton,
+    AccountTasksPage::translateModelContext('Dashboard test video', 'VideoFile', 'pt')
 );
 
 $I->fillField(VideoFileEditPage::$titleFieldPt, 'Vídeo de teste do Dashboard');

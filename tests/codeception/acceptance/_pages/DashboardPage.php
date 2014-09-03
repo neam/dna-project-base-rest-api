@@ -1,9 +1,9 @@
 <?php
 
-class DashboardPage
+class AccountTasksPage
 {
     // include url of current page
-    static $URL = 'dashboard/tasks';
+    static $URL = 'account/tasks';
 
     /**
      * Declare UI map for this page here. CSS or XPath allowed.
@@ -13,6 +13,7 @@ class DashboardPage
 
     static $startTaskButton = 'Start Translating';
     static $continueTaskButton = 'Continue Translating';
+    static $profileLanguageTaskText = 'You need to have at least one language set in your profile before you can start contributing.';
 
     public static function translateModelContext($title, $type, $language)
     {
@@ -40,7 +41,7 @@ class DashboardPage
     }
 
     /**
-     * @return DashboardPage
+     * @return AccountTasksPage
      */
     public static function of(WebGuy $I)
     {

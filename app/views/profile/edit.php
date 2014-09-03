@@ -176,7 +176,7 @@
         array(
             'url' => !empty(Yii::app()->request->returnUrl)
                     ? Yii::app()->request->returnUrl
-                    : array('/dashboard/index'),
+                    : array('/site/home'),
             'color' => TbHtml::BUTTON_COLOR_LINK,
         )
     ); ?>
