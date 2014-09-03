@@ -23,11 +23,11 @@
             ); ?>
         <?php else: ?>
             <?php echo TbHtml::linkButton(
-                Yii::t('model', 'Dashboard'),
+                Yii::t('model', 'Tasks'),
                 array(
                     'color' => $this->action->id === 'dashboard' ? TbHtml::BUTTON_COLOR_INVERSE : null,
                     'class' => 'action-button',
-                    'url' => array('dashboard'),
+                    'url' => array('tasks'),
                 )
             ); ?>
             <?php echo TbHtml::linkButton(
@@ -45,7 +45,7 @@
                 array(
                     'color' => $this->action->id === 'profile' ? TbHtml::BUTTON_COLOR_INVERSE : null,
                     'class' => 'action-button',
-                    'url' => array('profile'),
+                    'url' => array('profile', 'id'=>user()->id),
                 )
             ); ?>
             <?php echo TbHtml::linkButton(

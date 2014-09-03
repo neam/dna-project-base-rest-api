@@ -53,10 +53,6 @@
         },
         {
             "type": "vcs",
-            "url": "https://github.com/nordsoftware/yii-account"
-        },
-        {
-            "type": "vcs",
             "url": "https://github.com/motin/PHPWord"
         },
         {

@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5e663e460d1ec939b9a3a197095bc040",
+    "hash": "58c237458f92392911147ad2dc2946d8",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -329,12 +329,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/crisu83/yiistrap.git",
-                "reference": "7bd82a12ff1b541abc21049e93e761bc89656b86"
+                "reference": "730fd9cde214d7ff9115cc36a025e54b3e216c94"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/crisu83/yiistrap/zipball/7bd82a12ff1b541abc21049e93e761bc89656b86",
-                "reference": "7bd82a12ff1b541abc21049e93e761bc89656b86",
+                "url": "https://api.github.com/repos/crisu83/yiistrap/zipball/730fd9cde214d7ff9115cc36a025e54b3e216c94",
+                "reference": "730fd9cde214d7ff9115cc36a025e54b3e216c94",
                 "shasum": ""
             },
             "require": {
@@ -382,7 +382,7 @@
                 "bootstrap",
                 "yii"
             ],
-            "time": "2014-07-21 11:08:24"
+            "time": "2014-08-20 04:38:41"
         },
         {
             "name": "crisu83/yiistrap-widgets",
@@ -1088,12 +1088,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-restricted-access.git",
-                "reference": "48548c7cc54dec9b381e9a5915766793fc16cdce"
+                "reference": "3e0aa10c002f185a9835aa843e3833b8b598b05f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-restricted-access/zipball/48548c7cc54dec9b381e9a5915766793fc16cdce",
-                "reference": "48548c7cc54dec9b381e9a5915766793fc16cdce",
+                "url": "https://api.github.com/repos/neam/yii-restricted-access/zipball/3e0aa10c002f185a9835aa843e3833b8b598b05f",
+                "reference": "3e0aa10c002f185a9835aa843e3833b8b598b05f",
                 "shasum": ""
             },
             "require": {
@@ -1123,7 +1123,7 @@
             "keywords": [
                 "yii"
             ],
-            "time": "2014-08-13 07:49:21"
+            "time": "2014-09-02 14:49:15"
         },
         {
             "name": "neam/yii-simplicity-theme",
@@ -2473,7 +2473,7 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v2.5.3",
+            "version": "v2.5.4",
             "target-dir": "Symfony/Component/EventDispatcher",
             "source": {
                 "type": "git",
@@ -2530,17 +2530,17 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v2.5.3",
+            "version": "v2.5.4",
             "target-dir": "Symfony/Component/Filesystem",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Filesystem.git",
-                "reference": "c1309b0ee195ad264a4314435bdaecdfacb8ae9c"
+                "reference": "a765efd199e02ff4001c115c318e219030be9364"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Filesystem/zipball/c1309b0ee195ad264a4314435bdaecdfacb8ae9c",
-                "reference": "c1309b0ee195ad264a4314435bdaecdfacb8ae9c",
+                "url": "https://api.github.com/repos/symfony/Filesystem/zipball/a765efd199e02ff4001c115c318e219030be9364",
+                "reference": "a765efd199e02ff4001c115c318e219030be9364",
                 "shasum": ""
             },
             "require": {
@@ -2573,21 +2573,21 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "http://symfony.com",
-            "time": "2014-07-09 09:05:48"
+            "time": "2014-09-03 09:00:14"
         },
         {
             "name": "symfony/process",
-            "version": "v2.5.3",
+            "version": "v2.5.4",
             "target-dir": "Symfony/Component/Process",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Process.git",
-                "reference": "e0997d2a9a1a763484b34b989900b61322a9b056"
+                "reference": "136cf0bdaacea81f779583376d47dd8aef4fc6ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Process/zipball/e0997d2a9a1a763484b34b989900b61322a9b056",
-                "reference": "e0997d2a9a1a763484b34b989900b61322a9b056",
+                "url": "https://api.github.com/repos/symfony/Process/zipball/136cf0bdaacea81f779583376d47dd8aef4fc6ba",
+                "reference": "136cf0bdaacea81f779583376d47dd8aef4fc6ba",
                 "shasum": ""
             },
             "require": {
@@ -2620,7 +2620,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "http://symfony.com",
-            "time": "2014-08-05 09:00:40"
+            "time": "2014-08-31 03:22:04"
         },
         {
             "name": "twbs/bootstrap",

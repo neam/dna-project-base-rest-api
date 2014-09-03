@@ -91,7 +91,7 @@
                                                         Yii::t('app', 'Go to profile'),
                                                         array(
                                                             'color' => TbHtml::BUTTON_COLOR_PRIMARY,
-                                                            'url' => $this->createUrl('/profile/edit', array('returnUrl' => '/dashboard/tasks')),
+                                                            'url' => $this->createUrl('/profile/edit', array('returnUrl' => '/profile/tasks')),
                                                         )
                                                     ); ?>
                                                 </div>

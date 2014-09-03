@@ -32,7 +32,7 @@
                     <?php echo TbHtml::linkButton(
                         Yii::t('app', 'My Tasks'),
                         array(
-                            'url' => array('/dashboard/tasks'),
+                            'url' => array('/profile/tasks'),
                             'color' => TbHtml::BUTTON_COLOR_PRIMARY,
                             'size' => TbHtml::BUTTON_SIZE_SM,
                         )

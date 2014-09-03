@@ -66,7 +66,7 @@ if (!empty($this->homeBrandLabel)) {
                         'items' => array(
                             array(
                                 'label' => Yii::t('app', 'My Tasks'),
-                                'url' => array('/dashboard/tasks'),
+                                'url' => array('/profile/tasks'),
                                 'visible' => !Yii::app()->user->isGuest
                             ),
                             /*

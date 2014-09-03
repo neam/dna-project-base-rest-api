@@ -63,10 +63,6 @@ class AccountController extends Controller
             array(
                 'allow',
                 'actions' => array(
-                    'dashboard',
-                    'translations',
-                    'profile',
-                    'history',
                 ),
                 'users' => array('@'),
             ),
@@ -113,116 +109,6 @@ class AccountController extends Controller
         }
 
         return true;
-    }
-
-    /**
-     * Displays the translations page.
-     */
-    public function actionTranslations()
-    {
-        $id = Yii::app()->user->id;
-        $model = $this->loadModel($id);
-        $this->render('translations', array('model' => $model,));
-    }
-
-    /**
-     * Displays the history page.
-     */
-    public function actionHistory()
-    {
-        $id = Yii::app()->user->id;
-        $model = $this->loadModel($id);
-
-        $userChangedItems = new Item('search');
-        $userChangedItems->unsetAttributes();
-        $userChangedItems->setAttribute("user_id", Yii::app()->user->id);
-        $dataProvider = $userChangedItems->search();
-
-        $this->render('history', array('model' => $model, 'dataProvider' => $dataProvider));
-    }
-
-    /**
-     * Displays a public profile page.
-     * @param integer $id account ID
-     */
-    public function actionPublicProfile($id)
-    {
-        $model = $this->loadModel($id);
-        $this->render('public-profile', array('model' => $model,));
-    }
-
-    /**
-     * Displays a profile page.
-     * @param integer $id account ID
-     */
-    public function actionView($id)
-    {
-        $model = $this->loadModel($id);
-
-        $groups = array_merge(MetaData::projectGroups(), MetaData::topicGroups(), MetaData::skillGroups());
-        $groupRoles = MetaData::groupRoles();
-
-        $rawData = array();
-
-        $id = 1;
-        foreach ($groups as $groupName => $groupLabel) {
-            // TODO fix this, must use stdClass because of the stupid TbToggleColumn
-            $row = new stdClass();
-
-            $row->id = $id++;
-            $row->accountId = $model->id;
-            $row->groupName = $groupName;
-            $row->groupLabel = $groupLabel;
-
-            foreach ($groupRoles as $roleName => $roleLabel) {
-                $row->$roleName = $model->groupRoleIsActive($groupName, $roleName);
-            }
-
-            $rawData[] = $row;
-        }
-
-        $dataProvider = new CArrayDataProvider(
-            $rawData,
-            array(
-                'id' => 'permissions',
-                'pagination' => false,
-            )
-        );
-
-        $columns = array();
-
-        $columns[] = array(
-            'class' => 'CDataColumn',
-            'header' => Yii::t('admin', 'Group name'),
-            'name' => 'groupLabel',
-        );
-
-        $groupModeratorRoles = MetaData::groupModeratorRoles();
-        foreach ($groupRoles as $roleName => $roleLabel) {
-            if (Yii::app()->user->checkAccess('GrantGroupAdminPermissions')
-                || (isset($groupModeratorRoles[$roleName]) && Yii::app()->user->checkAccess('GrantGroupModeratorPermissions'))
-            ) {
-                $columns[] = array(
-                    'class' => 'GroupRoleToggleColumn',
-                    'displayText' => false,
-                    'header' => $roleLabel,
-                    'name' => $roleName,
-                    'toggleAction' => 'account/toggleRole',
-                    'value' => function ($data) use ($roleName) {
-                            return $data->$roleName;
-                        },
-                );
-            }
-        }
-
-        $this->render(
-            'view',
-            array(
-                'columns' => $columns,
-                'dataProvider' => $dataProvider,
-                'model' => $model,
-            )
-        );
     }
 
     /**

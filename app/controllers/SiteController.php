@@ -63,16 +63,16 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays the public landing page.
+     * Displays the landing page.
      */
     public function actionHome()
     {
         $this->layout = WebApplication::LAYOUT_FLUID;
         $this->homeBrandLabel = Yii::t('app', 'Gapminder.org Home');
         if (user()->isGuest) {
-            $this->render('home');
+            $this->render('home-guest');
         } else {
-            $this->render('/dashboard/index');
+            $this->render('home-member');
         }
     }
 
