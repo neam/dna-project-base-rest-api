@@ -125,7 +125,7 @@ Note: To run the tests, you need to have a selenium server running locally (see 
 
 All tests can be run in sequence (for both clean-db and user-generated) by running the `_test.sh` script:
 
-    tests/_test.sh
+    source tests/_test.sh
 
 It will default to `COVERAGE=full`. To override, set the COVERAGE env var before running the script, for instance:
 
