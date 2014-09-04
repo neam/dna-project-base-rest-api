@@ -1251,12 +1251,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-workflow-task-list.git",
-                "reference": "b9879d8ad9f9f6391b170d6f0b2780def63d794b"
+                "reference": "ce7e4b24c104cefe513a7344e230449e0ede5fb1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-workflow-task-list/zipball/b9879d8ad9f9f6391b170d6f0b2780def63d794b",
-                "reference": "b9879d8ad9f9f6391b170d6f0b2780def63d794b",
+                "url": "https://api.github.com/repos/neam/yii-workflow-task-list/zipball/ce7e4b24c104cefe513a7344e230449e0ede5fb1",
+                "reference": "ce7e4b24c104cefe513a7344e230449e0ede5fb1",
                 "shasum": ""
             },
             "require": {
@@ -1285,7 +1285,7 @@
             "keywords": [
                 "yii"
             ],
-            "time": "2014-09-03 10:01:03"
+            "time": "2014-09-04 07:15:16"
         },
         {
             "name": "neam/yii-workflow-ui",
