@@ -329,12 +329,13 @@ You will also need to run the following once after the initial push:
     export SAUCE_USERNAME="replaceme"
     export SAUCE_ACCESS_KEY="replaceme"
     export CMS_BASE_URL=$CMS_HOST
+    export BRAND_HOME_URL=www.gapminder.org
 
     ssh dokku@$DOKKU_HOST config:set $APPNAME \
     ENVBOOTSTRAP_STRATEGY=environment-variables \
     ENV=dokku/$APPNAME \
-    BRAND_SITENAME=Gapminder-CMS-$APPNAME \
-    BRAND_DOMAIN=$CMS_HOST \
+    SITENAME=Gapminder-CMS-$APPNAME \
+    BRAND_HOME_URL=$BRAND_HOME_URL \
     USER_DATA_BACKUP_UPLOADERS_ACCESS_KEY=$USER_DATA_BACKUP_UPLOADERS_ACCESS_KEY \
     USER_DATA_BACKUP_UPLOADERS_SECRET=$USER_DATA_BACKUP_UPLOADERS_SECRET \
     USER_GENERATED_DATA_S3_BUCKET=$USER_GENERATED_DATA_S3_BUCKET \
@@ -436,7 +437,7 @@ You will also need to run the following once after the initial push:
 
     # set environment variables
 
-    heroku config:set --app=$APPNAME ENVBOOTSTRAP_STRATEGY=environment-variables ENV=dokku/$APPNAME BRAND_SITENAME=Gapminder-CMS-$APPNAME BRAND_DOMAIN=$CMS_HOST DATA=$DATA GRANULARITY=$GRANULARITY USER_DATA_BACKUP_UPLOADERS_ACCESS_KEY=$USER_DATA_BACKUP_UPLOADERS_ACCESS_KEY USER_DATA_BACKUP_UPLOADERS_SECRET=$USER_DATA_BACKUP_UPLOADERS_SECRET USER_GENERATED_DATA_S3_BUCKET=$USER_GENERATED_DATA_S3_BUCKET PAPERTRAIL_PORT=$PAPERTRAIL_PORT
+    heroku config:set --app=$APPNAME ENVBOOTSTRAP_STRATEGY=environment-variables ENV=dokku/$APPNAME SITENAME=Gapminder-CMS-$APPNAME BRAND_HOME_URL=$CMS_HOST DATA=$DATA GRANULARITY=$GRANULARITY USER_DATA_BACKUP_UPLOADERS_ACCESS_KEY=$USER_DATA_BACKUP_UPLOADERS_ACCESS_KEY USER_DATA_BACKUP_UPLOADERS_SECRET=$USER_DATA_BACKUP_UPLOADERS_SECRET USER_GENERATED_DATA_S3_BUCKET=$USER_GENERATED_DATA_S3_BUCKET PAPERTRAIL_PORT=$PAPERTRAIL_PORT
 
     # reset db and load user data if DATA=user-generated
 
@@ -513,17 +514,17 @@ Sets the type of database contents the CMS will be seeded with when running `dep
 
 For more information, read the [Staging/QA & CI/CD Set-up & Release-routines](https://docs.google.com/a/neam.se/document/d/1pPvB0lvtlCbeKGhjkFyWCnQl6Dn1m1QLgSMNxMwBPhY/edit?usp=sharing) document.
 
-#### BRAND_SITENAME
+#### SITENAME
 
 Type: PHP Constant
 
 The CMS site name.
 
-#### BRAND_DOMAIN
+#### BRAND_HOME_URL
 
 Type: PHP Constant
 
-The domain that external company-specific links should use, for instance when linking `Gapminder` in "CC by Gapminder".
+The url that external company-specific links should use, for instance when linking `Gapminder` in "CC by Gapminder".
 
 #### DATABASE_URL or YII_DB_*-constants
 
