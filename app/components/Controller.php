@@ -106,13 +106,4 @@ class Controller extends CController
         return $languages;
     }
 
-    /**
-     * Returns a brand URL.
-     * @return string
-     */
-    public function getBrandUrl()
-    {
-        $app = app();
-        return user()->isGuest ? $app->getGapminderOrgUrl() : $app->homeUrl;
-    }
 }

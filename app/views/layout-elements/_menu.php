@@ -12,16 +12,18 @@ if ($page !== null) {
 if (!empty($this->homeBrandLabel)) {
     $brand = $this->homeBrandLabel;
     $brandOptions = $navbarHtmlOptions = array('class' => 'gapminder-org-brand');
+    $brandUrl = Yii::app()->params['brand']->homeUrl;
 } else {
     $brand = TbHtml::image(baseUrl('/images/logo.png'), 'Gapminder') . '<span>' . t('app', 'friends') . '</span>';
     $brandOptions = $navbarHtmlOptions = array('class' => 'gapminder-friends-brand');
+    $brandUrl = Yii::app()->homeUrl;
 }
 ?>
 <?php $this->widget(
     '\TbNavbar',
     array(
         'brandLabel' => $brand,
-        'brandUrl' => $this->getBrandUrl(),
+        'brandUrl' => $brandUrl,
         'brandOptions' => $brandOptions,
         'collapse' => true,
         'display' => TbHtml::NAVBAR_DISPLAY_FIXEDTOP,

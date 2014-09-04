@@ -17,6 +17,7 @@ $gcmsConfig = array(
     'sourceLanguage' => 'en', // source code language
     'params' => array(
         'env' => 'development',
+        'brand' => \gapminder\envbootstrap\Identity::brand(),
     ),
     'preload' => array( //'ezc', // trying out if we can lazy-load this instead of preloading it...
         // preloading 'loginReturnUrlTracker' component to track the current return url that users should be redirected to after login

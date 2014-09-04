@@ -22,8 +22,8 @@ setenv("HOME_ABOUT_SECTION_ID", $default = 5, $required = false);
 
 // ==== Identity-related constants ====
 
-define("BRAND_SITENAME", 'Gapminder CMS Foo DEV');
-define("BRAND_DOMAIN", 'gapminder.local');
+define("SITENAME", 'Gapminder CMS Foo DEV');
+define("BRAND_HOME_URL", 'gapminder.local');
 
 // ==== Defines infrastructure = all backing services, usernames, api:s, servers, ports etc depending on environment ====
 
@@ -123,8 +123,8 @@ class Identity
     static public function brand()
     {
         $return = new \stdClass();
-        $return->siteName = BRAND_SITENAME;
-        $return->domain = BRAND_DOMAIN;
+        $return->siteName = SITENAME;
+        $return->homeUrl = 'http://' . BRAND_HOME_URL;
         $return->supportEmail = 'community@gapminder.org';
         $return->signupEmail = 'community@gapminder.org';
         $return->mailSentByMail = "community@gapminder.org";

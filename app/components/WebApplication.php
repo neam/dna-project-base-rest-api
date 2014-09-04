@@ -170,12 +170,4 @@ class WebApplication extends CWebApplication
         return TbHtml::link($label, $url, $htmlOptions);
     }
 
-    /**
-     * Returns the Gapminder.org URL.
-     * @return string
-     */
-    public function getGapminderOrgUrl()
-    {
-        return 'http://www.gapminder.org'; // TODO: Resolve URL dynamically.
-    }
 }
