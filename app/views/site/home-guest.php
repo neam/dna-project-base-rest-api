@@ -1,3 +1,8 @@
+<?php
+/**
+ * @var SiteController $this
+ */
+?>
 <div class="site-controller index-action gapminder-friends">
     <section class="section-wide-primary">
         <div class="gapminder-friends-logo">
@@ -70,4 +75,5 @@
 
         </div>
     </section>
+
 </div>

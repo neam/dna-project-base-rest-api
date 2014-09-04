@@ -22,6 +22,14 @@ class HtmlChunkController extends Controller
     public function accessRules()
     {
         return array_merge($this->itemAccessRules(), array(
+            array('allow',
+                'actions' => array(
+                    'addToSection',
+                ),
+                'expression' => function () {
+                        return $this->checkAccess('Add');
+                    },
+            ),
             array(
                 'allow',
                 'actions' => array(
@@ -72,6 +80,25 @@ class HtmlChunkController extends Controller
         $model = $this->loadModel($id);
         $this->buildBreadcrumbs($this->itemBreadcrumbs($model));
         $this->render('view', array('model' => $model,));
+    }
+
+    public function actionAddToSection($sectionId)
+    {
+        $model = new HtmlChunk();
+
+        if ($model->save()) {
+
+            if ($page = Section::model()->findByPk($sectionId)) {
+                $edge = new Edge();
+                $edge->from_node_id = $page->node_id;;
+                $edge->to_node_id = $model->node_id;
+                $edge->relation = 'contents';
+                $edge->save();
+            }
+
+        }
+
+        $this->redirect(Yii::app()->request->urlReferrer);
     }
 
     public function actionCreate()

@@ -4,11 +4,11 @@
  * @var Section $model
  */
 ?>
-<div id="<?php echo $model->slug; ?>">
+<div id="<?php echo $data->slug; ?>">
 
-    <h2><?php echo CHtml::encode($model->title); ?></h2>
+    <h2><?php echo CHtml::encode($data->title); ?></h2>
 
-    <?php foreach ($model->contents as $node): ?>
+    <?php foreach ($data->contents as $node): ?>
         <?php $this->widget('\NodeRenderer', compact('node')); ?>
     <?php endforeach; ?>
 

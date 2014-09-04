@@ -1,6 +1,6 @@
 <?php
 
-class m140830_223340_fixed_apply_time_for_clean_db_migration_table extends EDbMigration
+class m999999_999999_fixed_apply_time_for_clean_db_migration_table extends EDbMigration
 {
 	public function up()
 	{

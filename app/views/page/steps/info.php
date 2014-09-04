@@ -31,7 +31,7 @@
         $model,
         'sections',
         CHtml::listData(
-            Section::model()->findAll('page_id = :page_id', array(':page_id' => $model->id)),
+            Item::model()->findAllByAttributes(array('model_class' => array('Section'))),
             'node_id',
             'itemLabel'
         ),
@@ -44,7 +44,7 @@
 
     echo Html::link(
         Yii::t('sections', '{icon} Create new section', array('{icon}' => '<i class="glyphicon glyphicon-plus"></i>')),
-        array('/section/add', 'pageId' => $model->id),
+        array('/section/addToPage', 'pageId' => $model->id),
         array(
             'class' => 'btn btn-default',
             'role' => 'button',

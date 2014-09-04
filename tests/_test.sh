@@ -14,6 +14,9 @@ connectionID=dbTest ../shell-scripts/reset-db.sh
 ../app/yiic mysqldump --connectionID=dbTest --dumpPath=tests/codeception/_data/
 vendor/bin/codecept run unit $CODECEPTION_GROUP_ARGS --debug --fail-fast
 #vendor/bin/codecept run functional -g data:clean-db --debug
+
+connectionID=dbTest ../shell-scripts/reset-db.sh
+
 touch testing
 vendor/bin/codecept run acceptance-init --env=cms-local-chrome $CODECEPTION_GROUP_ARGS --debug --fail-fast
 ../app/yiic mysqldump --connectionID=dbTest --dumpPath=tests/codeception/_data/
@@ -28,6 +31,8 @@ connectionID=dbTest ../shell-scripts/reset-db.sh
 ../app/yiic mysqldump --connectionID=dbTest --dumpPath=tests/codeception/_data/
 vendor/bin/codecept run unit $CODECEPTION_GROUP_ARGS --debug --fail-fast
 #vendor/bin/codecept run functional -g data:clean-db --debug
+
+connectionID=dbTest ../shell-scripts/reset-db.sh
 
 touch testing
 vendor/bin/codecept run acceptance-init --env=cms-local-chrome $CODECEPTION_GROUP_ARGS --debug --fail-fast

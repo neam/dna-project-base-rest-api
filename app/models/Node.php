@@ -70,31 +70,25 @@ class Node extends BaseNode
      */
     public function item()
     {
-        $relationNames = array_keys($this->relations());
 
-        foreach ($relationNames as $relationName) {
+        $itemData = $this->getDbConnection()->createCommand(
+            "SELECT id, model_class FROM item WHERE node_id = :node_id"
+        )->queryRow(true, array(':node_id' => $this->id));
+        //U::inspection(__METHOD__ . " itemData", $itemData);
 
-            // Ensure relation exists
-            if (($activeRelation = $this->getActiveRelation($relationName)) === null) {
-                continue;
-            }
-
-            // Filter out nodeHasGroup, changesets, edges so that only items remain
-            if (
-                in_array($activeRelation->className, array('NodeHasGroup', 'Changeset'))
-                || $activeRelation->foreignKey !== 'node_id'
-            ) {
-                continue;
-            }
-
-            if (count($this->{$relationName}) === 1) {
-                $tmp = $this->{$relationName};
-                return $tmp[0];
-            }
-
+        if (empty($itemData)) {
+            throw new CException("This node (id {$this->id}) does not have any parent item");
         }
 
-        throw new CException("This node does not have any parent item");
+        $item = $itemData["model_class"]::model()->findByPk($itemData["id"]);
+        //U::inspection(__METHOD__ . " item", $item);
+
+        if (empty($item) && !empty($itemData)) {
+            throw new NodeItemExistsButIsRestricted();
+        }
+
+        return $item;
+
     }
 
     public function getEdgeWeight($relation, $toNodeId)
@@ -130,5 +124,10 @@ class Node extends BaseNode
             )
         );
     }
+
+}
+
+class NodeItemExistsButIsRestricted extends CException
+{
 
 }

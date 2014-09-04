@@ -69,10 +69,11 @@ class SiteController extends Controller
     {
         $this->layout = WebApplication::LAYOUT_FLUID;
         $this->homeBrandLabel = Yii::t('app', 'Gapminder.org Home');
+        $aboutSection = Section::model()->findByPk(HOME_ABOUT_SECTION_ID);
         if (user()->isGuest) {
-            $this->render('home-guest');
+            $this->render('home-guest', compact("aboutSection"));
         } else {
-            $this->render('home-member');
+            $this->render('home-member', compact("aboutSection"));
         }
     }
 
