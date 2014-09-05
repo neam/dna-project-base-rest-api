@@ -1,5 +1,8 @@
 <?php
-// This list is used directory by vendor libraries, and cannot therefore be changed.
+// Warning: If you add/remove any languages from this list,
+// make corresponding changes to languageDirections and LanguageHelper::getTranslatedLanguageList()
+
+// This list is used directory by vendor libraries, and the format cannot therefore be changed.
 $languages = array(
     // Default language
     'en' => 'English',
@@ -18,11 +21,11 @@ $languages = array(
     'fi' => 'Suomi',
     'fil' => 'Filipino',
     'fr' => 'Français',
+    'he' => 'עברית',
     'hi' => 'हिंदी',
     'hr' => 'Hrvatski',
     'hu' => 'Magyar',
     'id' => 'Bahasa Indonesia',
-    'iw' => 'עברית',
     'it' => 'Italiano',
     'ja' => '日本語',
     'ko' => '한국어',
