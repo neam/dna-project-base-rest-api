@@ -22,11 +22,9 @@ class ProfileController extends Controller
                 'actions' => array(
                     'tasks',
                     'translations',
-                    'profile',
                     'history',
                     'edit',
                     'view',
-                    'profile',
                 ),
                 'users' => array('@'),
             ),
@@ -143,12 +141,17 @@ class ProfileController extends Controller
 
     /**
      * Displays a public profile page.
-     * @param integer $id account ID
+     * @param int $id account ID
      */
     public function actionProfile($id)
     {
         $model = Account::model()->findByPk($id);
-        $this->render('profile', array('model' => $model,));
+
+        if ($model->profile->isPublic()) {
+            $this->render('profile', array('model' => $model,));
+        } else {
+            $this->redirect(array('/'));
+        }
     }
 
     /**

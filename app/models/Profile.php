@@ -85,6 +85,15 @@ class Profile extends BaseProfile
     }
 
     /**
+     * Checks if the member profile can be viewed publicly.
+     * @return bool
+     */
+    public function isPublic()
+    {
+        return (int) $this->public_profile === 1;
+    }
+
+    /**
      * Returns the full name.
      * @return string
      */

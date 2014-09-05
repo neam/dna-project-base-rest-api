@@ -23,17 +23,23 @@
     </div>
     <div class="summary-info">
         <h1 class="summary-heading"><?php echo $model->profile->fullName; ?></h1>
-        <span
-            class="summary-lead"><?php echo Yii::t('app', 'Gapminder Member'); // TODO: Get appropriate title. ?></span>
+        <span class="summary-lead"><?php echo Yii::t('app', 'Gapminder Member'); // TODO: Get appropriate title. ?></span>
         <span class="summary-badges">* * *</span>
     </div>
-    <div class="summary-role hidden-xs hidden-sm">
-        <?php // TODO: Roles. ?>
+    <div class="summary-sidebox hidden-xs hidden-sm">
+        <?php if ($model->profile->isPublic()): ?>
+            <?php echo TbHtml::link(
+                Yii::t('app', 'View public profile'),
+                array('/profile/profile', 'id' => $model->id),
+                array(
+                    'target' => '_blank',
+                )
+            ); ?>
+        <?php endif; ?>
     </div>
 </section>
 <section class="personal-information">
     <h2 class="profile-section-heading"><?php echo Yii::t('app', 'Personal Information'); ?></h2>
-
     <div class="profile-row">
         <div class="profile-col-4">
             <?php echo $form->textFieldControlGroup($model->profile, 'first_name', array('maxlength' => 255, 'class' => 'span9')); ?>
@@ -78,7 +84,6 @@
         </div>
         <div class="profile-col-4">
             <label class="control-label"><?php echo Yii::t('account', '&nbsp;'); ?></label>
-
             <div>
                 <?php echo TbHtml::button(
                     Yii::t('app', 'Upload'),
@@ -105,6 +110,7 @@
     <div class="profile-row">
         <div class="profile-col-12">
             <?php echo $form->checkBoxControlGroup($model->profile, 'others_may_contact_me'); ?>
+            <?php echo $form->checkBoxControlGroup($model->profile, 'public_profile'); ?>
         </div>
         <div class="profile-col-12">
             <?php /*
