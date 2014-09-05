@@ -121,6 +121,14 @@ $gcmsConfig = array(
                         ),
                         'type' => 'jpg',
                     ),
+                    'user-profile-picture-large' => array(
+                        'name' => 'User Profile Picture Large',
+                        'commands' => array(
+                            'resize' => array(262, 262, 7), // Image::AUTO
+                            'quality' => '85',
+                        ),
+                        'type' => 'jpg',
+                    ),
                     'user-profile-picture-small' => array(
                         'name' => 'User Profile Picture Small',
                         'commands' => array(

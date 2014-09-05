@@ -1131,12 +1131,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-simplicity-theme.git",
-                "reference": "e77e38c5d4962aea8b80206c08eea424e62513be"
+                "reference": "d1e8eb0c5c1c166296666034884132c877ad213d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-simplicity-theme/zipball/e77e38c5d4962aea8b80206c08eea424e62513be",
-                "reference": "e77e38c5d4962aea8b80206c08eea424e62513be",
+                "url": "https://api.github.com/repos/neam/yii-simplicity-theme/zipball/d1e8eb0c5c1c166296666034884132c877ad213d",
+                "reference": "d1e8eb0c5c1c166296666034884132c877ad213d",
                 "shasum": ""
             },
             "require": {
@@ -1166,7 +1166,7 @@
             "keywords": [
                 "yii"
             ],
-            "time": "2014-09-04 13:03:10"
+            "time": "2014-09-05 11:17:44"
         },
         {
             "name": "neam/yii-workflow-core",
