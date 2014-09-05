@@ -59,7 +59,7 @@
     <section class="section-wide-primary" id="about">
         <div class="container">
 
-            <?php if ($aboutSection): ?>
+            <?php if (isset($aboutSection)): ?>
 
                 <?php echo $this->renderPartial('//section/_view', array('data' => $aboutSection)); ?>
 

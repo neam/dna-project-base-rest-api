@@ -17,7 +17,7 @@ class MyTasksPage
 
     public static function translateModelContext($title, $type, $language)
     {
-        return "#translation_{$language}_{$type}_" . str_replace(' ', '_', $title);
+        return "#translate_{$language}_{$type}_" . str_replace(' ', '_', $title);
     }
 
     /**

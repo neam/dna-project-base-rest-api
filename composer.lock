@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5e663e460d1ec939b9a3a197095bc040",
+    "hash": "58c237458f92392911147ad2dc2946d8",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1131,12 +1131,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-simplicity-theme.git",
-                "reference": "d4a7b80d83a54e35cb38ae94eca1bc603f79044f"
+                "reference": "e77e38c5d4962aea8b80206c08eea424e62513be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-simplicity-theme/zipball/d4a7b80d83a54e35cb38ae94eca1bc603f79044f",
-                "reference": "d4a7b80d83a54e35cb38ae94eca1bc603f79044f",
+                "url": "https://api.github.com/repos/neam/yii-simplicity-theme/zipball/e77e38c5d4962aea8b80206c08eea424e62513be",
+                "reference": "e77e38c5d4962aea8b80206c08eea424e62513be",
                 "shasum": ""
             },
             "require": {
@@ -1166,7 +1166,7 @@
             "keywords": [
                 "yii"
             ],
-            "time": "2014-08-29 11:27:57"
+            "time": "2014-09-04 13:03:10"
         },
         {
             "name": "neam/yii-workflow-core",
@@ -1174,12 +1174,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-workflow-core.git",
-                "reference": "2b7a75e26abfd6ac0a5b8b2a7c60f45002fe6a3c"
+                "reference": "7bd8f2ddd9f03a49b4c815f1c411a83f008f9e33"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-workflow-core/zipball/2b7a75e26abfd6ac0a5b8b2a7c60f45002fe6a3c",
-                "reference": "2b7a75e26abfd6ac0a5b8b2a7c60f45002fe6a3c",
+                "url": "https://api.github.com/repos/neam/yii-workflow-core/zipball/7bd8f2ddd9f03a49b4c815f1c411a83f008f9e33",
+                "reference": "7bd8f2ddd9f03a49b4c815f1c411a83f008f9e33",
                 "shasum": ""
             },
             "require": {
@@ -1207,7 +1207,7 @@
             "keywords": [
                 "yii"
             ],
-            "time": "2014-08-26 09:45:24"
+            "time": "2014-08-14 05:34:32"
         },
         {
             "name": "neam/yii-workflow-progress-tracking",
@@ -1251,12 +1251,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-workflow-task-list.git",
-                "reference": "b43a641232c743d99c129ba477660a8580b17cea"
+                "reference": "ce7e4b24c104cefe513a7344e230449e0ede5fb1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-workflow-task-list/zipball/b43a641232c743d99c129ba477660a8580b17cea",
-                "reference": "b43a641232c743d99c129ba477660a8580b17cea",
+                "url": "https://api.github.com/repos/neam/yii-workflow-task-list/zipball/ce7e4b24c104cefe513a7344e230449e0ede5fb1",
+                "reference": "ce7e4b24c104cefe513a7344e230449e0ede5fb1",
                 "shasum": ""
             },
             "require": {
@@ -1285,7 +1285,7 @@
             "keywords": [
                 "yii"
             ],
-            "time": "2014-08-13 14:45:39"
+            "time": "2014-09-04 07:15:16"
         },
         {
             "name": "neam/yii-workflow-ui",
@@ -2473,7 +2473,7 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v2.5.3",
+            "version": "v2.5.4",
             "target-dir": "Symfony/Component/EventDispatcher",
             "source": {
                 "type": "git",
@@ -2530,17 +2530,17 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v2.5.3",
+            "version": "v2.5.4",
             "target-dir": "Symfony/Component/Filesystem",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Filesystem.git",
-                "reference": "c1309b0ee195ad264a4314435bdaecdfacb8ae9c"
+                "reference": "a765efd199e02ff4001c115c318e219030be9364"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Filesystem/zipball/c1309b0ee195ad264a4314435bdaecdfacb8ae9c",
-                "reference": "c1309b0ee195ad264a4314435bdaecdfacb8ae9c",
+                "url": "https://api.github.com/repos/symfony/Filesystem/zipball/a765efd199e02ff4001c115c318e219030be9364",
+                "reference": "a765efd199e02ff4001c115c318e219030be9364",
                 "shasum": ""
             },
             "require": {
@@ -2573,21 +2573,21 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "http://symfony.com",
-            "time": "2014-07-09 09:05:48"
+            "time": "2014-09-03 09:00:14"
         },
         {
             "name": "symfony/process",
-            "version": "v2.5.3",
+            "version": "v2.5.4",
             "target-dir": "Symfony/Component/Process",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Process.git",
-                "reference": "e0997d2a9a1a763484b34b989900b61322a9b056"
+                "reference": "136cf0bdaacea81f779583376d47dd8aef4fc6ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Process/zipball/e0997d2a9a1a763484b34b989900b61322a9b056",
-                "reference": "e0997d2a9a1a763484b34b989900b61322a9b056",
+                "url": "https://api.github.com/repos/symfony/Process/zipball/136cf0bdaacea81f779583376d47dd8aef4fc6ba",
+                "reference": "136cf0bdaacea81f779583376d47dd8aef4fc6ba",
                 "shasum": ""
             },
             "require": {
@@ -2620,7 +2620,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "http://symfony.com",
-            "time": "2014-08-05 09:00:40"
+            "time": "2014-08-31 03:22:04"
         },
         {
             "name": "twbs/bootstrap",
