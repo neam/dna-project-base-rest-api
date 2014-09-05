@@ -20,7 +20,7 @@
  *             'url' => array('/controller/action'),
  *         ),
  *     )
- *   );
+ * );
  */
 class PageControls extends CWidget
 {
