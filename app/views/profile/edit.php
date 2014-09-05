@@ -17,6 +17,17 @@
         'class' => 'dirtyforms',
     ),
 )); ?>
+<?php $this->widget(
+    'application.widgets.PageControls',
+    array(
+        'right' => array(
+            'label' => Yii::t('app', 'View public profile'),
+            'icon' => false,
+            'url' => array('/profile/profile', 'id' => $model->id),
+            'visible' => $model->profile->isPublic(),
+        ),
+    )
+); ?>
 <section class="profile-summary">
     <div class="summary-picture">
         <?php echo $model->profile->renderPicture(); ?>
@@ -27,15 +38,6 @@
         <span class="summary-badges">* * *</span>
     </div>
     <div class="summary-sidebox hidden-xs hidden-sm">
-        <?php if ($model->profile->isPublic()): ?>
-            <?php echo TbHtml::link(
-                Yii::t('app', 'View public profile'),
-                array('/profile/profile', 'id' => $model->id),
-                array(
-                    'target' => '_blank',
-                )
-            ); ?>
-        <?php endif; ?>
     </div>
 </section>
 <section class="personal-information">
