@@ -100,7 +100,7 @@ class Profile extends BaseProfile
      */
     public function getLanguages($asString = false)
     {
-        $languagesAvailable = Html::getLanguages();
+        $languagesAvailable = LanguageHelper::getLanguageList();
         $languages = array();
 
         if (!empty($this->language1)) {
