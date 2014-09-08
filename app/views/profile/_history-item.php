@@ -14,9 +14,9 @@
                     <span class="action-heading">
                         <?php echo Yii::t(
                             'app',
-                            '<span class="action-item-type">{itemType}</span> {tooltip}',
+                            '{action} {separator} <span class="action-item-type">{itemType}</span> {tooltip}',
                             array(
-                                '{action}' => '', // TODO: Get action (e.g. 'translate')
+                                '{action}' => Yii::t('app', 'Translate'), // TODO: Get action dynamically (e.g. 'translate')
                                 '{itemType}' => $data['model_class'],
                                 '{separator}' => TbHtml::icon(TbHtml::ICON_CHEVRON_RIGHT, array('class' => 'action-separator')),
                                 '{tooltip}' => Html::hintTooltip(
@@ -31,7 +31,20 @@
             <div class="task-title">
                 <h3 class="task-heading"><?php echo $data->_title; ?></h3>
             </div>
-            <div class="task-bottom-bar"></div>
+            <div class="task-bottom-bar">
+                <div class="task-progress"></div>
+                <div class="task-actions">
+                    <?php /*
+                    <?php echo TbHtml::linkButton(
+                        Yii::t('app', 'Continue Translating'),
+                        array(
+                            'color' => TbHtml::BUTTON_COLOR_PRIMARY,
+                            'url' => array('/'),
+                        )
+                    ); ?>
+                    */ ?>
+                </div>
+            </div>
         </div>
         <?php //dump($data->attributes); ?>
     </div>

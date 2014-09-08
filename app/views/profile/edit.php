@@ -166,25 +166,22 @@
         </div>
     </div>
 </section>
-<?php /*
-    <section class="account-history">
-        <h2 class="profile-section-heading"><?php echo Yii::t('app', 'History'); ?></h2>
-        <?php echo TbHtml::linkButton(
-            Yii::t('app', 'View History'),
-            array(
-                'url' => array('/account/history'),
-            )
-        ); ?>
-    </section>
-    */
-?>
+<section class="account-history">
+    <h2 class="profile-section-heading"><?php echo Yii::t('app', 'History'); ?></h2>
+    <?php echo TbHtml::linkButton(
+        Yii::t('app', 'View History'),
+        array(
+            'url' => array('/profile/history'),
+        )
+    ); ?>
+</section>
 <section class="profile-actions">
     <?php echo TbHtml::linkButton(
         Yii::t('app', 'Cancel'),
         array(
             'url' => !empty(Yii::app()->request->returnUrl)
-                    ? Yii::app()->request->returnUrl
-                    : array('/site/home'),
+                ? Yii::app()->request->returnUrl
+                : array('/site/home'),
             'color' => TbHtml::BUTTON_COLOR_LINK,
         )
     ); ?>

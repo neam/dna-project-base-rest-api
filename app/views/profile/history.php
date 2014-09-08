@@ -3,18 +3,29 @@
 <?php $this->renderPartial('_toolbar', array('model' => $model)); ?>
 */ ?>
 <div class="tasks-container">
-    <div class="tasks">
-        <div class="tasks-list">
-            <?php $this->widget(
-                'yiistrap.widgets.TbListView',
-                array(
-                    'dataProvider' => $dataProvider,
-                    'itemView' => '_history-item',
-                    'template' => '{items} {pager}',
-                )
-            ); ?>
+    <div class="row">
+        <div class="tasks">
+            <div class="tasks-list">
+                <?php $this->widget(
+                    'yiistrap.widgets.TbListView',
+                    array(
+                        'dataProvider' => $dataProvider,
+                        'itemView' => '_history-item',
+                        'template' => '{items} {pager}',
+                    )
+                ); ?>
+            </div>
         </div>
     </div>
+</div>
+<div class="text-right">
+    <?php echo TbHtml::linkButton(
+        Yii::t('app', 'Back'),
+        array(
+            'size' => TbHtml::BUTTON_SIZE_SM,
+            'url' => array('/profile/edit'),
+        )
+    ); ?>
 </div>
 <?php /*
 <h2><?php echo Yii::t('history', 'Sign-up'); ?></h2>

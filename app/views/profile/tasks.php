@@ -52,7 +52,7 @@
             <?php echo $this->renderItemActionDropdown(Yii::t('app', 'Create New...'), 'add'); ?>
         </div>
     <?php endif; ?>
-    <div class="tasks-container">
+    <div class="tasks-container tasks-container-section">
         <?php if (Yii::app()->user->isTranslator && empty(Yii::app()->user->translatableLanguages)): ?>
             <div>
                 <div class="tasks-top-bar">
