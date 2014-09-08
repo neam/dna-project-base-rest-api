@@ -19,7 +19,9 @@ class Item extends BaseItem
      */
     public function getModel()
     {
-        return isset($this->model_class) ? $this->model($this->model_class) : null;
+        return isset($this->model_class) && isset($this->id)
+            ? self::model($this->model_class)->findByPk($this->id)
+            : null;
     }
 
     public function init()
