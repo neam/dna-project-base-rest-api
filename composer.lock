@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5e663e460d1ec939b9a3a197095bc040",
+    "hash": "58c237458f92392911147ad2dc2946d8",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1293,12 +1293,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-workflow-ui.git",
-                "reference": "53cb542abf1c7c1b5f3a4aa1408224459f0b2e5a"
+                "reference": "c3e18e060f63969e8c9a96964a07e7ec98cb266c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-workflow-ui/zipball/53cb542abf1c7c1b5f3a4aa1408224459f0b2e5a",
-                "reference": "53cb542abf1c7c1b5f3a4aa1408224459f0b2e5a",
+                "url": "https://api.github.com/repos/neam/yii-workflow-ui/zipball/c3e18e060f63969e8c9a96964a07e7ec98cb266c",
+                "reference": "c3e18e060f63969e8c9a96964a07e7ec98cb266c",
                 "shasum": ""
             },
             "require": {
@@ -1335,7 +1335,7 @@
             "keywords": [
                 "yii"
             ],
-            "time": "2014-09-02 09:13:02"
+            "time": "2014-09-05 08:01:52"
         },
         {
             "name": "nordsoftware/yii-account",
