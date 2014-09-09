@@ -507,7 +507,7 @@ This sets which of the app/config/environments/*.php configuration includes are 
 
 Type: Environment variable
 
-Sets the type of database contents the CMS will be seeded with when running `deploy/reset-db.sh` or `tests/reset-test-db.sh`.
+Sets the type of database contents the CMS will be seeded with when running `shell-scripts/reset-db.sh`.
 
 * `clean-db` - A clean CMS installation with only an admin user.
 * `user-generated` - User generated data is imported from S3.

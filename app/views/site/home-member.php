@@ -91,6 +91,7 @@
     </section>
     */
 ?>
+<?php /*
 <section class="section-wide-primary" id="sneak-peeks">
     <div class="container">
         <h2><?php echo Yii::t('app', 'Sneak Peeks'); ?></h2>
@@ -105,6 +106,14 @@
             'limit' => 3,
             'listHtmlOptions' => array('class' => 'sneak-peeks')
         )); ?>
+    </div>
+</section>
+*/ ?>
+<section class="section-wide-primary" id="sneak-peeks">
+    <div class="container">
+        <h2><?php echo Yii::t('app', 'Sneak Peeks'); ?></h2>
+
+        <p><?php echo Yii::t('app', 'Sneak Peeks show new content under development which is not yet publicly available. Please evaluate it, but refrain from prematurely spreading it publicly. <strong>Coming soon!</strong>'); ?></p>
     </div>
 </section>
 <?php /*
