@@ -42,7 +42,7 @@
  * @property string $slug_hr
  * @property string $slug_hu
  * @property string $slug_id
- * @property string $slug_iw
+ * @property string $slug_he
  * @property string $slug_it
  * @property string $slug_ja
  * @property string $slug_ko
@@ -103,12 +103,12 @@ abstract class BaseWaffle extends ActiveRecord
     {
         return array_merge(
             parent::rules(), array(
-                array('version, cloned_from_id, file_format, _title, slug_en, _short_title, _description, link, publishing_date, url, license, license_link, waffle_publisher_id, json_import_media_id, image_small_media_id, image_large_media_id, created, modified, owner_id, node_id, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_de, slug_en_gb, slug_en_us, slug_el, slug_es, slug_fi, slug_fil, slug_fr, slug_hi, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_sv, slug_th, slug_tr, slug_uk, slug_vi, slug_zh, slug_zh_cn, slug_zh_tw, waffle_qa_state_id, slug_fa', 'default', 'setOnEmpty' => true, 'value' => null),
+                array('version, cloned_from_id, file_format, _title, slug_en, _short_title, _description, link, publishing_date, url, license, license_link, waffle_publisher_id, json_import_media_id, image_small_media_id, image_large_media_id, created, modified, owner_id, node_id, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_de, slug_en_gb, slug_en_us, slug_el, slug_es, slug_fi, slug_fil, slug_fr, slug_hi, slug_hr, slug_hu, slug_id, slug_he, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_sv, slug_th, slug_tr, slug_uk, slug_vi, slug_zh, slug_zh_cn, slug_zh_tw, waffle_qa_state_id, slug_fa', 'default', 'setOnEmpty' => true, 'value' => null),
                 array('version, json_import_media_id, image_small_media_id, image_large_media_id, owner_id', 'numerical', 'integerOnly' => true),
                 array('cloned_from_id, waffle_publisher_id, node_id, waffle_qa_state_id', 'length', 'max' => 20),
-                array('file_format, _title, slug_en, _short_title, _description, link, url, license, license_link, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_de, slug_en_gb, slug_en_us, slug_el, slug_es, slug_fi, slug_fil, slug_fr, slug_hi, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_sv, slug_th, slug_tr, slug_uk, slug_vi, slug_zh, slug_zh_cn, slug_zh_tw, slug_fa', 'length', 'max' => 255),
+                array('file_format, _title, slug_en, _short_title, _description, link, url, license, license_link, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_de, slug_en_gb, slug_en_us, slug_el, slug_es, slug_fi, slug_fil, slug_fr, slug_hi, slug_hr, slug_hu, slug_id, slug_he, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_sv, slug_th, slug_tr, slug_uk, slug_vi, slug_zh, slug_zh_cn, slug_zh_tw, slug_fa', 'length', 'max' => 255),
                 array('publishing_date, created, modified', 'safe'),
-                array('id, version, cloned_from_id, file_format, _title, slug_en, _short_title, _description, link, publishing_date, url, license, license_link, waffle_publisher_id, json_import_media_id, image_small_media_id, image_large_media_id, created, modified, owner_id, node_id, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_de, slug_en_gb, slug_en_us, slug_el, slug_es, slug_fi, slug_fil, slug_fr, slug_hi, slug_hr, slug_hu, slug_id, slug_iw, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_sv, slug_th, slug_tr, slug_uk, slug_vi, slug_zh, slug_zh_cn, slug_zh_tw, waffle_qa_state_id, slug_fa', 'safe', 'on' => 'search'),
+                array('id, version, cloned_from_id, file_format, _title, slug_en, _short_title, _description, link, publishing_date, url, license, license_link, waffle_publisher_id, json_import_media_id, image_small_media_id, image_large_media_id, created, modified, owner_id, node_id, slug_ar, slug_bg, slug_ca, slug_cs, slug_da, slug_de, slug_en_gb, slug_en_us, slug_el, slug_es, slug_fi, slug_fil, slug_fr, slug_hi, slug_hr, slug_hu, slug_id, slug_he, slug_it, slug_ja, slug_ko, slug_lt, slug_lv, slug_nl, slug_no, slug_pl, slug_pt, slug_pt_br, slug_pt_pt, slug_ro, slug_ru, slug_sk, slug_sl, slug_sr, slug_sv, slug_th, slug_tr, slug_uk, slug_vi, slug_zh, slug_zh_cn, slug_zh_tw, waffle_qa_state_id, slug_fa', 'safe', 'on' => 'search'),
             )
         );
     }
@@ -192,7 +192,7 @@ abstract class BaseWaffle extends ActiveRecord
             'slug_hr' => Yii::t('model', 'Slug Hr'),
             'slug_hu' => Yii::t('model', 'Slug Hu'),
             'slug_id' => Yii::t('model', 'Slug'),
-            'slug_iw' => Yii::t('model', 'Slug Iw'),
+            'slug_he' => Yii::t('model', 'Slug He'),
             'slug_it' => Yii::t('model', 'Slug It'),
             'slug_ja' => Yii::t('model', 'Slug Ja'),
             'slug_ko' => Yii::t('model', 'Slug Ko'),
@@ -266,7 +266,7 @@ abstract class BaseWaffle extends ActiveRecord
         $criteria->compare('t.slug_hr', $this->slug_hr, true);
         $criteria->compare('t.slug_hu', $this->slug_hu, true);
         $criteria->compare('t.slug_id', $this->slug_id, true);
-        $criteria->compare('t.slug_iw', $this->slug_iw, true);
+        $criteria->compare('t.slug_he', $this->slug_he, true);
         $criteria->compare('t.slug_it', $this->slug_it, true);
         $criteria->compare('t.slug_ja', $this->slug_ja, true);
         $criteria->compare('t.slug_ko', $this->slug_ko, true);
