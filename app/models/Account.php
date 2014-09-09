@@ -213,4 +213,42 @@ class Account extends BaseAccount
             )
         );
     }
+
+    /**
+     * The attributes that is returned by the REST api
+     */
+    public function getAllAttributes()
+    {
+        $roles = array();
+        foreach ($this->groupHasAccounts as $gha) {
+            $roles[] = (object) array(
+                $gha->group->title => $gha->role->title
+            );
+        }
+
+        $response = new stdClass();
+        $response->first_name = $this->profile->first_name;
+        $response->last_name = $this->profile->last_name;
+        $response->username = $this->username;
+        $response->email = $this->email;
+        $response->others_may_contact_me = $this->profile->others_may_contact_me;
+        $response->lives_in = $this->profile->lives_in;
+        $response->about = $this->profile->about;
+        $response->profile_picture = !empty($this->profile->picture_media_id)
+            ? $this->profile->pictureMedia->createUrl('user-profile-picture', true)
+            : null;
+
+        $response->roles = $roles;
+
+        // Not yet implemented
+        /*
+        $response->contributions = 'TODO';
+        $response->social_links = 'TODO';
+        $response->user_definable_title = 'TODO';
+        $response->about_me = 'TODO';
+        $response->links = 'TODO';
+        */
+
+        return $response;
+    }
 }
