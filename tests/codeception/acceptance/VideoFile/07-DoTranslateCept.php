@@ -82,7 +82,7 @@ $I->see('Max video');
 
 // Translate the video
 $I->click('Translate', $videoContext);
-$I->click('Translate into Portuguese');
+$I->click('Translate into Português');
 
 // Source language texts can not be edited
 $I->dontSeeElementInDOM(VideoFileEditPage::$titleField);
