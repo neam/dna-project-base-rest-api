@@ -2,8 +2,8 @@
 $scenario->group('data:clean-db,coverage:full');
 
 $I = new WebGuy\MemberSteps($scenario);
-$I->wantTo('test that sneak peeks are visible on the homepage for registered users');
-
+$I->wantTo('test that sneak peeks are visible on the homepage for registered users (inactivated)');
+/*
 $I->login('max', 'testtest');
 $I->createVideoFile(
     array(
