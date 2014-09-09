@@ -13,6 +13,17 @@ class Item extends BaseItem
         return parent::model($className);
     }
 
+    /**
+     * Returns the associated model.
+     * @return ActiveRecord
+     */
+    public function getModel()
+    {
+        return isset($this->model_class) && isset($this->id)
+            ? self::model($this->model_class)->findByPk($this->id)
+            : null;
+    }
+
     public function init()
     {
         return parent::init();

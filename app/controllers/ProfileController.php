@@ -131,6 +131,11 @@ class ProfileController extends Controller
         $id = Yii::app()->user->id;
         $model = Account::model()->findByPk(user()->id);
 
+        $this->buildBreadcrumbs(array(
+            Yii::t('app', 'Profile') => array('/profile/edit'),
+            Yii::t('app', 'History'),
+        ));
+
         $userChangedItems = new Item('search');
         $userChangedItems->unsetAttributes();
         $userChangedItems->setAttribute("user_id", Yii::app()->user->id);

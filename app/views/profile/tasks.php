@@ -42,7 +42,7 @@
 
     </div>
     <?php if (Yii::app()->user->isGroupAdmin() || Yii::app()->user->isAdmin() || Yii::app()->user->isEditor): ?>
-        <div class="dashboard-tasks-container">
+        <div class="tasks-container">
             <div class="tasks-top-bar">
                 <div class="top-bar-title">
                     <h2 class="tasks-heading"><?php echo Yii::t('app', 'Quick Start'); ?></h2>
@@ -52,7 +52,7 @@
             <?php echo $this->renderItemActionDropdown(Yii::t('app', 'Create New...'), 'add'); ?>
         </div>
     <?php endif; ?>
-    <div class="dashboard-tasks-container">
+    <div class="tasks-container tasks-container-section">
         <?php if (Yii::app()->user->isTranslator && empty(Yii::app()->user->translatableLanguages)): ?>
             <div>
                 <div class="tasks-top-bar">
