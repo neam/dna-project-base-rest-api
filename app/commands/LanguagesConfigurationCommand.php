@@ -72,4 +72,57 @@ class LanguagesConfigurationCommand extends CConsoleCommand
         var_export($data["languages"]);
     }
 
+    public function actionBuildLocalizedLanguages($filePath)
+    {
+        $languages = self::$languages;
+
+        // Loop every defined app language
+        foreach ($languages as $currentLanguageCode => $currentLanguage) {
+
+            // For the language, write every defined language as localised (with english fallback)
+            echo "Processing language $currentLanguageCode($currentLanguage)..." . PHP_EOL;
+
+            $filename = "{$filePath}/language-{$currentLanguageCode}.php";
+            $data = $this->constructLocalizedLanguageList($currentLanguageCode);
+            $this->write($filename, $data);
+
+            echo "Writing file $filename done!" . PHP_EOL;
+        }
+    }
+
+    /**
+     * Constructs an array with the localized values of self::$languages fallbacking to original language (eg "Svenska")
+     * @param $langCode
+     * @return array
+     */
+    private function constructLocalizedLanguageList($langCode)
+    {
+        $locale = LocaleData::getInstance($langCode);
+        $data = $locale->getData();
+
+        $localizedLanguages = array();
+
+        foreach (self::$languages as $code => $fallback) {
+            $localizedLanguages[$code] = empty($data['languages'][$code])
+                ? $fallback
+                : $data['languages'][$code];
+        }
+
+        return $localizedLanguages;
+    }
+
+    private function write($file, $data)
+    {
+        $array = str_replace("\r", '' , var_export($data, true));
+        $contents = <<<EOD
+<?php
+/**
+ * Automatically generated file
+ */
+return $array;
+EOD;
+
+        return file_put_contents($file, $contents);
+    }
+
 }
