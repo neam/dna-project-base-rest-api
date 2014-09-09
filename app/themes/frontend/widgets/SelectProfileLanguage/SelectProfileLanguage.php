@@ -83,7 +83,14 @@ class SelectProfileLanguage extends CWidget
 
         ob_start();
         echo $isRequiredAsteriskRed ? TbHtml::openTag('div', array('class' => 'required-red')) : '';
-        echo $this->form->select2ControlGroup($this->model, $attribute, Html::getLanguages(), $this->getHtmlOptions());
+
+        echo $this->form->select2ControlGroup(
+            $this->model,
+            $attribute,
+            LanguageHelper::getLanguageList(),
+            $this->getHtmlOptions()
+        );
+
         echo $isRequiredAsteriskRed ? TbHtml::closeTag('div') : '';
         return ob_get_clean();
     }

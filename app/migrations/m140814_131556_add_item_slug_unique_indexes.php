@@ -7,10 +7,61 @@ class m140814_131556_add_item_slug_unique_indexes extends EDbMigration
         'video_file',
     );
 
+
+    private function getCodes()
+    {
+        return array(
+            'en',
+            'ar',
+            'bg',
+            'ca',
+            'cs',
+            'da',
+            'de',
+            'en_gb',
+            'en_us',
+            'el',
+            'es',
+            'fa',
+            'fi',
+            'fil',
+            'fr',
+            'hi',
+            'hr',
+            'hu',
+            'id',
+            'it',
+            'iw',
+            'ja',
+            'ko',
+            'lt',
+            'lv',
+            'nl',
+            'no',
+            'pl',
+            'pt',
+            'pt_br',
+            'pt_pt',
+            'ro',
+            'ru',
+            'sk',
+            'sl',
+            'sr',
+            'sv',
+            'th',
+            'tr',
+            'uk',
+            'vi',
+            'zh',
+            'zh_cn',
+            'zh_tw',
+        );
+    }
+
 	public function up()
 	{
         foreach ($this->tables as $table) {
-            foreach (LanguageHelper::getCodes() as $language) {
+            foreach (self::getCodes() as $language) {
                 $this->createIndex("slug_{$language}_UNIQUE", $table, "slug_{$language}", true);
             }
         }
@@ -19,7 +70,7 @@ class m140814_131556_add_item_slug_unique_indexes extends EDbMigration
 	public function down()
 	{
         foreach ($this->tables as $table) {
-            foreach (LanguageHelper::getCodes() as $language) {
+            foreach (self::getCodes() as $language) {
                 $this->dropIndex("slug_{$language}_UNIQUE", $table);
             }
         }

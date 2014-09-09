@@ -138,7 +138,7 @@
             <?php echo $form->select2ControlGroup(
                 $model->profile,
                 'language1',
-                Html::getLanguages(),
+                LanguageHelper::getTranslatedLanguageList(),
                 array(
                     'empty' => Yii::t('app', 'None'),
                 )
@@ -148,7 +148,7 @@
             <?php echo $form->select2ControlGroup(
                 $model->profile,
                 'language2',
-                Html::getLanguages(),
+                LanguageHelper::getTranslatedLanguageList(),
                 array(
                     'empty' => Yii::t('app', 'None'),
                 )
@@ -158,7 +158,7 @@
             <?php echo $form->select2ControlGroup(
                 $model->profile,
                 'language3',
-                Html::getLanguages(),
+                LanguageHelper::getTranslatedLanguageList(),
                 array(
                     'empty' => Yii::t('app', 'None'),
                 )

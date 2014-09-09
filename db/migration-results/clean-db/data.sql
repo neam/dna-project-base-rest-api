@@ -68,8 +68,8 @@ UNLOCK TABLES;
 
 LOCK TABLES `SourceMessage` WRITE;
 /*!40000 ALTER TABLE `SourceMessage` DISABLE KEYS */;
-INSERT INTO `SourceMessage` (`id`, `category`, `message`) VALUES (1,'i18n_catalog-4-metal-po_contents','Chain');
-INSERT INTO `SourceMessage` (`id`, `category`, `message`) VALUES (2,'i18n_catalog-4-restaurant-po_contents','Chain');
+INSERT INTO `SourceMessage` (`id`, `category`, `message`) VALUES (1,'i18n_catalog-1-metal-po_contents','Chain');
+INSERT INTO `SourceMessage` (`id`, `category`, `message`) VALUES (2,'i18n_catalog-1-restaurant-po_contents','Chain');
 /*!40000 ALTER TABLE `SourceMessage` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -515,7 +515,8 @@ INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140820_120
 INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140830_171708_no_latin1_in_schema',1400000000,'core');
 INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140830_173626_default_utf8_for_schema',1400000000,'core');
 INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140903_125656_drop_section_page_id_fk',1400000000,'core');
-INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m999999_999999_fixed_apply_time_for_clean_db_migration_table',1409749739,'clean-db');
+INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140905_121917_change_hebrew_lancgode',1400000000,'core');
+INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m999999_999999_fixed_apply_time_for_clean_db_migration_table',1410262759,'clean-db');
 /*!40000 ALTER TABLE `migration` ENABLE KEYS */;
 UNLOCK TABLES;
 
