@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Script to test the deployed cms (currently to Dokku) during continuous integration
+# Script to test the deployed cms (currently to Dokku) during continuous integration (sourced)
 
 # The following env vars needs to be set properly:
 # - DRONE_BUILD_DIR
