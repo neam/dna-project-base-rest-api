@@ -38,19 +38,32 @@
                                 )
                             ); ?>
                             <?php if ($model->scenario === 'withCaptcha'): ?>
-                                <?php echo $form->textFieldControlGroup(
-                                    $model,
-                                    'captcha',
-                                    array(
-                                        'controlOptions' => array(
-                                            'before' => $this->widget(
+                                <div class="captcha">
+                                    <div class="captcha-field-label">
+                                        <label class="control-label required" for="SignupForm_captcha">
+                                            <?php echo Yii::t('app', 'Enter the characters you see in the image below'); ?>
+                                            <span class="required">*</span>
+                                        </label>
+                                    </div>
+                                    <?php echo $form->textFieldControlGroup(
+                                        $model,
+                                        'captcha',
+                                        array(
+                                            'label' => false,
+                                        )
+                                    ); ?>
+                                    <div class="captcha-image">
+                                        <div class="captcha-content">
+                                            <?php echo $this->widget(
                                                 $this->module->getClassName(\nordsoftware\yii_account\Module::CLASS_CAPTCHA_WIDGET),
-                                                array(),
+                                                array(
+                                                    'buttonLabel' => TbHtml::icon(TbHtml::ICON_REFRESH),
+                                                ),
                                                 true
-                                            )
-                                        ),
-                                    )
-                                ); ?>
+                                            ); ?>
+                                        </div>
+                                    </div>
+                                </div>
                             <?php endif; ?>
                             <div class="form-actions">
                                 <?php echo TbHtml::submitButton(

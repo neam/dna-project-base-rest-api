@@ -1133,12 +1133,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-simplicity-theme.git",
-                "reference": "d4a7b80d83a54e35cb38ae94eca1bc603f79044f"
+                "reference": "d569a7e1292aae690ef705f2cfdd9847f47b9a87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-simplicity-theme/zipball/d4a7b80d83a54e35cb38ae94eca1bc603f79044f",
-                "reference": "d4a7b80d83a54e35cb38ae94eca1bc603f79044f",
+                "url": "https://api.github.com/repos/neam/yii-simplicity-theme/zipball/d569a7e1292aae690ef705f2cfdd9847f47b9a87",
+                "reference": "d569a7e1292aae690ef705f2cfdd9847f47b9a87",
                 "shasum": ""
             },
             "require": {
@@ -1168,7 +1168,7 @@
             "keywords": [
                 "yii"
             ],
-            "time": "2014-08-30 14:50:53"
+            "time": "2014-09-11 15:04:49"
         },
         {
             "name": "neam/yii-workflow-core",
@@ -2124,7 +2124,7 @@
                 {
                     "name": "Tobias Munk",
                     "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.usrbin.de"
+                    "homepage": "http://www.phundament.com"
                 }
             ],
             "description": "Yii Framework Active Record Behavior for tree structures",
