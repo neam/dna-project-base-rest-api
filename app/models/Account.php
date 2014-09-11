@@ -219,13 +219,6 @@ class Account extends BaseAccount
      */
     public function getAllAttributes()
     {
-        $roles = array();
-        foreach ($this->groupHasAccounts as $gha) {
-            $roles[] = (object) array(
-                $gha->group->title => $gha->role->title
-            );
-        }
-
         $response = new stdClass();
         $response->first_name = $this->profile->first_name;
         $response->last_name = $this->profile->last_name;
@@ -234,15 +227,31 @@ class Account extends BaseAccount
         $response->others_may_contact_me = $this->profile->others_may_contact_me;
         $response->lives_in = $this->profile->lives_in;
         $response->about = $this->profile->about;
+
+        $response->roles = array_map(
+            function ($gha) {
+                /** @var GroupHasAccount $gha */
+                return array($gha->group->title => $gha->role->title);
+            },
+            $this->groupHasAccounts
+        );
+
         $response->profile_picture = !empty($this->profile->picture_media_id)
             ? $this->profile->pictureMedia->createUrl('user-profile-picture', true)
             : null;
 
-        $response->roles = $roles;
+        $response->contributions = Yii::app()->db->createCommand()
+            ->selectDistinct("item.node_id, item.id, item.model_class, item._title")
+            ->from("changeset")
+            ->join("node", "changeset.node_id = node.id")
+            ->join("item", "changeset.node_id = item.node_id")
+            ->where("changeset.user_id = :user_id", array(":user_id" => $this->id))
+            ->limit(5)
+            ->queryAll();
+
 
         // Not yet implemented
         /*
-        $response->contributions = 'TODO';
         $response->social_links = 'TODO';
         $response->user_definable_title = 'TODO';
         $response->about_me = 'TODO';
