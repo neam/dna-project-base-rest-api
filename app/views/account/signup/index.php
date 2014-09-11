@@ -37,9 +37,21 @@
                                     'help' => Yii::app()->renderPageLink('View the terms and conditions', 'terms'),
                                 )
                             ); ?>
-                            <div class="captcha">
-                                <?php // TODO: Implement Captcha. ?>
-                            </div>
+                            <?php if ($model->scenario === 'withCaptcha'): ?>
+                                <?php echo $form->textFieldControlGroup(
+                                    $model,
+                                    'captcha',
+                                    array(
+                                        'controlOptions' => array(
+                                            'before' => $this->widget(
+                                                $this->module->getClassName(\nordsoftware\yii_account\Module::CLASS_CAPTCHA_WIDGET),
+                                                array(),
+                                                true
+                                            )
+                                        ),
+                                    )
+                                ); ?>
+                            <?php endif; ?>
                             <div class="form-actions">
                                 <?php echo TbHtml::submitButton(
                                     Yii::t('app', 'Next'),

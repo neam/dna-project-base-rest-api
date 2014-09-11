@@ -21,6 +21,8 @@ class SignupForm extends \nordsoftware\yii_account\models\form\SignupForm
             array('email', 'email'),
             array('username, email', 'unique', 'className' => '\nordsoftware\yii_account\models\ar\Account'),
             array('acceptTerms', 'validateAcceptTerms'),
+            array('captcha', 'required', 'on' => 'withCaptcha'),
+            array('captcha', 'captcha', 'skipOnError' => true, 'on' => 'withCaptcha'),
         );
     }
 

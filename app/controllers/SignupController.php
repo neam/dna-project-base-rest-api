@@ -39,6 +39,9 @@ class SignupController extends \nordsoftware\yii_account\controllers\SignupContr
 
         /** @var \nordsoftware\yii_account\models\form\SignupForm $model */
         $model = new $modelClass();
+        if ($this->module->enableCaptcha) {
+            $model->scenario = 'withCaptcha';
+        }
 
         $request = \Yii::app()->request;
 
@@ -101,6 +104,9 @@ class SignupController extends \nordsoftware\yii_account\controllers\SignupContr
                     }
                 }
             }
+
+            // reset the captcha if validation failed.
+            $model->captcha = '';
         }
 
         $this->render('//account/signup/index', array('model' => $model));
