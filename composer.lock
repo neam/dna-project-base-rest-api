@@ -959,12 +959,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-i18n-tools.git",
-                "reference": "75d7b089f6c44ea6b1b5c41e1f3f339dbbffacd5"
+                "reference": "3ff4ad0605d3fa6bb161cdf2a53c4677315c6683"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-i18n-tools/zipball/75d7b089f6c44ea6b1b5c41e1f3f339dbbffacd5",
-                "reference": "75d7b089f6c44ea6b1b5c41e1f3f339dbbffacd5",
+                "url": "https://api.github.com/repos/neam/yii-i18n-tools/zipball/3ff4ad0605d3fa6bb161cdf2a53c4677315c6683",
+                "reference": "3ff4ad0605d3fa6bb161cdf2a53c4677315c6683",
                 "shasum": ""
             },
             "require": {
@@ -995,7 +995,7 @@
             "keywords": [
                 "yii"
             ],
-            "time": "2014-08-12 11:48:15"
+            "time": "2014-09-05 11:08:18"
         },
         {
             "name": "neam/yii-qa-state",
@@ -1087,13 +1087,13 @@
             "version": "dev-develop",
             "source": {
                 "type": "git",
-                "url": "https://github.com/kryysler/yii-restricted-access.git",
-                "reference": "c11c6d1f501df28adf6c493f6d3a1041eadcad70"
+                "url": "https://github.com/neam/yii-restricted-access.git",
+                "reference": "3e0aa10c002f185a9835aa843e3833b8b598b05f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kryysler/yii-restricted-access/zipball/c11c6d1f501df28adf6c493f6d3a1041eadcad70",
-                "reference": "c11c6d1f501df28adf6c493f6d3a1041eadcad70",
+                "url": "https://api.github.com/repos/neam/yii-restricted-access/zipball/3e0aa10c002f185a9835aa843e3833b8b598b05f",
+                "reference": "3e0aa10c002f185a9835aa843e3833b8b598b05f",
                 "shasum": ""
             },
             "require": {
@@ -1108,6 +1108,7 @@
                     "modules/restrictedAccess/widgets/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -1122,10 +1123,7 @@
             "keywords": [
                 "yii"
             ],
-            "support": {
-                "source": "https://github.com/kryysler/yii-restricted-access/tree/develop"
-            },
-            "time": "2014-09-05 12:24:52"
+            "time": "2014-09-02 14:49:15"
         },
         {
             "name": "neam/yii-simplicity-theme",
@@ -1176,12 +1174,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-workflow-core.git",
-                "reference": "2b7a75e26abfd6ac0a5b8b2a7c60f45002fe6a3c"
+                "reference": "7bd8f2ddd9f03a49b4c815f1c411a83f008f9e33"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-workflow-core/zipball/2b7a75e26abfd6ac0a5b8b2a7c60f45002fe6a3c",
-                "reference": "2b7a75e26abfd6ac0a5b8b2a7c60f45002fe6a3c",
+                "url": "https://api.github.com/repos/neam/yii-workflow-core/zipball/7bd8f2ddd9f03a49b4c815f1c411a83f008f9e33",
+                "reference": "7bd8f2ddd9f03a49b4c815f1c411a83f008f9e33",
                 "shasum": ""
             },
             "require": {
@@ -1209,7 +1207,7 @@
             "keywords": [
                 "yii"
             ],
-            "time": "2014-08-26 09:45:24"
+            "time": "2014-08-14 05:34:32"
         },
         {
             "name": "neam/yii-workflow-progress-tracking",
@@ -1253,12 +1251,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-workflow-task-list.git",
-                "reference": "b43a641232c743d99c129ba477660a8580b17cea"
+                "reference": "ce7e4b24c104cefe513a7344e230449e0ede5fb1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-workflow-task-list/zipball/b43a641232c743d99c129ba477660a8580b17cea",
-                "reference": "b43a641232c743d99c129ba477660a8580b17cea",
+                "url": "https://api.github.com/repos/neam/yii-workflow-task-list/zipball/ce7e4b24c104cefe513a7344e230449e0ede5fb1",
+                "reference": "ce7e4b24c104cefe513a7344e230449e0ede5fb1",
                 "shasum": ""
             },
             "require": {
@@ -1287,7 +1285,7 @@
             "keywords": [
                 "yii"
             ],
-            "time": "2014-08-13 14:45:39"
+            "time": "2014-09-04 07:15:16"
         },
         {
             "name": "neam/yii-workflow-ui",
@@ -1295,12 +1293,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-workflow-ui.git",
-                "reference": "53cb542abf1c7c1b5f3a4aa1408224459f0b2e5a"
+                "reference": "c3e18e060f63969e8c9a96964a07e7ec98cb266c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-workflow-ui/zipball/53cb542abf1c7c1b5f3a4aa1408224459f0b2e5a",
-                "reference": "53cb542abf1c7c1b5f3a4aa1408224459f0b2e5a",
+                "url": "https://api.github.com/repos/neam/yii-workflow-ui/zipball/c3e18e060f63969e8c9a96964a07e7ec98cb266c",
+                "reference": "c3e18e060f63969e8c9a96964a07e7ec98cb266c",
                 "shasum": ""
             },
             "require": {
@@ -1337,7 +1335,7 @@
             "keywords": [
                 "yii"
             ],
-            "time": "2014-09-02 09:13:02"
+            "time": "2014-09-05 08:01:52"
         },
         {
             "name": "nordsoftware/yii-account",
@@ -1345,12 +1343,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nordsoftware/yii-account.git",
-                "reference": "bbf25cdc442fa1c929c3c1821a8fb6727fb01338"
+                "reference": "4c7bdf4a3ce674ce1cb314bbc0be1600fac4942b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nordsoftware/yii-account/zipball/bbf25cdc442fa1c929c3c1821a8fb6727fb01338",
-                "reference": "bbf25cdc442fa1c929c3c1821a8fb6727fb01338",
+                "url": "https://api.github.com/repos/nordsoftware/yii-account/zipball/4c7bdf4a3ce674ce1cb314bbc0be1600fac4942b",
+                "reference": "4c7bdf4a3ce674ce1cb314bbc0be1600fac4942b",
                 "shasum": ""
             },
             "require": {
@@ -1387,7 +1385,7 @@
                 }
             ],
             "description": "Extension that provides basic account functionality for the Yii PHP framework.",
-            "time": "2014-09-11 13:17:11"
+            "time": "2014-09-12 05:15:00"
         },
         {
             "name": "nordsoftware/yii-emailer",
@@ -2124,7 +2122,7 @@
                 {
                     "name": "Tobias Munk",
                     "email": "schmunk@usrbin.de",
-                    "homepage": "http://www.phundament.com"
+                    "homepage": "http://www.usrbin.de"
                 }
             ],
             "description": "Yii Framework Active Record Behavior for tree structures",
