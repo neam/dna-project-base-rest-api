@@ -213,4 +213,56 @@ class Account extends BaseAccount
             )
         );
     }
+
+    /**
+     * The attributes that is returned by the REST api
+     */
+    public function getAllAttributes()
+    {
+        $response = new stdClass();
+        $response->first_name = $this->profile->first_name;
+        $response->last_name = $this->profile->last_name;
+        $response->username = $this->username;
+        $response->email = $this->email;
+        $response->others_may_contact_me = (bool) $this->profile->others_may_contact_me;
+        $response->lives_in = $this->profile->lives_in;
+        $response->about = $this->profile->about;
+
+        $response->contributions = Yii::app()->db->createCommand()
+            ->selectDistinct("item.node_id, item.id, item.model_class, item._title")
+            ->from("changeset")
+            ->join("node", "changeset.node_id = node.id")
+            ->join("node_has_group", "changeset.node_id = node_has_group.node_id")
+            ->join("item", "changeset.node_id = item.node_id")
+            ->where("changeset.user_id = :user_id", array(":user_id" => $this->id))
+            ->andWhere("node_has_group.visibility = :visible", array(":visible" => NodeHasGroup::VISIBILITY_VISIBLE))
+            ->limit(5)
+            ->queryAll();
+
+        // TODO: provide a fallback profile picture when it is done/exists
+        $response->profile_picture = !empty($this->profile->picture_media_id)
+            ? $this->profile->pictureMedia->createUrl('user-profile-picture', true)
+            : null;
+
+        $response->roles = array_map(
+            function ($gha) {
+                /** @var GroupHasAccount $gha */
+                return array($gha->group->title => $gha->role->title);
+            },
+            $this->groupHasAccounts
+        );
+
+
+
+
+        // Not yet implemented
+        /*
+        $response->social_links = 'TODO';
+        $response->user_definable_title = 'TODO';
+        $response->about_me = 'TODO';
+        $response->links = 'TODO';
+        */
+
+        return $response;
+    }
 }
