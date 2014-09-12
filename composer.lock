@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "cca0866fa31e3a86757332352f749a1c",
+    "hash": "fd1bb9c1d343789a44c5ff0b75e0a8ba",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1339,16 +1339,16 @@
         },
         {
             "name": "nordsoftware/yii-account",
-            "version": "dev-captcha-support",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nordsoftware/yii-account.git",
-                "reference": "4c7bdf4a3ce674ce1cb314bbc0be1600fac4942b"
+                "reference": "e4770ccb8f722e469df0cbd7c22fc19c5e328b46"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nordsoftware/yii-account/zipball/4c7bdf4a3ce674ce1cb314bbc0be1600fac4942b",
-                "reference": "4c7bdf4a3ce674ce1cb314bbc0be1600fac4942b",
+                "url": "https://api.github.com/repos/nordsoftware/yii-account/zipball/e4770ccb8f722e469df0cbd7c22fc19c5e328b46",
+                "reference": "e4770ccb8f722e469df0cbd7c22fc19c5e328b46",
                 "shasum": ""
             },
             "require": {
@@ -1385,7 +1385,7 @@
                 }
             ],
             "description": "Extension that provides basic account functionality for the Yii PHP framework.",
-            "time": "2014-09-12 05:15:00"
+            "time": "2014-09-12 07:07:10"
         },
         {
             "name": "nordsoftware/yii-emailer",
@@ -3008,7 +3008,6 @@
         "weavora/wrest": 20,
         "codemix/hybridauthmanager": 20,
         "crisu83/yii-sentry": 20,
-        "nordsoftware/yii-account": 20,
         "nordsoftware/yii-utils": 20,
         "crisu83/yii-formatter": 20,
         "jalle19/yii-ga": 20,
