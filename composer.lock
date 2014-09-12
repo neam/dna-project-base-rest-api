@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "58c237458f92392911147ad2dc2946d8",
+    "hash": "cca0866fa31e3a86757332352f749a1c",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1131,12 +1131,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-simplicity-theme.git",
-                "reference": "952674dc2a4c2078b0faee09a7fbeec40f18801f"
+                "reference": "d569a7e1292aae690ef705f2cfdd9847f47b9a87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-simplicity-theme/zipball/952674dc2a4c2078b0faee09a7fbeec40f18801f",
-                "reference": "952674dc2a4c2078b0faee09a7fbeec40f18801f",
+                "url": "https://api.github.com/repos/neam/yii-simplicity-theme/zipball/d569a7e1292aae690ef705f2cfdd9847f47b9a87",
+                "reference": "d569a7e1292aae690ef705f2cfdd9847f47b9a87",
                 "shasum": ""
             },
             "require": {
@@ -1166,7 +1166,7 @@
             "keywords": [
                 "yii"
             ],
-            "time": "2014-08-29 11:27:57"
+            "time": "2014-09-11 15:04:49"
         },
         {
             "name": "neam/yii-workflow-core",
@@ -1339,16 +1339,16 @@
         },
         {
             "name": "nordsoftware/yii-account",
-            "version": "dev-develop",
+            "version": "dev-captcha-support",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nordsoftware/yii-account.git",
-                "reference": "d1730debe46f07cac21b3685e7b4d37c2a134191"
+                "reference": "4c7bdf4a3ce674ce1cb314bbc0be1600fac4942b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nordsoftware/yii-account/zipball/d1730debe46f07cac21b3685e7b4d37c2a134191",
-                "reference": "d1730debe46f07cac21b3685e7b4d37c2a134191",
+                "url": "https://api.github.com/repos/nordsoftware/yii-account/zipball/4c7bdf4a3ce674ce1cb314bbc0be1600fac4942b",
+                "reference": "4c7bdf4a3ce674ce1cb314bbc0be1600fac4942b",
                 "shasum": ""
             },
             "require": {
@@ -1368,6 +1368,7 @@
                     "nordsoftware\\yii_account\\": "./src"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -1384,11 +1385,7 @@
                 }
             ],
             "description": "Extension that provides basic account functionality for the Yii PHP framework.",
-            "support": {
-                "source": "https://github.com/nordsoftware/yii-account/tree/develop",
-                "issues": "https://github.com/nordsoftware/yii-account/issues"
-            },
-            "time": "2014-09-02 10:31:26"
+            "time": "2014-09-12 05:15:00"
         },
         {
             "name": "nordsoftware/yii-emailer",
