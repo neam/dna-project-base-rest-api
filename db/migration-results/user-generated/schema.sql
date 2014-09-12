@@ -237,8 +237,8 @@ DROP TABLE IF EXISTS `account_password_history`;
 CREATE TABLE `account_password_history` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `accountId` int(11) NOT NULL,
-  `salt` varchar(255) CHARACTER SET latin1 NOT NULL,
-  `password` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `salt` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8 NOT NULL,
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB /*AUTO_INCREMENT omitted*/ DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
@@ -254,8 +254,8 @@ DROP TABLE IF EXISTS `account_token`;
 CREATE TABLE `account_token` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `accountId` int(11) NOT NULL,
-  `type` varchar(255) CHARACTER SET latin1 NOT NULL,
-  `token` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `type` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `token` varchar(255) CHARACTER SET utf8 NOT NULL,
   `createdAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `expiresAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `status` int(11) NOT NULL DEFAULT '0',

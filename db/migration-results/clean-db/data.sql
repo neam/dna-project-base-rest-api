@@ -516,7 +516,8 @@ INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140830_171
 INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140830_173626_default_utf8_for_schema',1400000000,'core');
 INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140903_125656_drop_section_page_id_fk',1400000000,'core');
 INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140905_121917_change_hebrew_lancgode',1400000000,'core');
-INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m999999_999999_fixed_apply_time_for_clean_db_migration_table',1410262759,'clean-db');
+INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m140912_083305_no_latin1_in_schema',1400000000,'core');
+INSERT INTO `migration` (`version`, `apply_time`, `module`) VALUES ('m999999_999999_fixed_apply_time_for_clean_db_migration_table',1410510851,'clean-db');
 /*!40000 ALTER TABLE `migration` ENABLE KEYS */;
 UNLOCK TABLES;
 
