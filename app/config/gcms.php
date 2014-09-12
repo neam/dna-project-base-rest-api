@@ -181,7 +181,7 @@ $gcmsConfig = array(
             ),
             'defaultLayout' => WorkflowUi::LAYOUT_NARROW,
             'fromEmailAddress' => \gapminder\envbootstrap\Identity::brand()->mailSentByMail,
-            'enableCaptcha' => true,
+            'enableCaptcha' => (CONFIG_ENVIRONMENT === 'test') ? false : true, // captcha is disabled in test mode
         ),
     ),
     'components' => array(
