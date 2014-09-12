@@ -224,7 +224,7 @@ class Account extends BaseAccount
         $response->last_name = $this->profile->last_name;
         $response->username = $this->username;
         $response->email = $this->email;
-        $response->others_may_contact_me = $this->profile->others_may_contact_me;
+        $response->others_may_contact_me = (bool) $this->profile->others_may_contact_me;
         $response->lives_in = $this->profile->lives_in;
         $response->about = $this->profile->about;
 
