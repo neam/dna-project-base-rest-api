@@ -161,31 +161,6 @@ $consoleConfig = array(
             'class' => 'vendor.sumwai.yii-fixture-helper.FixtureHelperDbFixtureManager',
         ),
     ),
-    'params' => array(
-        'composer.callbacks' => array(
-            // command and args for Yii command runner
-            'yiisoft/yii-install'              => $webappCommand,
-            'phundament/p3bootstrap-install'   => array('yiic', 'p3bootstrap'),
-            'phundament/backend-theme-install' => array('yiic', 'backend-theme'),
-            'phundament/p3media-install'       => array('yiic', 'p3media'),
-            'crisu83/yii-less-install'         => array('yiic', 'less-setup'),
-            'post-install'                     => array(
-                'yiic',
-                'p3echo',
-                "To complete the installation process, please run\n\n    app/yiic migrate\n\nfrom your project directory."
-            ),
-            'post-update'                      => array(
-                'yiic',
-                'p3echo',
-                "To complete the update process, please run:\n\n    app/yiic migrate\n\nfrom your project directory."
-            ),
-            #'post-install'                     => array(
-            #                                          array('yiic', 'migrate', '--interactive=1'),
-            #                                          array('yiic', 'foo', '--bar=1'),
-            #                                      ),
-            #'post-update'                      => array('yiic', 'migrate', '--interactive=1'),
-        ),
-    ),
 );
 
 // web config files

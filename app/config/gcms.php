@@ -11,21 +11,15 @@ $root = $basePath . DIRECTORY_SEPARATOR . '..';
 Yii::setPathOfAlias('root', $root);
 
 $gcmsConfig = array(
-    'name' => 'Gapminder CMS',
+    'name' => 'Gapminder CMS API',
     'language' => 'en', // default language, see also components.langHandler
-    'theme' => 'gapminder',
+    'theme' => null,
     'sourceLanguage' => 'en', // source code language
     'params' => array(
         'env' => 'development',
         'brand' => \gapminder\envbootstrap\Identity::brand(),
     ),
-    'preload' => array( //'ezc', // trying out if we can lazy-load this instead of preloading it...
-        // preloading 'loginReturnUrlTracker' component to track the current return url that users should be redirected to after login
-        'loginReturnUrlTracker'
-    ),
     'aliases' => array(
-        // bower components
-        'bower-components' => 'root.bower_components',
         // i18n
         'i18n-columns' => 'vendor.neam.yii-i18n-columns',
         'i18n-attribute-messages' => 'vendor.neam.yii-i18n-attribute-messages',
@@ -37,8 +31,6 @@ $gcmsConfig = array(
         'phpexcel' => 'vendor.phpoffice.phpexcel.Classes',
         'phpword' => 'vendor.phpoffice.phpword.src',
         'phppowerpoint' => 'vendor.phpoffice.phppowerpoint.Classes',
-        // yii graphviz
-        'yii-graphviz' => 'vendor.ascendro.yii-graphviz',
         // fix hard-coded aliases
         'ext.wrest' => 'vendor.weavora.wrest',
         'ext.wrest.WRestController' => 'vendor.weavora.wrest.WRestController',
@@ -46,11 +38,6 @@ $gcmsConfig = array(
         'ext.wrest.WRestResponse' => 'vendor.weavora.wrest.WRestResponse',
         'ext.wrest.JsonResponse' => 'vendor.weavora.wrest.JsonResponse',
         'application.gii.Migrate.MigrateCode' => 'vendor.mihanentalpo.yii-sql-migration-generator.Migrate.MigrateCode',
-        //'bootstrap.widgets.TbButton' => 'vendor.neam.yii-workflow-ui.widgets.TbButton',
-        'bootstrap.widgets.TbButton' => 'vendor.clevertech.yiibooster.src.widgets.TbButton',
-        // Aliases to help reference the current default theme
-        'theme' => 'vendor.neam.yii-simplicity-theme.themes.simplicity',
-        'simplicity-theme' => 'vendor.neam.yii-simplicity-theme',
     ),
     'import' => array(
         'i18n-columns.behaviors.I18nColumnsBehavior',
@@ -65,7 +52,6 @@ $gcmsConfig = array(
         'application.components.dashboard.*',
         'application.components.user.*',
         'application.components.validators.*',
-        'application.behaviors.EzcWorkflowBehavior',
         'application.behaviors.*',
         'application.workflows.custom.*',
         'application.workflows.*',
@@ -160,34 +146,8 @@ $gcmsConfig = array(
                 ),
             ),
         ),
-        'account' => array(
-            'class' => 'application.components.AccountModule',
-            'classMap' => array(
-                'account' => 'Account',
-                'signupForm' => 'SignupForm',
-            ),
-            'controllerMap' => array(
-                'authenticate' => array(
-                    'class' => 'application.controllers.AuthenticateController',
-                    'layout' => WorkflowUi::LAYOUT_NARROW,
-                ),
-                'password' => array(
-                    'class' => 'application.controllers.PasswordController',
-                ),
-                'signup' => array(
-                    'class' => 'application.controllers.SignupController',
-                    'layout' => WorkflowUi::LAYOUT_MINIMAL,
-                ),
-            ),
-            'defaultLayout' => WorkflowUi::LAYOUT_NARROW,
-            'fromEmailAddress' => \gapminder\envbootstrap\Identity::brand()->mailSentByMail,
-            'enableCaptcha' => (CONFIG_ENVIRONMENT === 'test') ? false : true, // captcha is disabled in test mode
-        ),
     ),
     'components' => array(
-        'loginReturnUrlTracker' => array(
-            'class' => 'application.components.LoginReturnUrlTracker',
-        ),
         'urlManager' => array(
             'urlFormat' => 'path',
             'showScriptName' => false,
@@ -249,33 +209,13 @@ $gcmsConfig = array(
             )
         ),
         */
-        'authManager' => array(
-            'class' => 'vendor.codemix.hybridauthmanager.HybridAuthManager',
-            'authFile' => Yii::getPathOfAlias('root') . '/app/data/auth-gcms.php',
-            'defaultRoles' => array('Anonymous', 'Member'),
-        ),
         'assetManager' => array(
             'class' => 'AssetManager',
-        ),
-        'ezc' => array(
-            'class' => 'application.components.EzcComponent',
-            'tablePrefix' => 'ezc_',
         ),
         'sentry' => array(
             'dns' => SENTRY_DSN,
             'enabledEnvironments' => array(ENV),
             'environment' => ENV,
-        ),
-        'user' => array(
-            'class' => 'application.components.WebUser',
-            'loginUrl' => array('/account/authenticate/login'),
-        ),
-        'widgetFactory' => array(
-            'widgets' => array(
-                'TbSelect2' => array(
-                    'assetPath' => dirname(__DIR__) . '/../vendor/crisu83/yiistrap-widgets/lib/select2',
-                ),
-            ),
         ),
     )
 );
