@@ -216,9 +216,6 @@ $gcmsConfig = array(
             )
         ),
         */
-        'assetManager' => array(
-            'class' => 'AssetManager',
-        ),
         'sentry' => array(
             'dns' => SENTRY_DSN,
             'enabledEnvironments' => array(ENV),
@@ -232,13 +229,7 @@ $applicationDirectory =& $basePath;
 
 require($applicationDirectory . '/../../core/app/config/includes/logging.php');
 require($applicationDirectory . '/../vendor/neam/yii-workflow-core/config/yii-workflow-core.php');
-require($applicationDirectory . '/../vendor/neam/yii-workflow-ui/config/yii-workflow-ui.php');
-require($applicationDirectory . '/../vendor/neam/yii-simplicity-theme/config/yii-simplicity-theme.php');
 require($applicationDirectory . '/../vendor/neam/yii-restricted-access/config/yii-restricted-access.php');
 require($applicationDirectory . '/../vendor/neam/yii-workflow-task-list/config/yii-workflow-task-list.php');
-
-// Extension overrides
-$config['aliases']['simplicity-theme.app-views.layout-elements._menu'] = 'application.views.layout-elements._menu';
-$config['aliases']['simplicity-theme.app-views.layout-elements._footer'] = 'application.views.layout-elements._footer';
 
 return $gcmsConfig;
