@@ -6,7 +6,7 @@ $root = dirname(__DIR__);
 require_once("$root/vendor/autoload.php");
 
 // include envbootstrap
-require("$root/app/config/envbootstrap/include.php");
+require("$root/../core/envbootstrap/include.php");
 
 // include yii
 require_once("$root/vendor/yiisoft/yii/framework/yii.php");
