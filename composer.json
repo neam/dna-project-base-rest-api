@@ -79,6 +79,7 @@
     "require": {
         "php": ">=5.4.0",
         "crisu83/yii-consoletools": "dev-awaiting-prs",
+        "phundament/jquery-file-upload": "@dev",
         "phundament/p3media": "dev-awaiting-prs as 0.17.3",
         "schmunk42/web-user-behavior": "0.1.*",
         "yiiext/migrate-command": "dev-master#35f315b as 0.7.2.1",
