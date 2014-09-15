@@ -1,5 +1,5 @@
 <?php
-$scenario->group('data:clean-db,coverage:full');
+$scenario->group('data:clean-db,coverage:TODO-move-to-integration-tests-since-it-relies-on-other-tests');
 $I = new ApiGuy($scenario);
 $I->wantTo('check .po file translations containing msgctxt for i18nCatalog items retrieved via the REST API');
 
