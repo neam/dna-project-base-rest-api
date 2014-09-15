@@ -221,6 +221,10 @@ $gcmsConfig = array(
             'enabledEnvironments' => array(ENV),
             'environment' => ENV,
         ),
+        'user' => array(
+            'class' => 'application.components.WebUser',
+            'loginUrl' => array('/site/login'),
+        ),
     )
 );
 
