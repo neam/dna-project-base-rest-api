@@ -1,6 +1,6 @@
 <?php
 
-class WebUser extends \nordsoftware\yii_account\components\WebUser
+class WebUser extends CWebUser
 {
     /**
      * @var Account
