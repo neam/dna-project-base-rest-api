@@ -10,6 +10,12 @@ $basePath = dirname(__FILE__) . DIRECTORY_SEPARATOR . '..';
 $root = $basePath . DIRECTORY_SEPARATOR . '..';
 Yii::setPathOfAlias('root', $root);
 
+// Paths to components
+Yii::setPathOfAlias('core', $root . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'core');
+Yii::setPathOfAlias('api', $root . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'api');
+Yii::setPathOfAlias('external-yii-frontend', $root . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'external-yii-frontend');
+Yii::setPathOfAlias('internal-yii-frontend', $root . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'internal-yii-frontend');
+
 $gcmsConfig = array(
     'name' => 'Gapminder CMS API',
     'language' => 'en', // default language, see also components.langHandler
@@ -53,12 +59,12 @@ $gcmsConfig = array(
         'application.components.user.*',
         'application.components.validators.*',
         'application.behaviors.*',
-        'application.workflows.custom.*',
-        'application.workflows.*',
         'application.controllers.traits.*',
         'application.models.traits.*',
         'application.models.wrappers.Users',
-        'application.exceptions.*',
+        // import from core
+        'core.app.components.*',
+        'core.app.exceptions.*',
     ),
     'modules' => array(
         // code generator
@@ -220,12 +226,10 @@ $gcmsConfig = array(
     )
 );
 
-require('includes/logging.php');
-require('includes/mail.php');
-
 $config =& $gcmsConfig;
 $applicationDirectory =& $basePath;
 
+require($applicationDirectory . '/../../core/app/config/includes/logging.php');
 require($applicationDirectory . '/../vendor/neam/yii-workflow-core/config/yii-workflow-core.php');
 require($applicationDirectory . '/../vendor/neam/yii-workflow-ui/config/yii-workflow-ui.php');
 require($applicationDirectory . '/../vendor/neam/yii-simplicity-theme/config/yii-simplicity-theme.php');

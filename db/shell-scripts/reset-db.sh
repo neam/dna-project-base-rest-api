@@ -14,7 +14,7 @@ fi
 # fail on any error
 set -o errexit
 
-cd $script_path/..
+cd $script_path/../..
 
 app/yiic databaseschema --connectionID=$connectionID dropAllTablesAndViews --verbose=0
 
@@ -66,7 +66,7 @@ app/yiic databaseviewgenerator --connectionID=$connectionID itemTable
 
 if [ "$connectionID" != "dbTest" ]; then
 
-    shell-scripts/update-current-schema-dumps.sh
+    db/shell-scripts/update-current-schema-dumps.sh
 
 fi
 

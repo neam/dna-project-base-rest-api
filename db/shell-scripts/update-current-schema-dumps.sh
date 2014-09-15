@@ -1,10 +1,10 @@
 #!/bin/bash
 
 script_path=`dirname $0`
-cd $script_path/../
+cd $script_path/../../
 
 # document the current database table defaults
-app/yiic config exportDbConfig --connectionID=db > /tmp/db-config.sh
+app/yiic config exportDbConfig --connectionID=db | tee /tmp/db-config.sh
 source /tmp/db-config.sh
 mysqldump -h$DB_HOST -P$DB_PORT -u$DB_USER --password=$DB_PASSWORD --no-create-info --skip-triggers --no-data --databases $DB_NAME > db/migration-results/$DATA/create-db.sql
 

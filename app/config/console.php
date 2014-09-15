@@ -17,15 +17,17 @@ $webappCommand = array(
     '--interactive=' . (getenv('PHUNDAMENT_TEST') ? '0' : '1')
 );
 
-$applicationDirectory = realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR);
+$basePath = $applicationDirectory = realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR);
+$root = $basePath . DIRECTORY_SEPARATOR . '..';
+Yii::setPathOfAlias('root', $root);
 
 // Selection of migrations to apply in clean-db vs user-generated DATA scenario
 $modulePaths = array();
 if (DATA == "clean-db") {
-    $modulePaths['clean-db'] = 'application.migrations.clean-db';
+    $modulePaths['clean-db'] = 'root.db.migrations.clean-db';
 }
 if (DATA == "user-generated") {
-    $modulePaths['user-generated'] = 'application.migrations.user-generated';
+    $modulePaths['user-generated'] = 'root.db.migrations.user-generated';
 }
 /*
  * Currently unused
@@ -52,8 +54,15 @@ $consoleConfig = array(
     'import' => array(
         'application.commands.components.*',
         'application.components.*',
+        // import from core
+        'core.app.components.*',
+        'core.app.exceptions.*',
     ),
     'commandMap' => array(
+        // config command
+        'config'      => array(
+            'class' => 'core.app.commands.ConfigCommand',
+        ),
         // dev command
         'database'      => array(
             'class' => 'vendor.schmunk42.database-command.EDatabaseCommand',
@@ -63,7 +72,7 @@ $consoleConfig = array(
             // alias of the path where you extracted the zip file
             'class'                 => 'vendor.yiiext.migrate-command.EMigrateCommand',
             // this is the path where you want your core application migrations to be created
-            'migrationPath'         => 'application.migrations',
+            'migrationPath'         => 'root.db.migrations',
             // the name of the table created in your database to save versioning information
             'migrationTable'        => 'migration',
             // the application migrations are in a pseudo-module called "core" by default
@@ -133,6 +142,10 @@ $consoleConfig = array(
             'class'     => 'vendor.phundament.backend-theme.commands.PhBackendThemeCommand',
             'themePath' => 'application.themes',
             'themeName' => 'backend2',
+        ),
+        // db commands
+        'databaseschema'      => array(
+            'class' => 'root.db.commands.DatabaseSchemaCommand',
         ),
         'mysqldump' => array(
             'class' => 'vendor.crisu83.yii-consoletools.commands.MysqldumpCommand',
