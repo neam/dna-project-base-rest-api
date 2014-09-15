@@ -171,6 +171,7 @@ $gcmsConfig = array(
             //'schemaCachingDuration'=>3600*24,
         ),
         'dbTest' => array(
+            'class'=>'system.db.CDbConnection',
             'connectionString' => 'mysql:host=' . TEST_DB_HOST . (defined('TEST_DB_PORT') ? ';port=' . TEST_DB_PORT : '') . ';dbname=' . TEST_DB_NAME,
             'emulatePrepare' => true,
             'username' => TEST_DB_USER,
