@@ -6,7 +6,7 @@ set -x;
 set -o errexit
 
 script_path=`dirname $0`
-cd $script_path/../
+cd $script_path/../../
 
 if [ ! -f db/migration-base/user-generated/schema.sql ]; then
 
