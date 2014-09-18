@@ -7,7 +7,7 @@
  */
 
 // include gapminder-specific configuration. merged with main configuration in the bottom
-$gcmsConfigFile = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'gcms.php';
+$gcmsConfigFile = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'SPECIFIC API VERSION.php';
 $gcmsConfig = require($gcmsConfigFile);
 
 // convenience variables
@@ -15,8 +15,10 @@ $applicationDirectory = realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' 
 $baseUrl              = (dirname($_SERVER['SCRIPT_NAME']) == '/' || dirname($_SERVER['SCRIPT_NAME']) == '\\') ? '' :
     dirname($_SERVER['SCRIPT_NAME']);
 
-require($applicationDirectory . '/../../api/app/config/includes/languages.php');
-require($applicationDirectory . '/../../api/app/config/includes/languageDirections.php');
+//$yiiApiContract = YII_API_CONTRACT;
+
+require($applicationDirectory . '/config/includes/languages.php');
+require($applicationDirectory . '/config/includes/languageDirections.php');
 
 // main application configuration
 $mainConfig = array(
@@ -143,7 +145,6 @@ $mainConfig = array(
     // application components
     'components' => array(
         'request' => array(
-            'class' => 'HttpRequest',
             'baseUrl'    => $baseUrl,
         ),
         'authManager' => array(
