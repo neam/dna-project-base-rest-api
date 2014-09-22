@@ -8,7 +8,6 @@ nbproject
 .idea/workspace.xml
 npm-debug.log
 
-/tests/codeception/_log
 /tests/codeception.yml
 /tests/codeception/*.yml
 /tests/codeception/_data/dump.sql
