@@ -65,5 +65,6 @@ require($projectRoot . '/dna/dna-api-revisions/' . YII_DNA_REVISION . '/include.
 
 // Extensions' includes
 include($applicationDirectory . '/../vendor/neam/yii-dna-debug-modes-and-error-handling/config/error-handling.php');
+include($applicationDirectory . '/../vendor/neam/yii-dna-debug-modes-and-error-handling/config/debug-modes.php');
 
 return $config;
