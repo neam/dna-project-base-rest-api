@@ -7,14 +7,14 @@
     "license": "BSD-3-Clause",
     "authors": [
         {
-            "name": "Fredrik Wollsén",
-            "email": "fredrik@neam.se",
-            "homepage": "http://www.neam.se"
-        },
-        {
             "name": "Gapminder Developers",
             "email": "dev@gapminder.org",
             "homepage": "http://www.gapminder.org"
+        },
+        {
+            "name": "Fredrik Wollsén",
+            "email": "fredrik@neam.se",
+            "homepage": "http://www.neam.se"
         },
         {
             "name": "Open Source Community"
@@ -28,23 +28,15 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/motin/p3media"
-        },
-        {
-            "type": "vcs",
             "url": "https://github.com/neam/wrest"
-        },
-        {
-            "type": "composer",
-            "url": "http://packages.phundament.com"
         }
     ],
     "minimum-stability": "stable",
     "require": {
         "php": ">=5.4.0",
-        "phundament/p3media": "dev-awaiting-prs as 0.17.3",
         "weavora/wrest": "dev-awaiting-prs",
-        "yiisoft/yii": "1.1.15 as dev-master"
+        "neam/yii-dna-debug-modes-and-error-handling": "dev-develop",
+        "yiisoft/yii": "1.1.15"
     },
     "require-dev": {
     },

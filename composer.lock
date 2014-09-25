@@ -1,0 +1,303 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "1dbbabdc21fc82b4146772f3776abc49",
+    "packages": [
+        {
+            "name": "crisu83/yii-sentry",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/crisu83/yii-sentry.git",
+                "reference": "c43499e427bd803206a1970944605db03f079697"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/crisu83/yii-sentry/zipball/c43499e427bd803206a1970944605db03f079697",
+                "reference": "c43499e427bd803206a1970944605db03f079697",
+                "shasum": ""
+            },
+            "require": {
+                "raven/raven": "0.8.*"
+            },
+            "require-dev": {
+                "yiisoft/yii": ">=1.1.14"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "components/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Christoffer Niska",
+                    "email": "christoffer.niska@gmail.com",
+                    "homepage": "http://www.cniska.net/"
+                }
+            ],
+            "description": "Sentry for the Yii PHP framework.",
+            "keywords": [
+                "error",
+                "exception",
+                "log",
+                "sentry",
+                "yii"
+            ],
+            "time": "2014-08-18 16:13:25"
+        },
+        {
+            "name": "neam/yii-dna-debug-modes-and-error-handling",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/neam/yii-dna-debug-modes-and-error-handling.git",
+                "reference": "5c783af873d0534d6c9029eef2eb4b4f88f00424"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/neam/yii-dna-debug-modes-and-error-handling/zipball/5c783af873d0534d6c9029eef2eb4b4f88f00424",
+                "reference": "5c783af873d0534d6c9029eef2eb4b4f88f00424",
+                "shasum": ""
+            },
+            "require": {
+                "crisu83/yii-sentry": "dev-master",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "components/",
+                    "exceptions/",
+                    "traits/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Fredrik Wollsén",
+                    "email": "fredrik@neam.se",
+                    "homepage": "http://www.neam.se"
+                }
+            ],
+            "description": "Provides easy debug of redirects and general application flow through logs as well as user and developer friendly error handling in production.",
+            "homepage": "https://github.com/neam/yii-dna-debug-modes-and-error-handling",
+            "keywords": [
+                "debug",
+                "dna",
+                "error-handling",
+                "php",
+                "yii"
+            ],
+            "time": "2014-09-25 20:14:06"
+        },
+        {
+            "name": "raven/raven",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/getsentry/raven-php.git",
+                "reference": "dc64b9a45211c4efb25c95334eb103d2945a09d3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/getsentry/raven-php/zipball/dc64b9a45211c4efb25c95334eb103d2945a09d3",
+                "reference": "dc64b9a45211c4efb25c95334eb103d2945a09d3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "bin": [
+                "bin/raven"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.8.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Raven_": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD"
+            ],
+            "authors": [
+                {
+                    "name": "David Cramer",
+                    "email": "dcramer@gmail.com"
+                }
+            ],
+            "description": "A PHP client for Sentry (http://getsentry.com)",
+            "homepage": "http://getsentry.com",
+            "keywords": [
+                "log",
+                "logging"
+            ],
+            "time": "2014-09-24 15:51:54"
+        },
+        {
+            "name": "weavora/wrest",
+            "version": "dev-awaiting-prs",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/neam/wrest.git",
+                "reference": "40a644bb74ef2013b2e68d74653b02411144f801"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/neam/wrest/zipball/40a644bb74ef2013b2e68d74653b02411144f801",
+                "reference": "40a644bb74ef2013b2e68d74653b02411144f801",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.0.0",
+                "yiisoft/yii": ">=1.1.0"
+            },
+            "type": "yii-extension",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Weavora Team",
+                    "email": "hello@weavora.com"
+                },
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/weavora/wrest/graphs/contributors"
+                }
+            ],
+            "description": "Yii extension to create REST CRUD interfaces (get, list, update, create, delete actions) for your app",
+            "homepage": "https://github.com/weavora/wrest",
+            "keywords": [
+                "api",
+                "rest",
+                "yii"
+            ],
+            "support": {
+                "source": "https://github.com/neam/wrest/tree/awaiting-prs"
+            },
+            "time": "2014-01-28 21:26:50"
+        },
+        {
+            "name": "yiisoft/yii",
+            "version": "1.1.15",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yiisoft/yii.git",
+                "reference": "022a51d34ad2c95db2b77b2075e98f5dd78b08e0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yiisoft/yii/zipball/022a51d34ad2c95db2b77b2075e98f5dd78b08e0",
+                "reference": "022a51d34ad2c95db2b77b2075e98f5dd78b08e0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.1.0"
+            },
+            "bin": [
+                "framework/yiic"
+            ],
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Qiang Xue",
+                    "email": "qiang.xue@gmail.com",
+                    "homepage": "http://www.yiiframework.com/",
+                    "role": "Founder and project lead"
+                },
+                {
+                    "name": "Alexander Makarov",
+                    "email": "sam@rmcreative.ru",
+                    "homepage": "http://rmcreative.ru/",
+                    "role": "Core framework development"
+                },
+                {
+                    "name": "Maurizio Domba",
+                    "homepage": "http://mdomba.info/",
+                    "role": "Core framework development"
+                },
+                {
+                    "name": "Carsten Brandt",
+                    "email": "mail@cebe.cc",
+                    "homepage": "http://cebe.cc/",
+                    "role": "Core framework development"
+                },
+                {
+                    "name": "Wei Zhuo",
+                    "email": "weizhuo@gmail.com",
+                    "role": "Project site maintenance and development"
+                },
+                {
+                    "name": "Sebastián Thierer",
+                    "email": "sebas@artfos.com",
+                    "role": "Component development"
+                },
+                {
+                    "name": "Jeffrey Winesett",
+                    "email": "jefftulsa@gmail.com",
+                    "role": "Documentation and marketing"
+                },
+                {
+                    "name": "Timur Ruziev",
+                    "email": "resurtm@gmail.com",
+                    "homepage": "http://resurtm.com/",
+                    "role": "Core framework development"
+                },
+                {
+                    "name": "Paul Klimov",
+                    "email": "klimov.paul@gmail.com",
+                    "role": "Core framework development"
+                }
+            ],
+            "description": "Yii Web Programming Framework",
+            "homepage": "http://www.yiiframework.com/",
+            "keywords": [
+                "framework",
+                "yii"
+            ],
+            "time": "2014-06-30 00:14:27"
+        }
+    ],
+    "packages-dev": [
+
+    ],
+    "aliases": [
+
+    ],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "weavora/wrest": 20,
+        "neam/yii-dna-debug-modes-and-error-handling": 20
+    },
+    "prefer-stable": false,
+    "platform": {
+        "php": ">=5.4.0"
+    },
+    "platform-dev": [
+
+    ]
+}
