@@ -31,7 +31,7 @@
             "url": "https://github.com/neam/wrest"
         }
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "require": {
         "php": ">=5.4.0",
         "weavora/wrest": "dev-awaiting-prs",
