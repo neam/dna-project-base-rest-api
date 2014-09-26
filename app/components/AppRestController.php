@@ -2,7 +2,35 @@
 
 class AppRestController extends WRestController
 {
+    /**
+     * @inheritdoc
+     */
+    public function filters()
+    {
+        return array_merge(
+            parent::filters(),
+            array(
+                'accessControl',
+            )
+        );
+    }
 
+    /**
+     * @inheritdoc
+     */
+    public function accessRules()
+    {
+        return array(
+            // Logged in users can do whatever they want to.
+            array('allow', 'users' => array('@')),
+            // Not logged in users can't do anything.
+            array('deny', 'users' => array('*')),
+        );
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function init()
     {
         ini_set('html_errors', 0);
@@ -83,6 +111,9 @@ class AppRestController extends WRestController
         header('Content-type: ' . $content_type);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function sendResponse($status = 200, $bodyParams = array(), $options = array())
     {
         header("Access-Control-Allow-Origin: *");

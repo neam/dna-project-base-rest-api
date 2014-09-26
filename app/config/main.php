@@ -14,7 +14,7 @@ $mainConfig = array(
         'app' => $applicationDirectory,
         'vendor' => $applicationDirectory . '/../vendor',
         'dna' => $projectRoot . '/dna',
-        'app' => 'application',
+        'OAuth2Yii' => 'vendor.codemix.oauth2yii.src.OAuth2Yii',
     ),
     // autoloading model and component classes
     'import' => array(
@@ -30,30 +30,53 @@ $mainConfig = array(
                 'presets' => array()
             ),
         ),
+        'v1' => array(
+            // API version 1 specific configuration goes in here
+        ),
     ),
     // application components
     'components' => array(
+        'errorHandler' => array(
+            'class' => 'ErrorHandler',
+        ),
+        'oauth2' => array(
+            'class' => 'OAuth2Yii\Component\ServerComponent',
+            'userClass' => 'OAuth2User',
+            'enableAuthorization' => false,
+            'enableImplicit' => false,
+            'enableUserCredentials' => true,
+            'enableClientCredentials' => false,
+        ),
         'request' => array(
             'baseUrl' => $baseUrl,
         ),
         'urlManager' => array(
+            'urlFormat' => 'path',
+            'useStrictParsing' => true,
+            'showScriptName' => false,
             'rules' => array(
-
                 // rest api rules
                 // slugs are required to be prefixed by an ":" character, due to rule collisions
-                array('api/<controller>/delete', 'pattern' => 'api/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'DELETE'),
-                array('api/<controller>/update', 'pattern' => 'api/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'PUT'),
-                array('api/<controller>/list', 'pattern' => 'api/<controller:\w+>', 'verb' => 'GET'),
-                array('api/<controller>/get', 'pattern' => 'api/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'GET'),
-                array('api/<controller>/create', 'pattern' => 'api/<controller:\w+>', 'verb' => 'POST'),
-                array('api/<controller>/<action>', 'pattern' => 'api/<controller:\w+>/<action:\w+>', 'verb' => 'GET'),
-                array('api/<controller>/<action>', 'pattern' => 'api/<controller:\w+>/<action:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'GET'),
+                array('api/<version>/<controller>/delete', 'pattern' => 'api/<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'DELETE'),
+                array('api/<version>/<controller>/update', 'pattern' => 'api/<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'PUT'),
+                array('api/<version>/<controller>/list', 'pattern' => 'api/<version:v\d+>/<controller:\w+>', 'verb' => 'GET'),
+                array('api/<version>/<controller>/get', 'pattern' => 'api/<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'GET'),
+                array('api/<version>/<controller>/create', 'pattern' => 'api/<version:v\d+>/<controller:\w+>', 'verb' => 'POST'),
+                array('api/<version>/<controller>/<action>', 'pattern' => 'api/<version:v\d+>/<controller:\w+>/<action:\w+>', 'verb' => 'GET'),
+                array('api/<version>/<controller>/<action>', 'pattern' => 'api/<version:v\d+>/<controller:\w+>/<action:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'GET'),
                 // rest api cors rules
-                array('api/<model>/preflight', 'pattern' => 'api/<model:\w+>', 'verb' => 'OPTIONS'),
-                array('api/<model>/preflight', 'pattern' => 'api/<model:\w+>/<_id:\d+>', 'verb' => 'OPTIONS'),
-                array('api/<model>/preflight', 'pattern' => 'api/<model:\w+>/subtitles', 'verb' => 'OPTIONS'),
-
+                array('api/<version>/<model>/preflight', 'pattern' => 'api/<model:\w+>', 'verb' => 'OPTIONS'),
+                array('api/<version>/<model>/preflight', 'pattern' => 'api/<model:\w+>/<_id:\d+>', 'verb' => 'OPTIONS'),
+                array('api/<version>/<model>/preflight', 'pattern' => 'api/<model:\w+>/subtitles', 'verb' => 'OPTIONS'),
             ),
+        ),
+        'user' => array(
+            'class' => 'WebUser',
+            'loginUrl' => null,
+            'allowAutoLogin' => false,
+        ),
+        'session' => array (
+            'cookieMode' => 'none',
         ),
     ),
 );

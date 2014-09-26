@@ -31,9 +31,10 @@
             "url": "https://github.com/neam/wrest"
         }
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "require": {
         "php": ">=5.4.0",
+        "codemix/oauth2yii": "dev-master",
         "weavora/wrest": "dev-awaiting-prs",
         "neam/yii-dna-debug-modes-and-error-handling": "dev-develop",
         "yiisoft/yii": "1.1.15"
