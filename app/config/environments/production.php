@@ -6,16 +6,13 @@ return array(
     // application components
     'components' => array(
         'log' => array(
-            'class'  => 'CLogRouter',
+            'class' => 'CLogRouter',
             'routes' => array(
                 array(
-                    'class'  => 'CFileLogRoute',
+                    'class' => 'CFileLogRoute',
                     'levels' => 'error,warning',
                 ),
             ),
         ),
-    ),
-    'params'     => array(
-        #'adminEmail' => 'webmaster@h17n.de', // this is used in contact page
     ),
 );
