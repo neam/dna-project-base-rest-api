@@ -1,5 +1,6 @@
 <?php
-$scenario->group('data:clean-db,coverage:full');
+// TODO: Reactivate this test after having made available the data created during the automated frontend testing
+$scenario->group('data:clean-db,coverage:integration');
 $I = new ApiGuy($scenario);
 $I->wantTo('check .po file translations containing msgctxt for i18nCatalog items retrieved via the REST API');
 

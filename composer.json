@@ -1,186 +1,50 @@
 {
-    "name": "gapminder/gscms",
-    "description": "Gapminder School CMS",
+    "name": "gapminder/cms-api",
+    "description": "Gapminder CMS API",
     "keywords": ["yii", "web", "application", "gapminder", "gapminder-school", "cms"],
     "homepage": "http://gapminder.org/",
     "type": "yii-application",
     "license": "BSD-3-Clause",
     "authors": [
         {
-            "name": "Tobias Munk",
-            "email": "schmunk@usrbin.de",
-            "homepage": "http://www.phundament.com"
+            "name": "Gapminder Developers",
+            "email": "dev@gapminder.org",
+            "homepage": "http://www.gapminder.org"
         },
         {
             "name": "Fredrik Wollsén",
             "email": "fredrik@neam.se",
             "homepage": "http://www.neam.se"
+        },
+        {
+            "name": "Open Source Community"
         }
     ],
     "support": {
         "email": "support@gapminder.org",
-        "issues": "https://github.com/gapminder/gapminder-school-cms/issues",
-        "source": "https://github.com/gapminder/gapminder-school-cms"
+        "issues": "https://gapminder.atlassian.net/",
+        "source": "https://github.com/Gapminder/gapminder-cms-api"
     },
     "repositories": [
         {
-            "type": "package",
-            "package": {
-                "name": "kswedberg/jquery-smooth-scroll",
-                "version": "1.4.10",
-                "source": {
-                    "url": "https://github.com/kswedberg/jquery-smooth-scroll.git",
-                    "type": "git",
-                    "reference": "1.4.10"
-                }
-            }
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/motin/p3media"
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "schmunk42/relation",
-                "version": "1.0.3.1",
-                "source": {
-                    "url": "https://github.com/motin/yii-relation.git",
-                    "type": "git",
-                    "reference": "b275ae18ed4798dc01cad72e9b27878c851d1312"
-                }
-            }
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/motin/PHPWord"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/codemix/hybridauthmanager"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/schmunk42/yii-rights.git"
-        },
-        {
             "type": "vcs",
             "url": "https://github.com/neam/wrest"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/motin/gii-template-collection"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/Gapminder/PHP-po-parser"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/motin/yii-consoletools"
-        },
-        {
-            "type": "composer",
-            "url": "http://packages.phundament.com"
         }
     ],
-    "minimum-stability": "stable",
-    "comments-about-certain-required-deps": {
-        "crisu83/yii-rights": "Used for RWebUser in user component only",
-        "neam/yii-relational-graph-db": "Not a real plugin yet, but a placeholder to which to move node/edge-related functionality"
-    },
+    "minimum-stability": "dev",
     "require": {
         "php": ">=5.4.0",
-        "crisu83/yii-consoletools": "dev-awaiting-prs",
-        "crisu83/yiistrap-widgets": "1.7.*",
-        "phundament/jquery-file-upload": "@dev",
-        "phundament/p3admin": "0.16.0",
-        "phundament/p3extensions": "0.17.0",
-        "phundament/p3pages": "dev-master as 0.17.0",
-        "phundament/p3media": "dev-awaiting-prs as 0.17.3",
-        "phundament/p3widgets": "0.16.0",
-        "schmunk42/ckeditor-configurator": "@dev",
-        "schmunk42/multi-theme": "0.2.*",
-        "schmunk42/web-user-behavior": "0.1.*",
-        "yiiext/migrate-command": "dev-master#35f315b as 0.7.2.1",
-        "kswedberg/jquery-smooth-scroll": "1.4.10",
-        "neam/yii-i18n-columns": "dev-develop",
-        "neam/yii-i18n-attribute-messages": "dev-develop",
-        "neam/yii-i18n-tools": "dev-develop",
-        "neam/yii-restricted-access": "dev-develop",
-        "neam/yii-simplicity-theme": "dev-develop",
-        "neam/yii-workflow-core": "dev-develop",
-        "neam/yii-workflow-ui": "dev-develop",
-        "neam/yii-workflow-task-list": "dev-develop",
-        "neam/yii-workflow-progress-tracking": "dev-develop",
-        "neam/yii-qa-state": "dev-develop",
-        "neam/yii-relational-graph-db": "@dev",
-        "motin/yii-owner-behavior": "*@dev",
-        "sumwai/yii-fixture-helper": "@dev",
-        "phpoffice/phpexcel": "1.7.9",
-        "phpoffice/phpword": "dev-added-composer-json",
-        "phpoffice/phppowerpoint": "dev-master",
-        "sepia/po-parser": "dev-master",
-        "neam/php-po2json": "dev-develop",
         "weavora/wrest": "dev-awaiting-prs",
-        "codemix/hybridauthmanager": "dev-master",
-        "schmunk42/relation": "1.*",
-        "yiisoft/yii": "1.1.15 as dev-master",
-        "mikehaertl/translatable": "~1.1.0",
-        "crisu83/yii-sentry": "dev-master as 1.3.0",
-        "alchemy/zippy": "*",
-        "nordsoftware/yii-account": "1.3.*",
-        "nordsoftware/yii-emailer": "1.2.*",
-        "nordsoftware/yii-utils": "@dev",
-        "crisu83/yii-formatter": "@dev",
-        "jalle19/yii-ga": "dev-master",
-        "crisu83/yiistrap": "dev-bs3 as 1.1.1"
+        "neam/yii-dna-debug-modes-and-error-handling": "dev-develop",
+        "yiisoft/yii": "1.1.15"
     },
     "require-dev": {
-        "phundament/backend-theme": "@dev",
-        "phundament/p3bootstrap": "0.22.0",
-        "schmunk42/giic": "dev-master",
-        "phundament/gii-template-collection": "dev-gcms-yiistrap"
     },
     "extra": {
-        "heroku": {
-            "framework": "yii",
-            "engines": {
-                "php": "5.4.26",
-                "nginx": "1.4.3"
-            },
-            "php-config": [
-                "upload_max_filesize=200M",
-                "post_max_size=200M",
-                "max_execution_time=60",
-                "xdebug.default_enable=on",
-                "newrelic.logfile=var/log/newrelic.log",
-                "error_log=var/log/error.log",
-                "error_reporting=E_ALL",
-                "html_errors=on",
-                "display_errors=on",
-                "short_open_tag=on"
-            ],
-            "nginx-includes": [
-                "deploy/nginx-fastcgi-custom-configuration.conf"
-            ],
-            "compile": [
-                "bash deploy/post-buildstep.sh"
-            ],
-            "newrelic": true,
-            "log-files": [
-                "app/runtime/application.log",
-                "vendor/php/var/log/newrelic.log"
-            ],
-            "document-root": "www",
-            "index-document": "index.php"
-        }
-    },
-    "autoload": {
-        "psr-0": {
-            "Phundament": "./src",
-            "YiiPassword\\": "./vendor/phpnode/yiipassword/src"
-        }
+        "writable": [
+            "app/runtime",
+            "www/runtime"
+        ]
     },
     "scripts": {
     }

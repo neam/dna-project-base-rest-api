@@ -29,7 +29,6 @@ $I->seeResponseIsJson();
 $I->sendGET('videoFile/get', array('id' => 2, 'lang' => 'fa'));
 $I->seeResponseCodeIs(200);
 $I->seeResponseIsJson();
-*/
 
 $I->sendGET('snapshot/get', array('id' => 5, 'lang' => 'en'));
 $I->seeResponseCodeIs(200);
@@ -38,6 +37,7 @@ $I->seeResponseIsJson();
 $I->sendGET('snapshot/get', array('id' => 5, 'lang' => 'fa'));
 $I->seeResponseCodeIs(200);
 $I->seeResponseIsJson();
+*/
 
 /*
 $I->sendGET('videoFile/subtitles', array('id' => 2, 'lang' => 'fa'));
