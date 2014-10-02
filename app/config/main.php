@@ -42,9 +42,6 @@ $mainConfig = array(
     ),
     // application components
     'components' => array(
-        'errorHandler' => array(
-            'class' => 'ErrorHandler',
-        ),
         'oauth2' => array(
             'class' => 'OAuth2Yii\Component\ServerComponent',
             'userClass' => 'OAuth2User',
@@ -104,6 +101,11 @@ require($projectRoot . '/dna/dna-api-revisions/' . YII_DNA_REVISION . '/include.
 // Extensions' includes
 include($applicationDirectory . '/../vendor/neam/yii-dna-debug-modes-and-error-handling/config/error-handling.php');
 include($applicationDirectory . '/../vendor/neam/yii-dna-debug-modes-and-error-handling/config/debug-modes.php');
+
+// This is a REST application, so we want' to handle errors accordingly.
+$config['components']['errorHandler'] = array(
+    'class' => 'YiiDnaRestErrorHandler',
+);
 
 // Uncomment to easily see the active merged configuration
 //echo "<pre>";print_r($config);echo "</pre>";die();
