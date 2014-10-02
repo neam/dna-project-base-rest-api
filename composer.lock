@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a0c1bdf3793f63693fca8ad52939976d",
+    "hash": "9b6eb332a20c7068d319a8740486a707",
     "packages": [
         {
             "name": "bshaffer/oauth2-server-php",
@@ -144,12 +144,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-dna-debug-modes-and-error-handling.git",
-                "reference": "6fd09297ba1f9f30b975ee547558d71233d9304b"
+                "reference": "b78dcfcb83cc73c967784c00106fbfd13922f8c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-dna-debug-modes-and-error-handling/zipball/6fd09297ba1f9f30b975ee547558d71233d9304b",
-                "reference": "6fd09297ba1f9f30b975ee547558d71233d9304b",
+                "url": "https://api.github.com/repos/neam/yii-dna-debug-modes-and-error-handling/zipball/b78dcfcb83cc73c967784c00106fbfd13922f8c6",
+                "reference": "b78dcfcb83cc73c967784c00106fbfd13922f8c6",
                 "shasum": ""
             },
             "require": {
@@ -184,7 +184,7 @@
                 "php",
                 "yii"
             ],
-            "time": "2014-09-25 21:22:04"
+            "time": "2014-10-01 15:26:32"
         },
         {
             "name": "raven/raven",

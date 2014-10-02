@@ -1,8 +1,10 @@
 <?php
 $this->pageTitle = Yii::app()->name . ' - ' . Yii::t('app', 'Error');
+/*
 $this->breadcrumbs = array(
     Yii::t('app', 'Error'),
 );
+*/
 $loggedEventIds = !empty($loggedEventIds) ? $loggedEventIds : Yii::app()->errorHandler->getSentryClient()->getLoggedEventIds();
 ?>
 

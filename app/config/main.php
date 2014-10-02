@@ -15,6 +15,12 @@ $mainConfig = array(
         'vendor' => $applicationDirectory . '/../vendor',
         'dna' => $projectRoot . '/dna',
         'OAuth2Yii' => 'vendor.codemix.oauth2yii.src.OAuth2Yii',
+        // fix hard-coded aliases
+        'ext.wrest' => 'vendor.weavora.wrest',
+        'ext.wrest.WRestController' => 'vendor.weavora.wrest.WRestController',
+        'ext.wrest.WHttpRequest' => 'vendor.weavora.wrest.WHttpRequest',
+        'ext.wrest.WRestResponse' => 'vendor.weavora.wrest.WRestResponse',
+        'ext.wrest.JsonResponse' => 'vendor.weavora.wrest.JsonResponse',
     ),
     // autoloading model and component classes
     'import' => array(
@@ -78,6 +84,15 @@ $mainConfig = array(
         'session' => array (
             'cookieMode' => 'none',
         ),
+        'log' => array(
+            'class' => 'CLogRouter',
+            'routes' => array(
+                array(
+                    'class' => 'CFileLogRoute',
+                    'levels' => 'error, warning',
+                ),
+            ),
+        ),
     ),
 );
 
@@ -89,5 +104,8 @@ require($projectRoot . '/dna/dna-api-revisions/' . YII_DNA_REVISION . '/include.
 // Extensions' includes
 include($applicationDirectory . '/../vendor/neam/yii-dna-debug-modes-and-error-handling/config/error-handling.php');
 include($applicationDirectory . '/../vendor/neam/yii-dna-debug-modes-and-error-handling/config/debug-modes.php');
+
+// Uncomment to easily see the active merged configuration
+//echo "<pre>";print_r($config);echo "</pre>";die();
 
 return $config;

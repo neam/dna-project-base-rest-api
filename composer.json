@@ -41,6 +41,12 @@
     },
     "require-dev": {
     },
+    "extra": {
+        "writable": [
+            "app/runtime",
+            "www/runtime"
+        ]
+    },
     "scripts": {
     }
 }
