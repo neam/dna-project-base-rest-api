@@ -11,7 +11,7 @@ class OAuth2User implements OAuth2Yii\Interfaces\User
      */
     public function queryUser($username)
     {
-        return Account::model()->findByAttributes(array('email' => $username));
+        return Account::model()->findByAttributes(array('username' => $username));
     }
 
     /**
