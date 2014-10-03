@@ -46,6 +46,7 @@ $mainConfig = array(
         'oauth2' => array(
             'class' => 'OAuth2Yii\Component\ServerComponent',
             'userClass' => 'OAuth2User',
+            'clientClass' => 'OAuth2Client',
             'enableAuthorization' => false,
             'enableImplicit' => false,
             'enableUserCredentials' => true,
