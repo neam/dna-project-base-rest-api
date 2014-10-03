@@ -14,8 +14,8 @@ $mainConfig = array(
         'app' => $applicationDirectory,
         'vendor' => $applicationDirectory . '/../vendor',
         'dna' => $projectRoot . '/dna',
-        'OAuth2Yii' => 'vendor.codemix.oauth2yii.src.OAuth2Yii',
         // fix hard-coded aliases
+        'OAuth2Yii' => 'vendor.codemix.oauth2yii.src.OAuth2Yii',
         'ext.wrest' => 'vendor.weavora.wrest',
         'ext.wrest.WRestController' => 'vendor.weavora.wrest.WRestController',
         'ext.wrest.WHttpRequest' => 'vendor.weavora.wrest.WHttpRequest',
@@ -25,6 +25,7 @@ $mainConfig = array(
     // autoloading model and component classes
     'import' => array(
         'application.components.*',
+        'application.controllers.*',
         'vendor.weavora.wrest.*',
         'vendor.weavora.wrest.actions.*',
         'vendor.weavora.wrest.behaviors.*',
@@ -59,18 +60,20 @@ $mainConfig = array(
             'showScriptName' => false,
             'rules' => array(
                 // rest api rules
+                // OAuth2 token endpoint for authenticating a user.
+                array('<version>/user/login', 'pattern' => 'api/<version:v\d+>/user/login', 'verb' => 'POST'),
                 // slugs are required to be prefixed by an ":" character, due to rule collisions
-                array('api/<version>/<controller>/delete', 'pattern' => 'api/<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'DELETE'),
-                array('api/<version>/<controller>/update', 'pattern' => 'api/<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'PUT'),
-                array('api/<version>/<controller>/list', 'pattern' => 'api/<version:v\d+>/<controller:\w+>', 'verb' => 'GET'),
-                array('api/<version>/<controller>/get', 'pattern' => 'api/<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'GET'),
-                array('api/<version>/<controller>/create', 'pattern' => 'api/<version:v\d+>/<controller:\w+>', 'verb' => 'POST'),
-                array('api/<version>/<controller>/<action>', 'pattern' => 'api/<version:v\d+>/<controller:\w+>/<action:\w+>', 'verb' => 'GET'),
-                array('api/<version>/<controller>/<action>', 'pattern' => 'api/<version:v\d+>/<controller:\w+>/<action:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'GET'),
+                array('<version>/<controller>/delete', 'pattern' => 'api/<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'DELETE'),
+                array('<version>/<controller>/update', 'pattern' => 'api/<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'PUT'),
+                array('<version>/<controller>/list', 'pattern' => 'api/<version:v\d+>/<controller:\w+>', 'verb' => 'GET'),
+                array('<version>/<controller>/get', 'pattern' => 'api/<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'GET'),
+                array('<version>/<controller>/create', 'pattern' => 'api/<version:v\d+>/<controller:\w+>', 'verb' => 'POST'),
+                array('<version>/<controller>/<action>', 'pattern' => 'api/<version:v\d+>/<controller:\w+>/<action:\w+>', 'verb' => 'GET'),
+                array('<version>/<controller>/<action>', 'pattern' => 'api/<version:v\d+>/<controller:\w+>/<action:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'GET'),
                 // rest api cors rules
-                array('api/<version>/<model>/preflight', 'pattern' => 'api/<model:\w+>', 'verb' => 'OPTIONS'),
-                array('api/<version>/<model>/preflight', 'pattern' => 'api/<model:\w+>/<_id:\d+>', 'verb' => 'OPTIONS'),
-                array('api/<version>/<model>/preflight', 'pattern' => 'api/<model:\w+>/subtitles', 'verb' => 'OPTIONS'),
+                array('<version>/<model>/preflight', 'pattern' => 'api/<model:\w+>', 'verb' => 'OPTIONS'),
+                array('<version>/<model>/preflight', 'pattern' => 'api/<model:\w+>/<_id:\d+>', 'verb' => 'OPTIONS'),
+                array('<version>/<model>/preflight', 'pattern' => 'api/<model:\w+>/subtitles', 'verb' => 'OPTIONS'),
             ),
         ),
         'user' => array(

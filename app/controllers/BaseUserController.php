@@ -1,6 +1,6 @@
 <?php
 
-class UserController extends AppRestController
+class BaseUserController extends AppRestController
 {
     protected $_modelName = 'Account';
 
