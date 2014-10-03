@@ -1,6 +1,6 @@
 <?php
 
-class LanguageController extends AppRestController
+class BaseLanguageController extends AppRestController
 {
     public function actionList()
     {
