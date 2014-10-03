@@ -36,6 +36,7 @@
         "php": ">=5.4.0",
         "codemix/oauth2yii": "dev-master",
         "weavora/wrest": "dev-awaiting-prs",
+        "nordsoftware/yii-account": "1.3.*",
         "neam/yii-dna-debug-modes-and-error-handling": "dev-develop",
         "yiisoft/yii": "1.1.15"
     },
