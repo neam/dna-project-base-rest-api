@@ -62,19 +62,19 @@ $mainConfig = array(
             'rules' => array(
                 // rest api rules
                 // OAuth2 token endpoint for authenticating a user.
-                array('<version>/user/login', 'pattern' => 'api/<version:v\d+>/user/login', 'verb' => 'POST'),
+                array('<version>/user/login', 'pattern' => '<version:v\d+>/user/login', 'verb' => 'POST'),
                 // slugs are required to be prefixed by an ":" character, due to rule collisions
-                array('<version>/<controller>/delete', 'pattern' => 'api/<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'DELETE'),
-                array('<version>/<controller>/update', 'pattern' => 'api/<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'PUT'),
-                array('<version>/<controller>/list', 'pattern' => 'api/<version:v\d+>/<controller:\w+>', 'verb' => 'GET'),
-                array('<version>/<controller>/get', 'pattern' => 'api/<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'GET'),
-                array('<version>/<controller>/create', 'pattern' => 'api/<version:v\d+>/<controller:\w+>', 'verb' => 'POST'),
-                array('<version>/<controller>/<action>', 'pattern' => 'api/<version:v\d+>/<controller:\w+>/<action:\w+>', 'verb' => 'GET'),
-                array('<version>/<controller>/<action>', 'pattern' => 'api/<version:v\d+>/<controller:\w+>/<action:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'GET'),
+                array('<version>/<controller>/delete', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'DELETE'),
+                array('<version>/<controller>/update', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'PUT'),
+                array('<version>/<controller>/list', 'pattern' => '<version:v\d+>/<controller:\w+>', 'verb' => 'GET'),
+                array('<version>/<controller>/get', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'GET'),
+                array('<version>/<controller>/create', 'pattern' => '<version:v\d+>/<controller:\w+>', 'verb' => 'POST'),
+                array('<version>/<controller>/<action>', 'pattern' => '<version:v\d+>/<controller:\w+>/<action:\w+>', 'verb' => 'GET'),
+                array('<version>/<controller>/<action>', 'pattern' => '<version:v\d+>/<controller:\w+>/<action:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'GET'),
                 // rest api cors rules
-                array('<version>/<model>/preflight', 'pattern' => 'api/<model:\w+>', 'verb' => 'OPTIONS'),
-                array('<version>/<model>/preflight', 'pattern' => 'api/<model:\w+>/<_id:\d+>', 'verb' => 'OPTIONS'),
-                array('<version>/<model>/preflight', 'pattern' => 'api/<model:\w+>/subtitles', 'verb' => 'OPTIONS'),
+                array('<version>/<model>/preflight', 'pattern' => '<model:\w+>', 'verb' => 'OPTIONS'),
+                array('<version>/<model>/preflight', 'pattern' => '<model:\w+>/<_id:\d+>', 'verb' => 'OPTIONS'),
+                array('<version>/<model>/preflight', 'pattern' => '<model:\w+>/subtitles', 'verb' => 'OPTIONS'),
             ),
         ),
         'user' => array(
