@@ -32,9 +32,32 @@ class BaseUserController extends AppRestController
     public function actions()
     {
         return array(
-            'get' => 'WRestGetAction',
+//            'get' => 'WRestGetAction',
             'login' => '\OAuth2Yii\Action\Token',
         );
+    }
+
+    /**
+     * Custom get action for the user data.
+     */
+    public function actionGet()
+    {
+        $id = $this->request->getParam('id');
+        if ($id === null) {
+            $this->sendResponse(404);
+        }
+        if (is_int($id) || ctype_digit($id)) {
+            $model = CActiveRecord::model($this->_modelName)->findByPk($id);
+        } else {
+            $model = CActiveRecord::model($this->_modelName)->findByattributes(array('username' => $id));
+        }
+        if (Yii::app()->getUser()->getIsGuest()) {
+            // todo: if the users profile is not public, then we cannot show it. (check from QA state)
+        }
+        if ($model === null) {
+            $this->sendResponse(404);
+        }
+        $this->sendResponse(200, $model->getAllAttributes());
     }
 
     /**
@@ -42,10 +65,11 @@ class BaseUserController extends AppRestController
      */
     public function actionAuthenticate()
     {
-        if (!Yii::app()->getUser()->getIsGuest())
+        if (!Yii::app()->getUser()->getIsGuest()) {
             $this->sendResponse(200);
-        else
+        } else {
             $this->sendResponse(401);
+        }
     }
 
     /**
