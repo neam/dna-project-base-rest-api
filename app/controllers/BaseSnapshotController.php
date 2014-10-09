@@ -1,6 +1,6 @@
 <?php
 
-class SnapshotController extends AppRestController
+class BaseSnapshotController extends AppRestController
 {
 
     protected $_modelName = "Snapshot"; //model to be used as resource

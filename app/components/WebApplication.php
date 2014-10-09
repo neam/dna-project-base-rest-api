@@ -6,5 +6,5 @@
  */
 class WebApplication extends CWebApplication
 {
-    use YiiDnaWebApplicationTrait;
+    use YiiDnaRestApplicationTrait;
 }

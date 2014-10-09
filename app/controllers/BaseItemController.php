@@ -1,6 +1,6 @@
 <?php
 
-class ItemController extends AppRestController
+class BaseItemController extends AppRestController
 {
 
     protected $_modelName = "Item"; //model to be used as resource

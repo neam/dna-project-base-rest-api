@@ -1,8 +1,7 @@
 <?php
 
-class VideoFileController extends AppRestController
+class BaseVideoFileController extends AppRestController
 {
-
     protected $_modelName = "VideoFile"; //model to be used as resource
 
     public function actions() //determine which of the standard actions will support the controller
@@ -38,5 +37,4 @@ class VideoFileController extends AppRestController
 
         exit;
     }
-
 }

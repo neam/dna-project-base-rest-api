@@ -1,6 +1,6 @@
 <?php
 
-class WaffleController extends AppRestController
+class BaseWaffleController extends AppRestController
 {
     /**
      * @var string the model class used as resource.
