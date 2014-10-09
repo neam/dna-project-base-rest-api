@@ -44,7 +44,7 @@ $mainConfig = array(
         ),
         'urlManager' => array(
             'rules' => array(
-
+                array('api/user/profile', 'pattern' => 'api/user/profile', 'verb' => 'GET'),
                 // rest api rules
                 // slugs are required to be prefixed by an ":" character, due to rule collisions
                 array('api/<controller>/delete', 'pattern' => 'api/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'DELETE'),

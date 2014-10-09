@@ -11,4 +11,13 @@ class UserController extends AppRestController
         );
     }
 
+    /**
+     * Returns the currently logged in users profile data.
+     */
+    public function actionProfile()
+    {
+        /** @var Account $model */
+        $model = $this->loadModel(Yii::app()->getUser()->id);
+        $this->sendResponse(200, $model->getAllAttributes());
+    }
 }
