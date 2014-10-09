@@ -1,6 +1,6 @@
 <?php
 
-class I18nCatalogController extends AppRestController
+class BaseI18nCatalogController extends AppRestController
 {
     /**
      * @var string the class name of the model resource.

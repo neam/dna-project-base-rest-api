@@ -14,8 +14,8 @@ $mainConfig = array(
         'app' => $applicationDirectory,
         'vendor' => $applicationDirectory . '/../vendor',
         'dna' => $projectRoot . '/dna',
-        'app' => 'application',
         // fix hard-coded aliases
+        'OAuth2Yii' => 'vendor.codemix.oauth2yii.src.OAuth2Yii',
         'ext.wrest' => 'vendor.weavora.wrest',
         'ext.wrest.WRestController' => 'vendor.weavora.wrest.WRestController',
         'ext.wrest.WHttpRequest' => 'vendor.weavora.wrest.WHttpRequest',
@@ -25,6 +25,7 @@ $mainConfig = array(
     // autoloading model and component classes
     'import' => array(
         'application.components.*',
+        'application.controllers.*',
         'vendor.weavora.wrest.*',
         'vendor.weavora.wrest.actions.*',
         'vendor.weavora.wrest.behaviors.*',
@@ -36,30 +37,55 @@ $mainConfig = array(
                 'presets' => array()
             ),
         ),
+        'v1' => array(
+            // API version 1 specific configuration goes in here
+        ),
     ),
     // application components
     'components' => array(
+        'oauth2' => array(
+            'class' => 'OAuth2Yii\Component\ServerComponent',
+            'userClass' => 'OAuth2User',
+            'clientClass' => 'OAuth2Client',
+            'enableAuthorization' => false,
+            'enableImplicit' => false,
+            'enableUserCredentials' => true,
+            'enableClientCredentials' => false,
+        ),
         'request' => array(
             'baseUrl' => $baseUrl,
         ),
         'urlManager' => array(
+            'urlFormat' => 'path',
+            'useStrictParsing' => true,
+            'showScriptName' => false,
             'rules' => array(
-                array('api/user/profile', 'pattern' => 'api/user/profile', 'verb' => 'GET'),
-                // rest api rules
+                // user specific rules
+                array('<version>/user/login', 'pattern' => '<version:v\d+>/user/login', 'verb' => 'POST'),
+                array('<version>/user/authenticate', 'pattern' => '<version:v\d+>/user/authenticate', 'verb' => 'GET'),
+                array('<version>/user/profile', 'pattern' => '<version:v\d+>/user/profile', 'verb' => 'GET'),
+                // common rules
                 // slugs are required to be prefixed by an ":" character, due to rule collisions
-                array('api/<controller>/delete', 'pattern' => 'api/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'DELETE'),
-                array('api/<controller>/update', 'pattern' => 'api/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'PUT'),
-                array('api/<controller>/list', 'pattern' => 'api/<controller:\w+>', 'verb' => 'GET'),
-                array('api/<controller>/get', 'pattern' => 'api/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'GET'),
-                array('api/<controller>/create', 'pattern' => 'api/<controller:\w+>', 'verb' => 'POST'),
-                array('api/<controller>/<action>', 'pattern' => 'api/<controller:\w+>/<action:\w+>', 'verb' => 'GET'),
-                array('api/<controller>/<action>', 'pattern' => 'api/<controller:\w+>/<action:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'GET'),
+                array('<version>/<controller>/delete', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'DELETE'),
+                array('<version>/<controller>/update', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'PUT'),
+                array('<version>/<controller>/list', 'pattern' => '<version:v\d+>/<controller:\w+>', 'verb' => 'GET'),
+                array('<version>/<controller>/get', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'GET'),
+                array('<version>/<controller>/create', 'pattern' => '<version:v\d+>/<controller:\w+>', 'verb' => 'POST'),
+                array('<version>/<controller>/<action>', 'pattern' => '<version:v\d+>/<controller:\w+>/<action:\w+>', 'verb' => 'GET'),
+                array('<version>/<controller>/<action>', 'pattern' => '<version:v\d+>/<controller:\w+>/<action:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'GET'),
                 // rest api cors rules
-                array('api/<model>/preflight', 'pattern' => 'api/<model:\w+>', 'verb' => 'OPTIONS'),
-                array('api/<model>/preflight', 'pattern' => 'api/<model:\w+>/<_id:\d+>', 'verb' => 'OPTIONS'),
-                array('api/<model>/preflight', 'pattern' => 'api/<model:\w+>/subtitles', 'verb' => 'OPTIONS'),
-
+                array('<version>/<model>/preflight', 'pattern' => '<model:\w+>', 'verb' => 'OPTIONS'),
+                array('<version>/<model>/preflight', 'pattern' => '<model:\w+>/<_id:\d+>', 'verb' => 'OPTIONS'),
+                array('<version>/<model>/preflight', 'pattern' => '<model:\w+>/subtitles', 'verb' => 'OPTIONS'),
             ),
+        ),
+        'user' => array(
+            'class' => 'WebUser',
+            'loginUrl' => null,
+            'allowAutoLogin' => false,
+        ),
+        'session' => array (
+            'cookieMode' => 'none',
         ),
         'log' => array(
             'class' => 'CLogRouter',
@@ -81,6 +107,11 @@ require($projectRoot . '/dna/dna-api-revisions/' . YII_DNA_REVISION . '/include.
 // Extensions' includes
 include($applicationDirectory . '/../vendor/neam/yii-dna-debug-modes-and-error-handling/config/error-handling.php');
 include($applicationDirectory . '/../vendor/neam/yii-dna-debug-modes-and-error-handling/config/debug-modes.php');
+
+// This is a REST application, so we want' to handle errors accordingly.
+$config['components']['errorHandler'] = array(
+    'class' => 'YiiDnaRestErrorHandler',
+);
 
 // Uncomment to easily see the active merged configuration
 //echo "<pre>";print_r($config);echo "</pre>";die();

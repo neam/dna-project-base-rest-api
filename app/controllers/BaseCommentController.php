@@ -1,6 +1,6 @@
 <?php
 
-class CommentController extends AppRestController
+class BaseCommentController extends AppRestController
 {
 
     protected $_modelName = "Comment"; //model to be used as resource
