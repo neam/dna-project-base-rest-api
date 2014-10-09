@@ -14,7 +14,9 @@ class BaseUserController extends AppRestController
             array(
                 'allow',
                 'actions' => array(
+                    'get',
                     'login',
+                    'authenticate',
                 )
             ),
             // Logged in users can do whatever they want to.
@@ -33,5 +35,16 @@ class BaseUserController extends AppRestController
             'get' => 'WRestGetAction',
             'login' => '\OAuth2Yii\Action\Token',
         );
+    }
+
+    /**
+     * Authenticates that the user is currently "logged in", i.e. a the Authorization header needs to be set and valid.
+     */
+    public function actionAuthenticate()
+    {
+        if (!Yii::app()->getUser()->getIsGuest())
+            $this->sendResponse(200);
+        else
+            $this->sendResponse(401);
     }
 }

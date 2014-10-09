@@ -21,6 +21,14 @@ class AppRestController extends WRestController
     public function accessRules()
     {
         return array(
+            // Not logged in users can do the following actions.
+            array(
+                'allow',
+                'actions' => array(
+                    'get',
+                    'list',
+                )
+            ),
             // Logged in users can do whatever they want to.
             array('allow', 'users' => array('@')),
             // Not logged in users can't do anything.

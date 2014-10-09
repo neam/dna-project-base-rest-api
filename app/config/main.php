@@ -63,6 +63,8 @@ $mainConfig = array(
                 // rest api rules
                 // OAuth2 token endpoint for authenticating a user.
                 array('<version>/user/login', 'pattern' => '<version:v\d+>/user/login', 'verb' => 'POST'),
+                // Check if the current user is authenticated through OAuth2.
+                array('<version>/user/authenticate', 'pattern' => '<version:v\d+>/user/authenticate', 'verb' => 'GET'),
                 // slugs are required to be prefixed by an ":" character, due to rule collisions
                 array('<version>/<controller>/delete', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'DELETE'),
                 array('<version>/<controller>/update', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'PUT'),
