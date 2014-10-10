@@ -25,6 +25,7 @@ class AppRestController extends WRestController
             array(
                 'allow',
                 'actions' => array(
+                    'preflight',
                     'get',
                     'list',
                 )

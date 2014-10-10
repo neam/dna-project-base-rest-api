@@ -74,10 +74,17 @@ $mainConfig = array(
                 array('<version>/<controller>/create', 'pattern' => '<version:v\d+>/<controller:\w+>', 'verb' => 'POST'),
                 array('<version>/<controller>/<action>', 'pattern' => '<version:v\d+>/<controller:\w+>/<action:\w+>', 'verb' => 'GET'),
                 array('<version>/<controller>/<action>', 'pattern' => '<version:v\d+>/<controller:\w+>/<action:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'GET'),
-                // rest api cors rules
-                array('<version>/<model>/preflight', 'pattern' => '<model:\w+>', 'verb' => 'OPTIONS'),
-                array('<version>/<model>/preflight', 'pattern' => '<model:\w+>/<_id:\d+>', 'verb' => 'OPTIONS'),
-                array('<version>/<model>/preflight', 'pattern' => '<model:\w+>/subtitles', 'verb' => 'OPTIONS'),
+                // cors rules
+                // user specific
+                // todo: the cors allow methods are currently hard-coded. think of better solution.
+                array('<version>/user/preflight', 'pattern' => '<version:v\d+>/user/login', 'verb' => 'OPTIONS'),
+                // common
+                array('<version>/<controller>/preflight', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'OPTIONS'),
+                array('<version>/<controller>/preflight', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'OPTIONS'),
+                array('<version>/<controller>/preflight', 'pattern' => '<version:v\d+>/<controller:\w+>', 'verb' => 'OPTIONS'),
+//                array('<version>/<model>/preflight', 'pattern' => '<model:\w+>', 'verb' => 'OPTIONS'),
+//                array('<version>/<model>/preflight', 'pattern' => '<model:\w+>/<_id:\d+>', 'verb' => 'OPTIONS'),
+//                array('<version>/<model>/preflight', 'pattern' => '<model:\w+>/subtitles', 'verb' => 'OPTIONS'),
             ),
         ),
         'user' => array(

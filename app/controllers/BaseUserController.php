@@ -14,6 +14,7 @@ class BaseUserController extends AppRestController
             array(
                 'allow',
                 'actions' => array(
+                    'preflight',
                     'login',
                     'authenticate',
                     'publicProfile',
