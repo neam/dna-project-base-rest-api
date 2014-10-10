@@ -14,9 +14,9 @@ class BaseUserController extends AppRestController
             array(
                 'allow',
                 'actions' => array(
-                    'get',
                     'login',
                     'authenticate',
+                    'publicProfile',
                 )
             ),
             // Logged in users can do whatever they want to.
@@ -32,7 +32,6 @@ class BaseUserController extends AppRestController
     public function actions()
     {
         return array(
-            'get' => 'WRestGetAction',
             'login' => '\OAuth2Yii\Action\Token',
         );
     }
@@ -42,9 +41,41 @@ class BaseUserController extends AppRestController
      */
     public function actionAuthenticate()
     {
-        if (!Yii::app()->getUser()->getIsGuest())
+        if (!Yii::app()->getUser()->getIsGuest()) {
             $this->sendResponse(200);
-        else
+        } else {
             $this->sendResponse(401);
+        }
+    }
+
+    /**
+     * Returns the currently logged in users profile.
+     */
+    public function actionProfile()
+    {
+        /** @var Account $model */
+        $model = $this->loadModel(Yii::app()->getUser()->id);
+        $this->sendResponse(200, $model->getAllAttributes());
+    }
+
+    /**
+     * Returns the user public profile.
+     * This action responds to path api/<version>/friends/<username>.
+     *
+     * @param string $username the username to get the public profile for.
+     */
+    public function actionPublicProfile($username)
+    {
+        // Guest users can only see profiles that have been made public by the profile owner.
+        // While logged in users can see all profiles regardless of if it is public or not.
+        // todo: add the restriction logic once the QA state is implemented so we can check the publish state.
+        $model = CActiveRecord::model($this->_modelName)
+            ->with('profile')
+            ->findByattributes(array('username' => $username));
+        if ($model === null) {
+            $this->sendResponse(404);
+        }
+
+        $this->sendResponse(200, $model->getAllAttributes());
     }
 }
