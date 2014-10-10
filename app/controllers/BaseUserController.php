@@ -14,9 +14,9 @@ class BaseUserController extends AppRestController
             array(
                 'allow',
                 'actions' => array(
-                    'get',
                     'login',
                     'authenticate',
+                    'publicProfile',
                 )
             ),
             // Logged in users can do whatever they want to.
@@ -32,32 +32,8 @@ class BaseUserController extends AppRestController
     public function actions()
     {
         return array(
-//            'get' => 'WRestGetAction',
             'login' => '\OAuth2Yii\Action\Token',
         );
-    }
-
-    /**
-     * Custom get action for the user data.
-     */
-    public function actionGet()
-    {
-        $id = $this->request->getParam('id');
-        if ($id === null) {
-            $this->sendResponse(404);
-        }
-        if (is_int($id) || ctype_digit($id)) {
-            $model = CActiveRecord::model($this->_modelName)->findByPk($id);
-        } else {
-            $model = CActiveRecord::model($this->_modelName)->findByattributes(array('username' => $id));
-        }
-        if (Yii::app()->getUser()->getIsGuest()) {
-            // todo: if the users profile is not public, then we cannot show it. (check from QA state)
-        }
-        if ($model === null) {
-            $this->sendResponse(404);
-        }
-        $this->sendResponse(200, $model->getAllAttributes());
     }
 
     /**
@@ -73,12 +49,33 @@ class BaseUserController extends AppRestController
     }
 
     /**
-     * Returns the currently logged in users profile data.
+     * Returns the currently logged in users profile.
      */
     public function actionProfile()
     {
         /** @var Account $model */
         $model = $this->loadModel(Yii::app()->getUser()->id);
+        $this->sendResponse(200, $model->getAllAttributes());
+    }
+
+    /**
+     * Returns the user public profile.
+     * This action responds to path api/<version>/friends/<username>.
+     *
+     * @param string $username the username to get the public profile for.
+     */
+    public function actionPublicProfile($username)
+    {
+        // Guest users can only see profiles that have been made public by the profile owner.
+        // While logged in users can see all profiles regardless of if it is public or not.
+        // todo: add the restriction logic once the QA state is implemented so we can check the publish state.
+        $model = CActiveRecord::model($this->_modelName)
+            ->with('profile')
+            ->findByattributes(array('username' => $username));
+        if ($model === null) {
+            $this->sendResponse(404);
+        }
+
         $this->sendResponse(200, $model->getAllAttributes());
     }
 }
