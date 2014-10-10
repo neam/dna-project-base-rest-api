@@ -28,13 +28,46 @@ class BaseUserController extends AppRestController
     }
 
     /**
-     * @inheritdoc
+     * Login action that uses oauth2 for authenticating the user.
+     *
+     * @throws CException
      */
-    public function actions()
+    public function actionLogin()
     {
-        return array(
-            'login' => '\OAuth2Yii\Action\Token',
-        );
+        if (!Yii::app()->hasComponent('oauth2')) {
+            throw new CException('Could not find OAuth2Yii/Server component oauth2');
+        }
+
+        /* @var \OAuth2Yii\Component\ServerComponent $oauth2 */
+        $oauth2 = Yii::app()->getComponent('oauth2');
+        $server = $oauth2->getServer();
+
+        if (!$oauth2->getCanGrant()) {
+            throw new CException('No grant types enabled');
+        }
+
+        if ($oauth2->enableAuthorization) {
+            $authorizationStorage = $oauth2->getStorage(OAuth2Yii\Component\ServerComponent::STORAGE_AUTHORIZATION_CODE);
+            $server->addGrantType(new OAuth2\GrantType\AuthorizationCode($authorizationStorage));
+        }
+
+        if ($oauth2->enableClientCredentials) {
+            $clientStorage = $oauth2->getStorage(OAuth2Yii\Component\ServerComponent::STORAGE_CLIENT_CREDENTIALS);
+            $server->addGrantType(new OAuth2\GrantType\ClientCredentials($clientStorage));
+        }
+
+        if ($oauth2->enableUserCredentials) {
+            $userStorage = $oauth2->getStorage(OAuth2Yii\Component\ServerComponent::STORAGE_USER_CREDENTIALS);
+            $server->addGrantType(new OAuth2\GrantType\UserCredentials($userStorage));
+            $refreshStorage = $oauth2->getStorage(OAuth2Yii\Component\ServerComponent::STORAGE_REFRESH_TOKEN);
+            $server->addGrantType(new OAuth2\GrantType\RefreshToken($refreshStorage));
+        }
+
+        $request = OAuth2\Request::createFromGlobals();
+        $response = $server->handleTokenRequest($request);
+        $response->setHttpHeader('Access-Control-Allow-Origin', '*');
+        $response->setHttpHeader('Access-Control-Allow-Headers', 'Authorization, Origin, Content-Type, Accept');
+        $response->send();
     }
 
     /**
