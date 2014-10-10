@@ -6,6 +6,7 @@ $root = dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '
 // include composer autoloaders
 require_once("$approot/vendor/autoload.php");
 require_once("$root/vendor/autoload.php");
+require_once("$root/dna/vendor/autoload.php");
 
 // Make app config available as PHP constants
 require("$root/vendor/neam/php-app-config/include.php");
