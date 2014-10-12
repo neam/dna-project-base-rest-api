@@ -1,6 +1,5 @@
 <?php
-/** @var SiteController|WorkflowUiControllerTrait $this */
-/** @var string $modelClass */
+/** @var SiteController $this */
 ?>
 <div class="site-controller index-action">
     <div class="alert alert-info">
@@ -8,7 +7,7 @@
 
         <p><?php print Yii::t('app', 'Access the REST API under /api'); ?></p>
         <?php if (!Yii::app()->user->isGuest): ?>
-            <p><?php print Yii::t('app', '(You are currently authenticated as {username})', array('{username}'=>'sdfsdf')) ?></p>
+            <p><?php print Yii::t('app', '(You are currently authenticated as user with ID {userid})', array('{userid}' => Yii::app()->user->id)) ?></p>
         <?php endif; ?>
     </div>
 
