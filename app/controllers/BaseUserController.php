@@ -2,7 +2,6 @@
 
 class BaseUserController extends AppRestController
 {
-    protected $_modelName = 'Account';
 
     /**
      * @inheritdoc
@@ -100,12 +99,12 @@ class BaseUserController extends AppRestController
      */
     public function actionPublicProfile($username)
     {
-        // Guest users can only see profiles that have been made public by the profile owner.
-        // While logged in users can see all profiles regardless of if it is public or not.
-        // todo: add the restriction logic once the QA state is implemented so we can check the publish state.
-        $model = CActiveRecord::model($this->_modelName)
-            ->with('profile')
-            ->findByattributes(array('username' => $username));
+
+        $criteria = new CDbCriteria();
+        $criteria->compare('account.username', $username);
+
+        $model = Profile::model()->with('account')->find($criteria);
+
         if ($model === null) {
             $this->sendResponse(404);
         }
