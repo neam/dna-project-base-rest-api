@@ -109,6 +109,9 @@ class BaseUserController extends AppRestController
             $this->sendResponse(404);
         }
 
-        $this->sendResponse(200, $model->getAllAttributes());
+        $attributes = $model->getAllAttributes();
+        // Prevent emails from being scraped by bots
+        unset($attributes->email);
+        $this->sendResponse(200, $attributes);
     }
 }
