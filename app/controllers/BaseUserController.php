@@ -97,13 +97,15 @@ class BaseUserController extends AppRestController
      *
      * @param string $username the username to get the public profile for.
      */
-    public function actionPublicProfile($username)
+    public function actionPublicProfile($account_id)
     {
 
-        $criteria = new CDbCriteria();
-        $criteria->compare('account.username', $username);
+        // Re-use if we need to match against username as well
+        //$criteria = new CDbCriteria();
+        //$criteria->compare('account.username', $username);
 
-        $model = Profile::model()->with('account')->find($criteria);
+        $profileModel = Profile::model();
+        $model = $profileModel->with('account')->findByAttributes(array("account_id" => $account_id));
 
         if ($model === null) {
             $this->sendResponse(404);

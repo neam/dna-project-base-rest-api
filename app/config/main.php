@@ -64,7 +64,7 @@ $mainConfig = array(
                 array('<version>/user/login', 'pattern' => '<version:v\d+>/user/login', 'verb' => 'POST'),
                 array('<version>/user/authenticate', 'pattern' => '<version:v\d+>/user/authenticate', 'verb' => 'GET'),
                 array('<version>/user/profile', 'pattern' => '<version:v\d+>/user/profile', 'verb' => 'GET'),
-                array('<version>/user/publicProfile', 'pattern' => '<version:v\d+>/friends/<username:\w+>', 'verb' => 'GET'),
+                array('<version>/user/publicProfile', 'pattern' => '<version:v\d+>/user/<account_id:\w+>/profile', 'verb' => 'GET'),
                 // common rules
                 // slugs are required to be prefixed by an ":" character, due to rule collisions
                 array('<version>/<controller>/delete', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'DELETE'),
