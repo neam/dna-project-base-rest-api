@@ -105,6 +105,7 @@ class BaseUserController extends AppRestController
         //$criteria->compare('account.username', $username);
 
         $profileModel = Profile::model();
+        $profileModel->enableRestriction = false; // Turn off access restrictions until those are verified to work
         $model = $profileModel->with('account')->findByAttributes(array("account_id" => $account_id));
 
         if ($model === null) {
