@@ -26,6 +26,7 @@ $mainConfig = array(
     'import' => array(
         'application.components.*',
         'application.controllers.*',
+        'application.models.*',
         'vendor.weavora.wrest.*',
         'vendor.weavora.wrest.actions.*',
         'vendor.weavora.wrest.behaviors.*',
