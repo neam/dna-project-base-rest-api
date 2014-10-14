@@ -44,13 +44,13 @@ class RestApiProfile extends Profile
             );
         }
         $response->may_contact = (bool) $this->may_contact;
-        $response->professional_title = $this->professional_title;
+        $response->professional_title = json_decode($this->professional_title);
         $response->lives_in = $this->lives_in;
         $response->language1 = $this->language1;
         $response->language2 = $this->language2;
         $response->language3 = $this->language3;
-        $response->about_me = $this->about_me;
-        $response->my_links = $this->my_links;
+        $response->about_me = json_decode($this->about_me);
+        $response->my_links = json_decode($this->my_links);
         $response->contributions = array();
         foreach ($this->contributions as $contribution) {
             $response->contributions[] = array(
