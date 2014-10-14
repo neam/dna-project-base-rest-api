@@ -33,7 +33,9 @@ class RestApiProfile extends Profile
 
         $response->first_name = $this->first_name;
         $response->last_name = $this->last_name;
-        $response->email = $this->account->email;
+        if ((bool) $this->may_contact) {
+            $response->email = $this->account->email;
+        }
         $response->social_links = array();
         foreach ($this->socialLinks as $socialLink) {
             $response->social_links[] = array(
