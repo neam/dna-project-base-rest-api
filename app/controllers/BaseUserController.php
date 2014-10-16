@@ -105,7 +105,7 @@ class BaseUserController extends AppRestController
         //$criteria->compare('account.username', $username);
 
         $profileModel = RestApiProfile::model();
-        $profileModel->enableRestriction = false; // Turn off access restrictions until those are verified to work
+        $profileModel->enableRestriction = true; // Actually already the default, but including here to make it clear that access restrictions are active
         $model = $profileModel->with('account')->findByAttributes(array("account_id" => $account_id));
 
         if ($model === null) {

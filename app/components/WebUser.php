@@ -2,6 +2,9 @@
 
 class WebUser extends \OAuth2Yii\Component\WebUser
 {
+
+    use RestrictedAccessWebUserTrait;
+
     /**
      * @var string the user model ID attribute.
      */
