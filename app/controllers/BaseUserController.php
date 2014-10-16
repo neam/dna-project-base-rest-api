@@ -18,7 +18,6 @@ class BaseUserController extends AppRestController
                     'preflight',
                     'login',
                     'authenticate',
-                    'publicProfile',
                 )
             ),
             // Logged in users can do whatever they want to.
@@ -83,44 +82,5 @@ class BaseUserController extends AppRestController
         } else {
             $this->sendResponse(401);
         }
-    }
-
-    /**
-     * Returns the currently logged in users profile.
-     * Responds to path 'api/<version>/user/profile'.
-     */
-    public function actionProfile()
-    {
-        $model = $this->loadProfile(Yii::app()->getUser()->id);
-        $this->sendResponse(200, $model->getAllAttributes());
-    }
-
-    /**
-     * Returns the user public profile.
-     * Responds to path 'api/<version>/user/<accountId>/profile'.
-     *
-     * @param int $accountId the account model id.
-     */
-    public function actionPublicProfile($accountId)
-    {
-        $model = $this->loadProfile($accountId);
-        $this->sendResponse(200, $model->getAllAttributes());
-    }
-
-    /**
-     * Loads the profile model by given account id.
-     * Access restrictions are applied.
-     *
-     * @see ActiveRecord::beforeRead
-     * @param int $accountId the account model id.
-     * @return RestApiProfile
-     */
-    protected function loadProfile($accountId)
-    {
-        $model = RestApiProfile::model()->with('account')->findByAttributes(array('account_id' => (int)$accountId));
-        if ($model === null) {
-            $this->sendResponse(404);
-        }
-        return $model;
     }
 }

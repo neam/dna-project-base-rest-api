@@ -61,11 +61,14 @@ $mainConfig = array(
             'useStrictParsing' => true,
             'showScriptName' => false,
             'rules' => array(
-                // user specific rules
+                // user/profile specific rules
                 array('<version>/user/login', 'pattern' => '<version:v\d+>/user/login', 'verb' => 'POST'),
                 array('<version>/user/authenticate', 'pattern' => '<version:v\d+>/user/authenticate', 'verb' => 'GET'),
-                array('<version>/user/profile', 'pattern' => '<version:v\d+>/user/profile', 'verb' => 'GET'),
-                array('<version>/user/publicProfile', 'pattern' => '<version:v\d+>/user/<accountId:\w+>/profile', 'verb' => 'GET'),
+                array('<version>/profile/get', 'pattern' => '<version:v\d+>/user/profile', 'verb' => 'GET'),
+                array('<version>/profile/get', 'pattern' => '<version:v\d+>/profile', 'verb' => 'GET'),
+                array('<version>/profile/update', 'pattern' => '<version:v\d+>/user/profile', 'verb' => 'PUT'),
+                array('<version>/profile/update', 'pattern' => '<version:v\d+>/profile', 'verb' => 'PUT'),
+                array('<version>/profile/public', 'pattern' => '<version:v\d+>/user/<accountId:\d+>/profile', 'verb' => 'GET'),
                 // common rules
                 // slugs are required to be prefixed by an ":" character, due to rule collisions
                 array('<version>/<controller>/delete', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'DELETE'),
