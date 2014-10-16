@@ -69,7 +69,7 @@ class BaseProfileController extends AppRestController
     {
         $model = RestApiProfile::model()->with('account')->findByAttributes(array('account_id' => (int)$accountId));
         if ($model === null) {
-            $this->sendResponse(404);
+            throw new CHttpException(404);
         }
         return $model;
     }

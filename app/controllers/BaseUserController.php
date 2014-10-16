@@ -66,6 +66,11 @@ class BaseUserController extends AppRestController
 
         $request = OAuth2\Request::createFromGlobals();
         $response = $server->handleTokenRequest($request);
+
+        if ($response->getStatusCode() !== 200) {
+            throw new CHttpException($response->getStatusCode(), $response->getParameter('error_description'));
+        }
+
         $response->setHttpHeader('Access-Control-Allow-Origin', '*');
         $response->setHttpHeader('Access-Control-Allow-Headers', 'Authorization, Origin, Content-Type, Accept');
         $response->send();
@@ -80,7 +85,7 @@ class BaseUserController extends AppRestController
         if (!Yii::app()->getUser()->getIsGuest()) {
             $this->sendResponse(200);
         } else {
-            $this->sendResponse(401);
+            throw new CHttpException(401);
         }
     }
 }

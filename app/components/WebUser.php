@@ -33,8 +33,7 @@ class WebUser extends \OAuth2Yii\Component\WebUser
             /** @var $response \OAuth2\Response */
             $response = $oauth2->getServer()->getResponse();
             if ($response->getStatusCode() !== 200) {
-                $response->send();
-                \Yii::app()->end();
+                throw new CHttpException($response->getStatusCode(), $response->getParameter('error_description'));
             }
         }
 
