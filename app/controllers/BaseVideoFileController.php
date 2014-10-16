@@ -1,10 +1,19 @@
 <?php
 
+/**
+ * Video file resource controller.
+ */
 class BaseVideoFileController extends AppRestController
 {
-    protected $_modelName = "VideoFile"; //model to be used as resource
+    /**
+     * @var string the resource model name.
+     */
+    protected $_modelName = 'RestApiVideoFile';
 
-    public function actions() //determine which of the standard actions will support the controller
+    /**
+     * @inheritdoc
+     */
+    public function actions()
     {
         return array(
             'list' => array( //use for get list of objects
@@ -26,6 +35,11 @@ class BaseVideoFileController extends AppRestController
         );
     }
 
+    /**
+     * Returns a video files subtitles.
+     *
+     * @param int $id the video file resource id.
+     */
     public function actionSubtitles($id)
     {
         $model = $this->loadModel($id);
