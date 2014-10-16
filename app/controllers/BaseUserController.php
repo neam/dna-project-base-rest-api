@@ -117,7 +117,7 @@ class BaseUserController extends AppRestController
      */
     protected function loadProfile($accountId)
     {
-        $model = RestApiProfile::model()->with('account')->findByAttributes(array('account_id' => $accountId));
+        $model = RestApiProfile::model()->with('account')->findByAttributes(array('account_id' => (int)$accountId));
         if ($model === null) {
             $this->sendResponse(404);
         }
