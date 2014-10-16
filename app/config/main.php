@@ -61,34 +61,32 @@ $mainConfig = array(
             'useStrictParsing' => true,
             'showScriptName' => false,
             'rules' => array(
-                // user/profile specific rules
-                array('<version>/user/login', 'pattern' => '<version:v\d+>/user/login', 'verb' => 'POST'),
-                array('<version>/user/authenticate', 'pattern' => '<version:v\d+>/user/authenticate', 'verb' => 'GET'),
-                array('<version>/profile/get', 'pattern' => '<version:v\d+>/user/profile', 'verb' => 'GET'),
+                // custom rules
                 array('<version>/profile/get', 'pattern' => '<version:v\d+>/profile', 'verb' => 'GET'),
-                array('<version>/profile/update', 'pattern' => '<version:v\d+>/user/profile', 'verb' => 'PUT'),
                 array('<version>/profile/update', 'pattern' => '<version:v\d+>/profile', 'verb' => 'PUT'),
+                array('<version>/user/login', 'pattern' => '<version:v\d+>/user/login', 'verb' => 'POST'),
+                array('<version>/profile/get', 'pattern' => '<version:v\d+>/user/profile', 'verb' => 'GET'),
+                array('<version>/profile/update', 'pattern' => '<version:v\d+>/user/profile', 'verb' => 'PUT'),
+                array('<version>/user/authenticate', 'pattern' => '<version:v\d+>/user/authenticate', 'verb' => 'GET'),
                 array('<version>/profile/public', 'pattern' => '<version:v\d+>/user/<accountId:\d+>/profile', 'verb' => 'GET'),
-                // common rules
+                // common CRUD rules
                 // slugs are required to be prefixed by an ":" character, due to rule collisions
-                array('<version>/<controller>/delete', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'DELETE'),
-                array('<version>/<controller>/update', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'PUT'),
                 array('<version>/<controller>/list', 'pattern' => '<version:v\d+>/<controller:\w+>', 'verb' => 'GET'),
-                array('<version>/<controller>/get', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'GET'),
                 array('<version>/<controller>/create', 'pattern' => '<version:v\d+>/<controller:\w+>', 'verb' => 'POST'),
-                array('<version>/<controller>/<action>', 'pattern' => '<version:v\d+>/<controller:\w+>/<action:\w+>', 'verb' => 'GET'),
-                array('<version>/<controller>/<action>', 'pattern' => '<version:v\d+>/<controller:\w+>/<action:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'GET'),
-                // cors rules
-                // user specific
+                array('<version>/<controller>/get', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'GET'),
+                array('<version>/<controller>/update', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'PUT'),
+                array('<version>/<controller>/delete', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'DELETE'),
+
+                // CORS rules
                 // todo: the cors allow methods are currently hard-coded. think of better solution.
-                array('<version>/user/preflight', 'pattern' => '<version:v\d+>/user/login', 'verb' => 'OPTIONS'),
-                // common
-                array('<version>/<controller>/preflight', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'OPTIONS'),
-                array('<version>/<controller>/preflight', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'OPTIONS'),
+
+                // custom rules
+                array('<version>/profile/preflight', 'pattern' => '<version:v\d+>/user/profile', 'verb' => 'OPTIONS'),
+                array('<version>/profile/preflight', 'pattern' => '<version:v\d+>/user/<accountId:\d+>/profile', 'verb' => 'OPTIONS'),
+                // common rules
                 array('<version>/<controller>/preflight', 'pattern' => '<version:v\d+>/<controller:\w+>', 'verb' => 'OPTIONS'),
-//                array('<version>/<model>/preflight', 'pattern' => '<model:\w+>', 'verb' => 'OPTIONS'),
-//                array('<version>/<model>/preflight', 'pattern' => '<model:\w+>/<_id:\d+>', 'verb' => 'OPTIONS'),
-//                array('<version>/<model>/preflight', 'pattern' => '<model:\w+>/subtitles', 'verb' => 'OPTIONS'),
+                array('<version>/<controller>/preflight', 'pattern' => '<version:v\d+>/<controller:\w+>/<action:\w+>', 'verb' => 'OPTIONS'),
+                array('<version>/<controller>/preflight', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'OPTIONS'),
             ),
         ),
         'user' => array(
