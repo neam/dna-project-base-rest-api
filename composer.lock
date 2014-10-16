@@ -304,12 +304,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-dna-debug-modes-and-error-handling.git",
-                "reference": "e918ef9fe3b27f822f5748af2ad46868b224c540"
+                "reference": "e7b27ac56152dab489646dbf86c20c2b59669347"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-dna-debug-modes-and-error-handling/zipball/e918ef9fe3b27f822f5748af2ad46868b224c540",
-                "reference": "e918ef9fe3b27f822f5748af2ad46868b224c540",
+                "url": "https://api.github.com/repos/neam/yii-dna-debug-modes-and-error-handling/zipball/e7b27ac56152dab489646dbf86c20c2b59669347",
+                "reference": "e7b27ac56152dab489646dbf86c20c2b59669347",
                 "shasum": ""
             },
             "require": {
@@ -344,7 +344,7 @@
                 "php",
                 "yii"
             ],
-            "time": "2014-10-10 10:49:07"
+            "time": "2014-10-15 21:21:03"
         },
         {
             "name": "nordsoftware/yii-account",
