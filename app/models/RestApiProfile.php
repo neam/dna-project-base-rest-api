@@ -1,12 +1,24 @@
 <?php
 
+/**
+ * Profile resource model.
+ *
+ * Properties made available through the RestrictedAccessBehavior class:
+ * @property boolean $enableRestriction
+ */
 class RestApiProfile extends Profile
 {
-
-    public static function model($className=__CLASS__) {
-        return parent::model(__CLASS__);
+    /**
+     * @inheritdoc
+     */
+    public static function model($className = __CLASS__)
+    {
+        return parent::model($className);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function behaviors()
     {
         return array_merge(
@@ -33,7 +45,7 @@ class RestApiProfile extends Profile
 
         $response->first_name = $this->first_name;
         $response->last_name = $this->last_name;
-        if ((bool) $this->may_contact) {
+        if ((bool)$this->may_contact) {
             $response->email = $this->account->email;
         }
         $response->social_links = array();
@@ -43,7 +55,7 @@ class RestApiProfile extends Profile
                 'url' => $socialLink->url,
             );
         }
-        $response->may_contact = (bool) $this->may_contact;
+        $response->may_contact = (bool)$this->may_contact;
         $response->professional_title = json_decode($this->professional_title);
         $response->lives_in = $this->lives_in;
         $response->language1 = $this->language1;

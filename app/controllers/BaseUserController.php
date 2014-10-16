@@ -1,8 +1,10 @@
 <?php
 
+/**
+ * User resource controller.
+ */
 class BaseUserController extends AppRestController
 {
-
     /**
      * @inheritdoc
      */
@@ -28,6 +30,7 @@ class BaseUserController extends AppRestController
 
     /**
      * Login action that uses oauth2 for authenticating the user.
+     * Responds to path 'api/<version>/user/login'.
      *
      * @throws CException
      */
@@ -71,6 +74,7 @@ class BaseUserController extends AppRestController
 
     /**
      * Authenticates that the user is currently "logged in", i.e. a the Authorization header needs to be set and valid.
+     * Responds to path 'api/<version>/user/authenticate'.
      */
     public function actionAuthenticate()
     {
@@ -83,36 +87,40 @@ class BaseUserController extends AppRestController
 
     /**
      * Returns the currently logged in users profile.
+     * Responds to path 'api/<version>/user/profile'.
      */
     public function actionProfile()
     {
-        /** @var Account $model */
-        $model = $this->loadModel(Yii::app()->getUser()->id);
+        $model = $this->loadProfile(Yii::app()->getUser()->id);
         $this->sendResponse(200, $model->getAllAttributes());
     }
 
     /**
      * Returns the user public profile.
-     * This action responds to path api/<version>/friends/<username>.
+     * Responds to path 'api/<version>/user/<accountId>/profile'.
      *
-     * @param string $username the username to get the public profile for.
+     * @param int $accountId the account model id.
      */
-    public function actionPublicProfile($account_id)
+    public function actionPublicProfile($accountId)
     {
+        $model = $this->loadProfile($accountId);
+        $this->sendResponse(200, $model->getAllAttributes());
+    }
 
-        // Re-use if we need to match against username as well
-        //$criteria = new CDbCriteria();
-        //$criteria->compare('account.username', $username);
-
-        $profileModel = RestApiProfile::model();
-        $profileModel->enableRestriction = true; // Actually already the default, but including here to make it clear that access restrictions are active
-        $model = $profileModel->with('account')->findByAttributes(array("account_id" => $account_id));
-
+    /**
+     * Loads the profile model by given account id.
+     * Access restrictions are applied.
+     *
+     * @see ActiveRecord::beforeRead
+     * @param int $accountId the account model id.
+     * @return RestApiProfile
+     */
+    protected function loadProfile($accountId)
+    {
+        $model = RestApiProfile::model()->with('account')->findByAttributes(array('account_id' => $accountId));
         if ($model === null) {
             $this->sendResponse(404);
         }
-
-        $attributes = $model->getAllAttributes();
-        $this->sendResponse(200, $attributes);
+        return $model;
     }
 }
