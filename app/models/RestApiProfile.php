@@ -61,8 +61,9 @@ class RestApiProfile extends Profile
         $response->language1 = $this->language1;
         $response->language2 = $this->language2;
         $response->language3 = $this->language3;
-        $response->about_me = json_decode(str_replace('\\-', '-', $this->about_me)); // hack for fixing sir trevor urls where every "-" is a "\\-".
-        $response->my_links = json_decode(str_replace('\\-', '-', $this->my_links)); // hack for fixing sir trevor urls where every "-" is a "\\-".
+        // hack for fixing sir trevor urls where every "-" is a "\\-". (https://github.com/madebymany/sir-trevor-js/issues/248)
+        $response->about_me = json_decode(str_replace('\\\-', '-', $this->about_me));
+        $response->my_links = json_decode(str_replace('\\\-', '-', $this->my_links));
 
         $response->contributions = array();
         foreach ($this->contributions as $contribution) {
