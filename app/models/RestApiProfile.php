@@ -61,8 +61,9 @@ class RestApiProfile extends Profile
         $response->language1 = $this->language1;
         $response->language2 = $this->language2;
         $response->language3 = $this->language3;
-        $response->about_me = json_decode($this->about_me, JSON_UNESCAPED_SLASHES);
-        $response->my_links = json_decode($this->my_links, JSON_UNESCAPED_SLASHES);
+        $response->about_me = json_decode($this->about_me);
+        $response->my_links = json_decode($this->my_links);
+
         $response->contributions = array();
         foreach ($this->contributions as $contribution) {
             $response->contributions[] = array(
