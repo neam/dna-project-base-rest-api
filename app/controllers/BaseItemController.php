@@ -1,31 +1,79 @@
 <?php
 
+/**
+ * Item resource controller.
+ * This is a wrapper for all item resources, e.g. compositions, video files etc.
+ * It works based on the node ID of the item which is provided instead of the resource ID when performing actions.
+ */
 class BaseItemController extends AppRestController
 {
     /**
-     * @var string the model class used as resource.
+     * @inheritdoc
      */
-    protected $_modelName = "Item";
+    protected $_modelName = 'Item';
+
+    /**
+     * @var array map of AR classes to REST resource classes.
+     */
+    protected static $classMap = array(
+        'Composition' => 'RestApiComposition',
+    );
 
     /**
      * @inheritdoc
      */
-    public function actions()
+    public function accessRules()
     {
         return array(
-            'list' => array(
-                'class' => 'WRestListAction',
-                'limit' => 'limit',
-                'page' => 'page',
-                'order' => 'order',
+            // Not logged in users can do the following actions.
+            array(
+                'allow',
+                'actions' => array(
+                    'preflight',
+                    'get',
+                )
             ),
-            'get' => 'WRestGetAction',
-//            'delete' => 'WRestDeleteAction',
-//            'create' => 'WRestCreateAction',
-//            'update' => array(
-//                'class' => 'WRestUpdateAction',
-//                'scenario' => 'update',
-//            )
+            // Logged in users can do whatever they want to.
+            array('allow', 'users' => array('@')),
+            // Not logged in users can't do anything except above.
+            array('deny'),
         );
+    }
+
+    /**
+     * Returns the requested item resource.
+     * Responds to path 'api/<version>/item/{id}'.
+     * This endpoint is public but the resources are restricted by "RestrictedAccessBehavior".
+     *
+     * @param int $id the node id of the item to get.
+     */
+    public function actionGet($id)
+    {
+        $model = $this->loadModel($id);
+        $this->sendResponse(200, $model->getAllAttributes());
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function loadModel($nodeId)
+    {
+        $node = Node::model()->findByPk($nodeId);
+        if ($node === null) {
+            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find node #%s.'), $nodeId));
+        }
+        $item = $node->item();
+        if ($item === null) {
+            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find item for node #%s.'), $nodeId));
+        }
+        $classname = get_class($item);
+        if (!isset(self::$classMap[$classname])) {
+            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find resource for "%s".'), $classname));
+        }
+        $resourceClassname = self::$classMap[$classname];
+        $model = new $resourceClassname();
+        // Move all attributes from the AR model to the REST resource.
+        $model->attributes = $item->attributes;
+        return $model;
     }
 }

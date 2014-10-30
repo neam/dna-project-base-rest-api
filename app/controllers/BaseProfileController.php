@@ -34,6 +34,7 @@ class BaseProfileController extends AppRestController
     /**
      * Returns the 'public' profile for the given account.
      * Responds to path 'api/<version>/user/<accountId>/profile'.
+     * This endpoint is public but the resources are restricted by "RestrictedAccessBehavior".
      *
      * @param int $accountId the account model id.
      */
