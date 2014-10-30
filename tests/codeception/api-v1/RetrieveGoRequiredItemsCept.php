@@ -12,6 +12,7 @@ $I->seeResponseIsJson();
 $I->sendGET('language/list');
 $I->seeResponseCodeIs(200);
 $I->seeResponseIsJson();
+$I->seeResponseEquals();
 
 /*
 $I->sendGET('i18nCatalog/poJson', array('id' => 4, 'lang' => 'en'));

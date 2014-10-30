@@ -6,3 +6,17 @@ modules:
           url: http://<%= ENV['CMS_HOST'] %>
       REST:
           url: http://<%= ENV['API_HOST'] %>/api/
+
+env:
+    apiary:
+        modules:
+            config:
+                REST:
+                    url: http://127.0.0.1:3000/
+
+    cms-rest-api:
+        modules:
+            config:
+                REST:
+                    url: http://127.0.0.1:11111/api/v1/
+
