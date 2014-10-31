@@ -69,6 +69,8 @@ $mainConfig = array(
                 array('<version>/profile/update', 'pattern' => '<version:v\d+>/user/profile', 'verb' => 'PUT'),
                 array('<version>/user/authenticate', 'pattern' => '<version:v\d+>/user/authenticate', 'verb' => 'GET'),
                 array('<version>/profile/public', 'pattern' => '<version:v\d+>/user/<accountId:\d+>/profile', 'verb' => 'GET'),
+                array('<version>/translation/get', 'pattern' => '<version:v\d+>/translation/<itemType:\w+>/<itemId:\d+>', 'verb' => 'GET'),
+                array('<version>/translation/update', 'pattern' => '<version:v\d+>/translation/<itemType:\w+>/<itemId:\d+>', 'verb' => 'PUT, POST'),
                 // common CRUD rules
                 // slugs are required to be prefixed by an ":" character, due to rule collisions
                 array('<version>/<controller>/list', 'pattern' => '<version:v\d+>/<controller:\w+>', 'verb' => 'GET'),
