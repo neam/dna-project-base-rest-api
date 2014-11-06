@@ -35,6 +35,21 @@ class BaseTranslationController extends AppRestController
     }
 
     /**
+     * @inheritdoc
+     */
+    protected function beforeAction($action)
+    {
+        if (parent::beforeAction($action)) {
+            $language = Yii::app()->getRequest()->getParam('language');
+            if ($language !== null) {
+                // todo: set app language (this will act as the target language for the translations)
+            }
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * Gets a translation resource for requested item.
      * Responds to path 'api/<version>/translation/{itemType}/{itemId}'.
      * This endpoint is public but the resources are restricted by "RestrictedAccessBehavior".

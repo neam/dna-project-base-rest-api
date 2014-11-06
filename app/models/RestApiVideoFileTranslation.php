@@ -3,12 +3,20 @@
 /**
  * Video file translation resource model.
  *
+ * Properties made available through the I18nAttributeMessagesBehavior class:
+ * @property string $title
+ * @property string $caption
+ * @property string $about
+ *
  * Properties made available through the RestrictedAccessBehavior class:
  * @property boolean $enableRestriction
  *
  * Methods made available through the WRestModelBehavior class:
  * @method array getCreateAttributes
  * @method array getUpdateAttributes
+ *
+ * Methods made available through the ItemTrait class:
+ * @method array getTranslatableAttributes
  */
 class RestApiVideoFileTranslation extends VideoFile
 {
@@ -50,45 +58,14 @@ class RestApiVideoFileTranslation extends VideoFile
             'id' => $this->id,
             'itemType' => 'videoFile',
             'title' => $this->title,
-            'version' => '',
-            'thumbnailUrl' => '',
-            'progress' => '',
+            'version' => 1,
+            'thumbnailUrl' => 'http://placehold.it/200x120', // todo
+            'progress' => '33.33', // todo
             'targetLanguage' => array(
-                'code' => '',
-                'label' => '',
+                'code' => Yii::app()->language,
+                'label' => 'Spanish', // todo
             ),
-            'sections' => array(
-                array(
-                    'label' => 'info',
-                    'fields' => array(
-                        array(
-                            'label' => '',
-                            'original' => '',
-                            'translation' => '',
-                            'validators' => array(
-                                array(
-                                    'type' => 'required',
-                                )
-                            ),
-                        )
-                    ),
-                ),
-                array(
-                    'label' => 'subtitles',
-                    'fields' => array(
-                        array(
-                            'id' => '',
-                            'original' => '',
-                            'translation' => '',
-                            'validators' => array(
-                                array(
-                                    'type' => 'required',
-                                )
-                            ),
-                        )
-                    ),
-                ),
-            ),
+            'sections' => $this->getTranslationSections(),
         );
 
 //        {
@@ -165,5 +142,40 @@ class RestApiVideoFileTranslation extends VideoFile
 //                }
 //            ]
 //        }
+    }
+
+    /**
+     * @return array
+     */
+    protected function getTranslationSections()
+    {
+        // todo: subtitles
+        $sections = array();
+        $translatableAttributes = $this->getTranslatableAttributes();
+        $captions = $this->flowStepCaptions();
+        foreach ($this->flowSteps() as $step => $stepFields) {
+            $fields = array();
+            foreach ($stepFields as $stepField) {
+                $attribute = str_replace('_' . $this->source_language, '', $stepField);
+                if (!array_key_exists($attribute, $translatableAttributes)) {
+                    continue;
+                }
+                if (isset($this->{$attribute})) {
+                    $fields[] = array(
+                        'label' => $this->getAttributeLabel($attribute),
+                        'original' => $this->{$translatableAttributes[$attribute]},
+                        'translation' => $this->{$attribute},
+                        'validators' => array(), // todo
+                    );
+                }
+            }
+            if (!empty($fields)) {
+                $sections[] = array(
+                    'label' => isset($captions[$step]) ? $captions[$step] : $step,
+                    'fields' => $fields,
+                );
+            }
+        }
+        return $sections;
     }
 } 
