@@ -70,10 +70,35 @@ class BaseTranslationController extends AppRestController
      *
      * @param string $itemType the item class, i.e. AR model class name.
      * @param int $itemId the AR model id.
+     * @throws CHttpException
      */
     public function actionUpdate($itemType, $itemId)
     {
-        // todo: implement
+        $model = $this->loadResource($itemType, $itemId);
+        $attributes = Yii::app()->getRequest()->parseJsonParams();
+        if (empty($attributes)) {
+            throw new CHttpException(400, Yii::t('rest-api', 'Invalid input data.'));
+        }
+
+        // todo: replace this with "$model->setUpdateAttributes($attributes);" once the profile edit branch has been merged.
+        $values = array_intersect_key($attributes, array_flip($model->getUpdateAttributes()));
+        foreach($values as $name => $value) {
+            if (array_key_exists($name, $attributes)) {
+                $setter = 'set'.$name;
+                if (method_exists($model, $setter)) {
+                    $model->$setter($value);
+                } else {
+                    $model->$name = $value;
+                }
+            }
+        }
+
+        // todo: subtitles
+        // todo: save with change set??
+        if (!$model->save()) {
+            throw new CHttpException(400, Yii::t('rest-api', 'Unable to update video file translations.'));
+        }
+        $this->sendResponse(200, $model->getAllAttributes());
     }
 
     /**

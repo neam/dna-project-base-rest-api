@@ -13,7 +13,6 @@
  *
  * Methods made available through the WRestModelBehavior class:
  * @method array getCreateAttributes
- * @method array getUpdateAttributes
  *
  * Methods made available through the ItemTrait class:
  * @method array getTranslatableAttributes
@@ -43,6 +42,20 @@ class RestApiVideoFileTranslation extends VideoFile
                     'class' => '\RestrictedAccessBehavior',
                 ),
             )
+        );
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getUpdateAttributes()
+    {
+        return array(
+            'title',
+            'caption',
+            'about',
+            'slug',
+            'subtitles',
         );
     }
 
@@ -161,11 +174,12 @@ class RestApiVideoFileTranslation extends VideoFile
                     continue;
                 }
                 if (isset($this->{$attribute})) {
+                    $originalAttribute = $translatableAttributes[$attribute];
                     $fields[] = array(
                         'label' => $this->getAttributeLabel($attribute),
-                        'original' => $this->{$translatableAttributes[$attribute]},
+                        'original' => $this->{$originalAttribute},
                         'translation' => $this->{$attribute},
-                        'validators' => array(), // todo
+                        'validators' => $this->getValidators($originalAttribute), // todo
                     );
                 }
             }
