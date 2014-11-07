@@ -32,6 +32,11 @@ class RestApiVideoFileTranslation extends VideoFile
      */
     public function behaviors()
     {
+        $languageScenarios = array();
+        foreach (LanguageHelper::getCodes() as $language) {
+            $languageScenarios[] = 'translate_into_' . $language;
+        }
+
         return array_merge(
             parent::behaviors(),
             array(
@@ -53,6 +58,20 @@ class RestApiVideoFileTranslation extends VideoFile
                     'class' => 'I18nColumnsBehavior',
                     'translationAttributes' => array('slug'),
                     'multilingualRelations' => array('processedMedia' => 'processed_media_id'),
+                ),
+                'qa-state' => array(
+                    'class' => 'QaStateBehavior',
+                    'scenarios' => array_merge(
+                        array(
+                            'draft',
+                            'reviewable',
+                            'publishable',
+                        ),
+                        $languageScenarios
+                    ),
+                ),
+                'owner-behavior' => array(
+                    'class' => 'OwnerBehavior',
                 ),
             )
         );
@@ -84,8 +103,8 @@ class RestApiVideoFileTranslation extends VideoFile
             'itemType' => 'videoFile',
             'title' => $this->title,
             'version' => 1,
-            'thumbnailUrl' => 'http://placehold.it/200x120', // todo
-            'progress' => '33.33', // todo
+            'thumbnailUrl' => $this->getThumbnailUrl(),
+            'progress' => $this->getValidationProgress('translate_into_' . Yii::app()->language),
             'targetLanguage' => array(
                 'code' => Yii::app()->language,
                 'label' => LanguageHelper::getName(Yii::app()->language),
@@ -211,5 +230,21 @@ class RestApiVideoFileTranslation extends VideoFile
             }
         }
         return $validators;
+    }
+
+    /**
+     * Get the video file thumbnail url.
+     * Returns a placeholder url if a real thumbnail cannot be found.
+     *
+     * @return string the url.
+     */
+    protected function getThumbnailUrl()
+    {
+        $url = isset($this->thumbnailMedia)
+            ? $this->thumbnailMedia->createUrl('item-thumbnail', true)
+            : null;
+        // todo: provide a fallback profile picture when it is done/exists
+        // Rewriting so that the temporary files-api app is used to serve the profile pictures
+        return str_replace(array("api/", "internal/"), "files-api/", $url);
     }
 } 
