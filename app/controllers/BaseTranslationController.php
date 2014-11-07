@@ -41,7 +41,7 @@ class BaseTranslationController extends AppRestController
     protected function beforeAction($action)
     {
         if (parent::beforeAction($action)) {
-            $language = Yii::app()->getRequest()->getParam('language');
+            $language = Yii::app()->getRequest()->getParam('lang');
             if ($language !== null) {
                 $supportedLanguages = LanguageHelper::getLanguageList();
                 if (isset($supportedLanguages[$language])) {
@@ -85,9 +85,10 @@ class BaseTranslationController extends AppRestController
 
         $trx = Yii::app()->getDb()->beginTransaction();
         try {
+            // todo: do we need to save the model for each section (i.e. step) with different scenario??
+            $model->scenario = 'into_'.Yii::app()->language.'-step_info';
             $model->setUpdateAttributes($attributes);
-            // todo: specific scenario?
-            if (!$model->saveAppropriately()) {
+            if (!$model->save()/* todo !$model->saveAppropriately()*/) {
                 throw new CHttpException(400, Yii::t('rest-api', 'Unable to update translations.'));
             }
         } catch (Exception $e) {

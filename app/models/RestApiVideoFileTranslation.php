@@ -138,6 +138,7 @@ class RestApiVideoFileTranslation extends VideoFile
                     }
                     $property = $field->property;
                     if (in_array($property, $supportedUpdateProperties)) {
+                        // todo: do we need to specify the language?? $property .= '_' . Yii::app()->language;
                         $this->{$property} = $field->translation;
                     }
                 }
@@ -146,6 +147,8 @@ class RestApiVideoFileTranslation extends VideoFile
     }
 
     /**
+     * Returns the translatable fields per section (i.e. step).
+     *
      * @return array
      */
     protected function getTranslationSections()
