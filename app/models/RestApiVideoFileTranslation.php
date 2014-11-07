@@ -41,6 +41,19 @@ class RestApiVideoFileTranslation extends VideoFile
                 'RestrictedAccessBehavior' => array(
                     'class' => '\RestrictedAccessBehavior',
                 ),
+                'i18n-attribute-messages' => array(
+                    'class' => 'I18nAttributeMessagesBehavior',
+                    'translationAttributes' => array('title', 'caption', 'about'),
+                    'languageSuffixes' => LanguageHelper::getCodes(),
+                    'behaviorKey' => 'i18n-attribute-messages',
+                    'displayedMessageSourceComponent' => 'displayedMessages',
+                    'editedMessageSourceComponent' => 'editedMessages',
+                ),
+                'i18n-columns' => array(
+                    'class' => 'I18nColumnsBehavior',
+                    'translationAttributes' => array('slug'),
+                    'multilingualRelations' => array('processedMedia' => 'processed_media_id'),
+                ),
             )
         );
     }
@@ -66,7 +79,6 @@ class RestApiVideoFileTranslation extends VideoFile
      */
     public function getAllAttributes()
     {
-        // todo: add real data
         return array(
             'id' => $this->id,
             'itemType' => 'videoFile',
@@ -76,85 +88,20 @@ class RestApiVideoFileTranslation extends VideoFile
             'progress' => '33.33', // todo
             'targetLanguage' => array(
                 'code' => Yii::app()->language,
-                'label' => 'Spanish', // todo
+                'label' => LanguageHelper::getName(Yii::app()->language),
             ),
             'sections' => $this->getTranslationSections(),
         );
+    }
 
-//        {
-//            "id": 1,
-//            "itemType": "VideoFile",
-//            "title": "Population Growth",
-//            "version": 1,
-//            "thumbnailUrl": "http://placehold.it/200x120",
-//            "progress": 33.33,
-//            "targetLanguage": {"code": "es", "label": "Spanish",
-//            "sections": [
-//                {
-//                    "label": "Info",
-//                    "fields": [
-//                        {
-//                            "label": "Title",
-//                            "original": "Population Growth",
-//                            "translation": "",
-//                            "validators": [
-//                                {
-//                                    "type": "required"
-//                                },
-//                                {
-//                                    "type": "minLength",
-//                                    "min": 10
-//                                },
-//                                {
-//                                    "type": "maxLength",
-//                                    "max": 255
-//                                }
-//                            ]
-//                        },
-//                        {
-//                            "label": "Slug",
-//                            "original": "population-growth",
-//                            "translation": "",
-//                            "validators": [
-//                                {
-//                                    "type": "minLength",
-//                                    "min": 10
-//                                },
-//                                {
-//                                    "type": "maxLength",
-//                                    "max": 255
-//                                }
-//                            ]
-//                            },
-//                        {
-//                            "label": "Caption",
-//                            "original": "A video on population growth",
-//                            "translation": "Un vÃ­deo sobre el crecimiento de la poblaciÃ³n"
-//                        },
-//                        {
-//                            "label": "About",
-//                            "original": "This is an in-depth analysis of population growth.",
-//                            "translation": ""
-//                        }
-//                    ]
-//                },
-//                {
-//                    "label": "Subtitles",
-//                    "fields": [
-//                        {
-//                            "id": 1,
-//                            "original": "Hi, this is a video about common misconceptions concerning population growth.",
-//                            "translation": "Hola, esto es un vÃ­deo sobre los conceptos errÃ³neos comunes sobre crecimiento de la poblaciÃ³n."
-//                        },
-//                        {
-//                            "id": 2,
-//                            "original": "My name is John Smith, and I will be your host.",
-//                            "translation": ""
-//                        }
-//                    ]
-//                }
-//            ]
-//        }
+    /**
+     * Setter for the subtitles.
+     *
+     * @param string $subtitles
+     */
+    public function setSubtitles($subtitles)
+    {
+        // todo: implement
     }
 
     /**
@@ -162,25 +109,38 @@ class RestApiVideoFileTranslation extends VideoFile
      */
     protected function getTranslationSections()
     {
-        // todo: subtitles
         $sections = array();
         $translatableAttributes = $this->getTranslatableAttributes();
         $captions = $this->flowStepCaptions();
         foreach ($this->flowSteps() as $step => $stepFields) {
             $fields = array();
             foreach ($stepFields as $stepField) {
-                $attribute = str_replace('_' . $this->source_language, '', $stepField);
-                if (!array_key_exists($attribute, $translatableAttributes)) {
-                    continue;
-                }
-                if (isset($this->{$attribute})) {
-                    $originalAttribute = $translatableAttributes[$attribute];
-                    $fields[] = array(
-                        'label' => $this->getAttributeLabel($attribute),
-                        'original' => $this->{$originalAttribute},
-                        'translation' => $this->{$attribute},
-                        'validators' => $this->getValidators($originalAttribute), // todo
-                    );
+                if ($stepField === 'subtitles') {
+                    $subtitles = $this->getParsedSubtitles();
+                    if (is_array($subtitles)) {
+                        foreach ($subtitles as $subtitle) {
+                            $translation = Yii::t("video-{$this->id}-subtitles", $subtitle->sourceMessage, array(), 'displayedMessages');
+                            $fields[] = array(
+                                'id' => $subtitle->id,
+                                'original' => $subtitle->sourceMessage,
+                                'translation' => ($translation !== $subtitle->sourceMessage) ? $translation : '',
+                            );
+                        }
+                    }
+                } else {
+                    $attribute = str_replace('_' . $this->source_language, '', $stepField);
+                    if (!array_key_exists($attribute, $translatableAttributes)) {
+                        continue;
+                    }
+                    if (isset($this->{$attribute})) {
+                        $originalAttribute = $translatableAttributes[$attribute];
+                        $fields[] = array(
+                            'label' => $this->getAttributeLabel($attribute),
+                            'original' => $this->{$originalAttribute},
+                            'translation' => ($this->{$attribute} !== $this->{$originalAttribute}) ? $this->{$attribute} : '',
+                            'validators' => $this->getFieldValidators($originalAttribute),
+                        );
+                    }
                 }
             }
             if (!empty($fields)) {
@@ -191,5 +151,65 @@ class RestApiVideoFileTranslation extends VideoFile
             }
         }
         return $sections;
+    }
+
+    /**
+     * Gets validators for the field.
+     * Currently, only the built in Yii validators are supported. The validators are parsed and only a selected set of
+     * properties are included in the field validator response.
+     *
+     * @param string $attribute the attribute to get the validators for.
+     * @return array the validators
+     */
+    protected function getFieldValidators($attribute)
+    {
+        $validators = array();
+        $builtInValidators = array_flip(CValidator::$builtInValidators);
+        // Only support the following validator attributes.
+        $supportedValidatorAttributes = array(
+            // Common
+            'allowEmpty',
+            // CValidator
+            'skipOnError',
+            // CDefaultValueValidator
+            'value',
+            // CStringValidator
+            'min',
+            'max',
+            'is',
+            // CRequiredValidator
+            'requiredValue',
+            // CRegularExpressionValidator
+            'pattern',
+            'not',
+            // CEmailValidator
+            'fullPattern',
+            'allowName',
+            // CNumberValidator
+            'integerOnly',
+            // CDateValidator
+            'format',
+            // CTypeValidator
+            'type',
+            'dateFormat',
+            'timeFormat',
+            'datetimeFormat',
+        );
+        foreach ($this->getValidators($attribute) as $validator) {
+            if (isset($builtInValidators[get_class($validator)])) {
+                $type = $builtInValidators[get_class($validator)];
+                $validatorAttributes = array();
+                foreach (get_object_vars($validator) as $var => $value) {
+                    if (in_array($var, $supportedValidatorAttributes)) {
+                        $validatorAttributes[$var] = $value;
+                    }
+                }
+                if (!empty($validatorAttributes)) {
+                    $validatorAttributes['validator'] = $type;
+                    $validators[] = $validatorAttributes;
+                }
+            }
+        }
+        return $validators;
     }
 } 

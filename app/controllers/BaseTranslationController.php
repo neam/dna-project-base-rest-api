@@ -10,7 +10,7 @@ class BaseTranslationController extends AppRestController
      * @var array map of AR classes to REST resource classes.
      */
     protected static $classMap = array(
-        'VideoFile' => 'RestApiVideoFileTranslation',
+        'videoFile' => 'RestApiVideoFileTranslation',
     );
 
     /**
@@ -42,7 +42,10 @@ class BaseTranslationController extends AppRestController
         if (parent::beforeAction($action)) {
             $language = Yii::app()->getRequest()->getParam('language');
             if ($language !== null) {
-                // todo: set app language (this will act as the target language for the translations)
+                $supportedLanguages = LanguageHelper::getLanguageList();
+                if (isset($supportedLanguages[$language])) {
+                    Yii::app()->language = $language;
+                }
             }
             return true;
         }
@@ -66,7 +69,6 @@ class BaseTranslationController extends AppRestController
     /**
      * Updates a translation resource for requested item.
      * Responds to path 'api/<version>/translation/{itemType}/{itemId}'.
-     * This endpoint is public but the resources are restricted by "RestrictedAccessBehavior".
      *
      * @param string $itemType the item class, i.e. AR model class name.
      * @param int $itemId the AR model id.
@@ -93,7 +95,6 @@ class BaseTranslationController extends AppRestController
             }
         }
 
-        // todo: subtitles
         // todo: save with change set??
         if (!$model->save()) {
             throw new CHttpException(400, Yii::t('rest-api', 'Unable to update video file translations.'));
