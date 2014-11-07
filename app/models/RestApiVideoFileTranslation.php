@@ -114,13 +114,35 @@ class RestApiVideoFileTranslation extends VideoFile
     }
 
     /**
-     * Setter for the subtitles.
+     * Parses the given atrributes and updates them in the correct storage containers.
      *
-     * @param string $subtitles
+     * @param array $attributes attribute structure.
      */
-    public function setSubtitles($subtitles)
+    public function setUpdateAttributes($attributes)
     {
-        // todo: implement
+        $supportedUpdateProperties = $this->getUpdateAttributes();
+        if (!isset($attributes['sections']) || !is_array($attributes['sections'])) {
+            throw new CHttpException(400, Yii::t('rest-api', 'Invalid input data.'));
+        }
+        $flowSteps = $this->flowSteps();
+        foreach ($attributes['sections'] as $section) {
+            if (!isset($section->step, $flowSteps[$section->step], $section->fields) || !is_array($section->fields)) {
+                throw new CHttpException(400, Yii::t('rest-api', 'Invalid input data.'));
+            }
+            if ($section->step === 'subtitles') {
+                // todo: save subtitles
+            } else {
+                foreach ($section->fields as $field) {
+                    if (!isset($field->property, $field->translation)) {
+                        throw new CHttpException(400, Yii::t('rest-api', 'Invalid input data.'));
+                    }
+                    $property = $field->property;
+                    if (in_array($property, $supportedUpdateProperties)) {
+                        $this->{$property} = $field->translation;
+                    }
+                }
+            }
+        }
     }
 
     /**
@@ -154,6 +176,7 @@ class RestApiVideoFileTranslation extends VideoFile
                     if (isset($this->{$attribute})) {
                         $originalAttribute = $translatableAttributes[$attribute];
                         $fields[] = array(
+                            'property' => $attribute,
                             'label' => $this->getAttributeLabel($attribute),
                             'original' => $this->{$originalAttribute},
                             'translation' => ($this->{$attribute} !== $this->{$originalAttribute}) ? $this->{$attribute} : '',
@@ -164,6 +187,7 @@ class RestApiVideoFileTranslation extends VideoFile
             }
             if (!empty($fields)) {
                 $sections[] = array(
+                    'step' => $step,
                     'label' => isset($captions[$step]) ? $captions[$step] : $step,
                     'fields' => $fields,
                 );

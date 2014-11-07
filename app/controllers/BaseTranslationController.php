@@ -25,6 +25,7 @@ class BaseTranslationController extends AppRestController
                 'actions' => array(
                     'preflight',
                     'get',
+                    'update' // todo: remove
                 )
             ),
             // Logged in users can do whatever they want to.
@@ -82,23 +83,18 @@ class BaseTranslationController extends AppRestController
             throw new CHttpException(400, Yii::t('rest-api', 'Invalid input data.'));
         }
 
-        // todo: replace this with "$model->setUpdateAttributes($attributes);" once the profile edit branch has been merged.
-        $values = array_intersect_key($attributes, array_flip($model->getUpdateAttributes()));
-        foreach($values as $name => $value) {
-            if (array_key_exists($name, $attributes)) {
-                $setter = 'set'.$name;
-                if (method_exists($model, $setter)) {
-                    $model->$setter($value);
-                } else {
-                    $model->$name = $value;
-                }
+        $trx = Yii::app()->getDb()->beginTransaction();
+        try {
+            $model->setUpdateAttributes($attributes);
+            // todo: specific scenario?
+            if (!$model->saveAppropriately()) {
+                throw new CHttpException(400, Yii::t('rest-api', 'Unable to update translations.'));
             }
+        } catch (Exception $e) {
+            $trx->rollback();
+            throw $e;
         }
 
-        // todo: save with change set??
-        if (!$model->save()) {
-            throw new CHttpException(400, Yii::t('rest-api', 'Unable to update video file translations.'));
-        }
         $this->sendResponse(200, $model->getAllAttributes());
     }
 
