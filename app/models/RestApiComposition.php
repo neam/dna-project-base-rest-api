@@ -65,7 +65,31 @@ class RestApiComposition extends Composition
             'item_type' => 'composition',
             'composition_type' => $this->compositionType->ref,
             'composition' => json_decode($this->composition),
+            'contributors' => $this->getContributorsItems(),
             'related' => null, // todo: add the related items once needed.
         );
+    }
+
+    /**
+     * Returns a list of contributors for the composition.
+     * These are parsed into a format that can be used directly int he response.
+     *
+     * @return array
+     */
+    public function getContributorsItems()
+    {
+        $contributors = array();
+        foreach ($this->node->changesets as $changeset) {
+            $account = $changeset->user;
+            if ($account !== null && !isset($contributors[$account->id])) {
+                $contributors[$account->id] = array(
+                    'user_id' => $account->id,
+                    'username' => $account->username,
+                    'thumbnail_url' => ($account->profile !== null) ? $account->profile->getPictureUrl() : null,
+                );
+            }
+        }
+        // The use of array_values gets rid of the account id key in the array, which is used to filter unique items.
+        return array_values($contributors);
     }
 } 
