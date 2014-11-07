@@ -88,6 +88,7 @@ class BaseTranslationController extends AppRestController
             // todo: do we need to save the model for each section (i.e. step) with different scenario??
             $model->scenario = 'into_'.Yii::app()->language.'-step_info';
             $model->setUpdateAttributes($attributes);
+            // todo: save fails with "CException(0): Property \"RestApiVideoFileTranslation.about_en\" is not defined. (/code/cms/yiiapps/rest-api/vendor/yiisoft/yii/framework/base/CComponent.php:130)"
             if (!$model->save()/* todo !$model->saveAppropriately()*/) {
                 throw new CHttpException(400, Yii::t('rest-api', 'Unable to update translations.'));
             }
