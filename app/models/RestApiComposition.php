@@ -83,9 +83,9 @@ class RestApiComposition extends Composition
             $account = $changeset->user;
             if ($account !== null && !isset($contributors[$account->id])) {
                 $contributors[$account->id] = array(
-                    'userId' => $account->id,
+                    'user_id' => $account->id,
                     'username' => $account->username,
-                    'thumbnailUrl' => ($account->profile !== null) ? $account->profile->getPictureUrl() : null,
+                    'thumbnail_url' => ($account->profile !== null) ? $account->profile->getPictureUrl() : null,
                 );
             }
         }
