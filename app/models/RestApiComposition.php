@@ -52,6 +52,22 @@ class RestApiComposition extends Composition
     }
 
     /**
+     * @inheritdoc
+     */
+    public function relations()
+    {
+        return array_merge(
+            parent::relations(),
+            array(
+                'outEdges' => array(self::HAS_MANY, 'Edge', array('id' => 'from_node_id'), 'through' => 'node'),
+                'outNodes' => array(self::HAS_MANY, 'Node', array('to_node_id' => 'id'), 'through' => 'outEdges'),
+                'inEdges' => array(self::HAS_MANY, 'Edge', array('id' => 'to_node_id'), 'through' => 'node'),
+                'inNodes' => array(self::HAS_MANY, 'Node', array('from_node_id' => 'id'), 'through' => 'inEdges'),
+            )
+        );
+    }
+
+    /**
      * The attributes that is returned by the REST api.
      *
      * @return array the response.
@@ -77,7 +93,7 @@ class RestApiComposition extends Composition
     public function getRelatedItems()
     {
         $related = array();
-        foreach ($this->related as $node) {
+        foreach ($this->getRelated('related', true/* todo: we have to force refresh, why??*/) as $node) {
             // todo: this might need some refactoring once we have other supported related items than "Composition" ones.
             $item = $node->item();
             if ($item !== null && $item instanceof Composition /* todo: remove ard coded instance check once other nodes have the necessary data */) {
@@ -105,11 +121,11 @@ class RestApiComposition extends Composition
      */
     public function getItemThumbnail($item)
     {
-        $url = ($item->thumbnailMedia !== null)
-            ? $item->thumbnailMedia->createUrl('item-thumbnail', true)
+        $url = ($item->thumbMedia !== null)
+            ? $item->thumbMedia->createUrl('item-thumbnail', true)
             : null;
         // todo: provide a fallback profile picture when it is done/exists
         // Rewriting so that the temporary files-api app is used to serve the profile pictures
-        return str_replace(array("api/", "internal/"), "files-api/", $url);
+        return is_string($url) ? str_replace(array("api/", "internal/"), "files-api/", $url) : $url;
     }
 } 
