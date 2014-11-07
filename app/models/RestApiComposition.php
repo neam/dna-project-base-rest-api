@@ -65,6 +65,7 @@ class RestApiComposition extends Composition
             'item_type' => 'composition',
             'composition_type' => $this->compositionType->ref,
             'composition' => json_decode($this->composition),
+            'contributors' => array(),
             'related' => null, // todo: add the related items once needed.
         );
     }
