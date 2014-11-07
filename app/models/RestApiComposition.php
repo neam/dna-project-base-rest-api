@@ -78,21 +78,38 @@ class RestApiComposition extends Composition
     {
         $related = array();
         foreach ($this->related as $node) {
+            // todo: this might need some refactoring once we have other supported related items than "Composition" ones.
             $item = $node->item();
-            if ($item !== null) {
+            if ($item !== null && $item instanceof Composition /* todo: remove ard coded instance check once other nodes have the necessary data */) {
                 $related[] = array(
                     'node_id' => $node->id,
-                    'item_type' => '???',
+                    'item_type' => 'composition', // todo: this is also hard coded for the composition item type.
                     'id' => $item->id,
                     'heading' => $item->heading,
                     'subheading' => $item->sub_heading,
-                    'thumb' => 'http://placehold.it/200x120',
+                    'thumb' => $this->getItemThumbnail($item),
                     'caption' => $item->caption,
                     'slug' => $item->slug,
-                    'composition_type' => '???',
+                    'composition_type' => $item->compositionType->ref, // todo: this is also hard coded for the composition item type.
                 );
             }
         }
         return $related;
+    }
+
+    /**
+     * Returns the url for the item thumbnail image.
+     *
+     * @param object $item the item object to get the url for.
+     * @return string|null the absolute url or null if not found.
+     */
+    public function getItemThumbnail($item)
+    {
+        $url = ($item->thumbnailMedia !== null)
+            ? $item->thumbnailMedia->createUrl('item-thumbnail', true)
+            : null;
+        // todo: provide a fallback profile picture when it is done/exists
+        // Rewriting so that the temporary files-api app is used to serve the profile pictures
+        return str_replace(array("api/", "internal/"), "files-api/", $url);
     }
 } 
