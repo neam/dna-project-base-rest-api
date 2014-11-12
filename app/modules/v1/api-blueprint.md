@@ -851,8 +851,12 @@ New social links are created for the currently authentcated user.
                         }
                     },
                     {
-                        "type": "video_file_item",
+                        "type": "item",
                         "data": {
+                            "node_id": 34,
+                            "model_class": "VideoFile"
+                        },
+                        "attributes": {
                             "title": "Example Video",
                             "about": "This is an example video.",
                             "id": 1
@@ -901,8 +905,12 @@ New social links are created for the currently authentcated user.
                         }
                     },
                     {
-                        "type": "slideshow_item",
+                        "type": "item",
                         "data": {
+                            "node_id": 48,
+                            "model_class": "Slideshow"
+                        },
+                        "attributes": {
                             "title": "Example Slideshow",
                             "about": "This is an example slideshow.",
                             "id": 1
@@ -1040,14 +1048,6 @@ New social links are created for the currently authentcated user.
                         }
                     },
                     {
-                        "type": "video_file_item",
-                        "data": {
-                            "title": "Example Video",
-                            "about": "This is an example video.",
-                            "id": 1
-                        }
-                    },
-                    {
                         "type": "text",
                         "data": {
                             "text": "Hello, I’m **Sir Trevor**.\nCreate some new blocks and see _what I can do_.\n"
@@ -1057,22 +1057,6 @@ New social links are created for the currently authentcated user.
                         "type": "html",
                         "data": {
                             "src": "<h1>First Paragraph</h1><p>This is a <em>paragraph</em>.</p>"
-                        }
-                    },
-                    {
-                        "type": "download_links",
-                        "data": {
-                            "title": "Multiple Download Links",
-                            "links": [
-                                {
-                                    "title": "PDF File",
-                                    "url": "http://example.com/example.pdf"
-                                },
-                                {
-                                    "title": "Animated GIF",
-                                    "url": "http://example.com/example.gif"
-                                }
-                            ]
                         }
                     },
                     {
@@ -1091,14 +1075,6 @@ New social links are created for the currently authentcated user.
                         "type": "slideshare",
                         "data": {
                             "remote_id": "12345678"
-                        }
-                    },
-                    {
-                        "type": "slideshow_item",
-                        "data": {
-                            "title": "Example Slideshow",
-                            "about": "This is an example slideshow.",
-                            "id": 1
                         }
                     }
                 ]
