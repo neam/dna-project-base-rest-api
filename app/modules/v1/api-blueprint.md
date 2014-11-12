@@ -801,15 +801,16 @@ New social links are created for the currently authentcated user.
             "url": "twitter.fi"
         }
 
-# Group Composition Items
+# Group Items
 
-A composition item consists of one or more *Sir Trevor* blocks. In order to render the primary visual
-element on the *Go* page, composite item types will be evaluated differently. For example, a YouTube video
-will be rendered as the main element if it is the first block in the item data array and if the
-item type in question is a *QnA* item.
++ Trait Composable ... For items composed using *Sir Trevor*
 
-The *about* block type is a placeholder indicating that the about property should be rendered in its place,
-and thus content creators get more granular control over block order.
+    Implies that the the item has a JSON structured created by *Sir Trevor*
+
+    + Properties
+        + composition_type = "exercise" (string) ... the composition type is a string that hints about how it should be rendered
+        + data = `[]` (json) ... consists of one or more *Sir Trevor* blocks. In order to render the primary visual element on the *Go* page, the individual blocks will be evaluated differently. For example, a YouTube video will be rendered as the main element if it is the first block in the item data array and if the item type in question is a *QnA* item. The *about* block type is a placeholder indicating that the about property should be rendered in its place, and thus content creators get more granular control over block order.
+
 
 ## Item [/item/{node_id}]
 
@@ -818,6 +819,10 @@ and thus content creators get more granular control over block order.
     + node_id (string) ... the node ID of the item (note: currently it will only work if the item is an item in the composition table)
 
 ### Get an item [GET]
+
++ Traits
+
+    + [Composable][]
 
 + Response 200 (application/json)
 
