@@ -854,13 +854,13 @@ New social links are created for the currently authentcated user.
                         "type": "item",
                         "data": {
                             "node_id": 34,
-                            "model_class": "VideoFile"
+                            "model_class": "VideoFile",
+                            "attributes": {
+                                "title": "Example Video",
+                                "about": "This is an example video.",
+                                "id": 1
+                            }
                         },
-                        "attributes": {
-                            "title": "Example Video",
-                            "about": "This is an example video.",
-                            "id": 1
-                        }
                     },
                     {
                         "type": "text",
@@ -909,12 +909,12 @@ New social links are created for the currently authentcated user.
                         "data": {
                             "node_id": 48,
                             "model_class": "Slideshow"
+                            "attributes": {
+                                "title": "Example Slideshow",
+                                "about": "This is an example slideshow.",
+                                "id": 1
+                            }
                         },
-                        "attributes": {
-                            "title": "Example Slideshow",
-                            "about": "This is an example slideshow.",
-                            "id": 1
-                        }
                     }
                 ]
             },
