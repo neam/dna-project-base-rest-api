@@ -840,7 +840,7 @@ New social links are created for the currently authentcated user.
                     {
                         "type": "about",
                         "data": {
-                            "renderHere": true
+                            "render_here": true
                         }
                     },
                     {
@@ -854,7 +854,7 @@ New social links are created for the currently authentcated user.
                         "type": "item",
                         "data": {
                             "node_id": 34,
-                            "model_class": "VideoFile",
+                            "item_type": "video_file",
                             "attributes": {
                                 "title": "Example Video",
                                 "about": "This is an example video.",
@@ -908,7 +908,7 @@ New social links are created for the currently authentcated user.
                         "type": "item",
                         "data": {
                             "node_id": 48,
-                            "model_class": "Slideshow"
+                            "item_type": "slideshow",
                             "attributes": {
                                 "title": "Example Slideshow",
                                 "about": "This is an example slideshow.",
