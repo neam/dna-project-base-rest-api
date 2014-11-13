@@ -17,6 +17,7 @@ class BaseItemController extends AppRestController
      */
     protected static $classMap = array(
         'Composition' => 'RestApiComposition',
+        'Page' => 'RestApiCustomPage',
     );
 
     /**

@@ -24,6 +24,7 @@ $mainConfig = array(
     ),
     // autoloading model and component classes
     'import' => array(
+        'application.behaviors.*',
         'application.components.*',
         'application.controllers.*',
         'application.models.*',

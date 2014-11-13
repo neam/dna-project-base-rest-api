@@ -1,24 +1,17 @@
 <?php
 
 /**
- * Composite item resource model.
- *
- * Properties made available through the I18nAttributeMessagesBehavior class:
- * @property string heading
- * @property string sub_heading
- * @property string about
+ * Custom page resource model.
+ * @property string $title
+ * @property string $about
  *
  * Properties made available through the RestrictedAccessBehavior class:
  * @property boolean $enableRestriction
  *
- * Methods made available through the WRestModelBehavior class:
- * @method array getCreateAttributes
- * @method array getUpdateAttributes
- *
  * Methods made available through the ContributorBehavior class:
  * @method array getContributors()
  */
-class RestApiComposition extends Composition
+class RestApiCustomPage extends Page
 {
     /**
      * @inheritdoc
@@ -44,7 +37,7 @@ class RestApiComposition extends Composition
                 ),
                 'i18n-attribute-messages' => array(
                     'class' => 'I18nAttributeMessagesBehavior',
-                    'translationAttributes' => array('heading', 'sub_heading', 'caption', 'about'),
+                    'translationAttributes' => array('title', 'about'),
                     'languageSuffixes' => LanguageHelper::getCodes(),
                     'behaviorKey' => 'i18n-attribute-messages',
                     'displayedMessageSourceComponent' => 'displayedMessages',
@@ -81,36 +74,93 @@ class RestApiComposition extends Composition
     public function getAllAttributes()
     {
         return array(
-            'heading' => $this->heading,
-            'subheading' => $this->sub_heading,
+            'heading' => '', // todo: $this->heading,
+            'subheading' => '', // todo: $this->sub_heading,
             'about' => $this->about,
             'item_type' => 'composition',
-            'composition_type' => $this->compositionType->ref,
-            'composition' => json_decode($this->composition),
+            'composition_type' => '', // todo: $this->compositionType->ref,
+            'page_hierarchy' => $this->getPageHierarchy(),
+            'composition' => '', // todo: json_decode($this->composition),
             'contributors' => $this->getContributors(),
-            'related' => $this->getRelatedItems(),
+            'related' => array(), // todo: $this->getRelatedItems(),
         );
     }
 
     /**
-     * Returns any related items for the composition.
+     * Returns the page hierarchy for the custom page.
+     *
+     * @return array
+     */
+    public function getPageHierarchy()
+    {
+        $hierarchy = array(
+            'siblings' => array(),
+            'children' => array(),
+            'parent_path' => array(),
+        );
+
+        return $hierarchy;
+
+//        {
+//        "siblings": [
+//            {
+//                "node_id": 34,
+//                "menu_label": "Short name",
+//                "caption": "asffd asdfsdsfaasf",
+//                "url": "/ebola/dashboard/sdfdsf/"
+//            },
+//            {
+//                "node_id": 2324,
+//                "menu_label": "dfgdfg name",
+//                "caption": "asffd asdfsdsfaasf ",
+//                "url": "/ebola/dashboard/fdfgdg/"
+//            }
+//        ],
+//        "children": [
+//            {
+//                "node_id": 34,
+//                "menu_label": "Short name",
+//                "caption": "asffd asdfsdsfaasf ",
+//                "url": "/ebola/dashboard/sdfdsf/sdfsdf"
+//            }
+//        ],
+//        "parent_path": [
+//            {
+//                "node_id": 1024,
+//                "menu_label": "Ebola dashboard",
+//                "caption": "asffd asdfsdsfaasf ",
+//                "url": "/ebola/dashboard/"
+//            },
+//            {
+//                "node_id": 23434,
+//                "menu_label": "Short name",
+//                "caption": "asffd asdfsdsfaasf ",
+//                "url": "/ebola/"
+//            }
+//        ]
+//        }
+    }
+
+    /**
+     * Returns any related items for the custom page.
      *
      * @return array
      */
     public function getRelatedItems()
     {
+        // todo: refactor and move to trait or something when we know what related types we can support and which model supports what.
+
         $related = array();
-        foreach ($this->getRelated('related', true/* todo: we have to force refresh, why??*/) as $node) {
-            // todo: this might need some refactoring once we have other supported related items than "Composition" ones.
+        foreach ($this->getRelated('related', true) as $node) {
             $item = $node->item();
-            if ($item !== null && $item instanceof Composition /* todo: remove ard coded instance check once other nodes have the necessary data */) {
+            if ($item !== null && $item instanceof Composition /* todo: remove hard coded instance check once other nodes have the necessary data */) {
                 $related[] = array(
                     'node_id' => $node->id,
                     'item_type' => 'composition', // todo: this is also hard coded for the composition item type.
                     'id' => $item->id,
                     'heading' => $item->heading,
                     'subheading' => $item->sub_heading,
-                    'thumb' => $this->getItemThumbnail($item),
+                    'thumb' => '', // todo: $this->getItemThumbnail($item),
                     'caption' => $item->caption,
                     'slug' => $item->slug,
                     'composition_type' => $item->compositionType->ref, // todo: this is also hard coded for the composition item type.
@@ -118,21 +168,5 @@ class RestApiComposition extends Composition
             }
         }
         return $related;
-    }
-
-    /**
-     * Returns the url for the item thumbnail image.
-     *
-     * @param object $item the item object to get the url for.
-     * @return string|null the absolute url or null if not found.
-     */
-    public function getItemThumbnail($item)
-    {
-        $url = ($item->thumbMedia !== null)
-            ? $item->thumbMedia->createUrl('item-thumbnail', true)
-            : null;
-        // todo: provide a fallback profile picture when it is done/exists
-        // Rewriting so that the temporary files-api app is used to serve the profile pictures
-        return is_string($url) ? str_replace(array("api/", "internal/"), "files-api/", $url) : $url;
     }
 } 
