@@ -32,20 +32,20 @@ class BaseVideoFileController extends AppRestController
         );
     }
 
-    /**
-     * Returns a video files subtitles.
-     *
-     * @param int $id the video file resource id.
-     */
-    public function actionSubtitles($id)
-    {
-        $model = $this->loadModel($id);
-
-        $parsedSubtitles = $model->getParsedSubtitles();
-        header("Access-Control-Allow-Origin: *");
-        header("Access-Control-Allow-Headers: Authorization, Origin, Content-Type, Accept");
-        echo $model->getTranslatedSubtitles($parsedSubtitles);
-
-        exit;
-    }
+//    /**
+//     * Returns a video files subtitles.
+//     *
+//     * @param int $id the video file resource id.
+//     */
+//    public function actionSubtitles($id)
+//    {
+//        $model = $this->loadModel($id);
+//
+//        $parsedSubtitles = $model->getParsedSubtitles();
+//        header("Access-Control-Allow-Origin: *");
+//        header("Access-Control-Allow-Headers: Authorization, Origin, Content-Type, Accept");
+//        echo $model->getTranslatedSubtitles($parsedSubtitles);
+//
+//        exit;
+//    }
 }

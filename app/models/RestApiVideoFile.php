@@ -2,6 +2,11 @@
 
 /**
  * Video file resource.
+ *
+ * Properties made available through the I18nAttributeMessagesBehavior class:
+ * @property string $title
+ * @property string $caption
+ * @property string $about
  */
 class RestApiVideoFile extends VideoFile
 {
@@ -27,6 +32,35 @@ class RestApiVideoFile extends VideoFile
                 'RestrictedAccessBehavior' => array(
                     'class' => '\RestrictedAccessBehavior',
                 ),
+                'i18n-attribute-messages' => array(
+                    'class' => 'I18nAttributeMessagesBehavior',
+                    'translationAttributes' => array('title', 'caption', 'about'),
+                    'languageSuffixes' => LanguageHelper::getCodes(),
+                    'behaviorKey' => 'i18n-attribute-messages',
+                    'displayedMessageSourceComponent' => 'displayedMessages',
+                    'editedMessageSourceComponent' => 'editedMessages',
+                ),
+                'i18n-columns' => array(
+                    'class' => 'I18nColumnsBehavior',
+                    'translationAttributes' => array('slug'),
+                    'multilingualRelations' => array('processedMedia' => 'processed_media_id'),
+                ),
+            )
+        );
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function relations()
+    {
+        return array_merge(
+            parent::relations(), array(
+                'outEdges' => array(self::HAS_MANY, 'Edge', 'from_node_id'),
+                'outNodes' => array(self::HAS_MANY, 'Node', array('to_node_id' => 'id'), 'through' => 'outEdges'),
+                'inEdges' => array(self::HAS_MANY, 'Edge', 'to_node_id'),
+                'inNodes' => array(self::HAS_MANY, 'Node', array('from_node_id' => 'id'), 'through' => 'inEdges'),
+                'nodes' => array(self::HAS_MANY, 'Node', 'id'),
             )
         );
     }
@@ -38,40 +72,59 @@ class RestApiVideoFile extends VideoFile
      */
     public function getAllAttributes()
     {
-        $response = new stdClass();
+        return array(
+            'id' => $this->id,
+            'title' => $this->title,
+            'subheading' => '', // todo: data for this??
+            'youtube_id' => '', // todo: data for this??
+            'about' => $this->about,
+            'contributors' => $this->getContributorsItems(),
+            'related' => $this->getRelatedItems(),
+        );
+    }
 
-        $response->id = $this->id;
-        $response->title = $this->title;
-        $response->slug = $this->slug;
-        $response->caption = $this->caption;
-        $response->about = $this->about;
-        //$response->tags = $this->tags;
-        $response->subtitles = Yii::app()->createAbsoluteUrl('api/videoFile/subtitles', array('id' => $this->id));
-        $response->thumbnail = new stdClass();
-        if (!is_null($this->thumbnail_media_id)) {
-            $response->thumbnail->original = $this->thumbnailMedia->createUrl('original-public', true);
-            $response->thumbnail->thumb = $this->thumbnailMedia->createUrl('related-thumb', true);
-        }
-        $response->clipWebm = !is_null($this->clip_webm_media_id) ? $this->clipWebmMedia->createUrl('original-public-webm', true) : null;
-        $response->clipMp4 = !is_null($this->clip_mp4_media_id) ? $this->clipMp4Media->createUrl('original-public-mp4', true) : null;
-        $response->youtube_url = $this->youtube_url;
-
-        if (/*$includeRelated*/true) {
-            $response->related = array();
-            // TODO: Refactor this and the corresponding logic in Snapshot into a yii-relational-graph-db trait or at least ItemTrait
-            foreach ($this->related as $relatedNodes) {
-                try {
-                    $related = $relatedNodes->item();
-                    $response->related[] = $related->getAllAttributes(false);
-                } catch (NodeItemExistsButIsRestricted $e) {
-                    // Ignore restricted nodes
-                }
+    /**
+     * Returns a list of contributors for the video file.
+     * These are parsed into a format that can be used directly in the response.
+     *
+     * @return array
+     */
+    public function getContributorsItems()
+    {
+        $contributors = array();
+        foreach ($this->node->changesets as $changeset) {
+            $contributor = RestApiContributor::model()->findByPk((int)$changeset->user_id);
+            if ($contributor === null) {
+                continue;
+            }
+            if (!isset($contributors[$contributor->id])) {
+                $contributors[$contributor->id] = $contributor->getAllAttributes();
             }
         }
+        // The use of array_values gets rid of the account id key in the array, which is used to filter unique items.
+        return array_values($contributors);
+    }
 
-        //$response->overlays = $this->overlays;
-        //$response->dubbing = $this->dubbing;
-
-        return $response;
+    /**
+     * Returns any related items for the video files.
+     *
+     * @return array
+     */
+    public function getRelatedItems()
+    {
+        $related = array();
+        foreach ($this->getRelated('related', true) as $node) {
+            $item = $node->item();
+            if ($item === null) {
+                continue;
+            }
+            // todo: what kind of related items can we have??
+//                "title": "Niños nacidos por mujer por región",
+//                "thumbnail_url": "http://placehold.it/200x160",
+//                "item_type": "video",
+//                "item_permalink": "ninos-nacidos-por-mujer-por-region",
+//                "item_lang": "es"
+        }
+        return $related;
     }
 } 
