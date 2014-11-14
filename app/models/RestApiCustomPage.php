@@ -171,8 +171,8 @@ class RestApiCustomPage extends Page
     public function getSiblings()
     {
         $criteria = new CDbCriteria();
-        $criteria->addCondition('parent_page_id=:parentPageId');
-        $criteria->addCondition('id!=:id');
+        $criteria->addCondition('`t`.`parent_page_id`=:parentPageId');
+        $criteria->addCondition('`t`.`id`!=:id');
         $criteria->params[':parentPageId'] = (int)$this->parent_page_id;
         $criteria->params[':id'] = (int)$this->id;
         return RestApiCustomPage::model()->findAll($criteria);
