@@ -88,6 +88,11 @@ $mainConfig = array(
                 array('<version>/<controller>/preflight', 'pattern' => '<version:v\d+>/<controller:\w+>', 'verb' => 'OPTIONS'),
                 array('<version>/<controller>/preflight', 'pattern' => '<version:v\d+>/<controller:\w+>/<action:\w+>', 'verb' => 'OPTIONS'),
                 array('<version>/<controller>/preflight', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'OPTIONS'),
+
+                // These are special endpoints used for testing purposes only.
+                // It is a workaround for not being able to choose the response when multiple are defined per request when testing the API format.
+
+                array('<version>/item/get', 'pattern' => '<version:v\d+>/item/<id:\d+|\:[\w-]+>/test/<itemType:\w+>', 'verb' => 'GET'),
             ),
         ),
         'user' => array(
