@@ -22,22 +22,29 @@ class RelatedBehavior extends CActiveRecordBehavior
                     'id' => $item->id,
                     'heading' => $item->heading,
                     'subheading' => $item->sub_heading,
-                    'thumb' => '', // todo: $this->getItemThumbnail($item),
+                    'thumb' => $this->getRelatedItemThumbnailUrl($item),
                     'caption' => $item->caption,
                     'slug' => $item->slug,
                     'composition_type' => $item->compositionType->ref,
-
-//                    "title": "Related Item #1",
-//                    "subheading": "This is an example item.",
-//                    "thumbnailUrl": "http://placehold.it/200x120",
-//                    "id": 2,
-//                    "permalink": "related-item-1",
-//                    "item_type": "composition",
-//                    "composition_type": "exercise"
-
                 );
             }
         }
         return $related;
+    }
+
+    /**
+     * Returns the url for the item thumbnail image url.
+     *
+     * @param object $item the item object to get the url for.
+     * @return string|null the absolute url or null if not found.
+     */
+    public function getRelatedItemThumbnailUrl($item)
+    {
+        $url = ($item->thumbMedia !== null)
+            ? $item->thumbMedia->createUrl('item-thumbnail', true)
+            : null;
+        // todo: provide a fallback profile picture when it is done/exists
+        // Rewriting so that the temporary files-api app is used to serve the profile pictures
+        return is_string($url) ? str_replace(array("api/", "internal/"), "files-api/", $url) : $url;
     }
 }

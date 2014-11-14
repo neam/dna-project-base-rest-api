@@ -72,9 +72,10 @@ class BaseItemController extends AppRestController
             throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find resource for "%s".'), $classname));
         }
         $resourceClassname = self::$classMap[$classname];
-        $model = new $resourceClassname();
-        // Move all attributes from the AR model to the REST resource.
-        $model->attributes = $item->attributes;
+        $model = CActiveRecord::model($resourceClassname)->findByPk($item->id);
+        if ($model === null) {
+            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find resource for "%s".'), $classname));
+        }
         return $model;
     }
 }
