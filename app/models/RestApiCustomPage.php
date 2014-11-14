@@ -2,14 +2,20 @@
 
 /**
  * Custom page resource model.
- * @property string $title
+ * @property string $heading
+ * @property string $sub_heading
+ * @property string $caption
  * @property string $about
+ * @property string $menu_label
  *
  * Properties made available through the RestrictedAccessBehavior class:
  * @property boolean $enableRestriction
  *
  * Methods made available through the ContributorBehavior class:
  * @method array getContributors()
+ *
+ * Methods made available through the RelatedBehavior class:
+ * @method array getRelatedItems()
  */
 class RestApiCustomPage extends Page
 {
@@ -37,7 +43,7 @@ class RestApiCustomPage extends Page
                 ),
                 'i18n-attribute-messages' => array(
                     'class' => 'I18nAttributeMessagesBehavior',
-                    'translationAttributes' => array('title', 'about'),
+                    'translationAttributes' => array('heading', 'sub_heading', 'caption', 'about', 'menu_label'),
                     'languageSuffixes' => LanguageHelper::getCodes(),
                     'behaviorKey' => 'i18n-attribute-messages',
                     'displayedMessageSourceComponent' => 'displayedMessages',
@@ -45,6 +51,9 @@ class RestApiCustomPage extends Page
                 ),
                 'contributor-behavior' => array(
                     'class' => 'ContributorBehavior',
+                ),
+                'related-behavior' => array(
+                    'class' => 'RelatedBehavior',
                 ),
             )
         );
@@ -74,15 +83,15 @@ class RestApiCustomPage extends Page
     public function getAllAttributes()
     {
         return array(
-            'heading' => '', // todo: $this->heading,
-            'subheading' => '', // todo: $this->sub_heading,
+            'heading' => $this->heading,
+            'subheading' => $this->sub_heading,
             'about' => $this->about,
             'item_type' => 'composition',
-            'composition_type' => '', // todo: $this->compositionType->ref,
+            'composition_type' => $this->compositionType->ref,
             'page_hierarchy' => $this->getPageHierarchy(),
-            'composition' => '', // todo: json_decode($this->composition),
+            'composition' => json_decode($this->composition),
             'contributors' => $this->getContributors(),
-            'related' => array(), // todo: $this->getRelatedItems(),
+            'related' => $this->getRelatedItems(),
         );
     }
 
@@ -91,13 +100,40 @@ class RestApiCustomPage extends Page
      *
      * @return array
      */
-    public function getPageHierarchy()
+    protected function getPageHierarchy()
     {
         $hierarchy = array(
             'siblings' => array(),
             'children' => array(),
             'parent_path' => array(),
         );
+
+//        foreach ($this->siblings as $sibling) {
+//            $hierarchy['siblings'][] = array(
+//                'node_id' => $sibling->node_id,
+//                'menu_label' => $sibling->menu_label,
+//                'caption' => $sibling->caption,
+//                'url' => '', // todo
+//            );
+//        }
+//
+//        foreach ($this->children as $child) {
+//            $hierarchy['children'][] = array(
+//                'node_id' => $child->node_id,
+//                'menu_label' => $child->menu_label,
+//                'caption' => $child->caption,
+//                'url' => '', // todo
+//            );
+//        }
+
+        foreach ($this->pages as $page) {
+            $hierarchy['parent_path'][] = array(
+                'node_id' => $page->node_id,
+                'menu_label' => $page->menu_label,
+                'caption' => $page->caption,
+                'url' => '', // todo
+            );
+        }
 
         return $hierarchy;
 
@@ -140,33 +176,4 @@ class RestApiCustomPage extends Page
 //        ]
 //        }
     }
-
-    /**
-     * Returns any related items for the custom page.
-     *
-     * @return array
-     */
-    public function getRelatedItems()
-    {
-        // todo: refactor and move to trait or something when we know what related types we can support and which model supports what.
-
-        $related = array();
-        foreach ($this->getRelated('related', true) as $node) {
-            $item = $node->item();
-            if ($item !== null && $item instanceof Composition /* todo: remove hard coded instance check once other nodes have the necessary data */) {
-                $related[] = array(
-                    'node_id' => $node->id,
-                    'item_type' => 'composition', // todo: this is also hard coded for the composition item type.
-                    'id' => $item->id,
-                    'heading' => $item->heading,
-                    'subheading' => $item->sub_heading,
-                    'thumb' => '', // todo: $this->getItemThumbnail($item),
-                    'caption' => $item->caption,
-                    'slug' => $item->slug,
-                    'composition_type' => $item->compositionType->ref, // todo: this is also hard coded for the composition item type.
-                );
-            }
-        }
-        return $related;
-    }
-} 
+}
