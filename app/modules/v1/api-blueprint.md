@@ -1208,22 +1208,15 @@ New social links are created for the currently authentcated user.
             ],
             "related": [
                 {
-                    "title": "Related Item #1",
-                    "subheading": "This is an example item.",
-                    "thumbnailUrl": "http://placehold.it/200x120",
+                    "node_id": 34,
+                    "item_type": "composition",
                     "id": 2,
-                    "permalink": "related-item-1",
-                    "item_type": "composition",
-                    "composition_type": "exercise"
-                },
-                {
-                    "title": "Related Item #2",
+                    "heading": "Related Item #1",
                     "subheading": "This is an example item.",
-                    "thumbnailUrl": "http://placehold.it/200x120",
-                    "id": 3,
-                    "permalink": "related-item-2",
-                    "item_type": "composition",
-                    "composition_type": "qna"
+                    "thumb": "http://placehold.it/200x120",
+                    "caption": "a caption wohoo",
+                    "slug": "related-item-1",
+                    "composition_type": "exercise"
                 }
             ]
         }
@@ -1491,7 +1484,7 @@ It is a workaround for not being able to choose the response when multiple are d
                             "file": {
                                 "url": "http://192.168.99.100:11111/files-api/p3media/file/image?id=23&preset=sir-trevor-image-block&title=IMG_7932.PNG&extension=.png&lang=en_us",
                                 "p3_media_id": "23"
-                            }
+                            }                            
                         }
                     },
                     {
@@ -1551,22 +1544,15 @@ It is a workaround for not being able to choose the response when multiple are d
             ],
             "related": [
                 {
-                    "title": "Related Item #1",
-                    "subheading": "This is an example item.",
-                    "thumbnail_url": "http://placehold.it/200x120",
+                    "node_id": 34,
+                    "item_type": "composition",
                     "id": 2,
-                    "permalink": "related-item-1",
-                    "item_type": "composition",
-                    "composition_type": "exercise"
-                },
-                {
-                    "title": "Related Item #2",
+                    "heading": "Related Item #1",
                     "subheading": "This is an example item.",
-                    "thumbnail_url": "http://placehold.it/200x120",
-                    "id": 3,
-                    "permalink": "related-item-2",
-                    "item_type": "composition",
-                    "composition_type": "qna"
+                    "thumb": "http://placehold.it/200x120",
+                    "caption": "a caption wohoo",
+                    "slug": "related-item-1",
+                    "composition_type": "exercise"
                 }
             ]
         }
