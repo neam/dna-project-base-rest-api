@@ -14,7 +14,12 @@ class RelatedBehavior extends CActiveRecordBehavior
 
         $related = array();
         foreach ($this->owner->getRelated('related', true) as $node) {
-            $item = $node->item();
+            try {
+                $item = $node->item();
+            } catch (NodeItemExistsButIsRestricted $e) {
+                // If the item is restricted, just continue to the next one.
+                continue;
+            }
             if ($item !== null && $item instanceof Composition) {
                 $related[] = array(
                     'node_id' => $node->id,
