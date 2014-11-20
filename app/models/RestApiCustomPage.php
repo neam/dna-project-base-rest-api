@@ -109,11 +109,18 @@ class RestApiCustomPage extends Page
      */
     public function getHierarchyAttributes()
     {
+        $route = null;
+        if (!empty($this->node_id)) {
+            $route = Route::model()->findByAttributes(array(
+                'node_id' => (int)$this->node_id,
+                'language' => Yii::app()->language,
+            ));
+        }
         return array(
             'node_id' => $this->node_id,
             'menu_label' => $this->menu_label,
             'caption' => $this->caption,
-            'url' => null, // todo: what is this??
+            'url' => !empty($route) ? $route->route : null,
         );
     }
 

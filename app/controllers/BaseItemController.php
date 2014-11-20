@@ -46,7 +46,7 @@ class BaseItemController extends AppRestController
      * Responds to path 'api/<version>/item/{id}'.
      * This endpoint is public but the resources are restricted by "RestrictedAccessBehavior".
      *
-     * @param int $id the node id of the item to get.
+     * @param int|string $id the node id or the route of the item to get.
      */
     public function actionGet($id)
     {
@@ -57,15 +57,28 @@ class BaseItemController extends AppRestController
     /**
      * @inheritdoc
      */
-    public function loadModel($nodeId)
+    public function loadModel($id)
     {
-        $node = Node::model()->findByPk($nodeId);
+        $node = null;
+        if (ctype_digit($id)) {
+            $node = Node::model()->findByPk($id);
+        } else {
+            $route = Route::model()->with('node')->findByAttributes(array('route' => $id));
+            if ($route !== null) {
+                $node = $route->node;
+                // Set the application language to the route language.
+                // This way we know which language the item and it's relations should be returned in.
+                if (Yii::app()->language !== $route->language) {
+                    Yii::app()->language = $route->language;
+                }
+            }
+        }
         if ($node === null) {
-            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find node #%s.'), $nodeId));
+            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find node %s.'), $id));
         }
         $item = $node->item();
         if ($item === null) {
-            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find item for node #%s.'), $nodeId));
+            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find item for node %s.'), $id));
         }
         $classname = get_class($item);
         if (!isset(self::$classMap[$classname])) {
