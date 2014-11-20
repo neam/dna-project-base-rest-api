@@ -26,7 +26,7 @@ class RelatedBehavior extends CActiveRecordBehavior
                     'item_type' => 'composition',
                     'id' => $item->id,
                     'heading' => $item->heading,
-                    'subheading' => $item->sub_heading,
+                    'subheading' => $item->subheading,
                     'thumb' => $this->getRelatedItemThumbnailUrl($item),
                     'caption' => $item->caption,
                     'slug' => $item->slug,
