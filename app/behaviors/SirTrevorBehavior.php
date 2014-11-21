@@ -12,8 +12,8 @@ class SirTrevorBehavior extends CActiveRecordBehavior
     public function populateSirTrevorBlocks($blocks)
     {
         $blocks = json_decode($blocks);
-        if (is_array($blocks)) {
-            foreach ($blocks as &$block) {
+        if (is_object($blocks) && isset($blocks->data) && is_array($blocks->data)) {
+            foreach ($blocks->data as &$block) {
                 if (!isset($block->data, $block->data->node_id)) {
                     continue;
                 }
