@@ -21,6 +21,9 @@
  *
  * Methods made available through the RelatedBehavior class:
  * @method array getRelatedItems()
+ *
+ * Methods made available through the SirTrevorBehavior class:
+ * @method array populateSirTrevorBlocks()
  */
 class RestApiCustomPage extends Page
 {
@@ -60,6 +63,9 @@ class RestApiCustomPage extends Page
                 'related-behavior' => array(
                     'class' => 'RelatedBehavior',
                 ),
+                'sir-trevor-behavior' => array(
+                    'class' => 'SirTrevorBehavior',
+                ),
             )
         );
     }
@@ -96,7 +102,7 @@ class RestApiCustomPage extends Page
             'item_type' => 'composition',
             'composition_type' => ($this->compositionType !== null) ? $this->compositionType->ref : null,
             'page_hierarchy' => $this->getPageHierarchy(),
-            'composition' => json_decode($this->composition),
+            'composition' => $this->populateSirTrevorBlocks($this->composition),
             'contributors' => $this->getContributors(),
             'related' => $this->getRelatedItems(),
         );

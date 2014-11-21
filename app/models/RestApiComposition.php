@@ -20,6 +20,9 @@
  *
  * Methods made available through the RelatedBehavior class:
  * @method array getRelatedItems()
+ *
+ * Methods made available through the SirTrevorBehavior class:
+ * @method array populateSirTrevorBlocks()
  */
 class RestApiComposition extends Composition
 {
@@ -59,6 +62,9 @@ class RestApiComposition extends Composition
                 'related-behavior' => array(
                     'class' => 'RelatedBehavior',
                 ),
+                'sir-trevor-behavior' => array(
+                    'class' => 'SirTrevorBehavior',
+                ),
             )
         );
     }
@@ -92,7 +98,7 @@ class RestApiComposition extends Composition
             'about' => $this->about,
             'item_type' => 'composition',
             'composition_type' => ($this->compositionType !== null) ? $this->compositionType->ref : null,
-            'composition' => json_decode($this->composition),
+            'composition' => $this->populateSirTrevorBlocks($this->composition),
             'contributors' => $this->getContributors(),
             'related' => $this->getRelatedItems(),
         );
