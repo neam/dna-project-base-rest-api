@@ -27,8 +27,13 @@ class SirTrevorBehavior extends CActiveRecordBehavior
                     // If the node is restricted, just continue to the next one.
                     continue;
                 }
-                // todo: can we use model->attributes as such, the i18n attributes for example won't be translated.
-                $block->data->attributes = $item->attributes;
+                // todo: fix this once we know what data to include (i.e. when defined in apiary).
+                $block->data->attributes = array(
+                    'id' => $item->id,
+                    'title' => isset($item->title) ? $item->title : (isset($item->heading) ? $item->heading : null),
+                    'about' => isset($item->about) ? $item->about : null,
+                );
+                $block->data->non_apiary_defined_attributes = $item->attributes;
             }
         }
         return $blocks;
