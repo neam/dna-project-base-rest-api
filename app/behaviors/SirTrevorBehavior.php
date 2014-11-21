@@ -27,14 +27,8 @@ class SirTrevorBehavior extends CActiveRecordBehavior
                     // If the node is restricted, just continue to the next one.
                     continue;
                 }
-
-                $block->data->attributes = array(
-                    'id' => $item->id,
-                    'title' => $item->title,
-                    'about' => $item->about,
-                );
-                // todo: what data from the node item is to be set in attributes?
-
+                // todo: can we use model->attributes as such, the i18n attributes for example won't be translated.
+                $block->data->attributes = $item->attributes;
             }
         }
         return $blocks;
