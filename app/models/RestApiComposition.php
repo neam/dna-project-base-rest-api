@@ -5,7 +5,7 @@
  *
  * Properties made available through the I18nAttributeMessagesBehavior class:
  * @property string heading
- * @property string sub_heading
+ * @property string subheading
  * @property string about
  *
  * Properties made available through the RestrictedAccessBehavior class:
@@ -50,7 +50,7 @@ class RestApiComposition extends Composition
                 ),
                 'i18n-attribute-messages' => array(
                     'class' => 'I18nAttributeMessagesBehavior',
-                    'translationAttributes' => array('heading', 'sub_heading', 'caption', 'about'),
+                    'translationAttributes' => array('heading', 'subheading', 'caption', 'about'),
                     'languageSuffixes' => LanguageHelper::getCodes(),
                     'behaviorKey' => 'i18n-attribute-messages',
                     'displayedMessageSourceComponent' => 'displayedMessages',
@@ -94,7 +94,7 @@ class RestApiComposition extends Composition
     {
         return array(
             'heading' => $this->heading,
-            'subheading' => $this->sub_heading,
+            'subheading' => $this->subheading,
             'about' => $this->about,
             'item_type' => 'composition',
             'composition_type' => ($this->compositionType !== null) ? $this->compositionType->ref : null,
