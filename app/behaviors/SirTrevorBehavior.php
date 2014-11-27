@@ -1,7 +1,35 @@
 <?php
 
+/**
+ * Behavior for resource models that includes a sir trevor data structure.
+ * This class provides helper methods for populating blocks in the sir trevor structure with more info fom the nodes
+ * they represent, i.e. a video file node represented in a sir trevor structure holds only it's node id and item type
+ * and the rest of the data needs to be fetched from the node and added to the structure.
+ *
+ * Example of a sir trevor data structure with only a "video_file" block:
+ * {
+ *   "data": [
+ *     {
+ *       "type": "video_file",
+ *       "data": {
+ *         "node_id": 1,
+ *         "item_type": "video_file"
+ *       }
+ *     }
+ *   ]
+ * }
+ */
 class SirTrevorBehavior extends CActiveRecordBehavior
 {
+    /**
+     * @var array map of rest resource models per sir trevor item types (models must implement SirTrevorBlock interface).
+     */
+    protected static $sirTrevorItemMap = array(
+        'video_file' => 'RestApiVideoFile',
+        'html_chunk' => 'RestApiHtmlChunk',
+        'download_link' => 'RestApiDownloadLink',
+    );
+
     /**
      * Populates Sir Trevor blocks with data from the nodes they represent.
      * The blocks are identified by their node_id property.
@@ -14,28 +42,59 @@ class SirTrevorBehavior extends CActiveRecordBehavior
         $blocks = json_decode($blocks);
         if (is_object($blocks) && isset($blocks->data) && is_array($blocks->data)) {
             foreach ($blocks->data as &$block) {
-                if (!isset($block->data, $block->data->node_id)) {
+                $resource = $this->loadSirTrevorBlockResource($block);
+                if ($resource === null) {
                     continue;
                 }
-                $node = Node::model()->findByPk((int)$block->data->node_id);
-                if ($node === null) {
-                    continue;
-                }
-                try {
-                    $item = $node->item();
-                } catch (NodeItemExistsButIsRestricted $e) {
-                    // If the node is restricted, just continue to the next one.
-                    continue;
-                }
-                // todo: fix this once we know what data to include (i.e. when defined in apiary).
-                $block->data->attributes = array(
-                    'id' => $item->id,
-                    'title' => isset($item->title) ? $item->title : (isset($item->heading) ? $item->heading : null),
-                    'about' => isset($item->about) ? $item->about : null,
-                );
-                $block->data->non_apiary_defined_attributes = $item->attributes;
+                $block->data->attributes = $resource->getCompositionAttributes();
             }
         }
         return $blocks;
     }
-} 
+
+    /**
+     * Loads a rest resource model for the block node.
+     * Method requires the block object to have a data object with a item_type.
+     *
+     * @param object $block the block object to load the rest resource for.
+     * @return SirTrevorBlock the rest resource model or null if not found.
+     */
+    protected function loadSirTrevorBlockResource($block)
+    {
+        if (!isset($block->data, $block->data->item_type)) {
+            return null;
+        }
+        if (!isset(self::$sirTrevorItemMap[$block->data->item_type])) {
+            return null;
+        }
+        $item = $this->loadSirTrevorBlockNodeItem($block);
+        if ($item === null) {
+            return null;
+        }
+        return \CActiveRecord::model(self::$sirTrevorItemMap[$block->data->item_type])->findByPk($item->id);
+    }
+
+    /**
+     * Loads the item model for the block node.
+     * Method requires the block object to have a data object with a node_id.
+     *
+     * @param object $block the block object to load the node item for.
+     * @return \CActiveRecord the item model or null if not found.
+     */
+    protected function loadSirTrevorBlockNodeItem($block)
+    {
+        if (!isset($block->data, $block->data->node_id)) {
+            return null;
+        }
+        $node = \Node::model()->findByPk((int)$block->data->node_id);
+        if ($node === null) {
+            return null;
+        }
+        try {
+            $item = $node->item();
+        } catch (\NodeItemExistsButIsRestricted $e) {
+            return null;
+        }
+        return $item;
+    }
+}

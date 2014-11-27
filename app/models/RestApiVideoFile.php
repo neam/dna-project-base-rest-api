@@ -2,8 +2,26 @@
 
 /**
  * Video file resource.
+ *
+ * Properties made available through the I18nAttributeMessagesBehavior class:
+ * @property string $title
+ * @property string $caption
+ * @property string $about
+ *
+ * Properties made available through the I18nColumnsBehavior class:
+ * @property string $slug
+ *
+ * Properties made available through the RestrictedAccessBehavior class:
+ * @property boolean $enableRestriction
+ *
+ * Methods made available through the WRestModelBehavior class:
+ * @method array getCreateAttributes
+ * @method array getUpdateAttributes
+ *
+ * Methods made available through the RelatedBehavior class:
+ * @method array getRelatedItems()
  */
-class RestApiVideoFile extends VideoFile
+class RestApiVideoFile extends VideoFile implements SirTrevorBlock
 {
     /**
      * @inheritdoc
@@ -27,51 +45,114 @@ class RestApiVideoFile extends VideoFile
                 'RestrictedAccessBehavior' => array(
                     'class' => '\RestrictedAccessBehavior',
                 ),
+                'i18n-attribute-messages' => array(
+                    'class' => 'I18nAttributeMessagesBehavior',
+                    'translationAttributes' => array('title', 'caption', 'about'),
+                    'languageSuffixes' => LanguageHelper::getCodes(),
+                    'behaviorKey' => 'i18n-attribute-messages',
+                    'displayedMessageSourceComponent' => 'displayedMessages',
+                    'editedMessageSourceComponent' => 'editedMessages',
+                ),
+                'i18n-columns' => array(
+                    'class' => 'I18nColumnsBehavior',
+                    'translationAttributes' => array('slug'),
+                ),
+                'related-behavior' => array(
+                    'class' => 'RelatedBehavior',
+                ),
             )
         );
     }
 
     /**
-     * The attributes that is returned by the REST api.
-     *
-     * @return object the response object as a stdClass.
+     * @inheritdoc
      */
     public function getAllAttributes()
     {
-        $response = new stdClass();
-
-        $response->id = $this->id;
-        $response->title = $this->title;
-        $response->slug = $this->slug;
-        $response->caption = $this->caption;
-        $response->about = $this->about;
-        //$response->tags = $this->tags;
-        $response->subtitles = Yii::app()->createAbsoluteUrl('api/videoFile/subtitles', array('id' => $this->id));
-        $response->thumbnail = new stdClass();
-        if (!is_null($this->thumbnail_media_id)) {
-            $response->thumbnail->original = $this->thumbnailMedia->createUrl('original-public', true);
-            $response->thumbnail->thumb = $this->thumbnailMedia->createUrl('related-thumb', true);
-        }
-        $response->clipWebm = !is_null($this->clip_webm_media_id) ? $this->clipWebmMedia->createUrl('original-public-webm', true) : null;
-        $response->clipMp4 = !is_null($this->clip_mp4_media_id) ? $this->clipMp4Media->createUrl('original-public-mp4', true) : null;
-        $response->youtube_url = $this->youtube_url;
-
-        if (/*$includeRelated*/true) {
-            $response->related = array();
-            // TODO: Refactor this and the corresponding logic in Snapshot into a yii-relational-graph-db trait or at least ItemTrait
-            foreach ($this->related as $relatedNodes) {
-                try {
-                    $related = $relatedNodes->item();
-                    $response->related[] = $related->getAllAttributes(false);
-                } catch (NodeItemExistsButIsRestricted $e) {
-                    // Ignore restricted nodes
-                }
-            }
-        }
-
-        //$response->overlays = $this->overlays;
-        //$response->dubbing = $this->dubbing;
-
-        return $response;
+        return array(
+            'id' => $this->id,
+            'title' => $this->title,
+            'slug' => $this->slug,
+            'caption' => $this->caption,
+            'about' => $this->about,
+            'thumbnail' => $this->getUrlThumbnail(),
+            'url_mp4' => $this->getUrlMp4(),
+            'url_webm' => $this->getUrlWebm(),
+            'url_youtube' => $this->youtube_url,
+            'url_subtitles' => $this->getUrlSubtitles(),
+            'related' => $this->getRelatedItems(),
+        );
     }
-} 
+
+    /**
+     * @inheritdoc
+     */
+    public function getCompositionAttributes()
+    {
+        return array(
+            'id' => $this->id,
+            'title' => $this->title,
+            'thumbnail' => $this->getUrlThumbnail(),
+            'url_mp4' => $this->getUrlMp4(),
+            'url_webm' => $this->getUrlWebm(),
+            'url_youtube' => $this->youtube_url,
+            'url_subtitles' => $this->getUrlSubtitles(),
+        );
+    }
+
+    /**
+     * Returns absolute url to the api endpoint for retrieving a video files subtitles.
+     * It needs to be a separate end-point as the video player in use requires the subtitles to be loaded from a url.
+     *
+     * @return string
+     */
+    protected function getUrlSubtitles()
+    {
+        return Yii::app()->createAbsoluteUrl('/v1/videoFile/subtitles/' . $this->id);
+    }
+
+    /**
+     * Returns absolute url to the video file thumbnail.
+     *
+     * @return string|null the url or null if no thumbnail media found.
+     */
+    protected function getUrlThumbnail()
+    {
+        if (empty($this->thumbnailMedia)) {
+            return null;
+        }
+        $url = $this->thumbnailMedia->createUrl('original-public', true);
+        // Rewriting so that the temporary files-api app is used to serve the profile pictures
+        return str_replace(array("api/", "internal/"), "files-api/", $url);
+    }
+
+    /**
+     * Returns absolute url to the video file in mp4 format.
+     *
+     * @return string|null the url or null if video media not found.
+     */
+    protected function getUrlMp4()
+    {
+        if (empty($this->clipMp4Media)) {
+            return null;
+        }
+        $url = $this->clipMp4Media->createUrl('original-public-mp4', true);
+        // Rewriting so that the temporary files-api app is used to serve the profile pictures
+        return str_replace(array("api/", "internal/"), "files-api/", $url);
+    }
+
+    /**
+     * Returns absolute url to the video file in webm format.
+     *
+     * @return string|null the url or null if video media not found.
+     */
+    protected function getUrlWebm()
+    {
+        if (empty($this->clipWebmMedia)) {
+            return null;
+        }
+        $url = $this->clipWebmMedia->createUrl('original-public-webm', true);
+        // Rewriting so that the temporary files-api app is used to serve the profile pictures
+        return str_replace(array("api/", "internal/"), "files-api/", $url);
+    }
+}
