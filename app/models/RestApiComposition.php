@@ -7,6 +7,10 @@
  * @property string heading
  * @property string subheading
  * @property string about
+ * @property string caption
+ *
+ * Properties made available through the I18nColumnsBehavior class:
+ * @property string $slug
  *
  * Properties made available through the RestrictedAccessBehavior class:
  * @property boolean $enableRestriction
@@ -24,7 +28,7 @@
  * Methods made available through the SirTrevorBehavior class:
  * @method array populateSirTrevorBlocks()
  */
-class RestApiComposition extends Composition
+class RestApiComposition extends Composition implements RelatedResource
 {
     /**
      * @inheritdoc
@@ -56,6 +60,10 @@ class RestApiComposition extends Composition
                     'displayedMessageSourceComponent' => 'displayedMessages',
                     'editedMessageSourceComponent' => 'editedMessages',
                 ),
+                'i18n-columns' => array(
+                    'class' => 'I18nColumnsBehavior',
+                    'translationAttributes' => array('slug'),
+                ),
                 'contributor-behavior' => array(
                     'class' => 'ContributorBehavior',
                 ),
@@ -86,9 +94,7 @@ class RestApiComposition extends Composition
     }
 
     /**
-     * The attributes that is returned by the REST api.
-     *
-     * @return array the response.
+     * @inheritdoc
      */
     public function getAllAttributes()
     {
@@ -102,5 +108,60 @@ class RestApiComposition extends Composition
             'contributors' => $this->getContributors(),
             'related' => $this->getRelatedItems(),
         );
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getRelatedAttributes()
+    {
+        // todo: new structure, define in apiary as well.
+
+//{
+//"node_id": 357,
+//"item_type": "go_item",
+//“url”: “//www.gapminder.org/exercises/item-1207”,
+//“attributes”: {
+//"composition_type": "exercise",
+//"heading": "The heading of #1207",
+//"subheading": "This is an example item.",
+///* "thumb": "http://placehold.it/200x120", */
+//“thumb”: {
+//  “200x120”: "http://placehold.it/200x120.png",
+//	“400x240”: "http://placehold.it/400x240.png",
+//	“600x360”: "http://placehold.it/400x360.png",
+//	“original”: “"http://placehold.it/original.png”
+//},
+//"caption": “a caption”,
+//"slug": "item-1205",
+//}
+//}
+
+        return array(
+            'node_id' => $this->node_id,
+            'item_type' => 'composition',
+            'id' => $this->id,
+            'heading' => $this->heading,
+            'subheading' => $this->subheading,
+            'thumb' => $this->getThumbnailUrl(),
+            'caption' => $this->caption,
+            'slug' => $this->slug,
+            'composition_type' => $this->compositionType->ref,
+        );
+    }
+
+    /**
+     * Returns absolute url for the thumbnail image.
+     *
+     * @return string|null the url or null if not found.
+     */
+    public function getThumbnailUrl()
+    {
+        if (empty($this->thumbMedia)) {
+            return null;
+        }
+        $url = $this->thumbMedia->createUrl('item-thumbnail', true);
+        // Rewriting so that the temporary files-api app is used to serve the profile pictures
+        return str_replace(array("api/", "internal/"), "files-api/", $url);
     }
 } 
