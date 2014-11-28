@@ -7,6 +7,10 @@
  * @property string heading
  * @property string subheading
  * @property string about
+ * @property string caption
+ *
+ * Properties made available through the I18nColumnsBehavior class:
+ * @property string $slug
  *
  * Properties made available through the RestrictedAccessBehavior class:
  * @property boolean $enableRestriction
@@ -24,7 +28,7 @@
  * Methods made available through the SirTrevorBehavior class:
  * @method array populateSirTrevorBlocks()
  */
-class RestApiComposition extends Composition
+class RestApiComposition extends Composition implements RelatedResource
 {
     /**
      * @inheritdoc
@@ -56,6 +60,10 @@ class RestApiComposition extends Composition
                     'displayedMessageSourceComponent' => 'displayedMessages',
                     'editedMessageSourceComponent' => 'editedMessages',
                 ),
+                'i18n-columns' => array(
+                    'class' => 'I18nColumnsBehavior',
+                    'translationAttributes' => array('slug'),
+                ),
                 'contributor-behavior' => array(
                     'class' => 'ContributorBehavior',
                 ),
@@ -86,21 +94,69 @@ class RestApiComposition extends Composition
     }
 
     /**
-     * The attributes that is returned by the REST api.
-     *
-     * @return array the response.
+     * @inheritdoc
      */
     public function getAllAttributes()
     {
         return array(
-            'heading' => $this->heading,
-            'subheading' => $this->subheading,
-            'about' => $this->about,
-            'item_type' => 'composition',
-            'composition_type' => ($this->compositionType !== null) ? $this->compositionType->ref : null,
+            'node_id' => (int)$this->node_id,
+            'item_type' => 'go_item',
+            'url' => null, // todo: how to build it??
+            'attributes' => $this->getListableAttributes(),
             'composition' => $this->populateSirTrevorBlocks($this->composition),
             'contributors' => $this->getContributors(),
             'related' => $this->getRelatedItems(),
         );
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getRelatedAttributes()
+    {
+        return array(
+            'node_id' => (int)$this->node_id,
+            'item_type' => 'go_item',
+            'url' => null, // todo: how to build it??
+            'attributes' => $this->getListableAttributes(),
+        );
+    }
+
+    /**
+     * Returns att "listable" attributes.
+     * Listable attributes are ones that appear inside an "attributes" section for a "go_item" in any response.
+     *
+     * @return array
+     */
+    public function getListableAttributes()
+    {
+        return array(
+            'composition_type' => ($this->compositionType !== null) ? $this->compositionType->ref : null,
+            'heading' => $this->heading,
+            'subheading' => $this->subheading,
+            'about' => $this->about,
+            'caption' => $this->caption,
+            'slug' => $this->slug,
+            'thumb' => array(
+                'original' => $this->getThumbUrl('original'),
+                // todo: which versions??
+            ),
+        );
+    }
+
+    /**
+     * Returns absolute url for the thumbnail image.
+     *
+     * @param string $preset the image preset to use.
+     * @return string|null the url or null if not found.
+     */
+    public function getThumbUrl($preset = 'original')
+    {
+        if (empty($this->thumbMedia)) {
+            return null;
+        }
+        $url = $this->thumbMedia->createUrl($preset, true);
+        // Rewriting so that the temporary files-api app is used to serve the url.
+        return str_replace(array("api/", "internal/"), "files-api/", $url);
     }
 } 

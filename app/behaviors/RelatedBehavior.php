@@ -1,7 +1,30 @@
 <?php
 
+/**
+ * Behavior for resource models that includes a list of related items.
+ * This class provides helper methods for getting a properly formatted list of related resources.
+ *
+ * Example of a "composition" response structure with a list of related items:
+ * {
+ *   "heading": "demo heading",
+ *   "subheading": "demo subheading",
+ *   "about": "demo about",
+ *   "item_type": "composition",
+ *   "composition_type": "exercise",
+ *   "composition": {},
+ *   "contributors": [],
+ *   "related": []
+ * }
+ */
 class RelatedBehavior extends CActiveRecordBehavior
 {
+    /**
+     * @var array map of rest resource models per related active record class name (models must implement RelatedResource interface).
+     */
+    protected static $relatedResourceMap = array(
+        'Composition' => 'RestApiComposition',
+    );
+
     /**
      * Returns any related items for the owner node.
      *
@@ -9,47 +32,34 @@ class RelatedBehavior extends CActiveRecordBehavior
      */
     public function getRelatedItems()
     {
-        // todo: refactor when we know what related types we can support and which model supports what.
-        // todo: related items are hard-coded to be composition types only for now.
-
         $related = array();
         foreach ($this->owner->getRelated('related', true) as $node) {
-            try {
-                $item = $node->item();
-            } catch (NodeItemExistsButIsRestricted $e) {
-                // If the item is restricted, just continue to the next one.
+            $resource = $this->loadRelatedResource($node);
+            if ($resource === null) {
                 continue;
             }
-            if ($item !== null && $item instanceof Composition) {
-                $related[] = array(
-                    'node_id' => $node->id,
-                    'item_type' => 'composition',
-                    'id' => $item->id,
-                    'heading' => $item->heading,
-                    'subheading' => $item->subheading,
-                    'thumb' => $this->getRelatedItemThumbnailUrl($item),
-                    'caption' => $item->caption,
-                    'slug' => $item->slug,
-                    'composition_type' => $item->compositionType->ref,
-                );
-            }
+            $related[] = $resource->getRelatedAttributes();
         }
         return $related;
     }
 
     /**
-     * Returns the url for the item thumbnail image url.
+     * Loads the rest resource model for the node.
      *
-     * @param object $item the item object to get the url for.
-     * @return string|null the absolute url or null if not found.
+     * @param Node $node the node to get the rest resource for.
+     * @return RelatedResource|null the resource model or null if not found.
      */
-    public function getRelatedItemThumbnailUrl($item)
+    protected function loadRelatedResource(Node $node)
     {
-        $url = ($item->thumbMedia !== null)
-            ? $item->thumbMedia->createUrl('item-thumbnail', true)
-            : null;
-        // todo: provide a fallback profile picture when it is done/exists
-        // Rewriting so that the temporary files-api app is used to serve the profile pictures
-        return is_string($url) ? str_replace(array("api/", "internal/"), "files-api/", $url) : $url;
+        try {
+            $item = $node->item();
+        } catch (NodeItemExistsButIsRestricted $e) {
+            return null;
+        }
+        $itemClassName = get_class($item);
+        if (!isset(self::$relatedResourceMap[$itemClassName])) {
+            return null;
+        }
+        return CActiveRecord::model(self::$relatedResourceMap[$itemClassName])->findByPk($item->id);
     }
 }

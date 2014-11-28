@@ -27,6 +27,7 @@ $mainConfig = array(
         'application.behaviors.*',
         'application.components.*',
         'application.controllers.*',
+        'application.interfaces.*',
         'application.models.*',
         'vendor.weavora.wrest.*',
         'vendor.weavora.wrest.actions.*',
@@ -79,6 +80,7 @@ $mainConfig = array(
                 array('<version>/<controller>/get', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'GET'),
                 array('<version>/<controller>/update', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'PUT'),
                 array('<version>/<controller>/delete', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'DELETE'),
+                array('<version>/<controller>/<action>', 'pattern' => '<version:v\d+>/<controller:\w+>/<action:\w+>/<id:\d+>', 'verb' => 'GET'),
 
                 // CORS rules
                 // todo: the cors allow methods are currently hard-coded. think of better solution.
@@ -91,6 +93,7 @@ $mainConfig = array(
                 array('<version>/<controller>/preflight', 'pattern' => '<version:v\d+>/<controller:\w+>', 'verb' => 'OPTIONS'),
                 array('<version>/<controller>/preflight', 'pattern' => '<version:v\d+>/<controller:\w+>/<action:\w+>', 'verb' => 'OPTIONS'),
                 array('<version>/<controller>/preflight', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'OPTIONS'),
+                array('<version>/<controller>/preflight', 'pattern' => '<version:v\d+>/<controller:\w+>/<action:\w+><id:\d+>', 'verb' => 'OPTIONS'),
 
                 // These are special endpoints used for testing purposes only.
                 // It is a workaround for not being able to choose the response when multiple are defined per request when testing the API format.

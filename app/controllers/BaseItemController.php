@@ -76,7 +76,11 @@ class BaseItemController extends AppRestController
         if ($node === null) {
             throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find node %s.'), $id));
         }
-        $item = $node->item();
+        try {
+            $item = $node->item();
+        } catch (NodeItemExistsButIsRestricted $e) {
+            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Node item %s exists but is restricted.'), $id));
+        }
         if ($item === null) {
             throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find item for node %s.'), $id));
         }

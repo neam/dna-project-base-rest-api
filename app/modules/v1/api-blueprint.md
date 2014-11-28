@@ -828,15 +828,65 @@ New social links are created for the currently authentcated user.
 
         {
             "node_id": 1024,
-            "heading": "Example Composition Item",
-            "subheading": "This is the subheading.",
-            "about": "<h2>Overview</h2>This is an <em>example item</em>.\n<h2>Sidenotes</h2><ul><li>Foo</li><li>Bar</li></ul>",
-            "item_type": "composition",
-            "id": 1,
-            "permalink": "example-item",
-            "composition_type": "exercise",
+            "item_type": "go_item",
+            "url": "//www.gapminder.org/exercises/item-1204",
+            "attributes": {
+                "composition_type": "exercise",
+                "heading": "Example Composition Item",
+                "subheading": "This is the subheading.",
+                "about": "<h2>Overview</h2>This is an <em>example item</em>.\n<h2>Sidenotes</h2><ul><li>Foo</li><li>Bar</li></ul>",
+                "caption": "a caption",
+                "slug": "item-1204",
+                "thumb": {
+                    "200x120": "http://placehold.it/200x120.png",
+                    "400x240": "http://placehold.it/400x240.png",
+                    "600x360": "http://placehold.it/400x360.png",
+                    "original": "http://placehold.it/original.png"
+                }
+            },
             "composition": {
                 "data": [
+                    {
+                        "type": "video_file",
+                        "data": {
+                            "node_id": 653,
+                            "item_type": "video_file",
+                            "attributes": {
+                                "title": "How large is the gap between the richest and the poorest?",
+                                "about": "Here we explain that there is no gap in the traditional sense.",
+                                "caption": null,
+                                "slug": null,
+                                "url_mp4": "http://url_to_file.mp4",
+                                "url_webm": "http://url_to_file.webm",
+                                "url_youtube": "http://url_to_youtube_video",
+                                "url_subtitles": "http://url_to_the_video_file_subtitles_api_endpoint",
+                                "thumb": {
+                                    "original": "http://thumbnail_image_original.jpg"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "type": "html_chunk",
+                        "data": {
+                            "node_id": 900,
+                            "item_type": "html_chunk",
+                            "attributes": {
+                                "markup": "<b>the html</b>"
+                            }
+                        }
+                    },
+                    {
+                        "type": "download_link",
+                        "data": {
+                            "node_id": 1248,
+                            "item_type": "download_link",
+                            "attributes": {
+                                "title": "Link for download Gapminder World 2013",
+                                "url": "http://url_to_the_file.ext"
+                            }
+                        }
+                    },
                     {
                         "type": "about",
                         "data": {
@@ -849,18 +899,6 @@ New social links are created for the currently authentcated user.
                             "source": "youtube",
                             "remote_id": "hcFLFpmc4Pg"
                         }
-                    },
-                    {
-                        "type": "item",
-                        "data": {
-                            "node_id": 34,
-                            "item_type": "video_file",
-                            "attributes": {
-                                "title": "Example Video",
-                                "about": "This is an example video.",
-                                "id": 1
-                            }
-                        },
                     },
                     {
                         "type": "text",
@@ -878,7 +916,7 @@ New social links are created for the currently authentcated user.
                         "type": "download_links",
                         "data": {
                             "title": "Multiple Download Links",
-                            "links": [
+                            "download_links": [
                                 {
                                     "title": "PDF File",
                                     "url": "http://example.com/example.pdf"
@@ -905,16 +943,31 @@ New social links are created for the currently authentcated user.
                         }
                     },
                     {
-                        "type": "item",
-                        "data": {
-                            "node_id": 48,
-                            "item_type": "slideshow",
-                            "attributes": {
-                                "title": "Example Slideshow",
-                                "about": "This is an example slideshow.",
-                                "id": 1
+                        "type": "item_list",
+                        "data": [
+                            {
+                                "node_id": 1205,
+                                "item_type": "composition",
+                                "composition_type": "exercise",
+                                "id": 2,
+                                "heading": "Item #1205",
+                                "subheading": "This is an example item.",
+                                "thumb": "http://placehold.it/200x120",
+                                "caption": null,
+                                "slug": "item-1205"
+                            },
+                            {
+                                "node_id": 1206,
+                                "item_type": "composition",
+                                "composition_type": "qna",
+                                "id": 2,
+                                "heading": "Item #1206",
+                                "subheading": "This is an example item too.",
+                                "thumb": "http://placehold.it/200x120",
+                                "caption": null,
+                                "slug": "item-1206"
                             }
-                        },
+                        ]
                     }
                 ]
             },
@@ -971,8 +1024,7 @@ New social links are created for the currently authentcated user.
                             "label": "Did foo",
                             "url": "http://example.com",
                             "datetime": "2014-11-14 10:33",
-                        },
-
+                        }
                     ]
                 },
                 {
@@ -1050,15 +1102,23 @@ New social links are created for the currently authentcated user.
             ],
             "related": [
                 {
-                    "node_id": 34,
-                    "item_type": "composition",
-                    "id": 2,
-                    "heading": "Related Item #1",
-                    "subheading": "This is an example item.",
-                    "thumb": "http://placehold.it/200x120",
-                    "caption": "a caption wohoo",
-                    "slug": "related-item-1",
-                    "composition_type": "exercise"
+                    "node_id": 357,
+                    "item_type": "go_item",
+                    "url": "//www.gapminder.org/exercises/item-1207",
+                    "attributes": {
+                        "composition_type": "exercise",
+                        "heading": "The heading of #1207",
+                        "subheading": "This is an example item.",
+                        "about": "The item about text",
+                        "caption": "a caption",
+                        "slug": "item-1205",
+                        "thumb": {
+                            "200x120": "http://placehold.it/200x120.png",
+                            "400x240": "http://placehold.it/400x240.png",
+                            "600x360": "http://placehold.it/400x360.png",
+                            "original": "http://placehold.it/original.png"
+                        }
+                    }
                 }
             ]
         }
@@ -1066,14 +1126,16 @@ New social links are created for the currently authentcated user.
 + Response 200 (application/json)
 
         {
-            "node_id": 1024,
-            "heading": "Example Page Item",
-            "subheading": "This is the subheading.",
-            "about": "<h2>Overview</h2>This is an <em>example item</em>.\n<h2>Sidenotes</h2><ul><li>Foo</li><li>Bar</li></ul>",
-            "item_type": "page",
-            "id": 1,
-            "permalink": "example-item",
-            "composition_type": "exercise",
+            "node_id": 896,
+            "item_type": "custom_page",
+            "url": null,
+            "attributes": {
+                "composition_type": "exercise",
+                "heading": "Example Page Item",
+                "subheading": "This is the subheading.",
+                "about": "<h2>Overview</h2>This is an <em>example item</em>.\n<h2>Sidenotes</h2><ul><li>Foo</li><li>Bar</li></ul>",
+                "caption": "This is a caption"
+            },
             "page_hierarchy": {
                 "siblings": [
                     {
@@ -1208,15 +1270,23 @@ New social links are created for the currently authentcated user.
             ],
             "related": [
                 {
-                    "node_id": 34,
-                    "item_type": "composition",
-                    "id": 2,
-                    "heading": "Related Item #1",
-                    "subheading": "This is an example item.",
-                    "thumb": "http://placehold.it/200x120",
-                    "caption": "a caption wohoo",
-                    "slug": "related-item-1",
-                    "composition_type": "exercise"
+                    "node_id": 357,
+                    "item_type": "go_item",
+                    "url": "//www.gapminder.org/exercises/item-1207",
+                    "attributes": {
+                        "composition_type": "exercise",
+                        "heading": "The heading of #1207",
+                        "subheading": "This is an example item.",
+                        "about": "The item about text",
+                        "caption": "a caption",
+                        "slug": "item-1205",
+                        "thumb": {
+                            "200x120": "http://placehold.it/200x120.png",
+                            "400x240": "http://placehold.it/400x240.png",
+                            "600x360": "http://placehold.it/400x360.png",
+                            "original": "http://placehold.it/original.png"
+                        }
+                    }
                 }
             ]
         }
@@ -1236,15 +1306,65 @@ It is a workaround for not being able to choose the response when multiple are d
 
         {
             "node_id": 1024,
-            "heading": "Example Composition Item",
-            "subheading": "This is the subheading.",
-            "about": "<h2>Overview</h2>This is an <em>example item</em>.\n<h2>Sidenotes</h2><ul><li>Foo</li><li>Bar</li></ul>",
-            "item_type": "composition",
-            "id": 1,
-            "permalink": "example-item",
-            "composition_type": "exercise",
+            "item_type": "go_item",
+            "url": "//www.gapminder.org/exercises/item-1204",
+            "attributes": {
+                "composition_type": "exercise",
+                "heading": "Example Composition Item",
+                "subheading": "This is the subheading.",
+                "about": "<h2>Overview</h2>This is an <em>example item</em>.\n<h2>Sidenotes</h2><ul><li>Foo</li><li>Bar</li></ul>",
+                "caption": "a caption",
+                "slug": "item-1204",
+                "thumb": {
+                    "200x120": "http://placehold.it/200x120.png",
+                    "400x240": "http://placehold.it/400x240.png",
+                    "600x360": "http://placehold.it/400x360.png",
+                    "original": "http://placehold.it/original.png"
+                }
+            },
             "composition": {
                 "data": [
+                    {
+                        "type": "video_file",
+                        "data": {
+                            "node_id": 653,
+                            "item_type": "video_file",
+                            "attributes": {
+                                "title": "How large is the gap between the richest and the poorest?",
+                                "about": "Here we explain that there is no gap in the traditional sense.",
+                                "caption": null,
+                                "slug": null,
+                                "url_mp4": "http://url_to_file.mp4",
+                                "url_webm": "http://url_to_file.webm",
+                                "url_youtube": "http://url_to_youtube_video",
+                                "url_subtitles": "http://url_to_the_video_file_subtitles_api_endpoint",
+                                "thumb": {
+                                    "original": "http://thumbnail_image_original.jpg"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "type": "html_chunk",
+                        "data": {
+                            "node_id": 900,
+                            "item_type": "html_chunk",
+                            "attributes": {
+                                "markup": "<b>the html</b>"
+                            }
+                        }
+                    },
+                    {
+                        "type": "download_link",
+                        "data": {
+                            "node_id": 1248,
+                            "item_type": "download_link",
+                            "attributes": {
+                                "title": "Link for download Gapminder World 2013",
+                                "url": "http://url_to_the_file.ext"
+                            }
+                        }
+                    },
                     {
                         "type": "about",
                         "data": {
@@ -1257,18 +1377,6 @@ It is a workaround for not being able to choose the response when multiple are d
                             "source": "youtube",
                             "remote_id": "hcFLFpmc4Pg"
                         }
-                    },
-                    {
-                        "type": "item",
-                        "data": {
-                            "node_id": 34,
-                            "item_type": "video_file",
-                            "attributes": {
-                                "title": "Example Video",
-                                "about": "This is an example video.",
-                                "id": 1
-                            }
-                        },
                     },
                     {
                         "type": "text",
@@ -1312,18 +1420,6 @@ It is a workaround for not being able to choose the response when multiple are d
                             "remote_id": "5896443"
                         }
                     },
-                    {
-                        "type": "item",
-                        "data": {
-                            "node_id": 48,
-                            "item_type": "slideshow",
-                            "attributes": {
-                                "title": "Example Slideshow",
-                                "about": "This is an example slideshow.",
-                                "id": 1
-                            }
-                        },
-                    }
                 ]
             },
             "contributors": [
@@ -1375,15 +1471,23 @@ It is a workaround for not being able to choose the response when multiple are d
             ],
             "related": [
                 {
-                    "node_id": 34,
-                    "item_type": "composition",
-                    "id": 2,
-                    "heading": "Related Item #1",
-                    "subheading": "This is an example item.",
-                    "thumb": "http://placehold.it/200x120",
-                    "caption": "a caption wohoo",
-                    "slug": "related-item-1",
-                    "composition_type": "exercise"
+                    "node_id": 357,
+                    "item_type": "go_item",
+                    "url": "//www.gapminder.org/exercises/item-1207",
+                    "attributes": {
+                        "composition_type": "exercise",
+                        "heading": "The heading of #1207",
+                        "subheading": "This is an example item.",
+                        "about": "The item about text",
+                        "caption": "a caption",
+                        "slug": "item-1205",
+                        "thumb": {
+                            "200x120": "http://placehold.it/200x120.png",
+                            "400x240": "http://placehold.it/400x240.png",
+                            "600x360": "http://placehold.it/400x360.png",
+                            "original": "http://placehold.it/original.png"
+                        }
+                    }
                 }
             ]
         }
@@ -1402,14 +1506,16 @@ It is a workaround for not being able to choose the response when multiple are d
 + Response 200 (application/json)
 
         {
-            "node_id": 1024,
-            "heading": "Example Page Item",
-            "subheading": "This is the subheading.",
-            "about": "<h2>Overview</h2>This is an <em>example item</em>.\n<h2>Sidenotes</h2><ul><li>Foo</li><li>Bar</li></ul>",
-            "item_type": "page",
-            "id": 1,
-            "permalink": "example-item",
-            "composition_type": "exercise",
+            "node_id": 896,
+            "item_type": "custom_page",
+            "url": null,
+            "attributes": {
+                "composition_type": "exercise",
+                "heading": "Example Page Item",
+                "subheading": "This is the subheading.",
+                "about": "<h2>Overview</h2>This is an <em>example item</em>.\n<h2>Sidenotes</h2><ul><li>Foo</li><li>Bar</li></ul>",
+                "caption": "This is a caption"
+            },
             "page_hierarchy": {
                 "siblings": [
                     {
@@ -1544,15 +1650,23 @@ It is a workaround for not being able to choose the response when multiple are d
             ],
             "related": [
                 {
-                    "node_id": 34,
-                    "item_type": "composition",
-                    "id": 2,
-                    "heading": "Related Item #1",
-                    "subheading": "This is an example item.",
-                    "thumb": "http://placehold.it/200x120",
-                    "caption": "a caption wohoo",
-                    "slug": "related-item-1",
-                    "composition_type": "exercise"
+                    "node_id": 357,
+                    "item_type": "go_item",
+                    "url": "//www.gapminder.org/exercises/item-1207",
+                    "attributes": {
+                        "composition_type": "exercise",
+                        "heading": "The heading of #1207",
+                        "subheading": "This is an example item.",
+                        "about": "The item about text",
+                        "caption": "a caption",
+                        "slug": "item-1205",
+                        "thumb": {
+                            "200x120": "http://placehold.it/200x120.png",
+                            "400x240": "http://placehold.it/400x240.png",
+                            "600x360": "http://placehold.it/400x360.png",
+                            "original": "http://placehold.it/original.png"
+                        }
+                    }
                 }
             ]
         }
