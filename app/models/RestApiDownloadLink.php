@@ -69,7 +69,11 @@ class RestApiDownloadLink extends DownloadLink implements SirTrevorBlock
      */
     protected function getLinkUrl()
     {
-        // todo: how to get the url from $this->fileMedia
-        return null;
+        if (empty($this->fileMedia)) {
+            return null;
+        }
+        $url = $this->fileMedia->createUrl('original', true);
+        // Rewriting so that the temporary files-api app is used to serve the profile pictures
+        return str_replace(array("api/", "internal/"), "files-api/", $url);
     }
 }
