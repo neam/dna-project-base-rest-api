@@ -137,8 +137,10 @@ class RestApiComposition extends Composition implements RelatedResource
             'caption' => $this->caption,
             'slug' => $this->slug,
             'thumb' => array(
-                'original' => $this->getThumbUrl('original'),
-                // todo: which versions??
+                'original' => $this->getThumbUrl('original-public'),
+                '735x444' => $this->getThumbUrl('735x444'),
+                '160x96' => $this->getThumbUrl('160x96'),
+                '110x66' => $this->getThumbUrl('110x66'),
             ),
             'composition' => $this->populateSirTrevorBlocks($this->composition),
         );
@@ -167,7 +169,7 @@ class RestApiComposition extends Composition implements RelatedResource
      * @param string $preset the image preset to use.
      * @return string|null the url or null if not found.
      */
-    public function getThumbUrl($preset = 'original')
+    public function getThumbUrl($preset = 'original-public')
     {
         if (empty($this->thumbMedia)) {
             return null;
@@ -176,4 +178,4 @@ class RestApiComposition extends Composition implements RelatedResource
         // Rewriting so that the temporary files-api app is used to serve the url.
         return str_replace(array("api/", "internal/"), "files-api/", $url);
     }
-} 
+}

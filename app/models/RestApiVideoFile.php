@@ -67,6 +67,22 @@ class RestApiVideoFile extends VideoFile implements SirTrevorBlock
     /**
      * @inheritdoc
      */
+    public function relations()
+    {
+        return array_merge(
+            parent::relations(),
+            array(
+                'outEdges' => array(self::HAS_MANY, 'Edge', array('id' => 'from_node_id'), 'through' => 'node'),
+                'outNodes' => array(self::HAS_MANY, 'Node', array('to_node_id' => 'id'), 'through' => 'outEdges'),
+                'inEdges' => array(self::HAS_MANY, 'Edge', array('id' => 'to_node_id'), 'through' => 'node'),
+                'inNodes' => array(self::HAS_MANY, 'Node', array('from_node_id' => 'id'), 'through' => 'inEdges'),
+            )
+        );
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function getAllAttributes()
     {
         return array(
@@ -104,8 +120,10 @@ class RestApiVideoFile extends VideoFile implements SirTrevorBlock
             'url_youtube' => $this->youtube_url,
             'url_subtitles' => $this->getUrlSubtitles(),
             'thumb' => array(
-                'original' => $this->getUrlThumb('original-public'),
-                // todo: which versions??
+                'original' => $this->getThumbUrl('original-public'),
+                '735x444' => $this->getThumbUrl('735x444'),
+                '160x96' => $this->getThumbUrl('160x96'),
+                '110x66' => $this->getThumbUrl('110x66'),
             ),
         );
     }
@@ -144,7 +162,7 @@ class RestApiVideoFile extends VideoFile implements SirTrevorBlock
      * @param string $preset the image preset to use.
      * @return string|null the url or null if no thumbnail media found.
      */
-    protected function getUrlThumb($preset)
+    protected function getThumbUrl($preset)
     {
         if (empty($this->thumbnailMedia)) {
             return null;
