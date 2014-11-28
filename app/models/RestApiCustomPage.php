@@ -98,13 +98,27 @@ class RestApiCustomPage extends Page
         return array(
             'node_id' => (int)$this->node_id,
             'item_type' => 'custom_page',
-            'url' => null, // todo: how to build it??
+            'url' => $this->getRouteUrl(),
+            'nav_tree_to_use' => !empty($this->nav_tree_to_use) ? $this->nav_tree_to_use : 'home',
             'attributes' => $this->getListableAttributes(),
-            'page_hierarchy' => $this->getPageHierarchy(),
-            'composition' => $this->populateSirTrevorBlocks($this->composition),
+            'root_page' => $this->getRootPageHierarchy(),
             'contributors' => $this->getContributors(),
             'related' => $this->getRelatedItems(),
         );
+    }
+
+    /**
+     * @return array
+     */
+    public function getRootPageHierarchy()
+    {
+        $hierarchy = array();
+        $rootPage = $this->loadRootPage($this);
+        if ($rootPage !== null) {
+            $hierarchy = $rootPage->getHierarchyAttributes();
+            $rootPage->setChildren($rootPage, $hierarchy);
+        }
+        return $hierarchy;
     }
 
     /**
@@ -121,6 +135,7 @@ class RestApiCustomPage extends Page
             'subheading' => $this->subheading,
             'about' => $this->about,
             'caption' => $this->caption,
+            'composition' => $this->populateSirTrevorBlocks($this->composition),
         );
     }
 
@@ -131,79 +146,56 @@ class RestApiCustomPage extends Page
      */
     public function getHierarchyAttributes()
     {
-        $route = null;
-        if (!empty($this->node_id)) {
-            $route = Route::model()->findByAttributes(array(
-                'node_id' => (int)$this->node_id,
-                'language' => Yii::app()->language,
-            ));
-        }
         return array(
             'node_id' => (int)$this->node_id,
+            'item_type' => 'custom_page',
             'menu_label' => $this->menu_label,
-            'caption' => $this->caption,
-            'url' => !empty($route) ? $route->route : null,
-        );
-    }
-
-    /**
-     * Returns the page hierarchy for the custom page.
-     *
-     * @return array
-     */
-    protected function getPageHierarchy()
-    {
-        $hierarchy = array(
-            'siblings' => array(),
+            'url' => $this->getRouteUrl(),
             'children' => array(),
-            'parent_path' => array(),
         );
-
-        foreach ($this->siblings as $page) {
-            $hierarchy['siblings'][] = $page->getHierarchyAttributes();
-        }
-
-        foreach ($this->children as $page) {
-            $hierarchy['children'][] = $page->getHierarchyAttributes();
-        }
-
-        foreach ($this->recParentPages as $page) {
-            $hierarchy['parent_path'][] = $page->getHierarchyAttributes();
-        }
-
-        return $hierarchy;
     }
 
     /**
-     * Recursively finds all parent page models for given page.
-     *
-     * @return RestApiCustomPage[] the parent pages.
+     * @return string|null
      */
-    public function getRecParentPages()
+    public function getRouteUrl()
     {
-        $pages = array();
-        if ($this->parent !== null) {
-            $pages[] = $this->parent;
-            $tmp = $this->parent->getRecParentPages();
-            if (!empty($tmp)) {
-                $pages = array_merge($pages, $tmp);
+        if (empty($this->node_id)) {
+            return null;
+        }
+
+        $route = Route::model()->findByAttributes(array(
+            'node_id' => (int)$this->node_id,
+            'language' => Yii::app()->language,
+        ));
+
+        return ($route !== null) ? $route->route : null;
+    }
+
+    /**
+     * @param RestApiCustomPage $page
+     * @return RestApiCustomPage
+     */
+    public function LoadRootPage($page)
+    {
+        if (empty($page->parent)) {
+            return $page;
+        }
+        return $this->LoadRootPage($page->parent);
+    }
+
+    /**
+     * @param RestApiCustomPage $page
+     * @param array $hierarchy
+     */
+    public function setChildren($page, &$hierarchy)
+    {
+        if (!empty($page->children)) {
+            foreach ($page->children as $child) {
+                $childHierarchy = $child->getHierarchyAttributes();
+                $child->setChildren($child, $childHierarchy);
+                $hierarchy['children'][] = $childHierarchy;
             }
         }
-        return $pages;
-    }
-
-    /**
-     * Returns a list of all siblings for this page.
-     *
-     * @return RestApiCustomPage[] the sibling pages.
-     */
-    public function getSiblings()
-    {
-        $criteria = new CDbCriteria();
-        $criteria->addCondition('`t`.`parent_page_id`=:parentPageId');
-        $criteria->addCondition('`t`.`id`!=:id');
-        $criteria->params[':parentPageId'] = (int)$this->parent_page_id;
-        $criteria->params[':id'] = (int)$this->id;
-        return RestApiCustomPage::model()->findAll($criteria);
     }
 }
