@@ -56,7 +56,7 @@ class RestApiHtmlChunk extends HtmlChunk implements SirTrevorBlock
     public function getCompositionAttributes()
     {
         return array(
-            'id' => $this->id,
+            'id' => (int)$this->id,
             'markup' => $this->markup,
         );
     }

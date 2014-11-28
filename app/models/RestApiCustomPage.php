@@ -123,7 +123,7 @@ class RestApiCustomPage extends Page
             ));
         }
         return array(
-            'node_id' => $this->node_id,
+            'node_id' => (int)$this->node_id,
             'menu_label' => $this->menu_label,
             'caption' => $this->caption,
             'url' => !empty($route) ? $route->route : null,

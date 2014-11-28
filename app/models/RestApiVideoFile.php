@@ -70,7 +70,7 @@ class RestApiVideoFile extends VideoFile implements SirTrevorBlock
     public function getAllAttributes()
     {
         return array(
-            'id' => $this->id,
+            'id' => (int)$this->id,
             'title' => $this->title,
             'slug' => $this->slug,
             'caption' => $this->caption,
@@ -90,7 +90,7 @@ class RestApiVideoFile extends VideoFile implements SirTrevorBlock
     public function getCompositionAttributes()
     {
         return array(
-            'id' => $this->id,
+            'id' => (int)$this->id,
             'title' => $this->title,
             'thumbnail' => $this->getUrlThumbnail(),
             'url_mp4' => $this->getUrlMp4(),

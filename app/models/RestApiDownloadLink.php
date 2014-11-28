@@ -56,7 +56,7 @@ class RestApiDownloadLink extends DownloadLink implements SirTrevorBlock
     public function getCompositionAttributes()
     {
         return array(
-            'id' => $this->id,
+            'id' => (int)$this->id,
             'title' => $this->title,
             'url' => $this->getLinkUrl(),
         );
