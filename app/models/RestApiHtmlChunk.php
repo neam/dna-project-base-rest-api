@@ -55,8 +55,18 @@ class RestApiHtmlChunk extends HtmlChunk implements SirTrevorBlock
      */
     public function getCompositionAttributes()
     {
+        return $this->getListableAttributes();
+    }
+
+    /**
+     * Returns att "listable" attributes.
+     * Listable attributes are ones that appear inside an "attributes" section for a "html_chunk" in any response.
+     *
+     * @return array
+     */
+    public function getListableAttributes()
+    {
         return array(
-            'id' => (int)$this->id,
             'markup' => $this->markup,
         );
     }

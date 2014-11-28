@@ -96,15 +96,31 @@ class RestApiCustomPage extends Page
     public function getAllAttributes()
     {
         return array(
-            'heading' => $this->heading,
-            'subheading' => $this->subheading,
-            'about' => $this->about,
-            'item_type' => 'composition',
-            'composition_type' => ($this->compositionType !== null) ? $this->compositionType->ref : null,
+            'node_id' => (int)$this->node_id,
+            'item_type' => 'custom_page',
+            'url' => null, // todo: how to build it??
+            'attributes' => $this->getListableAttributes(),
             'page_hierarchy' => $this->getPageHierarchy(),
             'composition' => $this->populateSirTrevorBlocks($this->composition),
             'contributors' => $this->getContributors(),
             'related' => $this->getRelatedItems(),
+        );
+    }
+
+    /**
+     * Returns att "listable" attributes.
+     * Listable attributes are ones that appear inside an "attributes" section for a "custom_page" in any response.
+     *
+     * @return array
+     */
+    public function getListableAttributes()
+    {
+        return array(
+            'composition_type' => ($this->compositionType !== null) ? $this->compositionType->ref : null,
+            'heading' => $this->heading,
+            'subheading' => $this->subheading,
+            'about' => $this->about,
+            'caption' => $this->caption,
         );
     }
 

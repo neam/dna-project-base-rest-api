@@ -55,8 +55,18 @@ class RestApiDownloadLink extends DownloadLink implements SirTrevorBlock
      */
     public function getCompositionAttributes()
     {
+        return $this->getListableAttributes();
+    }
+
+    /**
+     * Returns att "listable" attributes.
+     * Listable attributes are ones that appear inside an "attributes" section for a "download_link" in any response.
+     *
+     * @return array
+     */
+    public function getListableAttributes()
+    {
         return array(
-            'id' => (int)$this->id,
             'title' => $this->title,
             'url' => $this->getLinkUrl(),
         );
@@ -73,7 +83,7 @@ class RestApiDownloadLink extends DownloadLink implements SirTrevorBlock
             return null;
         }
         $url = $this->fileMedia->createUrl('original', true);
-        // Rewriting so that the temporary files-api app is used to serve the profile pictures
+        // Rewriting so that the temporary files-api app is used to serve the url.
         return str_replace(array("api/", "internal/"), "files-api/", $url);
     }
 }

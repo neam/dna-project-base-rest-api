@@ -70,16 +70,10 @@ class RestApiVideoFile extends VideoFile implements SirTrevorBlock
     public function getAllAttributes()
     {
         return array(
-            'id' => (int)$this->id,
-            'title' => $this->title,
-            'slug' => $this->slug,
-            'caption' => $this->caption,
-            'about' => $this->about,
-            'thumbnail' => $this->getUrlThumbnail(),
-            'url_mp4' => $this->getUrlMp4(),
-            'url_webm' => $this->getUrlWebm(),
-            'url_youtube' => $this->youtube_url,
-            'url_subtitles' => $this->getUrlSubtitles(),
+            'node_id' => (int)$this->node_id,
+            'item_type' => 'video_file',
+            'url' => null, // todo: how to build it??
+            'attributes' => $this->getListableAttributes(),
             'related' => $this->getRelatedItems(),
         );
     }
@@ -89,14 +83,30 @@ class RestApiVideoFile extends VideoFile implements SirTrevorBlock
      */
     public function getCompositionAttributes()
     {
+        return $this->getListableAttributes();
+    }
+
+    /**
+     * Returns att "listable" attributes.
+     * Listable attributes are ones that appear inside an "attributes" section for a "video_file" in any response.
+     *
+     * @return array
+     */
+    public function getListableAttributes()
+    {
         return array(
-            'id' => (int)$this->id,
             'title' => $this->title,
-            'thumbnail' => $this->getUrlThumbnail(),
+            'about' => $this->about,
+            'caption' => $this->caption,
+            'slug' => $this->slug,
             'url_mp4' => $this->getUrlMp4(),
             'url_webm' => $this->getUrlWebm(),
             'url_youtube' => $this->youtube_url,
             'url_subtitles' => $this->getUrlSubtitles(),
+            'thumb' => array(
+                'original' => $this->getUrlThumb('original-public'),
+                // todo: which versions??
+            ),
         );
     }
 
@@ -114,15 +124,16 @@ class RestApiVideoFile extends VideoFile implements SirTrevorBlock
     /**
      * Returns absolute url to the video file thumbnail.
      *
+     * @param string $preset the image preset to use.
      * @return string|null the url or null if no thumbnail media found.
      */
-    protected function getUrlThumbnail()
+    protected function getUrlThumb($preset)
     {
         if (empty($this->thumbnailMedia)) {
             return null;
         }
-        $url = $this->thumbnailMedia->createUrl('original-public', true);
-        // Rewriting so that the temporary files-api app is used to serve the profile pictures
+        $url = $this->thumbnailMedia->createUrl($preset, true);
+        // Rewriting so that the temporary files-api app is used to serve the url.
         return str_replace(array("api/", "internal/"), "files-api/", $url);
     }
 
@@ -137,7 +148,7 @@ class RestApiVideoFile extends VideoFile implements SirTrevorBlock
             return null;
         }
         $url = $this->clipMp4Media->createUrl('original-public-mp4', true);
-        // Rewriting so that the temporary files-api app is used to serve the profile pictures
+        // Rewriting so that the temporary files-api app is used to serve the url.
         return str_replace(array("api/", "internal/"), "files-api/", $url);
     }
 
@@ -152,7 +163,7 @@ class RestApiVideoFile extends VideoFile implements SirTrevorBlock
             return null;
         }
         $url = $this->clipWebmMedia->createUrl('original-public-webm', true);
-        // Rewriting so that the temporary files-api app is used to serve the profile pictures
+        // Rewriting so that the temporary files-api app is used to serve the url.
         return str_replace(array("api/", "internal/"), "files-api/", $url);
     }
 }

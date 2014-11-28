@@ -99,11 +99,10 @@ class RestApiComposition extends Composition implements RelatedResource
     public function getAllAttributes()
     {
         return array(
-            'heading' => $this->heading,
-            'subheading' => $this->subheading,
-            'about' => $this->about,
-            'item_type' => 'composition',
-            'composition_type' => ($this->compositionType !== null) ? $this->compositionType->ref : null,
+            'node_id' => (int)$this->node_id,
+            'item_type' => 'go_item',
+            'url' => null, // todo: how to build it??
+            'attributes' => $this->getListableAttributes(),
             'composition' => $this->populateSirTrevorBlocks($this->composition),
             'contributors' => $this->getContributors(),
             'related' => $this->getRelatedItems(),
@@ -115,53 +114,49 @@ class RestApiComposition extends Composition implements RelatedResource
      */
     public function getRelatedAttributes()
     {
-        // todo: new structure, define in apiary as well.
-
-//{
-//"node_id": 357,
-//"item_type": "go_item",
-//“url”: “//www.gapminder.org/exercises/item-1207”,
-//“attributes”: {
-//"composition_type": "exercise",
-//"heading": "The heading of #1207",
-//"subheading": "This is an example item.",
-///* "thumb": "http://placehold.it/200x120", */
-//“thumb”: {
-//  “200x120”: "http://placehold.it/200x120.png",
-//	“400x240”: "http://placehold.it/400x240.png",
-//	“600x360”: "http://placehold.it/400x360.png",
-//	“original”: “"http://placehold.it/original.png”
-//},
-//"caption": “a caption”,
-//"slug": "item-1205",
-//}
-//}
-
         return array(
-            'node_id' => $this->node_id,
-            'item_type' => 'composition',
-            'id' => $this->id,
+            'node_id' => (int)$this->node_id,
+            'item_type' => 'go_item',
+            'url' => null, // todo: how to build it??
+            'attributes' => $this->getListableAttributes(),
+        );
+    }
+
+    /**
+     * Returns att "listable" attributes.
+     * Listable attributes are ones that appear inside an "attributes" section for a "go_item" in any response.
+     *
+     * @return array
+     */
+    public function getListableAttributes()
+    {
+        return array(
+            'composition_type' => ($this->compositionType !== null) ? $this->compositionType->ref : null,
             'heading' => $this->heading,
             'subheading' => $this->subheading,
-            'thumb' => $this->getThumbnailUrl(),
+            'about' => $this->about,
             'caption' => $this->caption,
             'slug' => $this->slug,
-            'composition_type' => $this->compositionType->ref,
+            'thumb' => array(
+                'original' => $this->getThumbUrl('original'),
+                // todo: which versions??
+            ),
         );
     }
 
     /**
      * Returns absolute url for the thumbnail image.
      *
+     * @param string $preset the image preset to use.
      * @return string|null the url or null if not found.
      */
-    public function getThumbnailUrl()
+    public function getThumbUrl($preset = 'original')
     {
         if (empty($this->thumbMedia)) {
             return null;
         }
-        $url = $this->thumbMedia->createUrl('item-thumbnail', true);
-        // Rewriting so that the temporary files-api app is used to serve the profile pictures
+        $url = $this->thumbMedia->createUrl($preset, true);
+        // Rewriting so that the temporary files-api app is used to serve the url.
         return str_replace(array("api/", "internal/"), "files-api/", $url);
     }
 } 
