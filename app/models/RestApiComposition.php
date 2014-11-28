@@ -101,9 +101,8 @@ class RestApiComposition extends Composition implements RelatedResource
         return array(
             'node_id' => (int)$this->node_id,
             'item_type' => 'go_item',
-            'url' => null, // todo: how to build it??
+            'url' => $this->getRouteUrl(),
             'attributes' => $this->getListableAttributes(),
-            'composition' => $this->populateSirTrevorBlocks($this->composition),
             'contributors' => $this->getContributors(),
             'related' => $this->getRelatedItems(),
         );
@@ -117,7 +116,7 @@ class RestApiComposition extends Composition implements RelatedResource
         return array(
             'node_id' => (int)$this->node_id,
             'item_type' => 'go_item',
-            'url' => null, // todo: how to build it??
+            'url' => $this->getRouteUrl(),
             'attributes' => $this->getListableAttributes(),
         );
     }
@@ -141,7 +140,25 @@ class RestApiComposition extends Composition implements RelatedResource
                 'original' => $this->getThumbUrl('original'),
                 // todo: which versions??
             ),
+            'composition' => $this->populateSirTrevorBlocks($this->composition),
         );
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getRouteUrl()
+    {
+        if (empty($this->node_id)) {
+            return null;
+        }
+
+        $route = Route::model()->findByAttributes(array(
+            'node_id' => (int)$this->node_id,
+            'language' => Yii::app()->language,
+        ));
+
+        return ($route !== null) ? $route->route : null;
     }
 
     /**
