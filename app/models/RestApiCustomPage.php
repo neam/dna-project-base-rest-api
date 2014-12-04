@@ -166,7 +166,7 @@ class RestApiCustomPage extends Page
 
         $route = Route::model()->findByAttributes(array(
             'node_id' => (int)$this->node_id,
-            'language' => Yii::app()->language,
+            'translation_route_language' => Yii::app()->language,
         ));
 
         return ($route !== null) ? $route->route : null;
