@@ -42,14 +42,36 @@ class SirTrevorBehavior extends CActiveRecordBehavior
         $blocks = json_decode($blocks);
         if (is_object($blocks) && isset($blocks->data) && is_array($blocks->data)) {
             foreach ($blocks->data as &$block) {
-                $resource = $this->loadSirTrevorBlockResource($block);
-                if ($resource === null) {
+                if (!isset($block->data)) {
                     continue;
                 }
-                $block->data->attributes = $resource->getCompositionAttributes();
+                $this->recPopulateSirTrevorBlock($block);
             }
         }
         return $blocks;
+    }
+
+    /**
+     * Recursively populate the Sir Trevor block with data from it's node if it is associated with one.
+     * It's recursive as some blocks, e.g. download_links, have download_link blocks as their data. The method
+     * recursively traverses the block only if it includes a property named "children" that is an array of objects.
+     *
+     * @param object $block the Sir Trevor block to populate with data.
+     */
+    protected function recPopulateSirTrevorBlock(&$block)
+    {
+        $resource = $this->loadSirTrevorBlockResource($block);
+        if ($resource !== null) {
+            $block->data->attributes = $resource->getCompositionAttributes();
+        }
+        if (isset($block->data->children) && is_array($block->data->children)) {
+            foreach ($block->data->children as &$child) {
+                if (!is_object($child) || !isset($child->data)) {
+                    continue;
+                }
+                $this->recPopulateSirTrevorBlock($child);
+            }
+        }
     }
 
     /**
