@@ -63,13 +63,14 @@ class BaseItemController extends AppRestController
         if (ctype_digit($id)) {
             $node = Node::model()->findByPk($id);
         } else {
+            /** @var Route $route */
             $route = Route::model()->with('node')->findByAttributes(array('route' => $id));
             if ($route !== null) {
                 $node = $route->node;
                 // Set the application language to the route language.
                 // This way we know which language the item and it's relations should be returned in.
-                if (Yii::app()->language !== $route->language) {
-                    Yii::app()->language = $route->language;
+                if (Yii::app()->language !== $route->translation_route_language) {
+                    Yii::app()->language = $route->translation_route_language;
                 }
             }
         }
