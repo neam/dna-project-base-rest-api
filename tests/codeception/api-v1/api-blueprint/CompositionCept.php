@@ -1,22 +1,72 @@
 <?php
 $scenario->group('data:clean-db,coverage:basic');
 $I = new ApiGuy($scenario);
-$I->wantTo('retrieve composition items via the REST API as defined in api blueprint');
 
+$I->wantTo('retrieve composition items via the REST API as defined in api blueprint');
 $I->sendGET('item/1024/test/composition');
 $I->seeResponseCodeIs(200);
-//$I->seeResponseIsJson();
+$I->seeResponseIsJson();
 $I->seeResponseEquals('{
     "node_id": 1024,
-    "heading": "Example Composition Item",
-    "subheading": "This is the subheading.",
-    "about": "<h2>Overview</h2>This is an <em>example item</em>.\n<h2>Sidenotes</h2><ul><li>Foo</li><li>Bar</li></ul>",
-    "item_type": "composition",
-    "id": 1,
-    "permalink": "example-item",
-    "composition_type": "exercise",
+    "item_type": "go_item",
+    "url": "//www.gapminder.org/exercises/item-1204",
+    "attributes": {
+        "composition_type": "exercise",
+        "heading": "Example Composition Item",
+        "subheading": "This is the subheading.",
+        "about": "<h2>Overview</h2>This is an <em>example item</em>.\n<h2>Sidenotes</h2><ul><li>Foo</li><li>Bar</li></ul>",
+        "caption": "a caption",
+        "slug": "item-1204",
+        "thumb": {
+            "200x120": "http://placehold.it/200x120.png",
+            "400x240": "http://placehold.it/400x240.png",
+            "600x360": "http://placehold.it/400x360.png",
+            "original": "http://placehold.it/original.png"
+        }
+    },
     "composition": {
         "data": [
+            {
+                "type": "video_file",
+                "data": {
+                    "node_id": 653,
+                    "item_type": "video_file",
+                    "attributes": {
+                        "title": "How large is the gap between the richest and the poorest?",
+                        "about": "Here we explain that there is no gap in the traditional sense.",
+                        "caption": null,
+                        "slug": null,
+                        "url_mp4": "http://url_to_file.mp4",
+                        "url_webm": "http://url_to_file.webm",
+                        "url_youtube": "http://url_to_youtube_video",
+                        "url_subtitles": "http://url_to_the_video_file_subtitles_api_endpoint",
+                        "thumb": {
+                            "original": "http://thumbnail_image_original.jpg"
+                        }
+                    }
+                }
+            },
+            {
+                "type": "html_chunk",
+                "data": {
+                    "node_id": 900,
+                    "item_type": "html_chunk",
+                    "attributes": {
+                        "markup": "<b>the html</b>"
+                    }
+                }
+            },
+            {
+                "type": "download_link",
+                "data": {
+                    "node_id": 1248,
+                    "item_type": "download_link",
+                    "attributes": {
+                        "title": "Link for download Gapminder World 2013",
+                        "url": "http://url_to_the_file.ext"
+                    }
+                }
+            },
             {
                 "type": "about",
                 "data": {
@@ -29,18 +79,6 @@ $I->seeResponseEquals('{
                     "source": "youtube",
                     "remote_id": "hcFLFpmc4Pg"
                 }
-            },
-            {
-                "type": "item",
-                "data": {
-                    "node_id": 34,
-                    "item_type": "video_file",
-                    "attributes": {
-                        "title": "Example Video",
-                        "about": "This is an example video.",
-                        "id": 1
-                    }
-                },
             },
             {
                 "type": "text",
@@ -83,18 +121,6 @@ $I->seeResponseEquals('{
                 "data": {
                     "remote_id": "5896443"
                 }
-            },
-            {
-                "type": "item",
-                "data": {
-                    "node_id": 48,
-                    "item_type": "slideshow",
-                    "attributes": {
-                        "title": "Example Slideshow",
-                        "about": "This is an example slideshow.",
-                        "id": 1
-                    }
-                },
             }
         ]
     },
@@ -147,15 +173,23 @@ $I->seeResponseEquals('{
     ],
     "related": [
         {
-            "node_id": 34,
-            "item_type": "composition",
-            "id": 2,
-            "heading": "Related Item #1",
-            "subheading": "This is an example item.",
-            "thumb": "http://placehold.it/200x120",
-            "caption": "a caption wohoo",
-            "slug": "related-item-1",
-            "composition_type": "exercise"
+            "node_id": 357,
+            "item_type": "go_item",
+            "url": "//www.gapminder.org/exercises/item-1207",
+            "attributes": {
+                "composition_type": "exercise",
+                "heading": "The heading of #1207",
+                "subheading": "This is an example item.",
+                "about": "The item about text",
+                "caption": "a caption",
+                "slug": "item-1205",
+                "thumb": {
+                    "200x120": "http://placehold.it/200x120.png",
+                    "400x240": "http://placehold.it/400x240.png",
+                    "600x360": "http://placehold.it/400x360.png",
+                    "original": "http://placehold.it/original.png"
+                }
+            }
         }
     ]
 }

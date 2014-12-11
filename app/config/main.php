@@ -69,7 +69,7 @@ $mainConfig = array(
                 array('<version>/user/login', 'pattern' => '<version:v\d+>/user/login', 'verb' => 'POST'),
                 array('<version>/profile/get', 'pattern' => '<version:v\d+>/user/profile', 'verb' => 'GET'),
                 array('<version>/profile/update', 'pattern' => '<version:v\d+>/user/profile', 'verb' => 'PUT'),
-                array('<version>/user/authenticate', 'pattern' => '<version:v\d+>/user/authenticate', 'verb' => 'GET'),
+                array('<version>/user/authenticate', 'pattern' => '<version:v\d+>/user/authenticate', 'verb' => 'POST'),
                 array('<version>/profile/public', 'pattern' => '<version:v\d+>/user/<accountId:\d+>/profile', 'verb' => 'GET'),
                 array('<version>/item/get', 'pattern' => '<version:v\d+>/item/<id:\d+|[\w-\/]+>', 'verb' => 'GET'),
 

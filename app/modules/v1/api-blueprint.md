@@ -278,94 +278,252 @@ Video file related resources
 
         [
             {
-                "id": 1
+                "node_id": 1,
+                "item_type": "video_file",
+                "url": null,
+                "attributes": {
+                    "title": "Will saving poor children lead to overpopulation?",
+                    "about": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
+                    "caption": "No. Its the opposite.",
+                    "slug": "will-saving-poor-children-lead-to-overpopulation",
+                    "url_mp4": "http://172.17.42.1:11111/files-api/p3media/file/image?id=2&preset=original-public-mp4&title=saving-the-poor-children-gates-mp4-c73e4c2d0a-11.mp4&extension=.mp4&lang=en",
+                    "url_webm": "http://172.17.42.1:11111/files-api/p3media/file/image?id=1&preset=original-public-webm&title=saving-the-poor-children-gates-webm-0037605f21-12.webm&extension=.webm&lang=en",
+                    "url_youtube": null,
+                    "url_subtitles": "http://172.17.42.1:11111/api/v1/videoFile/subtitles/1?lang=en",
+                    "thumb": {
+                        "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=original-public&title=video.png&extension=.jpeg&lang=en",
+                        "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=735x444&title=video.png&extension=.jpg&lang=en",
+                        "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=160x96&title=video.png&extension=.jpg&lang=en",
+                        "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=110x66&title=video.png&extension=.jpg&lang=en"
+                    }
+                },
+                "related": [ ]
             },
             {
-                "id": 2
+                "node_id": 2,
+                "item_type": "video_file",
+                "url": null,
+                "attributes": {
+                    "title": "Are income and lifespan related?",
+                    "about": "In this video Hans talks about how income and lifespan are related to each other.",
+                    "caption": null,
+                    "slug": "are-income-and-lifespan-related",
+                    "url_mp4": "http://172.17.42.1:11111/files-api/p3media/file/image?id=4&preset=original-public-mp4&title=q-inc-lex-static-countries-v10-mp4-mp4-1583575d67-21.mp4&extension=.mp4&lang=en",
+                    "url_webm": "http://172.17.42.1:11111/files-api/p3media/file/image?id=3&preset=original-public-webm&title=q-inc-lex-static-countries-v10-webmsd-webm-426e265f5e-20.webm&extension=.webm&lang=en",
+                    "url_youtube": null,
+                    "url_subtitles": "http://172.17.42.1:11111/api/v1/videoFile/subtitles/2?lang=en",
+                    "thumb": {
+                        "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=6&preset=original-public&title=IncLexMini.png&extension=.jpeg&lang=en",
+                        "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=6&preset=735x444&title=IncLexMini.png&extension=.jpg&lang=en",
+                        "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=6&preset=160x96&title=IncLexMini.png&extension=.jpg&lang=en",
+                        "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=6&preset=110x66&title=IncLexMini.png&extension=.jpg&lang=en"
+                    }
+                },
+                "related": [ ]
             }
         ]
 
-
-## VideoFile [/videoFile/{slug}/{lang}]
+## VideoFile [/videoFile/{id}]
 
 + Parameters
 
-    + slug (string) ... the slug or id of the video file resource
-    + lang (string) ... the language of the video file resource (translation)
+    + id (string|int) ... the id or slug of the video file resource
 
 ### Get a video file [GET]
 + Response 200 (application/json)
 
         {
-            "id": 1,
-            "title": "El crecimiento de la población",
-            "subheading": "Respuesta corta: no sé.",
-            "youtubeId": "18MZmVDv7uo",
-            "about": "En este video <a href=\"/#/\">Hans Rosling</a> señala conceptos erróneos comunes sobre crecimiento de la población. En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no ha mucho tiempo que vivía un hidalgo de los de lanza en astillero, adarga antigua, rocín flaco y galgo corredor. Una olla de algo más vaca que carnero, salpicón las más noches, duelos y quebrantos los sábados, lantejas los viernes, algún palomino de añadidura los domingos, consumían las tres partes de su hacienda.",
-            "contributors": [
-                {
-                    "userId": 1,
-                    "username": "anna-mia-ekstrom",
-                    "thumbnailUrl": "http://placehold.it/200x200"
-                },
-                {
-                    "userId": 2,
-                    "username": "olarosling",
-                    "thumbnailUrl": "http://placehold.it/200x200"
-                },
-                {
-                    "userId": 3,
-                    "username": "fredrikwollsen",
-                    "thumbnailUrl": "http://placehold.it/200x200"
-                },
-                {
-                    "userId": 4,
-                    "username": "jimipirila",
-                    "thumbnailUrl": "http://placehold.it/200x200"
-                },
-                {
-                    "userId": 5,
-                    "username": "arthurcamara",
-                    "thumbnailUrl": "http://placehold.it/200x200"
-                },
-                {
-                    "userId": 6,
-                    "username": "amirrahnama",
-                    "thumbnailUrl": "http://placehold.it/200x200"
-                },
-                {
-                    "userId": 7,
-                    "username": "fernanda",
-                    "thumbnailUrl": "http://placehold.it/200x200"
-                },
-                {
-                    "userId": 8,
-                    "username": "max",
-                    "thumbnailUrl": "http://placehold.it/200x200"
-                },
-                {
-                    "userId": 9,
-                    "username": "mariosanchez",
-                    "thumbnailUrl": "http://placehold.it/200x200"
+            "node_id": 1,
+            "item_type": "video_file",
+            "url": null,
+            "attributes": {
+                "title": "Will saving poor children lead to overpopulation?",
+                "about": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
+                "caption": "No. Its the opposite.",
+                "slug": "will-saving-poor-children-lead-to-overpopulation",
+                "url_mp4": "http://172.17.42.1:11111/files-api/p3media/file/image?id=2&preset=original-public-mp4&title=saving-the-poor-children-gates-mp4-c73e4c2d0a-11.mp4&extension=.mp4&lang=en",
+                "url_webm": "http://172.17.42.1:11111/files-api/p3media/file/image?id=1&preset=original-public-webm&title=saving-the-poor-children-gates-webm-0037605f21-12.webm&extension=.webm&lang=en",
+                "url_youtube": null,
+                "url_subtitles": "http://172.17.42.1:11111/api/v1/videoFile/subtitles/1?lang=en",
+                "thumb": {
+                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=original-public&title=video.png&extension=.jpeg&lang=en",
+                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=735x444&title=video.png&extension=.jpg&lang=en",
+                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=160x96&title=video.png&extension=.jpg&lang=en",
+                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=110x66&title=video.png&extension=.jpg&lang=en"
                 }
-            ],
-            "related": [
-                {
-                    "title": "Niños nacidos por mujer por región",
-                    "thumbnailUrl": "http://placehold.it/200x160",
-                    "itemType": "video",
-                    "itemPermalink": "ninos-nacidos-por-mujer-por-region",
-                    "itemLang": "es"
-                },
-                {
-                    "title": "Salud, dinero y sexo en Suecia",
-                    "thumbnailUrl": "http://placehold.it/200x160",
-                    "itemType": "video",
-                    "itemPermalink": "salud-dinero-y-sexo-en-suecia",
-                    "itemLang": "es"
-                }
-            ]
+            },
+            "related": [ ]
         }
+
+## VideoFile subtitles [/videoFile/subtitles/{id}]
+
++ Parameters
+
+    + id (int) ... the id of the video file resource
+
+### Get video file subtitles [GET]
+
++ Response 200 (text/html)
+
+        1
+        00:00:03,399 --> 00:00:10,800
+        A common misunderstanding is that if we save all the poor children: the world will become overpopulated.
+
+        2
+        00:00:10,800 --> 00:00:13,599
+        This may sound logical, but it's wrong.
+
+        3
+        00:00:13,599 --> 00:00:16,199
+        Its the other way around!
+
+        4
+        00:00:16,199 --> 00:00:22,000
+        Saving the poor childrens lives is required to end population growth.
+
+        5
+        00:00:22,000 --> 00:00:24,699
+        Now! Look at the UN numbers.
+
+        6
+        00:00:24,699 --> 00:00:30,199
+        Poor parents on avarage have five children. And one dies.
+
+        7
+        00:00:30,199 --> 00:00:36,100
+        Look! Two parents are replaced by four surviving children in the next generation.
+
+        8
+        00:00:36,100 --> 00:00:39,600
+        This means the population is growing very fast among the poorest.
+
+        9
+        00:00:39,600 --> 00:00:46,200
+        This is the avarage family in the worst of places like Congo and Afghanistan.
+
+        10
+        00:00:46,200 --> 00:00:55,399
+        Today, where child mortality is highest, that's where the population is growing faster than anywhere else.
+
+        11
+        00:00:55,399 --> 00:00:57,700
+        How many people live like this?
+
+        12
+        00:00:57,700 --> 00:01:03,899
+        There are seven billion people in the world. One block: one billion.
+
+        13
+        00:01:03,899 --> 00:01:07,400
+        The poorest two billion...
+
+        14
+        00:01:07,400 --> 00:01:08,799
+        ...they live like this.
+
+        15
+        00:01:08,799 --> 00:01:11,500
+        The other five billion...
+
+        16
+        00:01:13,799 --> 00:01:20,900
+        ...they have this avarage family. Two parents having two children and there are few child deaths.
+
+        17
+        00:01:20,900 --> 00:01:25,000
+        This is the majority of the world population, not only Europe and the US.
+
+        18
+        00:01:25,000 --> 00:01:32,293
+        It's throughout religions and cultures: China, Iran, Mexico, large cities in Africa.
+
+        19
+        00:01:32,293 --> 00:01:38,199
+        Today in most populations children just replace parents.
+
+        20
+        00:01:38,199 --> 00:01:42,099
+        And the size of generations are no longer increasing.
+
+        21
+        00:01:42,099 --> 00:01:46,700
+        This means: the population will stop growing.
+
+        22
+        00:01:46,700 --> 00:01:51,500
+        How did so many people end up with small families?
+
+        23
+        00:01:51,500 --> 00:01:54,700
+        Well,  their children stopped dying.
+
+        24
+        00:01:54,700 --> 00:02:00,500
+        As they left extreme poverty and girls got education: parents no longer had to
+
+        25
+        00:02:00,500 --> 00:02:06,500
+        compensate for child death by having many babies. And a large family stopped being
+
+        26
+        00:02:06,500 --> 00:02:09,199
+        an economic necessity or a social status symbol.
+
+        27
+        00:02:09,199 --> 00:02:15,000
+        And with modern contraceptives: parents across the world, the majority
+
+        28
+        00:02:15,000 --> 00:02:18,000
+        decided to have a small family.
+
+        29
+        00:02:18,000 --> 00:02:26,000
+        So by saving the lives of poor children and helping the last two billion out of poverty:
+
+        30
+        00:02:26,000 --> 00:02:33,199
+        These parents will also decide to have fewer children.
+
+        31
+        00:02:33,199 --> 00:02:37,199
+        And fewer.
+
+        32
+        00:02:37,199 --> 00:02:39,099
+        Eventually...
+
+        33
+        00:02:39,099 --> 00:02:43,000
+        ...reaching the two child family
+
+        34
+        00:02:43,000 --> 00:02:48,400
+        That showed the UN family size forcast up to the end of the century.
+
+        35
+        00:02:48,400 --> 00:02:52,900
+        Then the world population is expected to stop growing.
+
+        36
+        00:02:52,900 --> 00:03:01,599
+        Before it stops: another four billion people will be added to the world population.
+
+        37
+        00:03:01,599 --> 00:03:06,400
+        Four billion more. That's a lot of people!
+
+        38
+        00:03:06,400 --> 00:03:15,300
+        But the longer poor children keeps dying and this change is delayed:
+
+        39
+        00:03:15,300 --> 00:03:20,699
+        the more billions will be added.
+
+        40
+        00:03:20,699 --> 00:03:28,099
+        So ending population growth starts by saving the poorest children.
 
 # Group Translation
 
@@ -650,42 +808,186 @@ Translation related resources
 # Group Language
 Language related resources
 
-## List of supported languages [/language/list]
+## List of supported languages [/language]
 
 ### Get languages [GET]
 + Response 200 (application/json)
 
         {
+            "en": {
+                "name": "English",
+                "direction": "ltr"
+            },
+            "ar": {
+                "name": "العربية",
+                "direction": "rtl"
+            },
+            "bg": {
+                "name": "Български",
+                "direction": "ltr"
+            },
+            "ca": {
+                "name": "Català",
+                "direction": "ltr"
+            },
+            "cs": {
+                "name": "Čeština",
+                "direction": "ltr"
+            },
+            "da": {
+                "name": "Dansk",
+                "direction": "ltr"
+            },
+            "de": {
+                "name": "Deutsch",
+                "direction": "ltr"
+            },
+            "en_gb": {
+                "name": "UK English",
+                "direction": "ltr"
+            },
             "en_us": {
-                "name": "English (United States)",
+                "name": "US English",
+                "direction": "ltr"
+            },
+            "el": {
+                "name": "Ελληνικά",
                 "direction": "ltr"
             },
             "es": {
-                "name": "Spanish",
-                "direction": "ltr"
-            },
-            "sv": {
-                "name": "Swedish",
-                "direction": "ltr"
-            },
-            "fi": {
-                "name": "Finnish",
-                "direction": "ltr"
-            },
-            "ja": {
-                "name": "Japanese",
-                "direction": "ltr"
-            },
-            "pt_br": {
-                "name": "Portuguese (Brazil)",
+                "name": "Español",
                 "direction": "ltr"
             },
             "fa": {
-                "name": "Farsi",
+                "name": "فارسی",
                 "direction": "rtl"
             },
+            "fi": {
+                "name": "Suomi",
+                "direction": "ltr"
+            },
+            "fil": {
+                "name": "Filipino",
+                "direction": "ltr"
+            },
+            "fr": {
+                "name": "Français",
+                "direction": "ltr"
+            },
+            "he": {
+                "name": "עברית",
+                "direction": "rtl"
+            },
+            "hi": {
+                "name": "हिंदी",
+                "direction": "ltr"
+            },
+            "hr": {
+                "name": "Hrvatski",
+                "direction": "ltr"
+            },
+            "hu": {
+                "name": "Magyar",
+                "direction": "ltr"
+            },
+            "id": {
+                "name": "Bahasa Indonesia",
+                "direction": "ltr"
+            },
+            "it": {
+                "name": "Italiano",
+                "direction": "ltr"
+            },
+            "ja": {
+                "name": "日本語",
+                "direction": "ltr"
+            },
+            "ko": {
+                "name": "한국어",
+                "direction": "ltr"
+            },
+            "lt": {
+                "name": "Lietuvių",
+                "direction": "ltr"
+            },
+            "lv": {
+                "name": "Latviešu valoda",
+                "direction": "ltr"
+            },
+            "nl": {
+                "name": "Nederlands",
+                "direction": "ltr"
+            },
+            "no": {
+                "name": "Norsk",
+                "direction": "ltr"
+            },
+            "pl": {
+                "name": "Polski",
+                "direction": "ltr"
+            },
+            "pt": {
+                "name": "Português",
+                "direction": "ltr"
+            },
+            "pt_br": {
+                "name": "Português (Brasil)",
+                "direction": "ltr"
+            },
+            "pt_pt": {
+                "name": "Português (Portugal)",
+                "direction": "ltr"
+            },
+            "ro": {
+                "name": "Română",
+                "direction": "ltr"
+            },
+            "ru": {
+                "name": "Русский",
+                "direction": "ltr"
+            },
+            "sk": {
+                "name": "Slovenský",
+                "direction": "ltr"
+            },
+            "sl": {
+                "name": "Slovenščina",
+                "direction": "ltr"
+            },
+            "sr": {
+                "name": "Српски",
+                "direction": "ltr"
+            },
+            "sv": {
+                "name": "Svenska",
+                "direction": "ltr"
+            },
+            "th": {
+                "name": "ไทย",
+                "direction": "ltr"
+            },
+            "tr": {
+                "name": "Türkçe",
+                "direction": "ltr"
+            },
+            "uk": {
+                "name": "Українська",
+                "direction": "ltr"
+            },
+            "vi": {
+                "name": "Tiếng Việt",
+                "direction": "ltr"
+            },
+            "zh": {
+                "name": "中文",
+                "direction": "ltr"
+            },
+            "zh_cn": {
+                "name": "中文 (简体)",
+                "direction": "ltr"
+            },
             "zh_tw": {
-                "name": "Chinese (Taiwan & Hong Kong)",
+                "name": "中文 (繁體)",
                 "direction": "ltr"
             }
         }
@@ -842,134 +1144,134 @@ New social links are created for the currently authentcated user.
                     "400x240": "http://placehold.it/400x240.png",
                     "600x360": "http://placehold.it/400x360.png",
                     "original": "http://placehold.it/original.png"
-                }
-            },
-            "composition": {
-                "data": [
-                    {
-                        "type": "video_file",
-                        "data": {
-                            "node_id": 653,
-                            "item_type": "video_file",
-                            "attributes": {
-                                "title": "How large is the gap between the richest and the poorest?",
-                                "about": "Here we explain that there is no gap in the traditional sense.",
-                                "caption": null,
-                                "slug": null,
-                                "url_mp4": "http://url_to_file.mp4",
-                                "url_webm": "http://url_to_file.webm",
-                                "url_youtube": "http://url_to_youtube_video",
-                                "url_subtitles": "http://url_to_the_video_file_subtitles_api_endpoint",
-                                "thumb": {
-                                    "original": "http://thumbnail_image_original.jpg"
+                },
+                "composition": {
+                    "data": [
+                        {
+                            "type": "video_file",
+                            "data": {
+                                "node_id": 653,
+                                "item_type": "video_file",
+                                "attributes": {
+                                    "title": "How large is the gap between the richest and the poorest?",
+                                    "about": "Here we explain that there is no gap in the traditional sense.",
+                                    "caption": null,
+                                    "slug": null,
+                                    "url_mp4": "http://url_to_file.mp4",
+                                    "url_webm": "http://url_to_file.webm",
+                                    "url_youtube": "http://url_to_youtube_video",
+                                    "url_subtitles": "http://url_to_the_video_file_subtitles_api_endpoint",
+                                    "thumb": {
+                                        "original": "http://thumbnail_image_original.jpg"
+                                    }
                                 }
                             }
-                        }
-                    },
-                    {
-                        "type": "html_chunk",
-                        "data": {
-                            "node_id": 900,
-                            "item_type": "html_chunk",
-                            "attributes": {
-                                "markup": "<b>the html</b>"
+                        },
+                        {
+                            "type": "html_chunk",
+                            "data": {
+                                "node_id": 900,
+                                "item_type": "html_chunk",
+                                "attributes": {
+                                    "markup": "<b>the html</b>"
+                                }
                             }
-                        }
-                    },
-                    {
-                        "type": "download_link",
-                        "data": {
-                            "node_id": 1248,
-                            "item_type": "download_link",
-                            "attributes": {
-                                "title": "Link for download Gapminder World 2013",
-                                "url": "http://url_to_the_file.ext"
+                        },
+                        {
+                            "type": "download_link",
+                            "data": {
+                                "node_id": 1248,
+                                "item_type": "download_link",
+                                "attributes": {
+                                    "title": "Link for download Gapminder World 2013",
+                                    "url": "http://url_to_the_file.ext"
+                                }
                             }
-                        }
-                    },
-                    {
-                        "type": "about",
-                        "data": {
-                            "render_here": true
-                        }
-                    },
-                    {
-                        "type": "video",
-                        "data": {
-                            "source": "youtube",
-                            "remote_id": "hcFLFpmc4Pg"
-                        }
-                    },
-                    {
-                        "type": "text",
-                        "data": {
-                            "text": "Hello, I’m **Sir Trevor**.\nCreate some new blocks and see _what I can do_.\n"
-                        }
-                    },
-                    {
-                        "type": "html",
-                        "data": {
-                            "src": "<h1>First Paragraph</h1><p>This is a <em>paragraph</em>.</p>"
-                        }
-                    },
-                    {
-                        "type": "download_links",
-                        "data": {
-                            "title": "Multiple Download Links",
-                            "download_links": [
+                        },
+                        {
+                            "type": "about",
+                            "data": {
+                                "render_here": true
+                            }
+                        },
+                        {
+                            "type": "video",
+                            "data": {
+                                "source": "youtube",
+                                "remote_id": "hcFLFpmc4Pg"
+                            }
+                        },
+                        {
+                            "type": "text",
+                            "data": {
+                                "text": "Hello, I’m **Sir Trevor**.\nCreate some new blocks and see _what I can do_.\n"
+                            }
+                        },
+                        {
+                            "type": "html",
+                            "data": {
+                                "src": "<h1>First Paragraph</h1><p>This is a <em>paragraph</em>.</p>"
+                            }
+                        },
+                        {
+                            "type": "download_links",
+                            "data": {
+                                "title": "Multiple Download Links",
+                                "download_links": [
+                                    {
+                                        "title": "PDF File",
+                                        "url": "http://example.com/example.pdf"
+                                    },
+                                    {
+                                        "title": "Animated GIF",
+                                        "url": "http://example.com/example.gif"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "linked_image",
+                            "data": {
+                                "title": "Example Chart",
+                                "image_url": "http://placehold.it/640x480",
+                                "link_url": "http://example.com/chart.pdf"
+                            }
+                        },
+                        {
+                            "type": "slideshare",
+                            "data": {
+                                "remote_id": "5896443"
+                            }
+                        },
+                        {
+                            "type": "item_list",
+                            "data": [
                                 {
-                                    "title": "PDF File",
-                                    "url": "http://example.com/example.pdf"
+                                    "node_id": 1205,
+                                    "item_type": "composition",
+                                    "composition_type": "exercise",
+                                    "id": 2,
+                                    "heading": "Item #1205",
+                                    "subheading": "This is an example item.",
+                                    "thumb": "http://placehold.it/200x120",
+                                    "caption": null,
+                                    "slug": "item-1205"
                                 },
                                 {
-                                    "title": "Animated GIF",
-                                    "url": "http://example.com/example.gif"
+                                    "node_id": 1206,
+                                    "item_type": "composition",
+                                    "composition_type": "qna",
+                                    "id": 2,
+                                    "heading": "Item #1206",
+                                    "subheading": "This is an example item too.",
+                                    "thumb": "http://placehold.it/200x120",
+                                    "caption": null,
+                                    "slug": "item-1206"
                                 }
                             ]
                         }
-                    },
-                    {
-                        "type": "linked_image",
-                        "data": {
-                            "title": "Example Chart",
-                            "image_url": "http://placehold.it/640x480",
-                            "link_url": "http://example.com/chart.pdf"
-                        }
-                    },
-                    {
-                        "type": "slideshare",
-                        "data": {
-                            "remote_id": "5896443"
-                        }
-                    },
-                    {
-                        "type": "item_list",
-                        "data": [
-                            {
-                                "node_id": 1205,
-                                "item_type": "composition",
-                                "composition_type": "exercise",
-                                "id": 2,
-                                "heading": "Item #1205",
-                                "subheading": "This is an example item.",
-                                "thumb": "http://placehold.it/200x120",
-                                "caption": null,
-                                "slug": "item-1205"
-                            },
-                            {
-                                "node_id": 1206,
-                                "item_type": "composition",
-                                "composition_type": "qna",
-                                "id": 2,
-                                "heading": "Item #1206",
-                                "subheading": "This is an example item too.",
-                                "thumb": "http://placehold.it/200x120",
-                                "caption": null,
-                                "slug": "item-1206"
-                            }
-                        ]
-                    }
-                ]
+                    ]
+                }
             },
             "contributors": [
                 {
@@ -1129,28 +1431,80 @@ New social links are created for the currently authentcated user.
             "node_id": 896,
             "item_type": "custom_page",
             "url": null,
+            "nav_tree_to_use": "root_page",
             "attributes": {
                 "composition_type": "exercise",
                 "heading": "Example Page Item",
                 "subheading": "This is the subheading.",
                 "about": "<h2>Overview</h2>This is an <em>example item</em>.\n<h2>Sidenotes</h2><ul><li>Foo</li><li>Bar</li></ul>",
-                "caption": "This is a caption"
+                "caption": "This is a caption",
+                "composition": {
+                    "data": [
+                        {
+                            "type": "about",
+                            "data": {
+                                "renderHere": true
+                            }
+                        },
+                        {
+                            "type": "video",
+                            "data": {
+                                "source": "youtube",
+                                "remote_id": "hcFLFpmc4Pg"
+                            }
+                        },
+                        {
+                            "type": "text",
+                            "data": {
+                                "text": "Hello, I’m **Sir Trevor**.\nCreate some new blocks and see _what I can do_.\n"
+                            }
+                        },
+                        {
+                            "type": "html",
+                            "data": {
+                                "src": "<h1>First Paragraph</h1><p>This is a <em>paragraph</em>.</p>"
+                            }
+                        },
+                        {
+                            "type": "linked_image",
+                            "data": {
+                                "title": "Example Chart",
+                                "link_url": "http://example.com/chart.pdf",
+                                "message": "File",
+                                "file": {
+                                    "url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=23&preset=sir-trevor-image-block&title=IMG_7932.PNG&extension=.png&lang=en_us",
+                                    "p3_media_id": "23"
+                                }
+                            }
+                        },
+                        {
+                            "type": "slideshare",
+                            "data": {
+                                "remote_id": "12345678"
+                            }
+                        }
+                    ]
+                }
             },
-            "page_hierarchy": {
-                "siblings": [
-                    {
-                        "node_id": 34,
-                        "menu_label": "Short name",
-                        "caption": "asffd asdfsdsfaasf",
-                        "url": "/ebola/dashboard/sdfdsf/"
-                    },
-                    {
-                        "node_id": 2324,
-                        "menu_label": "dfgdfg name",
-                        "caption": "asffd asdfsdsfaasf ",
-                        "url": "/ebola/dashboard/fdfgdg/"
-                    }
-                ],
+            "children": [
+                {
+                    "node_id": 34,
+                    "menu_label": "Short name",
+                    "caption": "asffd asdfsdsfaasf ",
+                    "url": "/ebola/dashboard/sdfdsf/sdfsdf"
+                }
+            },
+            "root_page": {
+                "node_id": 897,
+                "item_type": "custom_page",
+                "url": null,
+                "attributes": {
+                    "composition_type": "exercise",
+                    "heading": "Example Page Item",
+                    "subheading": "This is the subheading.",
+                    "about": "<h2>Overview</h2>This is an <em>example item</em>.\n<h2>Sidenotes</h2><ul><li>Foo</li><li>Bar</li></ul>",
+                    "caption": "This is a caption",
+                },
                 "children": [
                     {
                         "node_id": 34,
@@ -1159,67 +1513,6 @@ New social links are created for the currently authentcated user.
                         "url": "/ebola/dashboard/sdfdsf/sdfsdf"
                     }
                 ],
-                "parent_path": [
-                    {
-                        "node_id": 1024,
-                        "menu_label": "Ebola dashboard",
-                        "caption": "asffd asdfsdsfaasf ",
-                        "url": "/ebola/dashboard/"
-                    },
-                    {
-                        "node_id": 23434,
-                        "menu_label": "Short name",
-                        "caption": "asffd asdfsdsfaasf ",
-                        "url": "/ebola/"
-                    }
-                ]
-            },
-            "composition": {
-                "data": [
-                    {
-                        "type": "about",
-                        "data": {
-                            "renderHere": true
-                        }
-                    },
-                    {
-                        "type": "video",
-                        "data": {
-                            "source": "youtube",
-                            "remote_id": "hcFLFpmc4Pg"
-                        }
-                    },
-                    {
-                        "type": "text",
-                        "data": {
-                            "text": "Hello, I’m **Sir Trevor**.\nCreate some new blocks and see _what I can do_.\n"
-                        }
-                    },
-                    {
-                        "type": "html",
-                        "data": {
-                            "src": "<h1>First Paragraph</h1><p>This is a <em>paragraph</em>.</p>"
-                        }
-                    },
-                    {
-                        "type": "linked_image",
-                        "data": {
-                            "title": "Example Chart",
-                            "link_url": "http://example.com/chart.pdf",
-                            "message": "File",
-                            "file": {
-                                "url": "http://192.168.99.100:11111/files-api/p3media/file/image?id=23&preset=sir-trevor-image-block&title=IMG_7932.PNG&extension=.png&lang=en_us",
-                                "p3_media_id": "23"
-                            }                            
-                        }
-                    },
-                    {
-                        "type": "slideshare",
-                        "data": {
-                            "remote_id": "12345678"
-                        }
-                    }
-                ]
             },
             "contributors": [
                 {
@@ -1419,7 +1712,7 @@ It is a workaround for not being able to choose the response when multiple are d
                         "data": {
                             "remote_id": "5896443"
                         }
-                    },
+                    }
                 ]
             },
             "contributors": [
@@ -1588,9 +1881,9 @@ It is a workaround for not being able to choose the response when multiple are d
                             "link_url": "http://example.com/chart.pdf",
                             "message": "File",
                             "file": {
-                                "url": "http://192.168.99.100:11111/files-api/p3media/file/image?id=23&preset=sir-trevor-image-block&title=IMG_7932.PNG&extension=.png&lang=en_us",
+                                "url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=23&preset=sir-trevor-image-block&title=IMG_7932.PNG&extension=.png&lang=en_us",
                                 "p3_media_id": "23"
-                            }                            
+                            }
                         }
                     },
                     {
@@ -1679,6 +1972,70 @@ Navbar items.
 ## Navbar items [/navbar/{language}]
 
 ### Get navbar items [GET]
+
++ Response 200 (application/json)
+
+        {
+            "type": "menu_items",
+            "data": [
+                {
+                    "node_id": 1,
+                    "menu_label": "Top Level Item Label",
+                    "caption": null,
+                    "url": '/foo',
+                    "children": [
+                        {
+                            "node_id": 2,
+                            "menu_label": "Second Level Item Label",
+                            "caption": null,
+                            "url": "/foo/1"
+                        },
+                        {
+                            "node_id": 3,
+                            "menu_label": "Second Level Item Label",
+                            "caption": null,
+                            "url": "/foo/2",
+                            "children": [
+                                {
+                                    "node_id": 4,
+                                    "menu_label": "Third Level Item Label",
+                                    "caption": null,
+                                    "url": "/foo/2/1"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "node_id": 100,
+                    "menu_label": "Top Level Item Label",
+                    "caption": null,
+                    "url": '/bar',
+                    "children": [
+                        {
+                            "node_id": 102,
+                            "menu_label": "Second Level Item Label",
+                            "caption": null,
+                            "url": "/bar/1"
+                        },
+                        {
+                            "node_id": 103,
+                            "menu_label": "Second Level Item Label",
+                            "caption": null,
+                            "url": "/bar/2",
+                            "children": [
+                                {
+                                    "node_id": 104,
+                                    "menu_label": "Third Level Item Label",
+                                    "caption": null,
+                                    "url": "/bar/2/1"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
 
 + Response 200 (application/json)
 
@@ -1963,6 +2320,212 @@ Translated UI strings.
                 "qna": "Kysymykset ja vastaukset",
                 "wall-charts": "Seinäkaaviot",
                 "vizabi": "Vizabi"
+            }
+        }
+        
+# Group Route
+
+Routing related resource end-points.
+
+## Route [/route/{route}]
+
++ Parameters
+    
+    + route (string) ... the url encoded route for the item (e.g. %2Febola)
+    
+### Get routing info for an item [GET]
+
++ Response 200 (application/json)
+
+        {
+            "page_header_menu_tree": [
+                {
+                    "title": "Learn",
+                    "categories": [
+                        {
+                            "category": "Realize",
+                            "type": "icons",
+                            "columnCount": 2,
+                            "items": [
+                                {
+                                    "title": "Massive Global Ignorance",
+                                    "description": "Among humans",
+                                    "icon": "",
+                                    "url": "http://www.gapminder.org/massive-global-ignorance"
+                                },
+                                {
+                                    "title": "Snail Trends",
+                                    "description": "What could never happen has already happened",
+                                    "icon": "",
+                                    "url": "http://www.gapminder.org/what-could-never-happen"
+                                },
+                                {
+                                    "title": "Important Money",
+                                    "description": "Most people need more money to lead a good life",
+                                    "icon": "",
+                                    "url": "http://www.gapminder.org/most-people-need-more-money"
+                                }
+                            ],
+                            "more": {
+                                "title": "More Insights",
+                                "url": "http://www.gapminder.org/realize"
+                            }
+                        },
+                        {
+                            "category": "Explore",
+                            "type": "icons",
+                            "columnCount": 2,
+                            "items": [
+                                {
+                                    "title": "Dollar Street",
+                                    "description": "The world sorted by income",
+                                    "icon": "",
+                                    "url": "http://www.gapminder.org/dollar-street"
+                                },
+                                {
+                                    "title": "Visual Tools",
+                                    "description": "Explore global and local statistics",
+                                    "icon": "",
+                                    "url": "http://www.gapminder.org/visual-tools"
+                                }
+                            ],
+                            "more": {
+                                "title": "More Explorations",
+                                "url": "http://www.gapminder.org/explorations"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "Teach",
+                    "categories": [
+                        {
+                            "category": "Getting Started",
+                            "type": "bulletpoints",
+                            "columnCount": 1,
+                            "items": [
+                                {
+                                    "title": "90-sec Intro Video",
+                                    "description": "In the classroom",
+                                    "url": "http://www.gapminder.org/90-sec-intro-video"
+                                },
+                                {
+                                    "title": "3 Simple Exercises",
+                                    "description": "1-minute Planning",
+                                    "url": "http://www.gapminder.org/3-simple-exercises"
+                                },
+                                {
+                                    "title": "Students' Favorites",
+                                    "description": "Teach your parents",
+                                    "url": "http://www.gapminder.org/students-favorites"
+                                }
+                            ]
+                        },
+                        {
+                            "category": "Curriculum",
+                            "type": "bulletpoints",
+                            "columnCount": 1,
+                            "items": [
+                                {
+                                    "title": "Social Sciences",
+                                    "description": "Discuss based on facts",
+                                    "url": "http://www.gapminder.org/social-sciences"
+                                }
+                            ]
+                        },
+                        {
+                            "category": "Curriculum",
+                            "type": "bulletpoints",
+                            "columnCount": 1,
+                            "items": [
+                                {
+                                    "title": "Quizzes",
+                                    "description": "Fun quizzes",
+                                    "url": "http://www.gapminder.org/quizzes"
+                                },
+                                {
+                                    "title": "Slideshows",
+                                    "description": "Entertainin slideshows",
+                                    "url": "http://www.gapminder.org/slideshows"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Participate",
+                    "categories": [
+                        {
+                            "type": "plain",
+                            "columnCount": 1,
+                            "items": [
+                                {
+                                    "title": "News",
+                                    "description": "Follow our global activity",
+                                    "url": "http://www.gapminder.org/news"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "plain",
+                            "columnCount": 1,
+                            "items": [
+                                {
+                                    "title": "Organization",
+                                    "description": "Mission, constitution, team, funding, and more",
+                                    "url": "http://www.gapminder.org/organization"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "plain",
+                            "columnCount": 1,
+                            "items": [
+                                {
+                                    "title": "Projects",
+                                    "description": "About Dollar Street, Teaching Tools, and more",
+                                    "url": "http://www.gapminder.org/projects"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "plain",
+                            "columnCount": 1,
+                            "items": [
+                                {
+                                    "title": "Friends",
+                                    "description": "Follow our global activity",
+                                    "url": "http://www.gapminder.org/friends"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "About",
+                    "url": "http://www.gapminder.org/about"
+                }
+            ],
+            "mobile_menu_tree": {},
+            "current_item": {
+                "node_id": 896,
+                "item_type": "custom_page",
+                "url": null,
+                "attributes": {
+                    "composition_type": null,
+                    "heading": null,
+                    "subheading": null,
+                    "about": null,
+                    "caption": null
+                },
+                "page_hierarchy": {
+                    "siblings": [],
+                    "children": [],
+                    "parent_path": []
+                },
+                "composition": null,
+                "contributors": [],
+                "related": []
             }
         }
         

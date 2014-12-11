@@ -1,20 +1,22 @@
 <?php
-$scenario->group('data:clean-db,coverage:basic');
+$scenario->group('data:test-db,coverage:basic');
 $I = new ApiGuy($scenario);
-$I->wantTo('retrieve custom page items via the REST API as defined in api blueprint');
 
+$I->wantTo('retrieve custom page items via the REST API as defined in api blueprint');
 $I->sendGET('item/1024/test/page');
 $I->seeResponseCodeIs(200);
-//$I->seeResponseIsJson();
+$I->seeResponseIsJson();
 $I->seeResponseEquals('{
-    "node_id": 1024,
-    "heading": "Example Page Item",
-    "subheading": "This is the subheading.",
-    "about": "<h2>Overview</h2>This is an <em>example item</em>.\n<h2>Sidenotes</h2><ul><li>Foo</li><li>Bar</li></ul>",
-    "item_type": "page",
-    "id": 1,
-    "permalink": "example-item",
-    "composition_type": "exercise",
+    "node_id": 896,
+    "item_type": "custom_page",
+    "url": null,
+    "attributes": {
+        "composition_type": "exercise",
+        "heading": "Example Page Item",
+        "subheading": "This is the subheading.",
+        "about": "<h2>Overview</h2>This is an <em>example item</em>.\n<h2>Sidenotes</h2><ul><li>Foo</li><li>Bar</li></ul>",
+        "caption": "This is a caption"
+    },
     "page_hierarchy": {
         "siblings": [
             {
@@ -87,7 +89,7 @@ $I->seeResponseEquals('{
                     "link_url": "http://example.com/chart.pdf",
                     "message": "File",
                     "file": {
-                        "url": "http://192.168.99.100:11111/files-api/p3media/file/image?id=23&preset=sir-trevor-image-block&title=IMG_7932.PNG&extension=.png&lang=en_us",
+                        "url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=23&preset=sir-trevor-image-block&title=IMG_7932.PNG&extension=.png&lang=en_us",
                         "p3_media_id": "23"
                     }
                 }
@@ -149,22 +151,23 @@ $I->seeResponseEquals('{
     ],
     "related": [
         {
-            "title": "Related Item #1",
-            "subheading": "This is an example item.",
-            "thumbnail_url": "http://placehold.it/200x120",
-            "id": 2,
-            "permalink": "related-item-1",
-            "item_type": "composition",
-            "composition_type": "exercise"
-        },
-        {
-            "title": "Related Item #2",
-            "subheading": "This is an example item.",
-            "thumbnail_url": "http://placehold.it/200x120",
-            "id": 3,
-            "permalink": "related-item-2",
-            "item_type": "composition",
-            "composition_type": "qna"
+            "node_id": 357,
+            "item_type": "go_item",
+            "url": "//www.gapminder.org/exercises/item-1207",
+            "attributes": {
+                "composition_type": "exercise",
+                "heading": "The heading of #1207",
+                "subheading": "This is an example item.",
+                "about": "The item about text",
+                "caption": "a caption",
+                "slug": "item-1205",
+                "thumb": {
+                    "200x120": "http://placehold.it/200x120.png",
+                    "400x240": "http://placehold.it/400x240.png",
+                    "600x360": "http://placehold.it/400x360.png",
+                    "original": "http://placehold.it/original.png"
+                }
+            }
         }
     ]
 }
