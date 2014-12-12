@@ -1129,296 +1129,111 @@ New social links are created for the currently authentcated user.
 + Response 200 (application/json)
 
         {
-            "node_id": 1024,
+            "node_id": 6,
             "item_type": "go_item",
-            "url": "//www.gapminder.org/exercises/item-1204",
+            "url": null,
             "attributes": {
-                "composition_type": "exercise",
-                "heading": "Example Composition Item",
-                "subheading": "This is the subheading.",
-                "about": "<h2>Overview</h2>This is an <em>example item</em>.\n<h2>Sidenotes</h2><ul><li>Foo</li><li>Bar</li></ul>",
-                "caption": "a caption",
-                "slug": "item-1204",
+                "composition_type": "qna",
+                "heading": "Test heading",
+                "subheading": null,
+                "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis commodo ante nec venenatis. Vivamus maximus massa lectus, ut fermentum arcu tempus in.",
+                "caption": "Test caption",
+                "slug": "test-go-item-slug",
                 "thumb": {
-                    "200x120": "http://placehold.it/200x120.png",
-                    "400x240": "http://placehold.it/400x240.png",
-                    "600x360": "http://placehold.it/400x360.png",
-                    "original": "http://placehold.it/original.png"
+                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=video.png&extension=.jpeg&lang=en",
+                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=video.png&extension=.jpg&lang=en",
+                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=video.png&extension=.jpg&lang=en",
+                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=video.png&extension=.jpg&lang=en"
                 },
                 "composition": {
                     "data": [
                         {
-                            "type": "video_file",
+                            "type": "heading",
                             "data": {
-                                "node_id": 653,
-                                "item_type": "video_file",
-                                "attributes": {
-                                    "title": "How large is the gap between the richest and the poorest?",
-                                    "about": "Here we explain that there is no gap in the traditional sense.",
-                                    "caption": null,
-                                    "slug": null,
-                                    "url_mp4": "http://url_to_file.mp4",
-                                    "url_webm": "http://url_to_file.webm",
-                                    "url_youtube": "http://url_to_youtube_video",
-                                    "url_subtitles": "http://url_to_the_video_file_subtitles_api_endpoint",
-                                    "thumb": {
-                                        "original": "http://thumbnail_image_original.jpg"
+                                "text": "Test heading"
+                            }
+                        },
+                        {
+                            "type": "text",
+                            "data": {
+                                "text": "Test text"
+                            }
+                        },
+                        {
+                            "type": "quote",
+                            "data": {
+                                "cite": "Test credit",
+                                "text": "> Test quote"
+                            }
+                        },
+                        {
+                            "type": "download_links",
+                            "data": {
+                                "download_links": [
+                                    {
+                                        "type": "download_link",
+                                        "data": {
+                                            "node_id": 3,
+                                            "item_type": "download_link",
+                                            "attributes": {
+                                                "title": "Gapminder World 2012",
+                                                "url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=Gapminder-World-2012.pdf&extension=.pdf&lang=en"
+                                            }
+                                        }
                                     }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "image",
+                            "data": {
+                                "message": "File",
+                                "file": {
+                                    "url": "http://192.168.99.100:11111/files-api/p3media/file/image?id=10&preset=sir-trevor-image-block&title=video.png&extension=.jpeg&lang=en_us",
+                                    "p3_media_id": "10"
                                 }
                             }
                         },
                         {
-                            "type": "html_chunk",
+                            "type": "slideshare",
                             "data": {
-                                "node_id": 900,
-                                "item_type": "html_chunk",
-                                "attributes": {
-                                    "markup": "<b>the html</b>"
-                                }
-                            }
-                        },
-                        {
-                            "type": "download_link",
-                            "data": {
-                                "node_id": 1248,
-                                "item_type": "download_link",
-                                "attributes": {
-                                    "title": "Link for download Gapminder World 2013",
-                                    "url": "http://url_to_the_file.ext"
-                                }
-                            }
-                        },
-                        {
-                            "type": "about",
-                            "data": {
-                                "render_here": true
+                                "remote_id": "42268387"
                             }
                         },
                         {
                             "type": "video",
                             "data": {
                                 "source": "youtube",
-                                "remote_id": "hcFLFpmc4Pg"
+                                "remote_id": "BkSO9pOVpRM"
                             }
-                        },
-                        {
-                            "type": "text",
-                            "data": {
-                                "text": "Hello, I’m **Sir Trevor**.\nCreate some new blocks and see _what I can do_.\n"
-                            }
-                        },
-                        {
-                            "type": "html",
-                            "data": {
-                                "src": "<h1>First Paragraph</h1><p>This is a <em>paragraph</em>.</p>"
-                            }
-                        },
-                        {
-                            "type": "download_links",
-                            "data": {
-                                "title": "Multiple Download Links",
-                                "download_links": [
-                                    {
-                                        "title": "PDF File",
-                                        "url": "http://example.com/example.pdf"
-                                    },
-                                    {
-                                        "title": "Animated GIF",
-                                        "url": "http://example.com/example.gif"
-                                    }
-                                ]
-                            }
-                        },
-                        {
-                            "type": "linked_image",
-                            "data": {
-                                "title": "Example Chart",
-                                "image_url": "http://placehold.it/640x480",
-                                "link_url": "http://example.com/chart.pdf"
-                            }
-                        },
-                        {
-                            "type": "slideshare",
-                            "data": {
-                                "remote_id": "5896443"
-                            }
-                        },
-                        {
-                            "type": "item_list",
-                            "data": [
-                                {
-                                    "node_id": 1205,
-                                    "item_type": "composition",
-                                    "composition_type": "exercise",
-                                    "id": 2,
-                                    "heading": "Item #1205",
-                                    "subheading": "This is an example item.",
-                                    "thumb": "http://placehold.it/200x120",
-                                    "caption": null,
-                                    "slug": "item-1205"
-                                },
-                                {
-                                    "node_id": 1206,
-                                    "item_type": "composition",
-                                    "composition_type": "qna",
-                                    "id": 2,
-                                    "heading": "Item #1206",
-                                    "subheading": "This is an example item too.",
-                                    "thumb": "http://placehold.it/200x120",
-                                    "caption": null,
-                                    "slug": "item-1206"
-                                }
-                            ]
                         }
                     ]
                 }
             },
             "contributors": [
                 {
-                    "user_id": 1,
-                    "username": "anna-mia-ekstrom",
-                    "thumbnail_url": "http://placehold.it/200x200",
-                    "contributions": [
-                        {
-                            "label": "Did foo",
-                            "url": "http://example.com",
-                            "datetime": "2014-11-14 10:33",
-                        },
-                        {
-                            "label": "Did foo",
-                            "url": "http://example.com",
-                            "datetime": "2014-11-14 10:33",
-                        }
-                    ]
-                },
-                {
-                    "user_id": 2,
-                    "username": "olarosling",
-                    "thumbnail_url": "http://placehold.it/200x200",
-                    "contributions": [
-                        {
-                            "label": "Did foo",
-                            "url": "http://example.com",
-                            "datetime": "2014-11-14 10:33",
-                        },
-                        {
-                            "label": "Did foo",
-                            "url": "http://example.com",
-                            "datetime": "2014-11-14 10:33",
-                        },
-                        {
-                            "label": "Did foo",
-                            "url": "http://example.com",
-                            "datetime": "2014-11-14 10:33",
-                        },
-                        {
-                            "label": "Did foo",
-                            "url": "http://example.com",
-                            "datetime": "2014-11-14 10:33",
-                        }                    ]
-                },
-                {
-                    "user_id": 3,
-                    "username": "fredrikwollsen",
-                    "thumbnail_url": "http://placehold.it/200x200",
-                    "contributions": [
-                        {
-                            "label": "Did foo",
-                            "url": "http://example.com",
-                            "datetime": "2014-11-14 10:33",
-                        }
-                    ]
-                },
-                {
-                    "user_id": 4,
-                    "username": "jimipirila",
-                    "thumbnail_url": "http://placehold.it/200x200",
-                    "contributions": [
-                        {
-                            "label": "Did foo",
-                            "url": "http://example.com",
-                            "datetime": "2014-11-14 10:33",
-                        }
-                    ]
-                },
-                {
-                    "user_id": 5,
-                    "username": "arthurcamara",
-                    "thumbnail_url": "http://placehold.it/200x200",
-                    "contributions": [
-                        {
-                            "label": "Did foo",
-                            "url": "http://example.com",
-                            "datetime": "2014-11-14 10:33",
-                        }
-                    ]
-                },
-                {
-                    "user_id": 6,
-                    "username": "amirrahnama",
-                    "thumbnail_url": "http://placehold.it/200x200",
-                    "contributions": [
-                        {
-                            "label": "Did foo",
-                            "url": "http://example.com",
-                            "datetime": "2014-11-14 10:33",
-                        }
-                    ]
-                },
-                {
-                    "user_id": 7,
-                    "username": "fernanda",
-                    "thumbnail_url": "http://placehold.it/200x200",
-                    "contributions": [
-                        {
-                            "label": "Did foo",
-                            "url": "http://example.com",
-                            "datetime": "2014-11-14 10:33",
-                        }
-                    ]
-                },
-                {
-                    "user_id": 8,
-                    "username": "max",
-                    "thumbnail_url": "http://placehold.it/200x200",
-                    "contributions": [
-                        {
-                            "label": "Did foo",
-                            "url": "http://example.com",
-                            "datetime": "2014-11-14 10:33",
-                        }
-                    ]
-                },
-                {
-                    "user_id": 9,
-                    "username": "mariosanchez",
-                    "thumbnail_url": "http://placehold.it/200x200",
-                    "contributions": [
-                        {
-                            "label": "Did foo",
-                            "url": "http://example.com",
-                            "datetime": "2014-11-14 10:33",
-                        }
-                    ]
+                    "user_id": "1",
+                    "username": "admin",
+                    "thumbnail_url": null
                 }
             ],
             "related": [
                 {
-                    "node_id": 357,
+                    "node_id": 7,
                     "item_type": "go_item",
-                    "url": "//www.gapminder.org/exercises/item-1207",
+                    "url": null,
                     "attributes": {
-                        "composition_type": "exercise",
-                        "heading": "The heading of #1207",
-                        "subheading": "This is an example item.",
-                        "about": "The item about text",
-                        "caption": "a caption",
-                        "slug": "item-1205",
+                        "composition_type": "presentation",
+                        "heading": "Test heading 2",
+                        "subheading": null,
+                        "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis commodo ante nec venenatis. Vivamus maximus massa lectus, ut fermentum arcu tempus in.",
+                        "caption": "Test caption 2",
+                        "slug": "test-go-item-slug-2",
                         "thumb": {
-                            "200x120": "http://placehold.it/200x120.png",
-                            "400x240": "http://placehold.it/400x240.png",
-                            "600x360": "http://placehold.it/400x360.png",
-                            "original": "http://placehold.it/original.png"
+                            "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=video.png&extension=.jpeg&lang=en",
+                            "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=video.png&extension=.jpg&lang=en",
+                            "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=video.png&extension=.jpg&lang=en",
+                            "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=video.png&extension=.jpg&lang=en"
                         }
                     }
                 }
@@ -1428,156 +1243,120 @@ New social links are created for the currently authentcated user.
 + Response 200 (application/json)
 
         {
-            "node_id": 896,
+            "node_id": 4,
             "item_type": "custom_page",
             "url": null,
-            "nav_tree_to_use": "root_page",
+            "nav_tree_to_use": "home",
             "attributes": {
-                "composition_type": "exercise",
-                "heading": "Example Page Item",
-                "subheading": "This is the subheading.",
-                "about": "<h2>Overview</h2>This is an <em>example item</em>.\n<h2>Sidenotes</h2><ul><li>Foo</li><li>Bar</li></ul>",
-                "caption": "This is a caption",
+                "composition_type": "presentation",
+                "heading": "Test heading",
+                "subheading": null,
+                "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis commodo ante nec venenatis. Vivamus maximus massa lectus, ut fermentum arcu tempus in. Mauris laoreet nisl sagittis orci tincidunt egestas. ",
+                "caption": "Test caption",
                 "composition": {
                     "data": [
                         {
-                            "type": "about",
+                            "type": "heading",
                             "data": {
-                                "renderHere": true
+                                "text": "Test heading"
+                            }
+                        },
+                        {
+                            "type": "text",
+                            "data": {
+                                "text": "Test text"
+                            }
+                        },
+                        {
+                            "type": "quote",
+                            "data": {
+                                "cite": "Test credit",
+                                "text": "> Test quote"
+                            }
+                        },
+                        {
+                            "type": "download_links",
+                            "data": {
+                                "download_links": [
+                                    {
+                                        "type": "download_link",
+                                        "data": {
+                                            "node_id": 3,
+                                            "item_type": "download_link",
+                                            "attributes": {
+                                                "title": "Gapminder World 2012",
+                                                "url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=Gapminder-World-2012.pdf&extension=.pdf&lang=en"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "image",
+                            "data": {
+                                "message": "File",
+                                "file": {
+                                    "url": "http://192.168.99.100:11111/files-api/p3media/file/image?id=8&preset=sir-trevor-image-block&title=video.png&extension=.jpeg&lang=en_us",
+                                    "p3_media_id": "8"
+                                }
                             }
                         },
                         {
                             "type": "video",
                             "data": {
                                 "source": "youtube",
-                                "remote_id": "hcFLFpmc4Pg"
-                            }
-                        },
-                        {
-                            "type": "text",
-                            "data": {
-                                "text": "Hello, I’m **Sir Trevor**.\nCreate some new blocks and see _what I can do_.\n"
-                            }
-                        },
-                        {
-                            "type": "html",
-                            "data": {
-                                "src": "<h1>First Paragraph</h1><p>This is a <em>paragraph</em>.</p>"
-                            }
-                        },
-                        {
-                            "type": "linked_image",
-                            "data": {
-                                "title": "Example Chart",
-                                "link_url": "http://example.com/chart.pdf",
-                                "message": "File",
-                                "file": {
-                                    "url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=23&preset=sir-trevor-image-block&title=IMG_7932.PNG&extension=.png&lang=en_us",
-                                    "p3_media_id": "23"
-                                }
+                                "remote_id": "BkSO9pOVpRM"
                             }
                         },
                         {
                             "type": "slideshare",
                             "data": {
-                                "remote_id": "12345678"
+                                "remote_id": "42241898"
                             }
                         }
                     ]
                 }
             },
-            "children": [
-                {
-                    "node_id": 34,
-                    "menu_label": "Short name",
-                    "caption": "asffd asdfsdsfaasf ",
-                    "url": "/ebola/dashboard/sdfdsf/sdfsdf"
-                }
-            },
             "root_page": {
-                "node_id": 897,
+                "node_id": 4,
                 "item_type": "custom_page",
+                "menu_label": "Test page",
                 "url": null,
-                "attributes": {
-                    "composition_type": "exercise",
-                    "heading": "Example Page Item",
-                    "subheading": "This is the subheading.",
-                    "about": "<h2>Overview</h2>This is an <em>example item</em>.\n<h2>Sidenotes</h2><ul><li>Foo</li><li>Bar</li></ul>",
-                    "caption": "This is a caption",
-                },
                 "children": [
                     {
-                        "node_id": 34,
-                        "menu_label": "Short name",
-                        "caption": "asffd asdfsdsfaasf ",
-                        "url": "/ebola/dashboard/sdfdsf/sdfsdf"
+                        "node_id": 5,
+                        "item_type": "custom_page",
+                        "menu_label": "Test page 2",
+                        "url": null,
+                        "children": [ ]
                     }
-                ],
+                ]
             },
             "contributors": [
                 {
-                    "userId": 1,
-                    "username": "anna-mia-ekstrom",
-                    "thumbnailUrl": "http://placehold.it/200x200"
-                },
-                {
-                    "userId": 2,
-                    "username": "olarosling",
-                    "thumbnailUrl": "http://placehold.it/200x200"
-                },
-                {
-                    "userId": 3,
-                    "username": "fredrikwollsen",
-                    "thumbnailUrl": "http://placehold.it/200x200"
-                },
-                {
-                    "userId": 4,
-                    "username": "jimipirila",
-                    "thumbnailUrl": "http://placehold.it/200x200"
-                },
-                {
-                    "userId": 5,
-                    "username": "arthurcamara",
-                    "thumbnailUrl": "http://placehold.it/200x200"
-                },
-                {
-                    "userId": 6,
-                    "username": "amirrahnama",
-                    "thumbnailUrl": "http://placehold.it/200x200"
-                },
-                {
-                    "userId": 7,
-                    "username": "fernanda",
-                    "thumbnailUrl": "http://placehold.it/200x200"
-                },
-                {
-                    "userId": 8,
-                    "username": "max",
-                    "thumbnailUrl": "http://placehold.it/200x200"
-                },
-                {
-                    "userId": 9,
-                    "username": "mariosanchez",
-                    "thumbnailUrl": "http://placehold.it/200x200"
+                    "user_id": "1",
+                    "username": "admin",
+                    "thumbnail_url": null
                 }
             ],
             "related": [
                 {
-                    "node_id": 357,
+                    "node_id": 7,
                     "item_type": "go_item",
-                    "url": "//www.gapminder.org/exercises/item-1207",
+                    "url": null,
                     "attributes": {
-                        "composition_type": "exercise",
-                        "heading": "The heading of #1207",
-                        "subheading": "This is an example item.",
-                        "about": "The item about text",
-                        "caption": "a caption",
-                        "slug": "item-1205",
+                        "composition_type": "presentation",
+                        "heading": "Test heading 2",
+                        "subheading": null,
+                        "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis commodo ante nec venenatis. Vivamus maximus massa lectus, ut fermentum arcu tempus in.",
+                        "caption": "Test caption 2",
+                        "slug": "test-go-item-slug-2",
                         "thumb": {
-                            "200x120": "http://placehold.it/200x120.png",
-                            "400x240": "http://placehold.it/400x240.png",
-                            "600x360": "http://placehold.it/400x360.png",
-                            "original": "http://placehold.it/original.png"
+                            "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=video.png&extension=.jpeg&lang=en",
+                            "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=video.png&extension=.jpg&lang=en",
+                            "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=video.png&extension=.jpg&lang=en",
+                            "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=video.png&extension=.jpg&lang=en"
                         }
                     }
                 }
@@ -1598,187 +1377,111 @@ It is a workaround for not being able to choose the response when multiple are d
 + Response 200 (application/json)
 
         {
-            "node_id": 1024,
+            "node_id": 6,
             "item_type": "go_item",
-            "url": "//www.gapminder.org/exercises/item-1204",
+            "url": null,
             "attributes": {
-                "composition_type": "exercise",
-                "heading": "Example Composition Item",
-                "subheading": "This is the subheading.",
-                "about": "<h2>Overview</h2>This is an <em>example item</em>.\n<h2>Sidenotes</h2><ul><li>Foo</li><li>Bar</li></ul>",
-                "caption": "a caption",
-                "slug": "item-1204",
+                "composition_type": "qna",
+                "heading": "Test heading",
+                "subheading": null,
+                "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis commodo ante nec venenatis. Vivamus maximus massa lectus, ut fermentum arcu tempus in.",
+                "caption": "Test caption",
+                "slug": "test-go-item-slug",
                 "thumb": {
-                    "200x120": "http://placehold.it/200x120.png",
-                    "400x240": "http://placehold.it/400x240.png",
-                    "600x360": "http://placehold.it/400x360.png",
-                    "original": "http://placehold.it/original.png"
+                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=video.png&extension=.jpeg&lang=en",
+                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=video.png&extension=.jpg&lang=en",
+                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=video.png&extension=.jpg&lang=en",
+                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=video.png&extension=.jpg&lang=en"
+                },
+                "composition": {
+                    "data": [
+                        {
+                            "type": "heading",
+                            "data": {
+                                "text": "Test heading"
+                            }
+                        },
+                        {
+                            "type": "text",
+                            "data": {
+                                "text": "Test text"
+                            }
+                        },
+                        {
+                            "type": "quote",
+                            "data": {
+                                "cite": "Test credit",
+                                "text": "> Test quote"
+                            }
+                        },
+                        {
+                            "type": "download_links",
+                            "data": {
+                                "download_links": [
+                                    {
+                                        "type": "download_link",
+                                        "data": {
+                                            "node_id": 3,
+                                            "item_type": "download_link",
+                                            "attributes": {
+                                                "title": "Gapminder World 2012",
+                                                "url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=Gapminder-World-2012.pdf&extension=.pdf&lang=en"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "image",
+                            "data": {
+                                "message": "File",
+                                "file": {
+                                    "url": "http://192.168.99.100:11111/files-api/p3media/file/image?id=10&preset=sir-trevor-image-block&title=video.png&extension=.jpeg&lang=en_us",
+                                    "p3_media_id": "10"
+                                }
+                            }
+                        },
+                        {
+                            "type": "slideshare",
+                            "data": {
+                                "remote_id": "42268387"
+                            }
+                        },
+                        {
+                            "type": "video",
+                            "data": {
+                                "source": "youtube",
+                                "remote_id": "BkSO9pOVpRM"
+                            }
+                        }
+                    ]
                 }
-            },
-            "composition": {
-                "data": [
-                    {
-                        "type": "video_file",
-                        "data": {
-                            "node_id": 653,
-                            "item_type": "video_file",
-                            "attributes": {
-                                "title": "How large is the gap between the richest and the poorest?",
-                                "about": "Here we explain that there is no gap in the traditional sense.",
-                                "caption": null,
-                                "slug": null,
-                                "url_mp4": "http://url_to_file.mp4",
-                                "url_webm": "http://url_to_file.webm",
-                                "url_youtube": "http://url_to_youtube_video",
-                                "url_subtitles": "http://url_to_the_video_file_subtitles_api_endpoint",
-                                "thumb": {
-                                    "original": "http://thumbnail_image_original.jpg"
-                                }
-                            }
-                        }
-                    },
-                    {
-                        "type": "html_chunk",
-                        "data": {
-                            "node_id": 900,
-                            "item_type": "html_chunk",
-                            "attributes": {
-                                "markup": "<b>the html</b>"
-                            }
-                        }
-                    },
-                    {
-                        "type": "download_link",
-                        "data": {
-                            "node_id": 1248,
-                            "item_type": "download_link",
-                            "attributes": {
-                                "title": "Link for download Gapminder World 2013",
-                                "url": "http://url_to_the_file.ext"
-                            }
-                        }
-                    },
-                    {
-                        "type": "about",
-                        "data": {
-                            "render_here": true
-                        }
-                    },
-                    {
-                        "type": "video",
-                        "data": {
-                            "source": "youtube",
-                            "remote_id": "hcFLFpmc4Pg"
-                        }
-                    },
-                    {
-                        "type": "text",
-                        "data": {
-                            "text": "Hello, I’m **Sir Trevor**.\nCreate some new blocks and see _what I can do_.\n"
-                        }
-                    },
-                    {
-                        "type": "html",
-                        "data": {
-                            "src": "<h1>First Paragraph</h1><p>This is a <em>paragraph</em>.</p>"
-                        }
-                    },
-                    {
-                        "type": "download_links",
-                        "data": {
-                            "title": "Multiple Download Links",
-                            "links": [
-                                {
-                                    "title": "PDF File",
-                                    "url": "http://example.com/example.pdf"
-                                },
-                                {
-                                    "title": "Animated GIF",
-                                    "url": "http://example.com/example.gif"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "type": "linked_image",
-                        "data": {
-                            "title": "Example Chart",
-                            "image_url": "http://placehold.it/640x480",
-                            "link_url": "http://example.com/chart.pdf"
-                        }
-                    },
-                    {
-                        "type": "slideshare",
-                        "data": {
-                            "remote_id": "5896443"
-                        }
-                    }
-                ]
             },
             "contributors": [
                 {
-                    "user_id": 1,
-                    "username": "anna-mia-ekstrom",
-                    "thumbnail_url": "http://placehold.it/200x200"
-                },
-                {
-                    "user_id": 2,
-                    "username": "olarosling",
-                    "thumbnail_url": "http://placehold.it/200x200"
-                },
-                {
-                    "user_id": 3,
-                    "username": "fredrikwollsen",
-                    "thumbnail_url": "http://placehold.it/200x200"
-                },
-                {
-                    "user_id": 4,
-                    "username": "jimipirila",
-                    "thumbnail_url": "http://placehold.it/200x200"
-                },
-                {
-                    "user_id": 5,
-                    "username": "arthurcamara",
-                    "thumbnail_url": "http://placehold.it/200x200"
-                },
-                {
-                    "user_id": 6,
-                    "username": "amirrahnama",
-                    "thumbnail_url": "http://placehold.it/200x200"
-                },
-                {
-                    "user_id": 7,
-                    "username": "fernanda",
-                    "thumbnail_url": "http://placehold.it/200x200"
-                },
-                {
-                    "user_id": 8,
-                    "username": "max",
-                    "thumbnail_url": "http://placehold.it/200x200"
-                },
-                {
-                    "user_id": 9,
-                    "username": "mariosanchez",
-                    "thumbnail_url": "http://placehold.it/200x200"
+                    "user_id": "1",
+                    "username": "admin",
+                    "thumbnail_url": null
                 }
             ],
             "related": [
                 {
-                    "node_id": 357,
+                    "node_id": 7,
                     "item_type": "go_item",
-                    "url": "//www.gapminder.org/exercises/item-1207",
+                    "url": null,
                     "attributes": {
-                        "composition_type": "exercise",
-                        "heading": "The heading of #1207",
-                        "subheading": "This is an example item.",
-                        "about": "The item about text",
-                        "caption": "a caption",
-                        "slug": "item-1205",
+                        "composition_type": "presentation",
+                        "heading": "Test heading 2",
+                        "subheading": null,
+                        "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis commodo ante nec venenatis. Vivamus maximus massa lectus, ut fermentum arcu tempus in.",
+                        "caption": "Test caption 2",
+                        "slug": "test-go-item-slug-2",
                         "thumb": {
-                            "200x120": "http://placehold.it/200x120.png",
-                            "400x240": "http://placehold.it/400x240.png",
-                            "600x360": "http://placehold.it/400x360.png",
-                            "original": "http://placehold.it/original.png"
+                            "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=video.png&extension=.jpeg&lang=en",
+                            "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=video.png&extension=.jpg&lang=en",
+                            "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=video.png&extension=.jpg&lang=en",
+                            "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=video.png&extension=.jpg&lang=en"
                         }
                     }
                 }
@@ -1799,171 +1502,125 @@ It is a workaround for not being able to choose the response when multiple are d
 + Response 200 (application/json)
 
         {
-            "node_id": 896,
+            "node_id": 4,
             "item_type": "custom_page",
             "url": null,
+            "nav_tree_to_use": "home",
             "attributes": {
-                "composition_type": "exercise",
-                "heading": "Example Page Item",
-                "subheading": "This is the subheading.",
-                "about": "<h2>Overview</h2>This is an <em>example item</em>.\n<h2>Sidenotes</h2><ul><li>Foo</li><li>Bar</li></ul>",
-                "caption": "This is a caption"
-            },
-            "page_hierarchy": {
-                "siblings": [
-                    {
-                        "node_id": 34,
-                        "menu_label": "Short name",
-                        "caption": "asffd asdfsdsfaasf",
-                        "url": "/ebola/dashboard/sdfdsf/"
-                    },
-                    {
-                        "node_id": 2324,
-                        "menu_label": "dfgdfg name",
-                        "caption": "asffd asdfsdsfaasf ",
-                        "url": "/ebola/dashboard/fdfgdg/"
-                    }
-                ],
-                "children": [
-                    {
-                        "node_id": 34,
-                        "menu_label": "Short name",
-                        "caption": "asffd asdfsdsfaasf ",
-                        "url": "/ebola/dashboard/sdfdsf/sdfsdf"
-                    }
-                ],
-                "parent_path": [
-                    {
-                        "node_id": 1024,
-                        "menu_label": "Ebola dashboard",
-                        "caption": "asffd asdfsdsfaasf ",
-                        "url": "/ebola/dashboard/"
-                    },
-                    {
-                        "node_id": 23434,
-                        "menu_label": "Short name",
-                        "caption": "asffd asdfsdsfaasf ",
-                        "url": "/ebola/"
-                    }
-                ]
-            },
-            "composition": {
-                "data": [
-                    {
-                        "type": "about",
-                        "data": {
-                            "renderHere": true
-                        }
-                    },
-                    {
-                        "type": "video",
-                        "data": {
-                            "source": "youtube",
-                            "remote_id": "hcFLFpmc4Pg"
-                        }
-                    },
-                    {
-                        "type": "text",
-                        "data": {
-                            "text": "Hello, I’m **Sir Trevor**.\nCreate some new blocks and see _what I can do_.\n"
-                        }
-                    },
-                    {
-                        "type": "html",
-                        "data": {
-                            "src": "<h1>First Paragraph</h1><p>This is a <em>paragraph</em>.</p>"
-                        }
-                    },
-                    {
-                        "type": "linked_image",
-                        "data": {
-                            "title": "Example Chart",
-                            "link_url": "http://example.com/chart.pdf",
-                            "message": "File",
-                            "file": {
-                                "url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=23&preset=sir-trevor-image-block&title=IMG_7932.PNG&extension=.png&lang=en_us",
-                                "p3_media_id": "23"
+                "composition_type": "presentation",
+                "heading": "Test heading",
+                "subheading": null,
+                "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis commodo ante nec venenatis. Vivamus maximus massa lectus, ut fermentum arcu tempus in. Mauris laoreet nisl sagittis orci tincidunt egestas. ",
+                "caption": "Test caption",
+                "composition": {
+                    "data": [
+                        {
+                            "type": "heading",
+                            "data": {
+                                "text": "Test heading"
+                            }
+                        },
+                        {
+                            "type": "text",
+                            "data": {
+                                "text": "Test text"
+                            }
+                        },
+                        {
+                            "type": "quote",
+                            "data": {
+                                "cite": "Test credit",
+                                "text": "> Test quote"
+                            }
+                        },
+                        {
+                            "type": "download_links",
+                            "data": {
+                                "download_links": [
+                                    {
+                                        "type": "download_link",
+                                        "data": {
+                                            "node_id": 3,
+                                            "item_type": "download_link",
+                                            "attributes": {
+                                                "title": "Gapminder World 2012",
+                                                "url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=Gapminder-World-2012.pdf&extension=.pdf&lang=en"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "image",
+                            "data": {
+                                "message": "File",
+                                "file": {
+                                    "url": "http://192.168.99.100:11111/files-api/p3media/file/image?id=8&preset=sir-trevor-image-block&title=video.png&extension=.jpeg&lang=en_us",
+                                    "p3_media_id": "8"
+                                }
+                            }
+                        },
+                        {
+                            "type": "video",
+                            "data": {
+                                "source": "youtube",
+                                "remote_id": "BkSO9pOVpRM"
+                            }
+                        },
+                        {
+                            "type": "slideshare",
+                            "data": {
+                                "remote_id": "42241898"
                             }
                         }
-                    },
+                    ]
+                }
+            },
+            "root_page": {
+                "node_id": 4,
+                "item_type": "custom_page",
+                "menu_label": "Test page",
+                "url": null,
+                "children": [
                     {
-                        "type": "slideshare",
-                        "data": {
-                            "remote_id": "12345678"
-                        }
+                        "node_id": 5,
+                        "item_type": "custom_page",
+                        "menu_label": "Test page 2",
+                        "url": null,
+                        "children": [ ]
                     }
                 ]
             },
             "contributors": [
                 {
-                    "userId": 1,
-                    "username": "anna-mia-ekstrom",
-                    "thumbnail_url": "http://placehold.it/200x200"
-                },
-                {
-                    "userId": 2,
-                    "username": "olarosling",
-                    "thumbnail_url": "http://placehold.it/200x200"
-                },
-                {
-                    "userId": 3,
-                    "username": "fredrikwollsen",
-                    "thumbnail_url": "http://placehold.it/200x200"
-                },
-                {
-                    "userId": 4,
-                    "username": "jimipirila",
-                    "thumbnail_url": "http://placehold.it/200x200"
-                },
-                {
-                    "userId": 5,
-                    "username": "arthurcamara",
-                    "thumbnail_url": "http://placehold.it/200x200"
-                },
-                {
-                    "userId": 6,
-                    "username": "amirrahnama",
-                    "thumbnail_url": "http://placehold.it/200x200"
-                },
-                {
-                    "userId": 7,
-                    "username": "fernanda",
-                    "thumbnail_url": "http://placehold.it/200x200"
-                },
-                {
-                    "userId": 8,
-                    "username": "max",
-                    "thumbnail_url": "http://placehold.it/200x200"
-                },
-                {
-                    "userId": 9,
-                    "username": "mariosanchez",
-                    "thumbnail_url": "http://placehold.it/200x200"
+                    "user_id": "1",
+                    "username": "admin",
+                    "thumbnail_url": null
                 }
             ],
             "related": [
                 {
-                    "node_id": 357,
+                    "node_id": 7,
                     "item_type": "go_item",
-                    "url": "//www.gapminder.org/exercises/item-1207",
+                    "url": null,
                     "attributes": {
-                        "composition_type": "exercise",
-                        "heading": "The heading of #1207",
-                        "subheading": "This is an example item.",
-                        "about": "The item about text",
-                        "caption": "a caption",
-                        "slug": "item-1205",
+                        "composition_type": "presentation",
+                        "heading": "Test heading 2",
+                        "subheading": null,
+                        "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis commodo ante nec venenatis. Vivamus maximus massa lectus, ut fermentum arcu tempus in.",
+                        "caption": "Test caption 2",
+                        "slug": "test-go-item-slug-2",
                         "thumb": {
-                            "200x120": "http://placehold.it/200x120.png",
-                            "400x240": "http://placehold.it/400x240.png",
-                            "600x360": "http://placehold.it/400x360.png",
-                            "original": "http://placehold.it/original.png"
+                            "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=video.png&extension=.jpeg&lang=en",
+                            "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=video.png&extension=.jpg&lang=en",
+                            "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=video.png&extension=.jpg&lang=en",
+                            "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=video.png&extension=.jpg&lang=en"
                         }
                     }
                 }
             ]
         }
-
 
 # Group Navbar
 
