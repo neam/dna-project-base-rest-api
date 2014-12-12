@@ -51,7 +51,8 @@ class RestApiItemList extends ItemListConfig implements SirTrevorBlock
                'sort' => (!empty($this->querySortOption) && !empty($this->querySortOption->ref)) ? $this->querySortOption->ref : null,
                'pageSize' => (int)$this->query_pageSize,
            ),
-           'pagination_metadata' => array(
+            // todo: do this once we have pagination.
+//           'pagination_metadata' => array(
 //                'currentPage' => '1',
 //                'itemCount' => '68',
 //                'limit' => '100',
@@ -61,7 +62,7 @@ class RestApiItemList extends ItemListConfig implements SirTrevorBlock
 //                'pageVar' => 'foo',
 //                'params' => '???',
 //                'route' => '/sdfsdf/'
-           ),
+//           ),
            'items' => $this->getCompositionItems(),
         );
     }
