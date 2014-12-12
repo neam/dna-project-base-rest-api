@@ -21,6 +21,13 @@
 interface SirTrevorBlock
 {
     /**
+     * Returns the "item_type" to be shown for the resource in the composition.
+     *
+     * @return string the item type.
+     */
+    public function getCompositionItemType();
+
+    /**
      * Returns the attributes for the the resource when included in a sir trevor composition block.
      *
      * @return array the attributes.
