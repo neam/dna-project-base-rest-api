@@ -129,6 +129,14 @@ class RestApiVideoFile extends VideoFile implements SirTrevorBlock
     }
 
     /**
+     * @inheritdoc
+     */
+    public function getCompositionItemType()
+    {
+        return 'video_file';
+    }
+
+    /**
      * @return string|null
      */
     public function getRouteUrl()

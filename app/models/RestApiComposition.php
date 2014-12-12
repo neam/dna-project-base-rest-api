@@ -102,7 +102,9 @@ class RestApiComposition extends Composition implements RelatedResource
             'node_id' => (int)$this->node_id,
             'item_type' => 'go_item',
             'url' => $this->getRouteUrl(),
-            'attributes' => $this->getListableAttributes(),
+            'attributes' => array_merge($this->getListableAttributes(), array(
+                'composition' => $this->populateSirTrevorBlocks($this->composition)
+            )),
             'contributors' => $this->getContributors(),
             'related' => $this->getRelatedItems(),
         );
@@ -142,7 +144,6 @@ class RestApiComposition extends Composition implements RelatedResource
                 '160x96' => $this->getThumbUrl('160x96'),
                 '110x66' => $this->getThumbUrl('110x66'),
             ),
-            'composition' => $this->populateSirTrevorBlocks($this->composition),
         );
     }
 

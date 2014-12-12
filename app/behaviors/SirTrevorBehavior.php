@@ -28,6 +28,7 @@ class SirTrevorBehavior extends CActiveRecordBehavior
         'video_file' => 'RestApiVideoFile',
         'html_chunk' => 'RestApiHtmlChunk',
         'download_link' => 'RestApiDownloadLink',
+        'item_list_config' => 'RestApiItemList',
     );
 
     /**
@@ -59,12 +60,14 @@ class SirTrevorBehavior extends CActiveRecordBehavior
     protected function recPopulateSirTrevorBlock(&$block)
     {
         if (is_object($block) && isset($block->data, $block->type)) {
+            $recAttr = $block->type;
             $resource = $this->loadSirTrevorBlockResource($block);
             if ($resource !== null) {
+                $block->type = $block->data->item_type = $resource->getCompositionItemType();
                 $block->data->attributes = $resource->getCompositionAttributes();
             }
-            if (isset($block->data->{$block->type}) && is_array($block->data->{$block->type})) {
-                foreach ($block->data->{$block->type} as &$child) {
+            if (isset($block->data->{$recAttr}) && is_array($block->data->{$recAttr})) {
+                foreach ($block->data->{$recAttr} as &$child) {
                     $this->recPopulateSirTrevorBlock($child);
                 }
             }
