@@ -51,71 +51,67 @@ The profile is only returned if it is marked as "published", e.g. public.
 + Response 200 (application/json)
 
         {
-            "first_name": "Anna-Mia",
-            "last_name": "Ekström",
-            "email": "user@example.com",
-            "social_links": [
-                {
-                    "id": 1,
-                    "name": "LinkedIn",
-                    "url": "http://linkedin.com"
-                },
-                {
-                    "id": 2,
-                    "name": "Twitter",
-                    "url": "http://twitter.com"
-                },
-                {
-                    "id": 3,
-                    "name": "Facebook",
-                    "url": "http://facebook.com"
-                }
-            ],
+            "first_name": "Test",
+            "last_name": "User",
+            "email": "testuser@example.com",
+            "social_links": [ ],
             "may_contact": true,
-            "professional_title": {"data": [
-                {"type": "list", "data": {"text": " - Filmmaker\n - Filmtator\n - Whattookyousolong.org\n"}}
-            ]},
-            "lives_in": "Stockholm, Sweden",
-            "language1": "sv",
-            "language2": null,
-            "language3": null,
-            "about_me": {"data": [
-                {"type": "text", "data": {"text": "I contribute to the Dollar Street project lorem ipsum. I contribute to the Dollar Street project lorem ipsum. I contribute to the Dollar Street project lorem ipsum. I contribute to the Dollar Street project lorem ipsum. I contribute to the Dollar Street project lorem ipsum. I contribute to the Dollar Street project lorem ipsum.\n"}},
-                {"type": "text", "data": {"text": "Cambiae bid scriptum libro. Dolores veci!\n"}}
-            ]},
-            "my_links": {"data": [
-                {"type": "heading", "data": {"text": "Here is my video"}},
-                {"type": "video", "data": {"source": "youtube", "remote_id": "w33hPL4tdNg"}},
-                {"type": "text", "data": {"text": "[www.gapminder.org](http://www.gapminder.org)"}},
-                {"type": "heading", "data": {"text": "My other project"}},
-                {"type": "text", "data": {"text": "[www.example.com](http://www.example.com)"}}
-            ]},
-            "contributions": [
-                {
-                    "label": "Fact-checks for HIV trend",
-                    "url": "http://example.com"
-                },
-                {
-                    "label": "Reviewed Exercise",
-                    "url": "http://example.com"
-                }
-            ],
-            "profile_picture": "http://placehold.it/120x150",
+            "professional_title": {
+                "data": [
+                    {
+                        "type": "text",
+                        "data": {
+                            "text": "I'm a professional"
+                        }
+                    }
+                ]
+            },
+            "lives_in": "Uganda",
+            "language1": "en",
+            "language2": "sv",
+            "language3": "fi",
+            "about_me": {
+                "data": [
+                    {
+                        "type": "text",
+                        "data": {
+                        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed semper quam sem, sit amet viverra ante mattis imperdiet."
+                        }
+                    }
+                ]
+            },
+            "my_links": {
+                "data": [
+                    {
+                        "type": "text",
+                        "data": {
+                            "text": "http://gapminder.com"
+                        }
+                    }
+                ]
+            },
+            "contributions": [ ],
+            "profile_picture": "http://172.17.42.1:11111/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=350x350.gif&extension=.jpg&lang=en",
             "groups": [
                 {
-                    "id": 1,
-                    "name": "Teachers",
-                    "member_label": "Teacher"
+                    "id": "16",
+                    "name": "Translators",
+                    "member_label": "Member"
                 },
                 {
-                    "id": 2,
-                    "name": "DataCrunchers",
-                    "member_label": "Data Cruncher"
+                    "id": "17",
+                    "name": "Reviewers",
+                    "member_label": "Member"
                 },
                 {
-                    "id": 3,
-                    "name": "SeniorAdvisors",
-                    "member_label": "Senior Advisor"
+                    "id": "1",
+                    "name": "GapminderOrg",
+                    "member_label": "Member"
+                },
+                {
+                    "id": "15",
+                    "name": "SneakPeeks",
+                    "member_label": "Member"
                 }
             ]
         }
@@ -131,71 +127,67 @@ The profile is only returned if it is marked as "published", e.g. public.
 + Response 200 (application/json)
 
         {
-            "first_name": "Anna-Mia",
-            "last_name": "Ekström",
-            "email": "user@example.com",
-            "social_links": [
-                {
-                    "id": 1,
-                    "name": "LinkedIn",
-                    "url": "http://linkedin.com"
-                },
-                {
-                    "id": 2,
-                    "name": "Twitter",
-                    "url": "http://twitter.com"
-                },
-                {
-                    "id": 3,
-                    "name": "Facebook",
-                    "url": "http://facebook.com"
-                }
-            ],
+            "first_name": "Test",
+            "last_name": "User",
+            "email": "testuser@example.com",
+            "social_links": [ ],
             "may_contact": true,
-            "professional_title": {"data": [
-                {"type": "list", "data": {"text": " - Filmmaker\n - Filmtator\n - Whattookyousolong.org\n"}}
-            ]},
-            "lives_in": "Stockholm, Sweden",
-            "language1": "sv",
-            "language2": null,
-            "language3": null,
-            "about_me": {"data": [
-                {"type": "text", "data": {"text": "I contribute to the Dollar Street project lorem ipsum. I contribute to the Dollar Street project lorem ipsum. I contribute to the Dollar Street project lorem ipsum. I contribute to the Dollar Street project lorem ipsum. I contribute to the Dollar Street project lorem ipsum. I contribute to the Dollar Street project lorem ipsum.\n"}},
-                {"type": "text", "data": {"text": "Cambiae bid scriptum libro. Dolores veci!\n"}}
-            ]},
-            "my_links": {"data": [
-                {"type": "heading", "data": {"text": "Here is my video"}},
-                {"type": "video", "data": {"source": "youtube", "remote_id": "w33hPL4tdNg"}},
-                {"type": "text", "data": {"text": "[www.gapminder.org](http://www.gapminder.org)"}},
-                {"type": "heading", "data": {"text": "My other project"}},
-                {"type": "text", "data": {"text": "[www.example.com](http://www.example.com)"}}
-            ]},
-            "contributions": [
-                {
-                    "label": "Fact-checks for HIV trend",
-                    "url": "http://example.com"
-                },
-                {
-                    "label": "Reviewed Exercise",
-                    "url": "http://example.com"
-                }
-            ],
-            "profile_picture": "http://placehold.it/120x150",
+            "professional_title": {
+                "data": [
+                    {
+                        "type": "text",
+                        "data": {
+                            "text": "I'm a professional"
+                        }
+                    }
+                ]
+            },
+            "lives_in": "Uganda",
+            "language1": "en",
+            "language2": "sv",
+            "language3": "fi",
+            "about_me": {
+                "data": [
+                    {
+                        "type": "text",
+                        "data": {
+                        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed semper quam sem, sit amet viverra ante mattis imperdiet."
+                        }
+                    }
+                ]
+            },
+            "my_links": {
+                "data": [
+                    {
+                        "type": "text",
+                        "data": {
+                            "text": "http://gapminder.com"
+                        }
+                    }
+                ]
+            },
+            "contributions": [ ],
+            "profile_picture": "http://172.17.42.1:11111/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=350x350.gif&extension=.jpg&lang=en",
             "groups": [
                 {
-                    "id": 1,
-                    "name": "Teachers",
-                    "member_label": "Teacher"
+                    "id": "16",
+                    "name": "Translators",
+                    "member_label": "Member"
                 },
                 {
-                    "id": 2,
-                    "name": "DataCrunchers",
-                    "member_label": "Data Cruncher"
+                    "id": "17",
+                    "name": "Reviewers",
+                    "member_label": "Member"
                 },
                 {
-                    "id": 3,
-                    "name": "SeniorAdvisors",
-                    "member_label": "Senior Advisor"
+                    "id": "1",
+                    "name": "GapminderOrg",
+                    "member_label": "Member"
+                },
+                {
+                    "id": "15",
+                    "name": "SneakPeeks",
+                    "member_label": "Member"
                 }
             ]
         }
