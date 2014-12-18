@@ -70,4 +70,12 @@ class RestApiHtmlChunk extends HtmlChunk implements SirTrevorBlock
             'markup' => $this->markup,
         );
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function getCompositionItemType()
+    {
+        return 'html_chunk';
+    }
 }

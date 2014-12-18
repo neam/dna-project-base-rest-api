@@ -102,7 +102,9 @@ class RestApiComposition extends Composition implements RelatedResource
             'node_id' => (int)$this->node_id,
             'item_type' => 'go_item',
             'url' => $this->getRouteUrl(),
-            'attributes' => $this->getListableAttributes(),
+            'attributes' => array_merge($this->getListableAttributes(), array(
+                'composition' => $this->populateSirTrevorBlocks($this->composition)
+            )),
             'contributors' => $this->getContributors(),
             'related' => $this->getRelatedItems(),
         );
@@ -155,7 +157,6 @@ class RestApiComposition extends Composition implements RelatedResource
                 '160x96' => $this->getThumbUrl('160x96'),
                 '110x66' => $this->getThumbUrl('110x66'),
             ),
-            'composition' => $this->populateSirTrevorBlocks($this->composition),
         );
     }
 
@@ -170,7 +171,9 @@ class RestApiComposition extends Composition implements RelatedResource
 
         $route = Route::model()->findByAttributes(array(
             'node_id' => (int)$this->node_id,
-            'translation_route_language' => Yii::app()->language,
+            'legacy' => null,
+            // todo: this needs to be enabled once we have multi-lingual support
+//            'translation_route_language' => Yii::app()->language,
         ));
 
         return ($route !== null) ? $route->route : null;

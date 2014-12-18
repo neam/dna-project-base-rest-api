@@ -73,6 +73,14 @@ class RestApiDownloadLink extends DownloadLink implements SirTrevorBlock
     }
 
     /**
+     * @inheritdoc
+     */
+    public function getCompositionItemType()
+    {
+        return 'download_link';
+    }
+
+    /**
      * Returns the absolute download link url.
      *
      * @return string|null the url or null if not found.

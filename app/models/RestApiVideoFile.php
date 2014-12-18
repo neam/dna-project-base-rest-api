@@ -129,6 +129,14 @@ class RestApiVideoFile extends VideoFile implements SirTrevorBlock
     }
 
     /**
+     * @inheritdoc
+     */
+    public function getCompositionItemType()
+    {
+        return 'video_file';
+    }
+
+    /**
      * @return string|null
      */
     public function getRouteUrl()
@@ -139,7 +147,9 @@ class RestApiVideoFile extends VideoFile implements SirTrevorBlock
 
         $route = Route::model()->findByAttributes(array(
             'node_id' => (int)$this->node_id,
-            'translation_route_language' => Yii::app()->language,
+            'legacy' => null,
+            // todo: this needs to be enabled once we have multi-lingual support
+//            'translation_route_language' => Yii::app()->language,
         ));
 
         return ($route !== null) ? $route->route : null;

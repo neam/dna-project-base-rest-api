@@ -69,7 +69,7 @@ class BaseItemController extends AppRestController
                 $node = $route->node;
                 // Set the application language to the route language.
                 // This way we know which language the item and it's relations should be returned in.
-                if (Yii::app()->language !== $route->translation_route_language) {
+                if (!empty($route->translation_route_language) && Yii::app()->language !== $route->translation_route_language) {
                     Yii::app()->language = $route->translation_route_language;
                 }
             }
