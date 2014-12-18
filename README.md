@@ -1,5 +1,5 @@
 Gapminder CMS REST API
-====================
+======================
 
 Versioned API:s used by Gapminder frontends.
 
@@ -13,10 +13,14 @@ Versioned API:s used by Gapminder frontends.
 
 #### data
 
-We want to be able to develop/test the code both starting from an empty database, and with data imported from a production deployment. These two testing-data-scenarios are referred to as "clean-db" vs "user-generated", and all acceptance tests are grouped into one or both of these.
+We test against both the Apiary blueprint and data created explicitly for testing against the database.
+The testing-data-scenario is referred to as "test-db", and all tests are grouped into this scenario.
 
-* `clean-db`
-* `user-generate`
+The Apiary blueprint tests are ran against a api-mock server (https://www.npmjs.com/package/api-mock) that reads the
+blueprint.md from the app/module/{api-version} folder and serves the defined responses when requested.
+
+The database tests are made to replicate the responses defined in the Apiary blueprint.md file, in order to ensure that
+the defined api end points act as indented.
 
 #### coverage
 
@@ -29,19 +33,17 @@ We group all tests based on how much testing coverage is required, so that build
 
 ### Running tests locally
 
-Make sure to have api-mock installed:
+Make sure to have api-mock installed. It won't always be pre-installed on the dev environment.
 
     npm -g install api-mock
 
 #### Using the _test.sh script
 
-Note: To run acceptance tests, you need to have a selenium server running locally (see below in readme).
-
 First, step into the path of this README.
 
     cd yiiapps/rest-api/
 
-All tests can be run in sequence (for both clean-db and user-generated) by running the following:
+All tests can be run in sequence.
 
     cd tests
     source _before-test.sh

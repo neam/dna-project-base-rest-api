@@ -7,7 +7,7 @@ cd $script_path
 # fail on any error
 set -o errexit
 
-export DATA=clean-db
+export DATA=test-db
 source $TESTS_FRAMEWORK_BASEPATH/_set-codeception-group-args.sh
 echo "Resetting DB to $DATA"
 connectionID=dbTest $PROJECT_BASEPATH/bin/reset-db.sh >> codeception/_log/reset-db.log
@@ -20,11 +20,11 @@ activate_test_config
 codecept run api-v1 $CODECEPTION_GROUP_ARGS --debug --fail-fast --env=cms-rest-api
 inactivate_test_config
 
-export DATA=user-generated
-source $TESTS_FRAMEWORK_BASEPATH/_set-codeception-group-args.sh
-echo "Resetting DB to $DATA"
-connectionID=dbTest $PROJECT_BASEPATH/bin/reset-db.sh >> codeception/_log/reset-db.log
-
-activate_test_config
-codecept run api-v1 $CODECEPTION_GROUP_ARGS --debug --fail-fast
-inactivate_test_config
+#export DATA=user-generated
+#source $TESTS_FRAMEWORK_BASEPATH/_set-codeception-group-args.sh
+#echo "Resetting DB to $DATA"
+#connectionID=dbTest $PROJECT_BASEPATH/bin/reset-db.sh >> codeception/_log/reset-db.log
+#
+#activate_test_config
+#codecept run api-v1 $CODECEPTION_GROUP_ARGS --debug --fail-fast
+#inactivate_test_config

@@ -63,6 +63,10 @@ $mainConfig = array(
             'useStrictParsing' => true,
             'showScriptName' => false,
             'rules' => array(
+                // These are special endpoints used for testing purposes only.
+                // It is a workaround for not being able to choose the response when multiple are defined per request when testing the API format.
+                array('<version>/item/get', 'pattern' => '<version:v\d+>/item/<id:\d+>/test/<itemType:\w+>', 'verb' => 'GET'),
+
                 // custom rules
                 array('<version>/profile/get', 'pattern' => '<version:v\d+>/profile', 'verb' => 'GET'),
                 array('<version>/profile/update', 'pattern' => '<version:v\d+>/profile', 'verb' => 'PUT'),
@@ -93,12 +97,7 @@ $mainConfig = array(
                 array('<version>/<controller>/preflight', 'pattern' => '<version:v\d+>/<controller:\w+>', 'verb' => 'OPTIONS'),
                 array('<version>/<controller>/preflight', 'pattern' => '<version:v\d+>/<controller:\w+>/<action:\w+>', 'verb' => 'OPTIONS'),
                 array('<version>/<controller>/preflight', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'OPTIONS'),
-                array('<version>/<controller>/preflight', 'pattern' => '<version:v\d+>/<controller:\w+>/<action:\w+><id:\d+>', 'verb' => 'OPTIONS'),
-
-                // These are special endpoints used for testing purposes only.
-                // It is a workaround for not being able to choose the response when multiple are defined per request when testing the API format.
-
-                array('<version>/item/get', 'pattern' => '<version:v\d+>/item/<id:\d+|\:[\w-]+>/test/<itemType:\w+>', 'verb' => 'GET'),
+                array('<version>/<controller>/preflight', 'pattern' => '<version:v\d+>/<controller:\w+>/<action:\w+>/<id:\d+>', 'verb' => 'OPTIONS'),
             ),
         ),
         'user' => array(

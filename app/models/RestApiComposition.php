@@ -119,7 +119,20 @@ class RestApiComposition extends Composition implements RelatedResource
             'node_id' => (int)$this->node_id,
             'item_type' => 'go_item',
             'url' => $this->getRouteUrl(),
-            'attributes' => $this->getListableAttributes(),
+            'attributes' =>  array(
+                'composition_type' => ($this->compositionType !== null) ? $this->compositionType->ref : null,
+                'heading' => $this->heading,
+                'subheading' => $this->subheading,
+                'about' => $this->about,
+                'caption' => $this->caption,
+                'slug' => $this->slug,
+                'thumb' => array(
+                    'original' => $this->getThumbUrl('original-public'),
+                    '735x444' => $this->getThumbUrl('735x444'),
+                    '160x96' => $this->getThumbUrl('160x96'),
+                    '110x66' => $this->getThumbUrl('110x66'),
+                )
+            )
         );
     }
 
