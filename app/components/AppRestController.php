@@ -11,6 +11,11 @@ class AppRestController extends WRestController
             parent::filters(),
             array(
                 'accessControl',
+// enable when we support fetching content in different languages
+//                array(
+//                    'application.filters.ContentNegotiator',
+//                    'languages' => LanguageHelper::getCodes(),
+//                ),
             )
         );
     }
@@ -107,7 +112,8 @@ class AppRestController extends WRestController
 
     public function actionPreflight()
     {
-        $content_type = 'application/json';
+        $contentType = 'application/json';
+        $contentLanguage = Yii::app()->language;
         $status = 200;
 
         // set the status
@@ -117,7 +123,8 @@ class AppRestController extends WRestController
         header("Access-Control-Allow-Origin: *");
         header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
         header("Access-Control-Allow-Headers: Authorization, Origin, Content-Type, Accept");
-        header('Content-type: ' . $content_type);
+        header("Content-Type: $contentType");
+        header("Content-Language: $contentLanguage");
     }
 
     /**
@@ -125,8 +132,10 @@ class AppRestController extends WRestController
      */
     public function sendResponse($status = 200, $bodyParams = array(), $options = array())
     {
+        $contentLanguage = Yii::app()->language;
         header("Access-Control-Allow-Origin: *");
         header("Access-Control-Allow-Headers: Authorization, Origin, Content-Type, Accept");
+        header("Content-Language: $contentLanguage");
         return parent::sendResponse($status, $bodyParams, $options);
     }
 
