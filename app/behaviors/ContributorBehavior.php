@@ -4,8 +4,9 @@ class ContributorBehavior extends CActiveRecordBehavior
 {
     /**
      * Returns a list of contributors for the owner node.
+     * Only contributors who's profile has been made "public" will be included.
      *
-     * @return array
+     * @return array the list of contributors.
      */
     public function getContributors()
     {
@@ -14,11 +15,13 @@ class ContributorBehavior extends CActiveRecordBehavior
         $contributors = array();
         foreach ($this->owner->node->changesets as $changeset) {
             $account = $changeset->user;
-            if ($account !== null && !isset($contributors[$account->id])) {
+            if ($account !== null && $account->profile !== null && !isset($contributors[$account->id])) {
                 $contributors[$account->id] = array(
                     'user_id' => $account->id,
                     'username' => $account->username,
-                    'thumbnail_url' => ($account->profile !== null) ? $account->profile->getPictureUrl() : null,
+                    'first_name' => $account->profile->first_name,
+                    'last_name' => $account->profile->last_name,
+                    'thumbnail_url' => $account->profile->getPictureUrl(),
                 );
             }
         }
