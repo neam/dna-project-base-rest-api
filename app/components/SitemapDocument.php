@@ -14,6 +14,8 @@
  *         <priority>0.8</priority>
  *     </url>
  * </urlset>
+ *
+ * @link http://www.sitemaps.org/protocol.html
  */
 class SitemapDocument extends DOMDocument
 {
