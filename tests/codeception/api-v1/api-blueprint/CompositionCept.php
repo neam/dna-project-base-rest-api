@@ -88,13 +88,7 @@ $I->seeResponseContainsJson(array(
             )
         )
     ),
-    "contributors" => array(
-        array(
-            "user_id" => "1",
-            "username" => "admin",
-            "thumbnail_url" => null
-        )
-    ),
+    "contributors" => array(),
     "related" => array(
         array(
             "node_id" => 7,
