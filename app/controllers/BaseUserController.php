@@ -47,21 +47,21 @@ class BaseUserController extends AppRestController
             throw new CException('No grant types enabled');
         }
 
-        if ($oauth2->enableAuthorization) {
-            $authorizationStorage = $oauth2->getStorage(OAuth2Yii\Component\ServerComponent::STORAGE_AUTHORIZATION_CODE);
-            $server->addGrantType(new OAuth2\GrantType\AuthorizationCode($authorizationStorage));
-        }
-
-        if ($oauth2->enableClientCredentials) {
-            $clientStorage = $oauth2->getStorage(OAuth2Yii\Component\ServerComponent::STORAGE_CLIENT_CREDENTIALS);
-            $server->addGrantType(new OAuth2\GrantType\ClientCredentials($clientStorage));
-        }
+//        if ($oauth2->enableAuthorization) {
+//            $authorizationStorage = $oauth2->getStorage(OAuth2Yii\Component\ServerComponent::STORAGE_AUTHORIZATION_CODE);
+//            $server->addGrantType(new OAuth2\GrantType\AuthorizationCode($authorizationStorage));
+//        }
+//
+//        if ($oauth2->enableClientCredentials) {
+//            $clientStorage = $oauth2->getStorage(OAuth2Yii\Component\ServerComponent::STORAGE_CLIENT_CREDENTIALS);
+//            $server->addGrantType(new OAuth2\GrantType\ClientCredentials($clientStorage));
+//        }
 
         if ($oauth2->enableUserCredentials) {
             $userStorage = $oauth2->getStorage(OAuth2Yii\Component\ServerComponent::STORAGE_USER_CREDENTIALS);
             $server->addGrantType(new OAuth2\GrantType\UserCredentials($userStorage));
             $refreshStorage = $oauth2->getStorage(OAuth2Yii\Component\ServerComponent::STORAGE_REFRESH_TOKEN);
-            $server->addGrantType(new OAuth2\GrantType\RefreshToken($refreshStorage));
+            $server->addGrantType(new OAuth2\GrantType\RefreshToken($refreshStorage, array('always_issue_new_refresh_token' => true)));
         }
 
         $request = OAuth2\Request::createFromGlobals();

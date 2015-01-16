@@ -7,8 +7,21 @@
  * @property string $title
  * @property string $caption
  * @property string $about
+ *
+ * Properties made available through the I18nColumnsBehavior class:
+ * @property string $slug
+ *
+ * Properties made available through the RestrictedAccessBehavior class:
+ * @property boolean $enableRestriction
+ *
+ * Methods made available through the WRestModelBehavior class:
+ * @method array getCreateAttributes
+ * @method array getUpdateAttributes
+ *
+ * Methods made available through the RelatedBehavior class:
+ * @method array getRelatedItems()
  */
-class RestApiVideoFile extends VideoFile
+class RestApiVideoFile extends VideoFile implements SirTrevorBlock
 {
     /**
      * @inheritdoc
@@ -45,6 +58,9 @@ class RestApiVideoFile extends VideoFile
                     'translationAttributes' => array('slug'),
                     'multilingualRelations' => array('processedMedia' => 'processed_media_id'),
                 ),
+                'related-behavior' => array(
+                    'class' => 'RelatedBehavior',
+                ),
             )
         );
     }
@@ -55,76 +71,145 @@ class RestApiVideoFile extends VideoFile
     public function relations()
     {
         return array_merge(
-            parent::relations(), array(
-                'outEdges' => array(self::HAS_MANY, 'Edge', 'from_node_id'),
+            parent::relations(),
+            array(
+                'outEdges' => array(self::HAS_MANY, 'Edge', array('id' => 'from_node_id'), 'through' => 'node'),
                 'outNodes' => array(self::HAS_MANY, 'Node', array('to_node_id' => 'id'), 'through' => 'outEdges'),
-                'inEdges' => array(self::HAS_MANY, 'Edge', 'to_node_id'),
+                'inEdges' => array(self::HAS_MANY, 'Edge', array('id' => 'to_node_id'), 'through' => 'node'),
                 'inNodes' => array(self::HAS_MANY, 'Node', array('from_node_id' => 'id'), 'through' => 'inEdges'),
-                'nodes' => array(self::HAS_MANY, 'Node', 'id'),
             )
         );
     }
 
     /**
-     * The attributes that is returned by the REST api.
-     *
-     * @return object the response object as a stdClass.
+     * @inheritdoc
      */
     public function getAllAttributes()
     {
         return array(
-            'id' => $this->id,
-            'title' => $this->title,
-            'subheading' => '', // todo: data for this??
-            'youtube_id' => '', // todo: data for this??
-            'about' => $this->about,
-            'contributors' => $this->getContributorsItems(),
+            'node_id' => (int)$this->node_id,
+            'item_type' => 'video_file',
+            'url' => $this->getRouteUrl(),
+            'attributes' => $this->getListableAttributes(),
             'related' => $this->getRelatedItems(),
         );
     }
 
     /**
-     * Returns a list of contributors for the video file.
-     * These are parsed into a format that can be used directly in the response.
-     *
-     * @return array
+     * @inheritdoc
      */
-    public function getContributorsItems()
+    public function getCompositionAttributes()
     {
-        $contributors = array();
-        foreach ($this->node->changesets as $changeset) {
-            $contributor = RestApiContributor::model()->findByPk((int)$changeset->user_id);
-            if ($contributor === null) {
-                continue;
-            }
-            if (!isset($contributors[$contributor->id])) {
-                $contributors[$contributor->id] = $contributor->getAllAttributes();
-            }
-        }
-        // The use of array_values gets rid of the account id key in the array, which is used to filter unique items.
-        return array_values($contributors);
+        return $this->getListableAttributes();
     }
 
     /**
-     * Returns any related items for the video files.
+     * Returns att "listable" attributes.
+     * Listable attributes are ones that appear inside an "attributes" section for a "video_file" in any response.
      *
      * @return array
      */
-    public function getRelatedItems()
+    public function getListableAttributes()
     {
-        $related = array();
-        foreach ($this->getRelated('related', true) as $node) {
-            $item = $node->item();
-            if ($item === null) {
-                continue;
-            }
-            // todo: what kind of related items can we have??
-//                "title": "Niños nacidos por mujer por región",
-//                "thumbnail_url": "http://placehold.it/200x160",
-//                "item_type": "video",
-//                "item_permalink": "ninos-nacidos-por-mujer-por-region",
-//                "item_lang": "es"
-        }
-        return $related;
+        return array(
+            'title' => $this->title,
+            'about' => $this->about,
+            'caption' => $this->caption,
+            'slug' => $this->slug,
+            'url_mp4' => $this->getUrlMp4(),
+            'url_webm' => $this->getUrlWebm(),
+            'url_youtube' => $this->youtube_url,
+            'url_subtitles' => $this->getUrlSubtitles(),
+            'thumb' => array(
+                'original' => $this->getThumbUrl('original-public'),
+                '735x444' => $this->getThumbUrl('735x444'),
+                '160x96' => $this->getThumbUrl('160x96'),
+                '110x66' => $this->getThumbUrl('110x66'),
+            ),
+        );
     }
-} 
+
+    /**
+     * @inheritdoc
+     */
+    public function getCompositionItemType()
+    {
+        return 'video_file';
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getRouteUrl()
+    {
+        if (empty($this->node_id)) {
+            return null;
+        }
+
+        $route = Route::model()->findByAttributes(array(
+            'node_id' => (int)$this->node_id,
+            'legacy' => null,
+            // todo: this needs to be enabled once we have multi-lingual support
+//            'translation_route_language' => Yii::app()->language,
+        ));
+
+        return ($route !== null) ? $route->route : null;
+    }
+
+    /**
+     * Returns absolute url to the api endpoint for retrieving a video files subtitles.
+     * It needs to be a separate end-point as the video player in use requires the subtitles to be loaded from a url.
+     *
+     * @return string
+     */
+    protected function getUrlSubtitles()
+    {
+        return Yii::app()->createAbsoluteUrl('/v1/videoFile/subtitles/' . $this->id);
+    }
+
+    /**
+     * Returns absolute url to the video file thumbnail.
+     *
+     * @param string $preset the image preset to use.
+     * @return string|null the url or null if no thumbnail media found.
+     */
+    protected function getThumbUrl($preset)
+    {
+        if (empty($this->thumbnailMedia)) {
+            return null;
+        }
+        $url = $this->thumbnailMedia->createUrl($preset, true);
+        // Rewriting so that the temporary files-api app is used to serve the url.
+        return str_replace(array("api/", "internal/"), "files-api/", $url);
+    }
+
+    /**
+     * Returns absolute url to the video file in mp4 format.
+     *
+     * @return string|null the url or null if video media not found.
+     */
+    protected function getUrlMp4()
+    {
+        if (empty($this->clipMp4Media)) {
+            return null;
+        }
+        $url = $this->clipMp4Media->createUrl('original-public-mp4', true);
+        // Rewriting so that the temporary files-api app is used to serve the url.
+        return str_replace(array("api/", "internal/"), "files-api/", $url);
+    }
+
+    /**
+     * Returns absolute url to the video file in webm format.
+     *
+     * @return string|null the url or null if video media not found.
+     */
+    protected function getUrlWebm()
+    {
+        if (empty($this->clipWebmMedia)) {
+            return null;
+        }
+        $url = $this->clipWebmMedia->createUrl('original-public-webm', true);
+        // Rewriting so that the temporary files-api app is used to serve the url.
+        return str_replace(array("api/", "internal/"), "files-api/", $url);
+    }
+}

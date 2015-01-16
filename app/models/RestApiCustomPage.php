@@ -1,23 +1,20 @@
 <?php
 
 /**
- * Composite item resource model.
+ * Custom page resource model.
+ * @property string $heading
+ * @property string $subheading
+ * @property string $caption
+ * @property string $about
+ * @property string $menu_label
  *
- * Properties made available through the I18nAttributeMessagesBehavior class:
- * @property string heading
- * @property string subheading
- * @property string about
- * @property string caption
- *
- * Properties made available through the I18nColumnsBehavior class:
- * @property string $slug
+ * @property RestApiCustomPage[] $children
+ * @property RestApiCustomPage[] $siblings
+ * @property RestApiCustomPage[] $recParentPages
+ * @property RestApiCustomPage $parent
  *
  * Properties made available through the RestrictedAccessBehavior class:
  * @property boolean $enableRestriction
- *
- * Methods made available through the WRestModelBehavior class:
- * @method array getCreateAttributes
- * @method array getUpdateAttributes
  *
  * Methods made available through the ContributorBehavior class:
  * @method array getContributors()
@@ -28,7 +25,7 @@
  * Methods made available through the SirTrevorBehavior class:
  * @method array populateSirTrevorBlocks()
  */
-class RestApiComposition extends Composition implements RelatedResource
+class RestApiCustomPage extends Page
 {
     /**
      * @inheritdoc
@@ -54,15 +51,11 @@ class RestApiComposition extends Composition implements RelatedResource
                 ),
                 'i18n-attribute-messages' => array(
                     'class' => 'I18nAttributeMessagesBehavior',
-                    'translationAttributes' => array('heading', 'subheading', 'caption', 'about'),
+                    'translationAttributes' => array('heading', 'subheading', 'caption', 'about', 'menu_label'),
                     'languageSuffixes' => LanguageHelper::getCodes(),
                     'behaviorKey' => 'i18n-attribute-messages',
                     'displayedMessageSourceComponent' => 'displayedMessages',
                     'editedMessageSourceComponent' => 'editedMessages',
-                ),
-                'i18n-columns' => array(
-                    'class' => 'I18nColumnsBehavior',
-                    'translationAttributes' => array('slug'),
                 ),
                 'contributor-behavior' => array(
                     'class' => 'ContributorBehavior',
@@ -89,56 +82,48 @@ class RestApiComposition extends Composition implements RelatedResource
                 'outNodes' => array(self::HAS_MANY, 'Node', array('to_node_id' => 'id'), 'through' => 'outEdges'),
                 'inEdges' => array(self::HAS_MANY, 'Edge', array('id' => 'to_node_id'), 'through' => 'node'),
                 'inNodes' => array(self::HAS_MANY, 'Node', array('from_node_id' => 'id'), 'through' => 'inEdges'),
+                'restApiCustomPageChildren' => array(self::HAS_MANY, 'RestApiCustomPage', 'parent_page_id'),
+                'restApiCustomPageParent' => array(self::BELONGS_TO, 'RestApiCustomPage', 'parent_page_id'),
             )
         );
     }
 
     /**
-     * @inheritdoc
+     * The attributes that is returned by the REST api.
+     *
+     * @return array the response.
      */
     public function getAllAttributes()
     {
         return array(
             'node_id' => (int)$this->node_id,
-            'item_type' => 'go_item',
+            'item_type' => 'custom_page',
             'url' => $this->getRouteUrl(),
-            'attributes' => array_merge($this->getListableAttributes(), array(
-                'composition' => $this->populateSirTrevorBlocks($this->composition)
-            )),
+            'nav_tree_to_use' => !empty($this->nav_tree_to_use) ? $this->nav_tree_to_use : 'home',
+            'attributes' => $this->getListableAttributes(),
+            'root_page' => $this->getRootPageHierarchy(),
             'contributors' => $this->getContributors(),
             'related' => $this->getRelatedItems(),
         );
     }
 
     /**
-     * @inheritdoc
+     * @return array
      */
-    public function getRelatedAttributes()
+    public function getRootPageHierarchy()
     {
-        return array(
-            'node_id' => (int)$this->node_id,
-            'item_type' => 'go_item',
-            'url' => $this->getRouteUrl(),
-            'attributes' =>  array(
-                'composition_type' => ($this->compositionType !== null) ? $this->compositionType->ref : null,
-                'heading' => $this->heading,
-                'subheading' => $this->subheading,
-                'about' => $this->about,
-                'caption' => $this->caption,
-                'slug' => $this->slug,
-                'thumb' => array(
-                    'original' => $this->getThumbUrl('original-public'),
-                    '735x444' => $this->getThumbUrl('735x444'),
-                    '160x96' => $this->getThumbUrl('160x96'),
-                    '110x66' => $this->getThumbUrl('110x66'),
-                )
-            )
-        );
+        $hierarchy = array();
+        $rootPage = $this->loadRootPage($this);
+        if ($rootPage !== null) {
+            $hierarchy = $rootPage->getHierarchyAttributes();
+            $rootPage->setChildren($rootPage, $hierarchy);
+        }
+        return $hierarchy;
     }
 
     /**
      * Returns att "listable" attributes.
-     * Listable attributes are ones that appear inside an "attributes" section for a "go_item" in any response.
+     * Listable attributes are ones that appear inside an "attributes" section for a "custom_page" in any response.
      *
      * @return array
      */
@@ -150,13 +135,23 @@ class RestApiComposition extends Composition implements RelatedResource
             'subheading' => $this->subheading,
             'about' => $this->about,
             'caption' => $this->caption,
-            'slug' => $this->slug,
-            'thumb' => array(
-                'original' => $this->getThumbUrl('original-public'),
-                '735x444' => $this->getThumbUrl('735x444'),
-                '160x96' => $this->getThumbUrl('160x96'),
-                '110x66' => $this->getThumbUrl('110x66'),
-            ),
+            'composition' => $this->populateSirTrevorBlocks($this->composition),
+        );
+    }
+
+    /**
+     * The attributes that are returned by the REST api when this resource acts as an hierarchy item.
+     *
+     * @return array
+     */
+    public function getHierarchyAttributes()
+    {
+        return array(
+            'node_id' => (int)$this->node_id,
+            'item_type' => 'custom_page',
+            'menu_label' => $this->menu_label,
+            'url' => $this->getRouteUrl(),
+            'children' => array(),
         );
     }
 
@@ -180,18 +175,29 @@ class RestApiComposition extends Composition implements RelatedResource
     }
 
     /**
-     * Returns absolute url for the thumbnail image.
-     *
-     * @param string $preset the image preset to use.
-     * @return string|null the url or null if not found.
+     * @param RestApiCustomPage $page
+     * @return RestApiCustomPage
      */
-    public function getThumbUrl($preset = 'original-public')
+    public function loadRootPage($page)
     {
-        if (empty($this->thumbMedia)) {
-            return null;
+        if (empty($page->restApiCustomPageParent)) {
+            return $page;
         }
-        $url = $this->thumbMedia->createUrl($preset, true);
-        // Rewriting so that the temporary files-api app is used to serve the url.
-        return str_replace(array("api/", "internal/"), "files-api/", $url);
+        return $this->loadRootPage($page->restApiCustomPageParent);
+    }
+
+    /**
+     * @param RestApiCustomPage $page
+     * @param array $hierarchy
+     */
+    public function setChildren($page, &$hierarchy)
+    {
+        if (!empty($page->restApiCustomPageChildren)) {
+            foreach ($page->restApiCustomPageChildren as $child) {
+                $childHierarchy = $child->getHierarchyAttributes();
+                $child->setChildren($child, $childHierarchy);
+                $hierarchy['children'][] = $childHierarchy;
+            }
+        }
     }
 }

@@ -46,7 +46,9 @@ class RestApiContributor extends Account
         return array(
             'user_id' => $this->id,
             'username' => $this->username,
-            'thumbnail_url' => ($this->profile !== null) ? $this->profile->getPictureUrl() : null,
+            'first_name' => $this->profile->first_name,
+            'last_name' => $this->profile->last_name,
+            'thumbnail_url' => $this->profile->getPictureUrl(),
         );
     }
 }
