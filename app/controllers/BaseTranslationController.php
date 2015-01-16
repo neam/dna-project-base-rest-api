@@ -7,10 +7,12 @@
 class BaseTranslationController extends AppRestController
 {
     /**
-     * @var array map of AR classes to REST resource classes.
+     * @var array map of AR classes to REST resource classes (must implement the TranslatableResource interface).
      */
     protected static $classMap = array(
-        'videoFile' => 'RestApiVideoFileTranslation',
+//        'VideoFile' => 'RestApiVideoFileTranslation',
+        'Composition' => 'RestApiCompositionTranslation',
+        'Page' => 'RestApiCustomPageTranslation',
     );
 
     /**
@@ -45,6 +47,8 @@ class BaseTranslationController extends AppRestController
      */
     public function actionGet($itemType, $itemId)
     {
+        // todo: make this respond to /item/translation/999
+
         $model = $this->loadResource($itemType, $itemId);
         $this->sendResponse(200, $model->getAllAttributes());
     }
@@ -62,27 +66,54 @@ class BaseTranslationController extends AppRestController
         // todo: make this respond to /item/translation/999
         // todo: rewrite this to handle translation of any item node with or without all data (also sir trevor blocks).
 
-        $model = $this->loadResource($itemType, $itemId);
-        $attributes = Yii::app()->getRequest()->parseJsonParams();
-        if (empty($attributes)) {
+        // todo:
+        // 1. make sure user has access to translate this
+        // 2. determine which node we wan't to translate and load it
+        // 3. load the json payload
+        // 4. translate
+        // 5. return translated resource
+
+        /** @var TranslatableResource $model */
+        $model = $this->loadModel($nodeId); // todo: the same load logic as in the ItemController
+        $params = Yii::app()->getRequest()->parseJsonParams();
+        if (empty($params)) {
             throw new CHttpException(400, Yii::t('rest-api', 'Invalid input data.'));
         }
-
         $trx = Yii::app()->getDb()->beginTransaction();
         try {
-            // todo: do we need to save the model for each section (i.e. step) with different scenario??
-            $model->scenario = 'into_'.Yii::app()->language.'-step_info';
-            $model->setUpdateAttributes($attributes);
-            // todo: save fails with "CException(0): Property \"RestApiVideoFileTranslation.about_en\" is not defined. (/code/cms/yiiapps/rest-api/vendor/yiisoft/yii/framework/base/CComponent.php:130)"
-            if (!$model->save()/* todo !$model->saveAppropriately()*/) {
-                throw new CHttpException(400, Yii::t('rest-api', 'Unable to update translations.'));
+            $model->translate($params);
+            if (!$model->save()) {
+                throw new CHttpException(400, Yii::t('rest-api', 'Unable to save translations.'));
             }
+            $trc->commit();
         } catch (Exception $e) {
             $trx->rollback();
             throw $e;
         }
-
         $this->sendResponse(200, $model->getAllAttributes());
+
+
+//        $model = $this->loadResource($itemType, $itemId);
+//        $attributes = Yii::app()->getRequest()->parseJsonParams();
+//        if (empty($attributes)) {
+//            throw new CHttpException(400, Yii::t('rest-api', 'Invalid input data.'));
+//        }
+//
+//        $trx = Yii::app()->getDb()->beginTransaction();
+//        try {
+//            // todo: do we need to save the model for each section (i.e. step) with different scenario??
+//            $model->scenario = 'into_'.Yii::app()->language.'-step_info';
+//            $model->setUpdateAttributes($attributes);
+//            // todo: save fails with "CException(0): Property \"RestApiVideoFileTranslation.about_en\" is not defined. (/code/cms/yiiapps/rest-api/vendor/yiisoft/yii/framework/base/CComponent.php:130)"
+//            if (!$model->save()/* todo !$model->saveAppropriately()*/) {
+//                throw new CHttpException(400, Yii::t('rest-api', 'Unable to update translations.'));
+//            }
+//        } catch (Exception $e) {
+//            $trx->rollback();
+//            throw $e;
+//        }
+//
+//        $this->sendResponse(200, $model->getAllAttributes());
     }
 
     /**
