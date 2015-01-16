@@ -60,6 +60,9 @@ class SirTrevorBehavior extends CActiveRecordBehavior
     protected function recPopulateSirTrevorBlock(&$block)
     {
         if (is_object($block) && isset($block->data, $block->type)) {
+
+            // todo: add "id" for every block. hash the block content (or the relevant part).
+
             $recAttr = $block->type;
             $resource = $this->loadSirTrevorBlockResource($block);
             if ($resource !== null) {

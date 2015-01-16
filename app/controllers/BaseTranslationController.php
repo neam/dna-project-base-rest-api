@@ -59,6 +59,9 @@ class BaseTranslationController extends AppRestController
      */
     public function actionUpdate($itemType, $itemId)
     {
+        // todo: make this respond to /item/translation/999
+        // todo: rewrite this to handle translation of any item node with or without all data (also sir trevor blocks).
+
         $model = $this->loadResource($itemType, $itemId);
         $attributes = Yii::app()->getRequest()->parseJsonParams();
         if (empty($attributes)) {
