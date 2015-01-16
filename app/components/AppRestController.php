@@ -11,11 +11,10 @@ class AppRestController extends WRestController
             parent::filters(),
             array(
                 'accessControl',
-// enable when we support fetching content in different languages
-//                array(
-//                    'application.filters.ContentNegotiator',
-//                    'languages' => LanguageHelper::getCodes(),
-//                ),
+                array(
+                    'application.filters.ContentNegotiator',
+                    'languages' => LanguageHelper::getCodes(),
+                ),
             )
         );
     }
