@@ -70,4 +70,17 @@ class SitemapUrl extends CModel
             array('priority', 'in', 'range' => array(0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ,0.8, 0.9, 1.0)),
         );
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeNames()
+    {
+        return array(
+            'loc',
+            'lastmod',
+            'changefreq',
+            'priority',
+        );
+    }
 }
