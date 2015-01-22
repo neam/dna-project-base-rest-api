@@ -10,9 +10,8 @@ class BaseTranslationController extends AppRestController
      * @var array map of AR classes to REST resource classes (must implement the TranslatableResource interface).
      */
     protected static $classMap = array(
-//        'VideoFile' => 'RestApiVideoFileTranslation',
-        'Composition' => 'RestApiCompositionTranslation',
-        'Page' => 'RestApiCustomPageTranslation',
+        'Composition' => 'RestApiComposition',
+        'Page' => 'RestApiCustomPage',
     );
 
     /**
@@ -39,32 +38,27 @@ class BaseTranslationController extends AppRestController
 
     /**
      * Gets a translation resource for requested item.
-     * Responds to path 'api/<version>/translation/{itemType}/{itemId}'.
+     * Responds to path 'api/<version>/item/translation/{nodeId}'.
      * This endpoint is public but the resources are restricted by "RestrictedAccessBehavior".
      *
-     * @param string $itemType the item class, i.e. AR model class name.
-     * @param int $itemId the AR model id.
+     * @param int $nodeId the item node ID.
      */
-    public function actionGet($itemType, $itemId)
+    public function actionGet($nodeId)
     {
-        // todo: make this respond to /item/translation/999
-
-        $model = $this->loadResource($itemType, $itemId);
-        $this->sendResponse(200, $model->getAllAttributes());
+        /** @var TranslatableResource $model */
+        $model = $this->loadModel($nodeId);
+        $this->sendResponse(200, $model->getTranslationAttributes()); // todo: change getter to getTranslatedAttributes or similar
     }
 
     /**
      * Updates a translation resource for requested item.
-     * Responds to path 'api/<version>/translation/{itemType}/{itemId}'.
+     * Responds to path 'api/<version>/item/translation/{nodeId}'.
      *
-     * @param string $itemType the item class, i.e. AR model class name.
-     * @param int $itemId the AR model id.
+     * @param int $nodeId the item node ID.
      * @throws CHttpException
      */
-    public function actionUpdate($itemType, $itemId)
+    public function actionUpdate($nodeId)
     {
-        // todo: make this respond to /item/translation/999
-        // todo: rewrite this to handle translation of any item node with or without all data (also sir trevor blocks).
 
         // todo:
         // 1. make sure user has access to translate this
@@ -81,16 +75,18 @@ class BaseTranslationController extends AppRestController
         }
         $trx = Yii::app()->getDb()->beginTransaction();
         try {
-            $model->translate($params);
+            /** @var ItemTranslator $translator */
+            $translator = Yii::app()->getComponent('itemTranslator');
+            $translator->translate($model, $params);
             if (!$model->save()) {
                 throw new CHttpException(400, Yii::t('rest-api', 'Unable to save translations.'));
             }
             $trc->commit();
-        } catch (Exception $e) {
+        } catch (CException $e) {
             $trx->rollback();
             throw $e;
         }
-        $this->sendResponse(200, $model->getAllAttributes());
+        $this->sendResponse(200, $model->getTranslationAttributes());
 
 
 //        $model = $this->loadResource($itemType, $itemId);
@@ -117,22 +113,44 @@ class BaseTranslationController extends AppRestController
     }
 
     /**
-     * Loads the translation resource for given item.
-     *
-     * @param string $itemType the item class, i.e. AR model class name.
-     * @param int $itemId the AR model id.
-     * @return WRestModelBehavior
-     * @throws CHttpException
+     * @inheritdoc
      */
-    protected function loadResource($itemType, $itemId)
+    public function loadModel($id)
     {
-        if (!isset(self::$classMap[$itemType])) {
-            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find translation resource for %s.'), $itemType));
+        $node = null;
+        if (ctype_digit($id)) {
+            $node = Node::model()->findByPk($id);
+        } else {
+            /** @var Route $route */
+            $route = Route::model()->with('node')->findByAttributes(array('route' => $id));
+            if ($route !== null) {
+                $node = $route->node;
+                // Set the application language to the route language.
+                // This way we know which language the item and it's relations should be returned in.
+                if (!empty($route->translation_route_language) && Yii::app()->language !== $route->translation_route_language) {
+                    Yii::app()->language = $route->translation_route_language;
+                }
+            }
         }
-        $className = self::$classMap[$itemType];
-        $model = CActiveRecord::model($className)->findByPk((int)$itemId);
+        if ($node === null) {
+            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find node %s.'), $id));
+        }
+        try {
+            $item = $node->item();
+        } catch (NodeItemExistsButIsRestricted $e) {
+            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Node item %s exists but is restricted.'), $id));
+        }
+        if ($item === null) {
+            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find item for node %s.'), $id));
+        }
+        $classname = get_class($item);
+        if (!isset(self::$classMap[$classname])) {
+            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find resource for "%s".'), $classname));
+        }
+        $resourceClassname = self::$classMap[$classname];
+        $model = CActiveRecord::model($resourceClassname)->findByPk($item->id);
         if ($model === null) {
-            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find translation resource for %s #%s.'), $itemType, $itemId));
+            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find resource for "%s".'), $classname));
         }
         return $model;
     }

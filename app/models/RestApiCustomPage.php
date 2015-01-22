@@ -25,7 +25,7 @@
  * Methods made available through the SirTrevorBehavior class:
  * @method array populateSirTrevorBlocks()
  */
-class RestApiCustomPage extends Page
+class RestApiCustomPage extends Page implements TranslatableResource
 {
     /**
      * @inheritdoc
@@ -152,6 +152,34 @@ class RestApiCustomPage extends Page
             'menu_label' => $this->menu_label,
             'url' => $this->getRouteUrl(),
             'children' => array(),
+        );
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getTranslatableAttributes()
+    {
+        return array(
+            'heading',
+            'subheading',
+            'about',
+            'caption',
+            'composition',
+        );
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getTranslationAttributes()
+    {
+        return array(
+            'heading' => $this->heading,
+            'subheading' => $this->subheading,
+            'about' => $this->about,
+            'caption' => $this->caption,
+            'composition' => $this->populateSirTrevorBlocks($this->composition),
         );
     }
 

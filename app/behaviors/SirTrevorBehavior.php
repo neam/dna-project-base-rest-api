@@ -61,7 +61,8 @@ class SirTrevorBehavior extends CActiveRecordBehavior
     {
         if (is_object($block) && isset($block->data, $block->type)) {
 
-            // todo: add "id" for every block. hash the block content (or the relevant part).
+            // todo: can we hash all blocks data just like that??
+            $block->id = md5(serialize($block->data));
 
             $recAttr = $block->type;
             $resource = $this->loadSirTrevorBlockResource($block);

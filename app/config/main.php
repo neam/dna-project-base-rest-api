@@ -29,6 +29,7 @@ $mainConfig = array(
         'application.controllers.*',
         'application.interfaces.*',
         'application.models.*',
+        'application.models.blocks.*',
         'vendor.weavora.wrest.*',
         'vendor.weavora.wrest.actions.*',
         'vendor.weavora.wrest.behaviors.*',
@@ -46,6 +47,9 @@ $mainConfig = array(
     ),
     // application components
     'components' => array(
+        'itemTranslator' => array(
+            'class' => 'ItemTranslator',
+        ),
         'oauth2' => array(
             'class' => 'OAuth2Yii\Component\ServerComponent',
             'userClass' => 'OAuth2User',
@@ -75,8 +79,8 @@ $mainConfig = array(
                 array('<version>/profile/update', 'pattern' => '<version:v\d+>/user/profile', 'verb' => 'PUT'),
                 array('<version>/user/authenticate', 'pattern' => '<version:v\d+>/user/authenticate', 'verb' => 'POST'),
                 array('<version>/profile/public', 'pattern' => '<version:v\d+>/user/<accountId:\d+>/profile', 'verb' => 'GET'),
-                array('<version>/translation/get', 'pattern' => '<version:v\d+>/translation/<itemType:\w+>/<itemId:\d+>', 'verb' => 'GET'),
-                array('<version>/translation/update', 'pattern' => '<version:v\d+>/translation/<itemType:\w+>/<itemId:\d+>', 'verb' => 'PUT, POST'),
+                array('<version>/translation/get', 'pattern' => '<version:v\d+>/item/translation/<nodeId:\d+>', 'verb' => 'GET'),
+                array('<version>/translation/update', 'pattern' => '<version:v\d+>/item/translation/<nodeId:\d+>', 'verb' => 'PUT, POST'),
                 array('<version>/item/get', 'pattern' => '<version:v\d+>/item/<id:\d+|[\w-\/]+>', 'verb' => 'GET'),
 
                 // common CRUD rules
