@@ -82,8 +82,8 @@ class RestApiCustomPage extends Page
                 'outNodes' => array(self::HAS_MANY, 'Node', array('to_node_id' => 'id'), 'through' => 'outEdges'),
                 'inEdges' => array(self::HAS_MANY, 'Edge', array('id' => 'to_node_id'), 'through' => 'node'),
                 'inNodes' => array(self::HAS_MANY, 'Node', array('from_node_id' => 'id'), 'through' => 'inEdges'),
-                'children' => array(self::HAS_MANY, 'RestApiCustomPage', 'parent_page_id'),
-                'parent' => array(self::BELONGS_TO, 'RestApiCustomPage', 'parent_page_id'),
+                'restApiCustomPageChildren' => array(self::HAS_MANY, 'RestApiCustomPage', 'parent_page_id'),
+                'restApiCustomPageParent' => array(self::BELONGS_TO, 'RestApiCustomPage', 'parent_page_id'),
             )
         );
     }
@@ -178,12 +178,12 @@ class RestApiCustomPage extends Page
      * @param RestApiCustomPage $page
      * @return RestApiCustomPage
      */
-    public function LoadRootPage($page)
+    public function loadRootPage($page)
     {
-        if (empty($page->parent)) {
+        if (empty($page->restApiCustomPageParent)) {
             return $page;
         }
-        return $this->LoadRootPage($page->parent);
+        return $this->loadRootPage($page->restApiCustomPageParent);
     }
 
     /**
@@ -192,8 +192,8 @@ class RestApiCustomPage extends Page
      */
     public function setChildren($page, &$hierarchy)
     {
-        if (!empty($page->children)) {
-            foreach ($page->children as $child) {
+        if (!empty($page->restApiCustomPageChildren)) {
+            foreach ($page->restApiCustomPageChildren as $child) {
                 $childHierarchy = $child->getHierarchyAttributes();
                 $child->setChildren($child, $childHierarchy);
                 $hierarchy['children'][] = $childHierarchy;

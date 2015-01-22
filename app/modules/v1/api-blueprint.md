@@ -1202,13 +1202,7 @@ New social links are created for the currently authentcated user.
                     ]
                 }
             },
-            "contributors": [
-                {
-                    "user_id": "1",
-                    "username": "admin",
-                    "thumbnail_url": null
-                }
-            ],
+            "contributors": [],
             "related": [
                 {
                     "node_id": 7,
@@ -1325,13 +1319,7 @@ New social links are created for the currently authentcated user.
                     }
                 ]
             },
-            "contributors": [
-                {
-                    "user_id": "1",
-                    "username": "admin",
-                    "thumbnail_url": null
-                }
-            ],
+            "contributors": [],
             "related": [
                 {
                     "node_id": 7,
@@ -1450,13 +1438,7 @@ It is a workaround for not being able to choose the response when multiple are d
                     ]
                 }
             },
-            "contributors": [
-                {
-                    "user_id": "1",
-                    "username": "admin",
-                    "thumbnail_url": null
-                }
-            ],
+            "contributors": [],
             "related": [
                 {
                     "node_id": 7,
@@ -1584,13 +1566,7 @@ It is a workaround for not being able to choose the response when multiple are d
                     }
                 ]
             },
-            "contributors": [
-                {
-                    "user_id": "1",
-                    "username": "admin",
-                    "thumbnail_url": null
-                }
-            ],
+            "contributors": [],
             "related": [
                 {
                     "node_id": 7,
