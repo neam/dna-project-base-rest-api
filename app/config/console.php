@@ -1,35 +1,44 @@
 <?php
 
 $applicationDirectory = realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR);
+$projectRoot = $applicationDirectory . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..';
 
-$consoleConfig = array(
+$config = array(
     'name' => 'Gapminder CMS REST API Console Application',
+    'basePath' => $applicationDirectory,
+    'aliases' => array(
+        'root' => $projectRoot,
+        'app' => $applicationDirectory,
+        'vendor' => $applicationDirectory . '/../vendor',
+        'dna' => $projectRoot . '/dna',
+    ),
     'import' => array(
         'application.commands.components.*',
+        'application.behaviors.*',
+        'application.components.*',
+        'application.controllers.*',
+        'application.interfaces.*',
+        'application.models.*',
     ),
     'commandMap' => array(),
+    'components' => array(
+        'log' => array(
+            'class' => 'CLogRouter',
+            'routes' => array(
+                array(
+                    'class' => 'CFileLogRoute',
+                    'levels' => 'error, warning',
+                ),
+            ),
+        ),
+    ),
 );
 
-// web config files
-$main = require("$applicationDirectory/config/main.php");
+require($projectRoot . '/dna/dna-api-revisions/' . YII_DNA_REVISION . '/include.php');
 $env = require("$applicationDirectory/config/environments/" . CONFIG_ENVIRONMENT . ".php");
 
+// Unset unused configs that come from the dna config.
+unset($config['theme']);
+
 // merge configurations
-$webConfig = CMap::mergeArray($main, $env);
-
-// create base console config from web configuration
-$config = array(
-    'name' => $webConfig['name'],
-    'language' => $webConfig['language'],
-    'basePath' => $webConfig['basePath'],
-    'aliases' => $webConfig['aliases'],
-    'import' => $webConfig['import'],
-    'components' => $webConfig['components'],
-    'modules' => $webConfig['modules'],
-    'params' => $webConfig['params'],
-);
-
-// apply console config
-$config = CMap::mergeArray($config, $consoleConfig);
-
-return $config;
+return CMap::mergeArray($config, $env);
