@@ -12,3 +12,6 @@ npm-debug.log
 /tests/codeception/*.yml
 /tests/codeception/_data/dump.sql
 /tests/codeception/*/*Guy.php
+sitemap/pages-desktop.xml
+sitemap/pages-mobile.xml
+sitemap/profiles.xml
