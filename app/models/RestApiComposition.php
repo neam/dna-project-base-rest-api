@@ -107,6 +107,7 @@ class RestApiComposition extends Composition implements RelatedResource
             )),
             'contributors' => $this->getContributors(),
             'related' => $this->getRelatedItems(),
+            'groups' => $this->getGroupData(),
         );
     }
 
@@ -193,5 +194,27 @@ class RestApiComposition extends Composition implements RelatedResource
         $url = $this->thumbMedia->createUrl($preset, true);
         // Rewriting so that the temporary files-api app is used to serve the url.
         return str_replace(array("api/", "internal/"), "files-api/", $url);
+    }
+
+    /**
+     * Gets the group data to include in the response.
+     *
+     * Format:
+     *
+     * array(
+     *     'GapminderOrg',
+     *     'Translators',
+     *     ...
+     * )
+     *
+     * @return array the data.
+     */
+    protected function getGroupData()
+    {
+        $groups = array();
+        foreach ($this->node->nodeHasGroups as $gha) {
+            $groups[] = $gha->group->title;
+        }
+        return array_unique($groups);
     }
 }

@@ -104,6 +104,7 @@ class RestApiCustomPage extends Page implements TranslatableResource
             'root_page' => $this->getRootPageHierarchy(),
             'contributors' => $this->getContributors(),
             'related' => $this->getRelatedItems(),
+            'groups' => $this->getGroupData(),
         );
     }
 
@@ -227,5 +228,27 @@ class RestApiCustomPage extends Page implements TranslatableResource
                 $hierarchy['children'][] = $childHierarchy;
             }
         }
+    }
+
+    /**
+     * Gets the group data to include in the response.
+     *
+     * Format:
+     *
+     * array(
+     *     'GapminderOrg',
+     *     'Translators',
+     *     ...
+     * )
+     *
+     * @return array the data.
+     */
+    protected function getGroupData()
+    {
+        $groups = array();
+        foreach ($this->node->nodeHasGroups as $gha) {
+            $groups[] = $gha->group->title;
+        }
+        return array_unique($groups);
     }
 }
