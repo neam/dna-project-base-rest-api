@@ -96,22 +96,26 @@ The profile is only returned if it is marked as "published", e.g. public.
                 {
                     "id": "16",
                     "name": "Translators",
-                    "member_label": "Member"
+                    "member_label": "Member",
+                    "roles": []
                 },
                 {
                     "id": "17",
                     "name": "Reviewers",
-                    "member_label": "Member"
+                    "member_label": "Member",
+                    "roles": []
                 },
                 {
                     "id": "1",
                     "name": "GapminderOrg",
-                    "member_label": "Member"
+                    "member_label": "Member",
+                    "roles": []
                 },
                 {
                     "id": "15",
                     "name": "SneakPeeks",
-                    "member_label": "Member"
+                    "member_label": "Member",
+                    "roles": []
                 }
             ]
         }
@@ -172,22 +176,26 @@ The profile is only returned if it is marked as "published", e.g. public.
                 {
                     "id": "16",
                     "name": "Translators",
-                    "member_label": "Member"
+                    "member_label": "Member",
+                    "roles": []
                 },
                 {
                     "id": "17",
                     "name": "Reviewers",
-                    "member_label": "Member"
+                    "member_label": "Member",
+                    "roles": []
                 },
                 {
                     "id": "1",
                     "name": "GapminderOrg",
-                    "member_label": "Member"
+                    "member_label": "Member",
+                    "roles": []
                 },
                 {
                     "id": "15",
                     "name": "SneakPeeks",
-                    "member_label": "Member"
+                    "member_label": "Member",
+                    "roles": []
                 }
             ]
         }
@@ -1223,6 +1231,9 @@ New social links are created for the currently authentcated user.
                         }
                     }
                 }
+            ],
+            "groups": [
+                "GapminderOrg"
             ]
         }
 
@@ -1340,6 +1351,9 @@ New social links are created for the currently authentcated user.
                         }
                     }
                 }
+            ],
+            "groups": [
+                "GapminderOrg"
             ]
         }
 
@@ -1459,6 +1473,9 @@ It is a workaround for not being able to choose the response when multiple are d
                         }
                     }
                 }
+            ],
+            "groups": [
+                "GapminderOrg"
             ]
         }
 
@@ -1587,6 +1604,9 @@ It is a workaround for not being able to choose the response when multiple are d
                         }
                     }
                 }
+            ],
+            "groups": [
+                "GapminderOrg"
             ]
         }
 
