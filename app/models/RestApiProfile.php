@@ -52,7 +52,7 @@ class RestApiProfile extends Profile
     /**
      * The attributes that is returned by the REST api.
      *
-     * @return object the response object as a stdClass.
+     * @return array the response.
      */
     public function getAllAttributes()
     {
@@ -98,9 +98,10 @@ class RestApiProfile extends Profile
                     'id' => $gha->group->id,
                     'name' => $gha->group->title,
                     'member_label' => 'Member', // todo: this is hard-coded for now (ask Fredrik & ChrisL for solution)
-                    'roles' => array() // todo: add roles
+                    'roles' => array()
                 );
             }
+            $groups[$gha->group->id]['roles'][] = $gha->role->title;
         }
         $data['groups'] = array_values($groups);
 
