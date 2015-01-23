@@ -11,10 +11,13 @@
  */
 class SitemapCommand extends CConsoleCommand
 {
+    // Save paths for the sitemap files.
+    // These are put in a directory "sitemap" under the "rest-api" application.
     const PATH_PAGES_DESKTOP = '../../sitemap/pages-desktop.xml';
     const PATH_PAGES_MOBILE = '../../sitemap/pages-mobile.xml';
     const PATH_PROFILES = '../../sitemap/profiles.xml';
 
+    // Base urls for the sitemap urls.
     const BASE_URL_PAGES_DESKTOP = 'http://gapminder.org/';
     const BASE_URL_PAGES_MOBILE = 'http://m.gapminder.org/';
     const BASE_URL_PROFILES = 'http://gapminder.org/profiles/';
