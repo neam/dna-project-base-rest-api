@@ -25,9 +25,9 @@ class SitemapCommand extends CConsoleCommand
     protected $items;
 
     /**
-     * @var Account[] runtime cache for account models.
+     * @var Profile[] runtime cache for profile models.
      */
-    protected $accounts;
+    protected $profiles;
 
     /**
      * Generate all the sitemap files.
@@ -48,9 +48,14 @@ class SitemapCommand extends CConsoleCommand
         $document->formatOutput = true;
         foreach ($this->loadItems() as $item) {
             foreach ($item->routes as $route) {
+                if (empty($route->route)) {
+                    continue;
+                }
                 $url = new SitemapUrl();
                 $url->loc = self::BASE_URL_PAGES_DESKTOP  . ltrim($route->route, '/');
-                $url->lastmod = $item->modified;
+                if (($timestamp = strtotime($item->modified)) !== false) {
+                    $url->lastmod = date(DateTime::W3C, $timestamp);
+                }
                 $document->addUrl($url);
             }
         }
@@ -66,9 +71,14 @@ class SitemapCommand extends CConsoleCommand
         $document->formatOutput = true;
         foreach ($this->loadItems() as $item) {
             foreach ($item->routes as $route) {
+                if (empty($route->route)) {
+                    continue;
+                }
                 $url = new SitemapUrl();
                 $url->loc = self::BASE_URL_PAGES_MOBILE  . ltrim($route->route, '/');
-                $url->lastmod = $item->modified;
+                if (($timestamp = strtotime($item->modified)) !== false) {
+                    $url->lastmod = date(DateTime::W3C, $timestamp);
+                }
                 $document->addUrl($url);
             }
         }
@@ -82,10 +92,12 @@ class SitemapCommand extends CConsoleCommand
     {
         $document = new SitemapDocument('1.0', 'UTF-8');
         $document->formatOutput = true;
-        foreach ($this->loadAccounts() as $account) {
+        foreach ($this->loadProfiles() as $profile) {
             $url = new SitemapUrl();
-            $url->loc = self::BASE_URL_PROFILES . $account->username;
-            $url->lastmod = $account->profile->modified;
+            $url->loc = self::BASE_URL_PROFILES . $profile->account->username;
+            if (($timestamp = strtotime($profile->modified)) !== false) {
+                $url->lastmod = date(DateTime::W3C, $timestamp);
+            }
             $document->addUrl($url);
         }
         $document->save(__DIR__ . '/' . self::PATH_PROFILES);
@@ -106,16 +118,16 @@ class SitemapCommand extends CConsoleCommand
     }
 
     /**
-     * Loads all accounts with public profiles.
+     * Loads all public profiles with account info.
      *
-     * @return Account[] the accounts.
+     * @return Profile[] the profiles.
      */
-    protected function loadAccounts()
+    protected function loadProfiles()
     {
-        if ($this->accounts === null) {
+        if ($this->profiles === null) {
             // todo: needs optimizing when either memory or time becomes a problem.
-            $this->accounts = Account::model()->with('profile')->findAll();
+            $this->profiles = Profile::model()->with('account')->findAll();
         }
-        return $this->accounts;
+        return $this->profiles;
     }
 }
