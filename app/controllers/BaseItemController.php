@@ -55,7 +55,9 @@ class BaseItemController extends AppRestController
     }
 
     /**
-     * @inheritdoc
+     * @param $id either a node id "1234" or a route "/1234", "/terms" etc
+     * @return array|CActiveRecord|mixed|null|static
+     * @throws CHttpException
      */
     public function loadModel($id)
     {
