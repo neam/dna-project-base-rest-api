@@ -50,10 +50,22 @@ class ItemTranslator extends CApplicationComponent
     protected function translateSirTrevorBlock(TranslatableResource $parent, array $block)
     {
         // If this block has a node reference, then we need to translate it as a separate node.
-        if (isset($block['data']['node_id'])) {
+        if (isset($block['data']['node_id'], $block['data']['attributes']) && is_array($block['data']['attributes'])) {
             // todo:
             // 1. load model and check it implements TranslatableResource
             // 2. call $this->translate($model, $block['data']['attributes']);
+            $node = Node::model()->findByPk((int)$block['data']['node_id']);
+            if ($node !== null) {
+                try {
+                    $item = $node->item();
+                } catch (NodeItemExistsButIsRestricted $e) {
+                    return;
+                }
+                $model = RestApiModelFactory::getTranslatableModel($item);
+                if ($model !== null) {
+                    $this->translate($model, $block['data']['attributes']);
+                }
+            }
         } else {
             $model = SirTrevorModelFactory::createBlockModel($block);
             if ($model !== null) {

@@ -105,9 +105,8 @@ class SirTrevorBehavior extends CActiveRecordBehavior
                 if ($model->validate()) {
                     foreach ($model->getTranslatableAttributes() as $attr) {
                         if (isset($model->{$attr}, $block['data'][$attr])) {
-                            // todo: which source component for Yii::t()
                             // todo: how to handle urls
-                            $block['data'][$attr] = \Yii::t($model->getTranslationCategory($attr), $block['data'][$attr]);
+                            $block['data'][$attr] = \Yii::t($model->getTranslationCategory($attr), $block['data'][$attr], array(), 'displayedMessages');
                         }
                     }
 

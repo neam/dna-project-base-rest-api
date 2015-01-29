@@ -2,7 +2,7 @@
 
 /**
  * Translation resource controller.
- * This is a wrapper for all item translation resources, e.g. video files etc.
+ * This is a wrapper for all item translation resources, e.g. pages, go items, video files etc.
  */
 class BaseTranslationController extends AppRestController
 {
@@ -68,6 +68,8 @@ class BaseTranslationController extends AppRestController
         /** @var TranslatableResource $model */
         $model = $this->loadModel($nodeId);
         $params = Yii::app()->getRequest()->parseJsonParams();
+        // Hack for converting stdClass to Array as the Wrest extension does not allow us to get the params as Array.
+        $params = json_decode(json_encode($params), true);
         if (empty($params) || empty($params['translations'])) {
             throw new CHttpException(400, Yii::t('rest-api', 'Invalid input data.'));
         }
