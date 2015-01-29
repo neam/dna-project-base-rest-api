@@ -47,7 +47,7 @@ class BaseTranslationController extends AppRestController
     {
         /** @var TranslatableResource $model */
         $model = $this->loadModel($nodeId);
-        $this->sendResponse(200, $model->getTranslationAttributes()); // todo: change getter to getTranslatedAttributes or similar
+        $this->sendResponse(200, $model->getTranslatedAttributes());
     }
 
     /**
@@ -55,6 +55,7 @@ class BaseTranslationController extends AppRestController
      * Responds to path 'api/<version>/item/translation/{nodeId}'.
      *
      * @param int $nodeId the item node ID.
+     * @throws CException
      * @throws CHttpException
      */
     public function actionUpdate($nodeId)
@@ -62,31 +63,31 @@ class BaseTranslationController extends AppRestController
 
         // todo:
         // 1. make sure user has access to translate this
-        // 2. determine which node we wan't to translate and load it
+        // 2. determine which node we want to translate and load it
         // 3. load the json payload
         // 4. translate
         // 5. return translated resource
 
         /** @var TranslatableResource $model */
-        $model = $this->loadModel($nodeId); // todo: the same load logic as in the ItemController
+        $model = $this->loadModel($nodeId);
         $params = Yii::app()->getRequest()->parseJsonParams();
-        if (empty($params)) {
+        if (empty($params) || empty($params['translations'])) {
             throw new CHttpException(400, Yii::t('rest-api', 'Invalid input data.'));
         }
         $trx = Yii::app()->getDb()->beginTransaction();
         try {
             /** @var ItemTranslator $translator */
             $translator = Yii::app()->getComponent('itemTranslator');
-            $translator->translate($model, $params);
+            $translator->translate($model, $params['translations']);
             if (!$model->save()) {
                 throw new CHttpException(400, Yii::t('rest-api', 'Unable to save translations.'));
             }
-            $trc->commit();
+            $trx->commit();
         } catch (CException $e) {
             $trx->rollback();
             throw $e;
         }
-        $this->sendResponse(200, $model->getTranslationAttributes());
+        $this->sendResponse(200, $model->getTranslatedAttributes());
 
 
 //        $model = $this->loadResource($itemType, $itemId);

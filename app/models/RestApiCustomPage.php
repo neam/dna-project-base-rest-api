@@ -24,6 +24,7 @@
  *
  * Methods made available through the SirTrevorBehavior class:
  * @method array populateSirTrevorBlocks()
+ * @method array localizeSirTrevorBlocks()
  */
 class RestApiCustomPage extends Page implements TranslatableResource
 {
@@ -168,6 +169,88 @@ class RestApiCustomPage extends Page implements TranslatableResource
             'caption',
             'composition',
         );
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getTranslatedAttributes()
+    {
+
+//        {
+//            "node_id": 1,
+//            "item_type": "go_item",
+//            "attributes": {
+//            "slug": "this-is-the-item-slug",
+//                "heading": "this is the item heading",
+//                "subheading": "this is the item sub-heading",
+//                "about": "this is the item about text",
+//                "composition": {
+//                "data": [
+//                        {
+//                            "type": "text",
+//                            "data": {
+//                            "text": "this is a normal text string",
+//                            },
+//                            "id": "0d03dffb44a86823b223fabecb554013"
+//                        }
+//                    ]
+//                }
+//            },
+//            "translations": {
+//            "slug": "esto-es-escondidas-item",
+//                "heading": "Este es el punto partida",
+//                "subheading": "Este es el punto sub-encabezamiento",
+//                "about": "Este es el tema sobre el texto",
+//                "composition": {
+//                "data": [
+//                        {
+//                            "type": "text",
+//                            "data": {
+//                            "text": "Esta es una cadena de texto normal",
+//                            },
+//                            "id": "0d03dffb44a86823b223fabecb554013"
+//                        }
+//                    ]
+//                }
+//            }
+//        }
+
+
+        // We need the "untranslated" attributes for this resource, so we fool it by resetting the app language that
+        // is used to localize the strings, and once we have the data we set the language back to the target language.
+        // todo: what about translatable strings, like the video file subtitles, which are not included in the block data by default? Pass options array to populateSirTrevorBlocks method?
+        $targetLanguage = Yii::app()->language;
+        Yii::app()->language = Yii::app()->sourceLanguage;
+        $untranslatedAttributes = array(
+            'heading' => $this->heading,
+            'subheading' => $this->subheading,
+            'about' => $this->about,
+            'caption' => $this->caption,
+            'composition' => $this->populateSirTrevorBlocks($this->composition),
+        );
+        Yii::app()->language = $targetLanguage;
+
+        return array(
+            'node_id' => (int)$this->node_id,
+            'item_type' => 'custom_page',
+            'attributes' => $untranslatedAttributes,
+            'translations' => array(
+                'heading' => $this->heading,
+                'subheading' => $this->subheading,
+                'about' => $this->about,
+                'caption' => $this->caption,
+                'composition' => $this->localizeSirTrevorBlocks($this->populateSirTrevorBlocks($this->composition)),
+            ),
+        );
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getNodeId()
+    {
+        return (int)$this->node_id;
     }
 
     /**

@@ -34,13 +34,13 @@ $mainConfig = array(
         'vendor.weavora.wrest.actions.*',
         'vendor.weavora.wrest.behaviors.*',
     ),
-    // put rest-api-specific p3media presets here
     'modules' => array(
-        'p3media' => array(
-            'params' => array(
-                'presets' => array()
-            ),
-        ),
+        // put rest-api-specific p3media presets here
+//        'p3media' => array(
+//            'params' => array(
+//                'presets' => array()
+//            ),
+//        ),
         'v1' => array(
             // API version 1 specific configuration goes in here
         ),
@@ -139,6 +139,11 @@ include($applicationDirectory . '/../vendor/neam/yii-dna-debug-modes-and-error-h
 $config['components']['errorHandler'] = array(
     'class' => 'YiiDnaRestErrorHandler',
 );
+
+// Unset useless configs from dna.
+unset($config['components']['workflowUi']);
+unset($config['components']['langHandler']);
+unset($config['components']['authManager']);
 
 // Uncomment to easily see the active merged configuration
 //echo "<pre>";print_r($config);echo "</pre>";die();

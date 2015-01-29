@@ -21,7 +21,7 @@
  * Methods made available through the RelatedBehavior class:
  * @method array getRelatedItems()
  */
-class RestApiVideoFile extends VideoFile implements SirTrevorBlock
+class RestApiVideoFile extends VideoFile implements SirTrevorBlockNode
 {
     /**
      * @inheritdoc

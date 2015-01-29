@@ -23,6 +23,8 @@ abstract class RestApiSirTrevorBlock extends CModel
      * - text
      * - heading
      * - quote
+     * - list
+     * - linked_image
      * - todo: add more
      */
     public $type;
@@ -36,7 +38,7 @@ abstract class RestApiSirTrevorBlock extends CModel
             array('contextId, id, type', 'required'),
             array('contextId', 'numerical', 'integerOnly' => true),
             array('id', 'length', 'is' => 32),
-            array('type', 'in', 'range' => array('text', 'heading', 'quote')), // todo: add more
+            array('type', 'in', 'range' => array('text', 'heading', 'quote', 'list', 'linked_image')), // todo: add more
         );
     }
 
@@ -46,6 +48,7 @@ abstract class RestApiSirTrevorBlock extends CModel
     public function attributeNames()
     {
         return array(
+            'contextId',
             'id',
             'type',
         );
@@ -60,6 +63,48 @@ abstract class RestApiSirTrevorBlock extends CModel
     public function getTranslationCategory($attr)
     {
         return "{$this->contextId}-composition-block-{$this->type}-{$attr}-{$this->id}";
+    }
+
+    /**
+     * Translates the Sir Trevor block.
+     *
+     * @param array $block the translated Sir Trevor block data.
+     * @throws CException if the block cannot be translated.
+     */
+    public function translate(array $block)
+    {
+        if (!isset($block['data']) || !is_array($block['data'])) {
+            throw new \CException('Invalid block data. Missing or invalid `data` property.');
+        }
+        $this->setAttributes($block['data']);
+        if (!$this->validate()) {
+            throw new \CException('Invalid block data. Errors: ' . print_r($this->errors, true));
+        }
+        foreach ($this->getTranslatableAttributes() as $attr) {
+            if (!isset($this->{$attr})) {
+                continue;
+            }
+            $sourceMessage = ''; // todo: get the source message string by loading the item from db (remember the block id)
+            $sourceLanguage = Yii::app()->sourceLanguage;
+            $source = \SourceMessage::ensureSourceMessage(
+                $this->getTranslationCategory($attr),
+                $sourceMessage,
+                $sourceLanguage
+            );
+            $message = \Message::model()->findByAttributes(array(
+                'id' => $source->id,
+                'language' => Yii::app()->language,
+            ));
+            if ($message === null) {
+                $message = new Message();
+                $message->id = $source->id;
+                $message->language = Yii::app()->language;
+            }
+            $message->translation = $this->{$attr};
+            if (!$message->save()) {
+                throw new \CException('Failed to save block translation. Errors: ' . print_r($message->errors, true));
+            }
+        }
     }
 
     /**

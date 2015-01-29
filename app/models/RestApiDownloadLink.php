@@ -14,7 +14,7 @@
  * @method array getCreateAttributes
  * @method array getUpdateAttributes
  */
-class RestApiDownloadLink extends DownloadLink implements SirTrevorBlock
+class RestApiDownloadLink extends DownloadLink implements SirTrevorBlockNode
 {
     /**
      * @inheritdoc

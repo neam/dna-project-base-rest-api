@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Interface for resource nodes represented in a sir trevor block.
+ * Interface for resource nodes represented in a Sir Trevor block.
  * A block is an object inside the main data section of a sir trevor data structure.
  *
  * Example of a "video_file" block:
@@ -18,7 +18,7 @@
  *   ]
  * }
  */
-interface SirTrevorBlock
+interface SirTrevorBlockNode
 {
     /**
      * Returns the "item_type" to be shown for the resource in the composition.

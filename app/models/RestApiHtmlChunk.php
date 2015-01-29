@@ -14,7 +14,7 @@
  * @method array getCreateAttributes
  * @method array getUpdateAttributes
  */
-class RestApiHtmlChunk extends HtmlChunk implements SirTrevorBlock
+class RestApiHtmlChunk extends HtmlChunk implements SirTrevorBlockNode
 {
     /**
      * @inheritdoc

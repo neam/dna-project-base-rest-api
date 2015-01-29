@@ -24,10 +24,16 @@
 class ContentNegotiator extends CFilter
 {
     /**
-     * @var string the name of the GET parameter that specifies the application langauge.
-     * If this property is empty or not set, the language will be determined based on the `Accept-Language` header.
+     * @var string the name of the GET parameter that specifies the application language.
+     * If this property is empty or not set, the language will be determined based on the `Accept-Language` header, if
+     * `$readAcceptLanguage` is set to true, otherwise the language is set based on application default.
      */
     public $languageParam = '_lang';
+
+    /**
+     * @var bool if the http `Accept-Language` header should be used to determine the preferred language.
+     */
+    public $readHeaderAcceptLanguage = false;
 
     /**
      * @var array a list of supported languages as recognized by the application (e.g. `en`, `en_us`, `sv`).
@@ -68,9 +74,11 @@ class ContentNegotiator extends CFilter
             }
         }
         // Then try the `Accept-Language` header.
-        foreach (Yii::app()->getRequest()->getPreferredLanguages() as $preferredLanguage) {
-            if (($language = $this->getSupportedLanguage($preferredLanguage)) !== false) {
-                return $language;
+        if ($this->readHeaderAcceptLanguage) {
+            foreach (Yii::app()->getRequest()->getPreferredLanguages() as $preferredLanguage) {
+                if (($language = $this->getSupportedLanguage($preferredLanguage)) !== false) {
+                    return $language;
+                }
             }
         }
         // Fall back on the already defined application language.
@@ -85,8 +93,7 @@ class ContentNegotiator extends CFilter
      */
     protected function getSupportedLanguage($preferredLanguage)
     {
-        // Convert format `en-US` to `en_us` as application languages are defined like that.
-        $preferredLanguage = str_replace('-', '_', strtolower($preferredLanguage));
+        $preferredLanguage = \CLocale::getCanonicalID($preferredLanguage);
         return in_array($preferredLanguage, $this->languages) ? $preferredLanguage : false;
     }
 }
