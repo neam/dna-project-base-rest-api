@@ -22,27 +22,6 @@
 class SirTrevorBehavior extends CActiveRecordBehavior
 {
     /**
-     * @var array map of node resource models indexed on item types (models must implement SirTrevorBlockNode interface).
-     */
-    protected static $sirTrevorItemMap = array(
-        'video_file' => 'RestApiVideoFile',
-        'html_chunk' => 'RestApiHtmlChunk',
-        'download_link' => 'RestApiDownloadLink',
-        'item_list_config' => 'RestApiItemList',
-    );
-
-    /**
-     * @var array map of sir trevor block models indexed on block type (must extend the RestApiSirTrevorBlock base class).
-     */
-    protected static $sirTrevorBlockMap = array(
-        'text' => 'RestApiSirTrevorBlockText',
-        'heading' => 'RestApiSirTrevorBlockHeading',
-        'quote' => 'RestApiSirTrevorBlockQuote',
-        'list' => 'RestApiSirTrevorBlockList',
-        'linked_image' => 'RestApiSirTrevorBlockLinkedImage',
-    );
-
-    /**
      * Populates Sir Trevor blocks with data from the nodes they represent.
      * The blocks are identified by their `node_id`.
      *
@@ -94,10 +73,10 @@ class SirTrevorBehavior extends CActiveRecordBehavior
             // todo: can we hash all blocks data just like that??
             $block['id'] = md5(serialize($block['data']));
             $recAttr = $block['type'];
-            $item = $this->loadSirTrevorBlockNodeItem($block);
-            if ($item !== null) {
-                $block['type'] = $block['data']['item_type'] = $item->getCompositionItemType();
-                $block['data']['attributes'] = $item->getCompositionAttributes();
+            $node = SirTrevorModelFactory::getReferredBlockNode($block);
+            if ($node !== null) {
+                $block['type'] = $block['data']['item_type'] = $node->getCompositionItemType();
+                $block['data']['attributes'] = $node->getCompositionAttributes();
             }
             if (isset($block['data'][$recAttr]) && is_array($block['data'][$recAttr])) {
                 foreach ($block['data'][$recAttr] as &$child) {
@@ -119,9 +98,10 @@ class SirTrevorBehavior extends CActiveRecordBehavior
             return;
         }
         if (is_array($block) && isset($block['data'], $block['type'])) {
-            $model = $this->loadSirTrevorBlockModel($block);
+            $model = SirTrevorModelFactory::createBlockModel($block);
             if ($model !== null) {
                 $model->setAttributes((array)$block['data']);
+                $model->contextId = $this->getOwner()->getNodeId();
                 if ($model->validate()) {
                     foreach ($model->getTranslatableAttributes() as $attr) {
                         if (isset($model->{$attr}, $block['data'][$attr])) {
@@ -135,58 +115,5 @@ class SirTrevorBehavior extends CActiveRecordBehavior
                 }
             }
         }
-    }
-
-    /**
-     * Loads the sir trevor blocks node resource.
-     * Method requires the block array to have a keys `['data']['item_type']` and `['data']['node_id']`.
-     *
-     * @param array $block the block to load the node resource for.
-     * @return SirTrevorBlockNode the mode resource or null if not found.
-     */
-    protected function loadSirTrevorBlockNodeItem($block)
-    {
-        if (!isset($block['data'], $block['data']['item_type'], $block['data']['node_id'])) {
-            return null;
-        }
-        if (!isset(self::$sirTrevorItemMap[$block['data']['item_type']])) {
-            return null;
-        }
-        $node = \Node::model()->findByPk((int)$block['data']['node_id']);
-        if ($node === null) {
-            return null;
-        }
-        try {
-            $item = $node->item();
-        } catch (\NodeItemExistsButIsRestricted $e) {
-            return null;
-        }
-        if ($item === null) {
-            return null;
-        }
-        return \CActiveRecord::model(self::$sirTrevorItemMap[$block['data']['item_type']])->findByPk($item->id);
-    }
-
-    /**
-     * Loads a `RestApiSirTrevorBlock` model based on passed data.
-     * Method requires the block array to have keys `['type']` and `['id']`.
-     *
-     * @param array $block the block data to load the model for.
-     * @return RestApiSirTrevorBlock|null the block model or null if not found.
-     */
-    protected function loadSirTrevorBlockModel($block)
-    {
-        if (!isset($block['type'], $block['id'])) {
-            return null;
-        }
-        if (!isset(self::$sirTrevorBlockMap[$block['type']])) {
-            return null;
-        }
-        $className = self::$sirTrevorBlockMap[$block['type']];
-        $model = new $className();
-        $model->contextId = $this->getOwner()->getNodeId();
-        $model->id = $block['id'];
-        $model->type = $block['type'];
-        return $model;
     }
 }

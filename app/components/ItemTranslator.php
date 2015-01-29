@@ -6,16 +6,6 @@
 class ItemTranslator extends CApplicationComponent
 {
     /**
-     * @var array map of sir trevor block models indexed on block type (must extend the RestApiSirTrevorBlock class).
-     * These models exist only for non-node blocks. Node blocks are translated separately through the
-     * `I18nAttributeMessagesBehavior` behavior.
-     */
-    protected static $modelMap = array(
-        'text' => 'RestApiSirTrevorBlockText',
-        'heading' => 'RestApiSirTrevorBlockHeading',
-    );
-
-    /**
      * Translates a translatable node resource.
      * Translation is done for both regular node attributes as well as for Sir Trevor compositions.
      * Regular node attributes are saved through the `I18nAttributeMessagesBehavior` behavior, while the Sir Trevor
@@ -65,35 +55,11 @@ class ItemTranslator extends CApplicationComponent
             // 1. load model and check it implements TranslatableResource
             // 2. call $this->translate($model, $block['data']['attributes']);
         } else {
-            $model = $this->loadSirTrevorBlockModel($parent, $block);
+            $model = SirTrevorModelFactory::createBlockModel($block);
             if ($model !== null) {
+                $model->contextId = $parent->getNodeId();
                 $model->translate($block);
             }
         }
-    }
-
-    /**
-     * Loads a `RestApiSirTrevorBlock` model based on passed data.
-     * Note that block models are only defined for non-node item blocks.
-     *
-     * @param TranslatableResource $parent the node resource model where the block is defined.
-     * @param array $block the block data.
-     * @return RestApiSirTrevorBlock|null the block model or null if we do not support translation of the block type.
-     * @throws CException if the passed data is insufficient to create a block model of.
-     */
-    protected function loadSirTrevorBlockModel(TranslatableResource $parent, array $block)
-    {
-        if (!isset($block['type'], $block['id'])) {
-            throw new CException('Invalid sir trevor block data passed to translator. Block `type` or `id` missing.');
-        }
-        if (!isset(self::$modelMap[$block['type']])) {
-            return null;
-        }
-        $className = self::$modelMap[$block['type']];
-        $model = new $className();
-        $model->contextId = $parent->getNodeId();
-        $model->id = $block['id'];
-        $model->type = $block['type'];
-        return $model;
     }
 }
