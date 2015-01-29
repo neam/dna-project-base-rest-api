@@ -216,4 +216,49 @@ class AppRestController extends WRestController
         return $c;
     }
 
+    /**
+     * @param int|string $nodeId
+     * @return Node
+     * @throws CHttpException
+     */
+    protected function loadNodeByIdOrRoute($nodeId)
+    {
+        $node = null;
+        if (ctype_digit($nodeId)) {
+            $node = Node::model()->findByPk($nodeId);
+        } else {
+            /** @var Route $route */
+            $route = Route::model()->with('node')->findByAttributes(array('route' => $nodeId));
+            if ($route !== null) {
+                $node = $route->node;
+                // Set the application language to the route language.
+                // This way we know which language the item and it's relations should be returned in.
+                if (!empty($route->translation_route_language) && Yii::app()->language !== $route->translation_route_language) {
+                    Yii::app()->language = $route->translation_route_language;
+                }
+            }
+        }
+        if ($node === null) {
+            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find node %s.'), $nodeId));
+        }
+        return $node;
+    }
+
+    /**
+     * @param Node $node
+     * @return ActiveRecord
+     * @throws CHttpException
+     */
+    protected function loadItemByNode(Node $node)
+    {
+        try {
+            $item = $node->item();
+        } catch (NodeItemExistsButIsRestricted $e) {
+            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Node item %s exists but is restricted.'), $node->id));
+        }
+        if ($item === null) {
+            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find item for node %s.'), $node->id));
+        }
+        return $item;
+    }
 }

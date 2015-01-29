@@ -19,13 +19,6 @@
 class RelatedBehavior extends CActiveRecordBehavior
 {
     /**
-     * @var array map of rest resource models per related active record class name (models must implement RelatedResource interface).
-     */
-    protected static $relatedResourceMap = array(
-        'Composition' => 'RestApiComposition',
-    );
-
-    /**
      * Returns any related items for the owner node.
      *
      * @return array
@@ -56,10 +49,6 @@ class RelatedBehavior extends CActiveRecordBehavior
         } catch (NodeItemExistsButIsRestricted $e) {
             return null;
         }
-        $itemClassName = get_class($item);
-        if (!isset(self::$relatedResourceMap[$itemClassName])) {
-            return null;
-        }
-        return CActiveRecord::model(self::$relatedResourceMap[$itemClassName])->findByPk($item->id);
+        return RestApiModelFactory::getRelatedModel($item);
     }
 }
