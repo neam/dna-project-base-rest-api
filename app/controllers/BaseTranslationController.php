@@ -84,7 +84,11 @@ class BaseTranslationController extends AppRestController
     }
 
     /**
-     * @inheritdoc
+     * Loads a Rest API model based on node id or model route.
+     *
+     * @param int|string $id either node id or model route, e.g. 1234, "/1234", "/terms".
+     * @return WRestModelBehavior the Rest API model.
+     * @throws CHttpException
      */
     public function loadModel($id)
     {

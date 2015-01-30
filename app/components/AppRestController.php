@@ -228,7 +228,7 @@ class AppRestController extends WRestController
             $node = Node::model()->findByPk($nodeId);
         } else {
             /** @var Route $route */
-            $route = Route::model()->with('node')->findByAttributes(array('route' => $nodeId));
+            $route = Route::model()->with('node')->findByAttributes(array('route' => strtolower((string)$nodeId)));
             if ($route !== null) {
                 $node = $route->node;
                 // Set the application language to the route language.
