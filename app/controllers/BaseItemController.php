@@ -68,7 +68,7 @@ class BaseItemController extends AppRestController
             $node = Node::model()->findByPk($id);
         } else {
             /** @var Route $route */
-            $route = Route::model()->with('node')->findByAttributes(array('route' => $id));
+            $route = Route::model()->with('node')->findByAttributes(array('route' => strtolower((string)$id)));
             if ($route !== null) {
                 $node = $route->node;
                 // Set the application language to the route language.
