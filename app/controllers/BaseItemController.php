@@ -55,8 +55,10 @@ class BaseItemController extends AppRestController
     }
 
     /**
-     * @param $id either a node id "1234" or a route "/1234", "/terms" etc
-     * @return array|CActiveRecord|mixed|null|static
+     * Loads a Rest API model based on node id or model route.
+     *
+     * @param int|string $id either node id or model route, e.g. 1234, "/1234", "/terms".
+     * @return WRestModelBehavior the Rest API model.
      * @throws CHttpException
      */
     public function loadModel($id)
