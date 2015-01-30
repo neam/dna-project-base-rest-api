@@ -14,21 +14,6 @@ abstract class CompositionItemTranslator extends ItemTranslator
      */
     protected function translateSirTrevorBlock(TranslatableResource $parent, array $block)
     {
-//        // If this block has a node reference, then we translate it via the `I18nAttributeMessagesBehavior` behavior.
-//        if (isset($block['data']['node_id'], $block['data']['attributes']) && is_array($block['data']['attributes'])) {
-//            $node = Node::model()->findByPk((int)$block['data']['node_id']);
-//            if ($node !== null) {
-//                try {
-//                    $item = $node->item();
-//                } catch (NodeItemExistsButIsRestricted $e) {
-//                    return;
-//                }
-//                $model = RestApiModel::getTranslatableModel($item);
-//                if ($model !== null) {
-//                    $this->translate($model, $block['data']['attributes']);
-//                }
-//            }
-//        }
         /** @var SirTrevorBehavior $parent */
         if ($parent->asa('sir-trevor-behavior') === null) {
             throw new \CException('Invalid parent node. Must implement `SirTrevorBehavior` keyed by `sir-trevor-behavior` in behaviors list.');

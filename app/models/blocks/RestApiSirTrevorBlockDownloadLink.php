@@ -1,6 +1,6 @@
 <?php
 
-class RestApiSirTrevorBlockDownloadLink extends RestApiSirTrevorBlock
+class RestApiSirTrevorBlockDownloadLink extends RestApiSirTrevorBlockNode
 {
     /**
      * @var string the displayable title for the block.

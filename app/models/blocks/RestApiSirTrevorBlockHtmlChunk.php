@@ -1,6 +1,6 @@
 <?php
 
-class RestApiSirTrevorBlockHtmlChunk extends RestApiSirTrevorBlock
+class RestApiSirTrevorBlockHtmlChunk extends RestApiSirTrevorBlockNode
 {
     /**
      * @var string the displayable markup for the block.
