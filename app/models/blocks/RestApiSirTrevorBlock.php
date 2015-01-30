@@ -69,35 +69,45 @@ abstract class RestApiSirTrevorBlock extends CModel
      * Translates the Sir Trevor block.
      *
      * @param array $block the translated Sir Trevor block data.
+     * @param TranslatableResource $parent the parent node where this block is located.
      * @throws CException if the block cannot be translated.
      */
-    public function translate(array $block)
+    public function translate(array $block, TranslatableResource $parent)
     {
+        /** @var SirTrevorBehavior $parent */
+        if ($parent->asa('sir-trevor-behavior') === null) {
+            throw new \CException('Invalid parent node. Must implement `SirTrevorBehavior` keyed by `sir-trevor-behavior` in behaviors list.');
+        }
         if (!isset($block['data']) || !is_array($block['data'])) {
             throw new \CException('Invalid block data. Missing or invalid `data` property.');
         }
+
         $this->setAttributes($block['data']);
         if (!$this->validate()) {
             throw new \CException('Invalid block data. Errors: ' . print_r($this->errors, true));
         }
+
+        // We need the "untranslated" block for parent, so we fool it by resetting the app language that
+        // is used to localize the strings, and once we have the data we set the language back to the target language.
+        $targetLanguage = Yii::app()->language;
+        Yii::app()->language = Yii::app()->sourceLanguage;
+        $sourceBlock = $parent->getSirTrevorBlockById($this->id);
+        Yii::app()->language = $targetLanguage;
+
         foreach ($this->getTranslatableAttributes() as $attr) {
-            if (!isset($this->{$attr})) {
+            if (!isset($this->{$attr}, $sourceBlock['data'][$attr])) {
                 continue;
             }
-            $sourceMessage = ''; // todo: get the source message string by loading the item from db (remember the block id)
-            $sourceLanguage = Yii::app()->sourceLanguage;
-            $source = \SourceMessage::ensureSourceMessage(
+            $sourceMessage = \SourceMessage::ensureSourceMessage(
                 $this->getTranslationCategory($attr),
-                $sourceMessage,
-                $sourceLanguage
+                $sourceBlock['data'][$attr],
+                Yii::app()->sourceLanguage
             );
-            $message = \Message::model()->findByAttributes(array(
-                'id' => $source->id,
-                'language' => Yii::app()->language,
-            ));
+            $message = \Message::model()
+                ->findByAttributes(array('id' => $sourceMessage->id, 'language' => Yii::app()->language));
             if ($message === null) {
                 $message = new Message();
-                $message->id = $source->id;
+                $message->id = $sourceMessage->id;
                 $message->language = Yii::app()->language;
             }
             $message->translation = $this->{$attr};

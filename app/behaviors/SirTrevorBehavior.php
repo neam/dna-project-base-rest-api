@@ -23,40 +23,49 @@ class SirTrevorBehavior extends CActiveRecordBehavior
 {
     /**
      * Populates Sir Trevor blocks with data from the nodes they represent.
+     * Also localizes the blocks if the app language is different from the source language. So in order to get the
+     * original translations, you need to reset the app language before calling this method.
      * The blocks are identified by their `node_id`.
      *
-     * @param string $blocks the sir trevor block json string.
+     * @param string $composition the sir trevor block json string.
      * @return array|null the sir trevor block structure or null.
      */
-    public function populateSirTrevorBlocks($blocks)
+    public function populateSirTrevorBlocks($composition)
     {
-        $blocks = json_decode($blocks, true);
+        $blocks = json_decode($composition, true);
         if (is_array($blocks) && isset($blocks['data']) && is_array($blocks['data'])) {
             foreach ($blocks['data'] as &$block) {
                 $this->recPopulateSirTrevorBlock($block);
+                $this->recLocalizeSirTrevorBlock($block);
             }
         }
         return $blocks;
     }
 
     /**
-     * Localizes a Sir Trevor blocks structure.
-     * The blocks are identified by their `id` that is set during block structure populate.
+     * Returns a Sir Trevor block structure based on it's `id`, i.e. the md5 hash of it's data.
+     * Note that you will need to reset the app language before calling this method, so that the id hash is created
+     * based on the original text strings and not the translated ones.
      *
-     * @see SirTrevorBehavior::populateSirTrevorBlocks
-     * @param array $blocks the sir trevor block data structure.
-     * @return array the localized structure.
+     * @param string $blockId the md5 hash of the block data.
+     * @return array|bool the block structure or false if not found.
+     * @throws CException if the owner model does not have the `composition` field containing the Sir Trevor blocks.
      */
-    public function localizeSirTrevorBlocks($blocks)
+    public function getSirTrevorBlockById($blockId)
     {
-        // todo: is this method needed, or should we always localize when we populate the blocks?
-
-        if (is_array($blocks) && isset($blocks['data']) && is_array($blocks['data'])) {
-            foreach ($blocks['data'] as &$block) {
-                $this->recLocalizeSirTrevorBlock($block);
+        $owner = $this->getOwner();
+        if (!isset($owner->composition)) {
+            throw new \CException('Owner model does not have the `composition` field.');
+        }
+        $blocks = $this->populateSirTrevorBlocks($owner->composition);
+        if (!empty($blocks) && isset($blocks['data']) && is_array($blocks['data'])) {
+            foreach ($blocks['data'] as $block) {
+                if (!empty($block['id']) && $block['id'] === $blockId) {
+                    return $block;
+                }
             }
         }
-        return $blocks;
+        return false;
     }
 
     /**
@@ -106,7 +115,12 @@ class SirTrevorBehavior extends CActiveRecordBehavior
                     foreach ($model->getTranslatableAttributes() as $attr) {
                         if (isset($model->{$attr}, $block['data'][$attr])) {
                             // todo: how to handle urls
-                            $block['data'][$attr] = \Yii::t($model->getTranslationCategory($attr), $block['data'][$attr], array(), 'displayedMessages');
+                            $block['data'][$attr] = \Yii::t(
+                                $model->getTranslationCategory($attr),
+                                $block['data'][$attr],
+                                array(),
+                                'displayedMessages'
+                            );
                         }
                     }
 

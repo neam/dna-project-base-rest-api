@@ -70,7 +70,7 @@ class ItemTranslator extends CApplicationComponent
             $model = SirTrevorModelFactory::createBlockModel($block);
             if ($model !== null) {
                 $model->contextId = $parent->getNodeId();
-                $model->translate($block);
+                $model->translate($block, $parent);
             }
         }
     }
