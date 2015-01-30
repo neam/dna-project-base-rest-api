@@ -40,7 +40,8 @@ class SirTrevorBehavior extends CActiveRecordBehavior
      */
     public function populateSirTrevorBlocks($blocks)
     {
-        $blocks = json_decode($blocks);
+        // hack for fixing sir trevor urls where every "-" is a "\\-". (https://github.com/madebymany/sir-trevor-js/issues/248)
+        $blocks = json_decode(str_replace('\\\-', '-', $blocks));
         if (is_object($blocks) && isset($blocks->data) && is_array($blocks->data)) {
             foreach ($blocks->data as &$block) {
                 $this->recPopulateSirTrevorBlock($block);
