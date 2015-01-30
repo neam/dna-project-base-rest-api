@@ -1,5 +1,17 @@
 <?php
 
+/**
+ * Slide show file item resource.
+ *
+ * Properties made available through the I18nAttributeMessagesBehavior class:
+ * @property string $title
+ * @property string $about
+ *
+ * Methods made available through the WRestModelBehavior class:
+ * @method array getAllAttributes
+ * @method array getCreateAttributes
+ * @method array getUpdateAttributes
+ */
 class RestApiSlideshowFile extends SlideshowFile implements SirTrevorBlock
 {
     /**
@@ -23,6 +35,14 @@ class RestApiSlideshowFile extends SlideshowFile implements SirTrevorBlock
                 ),
                 'RestrictedAccessBehavior' => array(
                     'class' => '\RestrictedAccessBehavior',
+                ),
+                'i18n-attribute-messages' => array(
+                    'class' => 'I18nAttributeMessagesBehavior',
+                    'translationAttributes' => array('title', 'about'),
+                    'languageSuffixes' => LanguageHelper::getCodes(),
+                    'behaviorKey' => 'i18n-attribute-messages',
+                    'displayedMessageSourceComponent' => 'displayedMessages',
+                    'editedMessageSourceComponent' => 'editedMessages',
                 ),
             )
         );
