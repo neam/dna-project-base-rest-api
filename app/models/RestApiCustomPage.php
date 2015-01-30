@@ -160,7 +160,7 @@ class RestApiCustomPage extends Page implements TranslatableResource
     /**
      * @inheritdoc
      */
-    public function getTranslatableAttributes()
+    public function getTranslationAttributes()
     {
         return array(
             'heading',
