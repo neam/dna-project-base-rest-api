@@ -29,6 +29,7 @@ class SirTrevorBehavior extends CActiveRecordBehavior
         'html_chunk' => 'RestApiHtmlChunk',
         'download_link' => 'RestApiDownloadLink',
         'item_list_config' => 'RestApiItemList',
+        'slideshow_file' => 'RestApiSlideshowFile',
     );
 
     /**
