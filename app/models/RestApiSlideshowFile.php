@@ -24,9 +24,6 @@ class RestApiSlideshowFile extends SlideshowFile implements SirTrevorBlock
                 'RestrictedAccessBehavior' => array(
                     'class' => '\RestrictedAccessBehavior',
                 ),
-                'sir-trevor-behavior' => array(
-                    'class' => 'SirTrevorBehavior',
-                ),
             )
         );
     }
