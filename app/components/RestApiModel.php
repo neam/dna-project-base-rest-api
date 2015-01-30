@@ -3,7 +3,7 @@
 /**
  * Helper factory for loading different types of Rest API models.
  */
-class RestApiModelFactory
+class RestApiModel
 {
     /**
      * @var array map of models that act as `item` model, i.e. most models utilized by the API app.
@@ -37,7 +37,7 @@ class RestApiModelFactory
      * @param ActiveRecord $item the AR to load the Rest API model by.
      * @return WRestModelBehavior|null the model or null if not found.
      */
-    public static function getItemModel(ActiveRecord $item)
+    public static function loadItem(ActiveRecord $item)
     {
         return self::loadFromClassMap($item, self::$itemModels);
     }
@@ -49,7 +49,7 @@ class RestApiModelFactory
      * @param ActiveRecord $item the AR to load the Rest API model by.
      * @return RelatedResource|null the model or null if not found.
      */
-    public static function getRelatedModel(ActiveRecord $item)
+    public static function loadRelated(ActiveRecord $item)
     {
         return self::loadFromClassMap($item, self::$relatedModels);
     }
@@ -61,7 +61,7 @@ class RestApiModelFactory
      * @param ActiveRecord $item the AR to load the Rest API model by.
      * @return TranslatableResource|null the model or null if not found.
      */
-    public static function getTranslatableModel(ActiveRecord $item)
+    public static function loadTranslatable(ActiveRecord $item)
     {
         return self::loadFromClassMap($item, self::$translatableModels);
     }

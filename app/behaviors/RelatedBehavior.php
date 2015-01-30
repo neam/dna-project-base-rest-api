@@ -49,6 +49,6 @@ class RelatedBehavior extends CActiveRecordBehavior
         } catch (NodeItemExistsButIsRestricted $e) {
             return null;
         }
-        return RestApiModelFactory::getRelatedModel($item);
+        return RestApiModel::loadRelated($item);
     }
 }

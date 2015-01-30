@@ -8,9 +8,9 @@
 abstract class RestApiSirTrevorBlock extends CModel
 {
     /**
-     * @var int the ID of the node in which this block is a part of.
+     * @var TranslatableResource the context model that includes this block in it's composition.
      */
-    public $contextId;
+    public $context;
 
     /**
      * @var string the block id, md5 hash of the blocks data.
@@ -35,8 +35,7 @@ abstract class RestApiSirTrevorBlock extends CModel
     public function rules()
     {
         return array(
-            array('contextId, id, type', 'required'),
-            array('contextId', 'numerical', 'integerOnly' => true),
+            array('context, id, type', 'required'),
             array('id', 'length', 'is' => 32),
             array('type', 'in', 'range' => array('text', 'heading', 'quote', 'list', 'linked_image')), // todo: add more
         );
@@ -48,7 +47,7 @@ abstract class RestApiSirTrevorBlock extends CModel
     public function attributeNames()
     {
         return array(
-            'contextId',
+            'context',
             'id',
             'type',
         );
@@ -62,22 +61,17 @@ abstract class RestApiSirTrevorBlock extends CModel
      */
     public function getTranslationCategory($attr)
     {
-        return "{$this->contextId}-composition-block-{$this->type}-{$attr}-{$this->id}";
+        return "{$this->context->getNodeId()}-composition-block-{$this->type}-{$attr}-{$this->id}";
     }
 
     /**
      * Translates the Sir Trevor block.
      *
      * @param array $block the translated Sir Trevor block data.
-     * @param TranslatableResource $parent the parent node where this block is located.
      * @throws CException if the block cannot be translated.
      */
-    public function translate(array $block, TranslatableResource $parent)
+    public function translate(array $block)
     {
-        /** @var SirTrevorBehavior $parent */
-        if ($parent->asa('sir-trevor-behavior') === null) {
-            throw new \CException('Invalid parent node. Must implement `SirTrevorBehavior` keyed by `sir-trevor-behavior` in behaviors list.');
-        }
         if (!isset($block['data']) || !is_array($block['data'])) {
             throw new \CException('Invalid block data. Missing or invalid `data` property.');
         }
@@ -91,7 +85,7 @@ abstract class RestApiSirTrevorBlock extends CModel
         // is used to localize the strings, and once we have the data we set the language back to the target language.
         $targetLanguage = Yii::app()->language;
         Yii::app()->language = Yii::app()->sourceLanguage;
-        $sourceBlock = $parent->getSirTrevorBlockById($this->id);
+        $sourceBlock = $this->context->getSirTrevorBlockById($this->id);
         Yii::app()->language = $targetLanguage;
 
         foreach ($this->getTranslatableAttributes() as $attr) {

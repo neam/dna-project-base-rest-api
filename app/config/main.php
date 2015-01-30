@@ -26,6 +26,8 @@ $mainConfig = array(
     'import' => array(
         'application.behaviors.*',
         'application.components.*',
+        'application.components.factories.*',
+        'application.components.translators.*',
         'application.controllers.*',
         'application.interfaces.*',
         'application.models.*',
@@ -47,8 +49,11 @@ $mainConfig = array(
     ),
     // application components
     'components' => array(
-        'itemTranslator' => array(
-            'class' => 'ItemTranslator',
+        'itemTranslatorFactory' => array(
+            'class' => 'application.components.factories.ItemTranslatorFactory',
+        ),
+        'sirTrevorBlockFactory' => array(
+            'class' => 'application.components.factories.SirTrevorBlockFactory',
         ),
         'oauth2' => array(
             'class' => 'OAuth2Yii\Component\ServerComponent',

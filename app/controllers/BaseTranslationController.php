@@ -57,13 +57,7 @@ class BaseTranslationController extends AppRestController
      */
     public function actionUpdate($nodeId)
     {
-
-        // todo:
-        // 1. make sure user has access to translate this
-        // 2. determine which node we want to translate and load it
-        // 3. load the json payload
-        // 4. translate
-        // 5. return translated resource
+        // todo: access rights
 
         /** @var TranslatableResource $model */
         $model = $this->loadModel($nodeId);
@@ -76,7 +70,7 @@ class BaseTranslationController extends AppRestController
         $trx = Yii::app()->getDb()->beginTransaction();
         try {
             /** @var ItemTranslator $translator */
-            $translator = Yii::app()->getComponent('itemTranslator');
+            $translator = Yii::app()->getComponent('itemTranslatorFactory')->forgeTranslator($model);
             $translator->translate($model, $params['translations']);
             if (!$model->save()) {
                 throw new CHttpException(400, Yii::t('rest-api', 'Unable to save translations.'));
@@ -87,29 +81,6 @@ class BaseTranslationController extends AppRestController
             throw $e;
         }
         $this->sendResponse(200, $model->getTranslatedAttributes());
-
-
-//        $model = $this->loadResource($itemType, $itemId);
-//        $attributes = Yii::app()->getRequest()->parseJsonParams();
-//        if (empty($attributes)) {
-//            throw new CHttpException(400, Yii::t('rest-api', 'Invalid input data.'));
-//        }
-//
-//        $trx = Yii::app()->getDb()->beginTransaction();
-//        try {
-//            // todo: do we need to save the model for each section (i.e. step) with different scenario??
-//            $model->scenario = 'into_'.Yii::app()->language.'-step_info';
-//            $model->setUpdateAttributes($attributes);
-//            // todo: save fails with "CException(0): Property \"RestApiVideoFileTranslation.about_en\" is not defined. (/code/cms/yiiapps/rest-api/vendor/yiisoft/yii/framework/base/CComponent.php:130)"
-//            if (!$model->save()/* todo !$model->saveAppropriately()*/) {
-//                throw new CHttpException(400, Yii::t('rest-api', 'Unable to update translations.'));
-//            }
-//        } catch (Exception $e) {
-//            $trx->rollback();
-//            throw $e;
-//        }
-//
-//        $this->sendResponse(200, $model->getAllAttributes());
     }
 
     /**
@@ -119,7 +90,7 @@ class BaseTranslationController extends AppRestController
     {
         $node = $this->loadNodeByIdOrRoute($id);
         $item = $this->loadItemByNode($node);
-        $model = RestApiModelFactory::getTranslatableModel($item);
+        $model = RestApiModel::loadTranslatable($item);
         if ($model === null) {
             throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find resource for "%s".'), get_class($item)));
         }

@@ -22,6 +22,17 @@
 class SirTrevorBehavior extends CActiveRecordBehavior
 {
     /**
+     * @var array map of node models that can be referred to in a Sir Trevor composition structure.
+     * Must implement SirTrevorBlockNode interface.
+     */
+    protected static $sirTrevorBlockNodes = array(
+        'video_file' => 'RestApiVideoFile',
+        'html_chunk' => 'RestApiHtmlChunk',
+        'download_link' => 'RestApiDownloadLink',
+        'item_list_config' => 'RestApiItemList',
+    );
+
+    /**
      * Populates Sir Trevor blocks with data from the nodes they represent.
      * Also localizes the blocks if the app language is different from the source language. So in order to get the
      * original translations, you need to reset the app language before calling this method.
@@ -79,10 +90,9 @@ class SirTrevorBehavior extends CActiveRecordBehavior
     protected function recPopulateSirTrevorBlock(&$block)
     {
         if (is_array($block) && isset($block['data'], $block['type'])) {
-            // todo: can we hash all blocks data just like that??
             $block['id'] = md5(serialize($block['data']));
             $recAttr = $block['type'];
-            $node = SirTrevorModelFactory::getReferredBlockNode($block);
+            $node = $this->getReferredBlockNode($block);
             if ($node !== null) {
                 $block['type'] = $block['data']['item_type'] = $node->getCompositionItemType();
                 $block['data']['attributes'] = $node->getCompositionAttributes();
@@ -106,11 +116,15 @@ class SirTrevorBehavior extends CActiveRecordBehavior
         if (\Yii::app()->language === \Yii::app()->sourceLanguage) {
             return;
         }
-        if (is_array($block) && isset($block['data'], $block['type'])) {
-            $model = SirTrevorModelFactory::createBlockModel($block);
-            if ($model !== null) {
+        // Note that we exclude blocks with a node ID set. This is because blocks with node references are already
+        // translated during the block population above (@see SirTrevorBehavior::recPopulateSirTrevorBlock).
+        if (is_array($block) && isset($block['data'], $block['type']) && !isset($block['data']['node_id'])) {
+            $recAttr = $block['type'];
+            try {
+                /** @var RestApiSirTrevorBlock $model */
+                $model = \Yii::app()->getComponent('sirTrevorBlockFactory')->forgeBlock($block);
                 $model->setAttributes((array)$block['data']);
-                $model->contextId = $this->getOwner()->getNodeId();
+                $model->context = $this->getOwner();
                 if ($model->validate()) {
                     foreach ($model->getTranslatableAttributes() as $attr) {
                         if (isset($model->{$attr}, $block['data'][$attr])) {
@@ -123,10 +137,45 @@ class SirTrevorBehavior extends CActiveRecordBehavior
                             );
                         }
                     }
-
-                    // todo: add recursive
                 }
+                if (isset($block['data'][$recAttr]) && is_array($block['data'][$recAttr])) {
+                    foreach ($block['data'][$recAttr] as &$child) {
+                        $this->recLocalizeSirTrevorBlock($child);
+                    }
+                }
+            } catch (\CException $e) {
+                // No block model exists for this type of block. Just ignore it.
             }
         }
+    }
+
+    /**
+     * Returns a node model that is referred to in a Sir Trevor block.
+     * The block data should include a `node_id` on which the correct model can be found.
+     *
+     * @param array $block the block data.
+     * @return SirTrevorBlockNode|null the model or null if not created.
+     */
+    protected function getReferredBlockNode(array $block)
+    {
+        if (!isset($block['data'], $block['data']['item_type'], $block['data']['node_id'])) {
+            return null;
+        }
+        if (!isset(self::$sirTrevorBlockNodes[$block['data']['item_type']])) {
+            return null;
+        }
+        $node = \Node::model()->findByPk((int)$block['data']['node_id']);
+        if ($node === null) {
+            return null;
+        }
+        try {
+            $item = $node->item();
+        } catch (\NodeItemExistsButIsRestricted $e) {
+            return null;
+        }
+        if ($item === null) {
+            return null;
+        }
+        return \CActiveRecord::model(self::$sirTrevorBlockNodes[$block['data']['item_type']])->findByPk($item->id);
     }
 }

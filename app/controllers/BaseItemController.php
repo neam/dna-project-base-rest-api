@@ -54,7 +54,7 @@ class BaseItemController extends AppRestController
     {
         $node = $this->loadNodeByIdOrRoute($id);
         $item = $this->loadItemByNode($node);
-        $model = RestApiModelFactory::getItemModel($item);
+        $model = RestApiModel::loadItem($item);
         if ($model === null) {
             throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find resource for "%s".'), get_class($item)));
         }
