@@ -13,18 +13,22 @@ class CustomPageTranslator extends CompositionItemTranslator
                 if (!in_array($attr, $attributes)) {
                     continue;
                 }
-                if (is_string($value)) {
-                    // regular model attributes are translated via the `I18nAttributeMessagesBehavior` behavior.
-                    if (isset($model->{$attr})) {
-                        $model->{$attr} = $value;
-                    }
-                    // todo: what about URLs?
-                } elseif (is_array($value)) {
+                /*
+                 * Translatable attributes have a value structured like:
+                 * array("value" => "the translated text")
+                 *
+                 * While the `composition` attribute as a value structured like:
+                 * array("data" => array( array("type" => "text" ... ) ... ))
+                 */
+                if (is_array($value)) {
                     if ($attr === 'composition' && isset($value['data']) && is_array($value['data'])) {
                         // sir trevor composition blocks are translated via their block models.
                         foreach ($value['data'] as $block) {
                             $this->translateSirTrevorBlock($model, $block);
                         }
+                    } elseif (isset($value['value'], $model->{$attr}) && is_string($value['value'])) {
+                        // regular model attributes are translated via the `I18nAttributeMessagesBehavior` behavior.
+                        $model->{$attr} = $value['value'];
                     }
                 }
             }

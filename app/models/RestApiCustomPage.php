@@ -67,6 +67,12 @@ class RestApiCustomPage extends Page implements TranslatableResource
                 'sir-trevor-behavior' => array(
                     'class' => 'SirTrevorBehavior',
                 ),
+                'PermalinkableItemBehavior' => array(
+                    'class' => '\neam\yii_permalinkable_items_core\behaviors\PermalinkableItemBehavior',
+                    'relation' => 'routes',
+                    'routeClass' => 'Route',
+                    'fileRouteAttributeRefs' => array(),
+                )
             )
         );
     }
@@ -176,33 +182,61 @@ class RestApiCustomPage extends Page implements TranslatableResource
      */
     public function getTranslatedAttributes()
     {
-        // We need the "untranslated" attributes for this resource, so we fool it by resetting the app language that
-        // is used to localize the strings, and once we have the data we set the language back to the target language.
-        // todo: what about translatable strings, like the video file subtitles, which are not included in the block data by default? Pass options array to populateSirTrevorBlocks method?
-        $targetLanguage = Yii::app()->language;
-        Yii::app()->language = Yii::app()->sourceLanguage;
-        $untranslatedAttributes = array(
-            'heading' => $this->heading,
-            'subheading' => $this->subheading,
-            'about' => $this->about,
-            'caption' => $this->caption,
-            'composition' => $this->populateSirTrevorBlocks($this->composition),
-        );
-        Yii::app()->language = $targetLanguage;
-
         return array(
             'node_id' => (int)$this->node_id,
             'item_type' => 'custom_page',
-            'attributes' => $untranslatedAttributes,
+            'attributes' => array(
+                'heading' => array(
+                    'label' => $this->getAttributeLabel('heading'),
+                    'value' => $this->_heading,
+                ),
+                'subheading' => array(
+                    'label' => $this->getAttributeLabel('subheading'),
+                    'value' => $this->_subheading,
+                ),
+                'about' => array(
+                    'label' => $this->getAttributeLabel('about'),
+                    'value' => $this->_about,
+                ),
+                'caption' => array(
+                    'label' => $this->getAttributeLabel('caption'),
+                    'value' => $this->_caption,
+                ),
+                // todo: what about translatable strings, like the video file subtitles, which are not included in the block data by default? Pass options array to populateSirTrevorBlocks method?
+                'composition' => $this->populateSirTrevorBlocks($this->composition, array('localize' => false)),
+            ),
             'translations' => array(
-                'heading' => $this->heading,
-                'subheading' => $this->subheading,
-                'about' => $this->about,
-                'caption' => $this->caption,
+                'heading' => array(
+                    'value' => $this->heading,
+                    'progress' => $this->getAttributeTranslationProgress('heading'),
+                ),
+                'subheading' => array(
+                    'value' => $this->subheading,
+                    'progress' => $this->getAttributeTranslationProgress('subheading'),
+                ),
+                'about' => array(
+                    'value' => $this->about,
+                    'progress' => $this->getAttributeTranslationProgress('about'),
+                ),
+                'caption' => array(
+                    'value' => $this->caption,
+                    'progress' => $this->getAttributeTranslationProgress('caption'),
+                ),
                 // We need to populate the blocks again, with localizations this time.
-                'composition' => $this->populateSirTrevorBlocks($this->composition),
+                'composition' => $this->populateSirTrevorBlocks($this->composition, array('localize' => true)),
             ),
         );
+    }
+
+    /**
+     * @todo move to trait or behavior or something. also thing about moving TranslatableResource to trait or behavior.
+     *
+     * @param string $attribute
+     * @return int
+     */
+    protected function getAttributeTranslationProgress($attribute)
+    {
+        return ($this->{"_{$attribute}"} !== $this->{$attribute}) ? 100 : 0;
     }
 
     /**

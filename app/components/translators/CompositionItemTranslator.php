@@ -24,7 +24,9 @@ abstract class CompositionItemTranslator extends ItemTranslator
         } catch (\CException $e) {
             // No block model exists for this type of block. Just ignore it.
         }
-        $model->context = $parent;
-        $model->translate($block);
+        if (isset($model)) {
+            $model->context = $parent;
+            $model->translate($block);
+        }
     }
 }

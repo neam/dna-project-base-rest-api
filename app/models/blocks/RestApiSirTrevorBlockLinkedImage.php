@@ -13,11 +13,6 @@ class RestApiSirTrevorBlockLinkedImage extends RestApiSirTrevorBlock
     public $link_url;
 
     /**
-     * @var string the url to the displayable image file.
-     */
-    public $file_url;
-
-    /**
      * @inheritdoc
      */
     public function rules()
@@ -26,7 +21,7 @@ class RestApiSirTrevorBlockLinkedImage extends RestApiSirTrevorBlock
             parent::rules(),
             array(
                 array('title', 'required'),
-                array('link_url, file_url', 'url'),
+                array('link_url', 'url'),
             )
         );
     }
@@ -41,7 +36,6 @@ class RestApiSirTrevorBlockLinkedImage extends RestApiSirTrevorBlock
             array(
                 'title',
                 'link_url',
-                'file_url',
             )
         );
     }
@@ -54,7 +48,6 @@ class RestApiSirTrevorBlockLinkedImage extends RestApiSirTrevorBlock
         return array(
             'title',
             'link_url',
-            'file_url',
         );
     }
 } 

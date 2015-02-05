@@ -40,16 +40,19 @@ class SirTrevorBehavior extends CActiveRecordBehavior
      * The blocks are identified by their `node_id`.
      *
      * @param string $composition the sir trevor block json string.
+     * @param array $options options for the population. Valid keys values are (bool)`localize`.
      * @return array|null the sir trevor block structure or null.
      */
-    public function populateSirTrevorBlocks($composition)
+    public function populateSirTrevorBlocks($composition, array $options = array())
     {
         // hack for fixing sir trevor urls where every "-" is a "\\-". (https://github.com/madebymany/sir-trevor-js/issues/248)
         $blocks = json_decode(str_replace('\\\-', '-', $composition), true);
         if (is_array($blocks) && isset($blocks['data']) && is_array($blocks['data'])) {
             foreach ($blocks['data'] as &$block) {
                 $this->recPopulateSirTrevorBlock($block);
-                $this->recLocalizeSirTrevorBlock($block);
+                if (isset($options['localize']) && $options['localize'] === true) {
+                    $this->recLocalizeSirTrevorBlock($block);
+                }
             }
         }
         return $blocks;
@@ -109,6 +112,7 @@ class SirTrevorBehavior extends CActiveRecordBehavior
 
     /**
      * Recursively localize the Sir Trevor block.
+     * Also adds a `progress` key to every block that holds the percentage of the block translation.
      *
      * @param array $block the Sir Trevor block structure to localize.
      */
@@ -120,7 +124,9 @@ class SirTrevorBehavior extends CActiveRecordBehavior
         }
         // Note that we exclude blocks with a node ID set. This is because blocks with node references are already
         // translated during the block population above (@see SirTrevorBehavior::recPopulateSirTrevorBlock).
+        // todo: we need a progress for all elements...
         if (is_array($block) && isset($block['data'], $block['type']) && !isset($block['data']['node_id'])) {
+            $block['progress'] = 0;
             $recAttr = $block['type'];
             try {
                 /** @var RestApiSirTrevorBlock $model */
@@ -128,16 +134,25 @@ class SirTrevorBehavior extends CActiveRecordBehavior
                 $model->setAttributes((array)$block['data']);
                 $model->context = $this->getOwner();
                 if ($model->validate()) {
-                    foreach ($model->getTranslatableAttributes() as $attr) {
+                    $translatableAttributes = $model->getTranslatableAttributes();
+                    $countAttributes = count($translatableAttributes);
+                    $countTranslated = 0;
+                    foreach ($translatableAttributes as $attr) {
                         if (isset($model->{$attr}, $block['data'][$attr])) {
-                            // todo: how to handle urls
-                            $block['data'][$attr] = \Yii::t(
+                            $translation = \Yii::t(
                                 $model->getTranslationCategory($attr),
                                 $block['data'][$attr],
                                 array(),
                                 'displayedMessages'
                             );
+                            if ($translation !== $block['data'][$attr]) {
+                                $countTranslated++;
+                            }
+                            $block['data'][$attr] = $translation;
                         }
+                    }
+                    if ($countTranslated > 0) {
+                        $block['progress'] = round(($countTranslated / $countAttributes) * 100);
                     }
                 }
                 if (isset($block['data'][$recAttr]) && is_array($block['data'][$recAttr])) {

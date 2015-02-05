@@ -525,286 +525,6 @@ Video file related resources
         00:03:20,699 --> 00:03:28,099
         So ending population growth starts by saving the poorest children.
 
-# Group Translation
-
-Translation related resources
-
-## Composition Items [/translation/composition/{id}/{language}]
-
-+ Parameters
-
-    + id (int) ... ID of the resource
-    + language (string) ... Language code for the translations, e.g. es
-    
-### Get translation data for a composition item [GET]
-
-+ Response 200 (application/json)
-
-        {
-            "itemType": "composition",
-            "compositionType": "exercise",
-            "id": 1,
-            "targetLanguage": "es",
-            "original": {
-                "slug": "example-exercise",
-                "heading": "Example Exercise",
-                "subheading": "This is the subheading.",
-                "about": "About this video.",
-                "composition": {
-                    "data": [
-                        {
-                            "type": "video",
-                            "data": {
-                                "source": "youtube",
-                                "remote_id": "18MZmVDv7uo"
-                            }
-                        },
-                        {
-                            "type": "about",
-                            "data": {
-                                "renderHere": true
-                            }
-                        },
-                        {
-                            "type": "slideshare",
-                            "data": {
-                                "remote_id": "40978775"
-                            }
-                        },
-                        {
-                            "type": "html",
-                            "data": {
-                                "src": "<p>And below we have some responsive SlideShare presentations.</p>"
-                            }
-                        }
-                    ]
-                }
-            },
-            "translation": {
-                "slug": "ejemplo-de-ejericicio",
-                "heading": "Ejemplo de ejercicio",
-                "subheading": "Este es el subtítulo.",
-                "about": "Sobre este vídeo.",
-                "composition": {
-                    "data": [
-                        {
-                            "type": "video",
-                            "data": {
-                                "source": "youtube",
-                                "remote_id": ""
-                            }
-                        },
-                        {
-                            "type": "about",
-                            "data": {
-                                "renderHere": true
-                            }
-                        },
-                        {
-                            "type": "slideshare",
-                            "data": {
-                                "remote_id": ""
-                            }
-                        },
-                        {
-                            "type": "html",
-                            "data": {
-                                "src": ""
-                            }
-                        }
-                    ]
-                }
-            }
-        }
-
-### Save translations for a composition item [PUT]
-
-+ Request (application/json)
-
-        {
-            "itemType": "composition",
-            "compositionType": "exercise",
-            "id": 1,
-            "targetLanguage": "es",
-            "translation": {
-                "slug": "ejemplo-de-ejericicio",
-                "heading": "Ejemplo de ejercicio",
-                "subheading": "Este es el subtítulo.",
-                "about": "Sobre este vídeo.",
-                "composition": {
-                    "data": [
-                        {
-                            "type": "video",
-                            "data": {
-                                "source": "youtube",
-                                "remote_id": "PN2gYHJNT3Y"
-                            }
-                        },
-                        {
-                            "type": "about",
-                            "data": {
-                                "renderHere": true
-                            }
-                        },
-                        {
-                            "type": "slideshare",
-                            "data": {
-                                "remote_id": "39910208"
-                            }
-                        },
-                        {
-                            "type": "html",
-                            "data": {
-                                "src": "<p>Y abajo tenemos algunas presentaciones de SlideShare que son responsivas.</p>"
-                            }
-                        }
-                    ]
-                }
-            }
-        }
-        
-+ Response 200 (application/json)
-
-## VideoFile Items [/translation/videoFile/{id}/{language}]
-
-+ Parameters
-
-    + id (int) ... ID of the resource
-    + language (string) ... Language code for the translations, e.g. es
-
-### Get translations for a VideoFile item [GET]
-+ Response 200 (application/json)
-
-        {
-            "id": 1,
-            "itemType": "VideoFile",
-            "title": "Population Growth",
-            "version": 1,
-            "thumbnailUrl": "http://placehold.it/200x120",
-            "progress": 33.33,
-            "targetLanguage": {"code": "es", "label": "Spanish"},
-            "sections": [
-                {
-                    "step": "info",
-                    "label": "Info",
-                    "fields": [
-                        {
-                            "property": "title",
-                            "label": "Title",
-                            "original": "Population Growth",
-                            "translation": "",
-                            "validators": [
-                                {
-                                    "validator": "required"
-                                },
-                                {
-                                    "validator": "length",
-                                    "min": 10,
-                                    "max": 255
-                                }
-                            ]
-                        },
-                        {
-                            "property": "slug",
-                            "label": "Slug",
-                            "original": "population-growth",
-                            "translation": "",
-                            "validators": [
-                                {
-                                    "validator": "length",
-                                    "min": 10,
-                                    "max": 255
-                                }
-                            ]
-                        },
-                        {
-                            "property": "caption",
-                            "label": "Caption",
-                            "original": "A video on population growth",
-                            "translation": "Un vídeo sobre el crecimiento de la población"
-                        },
-                        {
-                            "property": "about",
-                            "label": "About",
-                            "original": "This is an in-depth analysis of population growth.",
-                            "translation": ""
-                        }
-                    ]
-                },
-                {
-                    "step": "subtitles",
-                    "label": "Subtitles",
-                    "fields": [
-                        {
-                            "id": 1,
-                            "original": "Hi, this is a video about common misconceptions concerning population growth.",
-                            "translation": "Hola, esto es un vídeo sobre los conceptos erróneos comunes sobre crecimiento de la población."
-                        },
-                        {
-                            "id": 2,
-                            "original": "My name is John Smith, and I will be your host.",
-                            "translation": ""
-                        }
-                    ]
-                }
-            ]
-        }
-
-### Save translations for a VideoFile item [PUT]
-
-+ Request (application/json)
-
-        {
-            "id": 1,
-            "itemType": "VideoFile",
-            "version": 1,
-            "targetLanguage": {"code": "es", "label": "Spanish"},
-            "sections": [
-                {
-                    "step": "info",
-                    "fields": [
-                        {   
-                            "property": "title",
-                            "original": "Population Growth",
-                            "translation": "",
-                        },
-                        {
-                            "property": "slug",
-                            "original": "population-growth",
-                            "translation": "",
-                        },
-                        {
-                            "property": "caption",
-                            "original": "A video on population growth",
-                            "translation": "Un vídeo sobre el crecimiento de la población"
-                        },
-                        {
-                            "property": "about",
-                            "original": "This is an in-depth analysis of population growth.",
-                            "translation": ""
-                        }
-                    ]
-                },
-                {
-                    "step": "subtitles",
-                    "fields": [
-                        {
-                            "id": 1,
-                            "original": "Hi, this is a video about common misconceptions concerning population growth.",
-                            "translation": "Hola, esto es un vídeo sobre los conceptos erróneos comunes sobre crecimiento de la población."
-                        },
-                        {
-                            "id": 2,
-                            "original": "My name is John Smith, and I will be your host.",
-                            "translation": "Me llamo John Smith, y yo seré su anfitrión."
-                        }
-                    ]
-                }
-            ]
-        }
-        
-+ Response 200 (application/json)
-
 # Group Language
 Language related resources
 
@@ -1609,6 +1329,389 @@ It is a workaround for not being able to choose the response when multiple are d
                 "GapminderOrg"
             ]
         }
+
+## Item Translation [/item/translation/{nodeId}{?_lang}]
+
++ Parameters
+
+    + nodeId (int) ... ID of the resource node
+    + _lang (optional, string) ... the language code for the translation
+
+### Get translation data for an item [GET]
+
++ Response 200 (application/json)
+
+        {
+            "node_id": 1,
+            "item_type": "go_item",
+            "attributes": {
+                "slug": {
+                    "value": "this-is-the-item-slug",
+                    "label": "Slug"
+                },
+                "heading": {
+                    "value": "this is the item heading",
+                    "label": "Heading"
+                },
+                "subheading": {
+                    "value": "this is the item sub-heading",
+                    "label": "Subheading"
+                },
+                "about": {
+                    "value": "this is the item about text",
+                    "label": "About"
+                },
+                "composition": {
+                    "data": [
+                        {
+                            "type": "heading",
+                            "data": {
+                                "text": "Test heading"
+                            },
+                            "id": "25cefe3f2d19b4784368c2f0ec4ee123"
+                        },
+                        {
+                            "type": "text",
+                            "data": {
+                                "text": "Test text\n"
+                            },
+                            "id": "3f6652553ac1cfd59c2d544202213945"
+                        },
+                        {
+                            "type": "quote",
+                            "data": {
+                                "cite": "Test credit",
+                                "text": "> Test quote"
+                            },
+                            "id": "1db0bcb68d798b40ebaaca2e42737be2"
+                        },
+                        {
+                            "type": "list",
+                            "data": {
+                                "text": " - Test item 1\n - Test item 2\n"
+                            },
+                            "id": "35a7ed5bf2a8d1357fbbc422e3d0d996"
+                        }
+                    ]
+                }
+            },
+            "translations": {
+                "slug": {
+                    "value": "Este es el punto sub-encabezamiento",
+                    "progress": 100
+                },
+                "heading": {
+                    "value": "Este es el punto partida",
+                    "progress": 100
+                },
+                "subheading": {
+                    "value": "Este es el punto sub-encabezamiento",
+                    "progress": 100
+                },
+                "about": {
+                    "value": "Este es el tema sobre el texto",
+                    "progress": 100
+                },
+                "composition": {
+                    "data": [
+                        {
+                            "type": "heading",
+                            "data": {
+                                "text": "Test heading"
+                            },
+                            "id": "25cefe3f2d19b4784368c2f0ec4ee123",
+                            "progress": 0
+                        },
+                        {
+                            "type": "text",
+                            "data": {
+                                "text": "Test text\n"
+                            },
+                            "id": "3f6652553ac1cfd59c2d544202213945",
+                            "progress": 0
+                        },
+                        {
+                            "type": "quote",
+                            "data": {
+                                "cite": "Test credit",
+                                "text": "> Test quote"
+                            },
+                            "id": "1db0bcb68d798b40ebaaca2e42737be2",
+                            "progress": 0
+                        },
+                        {
+                            "type": "list",
+                            "data": {
+                                "text": " - Test item 1\n - Test item 2\n"
+                            },
+                            "id": "35a7ed5bf2a8d1357fbbc422e3d0d996",
+                            "progress": 0
+                        }
+                    ]
+                }
+            }
+        }
+
+### Save translation data for an item [PUT]
+
++ Request (application/json)
+
+        {
+            "node_id": 1,
+            "item_type": "go_item",
+            "translations": {
+                "slug": {
+                    "value": "Este es el punto sub-encabezamiento"
+                },
+                "heading": {
+                    "value": "Este es el punto partida"
+                },
+                "subheading": {
+                    "value": "Este es el punto sub-encabezamiento"
+                },
+                "about": {
+                    "value": "Este es el tema sobre el texto"
+                },
+                "composition": {
+                    "data": [
+                        {
+                            "type": "text",
+                            "data": {
+                                "text": "Esta es una cadena de texto normal",
+                            },
+                            "id": "0d03dffb44a86823b223fabecb554013"
+                        }
+                    ]
+                }
+            }
+        }
+
++ Response 200 (application/json)
+
+        {
+            "node_id": 1,
+            "item_type": "go_item",
+            "attributes": {
+                "slug": {
+                    "value": "this-is-the-item-slug",
+                    "label": "Slug"
+                },
+                "heading": {
+                    "value": "this is the item heading",
+                    "label": "Heading"
+                },
+                "subheading": {
+                    "value": "this is the item sub-heading",
+                    "label": "Subheading"
+                },
+                "about": {
+                    "value": "this is the item about text",
+                    "label": "About"
+                },
+                "composition": {
+                    "data": [
+                        {
+                            "type": "heading",
+                            "data": {
+                                "text": "Test heading"
+                            },
+                            "id": "25cefe3f2d19b4784368c2f0ec4ee123"
+                        },
+                        {
+                            "type": "text",
+                            "data": {
+                                "text": "Test text\n"
+                            },
+                            "id": "3f6652553ac1cfd59c2d544202213945"
+                        },
+                        {
+                            "type": "quote",
+                            "data": {
+                                "cite": "Test credit",
+                                "text": "> Test quote"
+                            },
+                            "id": "1db0bcb68d798b40ebaaca2e42737be2"
+                        },
+                        {
+                            "type": "list",
+                            "data": {
+                                "text": " - Test item 1\n - Test item 2\n"
+                            },
+                            "id": "35a7ed5bf2a8d1357fbbc422e3d0d996"
+                        }
+                    ]
+                }
+            },
+            "translations": {
+                "slug": {
+                    "value": "Este es el punto sub-encabezamiento",
+                    "progress": 100
+                },
+                "heading": {
+                    "value": "Este es el punto partida",
+                    "progress": 100
+                },
+                "subheading": {
+                    "value": "Este es el punto sub-encabezamiento",
+                    "progress": 100
+                },
+                "about": {
+                    "value": "Este es el tema sobre el texto",
+                    "progress": 100
+                },
+                "composition": {
+                    "data": [
+                        {
+                            "type": "heading",
+                            "data": {
+                                "text": "Test heading"
+                            },
+                            "id": "25cefe3f2d19b4784368c2f0ec4ee123",
+                            "progress": 0
+                        },
+                        {
+                            "type": "text",
+                            "data": {
+                                "text": "Test text\n"
+                            },
+                            "id": "3f6652553ac1cfd59c2d544202213945",
+                            "progress": 0
+                        },
+                        {
+                            "type": "quote",
+                            "data": {
+                                "cite": "Test credit",
+                                "text": "> Test quote"
+                            },
+                            "id": "1db0bcb68d798b40ebaaca2e42737be2",
+                            "progress": 0
+                        },
+                        {
+                            "type": "list",
+                            "data": {
+                                "text": " - Test item 1\n - Test item 2\n"
+                            },
+                            "id": "35a7ed5bf2a8d1357fbbc422e3d0d996",
+                            "progress": 0
+                        }
+                    ]
+                }
+            }
+        }
+
+## VideoFile Translation [/item/translation/{nodeId}/test/videoFile{?_lang}]
+
++ Parameters
+
+    + nodeId (int) ... ID of the resource node
+    + _lang (optional, string) ... the language code for the translation
+
+### TESTING Get translation data for a VideoFile item [GET]
+
+This endpoint is for testing purposes only and will not be available in the real API.
+It is a workaround for not being able to choose the response when multiple are defined per request when testing the API format.
+
++ Response 200 (application/json)
+
+        {
+            "node_id": 1,
+            "item_type": "videoFile",
+            "attributes": [],
+            "translations": {
+                "sections": [
+                    {
+                        "step": "info",
+                        "label": "Info",
+                        "fields": [
+                            {
+                                "property": "title",
+                                "label": "Title",
+                                "value": "Population Growth"
+                            },
+                            {
+                                "property": "slug",
+                                "label": "Slug",
+                                "value": "population-growth"
+                            },
+                            {
+                                "property": "caption",
+                                "label": "Caption",
+                                "value": "Un vídeo sobre el crecimiento de la población"
+                            },
+                            {
+                                "property": "about",
+                                "label": "About",
+                                "original": "This is an in-depth analysis of population growth."
+                            }
+                        ]
+                    },
+                    {
+                        "step": "subtitles",
+                        "label": "Subtitles",
+                        "fields": [
+                            {
+                                "id": 1,
+                                "value": "Hola, esto es un vídeo sobre los conceptos erróneos comunes sobre crecimiento de la población."
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+
+### TESTING Save translation data for a VideoFile item [PUT]
+
+This endpoint is for testing purposes only and will not be available in the real API.
+It is a workaround for not being able to choose the response when multiple are defined per request when testing the API format.
+
++ Request (application/json)
+
+        {
+            "node_id": 1,
+            "item_type": "videoFile",
+            "translations": {
+                "sections": [
+                    {
+                        "step": "info",
+                        "label": "Info",
+                        "fields": [
+                            {
+                                "property": "title",
+                                "label": "Title",
+                                "value": "Population Growth"
+                            },
+                            {
+                                "property": "slug",
+                                "label": "Slug",
+                                "value": "population-growth"
+                            },
+                            {
+                                "property": "caption",
+                                "label": "Caption",
+                                "value": "Un vídeo sobre el crecimiento de la población"
+                            },
+                            {
+                                "property": "about",
+                                "label": "About",
+                                "original": "This is an in-depth analysis of population growth."
+                            }
+                        ]
+                    },
+                    {
+                        "step": "subtitles",
+                        "label": "Subtitles",
+                        "fields": [
+                            {
+                                "id": 1,
+                                "value": "Hola, esto es un vídeo sobre los conceptos erróneos comunes sobre crecimiento de la población."
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+
++ Response 200 (application/json)
 
 # Group Navbar
 
