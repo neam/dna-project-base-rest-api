@@ -21,10 +21,11 @@ class SirTrevorBlockFactory extends \CApplicationComponent
      * The data must include at least an `id` and a `type`.
      *
      * @param array $data the data for the block model.
+     * @param TranslatableResource|SirTrevorBehavior $parent the context model that includes the block in it's composition.
      * @return RestApiSirTrevorBlock the block model.
      * @throws \CException if model cannot be created.
      */
-    public function forgeBlock(array $data)
+    public function forgeBlock(array $data, $parent)
     {
         if (!isset($data['type'], $data['id'])) {
             throw new \CException('Block data is missing either `type` or `id`.');
@@ -34,6 +35,15 @@ class SirTrevorBlockFactory extends \CApplicationComponent
         }
         /** @var RestApiSirTrevorBlock $model */
         $model = new self::$blocks[$data['type']]();
+        if (!empty($data['data'])) {
+            // Blocks that refer nodes have their attributes one level deeper.
+            if (!empty($data['data']['attributes'])) {
+                $model->setAttributes((array)$data['data']['attributes']);
+            } else {
+                $model->setAttributes((array)$data['data']);
+            }
+        }
+        $model->context = $parent;
         $model->id = $data['id'];
         $model->type = $data['type'];
         return $model;

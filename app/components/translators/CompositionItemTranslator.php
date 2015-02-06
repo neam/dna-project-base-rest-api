@@ -20,12 +20,11 @@ abstract class CompositionItemTranslator extends ItemTranslator
         }
         /** @var RestApiSirTrevorBlock $model */
         try {
-            $model = \Yii::app()->getComponent('sirTrevorBlockFactory')->forgeBlock($block);
+            $model = \Yii::app()->getComponent('sirTrevorBlockFactory')->forgeBlock($block, $parent);
         } catch (\CException $e) {
             // No block model exists for this type of block. Just ignore it.
         }
         if (isset($model)) {
-            $model->context = $parent;
             $model->translate($block);
         }
     }

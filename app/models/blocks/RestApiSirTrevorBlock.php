@@ -110,6 +110,29 @@ abstract class RestApiSirTrevorBlock extends CModel
     }
 
     /**
+     * Applies the translations to this block.
+     * Also sets the translation in the raw block data as that is used by the caller.
+     *
+     * @param array $block the raw block data.
+     * @return int the amount of translated attributes.
+     */
+    public function applyTranslations(array &$block)
+    {
+        $countTranslated = 0;
+        foreach ($this->getTranslatableAttributes() as $attr) {
+            if (isset($this->{$attr}, $block['data'][$attr])) {
+                $source = $this->{$attr};
+                $translation = \Yii::t($this->getTranslationCategory($attr), $source, array(), 'displayedMessages');
+                if ($translation !== $source) {
+                    $this->{$attr} = $block['data'][$attr] = $translation;
+                    $countTranslated++;
+                }
+            }
+        }
+        return $countTranslated;
+    }
+
+    /**
      * Returns the attributes that are available for translation in this block.
      *
      * @return array the attributes.

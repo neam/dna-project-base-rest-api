@@ -134,35 +134,16 @@ class SirTrevorBehavior extends CActiveRecordBehavior
         if (\Yii::app()->language === \Yii::app()->sourceLanguage) {
             return;
         }
-        // Note that we exclude blocks with a node ID set. This is because blocks with node references are already
-        // translated during the block population above (@see SirTrevorBehavior::recPopulateSirTrevorBlock).
-        // todo: we need a progress for all elements...
-        if (is_array($block) && isset($block['data'], $block['type']) && !isset($block['data']['node_id'])) {
+        if (is_array($block) && isset($block['data'], $block['type'])) {
             $block['progress'] = 0;
             $recAttr = $block['type'];
             try {
                 /** @var RestApiSirTrevorBlock $model */
-                $model = \Yii::app()->getComponent('sirTrevorBlockFactory')->forgeBlock($block);
-                $model->setAttributes((array)$block['data']);
-                $model->context = $this->getOwner();
+                $model = \Yii::app()->getComponent('sirTrevorBlockFactory')->forgeBlock($block, $this->getOwner());
                 if ($model->validate()) {
-                    $translatableAttributes = $model->getTranslatableAttributes();
-                    $countAttributes = count($translatableAttributes);
-                    $countTranslated = 0;
-                    foreach ($translatableAttributes as $attr) {
-                        if (isset($model->{$attr}, $block['data'][$attr])) {
-                            $translation = \Yii::t(
-                                $model->getTranslationCategory($attr),
-                                $block['data'][$attr],
-                                array(),
-                                'displayedMessages'
-                            );
-                            if ($translation !== $block['data'][$attr]) {
-                                $countTranslated++;
-                            }
-                            $block['data'][$attr] = $translation;
-                        }
-                    }
+                    $attributes = $model->getTranslatableAttributes();
+                    $countAttributes = count($attributes);
+                    $countTranslated = $model->applyTranslations($block);
                     if ($countTranslated > 0) {
                         $block['progress'] = round(($countTranslated / $countAttributes) * 100);
                     }

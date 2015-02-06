@@ -14,7 +14,7 @@
  * @method array getCreateAttributes
  * @method array getUpdateAttributes
  */
-class RestApiHtmlChunk extends HtmlChunk implements SirTrevorBlockNode
+class RestApiHtmlChunk extends HtmlChunk implements SirTrevorBlockNode, TranslatableResource
 {
     /**
      * @inheritdoc
@@ -77,5 +77,21 @@ class RestApiHtmlChunk extends HtmlChunk implements SirTrevorBlockNode
     public function getCompositionItemType()
     {
         return 'html_chunk';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getTranslationAttributes()
+    {
+        return array('markup');
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getTranslatedAttributes()
+    {
+        return $this->getListableAttributes();
     }
 }

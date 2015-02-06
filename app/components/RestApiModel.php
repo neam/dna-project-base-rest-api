@@ -28,6 +28,7 @@ class RestApiModel
      */
     protected static $translatableModels = array(
         'Page' => 'RestApiCustomPage',
+        'HtmlChunk' => 'RestApiHtmlChunk',
     );
 
     /**

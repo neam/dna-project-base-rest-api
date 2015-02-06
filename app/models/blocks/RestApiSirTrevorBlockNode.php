@@ -34,6 +34,34 @@ abstract class RestApiSirTrevorBlockNode extends RestApiSirTrevorBlock
     }
 
     /**
+     * @inheritdoc
+     */
+    public function applyTranslations(array &$block)
+    {
+        $countTranslated = 0;
+        if (isset($block['data']['node_id'])) {
+            $model = $this->loadReferredModel((int)$block['data']['node_id']);
+            if ($model !== null) {
+                foreach ($this->getTranslatableAttributes() as $attr) {
+                    if (isset($this->{$attr}, $model->{"_{$attr}"}, $block['data']['attributes'][$attr])) {
+                        /*
+                         * Blocks with node references are already translated during populate.
+                         * @see SirTrevorBehavior::recPopulateSirTrevorBlock
+                         */
+                        $source = $model->{"_{$attr}"};
+                        $translation = $block['data']['attributes'][$attr];
+                        if ($translation !== $source) {
+                            $this->{$attr} = $translation;
+                            $countTranslated++;
+                        }
+                    }
+                }
+            }
+        }
+        return $countTranslated;
+    }
+
+    /**
      * Loads the translatable node resource that acts as a Sir Trevor block.
      *
      * @param int|string $nodeId the node id of the referred resource.
@@ -44,7 +72,7 @@ abstract class RestApiSirTrevorBlockNode extends RestApiSirTrevorBlock
     {
         $node = Node::model()->findByPk((int)$nodeId);
         if ($node === null) {
-            throw new \CException('');
+            throw new \CException(sprintf('Failed to find node #%s.', $nodeId));
         }
         $item = $node->item();
         return RestApiModel::loadTranslatable($item);

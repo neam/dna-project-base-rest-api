@@ -15,7 +15,7 @@ class RestApiSirTrevorBlockHtmlChunk extends RestApiSirTrevorBlockNode
         return array_merge(
             parent::rules(),
             array(
-                array('markup', 'required'),
+                array('markup', 'safe'),
             )
         );
     }
