@@ -63,7 +63,9 @@ abstract class RestApiSirTrevorBlock extends CModel
      */
     public function getTranslationCategory($attr)
     {
-        return "{$this->context->getNodeId()}-composition-block-{$this->type}-{$attr}-{$this->id}";
+        $contextId = (int)$this->context->id;
+        $contextClass = get_class($this->context);
+        return "{$contextId}-a-{$contextClass}-composition-{$this->type}-{$attr}-{$this->id}";
     }
 
     /**
@@ -85,7 +87,7 @@ abstract class RestApiSirTrevorBlock extends CModel
 
         $sourceBlock = $this->context->getSirTrevorBlockById($this->id);
         foreach ($this->getTranslatableAttributes() as $attr) {
-            if (!isset($this->{$attr}, $sourceBlock['data'][$attr])) {
+            if (!isset($this->{$attr}, $sourceBlock['data'][$attr]) || empty($sourceBlock['data'][$attr])) {
                 continue;
             }
             $sourceMessage = \SourceMessage::ensureSourceMessage(

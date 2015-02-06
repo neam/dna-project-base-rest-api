@@ -240,14 +240,6 @@ class RestApiCustomPage extends Page implements TranslatableResource
     }
 
     /**
-     * @inheritdoc
-     */
-    public function getNodeId()
-    {
-        return (int)$this->node_id;
-    }
-
-    /**
      * @return string|null
      */
     public function getRouteUrl()

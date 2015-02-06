@@ -20,11 +20,4 @@ interface TranslatableResource
      * @return array the attributes.
      */
     public function getTranslatedAttributes();
-
-    /**
-     * Returns the node id for this translatable item.
-     *
-     * @return int the id.
-     */
-    public function getNodeId();
 }
