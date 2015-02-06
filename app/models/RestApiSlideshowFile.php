@@ -14,7 +14,7 @@
  * @method array getCreateAttributes
  * @method array getUpdateAttributes
  */
-class RestApiSlideshowFile extends SlideshowFile implements SirTrevorBlock
+class RestApiSlideshowFile extends SlideshowFile implements SirTrevorBlockNode, TranslatableResource
 {
     /**
      * @inheritdoc
@@ -67,5 +67,21 @@ class RestApiSlideshowFile extends SlideshowFile implements SirTrevorBlock
     public function getCompositionItemType()
     {
         return 'slideshow_file';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getTranslationAttributes()
+    {
+        return $this->getTranslatableAttributes();
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getTranslatedAttributes()
+    {
+        return $this->getCompositionAttributes();
     }
 }

@@ -14,7 +14,7 @@
  * @method array getCreateAttributes
  * @method array getUpdateAttributes
  */
-class RestApiDownloadLink extends DownloadLink implements SirTrevorBlockNode
+class RestApiDownloadLink extends DownloadLink implements SirTrevorBlockNode, TranslatableResource
 {
     /**
      * @inheritdoc
@@ -78,6 +78,24 @@ class RestApiDownloadLink extends DownloadLink implements SirTrevorBlockNode
     public function getCompositionItemType()
     {
         return 'download_link';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getTranslationAttributes()
+    {
+        return array(
+            'title',
+        );
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getTranslatedAttributes()
+    {
+        return $this->getCompositionAttributes();
     }
 
     /**
