@@ -80,22 +80,36 @@ class RestApiVideoFile extends VideoFile implements SirTrevorBlockNode, Translat
     public function getListableAttributes()
     {
         return array(
+            // todo
+            'subtitles' =>  $this->getTranslatedSubtitles(($this->getParsedSubtitles())),
             'title' => $this->title,
             'about' => $this->about,
             'caption' => $this->caption,
             'slug' => $this->slug,
-            'url_mp4' => $this->getUrlMp4(),
-            'url_webm' => $this->getUrlWebm(),
-            'url_youtube' => $this->youtube_url,
-            'url_subtitles' => $this->getUrlSubtitles(),
-            'thumb' => array(
-                'original' => $this->getThumbUrl('original-public'),
-                '735x444' => $this->getThumbUrl('735x444'),
-                '160x96' => $this->getThumbUrl('160x96'),
-                '110x66' => $this->getThumbUrl('110x66'),
-            ),
+//            'url_mp4' => $this->getUrlMp4(),
+//            'url_webm' => $this->getUrlWebm(),
+//            'url_youtube' => $this->youtube_url,
+//            'url_subtitles' => $this->getUrlSubtitles(),
+//            'thumb' => array(
+//                'original' => $this->getThumbUrl('original-public'),
+//                '735x444' => $this->getThumbUrl('735x444'),
+//                '160x96' => $this->getThumbUrl('160x96'),
+//                '110x66' => $this->getThumbUrl('110x66'),
+//            ),
         );
     }
+
+
+    // todo: cant override this because then the subtitles endpoint won't work.
+    public function getTranslatedSubtitles($subtitles)
+    {
+        foreach ($subtitles as $subtitle) {
+            $subtitle->message = Yii::t("video-{$this->id}-subtitles", $subtitle->sourceMessage, array(), 'displayedMessages', Yii::app()->language);
+        }
+        return $subtitles;
+
+    }
+
 
     /**
      * @inheritdoc
