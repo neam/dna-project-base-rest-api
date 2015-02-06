@@ -185,6 +185,7 @@ class RestApiCustomPage extends Page implements TranslatableResource
         return array(
             'node_id' => (int)$this->node_id,
             'item_type' => 'custom_page',
+            'url' =>  $this->getRouteUrl(),
             'attributes' => array(
                 'heading' => array(
                     'label' => $this->getAttributeLabel('heading'),
@@ -251,8 +252,7 @@ class RestApiCustomPage extends Page implements TranslatableResource
         $route = Route::model()->findByAttributes(array(
             'node_id' => (int)$this->node_id,
             'canonical' => true,
-            // todo: this needs to be enabled once we have multi-lingual support
-//            'translation_route_language' => Yii::app()->language,
+            'translation_route_language' => Yii::app()->language,
         ));
 
         return ($route !== null) ? $route->route : null;
