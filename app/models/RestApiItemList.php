@@ -31,9 +31,6 @@ class RestApiItemList extends ItemListConfig implements SirTrevorBlockNode
                 'rest-model-behavior' => array(
                     'class' => 'WRestModelBehavior',
                 ),
-                'RestrictedAccessBehavior' => array(
-                    'class' => '\RestrictedAccessBehavior',
-                ),
             )
         );
     }

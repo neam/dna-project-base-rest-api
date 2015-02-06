@@ -35,17 +35,6 @@ class RestApiSlideshowFile extends SlideshowFile implements SirTrevorBlockNode, 
                 'rest-model-behavior' => array(
                     'class' => 'WRestModelBehavior',
                 ),
-                'RestrictedAccessBehavior' => array(
-                    'class' => '\RestrictedAccessBehavior',
-                ),
-                'i18n-attribute-messages' => array(
-                    'class' => 'I18nAttributeMessagesBehavior',
-                    'translationAttributes' => array('title', 'about', 'google_docs_id', 'slideshare_id'),
-                    'languageSuffixes' => LanguageHelper::getCodes(),
-                    'behaviorKey' => 'i18n-attribute-messages',
-                    'displayedMessageSourceComponent' => 'displayedMessages',
-                    'editedMessageSourceComponent' => 'editedMessages',
-                ),
             )
         );
     }

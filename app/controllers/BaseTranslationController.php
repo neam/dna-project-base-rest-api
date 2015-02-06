@@ -23,7 +23,6 @@ class BaseTranslationController extends AppRestController
                 'actions' => array(
                     'preflight',
                     'get',
-                    'update' // todo: remove
                 )
             ),
             // Logged in users can do whatever they want to.
@@ -57,10 +56,11 @@ class BaseTranslationController extends AppRestController
      */
     public function actionUpdate($nodeId)
     {
-        // todo: access rights
-
         /** @var TranslatableResource $model */
         $model = $this->loadModel($nodeId);
+        if (!$this->canUserTranslateModel($model)) {
+            throw new CHttpException(403, Yii::t('rest-api', 'You are not allowed to translate this resource.'));
+        }
         $params = Yii::app()->getRequest()->parseJsonParams();
         // Hack for converting stdClass to Array as the Wrest extension does not allow us to get the params as Array.
         $params = json_decode(json_encode($params), true);
@@ -99,5 +99,22 @@ class BaseTranslationController extends AppRestController
             throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find resource for "%s".'), get_class($item)));
         }
         return $model;
+    }
+
+    /**
+     * Checks if the current user has re access rights to translate the model.
+     * The access rights required is the have the role "GroupTranslator" in on of the groups the model belongs to.
+     *
+     * @param TranslatableResource|ActiveRecord $model the model we want to check access for.
+     * @return bool true if access is granted, false otherwise.
+     */
+    protected function canUserTranslateModel($model)
+    {
+        foreach ($model->node()->nodeHasGroups as $nhg) {
+            if (PermissionHelper::hasRole((int)Yii::app()->getUser()->id, PermissionHelper::groupIdToName($nhg->group_id), Role::GROUP_TRANSLATOR)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

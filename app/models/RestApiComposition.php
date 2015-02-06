@@ -49,21 +49,6 @@ class RestApiComposition extends Composition implements RelatedResource
                 'rest-model-behavior' => array(
                     'class' => 'WRestModelBehavior',
                 ),
-                'RestrictedAccessBehavior' => array(
-                    'class' => '\RestrictedAccessBehavior',
-                ),
-                'i18n-attribute-messages' => array(
-                    'class' => 'I18nAttributeMessagesBehavior',
-                    'translationAttributes' => array('heading', 'subheading', 'caption', 'about'),
-                    'languageSuffixes' => LanguageHelper::getCodes(),
-                    'behaviorKey' => 'i18n-attribute-messages',
-                    'displayedMessageSourceComponent' => 'displayedMessages',
-                    'editedMessageSourceComponent' => 'editedMessages',
-                ),
-                'i18n-columns' => array(
-                    'class' => 'I18nColumnsBehavior',
-                    'translationAttributes' => array('slug'),
-                ),
                 'contributor-behavior' => array(
                     'class' => 'ContributorBehavior',
                 ),
@@ -73,22 +58,6 @@ class RestApiComposition extends Composition implements RelatedResource
                 'sir-trevor-behavior' => array(
                     'class' => 'SirTrevorBehavior',
                 ),
-            )
-        );
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function relations()
-    {
-        return array_merge(
-            parent::relations(),
-            array(
-                'outEdges' => array(self::HAS_MANY, 'Edge', array('id' => 'from_node_id'), 'through' => 'node'),
-                'outNodes' => array(self::HAS_MANY, 'Node', array('to_node_id' => 'id'), 'through' => 'outEdges'),
-                'inEdges' => array(self::HAS_MANY, 'Edge', array('id' => 'to_node_id'), 'through' => 'node'),
-                'inNodes' => array(self::HAS_MANY, 'Node', array('from_node_id' => 'id'), 'through' => 'inEdges'),
             )
         );
     }

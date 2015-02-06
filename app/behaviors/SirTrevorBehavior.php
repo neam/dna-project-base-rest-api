@@ -47,7 +47,7 @@ class SirTrevorBehavior extends CActiveRecordBehavior
         // If we don't what to localize the blocks, then we need to reset the app language.
         // This is because all blocks that refer a node will use the I18nAttributeMessagesBehavior to fetch attributes
         // and that works based on the app language.
-        if (!isset($options['localize']) && $options['localize'] === false) {
+        if (!isset($options['localize']) || $options['localize'] === false) {
             $targetLanguage = Yii::app()->language;
             Yii::app()->language = Yii::app()->sourceLanguage;
         }
@@ -64,7 +64,7 @@ class SirTrevorBehavior extends CActiveRecordBehavior
         }
 
         // If we did not want localizations, then remember to reset the app language to it's original state.
-        if (!isset($options['localize']) && $options['localize'] === false && isset($targetLanguage)) {
+        if ((!isset($options['localize']) || $options['localize'] === false) && isset($targetLanguage)) {
             Yii::app()->language = $targetLanguage;
         }
 
@@ -168,6 +168,8 @@ class SirTrevorBehavior extends CActiveRecordBehavior
      */
     protected function getReferredBlockNode(array $block)
     {
+        // todo: there has to be a more efficient way of doing this.
+
         if (!isset($block['data'], $block['data']['item_type'], $block['data']['node_id'])) {
             return null;
         }

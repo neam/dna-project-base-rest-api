@@ -47,17 +47,6 @@ class RestApiCustomPage extends Page implements TranslatableResource
                 'rest-model-behavior' => array(
                     'class' => 'WRestModelBehavior',
                 ),
-                'RestrictedAccessBehavior' => array(
-                    'class' => '\RestrictedAccessBehavior',
-                ),
-                'i18n-attribute-messages' => array(
-                    'class' => 'I18nAttributeMessagesBehavior',
-                    'translationAttributes' => array('heading', 'subheading', 'caption', 'about', 'menu_label'),
-                    'languageSuffixes' => LanguageHelper::getCodes(),
-                    'behaviorKey' => 'i18n-attribute-messages',
-                    'displayedMessageSourceComponent' => 'displayedMessages',
-                    'editedMessageSourceComponent' => 'editedMessages',
-                ),
                 'contributor-behavior' => array(
                     'class' => 'ContributorBehavior',
                 ),
@@ -67,12 +56,6 @@ class RestApiCustomPage extends Page implements TranslatableResource
                 'sir-trevor-behavior' => array(
                     'class' => 'SirTrevorBehavior',
                 ),
-                'PermalinkableItemBehavior' => array(
-                    'class' => '\neam\yii_permalinkable_items_core\behaviors\PermalinkableItemBehavior',
-                    'relation' => 'routes',
-                    'routeClass' => 'Route',
-                    'fileRouteAttributeRefs' => array(),
-                )
             )
         );
     }
@@ -85,10 +68,6 @@ class RestApiCustomPage extends Page implements TranslatableResource
         return array_merge(
             parent::relations(),
             array(
-                'outEdges' => array(self::HAS_MANY, 'Edge', array('id' => 'from_node_id'), 'through' => 'node'),
-                'outNodes' => array(self::HAS_MANY, 'Node', array('to_node_id' => 'id'), 'through' => 'outEdges'),
-                'inEdges' => array(self::HAS_MANY, 'Edge', array('id' => 'to_node_id'), 'through' => 'node'),
-                'inNodes' => array(self::HAS_MANY, 'Node', array('from_node_id' => 'id'), 'through' => 'inEdges'),
                 'restApiCustomPageChildren' => array(self::HAS_MANY, 'RestApiCustomPage', 'parent_page_id'),
                 'restApiCustomPageParent' => array(self::BELONGS_TO, 'RestApiCustomPage', 'parent_page_id'),
             )

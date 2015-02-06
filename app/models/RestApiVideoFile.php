@@ -21,7 +21,7 @@
  * Methods made available through the RelatedBehavior class:
  * @method array getRelatedItems()
  */
-class RestApiVideoFile extends VideoFile implements SirTrevorBlockNode
+class RestApiVideoFile extends VideoFile implements SirTrevorBlockNode, TranslatableResource
 {
     /**
      * @inheritdoc
@@ -42,41 +42,9 @@ class RestApiVideoFile extends VideoFile implements SirTrevorBlockNode
                 'rest-model-behavior' => array(
                     'class' => 'WRestModelBehavior',
                 ),
-                'RestrictedAccessBehavior' => array(
-                    'class' => '\RestrictedAccessBehavior',
-                ),
-                'i18n-attribute-messages' => array(
-                    'class' => 'I18nAttributeMessagesBehavior',
-                    'translationAttributes' => array('title', 'caption', 'about'),
-                    'languageSuffixes' => LanguageHelper::getCodes(),
-                    'behaviorKey' => 'i18n-attribute-messages',
-                    'displayedMessageSourceComponent' => 'displayedMessages',
-                    'editedMessageSourceComponent' => 'editedMessages',
-                ),
-                'i18n-columns' => array(
-                    'class' => 'I18nColumnsBehavior',
-                    'translationAttributes' => array('slug'),
-                    'multilingualRelations' => array('processedMedia' => 'processed_media_id'),
-                ),
                 'related-behavior' => array(
                     'class' => 'RelatedBehavior',
                 ),
-            )
-        );
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function relations()
-    {
-        return array_merge(
-            parent::relations(),
-            array(
-                'outEdges' => array(self::HAS_MANY, 'Edge', array('id' => 'from_node_id'), 'through' => 'node'),
-                'outNodes' => array(self::HAS_MANY, 'Node', array('to_node_id' => 'id'), 'through' => 'outEdges'),
-                'inEdges' => array(self::HAS_MANY, 'Edge', array('id' => 'to_node_id'), 'through' => 'node'),
-                'inNodes' => array(self::HAS_MANY, 'Node', array('from_node_id' => 'id'), 'through' => 'inEdges'),
             )
         );
     }
@@ -138,6 +106,27 @@ class RestApiVideoFile extends VideoFile implements SirTrevorBlockNode
     }
 
     /**
+     * @inheritdoc
+     */
+    public function getTranslationAttributes()
+    {
+        return array(
+            'title',
+            'about',
+            'caption',
+            'slug',
+        );
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getTranslatedAttributes()
+    {
+        return $this->getCompositionAttributes();
+    }
+
+    /**
      * @return string|null
      */
     public function getRouteUrl()
@@ -149,8 +138,7 @@ class RestApiVideoFile extends VideoFile implements SirTrevorBlockNode
         $route = Route::model()->findByAttributes(array(
             'node_id' => (int)$this->node_id,
             'canonical' => true,
-            // todo: this needs to be enabled once we have multi-lingual support
-//            'translation_route_language' => Yii::app()->language,
+            'translation_route_language' => Yii::app()->language,
         ));
 
         return ($route !== null) ? $route->route : null;

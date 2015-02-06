@@ -31,6 +31,7 @@ class RestApiModel
         'HtmlChunk' => 'RestApiHtmlChunk',
         'DownloadLink' => 'RestApiDownloadLink',
         'SlideshowFile' => 'RestApiSlideshowFile',
+        'VideoFile' => 'RestApiVideoFile',
     );
 
     /**
