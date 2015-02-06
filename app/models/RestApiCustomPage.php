@@ -143,7 +143,7 @@ class RestApiCustomPage extends Page implements TranslatableResource
             'subheading' => $this->subheading,
             'about' => $this->about,
             'caption' => $this->caption,
-            'composition' => $this->populateSirTrevorBlocks($this->composition),
+            'composition' => $this->populateSirTrevorBlocks($this->composition, array('localize' => true)),
         );
     }
 

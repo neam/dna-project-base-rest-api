@@ -8,7 +8,7 @@
 abstract class RestApiSirTrevorBlock extends CModel
 {
     /**
-     * @var TranslatableResource the context model that includes this block in it's composition.
+     * @var TranslatableResource|SirTrevorBehavior the context model that includes this block in it's composition.
      */
     public $context;
 
@@ -25,6 +25,8 @@ abstract class RestApiSirTrevorBlock extends CModel
      * - quote
      * - list
      * - linked_image
+     * - html_chunk
+     * - download_link
      * - todo: add more
      */
     public $type;
@@ -37,7 +39,7 @@ abstract class RestApiSirTrevorBlock extends CModel
         return array(
             array('context, id, type', 'required'),
             array('id', 'length', 'is' => 32),
-            array('type', 'in', 'range' => array('text', 'heading', 'quote', 'list', 'linked_image')), // todo: add more
+            array('type', 'in', 'range' => array('text', 'heading', 'quote', 'list', 'linked_image', 'html_chunk', 'download_link')), // todo: add more
         );
     }
 
@@ -81,13 +83,7 @@ abstract class RestApiSirTrevorBlock extends CModel
             throw new \CException('Invalid block data. Errors: ' . print_r($this->errors, true));
         }
 
-        // We need the "untranslated" block for parent, so we fool it by resetting the app language that
-        // is used to localize the strings, and once we have the data we set the language back to the target language.
-        $targetLanguage = Yii::app()->language;
-        Yii::app()->language = Yii::app()->sourceLanguage;
         $sourceBlock = $this->context->getSirTrevorBlockById($this->id);
-        Yii::app()->language = $targetLanguage;
-
         foreach ($this->getTranslatableAttributes() as $attr) {
             if (!isset($this->{$attr}, $sourceBlock['data'][$attr])) {
                 continue;

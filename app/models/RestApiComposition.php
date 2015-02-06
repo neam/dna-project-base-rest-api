@@ -103,7 +103,7 @@ class RestApiComposition extends Composition implements RelatedResource
             'item_type' => 'go_item',
             'url' => $this->getRouteUrl(),
             'attributes' => array_merge($this->getListableAttributes(), array(
-                'composition' => $this->populateSirTrevorBlocks($this->composition)
+                'composition' => $this->populateSirTrevorBlocks($this->composition, array('localize' => true))
             )),
             'contributors' => $this->getContributors(),
             'related' => $this->getRelatedItems(),

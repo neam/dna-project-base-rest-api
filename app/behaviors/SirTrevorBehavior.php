@@ -35,9 +35,8 @@ class SirTrevorBehavior extends CActiveRecordBehavior
 
     /**
      * Populates Sir Trevor blocks with data from the nodes they represent.
-     * Also localizes the blocks if the app language is different from the source language. So in order to get the
-     * original translations, you need to reset the app language before calling this method.
-     * The blocks are identified by their `node_id`.
+     * Also localizes the blocks if the "localize" key is set to true in the options array and the app language is
+     * different from the source language.
      *
      * @param string $composition the sir trevor block json string.
      * @param array $options options for the population. Valid keys values are (bool)`localize`.
@@ -45,7 +44,15 @@ class SirTrevorBehavior extends CActiveRecordBehavior
      */
     public function populateSirTrevorBlocks($composition, array $options = array())
     {
-        // hack for fixing sir trevor urls where every "-" is a "\\-". (https://github.com/madebymany/sir-trevor-js/issues/248)
+        // If we don't what to localize the blocks, then we need to reset the app language.
+        // This is because all blocks that refer a node will use the I18nAttributeMessagesBehavior to fetch attributes
+        // and that works based on the app language.
+        if (!isset($options['localize']) && $options['localize'] === false) {
+            $targetLanguage = Yii::app()->language;
+            Yii::app()->language = Yii::app()->sourceLanguage;
+        }
+
+        // Hack for fixing sir trevor urls where every "-" is a "\\-". (https://github.com/madebymany/sir-trevor-js/issues/248)
         $blocks = json_decode(str_replace('\\\-', '-', $composition), true);
         if (is_array($blocks) && isset($blocks['data']) && is_array($blocks['data'])) {
             foreach ($blocks['data'] as &$block) {
@@ -55,13 +62,17 @@ class SirTrevorBehavior extends CActiveRecordBehavior
                 }
             }
         }
+
+        // If we did not want localizations, then remember to reset the app language to it's original state.
+        if (!isset($options['localize']) && $options['localize'] === false && isset($targetLanguage)) {
+            Yii::app()->language = $targetLanguage;
+        }
+
         return $blocks;
     }
 
     /**
      * Returns a Sir Trevor block structure based on it's `id`, i.e. the md5 hash of it's data.
-     * Note that you will need to reset the app language before calling this method, so that the id hash is created
-     * based on the original text strings and not the translated ones.
      *
      * @param string $blockId the md5 hash of the block data.
      * @return array|bool the block structure or false if not found.
@@ -73,7 +84,8 @@ class SirTrevorBehavior extends CActiveRecordBehavior
         if (!isset($owner->composition)) {
             throw new \CException('Owner model does not have the `composition` field.');
         }
-        $blocks = $this->populateSirTrevorBlocks($owner->composition);
+        // Get the "un-localized" blocks.
+        $blocks = $this->populateSirTrevorBlocks($owner->composition, array('localize' => false));
         if (!empty($blocks) && isset($blocks['data']) && is_array($blocks['data'])) {
             foreach ($blocks['data'] as $block) {
                 if (!empty($block['id']) && $block['id'] === $blockId) {
