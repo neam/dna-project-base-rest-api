@@ -47,6 +47,9 @@ class SirTrevorBlockFactory extends \CApplicationComponent
         $model->context = $parent;
         $model->id = $data['id'];
         $model->type = $data['type'];
+        if (isset($data['data']['node_id']) && $model instanceof RestApiSirTrevorBlockNode) {
+            $model->nodeId = (int)$data['data']['node_id'];
+        }
         return $model;
     }
 }

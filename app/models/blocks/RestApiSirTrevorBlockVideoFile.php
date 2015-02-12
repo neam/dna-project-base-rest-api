@@ -50,4 +50,48 @@ class RestApiSirTrevorBlockVideoFile extends RestApiSirTrevorBlockNode
             'slug',
         );
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function getItemType()
+    {
+       return 'video_file';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getListableAttributes(array $options = array())
+    {
+        /** @var RestApiVideoFile $model */
+        $model = $this->loadReferredModel($this->nodeId);
+
+        if (isset($options['mode']) && $options['mode'] === self::MODE_TRANSLATION) {
+            return array(
+                'title' => $model->title,
+                'about' => $model->about,
+                'caption' => $model->caption,
+                'slug' => $model->slug,
+                'subtitles' => $model->translateSubtitles($model->getParsedSubtitles()),
+            );
+        } else {
+            return array(
+                'title' => $model->title,
+                'about' => $model->about,
+                'caption' => $model->caption,
+                'slug' => $model->slug,
+                'url_mp4' => $model->getUrlMp4(),
+                'url_webm' => $model->getUrlWebm(),
+                'url_youtube' => $model->youtube_url,
+                'url_subtitles' => $model->getUrlSubtitles(),
+                'thumb' => array(
+                    'original' => $model->getThumbUrl('original-public'),
+                    '735x444' => $model->getThumbUrl('735x444'),
+                    '160x96' => $model->getThumbUrl('160x96'),
+                    '110x66' => $model->getThumbUrl('110x66'),
+                ),
+            );
+        }
+    }
 }

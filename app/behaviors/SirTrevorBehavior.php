@@ -22,24 +22,12 @@
 class SirTrevorBehavior extends CActiveRecordBehavior
 {
     /**
-     * @var array map of node models that can be referred to in a Sir Trevor composition structure.
-     * Must implement SirTrevorBlockNode interface.
-     */
-    protected static $sirTrevorBlockNodes = array(
-        'video_file' => 'RestApiVideoFile',
-        'html_chunk' => 'RestApiHtmlChunk',
-        'download_link' => 'RestApiDownloadLink',
-        'item_list_config' => 'RestApiItemList',
-        'slideshow_file' => 'RestApiSlideshowFile',
-    );
-
-    /**
      * Populates Sir Trevor blocks with data from the nodes they represent.
      * Also localizes the blocks if the "localize" key is set to true in the options array and the app language is
      * different from the source language.
      *
      * @param string $composition the sir trevor block json string.
-     * @param array $options options for the population. Valid keys values are (bool)`localize`.
+     * @param array $options options for the population. Valid keys values are (bool)`localize`, (string)`mode`.
      * @return array|null the sir trevor block structure or null.
      */
     public function populateSirTrevorBlocks($composition, array $options = array())
@@ -56,7 +44,7 @@ class SirTrevorBehavior extends CActiveRecordBehavior
         $blocks = json_decode(str_replace('\\\-', '-', $composition), true);
         if (is_array($blocks) && isset($blocks['data']) && is_array($blocks['data'])) {
             foreach ($blocks['data'] as &$block) {
-                $this->recPopulateSirTrevorBlock($block);
+                $this->recPopulateSirTrevorBlock($block, $options);
                 if (isset($options['localize']) && $options['localize'] === true) {
                     $this->recLocalizeSirTrevorBlock($block);
                 }
@@ -103,17 +91,25 @@ class SirTrevorBehavior extends CActiveRecordBehavior
      * and the value of the property is an array.
      *
      * @param array $block the Sir Trevor block to populate with data.
+     * @param array $options options for the population. Valid keys values are (bool)`localize`, (string)`mode`.
      */
-    protected function recPopulateSirTrevorBlock(&$block)
+    protected function recPopulateSirTrevorBlock(&$block, array $options = array())
     {
         if (is_array($block) && isset($block['data'], $block['type'])) {
             $block['id'] = md5(serialize($block['data']));
             $recAttr = $block['type'];
-            $node = $this->getReferredBlockNode($block);
-            if ($node !== null) {
-                $block['type'] = $block['data']['item_type'] = $node->getCompositionItemType();
-                $block['data']['attributes'] = $node->getCompositionAttributes();
+
+            try {
+                /** @var RestApiSirTrevorBlockNode $model */
+                $model = \Yii::app()->getComponent('sirTrevorBlockFactory')->forgeBlock($block, $this->getOwner());
+                if ($model instanceof RestApiSirTrevorBlockNode) {
+                    $block['type'] = $block['data']['item_type'] = $model->getItemType();
+                    $block['data']['attributes'] = $model->getListableAttributes($options);
+                }
+            } catch (\CException $e) {
+                // No block model exists for this type of block. Just ignore it.
             }
+
             if (isset($block['data'][$recAttr]) && is_array($block['data'][$recAttr])) {
                 foreach ($block['data'][$recAttr] as &$child) {
                     $this->recPopulateSirTrevorBlock($child);
@@ -137,6 +133,7 @@ class SirTrevorBehavior extends CActiveRecordBehavior
         if (is_array($block) && isset($block['data'], $block['type'])) {
             $block['progress'] = 0;
             $recAttr = $block['type'];
+
             try {
                 /** @var RestApiSirTrevorBlock $model */
                 $model = \Yii::app()->getComponent('sirTrevorBlockFactory')->forgeBlock($block, $this->getOwner());
@@ -148,46 +145,15 @@ class SirTrevorBehavior extends CActiveRecordBehavior
                         $block['progress'] = round(($countTranslated / $countAttributes) * 100);
                     }
                 }
-                if (isset($block['data'][$recAttr]) && is_array($block['data'][$recAttr])) {
-                    foreach ($block['data'][$recAttr] as &$child) {
-                        $this->recLocalizeSirTrevorBlock($child);
-                    }
-                }
             } catch (\CException $e) {
                 // No block model exists for this type of block. Just ignore it.
             }
-        }
-    }
 
-    /**
-     * Returns a node model that is referred to in a Sir Trevor block.
-     * The block data should include a `node_id` on which the correct model can be found.
-     *
-     * @param array $block the block data.
-     * @return SirTrevorBlockNode|null the model or null if not created.
-     */
-    protected function getReferredBlockNode(array $block)
-    {
-        // todo: there has to be a more efficient way of doing this.
-
-        if (!isset($block['data'], $block['data']['item_type'], $block['data']['node_id'])) {
-            return null;
+            if (isset($block['data'][$recAttr]) && is_array($block['data'][$recAttr])) {
+                foreach ($block['data'][$recAttr] as &$child) {
+                    $this->recLocalizeSirTrevorBlock($child);
+                }
+            }
         }
-        if (!isset(self::$sirTrevorBlockNodes[$block['data']['item_type']])) {
-            return null;
-        }
-        $node = \Node::model()->findByPk((int)$block['data']['node_id']);
-        if ($node === null) {
-            return null;
-        }
-        try {
-            $item = $node->item();
-        } catch (\NodeItemExistsButIsRestricted $e) {
-            return null;
-        }
-        if ($item === null) {
-            return null;
-        }
-        return \CActiveRecord::model(self::$sirTrevorBlockNodes[$block['data']['item_type']])->findByPk($item->id);
     }
 }

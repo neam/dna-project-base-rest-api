@@ -6,6 +6,11 @@
 class RestApiModel
 {
     /**
+     * @var array runtime cache for AR models by class and id.
+     */
+    private static $_arCache = array();
+
+    /**
      * @var array map of models that act as `item` model, i.e. most models utilized by the API app.
      * Must implement `WRestModelBehavior` behavior.
      */
@@ -83,6 +88,8 @@ class RestApiModel
         if (!isset($map[$className])) {
             return null;
         }
-        return CActiveRecord::model($map[$className])->findByPk($item->id);
+        return isset(self::$_arCache[$map[$className]][$item->id])
+            ? self::$_arCache[$map[$className]][$item->id]
+            : (self::$_arCache[$map[$className]][$item->id] = ActiveRecord::model($map[$className])->findByPk($item->id));
     }
 } 

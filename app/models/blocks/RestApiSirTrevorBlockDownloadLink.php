@@ -42,4 +42,26 @@ class RestApiSirTrevorBlockDownloadLink extends RestApiSirTrevorBlockNode
             'title',
         );
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function getItemType()
+    {
+        return 'download_link';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getListableAttributes(array $options = array())
+    {
+        /** @var RestApiDownloadLink $model */
+        $model = $this->loadReferredModel($this->nodeId);
+
+        return array(
+            'title' => $model->title,
+            'url' => $model->getLinkUrl(),
+        );
+    }
 }

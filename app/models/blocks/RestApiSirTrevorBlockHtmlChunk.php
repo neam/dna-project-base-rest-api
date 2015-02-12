@@ -42,4 +42,25 @@ class RestApiSirTrevorBlockHtmlChunk extends RestApiSirTrevorBlockNode
             'markup',
         );
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function getItemType()
+    {
+        return 'html_chunk';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getListableAttributes(array $options = array())
+    {
+        /** @var RestApiHtmlChunk $model */
+        $model = $this->loadReferredModel($this->nodeId);
+
+        return array(
+            'markup' => $model->markup,
+        );
+    }
 }

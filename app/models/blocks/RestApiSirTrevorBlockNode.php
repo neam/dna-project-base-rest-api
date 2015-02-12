@@ -5,6 +5,33 @@
  */
 abstract class RestApiSirTrevorBlockNode extends RestApiSirTrevorBlock
 {
+    const MODE_TRANSLATION = 'translation';
+
+    /**
+     * @var int the referred node id.
+     */
+    public $nodeId;
+
+    /**
+     * @var array runtime cache for Node models.
+     */
+    private static $_nodeCache = array();
+
+    /**
+     * Returns the "item_type" to be shown for this block in a composition.
+     *
+     * @return string the item type.
+     */
+    abstract public function getItemType();
+
+    /**
+     * Returns the attributes for the block when included in a composition.
+     *
+     * @param array $options a set in options to base the returned attributes on.
+     * @return array the attributes.
+     */
+    abstract public function getListableAttributes(array $options = array());
+
     /**
      * @inheritdoc
      */
@@ -70,7 +97,9 @@ abstract class RestApiSirTrevorBlockNode extends RestApiSirTrevorBlock
      */
     protected function loadReferredModel($nodeId)
     {
-        $node = Node::model()->findByPk((int)$nodeId);
+        $node = isset(self::$_nodeCache[$nodeId])
+            ? self::$_nodeCache[$nodeId]
+            : (self::$_nodeCache[$nodeId] = Node::model()->findByPk((int)$nodeId));
         if ($node === null) {
             throw new \CException(sprintf('Failed to find node #%s.', $nodeId));
         }

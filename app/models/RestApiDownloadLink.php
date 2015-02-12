@@ -14,7 +14,7 @@
  * @method array getCreateAttributes
  * @method array getUpdateAttributes
  */
-class RestApiDownloadLink extends DownloadLink implements SirTrevorBlockNode, TranslatableResource
+class RestApiDownloadLink extends DownloadLink
 {
     /**
      * @inheritdoc
@@ -37,54 +37,6 @@ class RestApiDownloadLink extends DownloadLink implements SirTrevorBlockNode, Tr
                 ),
             )
         );
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function getCompositionAttributes()
-    {
-        return $this->getListableAttributes();
-    }
-
-    /**
-     * Returns att "listable" attributes.
-     * Listable attributes are ones that appear inside an "attributes" section for a "download_link" in any response.
-     *
-     * @return array
-     */
-    public function getListableAttributes()
-    {
-        return array(
-            'title' => $this->title,
-            'url' => $this->getLinkUrl(),
-        );
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function getCompositionItemType()
-    {
-        return 'download_link';
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function getTranslationAttributes()
-    {
-        return array(
-            'title',
-        );
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function getTranslatedAttributes()
-    {
-        return $this->getCompositionAttributes();
     }
 
     /**

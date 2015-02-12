@@ -21,7 +21,7 @@
  * Methods made available through the RelatedBehavior class:
  * @method array getRelatedItems()
  */
-class RestApiVideoFile extends VideoFile implements SirTrevorBlockNode, TranslatableResource
+class RestApiVideoFile extends VideoFile
 {
     /**
      * @inheritdoc
@@ -58,86 +58,24 @@ class RestApiVideoFile extends VideoFile implements SirTrevorBlockNode, Translat
             'node_id' => (int)$this->node_id,
             'item_type' => 'video_file',
             'url' => $this->getRouteUrl(),
-            'attributes' => $this->getListableAttributes(),
+            'attributes' => array(
+                'title' => $this->title,
+                'about' => $this->about,
+                'caption' => $this->caption,
+                'slug' => $this->slug,
+                'url_mp4' => $this->getUrlMp4(),
+                'url_webm' => $this->getUrlWebm(),
+                'url_youtube' => $this->youtube_url,
+                'url_subtitles' => $this->getUrlSubtitles(),
+                'thumb' => array(
+                    'original' => $this->getThumbUrl('original-public'),
+                    '735x444' => $this->getThumbUrl('735x444'),
+                    '160x96' => $this->getThumbUrl('160x96'),
+                    '110x66' => $this->getThumbUrl('110x66'),
+                ),
+            ),
             'related' => $this->getRelatedItems(),
         );
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function getCompositionAttributes()
-    {
-        return $this->getListableAttributes();
-    }
-
-    /**
-     * Returns att "listable" attributes.
-     * Listable attributes are ones that appear inside an "attributes" section for a "video_file" in any response.
-     *
-     * @return array
-     */
-    public function getListableAttributes()
-    {
-        return array(
-            // todo
-            'subtitles' =>  $this->getTranslatedSubtitles(($this->getParsedSubtitles())),
-            'title' => $this->title,
-            'about' => $this->about,
-            'caption' => $this->caption,
-            'slug' => $this->slug,
-//            'url_mp4' => $this->getUrlMp4(),
-//            'url_webm' => $this->getUrlWebm(),
-//            'url_youtube' => $this->youtube_url,
-//            'url_subtitles' => $this->getUrlSubtitles(),
-//            'thumb' => array(
-//                'original' => $this->getThumbUrl('original-public'),
-//                '735x444' => $this->getThumbUrl('735x444'),
-//                '160x96' => $this->getThumbUrl('160x96'),
-//                '110x66' => $this->getThumbUrl('110x66'),
-//            ),
-        );
-    }
-
-
-    // todo: cant override this because then the subtitles endpoint won't work.
-    public function getTranslatedSubtitles($subtitles)
-    {
-        foreach ($subtitles as $subtitle) {
-            $subtitle->message = Yii::t("video-{$this->id}-subtitles", $subtitle->sourceMessage, array(), 'displayedMessages', Yii::app()->language);
-        }
-        return $subtitles;
-
-    }
-
-
-    /**
-     * @inheritdoc
-     */
-    public function getCompositionItemType()
-    {
-        return 'video_file';
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function getTranslationAttributes()
-    {
-        return array(
-            'title',
-            'about',
-            'caption',
-            'slug',
-        );
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function getTranslatedAttributes()
-    {
-        return $this->getCompositionAttributes();
     }
 
     /**
@@ -159,12 +97,27 @@ class RestApiVideoFile extends VideoFile implements SirTrevorBlockNode, Translat
     }
 
     /**
+     * @param array|null $subtitles
+     * @return mixed
+     */
+    public function translateSubtitles($subtitles)
+    {
+        if (!empty($subtitles) && Yii::app()->language !== Yii::app()->sourceLanguage) {
+            foreach ($subtitles as $subtitle) {
+                $subtitle->message = Yii::t("video-{$this->id}-subtitles", $subtitle->sourceMessage, array(), 'displayedMessages', Yii::app()->language);
+                unset($subtitle->sourceMessage);
+            }
+        }
+        return $subtitles;
+    }
+
+    /**
      * Returns absolute url to the api endpoint for retrieving a video files subtitles.
      * It needs to be a separate end-point as the video player in use requires the subtitles to be loaded from a url.
      *
      * @return string
      */
-    protected function getUrlSubtitles()
+    public function getUrlSubtitles()
     {
         return Yii::app()->createAbsoluteUrl('/v1/videoFile/subtitles/' . $this->id);
     }
@@ -175,7 +128,7 @@ class RestApiVideoFile extends VideoFile implements SirTrevorBlockNode, Translat
      * @param string $preset the image preset to use.
      * @return string|null the url or null if no thumbnail media found.
      */
-    protected function getThumbUrl($preset)
+    public function getThumbUrl($preset)
     {
         if (empty($this->thumbnailMedia)) {
             return null;
@@ -190,7 +143,7 @@ class RestApiVideoFile extends VideoFile implements SirTrevorBlockNode, Translat
      *
      * @return string|null the url or null if video media not found.
      */
-    protected function getUrlMp4()
+    public function getUrlMp4()
     {
         if (empty($this->clipMp4Media)) {
             return null;
@@ -205,7 +158,7 @@ class RestApiVideoFile extends VideoFile implements SirTrevorBlockNode, Translat
      *
      * @return string|null the url or null if video media not found.
      */
-    protected function getUrlWebm()
+    public function getUrlWebm()
     {
         if (empty($this->clipWebmMedia)) {
             return null;

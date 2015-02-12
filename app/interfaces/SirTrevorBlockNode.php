@@ -30,7 +30,8 @@ interface SirTrevorBlockNode
     /**
      * Returns the attributes for the the resource when included in a sir trevor composition block.
      *
+     * @param string|null for what mode the attributes are returned (possible values "translation").
      * @return array the attributes.
      */
-    public function getCompositionAttributes();
+    public function getCompositionAttributes($mode = null);
 } 

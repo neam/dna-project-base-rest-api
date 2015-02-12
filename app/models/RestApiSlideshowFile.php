@@ -14,7 +14,7 @@
  * @method array getCreateAttributes
  * @method array getUpdateAttributes
  */
-class RestApiSlideshowFile extends SlideshowFile implements SirTrevorBlockNode, TranslatableResource
+class RestApiSlideshowFile extends SlideshowFile implements SirTrevorBlockNode
 {
     /**
      * @inheritdoc
@@ -42,7 +42,7 @@ class RestApiSlideshowFile extends SlideshowFile implements SirTrevorBlockNode, 
     /**
      * @inheritdoc
      */
-    public function getCompositionAttributes()
+    public function getCompositionAttributes($mode = null)
     {
         return array(
             'google_docs_id' => $this->google_docs_id,
@@ -56,21 +56,5 @@ class RestApiSlideshowFile extends SlideshowFile implements SirTrevorBlockNode, 
     public function getCompositionItemType()
     {
         return 'slideshow_file';
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function getTranslationAttributes()
-    {
-        return $this->getTranslatableAttributes();
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function getTranslatedAttributes()
-    {
-        return $this->getCompositionAttributes();
     }
 }

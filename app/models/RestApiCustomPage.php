@@ -182,8 +182,13 @@ class RestApiCustomPage extends Page implements TranslatableResource
                     'label' => $this->getAttributeLabel('caption'),
                     'value' => $this->_caption,
                 ),
-                // todo: what about translatable strings, like the video file subtitles, which are not included in the block data by default? Pass options array to populateSirTrevorBlocks method?
-                'composition' => $this->populateSirTrevorBlocks($this->composition, array('localize' => false)),
+                'composition' => $this->populateSirTrevorBlocks(
+                    $this->composition,
+                    array(
+                        'localize' => false,
+                        'mode' => RestApiSirTrevorBlockNode::MODE_TRANSLATION,
+                    )
+                ),
             ),
             'translations' => array(
                 'heading' => array(
@@ -203,7 +208,13 @@ class RestApiCustomPage extends Page implements TranslatableResource
                     'progress' => $this->getAttributeTranslationProgress('caption'),
                 ),
                 // We need to populate the blocks again, with localizations this time.
-                'composition' => $this->populateSirTrevorBlocks($this->composition, array('localize' => true)),
+                'composition' => $this->populateSirTrevorBlocks(
+                    $this->composition,
+                    array(
+                        'localize' => true,
+                        'mode' => RestApiSirTrevorBlockNode::MODE_TRANSLATION,
+                    )
+                ),
             ),
         );
     }

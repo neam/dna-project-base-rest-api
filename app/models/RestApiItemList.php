@@ -38,7 +38,7 @@ class RestApiItemList extends ItemListConfig implements SirTrevorBlockNode
     /**
      * @inheritdoc
      */
-    public function getCompositionAttributes()
+    public function getCompositionAttributes($mode = null)
     {
         return array(
            'display_extent' => !empty($this->displayExtentOption) ? $this->displayExtentOption->ref : null,
