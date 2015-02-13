@@ -1148,7 +1148,7 @@ New social links are created for the currently authentcated user.
                         {
                             "type": "text",
                             "data": {
-                                "text": "Test text"
+                                "text": "Test text\n"
                             }
                         },
                         {
@@ -1197,6 +1197,145 @@ New social links are created for the currently authentcated user.
                             "data": {
                                 "source": "youtube",
                                 "remote_id": "BkSO9pOVpRM"
+                            }
+                        },
+                        {
+                            "type": "item_list",
+                            "data": {
+                                "node_id": 9,
+                                "item_type": "item_list",
+                                "attributes": {
+                                    "display_extent": "titles-only",
+                                    "query": {
+                                        "item_type": "composition",
+                                        "composition_type": null,
+                                        "sort": null,
+                                        "pageSize": 0
+                                    },
+                                    "items": [
+                                        {
+                                            "node_id": 6,
+                                            "item_type": "go_item",
+                                            "url": null,
+                                            "attributes": {
+                                                "composition_type": "qna",
+                                                "heading": "Test heading",
+                                                "subheading": null,
+                                                "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis commodo ante nec venenatis. Vivamus maximus massa lectus, ut fermentum arcu tempus in.",
+                                                "caption": "Test caption",
+                                                "slug": "test-go-item-slug",
+                                                "thumb": {
+                                                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=video.png&extension=.jpeg&lang=en",
+                                                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=video.png&extension=.jpg&lang=en",
+                                                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=video.png&extension=.jpg&lang=en",
+                                                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=video.png&extension=.jpg&lang=en"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "node_id": 7,
+                                            "item_type": "go_item",
+                                            "url": null,
+                                            "attributes": {
+                                                "composition_type": "presentation",
+                                                "heading": "Test heading 2",
+                                                "subheading": null,
+                                                "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis commodo ante nec venenatis. Vivamus maximus massa lectus, ut fermentum arcu tempus in.",
+                                                "caption": "Test caption 2",
+                                                "slug": "test-go-item-slug-2",
+                                                "thumb": {
+                                                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=video.png&extension=.jpeg&lang=en",
+                                                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=video.png&extension=.jpg&lang=en",
+                                                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=video.png&extension=.jpg&lang=en",
+                                                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=video.png&extension=.jpg&lang=en"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "type": "item_list",
+                            "data": {
+                                "node_id": 10,
+                                "item_type": "item_list",
+                                "attributes": {
+                                    "display_extent": "titles-only",
+                                    "query": {
+                                        "item_type": "profile",
+                                        "composition_type": null,
+                                        "sort": null,
+                                        "pageSize": 0
+                                    },
+                                    "items": [
+                                        {
+                                            "first_name": "Test",
+                                            "last_name": "User",
+                                            "email": "testuser@example.com",
+                                            "social_links": [],
+                                            "may_contact": true,
+                                            "professional_title": {
+                                                "data": [
+                                                    {
+                                                        "type": "text",
+                                                        "data": {
+                                                            "text": "I'm a professional"
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            "lives_in": "Uganda",
+                                            "language1": "en",
+                                            "language2": "sv",
+                                            "language3": "fi",
+                                            "about_me": {
+                                                "data": [
+                                                    {
+                                                        "type": "text",
+                                                        "data": {
+                                                            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed semper quam sem, sit amet viverra ante mattis imperdiet."
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            "my_links": {
+                                                "data": [
+                                                    {
+                                                        "type": "text",
+                                                        "data": {
+                                                            "text": "http://gapminder.com"
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            "contributions": [],
+                                            "profile_picture": "http://172.17.42.1:11111/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=350x350.gif&extension=.jpg&lang=en",
+                                            "groups": [
+                                                {
+                                                    "id": "16",
+                                                    "name": "Translators",
+                                                    "member_label": "Member"
+                                                },
+                                                {
+                                                    "id": "17",
+                                                    "name": "Reviewers",
+                                                    "member_label": "Member"
+                                                },
+                                                {
+                                                    "id": "1",
+                                                    "name": "GapminderOrg",
+                                                    "member_label": "Member"
+                                                },
+                                                {
+                                                    "id": "15",
+                                                    "name": "SneakPeeks",
+                                                    "member_label": "Member"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
                             }
                         }
                     ]
@@ -1384,7 +1523,7 @@ It is a workaround for not being able to choose the response when multiple are d
                         {
                             "type": "text",
                             "data": {
-                                "text": "Test text"
+                                "text": "Test text\n"
                             }
                         },
                         {
@@ -1433,6 +1572,145 @@ It is a workaround for not being able to choose the response when multiple are d
                             "data": {
                                 "source": "youtube",
                                 "remote_id": "BkSO9pOVpRM"
+                            }
+                        },
+                        {
+                            "type": "item_list",
+                            "data": {
+                                "node_id": 9,
+                                "item_type": "item_list",
+                                "attributes": {
+                                    "display_extent": "titles-only",
+                                    "query": {
+                                        "item_type": "composition",
+                                        "composition_type": null,
+                                        "sort": null,
+                                        "pageSize": 0
+                                    },
+                                    "items": [
+                                        {
+                                            "node_id": 6,
+                                            "item_type": "go_item",
+                                            "url": null,
+                                            "attributes": {
+                                                "composition_type": "qna",
+                                                "heading": "Test heading",
+                                                "subheading": null,
+                                                "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis commodo ante nec venenatis. Vivamus maximus massa lectus, ut fermentum arcu tempus in.",
+                                                "caption": "Test caption",
+                                                "slug": "test-go-item-slug",
+                                                "thumb": {
+                                                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=video.png&extension=.jpeg&lang=en",
+                                                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=video.png&extension=.jpg&lang=en",
+                                                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=video.png&extension=.jpg&lang=en",
+                                                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=video.png&extension=.jpg&lang=en"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "node_id": 7,
+                                            "item_type": "go_item",
+                                            "url": null,
+                                            "attributes": {
+                                                "composition_type": "presentation",
+                                                "heading": "Test heading 2",
+                                                "subheading": null,
+                                                "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis commodo ante nec venenatis. Vivamus maximus massa lectus, ut fermentum arcu tempus in.",
+                                                "caption": "Test caption 2",
+                                                "slug": "test-go-item-slug-2",
+                                                "thumb": {
+                                                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=video.png&extension=.jpeg&lang=en",
+                                                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=video.png&extension=.jpg&lang=en",
+                                                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=video.png&extension=.jpg&lang=en",
+                                                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=video.png&extension=.jpg&lang=en"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "type": "item_list",
+                            "data": {
+                                "node_id": 10,
+                                "item_type": "item_list",
+                                "attributes": {
+                                    "display_extent": "titles-only",
+                                    "query": {
+                                        "item_type": "profile",
+                                        "composition_type": null,
+                                        "sort": null,
+                                        "pageSize": 0
+                                    },
+                                    "items": [
+                                        {
+                                            "first_name": "Test",
+                                            "last_name": "User",
+                                            "email": "testuser@example.com",
+                                            "social_links": [],
+                                            "may_contact": true,
+                                            "professional_title": {
+                                                "data": [
+                                                    {
+                                                        "type": "text",
+                                                        "data": {
+                                                            "text": "I'm a professional"
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            "lives_in": "Uganda",
+                                            "language1": "en",
+                                            "language2": "sv",
+                                            "language3": "fi",
+                                            "about_me": {
+                                                "data": [
+                                                    {
+                                                        "type": "text",
+                                                        "data": {
+                                                            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed semper quam sem, sit amet viverra ante mattis imperdiet."
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            "my_links": {
+                                                "data": [
+                                                    {
+                                                        "type": "text",
+                                                        "data": {
+                                                            "text": "http://gapminder.com"
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            "contributions": [],
+                                            "profile_picture": "http://172.17.42.1:11111/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=350x350.gif&extension=.jpg&lang=en",
+                                            "groups": [
+                                                {
+                                                    "id": "16",
+                                                    "name": "Translators",
+                                                    "member_label": "Member"
+                                                },
+                                                {
+                                                    "id": "17",
+                                                    "name": "Reviewers",
+                                                    "member_label": "Member"
+                                                },
+                                                {
+                                                    "id": "1",
+                                                    "name": "GapminderOrg",
+                                                    "member_label": "Member"
+                                                },
+                                                {
+                                                    "id": "15",
+                                                    "name": "SneakPeeks",
+                                                    "member_label": "Member"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
                             }
                         }
                     ]

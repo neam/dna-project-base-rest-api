@@ -6,7 +6,7 @@
  * Properties made available through the RestrictedAccessBehavior class:
  * @property boolean $enableRestriction
  */
-class RestApiProfile extends Profile
+class RestApiProfile extends Profile implements RelatedResource
 {
     /**
      * @inheritdoc
@@ -90,4 +90,11 @@ class RestApiProfile extends Profile
         return $response;
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function getRelatedAttributes()
+    {
+        return $this->getAllAttributes();
+    }
 }

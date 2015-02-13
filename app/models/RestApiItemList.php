@@ -10,6 +10,7 @@ class RestApiItemList extends ItemListConfig implements SirTrevorBlock
      */
     protected static $itemResourceMap = array(
         'Composition' => 'RestApiComposition',
+        'Profile' => 'RestApiProfile',
     );
 
     /**
@@ -80,7 +81,7 @@ class RestApiItemList extends ItemListConfig implements SirTrevorBlock
             if ($className !== false) {
                 $criteria = $this->getResourceCriteria();
                 /** @var RelatedResource[] $models */
-                $models = CActiveRecord::model($className)->findAll($criteria);
+                $models = ActiveRecord::model($className)->findAll($criteria);
                 foreach ($models as $model) {
                     $items[] = $model->getRelatedAttributes();
                 }
