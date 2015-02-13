@@ -7,6 +7,9 @@
  */
 abstract class RestApiSirTrevorBlock extends CModel
 {
+    const MODE_DEFAULT = 'default';
+    const MODE_TRANSLATION = 'translation';
+
     /**
      * @var TranslatableResource|SirTrevorBehavior the context model that includes this block in it's composition.
      */
@@ -30,6 +33,8 @@ abstract class RestApiSirTrevorBlock extends CModel
      * - video_file
      */
     public $type;
+
+    public $mode = self::MODE_DEFAULT;
 
     /**
      * @inheritdoc
@@ -110,26 +115,57 @@ abstract class RestApiSirTrevorBlock extends CModel
     }
 
     /**
-     * Applies the translations to this block.
-     * Also sets the translation in the raw block data as that is used by the caller.
+     * Applies the translations to this block and returns the translated attributes.
+     * By default, only the attributes marked as `translatable` will be returned.
+     * Override this method if more data is needed.
      *
-     * @param array $block the raw block data.
-     * @return int the amount of translated attributes.
+     * @return array the translated attributes.
      */
-    public function applyTranslations(array &$block)
+    public function getTranslatedBlockData()
     {
-        $countTranslated = 0;
+        $translations = array();
         foreach ($this->getTranslatableAttributes() as $attr) {
-            if (isset($this->{$attr}, $block['data'][$attr])) {
+            if (isset($this->{$attr})) {
                 $source = $this->{$attr};
                 $translation = \Yii::t($this->getTranslationCategory($attr), $source, array(), 'displayedMessages');
-                if ($translation !== $source) {
-                    $this->{$attr} = $block['data'][$attr] = $translation;
-                    $countTranslated++;
-                }
+                $translations[$attr] = $this->{$attr} = $translation;
             }
         }
-        return $countTranslated;
+        return $translations;
+    }
+
+    /**
+     * Returns the progress of translation for this block.
+     *
+     * @return int the progress percent as an integer.
+     */
+    public function getTranslationProgress()
+    {
+        $attributes = $this->getTranslatableAttributes();
+        $countAttributes = count($attributes);
+        $countTranslated = 0; // todo: get this
+        if ($countTranslated > 0) {
+            return (int)round(($countTranslated / $countAttributes) * 100);
+        }
+        return 0;
+    }
+
+    /**
+     * Returns the un-translated attributes for this block.
+     * By default, only the attributes marked as `translatable` will be returned.
+     * Override this method if more data is needed.
+     *
+     * @return array the un-translated attributes.
+     */
+    public function getRawBlockData()
+    {
+        $attributes = array();
+        foreach ($this->getTranslatableAttributes() as $attr) {
+            if (isset($this->{$attr})) {
+                $attributes[$attr] = $this->{$attr};
+            }
+        }
+        return $attributes;
     }
 
     /**

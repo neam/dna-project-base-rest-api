@@ -22,11 +22,23 @@ class RestApiSirTrevorBlockSlideshowFile extends RestApiSirTrevorBlockNode
     /**
      * @inheritdoc
      */
-    public function getListableAttributes(array $options = array())
+    public function getTranslatedBlockData()
     {
         /** @var RestApiSlideshowFile $model */
         $model = $this->loadReferredModel($this->nodeId);
+        return array(
+            'google_docs_id' => $model->google_docs_id,
+            'slideshare_id' => $model->slideshare_id,
+        );
+    }
 
+    /**
+     * @inheritdoc
+     */
+    public function getRawBlockData()
+    {
+        /** @var RestApiSlideshowFile $model */
+        $model = $this->loadReferredModel($this->nodeId);
         return array(
             'google_docs_id' => $model->google_docs_id,
             'slideshare_id' => $model->slideshare_id,

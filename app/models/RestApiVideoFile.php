@@ -97,21 +97,6 @@ class RestApiVideoFile extends VideoFile
     }
 
     /**
-     * @param array|null $subtitles
-     * @return mixed
-     */
-    public function translateSubtitles($subtitles)
-    {
-        if (!empty($subtitles) && Yii::app()->language !== Yii::app()->sourceLanguage) {
-            foreach ($subtitles as $subtitle) {
-                $subtitle->message = Yii::t("video-{$this->id}-subtitles", $subtitle->sourceMessage, array(), 'displayedMessages', Yii::app()->language);
-                unset($subtitle->sourceMessage);
-            }
-        }
-        return $subtitles;
-    }
-
-    /**
      * Returns absolute url to the api endpoint for retrieving a video files subtitles.
      * It needs to be a separate end-point as the video player in use requires the subtitles to be loaded from a url.
      *

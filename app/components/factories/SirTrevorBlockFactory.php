@@ -38,19 +38,17 @@ class SirTrevorBlockFactory extends \CApplicationComponent
         }
         /** @var RestApiSirTrevorBlock $model */
         $model = new self::$blocks[$data['type']]();
-        if (!empty($data['data'])) {
-            // Blocks that refer nodes have their attributes one level deeper.
-            if (!empty($data['data']['attributes'])) {
-                $model->setAttributes((array)$data['data']['attributes']);
-            } else {
-                $model->setAttributes((array)$data['data']);
-            }
+        // Only apply attributes to non-node referring blocks. Blocks referring nodes don't have any data anyways.
+        if (!empty($data['data']) && !($model instanceof RestApiSirTrevorBlockNode)) {
+            $model->setAttributes((array)$data['data']);
         }
         $model->context = $parent;
         $model->id = $data['id'];
         $model->type = $data['type'];
         if (isset($data['data']['node_id']) && $model instanceof RestApiSirTrevorBlockNode) {
+            /** @var RestApiSirTrevorBlockNode $model */
             $model->nodeId = (int)$data['data']['node_id'];
+            $model->applyData();
         }
         return $model;
     }

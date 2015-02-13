@@ -22,11 +22,42 @@ class RestApiSirTrevorBlockItemList extends RestApiSirTrevorBlockNode
     /**
      * @inheritdoc
      */
-    public function getListableAttributes(array $options = array())
+    public function applyData()
     {
+        // Nothing to apply.
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getTranslatedBlockData()
+    {
+        if ($this->mode === self::MODE_TRANSLATION) {
+            // This block cannot be translated, so there is no need to return any data.
+            return array();
+        }
         /** @var RestApiItemList $model */
         $model = $this->loadReferredModel($this->nodeId);
+        return $this->getBlockData($model);
+    }
 
+    /**
+     * @inheritdoc
+     */
+    public function getRawBlockData()
+    {
+        if ($this->mode === self::MODE_TRANSLATION) {
+            // This block cannot be translated, so there is no need to return any data.
+            return array();
+        }
+
+        /** @var RestApiItemList $model */
+        $model = $this->loadReferredModel($this->nodeId);
+        return $this->getBlockData($model);
+    }
+
+    protected function getBlockData(RestApiItemList $model)
+    {
         return array(
             'display_extent' => !empty($model->displayExtentOption) ? $model->displayExtentOption->ref : null,
             'query' => array(

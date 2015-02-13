@@ -32,29 +32,26 @@ class SirTrevorBehavior extends CActiveRecordBehavior
      */
     public function populateSirTrevorBlocks($composition, array $options = array())
     {
-        // If we don't what to localize the blocks, then we need to reset the app language.
-        // This is because all blocks that refer a node will use the I18nAttributeMessagesBehavior to fetch attributes
-        // and that works based on the app language.
-        if (!isset($options['localize']) || $options['localize'] === false) {
-            $targetLanguage = Yii::app()->language;
-            Yii::app()->language = Yii::app()->sourceLanguage;
-        }
+//        // If we don't what to localize the blocks, then we need to reset the app language.
+//        // This is because all blocks that refer a node will use the I18nAttributeMessagesBehavior to fetch attributes
+//        // and that works based on the app language.
+//        if (!isset($options['localize']) || $options['localize'] === false) {
+//            $targetLanguage = Yii::app()->language;
+//            Yii::app()->language = Yii::app()->sourceLanguage;
+//        }
 
         // Hack for fixing sir trevor urls where every "-" is a "\\-". (https://github.com/madebymany/sir-trevor-js/issues/248)
         $blocks = json_decode(str_replace('\\\-', '-', $composition), true);
         if (is_array($blocks) && isset($blocks['data']) && is_array($blocks['data'])) {
             foreach ($blocks['data'] as &$block) {
                 $this->recPopulateSirTrevorBlock($block, $options);
-                if (isset($options['localize']) && $options['localize'] === true) {
-                    $this->recLocalizeSirTrevorBlock($block);
-                }
             }
         }
 
-        // If we did not want localizations, then remember to reset the app language to it's original state.
-        if ((!isset($options['localize']) || $options['localize'] === false) && isset($targetLanguage)) {
-            Yii::app()->language = $targetLanguage;
-        }
+//        // If we did not want localizations, then remember to reset the app language to it's original state.
+//        if ((!isset($options['localize']) || $options['localize'] === false) && isset($targetLanguage)) {
+//            Yii::app()->language = $targetLanguage;
+//        }
 
         return $blocks;
     }
@@ -102,47 +99,26 @@ class SirTrevorBehavior extends CActiveRecordBehavior
             try {
                 /** @var RestApiSirTrevorBlockNode $model */
                 $model = \Yii::app()->getComponent('sirTrevorBlockFactory')->forgeBlock($block, $this->getOwner());
-                if ($model instanceof RestApiSirTrevorBlockNode) {
-                    $block['type'] = $block['data']['item_type'] = $model->getItemType();
-                    $block['data']['attributes'] = $model->getListableAttributes($options);
+                if (isset($options['mode'])) {
+                    $model->mode = $options['mode'];
                 }
-            } catch (\CException $e) {
-                // No block model exists for this type of block. Just ignore it.
-            }
 
-            if (isset($block['data'][$recAttr]) && is_array($block['data'][$recAttr])) {
-                foreach ($block['data'][$recAttr] as &$child) {
-                    $this->recPopulateSirTrevorBlock($child);
-                }
-            }
-        }
-    }
-
-    /**
-     * Recursively localize the Sir Trevor block.
-     * Also adds a `progress` key to every block that holds the percentage of the block translation.
-     *
-     * @param array $block the Sir Trevor block structure to localize.
-     */
-    protected function recLocalizeSirTrevorBlock(&$block)
-    {
-        // No need to go further if there is nothing to translate.
-        if (\Yii::app()->language === \Yii::app()->sourceLanguage) {
-            return;
-        }
-        if (is_array($block) && isset($block['data'], $block['type'])) {
-            $block['progress'] = 0;
-            $recAttr = $block['type'];
-
-            try {
-                /** @var RestApiSirTrevorBlock $model */
-                $model = \Yii::app()->getComponent('sirTrevorBlockFactory')->forgeBlock($block, $this->getOwner());
-                if ($model->validate()) {
-                    $attributes = $model->getTranslatableAttributes();
-                    $countAttributes = count($attributes);
-                    $countTranslated = $model->applyTranslations($block);
-                    if ($countTranslated > 0) {
-                        $block['progress'] = round(($countTranslated / $countAttributes) * 100);
+                if (isset($options['localize']) && $options['localize'] === true) {
+                    if ($model instanceof RestApiSirTrevorBlockNode) {
+                        $block['type'] = $block['data']['item_type'] = $model->getItemType();
+                        // Blocks that refer nodes have their translations under `attributes`.
+                        $block['data']['attributes'] = $model->getTranslatedBlockData();
+                    } else {
+                        // Pure Sir Trevor blocks have their translations directly under `data`.
+                        $block['data'] = array_merge($block['data'], $model->getTranslatedBlockData());
+                    }
+                    $block['progress'] = $model->getTranslationProgress();
+                } else {
+                    // When we want the un-translated block data, we only need to care about the node referring blocks,
+                    // as the pure Sir Trevor ones already have their data populated.
+                    if ($model instanceof RestApiSirTrevorBlockNode) {
+                        $block['type'] = $block['data']['item_type'] = $model->getItemType();
+                        $block['data']['attributes'] = $model->getRawBlockData();
                     }
                 }
             } catch (\CException $e) {
@@ -151,7 +127,7 @@ class SirTrevorBehavior extends CActiveRecordBehavior
 
             if (isset($block['data'][$recAttr]) && is_array($block['data'][$recAttr])) {
                 foreach ($block['data'][$recAttr] as &$child) {
-                    $this->recLocalizeSirTrevorBlock($child);
+                    $this->recPopulateSirTrevorBlock($child, $options);
                 }
             }
         }
