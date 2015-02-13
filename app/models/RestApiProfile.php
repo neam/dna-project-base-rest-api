@@ -21,7 +21,7 @@
  * Properties made available through the RestrictedAccessBehavior class:
  * @property boolean $enableRestriction
  */
-class RestApiProfile extends Profile
+class RestApiProfile extends Profile implements RelatedResource
 {
     /**
      * @inheritdoc
@@ -71,6 +71,14 @@ class RestApiProfile extends Profile
             'profile_picture' => $this->getPictureUrl(),
             'groups' => $this->getGroupData(),
         );
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getRelatedAttributes()
+    {
+        return $this->getAllAttributes();
     }
 
     /**

@@ -34,7 +34,7 @@ $I->seeResponseContainsJson(array(
                 array(
                     "type" => "text",
                     "data" => array(
-                        "text" => "Test text"
+                        "text" => "Test text\n"
                     )
                 ),
                 array(
@@ -83,6 +83,145 @@ $I->seeResponseContainsJson(array(
                     "data" => array(
                         "source" => "youtube",
                         "remote_id" => "BkSO9pOVpRM"
+                    )
+                ),
+                array(
+                    "type" => "item_list",
+                    "data" => array(
+                        "node_id" => 9,
+                        "item_type" => "item_list",
+                        "attributes" => array(
+                            "display_extent" => "titles-only",
+                            "query" => array(
+                                "item_type" => "composition",
+                                "composition_type" => null,
+                                "sort" => null,
+                                "pageSize" => 0
+                            ),
+                            "items" => array(
+                                array(
+                                    "node_id" => 6,
+                                    "item_type" => "go_item",
+                                    "url" => null,
+                                    "attributes" => array(
+                                    "composition_type" => "qna",
+                                        "heading"=> "Test heading",
+                                        "subheading" => null,
+                                        "about" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis commodo ante nec venenatis. Vivamus maximus massa lectus, ut fermentum arcu tempus in.",
+                                        "caption" => "Test caption",
+                                        "slug" => "test-go-item-slug",
+                                        "thumb" =>  array(
+                                        "original" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=video.png&extension=.jpeg&lang=en",
+                                            "735x444" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=video.png&extension=.jpg&lang=en",
+                                            "160x96" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=video.png&extension=.jpg&lang=en",
+                                            "110x66" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=video.png&extension=.jpg&lang=en"
+                                        )
+                                    )
+                                ),
+                                array(
+                                    "node_id" => 7,
+                                    "item_type" => "go_item",
+                                    "url" => null,
+                                    "attributes" => array(
+                                    "composition_type" => "presentation",
+                                        "heading" => "Test heading 2",
+                                        "subheading" => null,
+                                        "about" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis commodo ante nec venenatis. Vivamus maximus massa lectus, ut fermentum arcu tempus in.",
+                                        "caption" => "Test caption 2",
+                                        "slug" => "test-go-item-slug-2",
+                                        "thumb" =>  array(
+                                        "original" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=video.png&extension=.jpeg&lang=en",
+                                            "735x444" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=video.png&extension=.jpg&lang=en",
+                                            "160x96" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=video.png&extension=.jpg&lang=en",
+                                            "110x66" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=video.png&extension=.jpg&lang=en"
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    )
+                ),
+                array(
+                    "type" => "item_list",
+                    "data" => array(
+                    "node_id" => 10,
+                    "item_type" => "item_list",
+                    "attributes" => array(
+                        "display_extent" => "titles-only",
+                            "query" => array(
+                                "item_type" => "profile",
+                                "composition_type" => null,
+                                "sort" => null,
+                                "pageSize" => 0
+                            ),
+                            "items" => array(
+                                array(
+                                    "first_name" => "Test",
+                                    "last_name" => "User",
+                                    "email" => "testuser@example.com",
+                                    "social_links" => array(),
+                                    "may_contact" => true,
+                                    "professional_title" => array(
+                                        "data" => array(
+                                            array(
+                                                "type" => "text",
+                                                "data" => array(
+                                                    "text" => "I'm a professional"
+                                                )
+                                            )
+                                        )
+                                    ),
+                                    "lives_in" => "Uganda",
+                                    "language1" => "en",
+                                    "language2" => "sv",
+                                    "language3" => "fi",
+                                    "about_me" => array(
+                                    "data" => array(
+                                            array(
+                                                "type" => "text",
+                                                "data" => array(
+                                                "text" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed semper quam sem, sit amet viverra ante mattis imperdiet."
+                                                )
+                                            )
+                                        )
+                                    ),
+                                    "my_links" => array(
+                                    "data" => array(
+                                            array(
+                                                "type" => "text",
+                                                "data" => array(
+                                                "text" => "http://gapminder.com"
+                                                )
+                                            )
+                                        )
+                                    ),
+                                    "contributions" => array(),
+                                    "profile_picture" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=350x350.gif&extension=.jpg&lang=en",
+                                    "groups" => array(
+                                        array(
+                                            "id" => "16",
+                                            "name" => "Translators",
+                                            "member_label" => "Member"
+                                        ),
+                                        array(
+                                            "id" => "17",
+                                            "name" => "Reviewers",
+                                            "member_label" => "Member"
+                                        ),
+                                        array(
+                                            "id" => "1",
+                                            "name" => "GapminderOrg",
+                                            "member_label" => "Member"
+                                        ),
+                                        array(
+                                            "id" => "15",
+                                            "name" => "SneakPeeks",
+                                            "member_label" => "Member"
+                                        )
+                                    )
+                                )
+                            )
+                        )
                     )
                 )
             )
