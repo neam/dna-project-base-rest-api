@@ -15,6 +15,8 @@ class SirTrevorBlockFactory extends \CApplicationComponent
         'html_chunk' => 'RestApiSirTrevorBlockHtmlChunk',
         'download_link' => 'RestApiSirTrevorBlockDownloadLink',
         'video_file' => 'RestApiSirTrevorBlockVideoFile',
+        'item_list_config' => 'RestApiSirTrevorBlockItemList',
+        'slideshow_file' => 'RestApiSirTrevorBlockSlideshowFile',
     );
 
     /**

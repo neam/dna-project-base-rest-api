@@ -28,7 +28,7 @@
  * Methods made available through the SirTrevorBehavior class:
  * @method array populateSirTrevorBlocks()
  */
-class RestApiComposition extends Composition implements RelatedResource
+class RestApiComposition extends Composition implements RelatedResource, TranslatableResource
 {
     /**
      * @inheritdoc
@@ -131,6 +131,94 @@ class RestApiComposition extends Composition implements RelatedResource
     }
 
     /**
+     * @inheritdoc
+     */
+    public function getTranslationAttributes()
+    {
+        return array(
+            'heading',
+            'subheading',
+            'about',
+            'caption',
+            'composition',
+        );
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getTranslatedAttributes()
+    {
+        return array(
+            'node_id' => (int)$this->node_id,
+            'item_type' => 'go_item',
+            'url' =>  $this->getRouteUrl(),
+            'attributes' => array(
+                'heading' => array(
+                    'label' => $this->getAttributeLabel('heading'),
+                    'value' => $this->_heading,
+                ),
+                'subheading' => array(
+                    'label' => $this->getAttributeLabel('subheading'),
+                    'value' => $this->_subheading,
+                ),
+                'about' => array(
+                    'label' => $this->getAttributeLabel('about'),
+                    'value' => $this->_about,
+                ),
+                'caption' => array(
+                    'label' => $this->getAttributeLabel('caption'),
+                    'value' => $this->_caption,
+                ),
+                'composition' => $this->populateSirTrevorBlocks(
+                        $this->composition,
+                        array(
+                            'localize' => false,
+                            'mode' => RestApiSirTrevorBlockNode::MODE_TRANSLATION,
+                        )
+                    ),
+            ),
+            'translations' => array(
+                'heading' => array(
+                    'value' => $this->heading,
+                    'progress' => $this->getAttributeTranslationProgress('heading'),
+                ),
+                'subheading' => array(
+                    'value' => $this->subheading,
+                    'progress' => $this->getAttributeTranslationProgress('subheading'),
+                ),
+                'about' => array(
+                    'value' => $this->about,
+                    'progress' => $this->getAttributeTranslationProgress('about'),
+                ),
+                'caption' => array(
+                    'value' => $this->caption,
+                    'progress' => $this->getAttributeTranslationProgress('caption'),
+                ),
+                // We need to populate the blocks again, with localizations this time.
+                'composition' => $this->populateSirTrevorBlocks(
+                        $this->composition,
+                        array(
+                            'localize' => true,
+                            'mode' => RestApiSirTrevorBlockNode::MODE_TRANSLATION,
+                        )
+                    ),
+            ),
+        );
+    }
+
+    /**
+     * @todo move to trait or behavior or something. also thing about moving TranslatableResource to trait or behavior.
+     *
+     * @param string $attribute
+     * @return int
+     */
+    protected function getAttributeTranslationProgress($attribute)
+    {
+        return ($this->{"_{$attribute}"} !== $this->{$attribute}) ? 100 : 0;
+    }
+
+    /**
      * @return string|null
      */
     public function getRouteUrl()
@@ -142,8 +230,7 @@ class RestApiComposition extends Composition implements RelatedResource
         $route = Route::model()->findByAttributes(array(
             'node_id' => (int)$this->node_id,
             'canonical' => true,
-            // todo: this needs to be enabled once we have multi-lingual support
-//            'translation_route_language' => Yii::app()->language,
+            'translation_route_language' => Yii::app()->language,
         ));
 
         return ($route !== null) ? $route->route : null;

@@ -104,6 +104,6 @@ abstract class RestApiSirTrevorBlockNode extends RestApiSirTrevorBlock
             throw new \CException(sprintf('Failed to find node #%s.', $nodeId));
         }
         $item = $node->item();
-        return RestApiModel::loadTranslatable($item);
+        return RestApiModel::loadSirTrevorBlockNode($item);
     }
 }

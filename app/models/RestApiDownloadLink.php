@@ -44,7 +44,7 @@ class RestApiDownloadLink extends DownloadLink
      *
      * @return string|null the url or null if not found.
      */
-    protected function getLinkUrl()
+    public function getLinkUrl()
     {
         if (empty($this->fileMedia)) {
             return null;

@@ -14,7 +14,7 @@
  * @method array getCreateAttributes
  * @method array getUpdateAttributes
  */
-class RestApiSlideshowFile extends SlideshowFile implements SirTrevorBlockNode
+class RestApiSlideshowFile extends SlideshowFile
 {
     /**
      * @inheritdoc
@@ -37,24 +37,5 @@ class RestApiSlideshowFile extends SlideshowFile implements SirTrevorBlockNode
                 ),
             )
         );
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function getCompositionAttributes($mode = null)
-    {
-        return array(
-            'google_docs_id' => $this->google_docs_id,
-            'slideshare_id' => $this->slideshare_id,
-        );
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function getCompositionItemType()
-    {
-        return 'slideshow_file';
     }
 }
