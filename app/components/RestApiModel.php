@@ -110,6 +110,7 @@ class RestApiModel
     /**
      * Checks if given class has an `item_list_config` model and returns it's class name.
      *
+     * @see RestApiModel::$itemListModels
      * @param string $className the class name to search the model by.
      * @return string|bool the class name or false if not found.
      */
