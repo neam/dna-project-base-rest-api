@@ -7,7 +7,8 @@ class ItemTranslatorFactory extends \CApplicationComponent
      * The resource model must implement TranslatableResource interface.
      */
     protected static $translators = array(
-        'RestApiCustomPage' => 'application.components.translators.CustomPageTranslator',
+        'RestApiCustomPage' => 'application.components.translators.CompositionItemTranslator',
+        'RestApiComposition' => 'application.components.translators.CompositionItemTranslator',
     );
 
     /**
