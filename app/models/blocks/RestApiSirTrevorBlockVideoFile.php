@@ -2,13 +2,30 @@
 
 class RestApiSirTrevorBlockVideoFile extends RestApiSirTrevorBlockNode
 {
-    // todo: subtitles
-
+    /**
+     * @var string the video file title.
+     */
     public $title;
+
+    /**
+     * @var string the video file about text.
+     */
     public $about;
+
+    /**
+     * @var string the video file caption.
+     */
     public $caption;
+
+    /**
+     * @var string the video fle slug.
+     */
     public $slug;
-    public $subtitles;
+
+    /**
+     * @var array the video file subtitles.
+     */
+    public $subtitles = array();
 
     /**
      * @inheritdoc
@@ -18,7 +35,7 @@ class RestApiSirTrevorBlockVideoFile extends RestApiSirTrevorBlockNode
         return array_merge(
             parent::rules(),
             array(
-                array('title, about, caption, slug', 'safe'),
+                array('title, about, caption, slug, subtitles', 'safe'),
             )
         );
     }
@@ -35,6 +52,7 @@ class RestApiSirTrevorBlockVideoFile extends RestApiSirTrevorBlockNode
                 'about',
                 'caption',
                 'slug',
+                'subtitles',
             )
         );
     }
@@ -49,6 +67,7 @@ class RestApiSirTrevorBlockVideoFile extends RestApiSirTrevorBlockNode
             'about',
             'caption',
             'slug',
+            'subtitles',
         );
     }
 
@@ -116,7 +135,7 @@ class RestApiSirTrevorBlockVideoFile extends RestApiSirTrevorBlockNode
                     'value' => $this->slug,
                     'progress' => 0,
                 ),
-                'subtitles' => $this->translateSubtitles($this->subtitles),
+                'subtitles' => $this->getParsedTranslatedSubtitles(),
             );
         } else {
             return $this->getModeDefaultBlockData($model);
@@ -156,6 +175,12 @@ class RestApiSirTrevorBlockVideoFile extends RestApiSirTrevorBlockNode
         }
     }
 
+    /**
+     * Returns the video file block data when in "default" mode.
+     *
+     * @param RestApiVideoFile $model the video file model.
+     * @return array the data.
+     */
     protected function getModeDefaultBlockData(RestApiVideoFile $model)
     {
         return array(
@@ -203,10 +228,7 @@ class RestApiSirTrevorBlockVideoFile extends RestApiSirTrevorBlockNode
                  */
                 if (is_array($value)) {
                     if ($attr === 'subtitles' && is_array($value)) {
-                        // sir trevor composition blocks are translated via their block models.
-                        foreach ($value as $subtitle) {
-                            // todo: save $subtitle['message']
-                        }
+                        $this->translateSubtitles($value);
                     } elseif (isset($value['value'], $model->{$attr}) && is_string($value['value'])) {
                         // regular model attributes are translated via the `I18nAttributeMessagesBehavior` behavior.
                         $model->{$attr} = $value['value'];
@@ -214,56 +236,110 @@ class RestApiSirTrevorBlockVideoFile extends RestApiSirTrevorBlockNode
                 }
             }
             if (!$model->save()) {
-                throw new \CException('Failed to save video file translation. Errors: ' . print_r($model->errors, true));
+                throw new \CException(
+                    'Failed to save video file translation. Errors: ' . print_r($model->errors, true)
+                );
             }
         }
     }
 
     /**
-     * @param array|null $subtitles
-     * @return mixed
+     * Saves the subtitle translations to the db.
+     *
+     * Expected format of $translations:
+     *
+     * array(
+     *     array( "id" => 1, "message" => "the translated subtitle" ),
+     *     ...
+     * )
+     *
+     * @param array $translations the subtitle translations to save.
+     * @throws CException if the translations cannot be saved.
      */
-    protected function translateSubtitles($subtitles)
+    protected function translateSubtitles(array $translations)
     {
-        $translated = array();
-        if (!empty($subtitles)) {
-            /** @var RestApiVideoFile $model */
-            $model = $this->loadReferredModel($this->nodeId);
-            foreach ($subtitles as $subtitle) {
-                $translated[] = array(
-                    'id' => $subtitle['id'],
-                    'message' => Yii::t("video-{$model->id}-subtitles", $subtitle['sourceMessage'], array(), 'displayedMessages', Yii::app()->language),
+        if (empty($translations)) {
+            return;
+        }
+
+        // Parse the original subtitles.
+        /** @var RestApiVideoFile $model */
+        $model = $this->loadReferredModel($this->nodeId);
+        $subtitles = $model->getParsedSubtitles();
+        if (empty($subtitles)) {
+            return;
+        }
+
+        // Create a map of source => translation based on the subtitle id.
+        $translationMap = array();
+        foreach ($subtitles as $subtitle) {
+            foreach ($translations as $translation) {
+                if (isset($translation['id'], $translation['message'])
+                    && (int)$translation['id'] === (int)$subtitle->id
+                ) {
+                    $translationMap[$subtitle->sourceMessage] = $translation['message'];
+                    break;
+                }
+            }
+        }
+        if (empty($translationMap)) {
+            return;
+        }
+
+        // Create or update the translation models.
+        foreach ($translationMap as $sourceMessage => $message) {
+            $sourceMessageModel = \SourceMessage::ensureSourceMessage(
+                $model->getTranslationCategory('subtitles'),
+                $sourceMessage,
+                Yii::app()->sourceLanguage
+            );
+            $messageModel = \Message::model()
+                ->findByAttributes(array('id' => $sourceMessageModel->id, 'language' => Yii::app()->language));
+            if ($messageModel === null) {
+                $messageModel = new Message();
+                $messageModel->id = $sourceMessageModel->id;
+                $messageModel->language = Yii::app()->language;
+            }
+            $messageModel->translation = $message;
+            if (!$messageModel->save()) {
+                throw new \CException(
+                    'Failed to save block translation. Errors: ' . print_r($messageModel->errors, true)
                 );
             }
         }
-        return $translated;
     }
 
-//    /**
-//     * @inheritdoc
-//     */
-//    public function applyTranslations(array &$block)
-//    {
-////        $countTranslated = 0;
-//
-//        $model = $this->loadReferredModel($this->nodeId);
-//
-//        foreach ($this->getTranslatableAttributes() as $attr) {
-//            if (isset($this->{$attr}, $model->{"_{$attr}"}, $block['data']['attributes'][$attr])) {
-//                /*
-//                 * Blocks with node references are already translated during populate.
-//                 * @see SirTrevorBehavior::recPopulateSirTrevorBlock
-//                 */
-//                $source = $model->{"_{$attr}"};
-//                $translation = $block['data']['attributes'][$attr];
-//                if ($translation !== $source) {
-//                    $this->{$attr} = $translation;
-////                    $countTranslated++;
-//                }
-//            }
-//        }
-//
-//
-////        return $countTranslated;
-//    }
+    /**
+     * Returns the translated parsed subtitles.
+     *
+     * Format:
+     *
+     * array(
+     *     array( "id" => 1, "message" => "the translated subtitle" ),
+     *     ...
+     * )
+     *
+     * @return array the translated subtitles.
+     */
+    protected function getParsedTranslatedSubtitles()
+    {
+        $translated = array();
+
+        /** @var RestApiVideoFile $model */
+        $model = $this->loadReferredModel($this->nodeId);
+        foreach ($this->subtitles as $subtitle) {
+            $translated[] = array(
+                'id' => $subtitle['id'],
+                'message' => Yii::t(
+                    $model->getTranslationCategory('subtitles'),
+                    $subtitle['sourceMessage'],
+                    array(),
+                    'displayedMessages', // todo: is this correct?
+                    Yii::app()->language
+                ),
+            );
+        }
+
+        return $translated;
+    }
 }
