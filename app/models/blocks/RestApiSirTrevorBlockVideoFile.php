@@ -97,7 +97,7 @@ class RestApiSirTrevorBlockVideoFile extends RestApiSirTrevorBlockNode
             if (!empty($subtitles)) {
                 foreach ($subtitles as $subtitle) {
                     $this->subtitles[] = array(
-                        'id' => $subtitle->id,
+                        'id' => (int)$subtitle->id,
                         'sourceMessage' => $subtitle->sourceMessage,
                     );
                 }
@@ -339,7 +339,7 @@ class RestApiSirTrevorBlockVideoFile extends RestApiSirTrevorBlockNode
         $model = $this->loadReferredModel($this->nodeId);
         foreach ($this->subtitles as $subtitle) {
             $translated[] = array(
-                'id' => $subtitle['id'],
+                'id' => (int)$subtitle['id'],
                 'message' => Yii::t(
                     $model->getTranslationCategory('subtitles'),
                     $subtitle['sourceMessage'],
