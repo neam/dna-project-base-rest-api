@@ -36,6 +36,7 @@ class RestApiSirTrevorBlockItemList extends RestApiSirTrevorBlockNode
             // This block cannot be translated, so there is no need to return any data.
             return array();
         }
+
         /** @var RestApiItemList $model */
         $model = $this->loadReferredModel($this->nodeId);
         return $this->getBlockData($model);

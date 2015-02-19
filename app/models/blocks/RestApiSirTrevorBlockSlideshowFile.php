@@ -22,6 +22,14 @@ class RestApiSirTrevorBlockSlideshowFile extends RestApiSirTrevorBlockNode
     /**
      * @inheritdoc
      */
+    public function applyData()
+    {
+        // Nothing to apply.
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function getTranslatedBlockData()
     {
         /** @var RestApiSlideshowFile $model */
