@@ -30,6 +30,10 @@ abstract class RestApiSirTrevorBlockNode extends RestApiSirTrevorBlock
         }
 
         $model = $this->loadReferredModel((int)$block['data']['node_id']);
+        if ($model === null) {
+            return;
+        }
+
         $dirty = false;
         foreach ($this->getTranslatableAttributes() as $attr) {
             if (!isset($this->{$attr}, $model->{$attr})) {

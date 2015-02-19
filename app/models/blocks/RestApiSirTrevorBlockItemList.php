@@ -39,6 +39,9 @@ class RestApiSirTrevorBlockItemList extends RestApiSirTrevorBlockNode
 
         /** @var RestApiItemList $model */
         $model = $this->loadReferredModel($this->nodeId);
+        if ($model === null) {
+            return array();
+        }
         return $this->getBlockData($model);
     }
 
@@ -54,6 +57,9 @@ class RestApiSirTrevorBlockItemList extends RestApiSirTrevorBlockNode
 
         /** @var RestApiItemList $model */
         $model = $this->loadReferredModel($this->nodeId);
+        if ($model === null) {
+            return array();
+        }
         return $this->getBlockData($model);
     }
 

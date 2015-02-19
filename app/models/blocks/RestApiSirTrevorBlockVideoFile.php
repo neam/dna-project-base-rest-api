@@ -86,20 +86,21 @@ class RestApiSirTrevorBlockVideoFile extends RestApiSirTrevorBlockNode
     {
         /** @var RestApiVideoFile $model */
         $model = $this->loadReferredModel($this->nodeId);
+        if ($model !== null) {
+            $this->title = $model->_title;
+            $this->about = $model->_about;
+            $this->caption = $model->_caption;
+            $this->slug = $model->slug_en; // todo: what is the source slug field
 
-        $this->title = $model->_title;
-        $this->about = $model->_about;
-        $this->caption = $model->_caption;
-        $this->slug = $model->slug_en; // todo: what is the source slug field
-
-        $subtitles = $model->getParsedSubtitles();
-        $this->subtitles = array();
-        if (!empty($subtitles)) {
-            foreach ($subtitles as $subtitle) {
-                $this->subtitles[] = array(
-                    'id' => $subtitle->id,
-                    'sourceMessage' => $subtitle->sourceMessage,
-                );
+            $subtitles = $model->getParsedSubtitles();
+            $this->subtitles = array();
+            if (!empty($subtitles)) {
+                foreach ($subtitles as $subtitle) {
+                    $this->subtitles[] = array(
+                        'id' => $subtitle->id,
+                        'sourceMessage' => $subtitle->sourceMessage,
+                    );
+                }
             }
         }
     }
@@ -111,6 +112,9 @@ class RestApiSirTrevorBlockVideoFile extends RestApiSirTrevorBlockNode
     {
         /** @var RestApiVideoFile $model */
         $model = $this->loadReferredModel($this->nodeId);
+        if ($model === null) {
+            return array();
+        }
 
         $this->title = $model->title;
         $this->about = $model->about;
@@ -149,6 +153,9 @@ class RestApiSirTrevorBlockVideoFile extends RestApiSirTrevorBlockNode
     {
         /** @var RestApiVideoFile $model */
         $model = $this->loadReferredModel($this->nodeId);
+        if ($model === null) {
+            return array();
+        }
 
         if ($this->mode === self::MODE_TRANSLATION) {
             return array(
@@ -208,6 +215,9 @@ class RestApiSirTrevorBlockVideoFile extends RestApiSirTrevorBlockNode
     {
         /** @var RestApiVideoFile $model */
         $model = $this->loadReferredModel($this->nodeId);
+        if ($model === null) {
+            return;
+        }
 
         if (!isset($block['data'], $block['data']['attributes']) || empty($block['data']['attributes'])) {
             throw new \CException('Invalid block data. Missing or invalid properties.');

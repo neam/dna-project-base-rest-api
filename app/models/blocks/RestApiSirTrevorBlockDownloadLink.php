@@ -58,8 +58,9 @@ class RestApiSirTrevorBlockDownloadLink extends RestApiSirTrevorBlockNode
     {
         /** @var RestApiDownloadLink $model */
         $model = $this->loadReferredModel($this->nodeId);
-
-        $this->title = $model->_title;
+        if ($model !== null) {
+            $this->title = $model->_title;
+        }
     }
 
     /**
@@ -69,6 +70,10 @@ class RestApiSirTrevorBlockDownloadLink extends RestApiSirTrevorBlockNode
     {
         /** @var RestApiDownloadLink $model */
         $model = $this->loadReferredModel($this->nodeId);
+        if ($model === null) {
+            return array();
+        }
+
         $this->title = $model->title;
         return array(
             'title' => $this->title,
@@ -83,6 +88,10 @@ class RestApiSirTrevorBlockDownloadLink extends RestApiSirTrevorBlockNode
     {
         /** @var RestApiDownloadLink $model */
         $model = $this->loadReferredModel($this->nodeId);
+        if ($model === null) {
+            return array();
+        }
+
         return array(
             'title' => $this->title,
             'url' => $model->getLinkUrl(),

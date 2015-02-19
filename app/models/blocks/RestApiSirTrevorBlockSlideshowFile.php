@@ -34,6 +34,10 @@ class RestApiSirTrevorBlockSlideshowFile extends RestApiSirTrevorBlockNode
     {
         /** @var RestApiSlideshowFile $model */
         $model = $this->loadReferredModel($this->nodeId);
+        if ($model === null) {
+            return array();
+        }
+
         return array(
             'google_docs_id' => $model->google_docs_id,
             'slideshare_id' => $model->slideshare_id,
@@ -47,6 +51,10 @@ class RestApiSirTrevorBlockSlideshowFile extends RestApiSirTrevorBlockNode
     {
         /** @var RestApiSlideshowFile $model */
         $model = $this->loadReferredModel($this->nodeId);
+        if ($model === null) {
+            return array();
+        }
+
         return array(
             'google_docs_id' => $model->google_docs_id,
             'slideshare_id' => $model->slideshare_id,

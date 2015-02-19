@@ -58,8 +58,9 @@ class RestApiSirTrevorBlockHtmlChunk extends RestApiSirTrevorBlockNode
     {
         /** @var RestApiHtmlChunk $model */
         $model = $this->loadReferredModel($this->nodeId);
-
-        $this->markup = $model->_markup;
+        if ($model !== null) {
+            $this->markup = $model->_markup;
+        }
     }
 
     /**
@@ -69,6 +70,10 @@ class RestApiSirTrevorBlockHtmlChunk extends RestApiSirTrevorBlockNode
     {
         /** @var RestApiHtmlChunk $model */
         $model = $this->loadReferredModel($this->nodeId);
+        if ($model === null) {
+            return array();
+        }
+
         $this->markup = $model->markup;
         return array(
             'markup' => $this->markup,
