@@ -90,7 +90,7 @@ class RestApiSirTrevorBlockVideoFile extends RestApiSirTrevorBlockNode
             $this->title = $model->_title;
             $this->about = $model->_about;
             $this->caption = $model->_caption;
-            $this->slug = $model->slug_en; // todo: what is the source slug field
+            $this->slug = $model->{"slug_".Yii::app()->sourceLanguage};
 
             $subtitles = $model->getParsedSubtitles();
             $this->subtitles = array();
@@ -128,18 +128,16 @@ class RestApiSirTrevorBlockVideoFile extends RestApiSirTrevorBlockNode
                 }
                 /*
                  * Translatable attributes have a value structured like:
-                 * array( "value" => "the translated text" )
+                 * "the translated text"
                  *
                  * While the `subtitles` attribute as a value structured like:
                  * array( array( "message" => "the translated text" ... ) ... )
                  */
-                if (is_array($value)) {
-                    if ($attr === 'subtitles' && is_array($value)) {
-                        $this->translateSubtitles($value);
-                    } elseif (isset($value['value'], $model->{$attr}) && is_string($value['value'])) {
-                        // regular model attributes are translated via the `I18nAttributeMessagesBehavior` behavior.
-                        $model->{$attr} = $value['value'];
-                    }
+                if ($attr === 'subtitles' && is_array($value)) {
+                    $this->translateSubtitles($value);
+                } elseif (isset($model->{$attr}) && is_string($value)) {
+                    // regular model attributes are translated via the `I18nAttributeMessagesBehavior` behavior.
+                    $model->{$attr} = $value;
                 }
             }
             if (!$model->save()) {
@@ -262,13 +260,22 @@ class RestApiSirTrevorBlockVideoFile extends RestApiSirTrevorBlockNode
             );
             $messageModel = \Message::model()
                 ->findByAttributes(array('id' => $sourceMessageModel->id, 'language' => Yii::app()->language));
+
+            $dirty = false;
             if ($messageModel === null) {
-                $messageModel = new Message();
-                $messageModel->id = $sourceMessageModel->id;
-                $messageModel->language = Yii::app()->language;
+                if ($sourceMessage !== $message) {
+                    $messageModel = new Message();
+                    $messageModel->id = $sourceMessageModel->id;
+                    $messageModel->language = Yii::app()->language;
+                    $messageModel->translation = $message;
+                    $dirty = true;
+                }
+            } else if ($messageModel->translation !== $message) {
+                $messageModel->translation = $message;
+                $dirty = true;
             }
-            $messageModel->translation = $message;
-            if (!$messageModel->save()) {
+
+            if ($dirty && !$messageModel->save()) {
                 throw new \CException(
                     'Failed to save block translation. Errors: ' . print_r($messageModel->errors, true)
                 );
@@ -299,7 +306,7 @@ class RestApiSirTrevorBlockVideoFile extends RestApiSirTrevorBlockNode
                 $model->getTranslationCategory('subtitles'),
                 $subtitle['sourceMessage'],
                 array(),
-                'displayedMessages', // todo: is this correct?
+                'displayedMessages',
                 Yii::app()->language
             );
             if ($message !== $subtitle['sourceMessage']) {

@@ -60,5 +60,14 @@ class CompositionItemTranslator extends ItemTranslator
         if (isset($model)) {
             $model->translate($block);
         }
+
+        if (isset($block['type'])) {
+            $recAttr = $block['type'];
+            if (isset($block['data'][$recAttr]) && is_array($block['data'][$recAttr])) {
+                foreach ($block['data'][$recAttr] as $child) {
+                    $this->translateSirTrevorBlock($parent, $child);
+                }
+            }
+        }
     }
 }

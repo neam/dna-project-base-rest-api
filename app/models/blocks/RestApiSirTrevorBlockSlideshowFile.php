@@ -7,7 +7,7 @@ class RestApiSirTrevorBlockSlideshowFile extends RestApiSirTrevorBlockNode
      */
     public function getTranslatableAttributes()
     {
-        // todo: item lists contain only data from it's item type. these are not currently translatable.
+        // slideshow contain only data from it's item type. these are not currently translatable.
         return array();
     }
 

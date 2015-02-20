@@ -103,21 +103,32 @@ abstract class RestApiSirTrevorBlock extends CModel
             if (!isset($this->{$attr}, $sourceBlock['data'][$attr]) || empty($sourceBlock['data'][$attr])) {
                 continue;
             }
-            $sourceMessage = \SourceMessage::ensureSourceMessage(
+            $sourceMessage = $sourceBlock['data'][$attr];
+            $message = $this->{$attr};
+            $sourceMessageModel = \SourceMessage::ensureSourceMessage(
                 $this->getTranslationCategory($attr),
-                $sourceBlock['data'][$attr],
+                $sourceMessage,
                 Yii::app()->sourceLanguage
             );
-            $message = \Message::model()
-                ->findByAttributes(array('id' => $sourceMessage->id, 'language' => Yii::app()->language));
-            if ($message === null) {
-                $message = new Message();
-                $message->id = $sourceMessage->id;
-                $message->language = Yii::app()->language;
+            $messageModel = \Message::model()
+                ->findByAttributes(array('id' => $sourceMessageModel->id, 'language' => Yii::app()->language));
+
+            $dirty = false;
+            if ($messageModel === null) {
+                if ($sourceMessage !== $message) {
+                    $messageModel = new Message();
+                    $messageModel->id = $sourceMessageModel->id;
+                    $messageModel->language = Yii::app()->language;
+                    $messageModel->translation = $message;
+                    $dirty = true;
+                }
+            } else if ($messageModel->translation !== $message) {
+                $messageModel->translation = $message;
+                $dirty = true;
             }
-            $message->translation = $this->{$attr};
-            if (!$message->save()) {
-                throw new \CException('Failed to save block translation. Errors: ' . print_r($message->errors, true));
+
+            if ($dirty && !$messageModel->save()) {
+                throw new \CException('Failed to save block translation. Errors: ' . print_r($messageModel->errors, true));
             }
         }
     }
