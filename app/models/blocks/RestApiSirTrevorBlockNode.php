@@ -67,6 +67,26 @@ abstract class RestApiSirTrevorBlockNode extends RestApiSirTrevorBlock
     }
 
     /**
+     * Returns a list of attribute labels for the block.
+     *
+     * @return array list of attribute labels.
+     */
+    public function getBlockAttributeLabels()
+    {
+        /** @var ActiveRecord $model */
+        $model = $this->loadReferredModel($this->nodeId);
+        if ($model === null) {
+            return array();
+        } else {
+            $labels = array();
+            foreach ($this->getTranslatableAttributes() as $attr) {
+                $labels[$attr] = $model->getAttributeLabel($attr);
+            }
+            return $labels;
+        }
+    }
+
+    /**
      * Returns the "item_type" to be shown for this block in a composition.
      *
      * @return string the item type.

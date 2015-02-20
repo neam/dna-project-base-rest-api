@@ -105,6 +105,9 @@ class SirTrevorBehavior extends CActiveRecordBehavior
                     if ($model instanceof RestApiSirTrevorBlockNode) {
                         $block['type'] = $block['data']['item_type'] = $model->getItemType();
                         $block['data']['attributes'] = $model->getRawBlockData();
+                        if ($model->mode === RestApiSirTrevorBlock::MODE_TRANSLATION) {
+                            $block['data']['labels'] = $model->getBlockAttributeLabels();
+                        }
                     }
                 }
             } catch (\CException $e) {
