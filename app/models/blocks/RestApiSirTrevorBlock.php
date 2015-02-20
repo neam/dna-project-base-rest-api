@@ -34,7 +34,15 @@ abstract class RestApiSirTrevorBlock extends CModel
      */
     public $type;
 
+    /**
+     * @var string
+     */
     public $mode = self::MODE_DEFAULT;
+
+    /**
+     * @var int
+     */
+    protected $countTranslated = 0;
 
     /**
      * @inheritdoc
@@ -117,21 +125,26 @@ abstract class RestApiSirTrevorBlock extends CModel
     /**
      * Applies the translations to this block and returns the translated attributes.
      * By default, only the attributes marked as `translatable` will be returned.
-     * Override this method if more data is needed.
+     * Override method `applyTranslations` and/or `getBlockData` for specific implementations.
      *
      * @return array the translated attributes.
      */
     public function getTranslatedBlockData()
     {
-        $translations = array();
-        foreach ($this->getTranslatableAttributes() as $attr) {
-            if (isset($this->{$attr})) {
-                $source = $this->{$attr};
-                $translation = \Yii::t($this->getTranslationCategory($attr), $source, array(), 'displayedMessages');
-                $translations[$attr] = $this->{$attr} = $translation;
-            }
-        }
-        return $translations;
+        $this->applyTranslations();
+        return $this->getBlockData();
+    }
+
+    /**
+     * Returns the un-translated attributes for this block.
+     * By default, only the attributes marked as `translatable` will be returned.
+     * Override method `getBlockData` for specific implementations.
+     *
+     * @return array the un-translated attributes.
+     */
+    public function getRawBlockData()
+    {
+        return $this->getBlockData();
     }
 
     /**
@@ -143,7 +156,7 @@ abstract class RestApiSirTrevorBlock extends CModel
     {
         $attributes = $this->getTranslatableAttributes();
         $countAttributes = count($attributes);
-        $countTranslated = 0; // todo: get this
+        $countTranslated = $this->countTranslated;
         if ($countTranslated > 0) {
             return (int)round(($countTranslated / $countAttributes) * 100);
         }
@@ -151,21 +164,36 @@ abstract class RestApiSirTrevorBlock extends CModel
     }
 
     /**
-     * Returns the un-translated attributes for this block.
-     * By default, only the attributes marked as `translatable` will be returned.
-     * Override this method if more data is needed.
-     *
-     * @return array the un-translated attributes.
+     * Applies the translations to the blocks and updates the `$this->countTranslated` accordingly.
      */
-    public function getRawBlockData()
+    protected function applyTranslations()
     {
-        $attributes = array();
         foreach ($this->getTranslatableAttributes() as $attr) {
             if (isset($this->{$attr})) {
-                $attributes[$attr] = $this->{$attr};
+                $source = $this->{$attr};
+                $translation = \Yii::t($this->getTranslationCategory($attr), $source, array(), 'displayedMessages');
+                if ($translation !== $source) {
+                    $this->{$attr} = $translation;
+                    $this->countTranslated++;
+                }
             }
         }
-        return $attributes;
+    }
+
+    /**
+     * Returns the block data.
+     *
+     * @return array the data.
+     */
+    protected function getBlockData()
+    {
+        $data = array();
+        foreach ($this->getTranslatableAttributes() as $attr) {
+            if (isset($this->{$attr})) {
+                $data[$attr] = $this->{$attr};
+            }
+        }
+        return $data;
     }
 
     /**

@@ -66,27 +66,35 @@ class RestApiSirTrevorBlockHtmlChunk extends RestApiSirTrevorBlockNode
     /**
      * @inheritdoc
      */
-    public function getTranslatedBlockData()
+    protected function getBlockData()
     {
         /** @var RestApiHtmlChunk $model */
         $model = $this->loadReferredModel($this->nodeId);
         if ($model === null) {
             return array();
+        } else {
+            return array(
+                'markup' => $this->markup,
+            );
         }
-
-        $this->markup = $model->markup;
-        return array(
-            'markup' => $this->markup,
-        );
     }
 
     /**
      * @inheritdoc
      */
-    public function getRawBlockData()
+    protected function applyTranslations()
     {
-        return array(
-            'markup' => $this->markup,
-        );
+        /** @var RestApiHtmlChunk $model */
+        $model = $this->loadReferredModel($this->nodeId);
+        if ($model !== null) {
+            foreach ($this->getTranslatableAttributes() as $attr) {
+                if (isset($this->{$attr}, $model->{$attr})) {
+                    if ($model->{$attr} !== $this->{$attr}) {
+                        $this->{$attr} = $model->{$attr};
+                        $this->countTranslated++;
+                    }
+                }
+            }
+        }
     }
 }

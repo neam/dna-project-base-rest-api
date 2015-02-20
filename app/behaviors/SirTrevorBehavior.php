@@ -32,14 +32,6 @@ class SirTrevorBehavior extends CActiveRecordBehavior
      */
     public function populateSirTrevorBlocks($composition, array $options = array())
     {
-//        // If we don't what to localize the blocks, then we need to reset the app language.
-//        // This is because all blocks that refer a node will use the I18nAttributeMessagesBehavior to fetch attributes
-//        // and that works based on the app language.
-//        if (!isset($options['localize']) || $options['localize'] === false) {
-//            $targetLanguage = Yii::app()->language;
-//            Yii::app()->language = Yii::app()->sourceLanguage;
-//        }
-
         // Hack for fixing sir trevor urls where every "-" is a "\\-". (https://github.com/madebymany/sir-trevor-js/issues/248)
         $blocks = json_decode(str_replace('\\\-', '-', $composition), true);
         if (is_array($blocks) && isset($blocks['data']) && is_array($blocks['data'])) {
@@ -47,12 +39,6 @@ class SirTrevorBehavior extends CActiveRecordBehavior
                 $this->recPopulateSirTrevorBlock($block, $options);
             }
         }
-
-//        // If we did not want localizations, then remember to reset the app language to it's original state.
-//        if ((!isset($options['localize']) || $options['localize'] === false) && isset($targetLanguage)) {
-//            Yii::app()->language = $targetLanguage;
-//        }
-
         return $blocks;
     }
 
@@ -123,6 +109,11 @@ class SirTrevorBehavior extends CActiveRecordBehavior
                 }
             } catch (\CException $e) {
                 // No block model exists for this type of block. Just ignore it.
+
+                // If we are fetching localized blocks, then add zero progress to all blocks that don't support translation.
+                if (isset($options['localize']) && $options['localize'] === true) {
+                    $block['progress'] = 0;
+                }
             }
 
             if (isset($block['data'][$recAttr]) && is_array($block['data'][$recAttr])) {

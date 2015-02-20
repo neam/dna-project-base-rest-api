@@ -66,35 +66,36 @@ class RestApiSirTrevorBlockDownloadLink extends RestApiSirTrevorBlockNode
     /**
      * @inheritdoc
      */
-    public function getTranslatedBlockData()
+    protected function getBlockData()
     {
         /** @var RestApiDownloadLink $model */
         $model = $this->loadReferredModel($this->nodeId);
         if ($model === null) {
             return array();
+        } else {
+            return array(
+                'title' => $this->title,
+                'url' => $model->getLinkUrl(),
+            );
         }
-
-        $this->title = $model->title;
-        return array(
-            'title' => $this->title,
-            'url' => $model->getLinkUrl(),
-        );
     }
 
     /**
      * @inheritdoc
      */
-    public function getRawBlockData()
+    protected function applyTranslations()
     {
         /** @var RestApiDownloadLink $model */
         $model = $this->loadReferredModel($this->nodeId);
-        if ($model === null) {
-            return array();
+        if ($model !== null) {
+            foreach ($this->getTranslatableAttributes() as $attr) {
+                if (isset($this->{$attr}, $model->{$attr})) {
+                    if ($model->{$attr} !== $this->{$attr}) {
+                        $this->{$attr} = $model->{$attr};
+                        $this->countTranslated++;
+                    }
+                }
+            }
         }
-
-        return array(
-            'title' => $this->title,
-            'url' => $model->getLinkUrl(),
-        );
     }
 }

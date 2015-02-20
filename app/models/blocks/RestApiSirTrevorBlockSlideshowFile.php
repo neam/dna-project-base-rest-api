@@ -30,34 +30,25 @@ class RestApiSirTrevorBlockSlideshowFile extends RestApiSirTrevorBlockNode
     /**
      * @inheritdoc
      */
-    public function getTranslatedBlockData()
+    protected function applyTranslations()
     {
-        /** @var RestApiSlideshowFile $model */
-        $model = $this->loadReferredModel($this->nodeId);
-        if ($model === null) {
-            return array();
-        }
-
-        return array(
-            'google_docs_id' => $model->google_docs_id,
-            'slideshare_id' => $model->slideshare_id,
-        );
+        // Nothing to apply.
     }
 
     /**
      * @inheritdoc
      */
-    public function getRawBlockData()
+    protected function getBlockData()
     {
         /** @var RestApiSlideshowFile $model */
         $model = $this->loadReferredModel($this->nodeId);
         if ($model === null) {
             return array();
+        } else {
+            return array(
+                'google_docs_id' => $model->google_docs_id,
+                'slideshare_id' => $model->slideshare_id,
+            );
         }
-
-        return array(
-            'google_docs_id' => $model->google_docs_id,
-            'slideshare_id' => $model->slideshare_id,
-        );
     }
 }

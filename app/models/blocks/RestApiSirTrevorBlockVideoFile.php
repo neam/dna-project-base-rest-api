@@ -108,109 +108,6 @@ class RestApiSirTrevorBlockVideoFile extends RestApiSirTrevorBlockNode
     /**
      * @inheritdoc
      */
-    public function getTranslatedBlockData()
-    {
-        /** @var RestApiVideoFile $model */
-        $model = $this->loadReferredModel($this->nodeId);
-        if ($model === null) {
-            return array();
-        }
-
-        $this->title = $model->title;
-        $this->about = $model->about;
-        $this->caption = $model->caption;
-        $this->slug = $model->slug;
-
-        if ($this->mode === self::MODE_TRANSLATION) {
-            return array(
-                'title' => array(
-                    'value' => $this->title,
-                    'progress' => 0,
-                ),
-                'about' => array(
-                    'value' => $this->about,
-                    'progress' => 0,
-                ),
-                'caption' => array(
-                    'value' => $this->caption,
-                    'progress' => 0,
-                ),
-                'slug' => array(
-                    'value' => $this->slug,
-                    'progress' => 0,
-                ),
-                'subtitles' => $this->getParsedTranslatedSubtitles(),
-            );
-        } else {
-            return $this->getModeDefaultBlockData($model);
-        }
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function getRawBlockData()
-    {
-        /** @var RestApiVideoFile $model */
-        $model = $this->loadReferredModel($this->nodeId);
-        if ($model === null) {
-            return array();
-        }
-
-        if ($this->mode === self::MODE_TRANSLATION) {
-            return array(
-                'title' => array(
-                    'label' => $model->getAttributeLabel('title'),
-                    'value' => $this->title,
-                ),
-                'about' => array(
-                    'label' => $model->getAttributeLabel('about'),
-                    'value' => $this->about,
-                ),
-                'caption' => array(
-                    'label' => $model->getAttributeLabel('caption'),
-                    'value' => $this->caption,
-                ),
-                'slug' => array(
-                    'label' => $model->getAttributeLabel('slug'),
-                    'value' => $this->slug,
-                ),
-                'subtitles' => $this->subtitles,
-            );
-        } else {
-            return $this->getModeDefaultBlockData($model);
-        }
-    }
-
-    /**
-     * Returns the video file block data when in "default" mode.
-     *
-     * @param RestApiVideoFile $model the video file model.
-     * @return array the data.
-     */
-    protected function getModeDefaultBlockData(RestApiVideoFile $model)
-    {
-        return array(
-            'title' => $this->title,
-            'about' => $this->about,
-            'caption' => $this->caption,
-            'slug' => $this->slug,
-            'url_mp4' => $model->getUrlMp4(),
-            'url_webm' => $model->getUrlWebm(),
-            'url_youtube' => $model->youtube_url,
-            'url_subtitles' => $model->getUrlSubtitles(),
-            'thumb' => array(
-                'original' => $model->getThumbUrl('original-public'),
-                '735x444' => $model->getThumbUrl('735x444'),
-                '160x96' => $model->getThumbUrl('160x96'),
-                '110x66' => $model->getThumbUrl('110x66'),
-            ),
-        );
-    }
-
-    /**
-     * @inheritdoc
-     */
     public function translate(array $block)
     {
         /** @var RestApiVideoFile $model */
@@ -250,6 +147,66 @@ class RestApiSirTrevorBlockVideoFile extends RestApiSirTrevorBlockNode
                     'Failed to save video file translation. Errors: ' . print_r($model->errors, true)
                 );
             }
+        }
+    }
+
+    /**
+     * @inheritdoc
+     */
+    protected function applyTranslations()
+    {
+        /** @var RestApiVideoFile $model */
+        $model = $this->loadReferredModel($this->nodeId);
+        if ($model !== null) {
+            foreach ($this->getTranslatableAttributes() as $attr) {
+                if ($attr === 'subtitles') {
+                    $this->subtitles = $this->getParsedTranslatedSubtitles();
+                } else if (isset($this->{$attr}, $model->{$attr})) {
+                    if ($model->{$attr} !== $this->{$attr}) {
+                        $this->{$attr} = $model->{$attr};
+                        $this->countTranslated++;
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * @inheritdoc
+     */
+    protected function getBlockData()
+    {
+        /** @var RestApiVideoFile $model */
+        $model = $this->loadReferredModel($this->nodeId);
+        if ($model === null) {
+            return array();
+        }
+
+        if ($this->mode === self::MODE_TRANSLATION) {
+            return array(
+                'title' => $this->title,
+                'about' => $this->about,
+                'caption' => $this->caption,
+                'slug' => $this->slug,
+                'subtitles' => $this->subtitles,
+            );
+        } else {
+            return array(
+                'title' => $this->title,
+                'about' => $this->about,
+                'caption' => $this->caption,
+                'slug' => $this->slug,
+                'url_mp4' => $model->getUrlMp4(),
+                'url_webm' => $model->getUrlWebm(),
+                'url_youtube' => $model->youtube_url,
+                'url_subtitles' => $model->getUrlSubtitles(),
+                'thumb' => array(
+                    'original' => $model->getThumbUrl('original-public'),
+                    '735x444' => $model->getThumbUrl('735x444'),
+                    '160x96' => $model->getThumbUrl('160x96'),
+                    '110x66' => $model->getThumbUrl('110x66'),
+                ),
+            );
         }
     }
 
@@ -338,15 +295,19 @@ class RestApiSirTrevorBlockVideoFile extends RestApiSirTrevorBlockNode
         /** @var RestApiVideoFile $model */
         $model = $this->loadReferredModel($this->nodeId);
         foreach ($this->subtitles as $subtitle) {
+            $message = Yii::t(
+                $model->getTranslationCategory('subtitles'),
+                $subtitle['sourceMessage'],
+                array(),
+                'displayedMessages', // todo: is this correct?
+                Yii::app()->language
+            );
+            if ($message !== $subtitle['sourceMessage']) {
+                $this->countTranslated++;
+            }
             $translated[] = array(
                 'id' => (int)$subtitle['id'],
-                'message' => Yii::t(
-                    $model->getTranslationCategory('subtitles'),
-                    $subtitle['sourceMessage'],
-                    array(),
-                    'displayedMessages', // todo: is this correct?
-                    Yii::app()->language
-                ),
+                'message' => $message,
             );
         }
 

@@ -30,25 +30,15 @@ class RestApiSirTrevorBlockItemList extends RestApiSirTrevorBlockNode
     /**
      * @inheritdoc
      */
-    public function getTranslatedBlockData()
+    protected function applyTranslations()
     {
-        if ($this->mode === self::MODE_TRANSLATION) {
-            // This block cannot be translated, so there is no need to return any data.
-            return array();
-        }
-
-        /** @var RestApiItemList $model */
-        $model = $this->loadReferredModel($this->nodeId);
-        if ($model === null) {
-            return array();
-        }
-        return $this->getBlockData($model);
+        // Nothing to apply.
     }
 
     /**
      * @inheritdoc
      */
-    public function getRawBlockData()
+    protected function getBlockData()
     {
         if ($this->mode === self::MODE_TRANSLATION) {
             // This block cannot be translated, so there is no need to return any data.
@@ -60,11 +50,7 @@ class RestApiSirTrevorBlockItemList extends RestApiSirTrevorBlockNode
         if ($model === null) {
             return array();
         }
-        return $this->getBlockData($model);
-    }
 
-    protected function getBlockData(RestApiItemList $model)
-    {
         return array(
             'display_extent' => !empty($model->displayExtentOption) ? $model->displayExtentOption->ref : null,
             'query' => array(
