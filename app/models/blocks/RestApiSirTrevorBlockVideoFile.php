@@ -149,6 +149,22 @@ class RestApiSirTrevorBlockVideoFile extends RestApiSirTrevorBlockNode
     }
 
     /**
+     * Returns the progress of translation for this block.
+     *
+     * @return int the progress percent as an integer.
+     */
+    public function getTranslationProgress()
+    {
+        $attributes = $this->getTranslatableAttributes();
+        $countAttributes = count($attributes) - 1 /* subtitles attribute */ + count($this->subtitles);
+        $countTranslated = $this->countTranslated;
+        if ($countTranslated > 0) {
+            return (int)round(($countTranslated / $countAttributes) * 100);
+        }
+        return 0;
+    }
+
+    /**
      * @inheritdoc
      */
     protected function applyTranslations()
