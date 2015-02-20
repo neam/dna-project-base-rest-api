@@ -154,22 +154,10 @@ class RestApiComposition extends Composition implements RelatedResource, Transla
             'item_type' => 'go_item',
             'url' =>  $this->getRouteUrl(),
             'attributes' => array(
-                'heading' => array(
-                    'label' => $this->getAttributeLabel('heading'),
-                    'value' => $this->_heading,
-                ),
-                'subheading' => array(
-                    'label' => $this->getAttributeLabel('subheading'),
-                    'value' => $this->_subheading,
-                ),
-                'about' => array(
-                    'label' => $this->getAttributeLabel('about'),
-                    'value' => $this->_about,
-                ),
-                'caption' => array(
-                    'label' => $this->getAttributeLabel('caption'),
-                    'value' => $this->_caption,
-                ),
+                'heading' => $this->_heading,
+                'subheading' => $this->_subheading,
+                'about' => $this->_about,
+                'caption' => $this->_caption,
                 'composition' => $this->populateSirTrevorBlocks(
                         $this->composition,
                         array(
@@ -179,22 +167,10 @@ class RestApiComposition extends Composition implements RelatedResource, Transla
                     ),
             ),
             'translations' => array(
-                'heading' => array(
-                    'value' => $this->heading,
-                    'progress' => $this->getAttributeTranslationProgress('heading'),
-                ),
-                'subheading' => array(
-                    'value' => $this->subheading,
-                    'progress' => $this->getAttributeTranslationProgress('subheading'),
-                ),
-                'about' => array(
-                    'value' => $this->about,
-                    'progress' => $this->getAttributeTranslationProgress('about'),
-                ),
-                'caption' => array(
-                    'value' => $this->caption,
-                    'progress' => $this->getAttributeTranslationProgress('caption'),
-                ),
+                'heading' => $this->heading,
+                'subheading' => $this->subheading,
+                'about' => $this->about,
+                'caption' => $this->caption,
                 // We need to populate the blocks again, with localizations this time.
                 'composition' => $this->populateSirTrevorBlocks(
                         $this->composition,
@@ -203,6 +179,12 @@ class RestApiComposition extends Composition implements RelatedResource, Transla
                             'mode' => RestApiSirTrevorBlockNode::MODE_TRANSLATION,
                         )
                     ),
+            ),
+            'labels' => array(
+                'heading' => $this->getAttributeLabel('heading'),
+                'subheading' => $this->getAttributeLabel('subheading'),
+                'about' => $this->getAttributeLabel('about'),
+                'caption' => $this->getAttributeLabel('caption'),
             ),
         );
     }
