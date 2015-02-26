@@ -47,7 +47,7 @@ class RestApiItemList extends ItemListConfig implements SirTrevorBlock
         return array(
            'display_extent' => !empty($this->displayExtentOption) ? $this->displayExtentOption->ref : null,
            'query' => array(
-               'item_type' => !empty($this->queryFilterByItemType) ? $this->queryFilterByItemType->table : null,
+               'item_type' => !empty($this->queryFilterByItemTypeOption) ? $this->queryFilterByItemTypeOption->table : null,
                'composition_type' => !empty($this->queryFilterByCompositionType) ? $this->queryFilterByCompositionType->ref : null,
                'sort' => (!empty($this->querySortOption) && !empty($this->querySortOption->ref)) ? $this->querySortOption->ref : null,
                'pageSize' => (int)$this->query_pageSize,
@@ -76,7 +76,7 @@ class RestApiItemList extends ItemListConfig implements SirTrevorBlock
     protected function getCompositionItems()
     {
         $items = array();
-        if (!empty($this->queryFilterByItemType)) {
+        if (!empty($this->queryFilterByItemTypeOption)) {
             $className = $this->getResourceModelName();
             if ($className !== false) {
                 $criteria = $this->getResourceCriteria();
@@ -105,10 +105,10 @@ class RestApiItemList extends ItemListConfig implements SirTrevorBlock
      */
     protected function getResourceModelName()
     {
-        if (empty($this->queryFilterByItemType) || !isset(self::$itemResourceMap[$this->queryFilterByItemType->model_class])) {
+        if (empty($this->queryFilterByItemTypeOption) || !isset(self::$itemResourceMap[$this->queryFilterByItemTypeOption->model_class])) {
             return false;
         }
-        return self::$itemResourceMap[$this->queryFilterByItemType->model_class];
+        return self::$itemResourceMap[$this->queryFilterByItemTypeOption->model_class];
     }
 
     /**
@@ -118,8 +118,9 @@ class RestApiItemList extends ItemListConfig implements SirTrevorBlock
      */
     protected function getResourceCriteria()
     {
+        $model = ActiveRecord::model($this->getResourceModelName());
         $criteria = new CDbCriteria();
-        if (!empty($this->query_filter_by_composition_type_id)) {
+        if (!empty($this->query_filter_by_composition_type_id) && $model->hasProperty('composition_type_id')) {
             $criteria->compare('composition_type_id', (int)$this->query_filter_by_composition_type_id);
         }
         if (!empty($this->querySortOption)) {
