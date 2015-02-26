@@ -30,6 +30,7 @@ class SirTrevorBehavior extends CActiveRecordBehavior
         'download_link' => 'RestApiDownloadLink',
         'item_list_config' => 'RestApiItemList',
         'slideshow_file' => 'RestApiSlideshowFile',
+        'visualization' => 'RestApiVisualization',
     );
 
     /**
