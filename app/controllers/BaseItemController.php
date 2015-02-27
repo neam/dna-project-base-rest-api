@@ -84,7 +84,7 @@ class BaseItemController extends AppRestController
         try {
             $item = $node->item();
         } catch (CException $e) {
-            throw new CHttpException(404, sprintf(Yii::t('rest-api', $e->getMessage()), $id));
+            throw new CHttpException(404, Yii::t('rest-api', $e->getMessage()));
         }
         if ($item === null) {
             throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find item for node %s.'), $id));
