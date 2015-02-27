@@ -1337,6 +1337,93 @@ New social links are created for the currently authentcated user.
                                     ]
                                 }
                             }
+                        },
+                        {
+                            "type": "visualization",
+                            "data": {
+                                "node_id": 12,
+                                "item_type": "visualization",
+                                "attributes": {
+                                    "state": {
+                                        "time": {
+                                            "start": 1990,
+                                            "end": 2012,
+                                            "value": 1995,
+                                            "step": 1,
+                                            "speed": 300,
+                                            "formatInput": "%Y"
+                                        },
+                                        "entities": {
+                                            "show": {
+                                                "dim": "geo",
+                                                "filter": {
+                                                    "geo": [
+                                                        "swe",
+                                                        "nor",
+                                                        "fin",
+                                                        "bra",
+                                                        "usa",
+                                                        "chn",
+                                                        "jpn",
+                                                        "zaf",
+                                                        "ind",
+                                                        "ago"
+                                                    ],
+                                                    "geo.category": [
+                                                        "country"
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        "marker": {
+                                            "hook_to": [
+                                                "entities",
+                                                "time",
+                                                "data",
+                                                "language"
+                                            ],
+                                            "type": "geometry",
+                                            "shape": "circle",
+                                            "label": {
+                                                "hook": "property",
+                                                "value": "geo.name"
+                                            },
+                                            "axis_y": {
+                                                "hook": "indicator",
+                                                "value": "lex",
+                                                "scale": "linear"
+                                            },
+                                            "axis_x": {
+                                                "hook": "indicator",
+                                                "value": "gdp_per_cap",
+                                                "scale": "linear",
+                                                "unit": 100
+                                            },
+                                            "size": {
+                                                "hook": "indicator",
+                                                "value": "pop",
+                                                "scale": "log"
+                                            },
+                                            "color": {
+                                                "hook": "indicator",
+                                                "value": "lex",
+                                                "domain": [
+                                                    "#F77481",
+                                                    "#E1CE00",
+                                                    "#B4DE79"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "title": "Test visualization",
+                                    "tool": {
+                                        "ref": "test-tool",
+                                        "title": "Test Tool",
+                                        "slug": "test-tool",
+                                        "about": null
+                                    }
+                                }
+                            }
                         }
                     ]
                 }
@@ -1710,6 +1797,93 @@ It is a workaround for not being able to choose the response when multiple are d
                                             ]
                                         }
                                     ]
+                                }
+                            }
+                        },
+                        {
+                            "type": "visualization",
+                            "data": {
+                                "node_id": 12,
+                                "item_type": "visualization",
+                                "attributes": {
+                                    "state": {
+                                        "time": {
+                                            "start": 1990,
+                                            "end": 2012,
+                                            "value": 1995,
+                                            "step": 1,
+                                            "speed": 300,
+                                            "formatInput": "%Y"
+                                        },
+                                        "entities": {
+                                            "show": {
+                                                "dim": "geo",
+                                                "filter": {
+                                                    "geo": [
+                                                        "swe",
+                                                        "nor",
+                                                        "fin",
+                                                        "bra",
+                                                        "usa",
+                                                        "chn",
+                                                        "jpn",
+                                                        "zaf",
+                                                        "ind",
+                                                        "ago"
+                                                    ],
+                                                    "geo.category": [
+                                                        "country"
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        "marker": {
+                                            "hook_to": [
+                                                "entities",
+                                                "time",
+                                                "data",
+                                                "language"
+                                            ],
+                                            "type": "geometry",
+                                            "shape": "circle",
+                                            "label": {
+                                                "hook": "property",
+                                                "value": "geo.name"
+                                            },
+                                            "axis_y": {
+                                                "hook": "indicator",
+                                                "value": "lex",
+                                                "scale": "linear"
+                                            },
+                                            "axis_x": {
+                                                "hook": "indicator",
+                                                "value": "gdp_per_cap",
+                                                "scale": "linear",
+                                                "unit": 100
+                                            },
+                                            "size": {
+                                                "hook": "indicator",
+                                                "value": "pop",
+                                                "scale": "log"
+                                            },
+                                            "color": {
+                                                "hook": "indicator",
+                                                "value": "lex",
+                                                "domain": [
+                                                    "#F77481",
+                                                    "#E1CE00",
+                                                    "#B4DE79"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "title": "Test visualization",
+                                    "tool": {
+                                        "ref": "test-tool",
+                                        "title": "Test Tool",
+                                        "slug": "test-tool",
+                                        "about": null
+                                    }
                                 }
                             }
                         }
