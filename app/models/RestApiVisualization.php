@@ -56,13 +56,13 @@ class RestApiVisualization extends Visualization implements SirTrevorBlock
      */
     protected function getToolCompositionAttributes()
     {
+        // todo: use $this->tool->i18nCatalog to generate translations for the visualization
         if ($this->tool !== null) {
             return array(
                 'ref' => $this->tool->ref,
                 'title' => $this->tool->title,
                 'slug' => $this->tool->slug,
                 'about' => $this->tool->about,
-                // todo: use $this->tool->i18nCatalog for something ?
             );
         }
         return null;
