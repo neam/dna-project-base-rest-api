@@ -223,6 +223,93 @@ $I->seeResponseContainsJson(array(
                             )
                         )
                     )
+                ),
+                array(
+                    "type" => "visualization",
+                    "data" => array(
+                        "node_id" => 12,
+                        "item_type" => "visualization",
+                        "attributes" => array(
+                            "state" => array(
+                                "time" => array(
+                                    "start" => 1990,
+                                    "end" => 2012,
+                                    "value" => 1995,
+                                    "step" => 1,
+                                    "speed" => 300,
+                                    "formatInput" => "%Y"
+                                ),
+                                "entities" => array(
+                                    "show" => array(
+                                        "dim" => "geo",
+                                        "filter" => array(
+                                            "geo" => array(
+                                                "swe",
+                                                "nor",
+                                                "fin",
+                                                "bra",
+                                                "usa",
+                                                "chn",
+                                                "jpn",
+                                                "zaf",
+                                                "ind",
+                                                "ago"
+                                            ),
+                                            "geo.category" => array(
+                                                "country"
+                                            )
+                                        )
+                                    )
+                                ),
+                                "marker" => array(
+                                    "hook_to" => array(
+                                        "entities",
+                                        "time",
+                                        "data",
+                                        "language"
+                                    ),
+                                    "type" => "geometry",
+                                    "shape" => "circle",
+                                    "label" => array(
+                                        "hook" => "property",
+                                        "value" => "geo.name"
+                                    ),
+                                    "axis_y" => array(
+                                        "hook" => "indicator",
+                                        "value" => "lex",
+                                        "scale" => "linear"
+                                    ),
+                                    "axis_x" => array(
+                                        "hook" => "indicator",
+                                        "value" => "gdp_per_cap",
+                                        "scale" => "linear",
+                                        "unit" => 100
+                                    ),
+                                    "size" => array(
+                                        "hook" => "indicator",
+                                        "value" => "pop",
+                                        "scale" => "log"
+                                    ),
+                                    "color" => array(
+                                        "hook" => "indicator",
+                                        "value" => "lex",
+                                        "domain" => array(
+                                            "#F77481",
+                                            "#E1CE00",
+                                            "#B4DE79"
+                                        )
+                                    )
+                                )
+                            ),
+                            "title" => "Test visualization",
+                            "tool" => array(
+                                "ref" => "test-tool",
+                                "title" => "Test Tool",
+                                "slug" => "test-tool",
+                                "about" => null
+                            )
+                        )
+                    )
                 )
             )
         )
