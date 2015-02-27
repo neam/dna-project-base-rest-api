@@ -83,8 +83,8 @@ class BaseItemController extends AppRestController
         }
         try {
             $item = $node->item();
-        } catch (NodeItemExistsButIsRestricted $e) {
-            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Node item %s exists but is restricted.'), $id));
+        } catch (CException $e) {
+            throw new CHttpException(404, Yii::t('rest-api', $e->getMessage()));
         }
         if ($item === null) {
             throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find item for node %s.'), $id));
