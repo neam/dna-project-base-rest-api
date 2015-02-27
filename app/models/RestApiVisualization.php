@@ -62,7 +62,7 @@ class RestApiVisualization extends Visualization implements SirTrevorBlock
                 'title' => $this->tool->title,
                 'slug' => $this->tool->slug,
                 'about' => $this->tool->about,
-                // i18nCatalog
+                // todo: use $this->tool->i18nCatalog for something ?
             );
         }
         return null;
