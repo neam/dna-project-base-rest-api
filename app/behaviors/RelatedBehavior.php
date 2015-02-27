@@ -53,7 +53,7 @@ class RelatedBehavior extends CActiveRecordBehavior
     {
         try {
             $item = $node->item();
-        } catch (NodeItemExistsButIsRestricted $e) {
+        } catch (CException $e) {
             return null;
         }
         $itemClassName = get_class($item);

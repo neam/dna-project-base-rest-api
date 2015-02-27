@@ -117,7 +117,7 @@ class SirTrevorBehavior extends CActiveRecordBehavior
         }
         try {
             $item = $node->item();
-        } catch (\NodeItemExistsButIsRestricted $e) {
+        } catch (\CException $e) {
             return null;
         }
         return $item;
