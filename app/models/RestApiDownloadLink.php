@@ -35,17 +35,6 @@ class RestApiDownloadLink extends DownloadLink implements SirTrevorBlock
                 'rest-model-behavior' => array(
                     'class' => 'WRestModelBehavior',
                 ),
-                'RestrictedAccessBehavior' => array(
-                    'class' => '\RestrictedAccessBehavior',
-                ),
-                'i18n-attribute-messages' => array(
-                    'class' => 'I18nAttributeMessagesBehavior',
-                    'translationAttributes' => array('title'),
-                    'languageSuffixes' => LanguageHelper::getCodes(),
-                    'behaviorKey' => 'i18n-attribute-messages',
-                    'displayedMessageSourceComponent' => 'displayedMessages',
-                    'editedMessageSourceComponent' => 'editedMessages',
-                ),
             )
         );
     }

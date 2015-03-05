@@ -86,40 +86,21 @@ class SirTrevorBehavior extends CActiveRecordBehavior
      */
     protected function loadSirTrevorBlockResource($block)
     {
-        if (!isset($block->data, $block->data->item_type)) {
+        if (!isset($block->data, $block->data->item_type, $block->data->node_id)) {
             return null;
         }
         if (!isset(self::$sirTrevorItemMap[$block->data->item_type])) {
             return null;
         }
-        $item = $this->loadSirTrevorBlockNodeItem($block);
-        if ($item === null) {
+        $resourceClass = self::$sirTrevorItemMap[$block->data->item_type];
+        $command = Yii::app()->getDb()->createCommand()
+            ->select('id')
+            ->from('item')
+            ->where('node_id=:nodeId');
+        $modelId = $command->queryScalar(array(':nodeId' => (int)$block->data->node_id));
+        if (empty($modelId)) {
             return null;
         }
-        return \CActiveRecord::model(self::$sirTrevorItemMap[$block->data->item_type])->findByPk($item->id);
-    }
-
-    /**
-     * Loads the item model for the block node.
-     * Method requires the block object to have a data object with a node_id.
-     *
-     * @param object $block the block object to load the node item for.
-     * @return \CActiveRecord the item model or null if not found.
-     */
-    protected function loadSirTrevorBlockNodeItem($block)
-    {
-        if (!isset($block->data, $block->data->node_id)) {
-            return null;
-        }
-        $node = \Node::model()->findByPk((int)$block->data->node_id);
-        if ($node === null) {
-            return null;
-        }
-        try {
-            $item = $node->item();
-        } catch (\CException $e) {
-            return null;
-        }
-        return $item;
+        return CActiveRecord::model($resourceClass)->findByPk($modelId);
     }
 }

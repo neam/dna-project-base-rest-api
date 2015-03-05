@@ -49,21 +49,6 @@ class RestApiComposition extends Composition implements RelatedResource
                 'rest-model-behavior' => array(
                     'class' => 'WRestModelBehavior',
                 ),
-                'RestrictedAccessBehavior' => array(
-                    'class' => '\RestrictedAccessBehavior',
-                ),
-                'i18n-attribute-messages' => array(
-                    'class' => 'I18nAttributeMessagesBehavior',
-                    'translationAttributes' => array('heading', 'subheading', 'caption', 'about'),
-                    'languageSuffixes' => LanguageHelper::getCodes(),
-                    'behaviorKey' => 'i18n-attribute-messages',
-                    'displayedMessageSourceComponent' => 'displayedMessages',
-                    'editedMessageSourceComponent' => 'editedMessages',
-                ),
-                'i18n-columns' => array(
-                    'class' => 'I18nColumnsBehavior',
-                    'translationAttributes' => array('slug'),
-                ),
                 'contributor-behavior' => array(
                     'class' => 'ContributorBehavior',
                 ),
@@ -73,22 +58,6 @@ class RestApiComposition extends Composition implements RelatedResource
                 'sir-trevor-behavior' => array(
                     'class' => 'SirTrevorBehavior',
                 ),
-            )
-        );
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function relations()
-    {
-        return array_merge(
-            parent::relations(),
-            array(
-                'outEdges' => array(self::HAS_MANY, 'Edge', array('id' => 'from_node_id'), 'through' => 'node'),
-                'outNodes' => array(self::HAS_MANY, 'Node', array('to_node_id' => 'id'), 'through' => 'outEdges'),
-                'inEdges' => array(self::HAS_MANY, 'Edge', array('id' => 'to_node_id'), 'through' => 'node'),
-                'inNodes' => array(self::HAS_MANY, 'Node', array('from_node_id' => 'id'), 'through' => 'inEdges'),
             )
         );
     }
@@ -120,7 +89,7 @@ class RestApiComposition extends Composition implements RelatedResource
             'item_type' => 'go_item',
             'url' => $this->getRouteUrl(),
             'attributes' =>  array(
-                'composition_type' => ($this->compositionType !== null) ? $this->compositionType->ref : null,
+                'composition_type' => $this->getCompositionTypeReference(),
                 'heading' => $this->heading,
                 'subheading' => $this->subheading,
                 'about' => $this->about,
@@ -145,7 +114,7 @@ class RestApiComposition extends Composition implements RelatedResource
     public function getListableAttributes()
     {
         return array(
-            'composition_type' => ($this->compositionType !== null) ? $this->compositionType->ref : null,
+            'composition_type' => $this->getCompositionTypeReference(),
             'heading' => $this->heading,
             'subheading' => $this->subheading,
             'about' => $this->about,
@@ -163,20 +132,28 @@ class RestApiComposition extends Composition implements RelatedResource
     /**
      * @return string|null
      */
+    public function getCompositionTypeReference()
+    {
+        $command = Yii::app()->getDb()->createCommand()
+            ->select('ref')
+            ->from('composition_type')
+            ->where('id=:compositionTypeId');
+        $ref = $command->queryScalar(array(':compositionTypeId' => (int)$this->composition_type_id));
+        return !empty($ref) ? $ref : null;
+    }
+
+    /**
+     * @return string|null
+     */
     public function getRouteUrl()
     {
-        if (empty($this->node_id)) {
-            return null;
-        }
-
-        $route = Route::model()->findByAttributes(array(
-            'node_id' => (int)$this->node_id,
-            'canonical' => true,
-            // todo: this needs to be enabled once we have multi-lingual support
-//            'translation_route_language' => Yii::app()->language,
-        ));
-
-        return ($route !== null) ? $route->route : null;
+        // todo: enable multi lingual support once ready.
+        $command = Yii::app()->getDb()->createCommand()
+            ->select('route')
+            ->from('route')
+            ->where('canonical=1 AND node_id=:nodeId'/*translation_route_language=:lang*/);
+        $route = $command->queryScalar(array(':nodeId' => (int)$this->node_id/*, ':lang' => Yii::app()->language*/));
+        return !empty($route) ? $route : null;
     }
 
     /**

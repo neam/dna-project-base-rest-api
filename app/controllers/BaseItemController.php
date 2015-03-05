@@ -65,38 +65,43 @@ class BaseItemController extends AppRestController
     {
         $node = null;
         if (ctype_digit($id)) {
-            $node = Node::model()->findByPk($id);
+            $command = Yii::app()->getDb()->createCommand()
+                ->select('id, model_class')
+                ->from('item')
+                ->where('node_id=:nodeId');
+            $row = $command->queryRow(true, array(':nodeId' => (int)$id));
+            if (!empty($row)) {
+                $modelId = (int)$row['id'];
+                $modelClass = (string)$row['model_class'];
+            }
         } else {
-            /** @var Route $route */
-            $route = Route::model()->with('node')->findByAttributes(array('route' => strtolower((string)$id)));
-            if ($route !== null) {
-                $node = $route->node;
+            $command = Yii::app()->getDb()->createCommand()
+                ->select('item.id, item.model_class, route.translation_route_language')
+                ->from('route')
+                ->leftJoin('item', 'item.node_id=route.node_id')
+                ->where('route.route=:route');
+            $row = $command->queryRow(true, array(':route' => strtolower((string)$id)));
+            if (!empty($row)) {
+                $modelId = (int)$row['id'];
+                $modelClass = (string)$row['model_class'];
                 // Set the application language to the route language.
                 // This way we know which language the item and it's relations should be returned in.
-                if (!empty($route->translation_route_language) && Yii::app()->language !== $route->translation_route_language) {
-                    Yii::app()->language = $route->translation_route_language;
+                if (!empty($row['translation_route_language']) && Yii::app()->language !== $row['translation_route_language']) {
+                    Yii::app()->language = $row['translation_route_language'];
                 }
             }
         }
-        if ($node === null) {
+        if (!isset($modelId, $modelClass)) {
             throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find node %s.'), $id));
         }
-        try {
-            $item = $node->item();
-        } catch (CException $e) {
-            throw new CHttpException(404, Yii::t('rest-api', $e->getMessage()));
+        if (!isset(self::$classMap[$modelClass])) {
+            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find resource for %s.'), $modelClass));
         }
-        if ($item === null) {
-            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find item for node %s.'), $id));
-        }
-        $classname = get_class($item);
-        if (!isset(self::$classMap[$classname])) {
-            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find resource for "%s".'), $classname));
-        }
-        $resourceClassname = self::$classMap[$classname];
-        $model = CActiveRecord::model($resourceClassname)->findByPk($item->id);
+        $resourceClass = self::$classMap[$modelClass];
+        /** @var WRestModelBehavior $model */
+        $model = CActiveRecord::model($resourceClass)->findByPk($modelId);
         if ($model === null) {
-            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find resource for "%s".'), $classname));
+            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find resource for %s#%d.'), $modelClass, $modelId));
         }
         return $model;
     }

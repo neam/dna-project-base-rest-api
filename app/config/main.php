@@ -115,7 +115,20 @@ $mainConfig = array(
                     'class' => 'CFileLogRoute',
                     'levels' => 'error, warning',
                 ),
+//                array(
+//                    'class' => 'CProfileLogRoute',
+//                    'report' => 'summary',
+//                ),
             ),
+        ),
+        'dbSchemaCache' => array(
+            'class' => 'CApcCache',
+        ),
+        'db'=>array(
+//            'enableParamLogging' => true,
+//            'enableProfiling' => true,
+            'schemaCacheID' => 'dbSchemaCache',
+            'schemaCachingDuration' => 172800, // 48 hours
         ),
     ),
 );

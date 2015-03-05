@@ -32,34 +32,31 @@ class RelatedBehavior extends CActiveRecordBehavior
      */
     public function getRelatedItems()
     {
+        $command = Yii::app()->getDb()->createCommand()
+            ->select('related.id AS related_id, item.id AS item_id, item.model_class AS item_model_class')
+            ->from('node related')
+            ->where('(`relation`="related") AND (`relation`="related") AND (`node`.`id`=:nodeId)')
+            ->order('outEdges.weight ASC');
+        $command->join = 'LEFT OUTER JOIN `node` `outNodes` ON (`outNodes`.`id`=`related`.`id`)';
+        $command->join .= 'LEFT OUTER JOIN `edge` `outEdges` ON (`outEdges`.`to_node_id`=`outNodes`.`id`)';
+        $command->join .= 'LEFT OUTER JOIN `node` `node` ON (`node`.`id`=`outEdges`.`from_node_id`)';
+        $command->join .= 'INNER JOIN `item` `item` ON (`item`.`node_id`=`related`.`id`)';
+
         $related = array();
-        foreach ($this->owner->getRelated('related', true) as $node) {
-            $resource = $this->loadRelatedResource($node);
+        foreach ($command->queryAll(true, array(':nodeId' => (int)$this->owner->node_id)) as $row) {
+            $modelId = (int)$row['item_id'];
+            $modelClass = (string)$row['item_model_class'];
+            if (!isset(self::$relatedResourceMap[$modelClass])) {
+                continue;
+            }
+            $relatedModelClass = self::$relatedResourceMap[$modelClass];
+            /** @var RelatedResource $resource */
+            $resource = ActiveRecord::model($relatedModelClass)->findByPk($modelId);
             if ($resource === null) {
                 continue;
             }
             $related[] = $resource->getRelatedAttributes();
         }
         return $related;
-    }
-
-    /**
-     * Loads the rest resource model for the node.
-     *
-     * @param Node $node the node to get the rest resource for.
-     * @return RelatedResource|null the resource model or null if not found.
-     */
-    protected function loadRelatedResource(Node $node)
-    {
-        try {
-            $item = $node->item();
-        } catch (CException $e) {
-            return null;
-        }
-        $itemClassName = get_class($item);
-        if (!isset(self::$relatedResourceMap[$itemClassName])) {
-            return null;
-        }
-        return CActiveRecord::model(self::$relatedResourceMap[$itemClassName])->findByPk($item->id);
     }
 }

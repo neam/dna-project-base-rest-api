@@ -27,9 +27,6 @@ class RestApiProfile extends Profile implements RelatedResource
                 'rest-model-behavior' => array(
                     'class' => 'WRestModelBehavior',
                 ),
-                'RestrictedAccessBehavior' => array(
-                    'class' => '\RestrictedAccessBehavior',
-                ),
             )
         );
     }

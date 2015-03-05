@@ -32,9 +32,6 @@ class RestApiItemList extends ItemListConfig implements SirTrevorBlock
                 'rest-model-behavior' => array(
                     'class' => 'WRestModelBehavior',
                 ),
-                'RestrictedAccessBehavior' => array(
-                    'class' => '\RestrictedAccessBehavior',
-                ),
             )
         );
     }
@@ -81,7 +78,7 @@ class RestApiItemList extends ItemListConfig implements SirTrevorBlock
             if ($className !== false) {
                 $criteria = $this->getResourceCriteria();
                 /** @var RelatedResource[] $models */
-                $models = ActiveRecord::model($className)->findAll($criteria);
+                $models = CActiveRecord::model($className)->findAll($criteria);
                 foreach ($models as $model) {
                     $items[] = $model->getRelatedAttributes();
                 }
@@ -118,7 +115,7 @@ class RestApiItemList extends ItemListConfig implements SirTrevorBlock
      */
     protected function getResourceCriteria()
     {
-        $model = ActiveRecord::model($this->getResourceModelName());
+        $model = CActiveRecord::model($this->getResourceModelName());
         $criteria = new CDbCriteria();
         if (!empty($this->query_filter_by_composition_type_id) && $model->hasProperty('composition_type_id')) {
             $criteria->compare('composition_type_id', (int)$this->query_filter_by_composition_type_id);
