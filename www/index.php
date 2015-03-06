@@ -11,6 +11,19 @@ require_once("$root/dna/vendor/autoload.php");
 // Make app config available as PHP constants
 require("$root/vendor/neam/php-app-config/include.php");
 
+// Use barebones php for public item GET requests for performance
+if (strpos($_SERVER['REQUEST_URI'], "/api/v1/item/") === 0) {
+    $actionroot = $approot . "/barebones/v1/item";
+    require_once($approot . "/app/traits/RestApiControllerTrait.php");
+    require_once($actionroot . "/BarebonesV1ItemController.php");
+    $barecontroller = new BarebonesV1ItemController($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);
+    if ($barecontroller->requestIsHandled()) {
+        require_once($approot . "/barebones/yiibare.php");
+        $barecontroller->run();
+        die();
+    }
+}
+
 // include yii
 if (DEV) {
     require_once("$approot/vendor/yiisoft/yii/framework/yii.php");
