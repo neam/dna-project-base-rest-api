@@ -15,9 +15,6 @@
  *
  * Properties made available through the RestrictedAccessBehavior class:
  * @property boolean $enableRestriction
- *
- * Methods made available through the SirTrevorBehavior class:
- * @method array populateSirTrevorBlocks()
  */
 class RestApiCustomPage extends Page
 {
@@ -39,9 +36,6 @@ class RestApiCustomPage extends Page
             array(
                 'rest-model-behavior' => array(
                     'class' => 'WRestModelBehavior',
-                ),
-                'sir-trevor-behavior' => array(
-                    'class' => 'SirTrevorBehavior',
                 ),
             )
         );
@@ -108,7 +102,7 @@ class RestApiCustomPage extends Page
             'subheading' => $this->subheading,
             'about' => $this->about,
             'caption' => $this->caption,
-            'composition' => $this->populateSirTrevorBlocks($this->composition),
+            'composition' => SirTrevorParser::populateSirTrevorBlocks($this->composition),
         );
     }
 

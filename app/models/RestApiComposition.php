@@ -18,9 +18,6 @@
  * Methods made available through the WRestModelBehavior class:
  * @method array getCreateAttributes
  * @method array getUpdateAttributes
- *
- * Methods made available through the SirTrevorBehavior class:
- * @method array populateSirTrevorBlocks()
  */
 class RestApiComposition extends Composition implements RelatedResource
 {
@@ -43,9 +40,6 @@ class RestApiComposition extends Composition implements RelatedResource
                 'rest-model-behavior' => array(
                     'class' => 'WRestModelBehavior',
                 ),
-                'sir-trevor-behavior' => array(
-                    'class' => 'SirTrevorBehavior',
-                ),
             )
         );
     }
@@ -60,7 +54,7 @@ class RestApiComposition extends Composition implements RelatedResource
             'item_type' => 'go_item',
             'url' => $this->getRouteUrl(),
             'attributes' => array_merge($this->getListableAttributes(), array(
-                'composition' => $this->populateSirTrevorBlocks($this->composition)
+                'composition' => SirTrevorParser::populateSirTrevorBlocks($this->composition)
             )),
             'contributors' => ContributorItems::getItems($this->node_id),
             'related' => RelatedItems::getItems($this->node_id),

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Behavior for resource models that includes a sir trevor data structure.
+ * Component for resource models that includes a sir trevor data structure.
  * This class provides helper methods for populating blocks in the sir trevor structure with more info fom the nodes
  * they represent, i.e. a video file node represented in a sir trevor structure holds only it's node id and item type
  * and the rest of the data needs to be fetched from the node and added to the structure.
@@ -19,7 +19,7 @@
  *   ]
  * }
  */
-class SirTrevorBehavior extends CActiveRecordBehavior
+class SirTrevorParser
 {
     /**
      * @var array map of rest resource models per sir trevor item types (models must implement SirTrevorBlock interface).
@@ -40,13 +40,13 @@ class SirTrevorBehavior extends CActiveRecordBehavior
      * @param string $blocks the sir trevor block json string.
      * @return object|null the sir trevor object structure or null.
      */
-    public function populateSirTrevorBlocks($blocks)
+    public static function populateSirTrevorBlocks($blocks)
     {
         // hack for fixing sir trevor urls where every "-" is a "\\-". (https://github.com/madebymany/sir-trevor-js/issues/248)
         $blocks = json_decode(str_replace('\\\-', '-', $blocks));
         if (is_object($blocks) && isset($blocks->data) && is_array($blocks->data)) {
             foreach ($blocks->data as &$block) {
-                $this->recPopulateSirTrevorBlock($block);
+                self::recPopulateSirTrevorBlock($block);
             }
         }
         return $blocks;
@@ -60,18 +60,18 @@ class SirTrevorBehavior extends CActiveRecordBehavior
      *
      * @param object $block the Sir Trevor block to populate with data.
      */
-    protected function recPopulateSirTrevorBlock(&$block)
+    protected static function recPopulateSirTrevorBlock(&$block)
     {
         if (is_object($block) && isset($block->data, $block->type)) {
             $recAttr = $block->type;
-            $resource = $this->loadSirTrevorBlockResource($block);
+            $resource = self::loadSirTrevorBlockResource($block);
             if ($resource !== null) {
                 $block->type = $block->data->item_type = $resource->getCompositionItemType();
                 $block->data->attributes = $resource->getCompositionAttributes();
             }
             if (isset($block->data->{$recAttr}) && is_array($block->data->{$recAttr})) {
                 foreach ($block->data->{$recAttr} as &$child) {
-                    $this->recPopulateSirTrevorBlock($child);
+                    self::recPopulateSirTrevorBlock($child);
                 }
             }
         }
@@ -84,7 +84,7 @@ class SirTrevorBehavior extends CActiveRecordBehavior
      * @param object $block the block object to load the rest resource for.
      * @return SirTrevorBlock the rest resource model or null if not found.
      */
-    protected function loadSirTrevorBlockResource($block)
+    protected static function loadSirTrevorBlockResource($block)
     {
         if (!isset($block->data, $block->data->item_type, $block->data->node_id)) {
             return null;
