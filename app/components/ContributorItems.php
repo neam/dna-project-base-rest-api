@@ -43,6 +43,8 @@ class ContributorItems
      */
     protected static function getProfilePictureUrl($mediaId)
     {
+        // todo: refactor to not use AR
+        
         if (!empty($mediaId)) {
             /** @var P3Media $model */
             $model = P3Media::model()->findByPk($mediaId);

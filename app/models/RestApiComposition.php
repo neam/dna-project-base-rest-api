@@ -152,6 +152,8 @@ class RestApiComposition extends Composition implements RelatedResource
      */
     public function getThumbUrl($preset = 'original-public')
     {
+        // todo: refactor to not use AR
+
         if (empty($this->thumbMedia)) {
             return null;
         }
