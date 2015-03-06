@@ -152,7 +152,7 @@ unset($config['modules']['gii']);
 unset($config['behaviors']['eventBridge']);
 unset($config['components']['events']);
 unset($config['components']['langHandler']);
-unset($config['preload'][array_search('preLoad', $config['preload'])]);
+unset($config['preload'][array_search('langHandler', $config['preload'])]);
 
 // Uncomment to easily see the active merged configuration
 //echo "<pre>";print_r($config);echo "</pre>";die();

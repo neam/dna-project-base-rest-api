@@ -589,7 +589,7 @@
   'sourceLanguage' => 'en',
   'preload' => 
   array (
-    1 => 'langHandler',
+    0 => 'log',
   ),
   'params' => 
   array (
