@@ -18,7 +18,7 @@ if (strpos($_SERVER['REQUEST_URI'], "/api/v1/item/") === 0) {
     require_once($actionroot . "/BarebonesV1ItemController.php");
     $barecontroller = new BarebonesV1ItemController($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);
     if ($barecontroller->requestIsHandled()) {
-        require_once($approot . "/barebones/yiibare.php");
+        require_once($approot . "/barebones/bootstrap.php");
         $barecontroller->run();
         die();
     }
