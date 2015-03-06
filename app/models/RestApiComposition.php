@@ -26,6 +26,39 @@ class RestApiComposition extends Composition implements RelatedResource
     }
 
     /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        // Implement only the behaviors we need instead of inheriting them to increase performance.
+        return array(
+            'i18n-attribute-messages' => array(
+                'class' => 'I18nAttributeMessagesBehavior',
+                'translationAttributes' => array(
+                    'heading',
+                    'subheading',
+                    'caption',
+                    'about',
+                ),
+                'languageSuffixes' => LanguageHelper::getCodes(),
+                'behaviorKey' => 'i18n-attribute-messages',
+                'displayedMessageSourceComponent' => 'displayedMessages',
+                'editedMessageSourceComponent' => 'editedMessages',
+            ),
+            'i18n-columns' => array(
+                'class' => 'I18nColumnsBehavior',
+                'translationAttributes' => array(
+                    'slug',
+                ),
+                'multilingualRelations' => array(),
+            ),
+            'RestrictedAccessBehavior' => array(
+                'class' => '\RestrictedAccessBehavior',
+            ),
+        );
+    }
+
+    /**
      * Returns "all" attributes for this resource.
      *
      * @return array

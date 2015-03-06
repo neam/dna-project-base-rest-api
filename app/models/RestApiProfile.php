@@ -17,6 +17,19 @@ class RestApiProfile extends Profile implements RelatedResource
     }
 
     /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        // Implement only the behaviors we need instead of inheriting them to increase performance.
+        return array(
+            'RestrictedAccessBehavior' => array(
+                'class' => '\RestrictedAccessBehavior',
+            ),
+        );
+    }
+
+    /**
      * Returns "all" attributes for this resource.
      *
      * @return stdClass

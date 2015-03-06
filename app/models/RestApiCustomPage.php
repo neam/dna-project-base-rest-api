@@ -29,6 +29,40 @@ class RestApiCustomPage extends Page
     /**
      * @inheritdoc
      */
+    public function behaviors()
+    {
+        // Implement only the behaviors we need instead of inheriting them to increase performance.
+        return array(
+            'i18n-attribute-messages' => array(
+                'class' => 'I18nAttributeMessagesBehavior',
+                'translationAttributes' => array(
+                    'heading',
+                    'subheading',
+                    'caption',
+                    'menu_label',
+                    'about',
+                ),
+                'languageSuffixes' => LanguageHelper::getCodes(),
+                'behaviorKey' => 'i18n-attribute-messages',
+                'displayedMessageSourceComponent' => 'displayedMessages',
+                'editedMessageSourceComponent' => 'editedMessages',
+            ),
+            'i18n-columns' => array(
+                'class' => 'I18nColumnsBehavior',
+                'translationAttributes' => array(
+                    'slug',
+                ),
+                'multilingualRelations' => array(),
+            ),
+            'RestrictedAccessBehavior' => array(
+                'class' => '\RestrictedAccessBehavior',
+            ),
+        );
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function relations()
     {
         return array_merge(

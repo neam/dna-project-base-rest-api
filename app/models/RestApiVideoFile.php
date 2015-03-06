@@ -29,14 +29,27 @@ class RestApiVideoFile extends VideoFile implements SirTrevorBlock
      */
     public function behaviors()
     {
-        return array_merge(
-            parent::behaviors(),
-            array(
-                'i18n-columns' => array(
-                    'class' => 'I18nColumnsBehavior',
-                    'translationAttributes' => array('slug'),
+        // Implement only the behaviors we need instead of inheriting them to increase performance.
+        return array(
+            'i18n-attribute-messages' => array(
+                'class' => 'I18nAttributeMessagesBehavior',
+                'translationAttributes' => array(
+                    'title',
+                    'caption',
+                    'about',
                 ),
-            )
+                'languageSuffixes' => LanguageHelper::getCodes(),
+                'behaviorKey' => 'i18n-attribute-messages',
+                'displayedMessageSourceComponent' => 'displayedMessages',
+                'editedMessageSourceComponent' => 'editedMessages',
+            ),
+            'i18n-columns' => array(
+                'class' => 'I18nColumnsBehavior',
+                'translationAttributes' => array('slug'),
+            ),
+            'RestrictedAccessBehavior' => array(
+                'class' => '\RestrictedAccessBehavior',
+            ),
         );
     }
 

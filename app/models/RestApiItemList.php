@@ -24,6 +24,19 @@ class RestApiItemList extends ItemListConfig implements SirTrevorBlock
     /**
      * @inheritdoc
      */
+    public function behaviors()
+    {
+        // Implement only the behaviors we need instead of inheriting them to increase performance.
+        return array(
+            'RestrictedAccessBehavior' => array(
+                'class' => '\RestrictedAccessBehavior',
+            ),
+        );
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function getCompositionAttributes()
     {
         return array(
