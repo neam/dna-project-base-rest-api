@@ -79,7 +79,7 @@ class BaseItemController extends AppRestController
     /**
      * @param int $node_id the node id of the item to get, e.g 1234
      */
-    public function loadByNodeId($id)
+    public function loadByNodeId($node_id)
     {
         $modelId = null;
         $modelClass = null;
@@ -87,7 +87,7 @@ class BaseItemController extends AppRestController
             ->select('id, model_class')
             ->from('item')
             ->where('node_id=:nodeId');
-        $row = $command->queryRow(true, array(':nodeId' => (int) $id));
+        $row = $command->queryRow(true, array(':nodeId' => (int) $node_id));
         if (!empty($row)) {
             $modelId = (int) $row['id'];
             $modelClass = (string) $row['model_class'];

@@ -324,14 +324,14 @@
         ),
         8 => 
         array (
-          0 => '<version>/item/getByRoute',
-          'pattern' => '<version:v\\d+>/item/<route:[\\w-\\/]+>',
+          0 => '<version>/item/getByNodeId',
+          'pattern' => '<version:v\\d+>/item/<node_id:\\d+>',
           'verb' => 'GET',
         ),
         9 => 
         array (
-          0 => '<version>/item/getByNodeId',
-          'pattern' => '<version:v\\d+>/item/<node_id:\\d+>',
+          0 => '<version>/item/getByRoute',
+          'pattern' => '<version:v\\d+>/item/<route:[\\w-\\/]+>',
           'verb' => 'GET',
         ),
         10 => 
@@ -600,14 +600,15 @@
     35 => 'application.controllers.*',
     36 => 'application.interfaces.*',
     37 => 'application.models.*',
-    38 => 'vendor.weavora.wrest.*',
-    39 => 'vendor.weavora.wrest.actions.*',
-    40 => 'vendor.weavora.wrest.behaviors.*',
-    41 => 'vendor.neam.yii-dna-debug-modes-and-error-handling.components.*',
-    42 => 'vendor.neam.yii-dna-debug-modes-and-error-handling.exceptions.*',
-    43 => 'vendor.neam.yii-dna-debug-modes-and-error-handling.traits.YiiDnaWebApplicationTrait',
-    44 => 'vendor.crisu83.yii-sentry.components.SentryErrorHandler',
-    45 => 'vendor.crisu83.yii-sentry.components.SentryClient',
+    38 => 'application.traits.*',
+    39 => 'vendor.weavora.wrest.*',
+    40 => 'vendor.weavora.wrest.actions.*',
+    41 => 'vendor.weavora.wrest.behaviors.*',
+    42 => 'vendor.neam.yii-dna-debug-modes-and-error-handling.components.*',
+    43 => 'vendor.neam.yii-dna-debug-modes-and-error-handling.exceptions.*',
+    44 => 'vendor.neam.yii-dna-debug-modes-and-error-handling.traits.YiiDnaWebApplicationTrait',
+    45 => 'vendor.crisu83.yii-sentry.components.SentryErrorHandler',
+    46 => 'vendor.crisu83.yii-sentry.components.SentryClient',
   ),
   'aliases' => 
   array (
