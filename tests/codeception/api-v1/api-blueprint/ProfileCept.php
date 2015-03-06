@@ -47,7 +47,7 @@ $I->seeResponseContainsJson(array(
         ),
     ),
     'contributions' => array(),
-    'profile_picture' => 'http://172.17.42.1:11111/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=350x350.gif&extension=.jpg&lang=en',
+    'profile_picture' => 'http://172.17.42.1:11111/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg&lang=en',
     'groups' => array(
         array(
             'id' => '16',
@@ -133,7 +133,7 @@ $I->seeResponseContainsJson(array(
         ),
     ),
     'contributions' => array(),
-    'profile_picture' => 'http://172.17.42.1:11111/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=350x350.gif&extension=.jpg&lang=en',
+    'profile_picture' => 'http://172.17.42.1:11111/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg&lang=en',
     'groups' => array(
         array(
             'id' => '16',
