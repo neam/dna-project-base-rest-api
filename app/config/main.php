@@ -29,6 +29,7 @@ $mainConfig = array(
         'application.controllers.*',
         'application.interfaces.*',
         'application.models.*',
+        'application.traits.*',
         'vendor.weavora.wrest.*',
         'vendor.weavora.wrest.actions.*',
         'vendor.weavora.wrest.behaviors.*',
