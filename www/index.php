@@ -19,7 +19,13 @@ if (DEV) {
 }
 
 // config files
-$main = require("$approot/app/config/main.php");
+require_once("$root/dna/config/DnaConfig.php");
+DnaConfig::bootstrap();
+if (DEV) {
+    $main = require("$approot/app/config/main.php");
+} else {
+    $main = require("$approot/app/config/cached-main.php");
+}
 $env = require("$approot/app/config/environments/" . CONFIG_ENVIRONMENT . ".php");
 
 // define YII_DEBUG in config files
