@@ -12,7 +12,11 @@ require_once("$root/dna/vendor/autoload.php");
 require("$root/vendor/neam/php-app-config/include.php");
 
 // include yii
-require_once("$approot/vendor/yiisoft/yii/framework/yii.php");
+if (DEV) {
+    require_once("$approot/vendor/yiisoft/yii/framework/yii.php");
+} else {
+    require_once("$approot/vendor/yiisoft/yii/framework/yiilite.php");
+}
 
 // config files
 $main = require("$approot/app/config/main.php");
