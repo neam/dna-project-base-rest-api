@@ -63,25 +63,31 @@ class BarebonesV1ItemController
         return $idOrRoute;
     }
 
-    protected function jsonResponseHeaders()
+    public function sendResponseHeaders($status = 200, $bodyParams = array(), $options = array())
     {
+
         // set the status
-        $status_header = 'HTTP/1.1 200 OK';
+        $status_header = 'HTTP/1.1 ' . $status . ' ' . $this->_getStatusCodeMessage($status);
         header($status_header);
 
         // cors headers
         header("Access-Control-Allow-Origin: *");
         header("Access-Control-Allow-Headers: Authorization, Origin, Content-Type, Accept");
 
-        // csv headers
+        // language
+        $contentLanguage = Yii::app()->language;
+        header("Content-Language: $contentLanguage");
+
+        // content type headers
         $contentType = 'application/json';
         header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
         header("Content-type: $contentType");
+
     }
 
     protected function respond404()
     {
-        $this->jsonResponseHeaders();
+        $this->sendResponseHeaders(404);
         echo '{status: 404,message: "Not Found",trace: null}';
         die();
     }
@@ -110,6 +116,7 @@ class BarebonesV1ItemController
 
         $modelId = (int) $row['id'];
         $modelClass = (string) $row['model_class'];
+        $table = strtolower($modelClass);
         // Set the application language to the route language.
         // This way we know which language the item and it's relations should be returned in.
         if (!empty($row['translation_route_language']) && Yii::app()->language !== $row['translation_route_language']) {
@@ -123,8 +130,7 @@ class BarebonesV1ItemController
             throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find resource for %s.'), $modelClass));
         }
 
-        var_dump($route);
-        return $this->{"actionGet" . $modelClass}($modelId);
+        return $this->{"actionGet" . $modelClass}($table, $modelId);
 
     }
 
@@ -133,13 +139,31 @@ class BarebonesV1ItemController
         throw new Exception("TODO");
     }
 
-    public function actionGetComposition($modelId)
+    public function actionGetComposition($table, $modelId)
     {
-        throw new Exception("TODO");
-    }
 
-    {
-        echo "TODO";
+        $command = Barebones::fpdo()
+            ->from($table, $modelId);
+        //var_dump($command->fetch());
+        $model = new RestApiComposition();
+        $model->attributes = $command->fetch();
+
+        //var_dump($model->flowSteps(), $model->getAllAttributes());
+
+        $response = $model->getAllAttributes();
+
+        //echo $responseTemplate;
+        $encoded = json_encode($response);
+        if (!$encoded) {
+            throw new Exception("JSON encoding error: " . json_last_error_msg());
+        }
+
+        $this->sendResponseHeaders(200);
+        echo $encoded;
+
+        // end request
+        die();
+
     }
 
 }
