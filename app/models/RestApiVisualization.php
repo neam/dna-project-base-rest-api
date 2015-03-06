@@ -17,21 +17,6 @@ class RestApiVisualization extends Visualization implements SirTrevorBlock
     /**
      * @inheritdoc
      */
-    public function behaviors()
-    {
-        return array_merge(
-            parent::behaviors(),
-            array(
-                'rest-model-behavior' => array(
-                    'class' => 'WRestModelBehavior',
-                ),
-            )
-        );
-    }
-
-    /**
-     * @inheritdoc
-     */
     public function getCompositionItemType()
     {
         return 'visualization';

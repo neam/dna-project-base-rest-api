@@ -13,10 +13,6 @@
  *
  * Properties made available through the RestrictedAccessBehavior class:
  * @property boolean $enableRestriction
- *
- * Methods made available through the WRestModelBehavior class:
- * @method array getCreateAttributes
- * @method array getUpdateAttributes
  */
 class RestApiVideoFile extends VideoFile implements SirTrevorBlock
 {
@@ -36,9 +32,6 @@ class RestApiVideoFile extends VideoFile implements SirTrevorBlock
         return array_merge(
             parent::behaviors(),
             array(
-                'rest-model-behavior' => array(
-                    'class' => 'WRestModelBehavior',
-                ),
                 'i18n-columns' => array(
                     'class' => 'I18nColumnsBehavior',
                     'translationAttributes' => array('slug'),
@@ -48,7 +41,9 @@ class RestApiVideoFile extends VideoFile implements SirTrevorBlock
     }
 
     /**
-     * @inheritdoc
+     * Returns "all" attributes for this resource.
+     *
+     * @return array
      */
     public function getAllAttributes()
     {
@@ -136,6 +131,8 @@ class RestApiVideoFile extends VideoFile implements SirTrevorBlock
      */
     protected function getThumbUrl($preset)
     {
+        // todo: refactor to not use AR
+
         if (empty($this->thumbnailMedia)) {
             return null;
         }
@@ -151,6 +148,8 @@ class RestApiVideoFile extends VideoFile implements SirTrevorBlock
      */
     protected function getUrlMp4()
     {
+        // todo: refactor to not use AR
+
         if (empty($this->clipMp4Media)) {
             return null;
         }
@@ -166,6 +165,8 @@ class RestApiVideoFile extends VideoFile implements SirTrevorBlock
      */
     protected function getUrlWebm()
     {
+        // todo: refactor to not use AR
+
         if (empty($this->clipWebmMedia)) {
             return null;
         }

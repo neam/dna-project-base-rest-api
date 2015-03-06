@@ -14,10 +14,6 @@
  *
  * Properties made available through the RestrictedAccessBehavior class:
  * @property boolean $enableRestriction
- *
- * Methods made available through the WRestModelBehavior class:
- * @method array getCreateAttributes
- * @method array getUpdateAttributes
  */
 class RestApiComposition extends Composition implements RelatedResource
 {
@@ -30,22 +26,9 @@ class RestApiComposition extends Composition implements RelatedResource
     }
 
     /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return array_merge(
-            parent::behaviors(),
-            array(
-                'rest-model-behavior' => array(
-                    'class' => 'WRestModelBehavior',
-                ),
-            )
-        );
-    }
-
-    /**
-     * @inheritdoc
+     * Returns "all" attributes for this resource.
+     *
+     * @return array
      */
     public function getAllAttributes()
     {

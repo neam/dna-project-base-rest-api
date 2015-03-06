@@ -17,24 +17,9 @@ class RestApiProfile extends Profile implements RelatedResource
     }
 
     /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return array_merge(
-            parent::behaviors(),
-            array(
-                'rest-model-behavior' => array(
-                    'class' => 'WRestModelBehavior',
-                ),
-            )
-        );
-    }
-
-    /**
-     * The attributes that is returned by the REST api.
+     * Returns "all" attributes for this resource.
      *
-     * @return object the response object as a stdClass.
+     * @return stdClass
      */
     public function getAllAttributes()
     {

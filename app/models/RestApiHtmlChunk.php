@@ -8,11 +8,6 @@
  *
  * Properties made available through the RestrictedAccessBehavior class:
  * @property boolean $enableRestriction
- *
- * Methods made available through the WRestModelBehavior class:
- * @method array getAllAttributes
- * @method array getCreateAttributes
- * @method array getUpdateAttributes
  */
 class RestApiHtmlChunk extends HtmlChunk implements SirTrevorBlock
 {
@@ -22,21 +17,6 @@ class RestApiHtmlChunk extends HtmlChunk implements SirTrevorBlock
     public static function model($className = __CLASS__)
     {
         return parent::model($className);
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return array_merge(
-            parent::behaviors(),
-            array(
-                'rest-model-behavior' => array(
-                    'class' => 'WRestModelBehavior',
-                ),
-            )
-        );
     }
 
     /**

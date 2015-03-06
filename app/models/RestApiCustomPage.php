@@ -29,21 +29,6 @@ class RestApiCustomPage extends Page
     /**
      * @inheritdoc
      */
-    public function behaviors()
-    {
-        return array_merge(
-            parent::behaviors(),
-            array(
-                'rest-model-behavior' => array(
-                    'class' => 'WRestModelBehavior',
-                ),
-            )
-        );
-    }
-
-    /**
-     * @inheritdoc
-     */
     public function relations()
     {
         return array_merge(
@@ -56,9 +41,9 @@ class RestApiCustomPage extends Page
     }
 
     /**
-     * The attributes that is returned by the REST api.
+     * Returns "all" attributes for this resource.
      *
-     * @return array the response.
+     * @return array
      */
     public function getAllAttributes()
     {

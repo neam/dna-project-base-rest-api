@@ -58,7 +58,7 @@ class BaseItemController extends AppRestController
      * Loads a Rest API model based on node id or model route.
      *
      * @param int|string $id either node id or model route, e.g. 1234, "/1234", "/terms".
-     * @return WRestModelBehavior the Rest API model.
+     * @return ActiveRecord the Rest API model.
      * @throws CHttpException
      */
     public function loadModel($id)
@@ -98,7 +98,7 @@ class BaseItemController extends AppRestController
             throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find resource for %s.'), $modelClass));
         }
         $resourceClass = self::$classMap[$modelClass];
-        /** @var WRestModelBehavior $model */
+        /** @var ActiveRecord $model */
         $model = CActiveRecord::model($resourceClass)->findByPk($modelId);
         if ($model === null) {
             throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find resource for %s#%d.'), $modelClass, $modelId));
