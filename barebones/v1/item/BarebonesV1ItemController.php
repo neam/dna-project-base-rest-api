@@ -2,6 +2,8 @@
 /* @var string $approot */
 /* @var string $root */
 
+use barebones\Barebones;
+
 /* @var string $actionroot */
 class BarebonesV1ItemController
 {
@@ -47,7 +49,9 @@ class BarebonesV1ItemController
             return $this->actionPreflight();
         }
         if ($this->request_method == "GET") {
-            return $this->actionGet();
+            $urlEncodedRoute = $this->requestedItemRoute();
+            $route = urldecode($urlEncodedRoute);
+            return $this->actionGetByRoute($route);
         }
         throw new Exception("Unhandled request");
     }
@@ -59,7 +63,81 @@ class BarebonesV1ItemController
         return $idOrRoute;
     }
 
-    public function actionGet()
+    protected function jsonResponseHeaders()
+    {
+        // set the status
+        $status_header = 'HTTP/1.1 200 OK';
+        header($status_header);
+
+        // cors headers
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Headers: Authorization, Origin, Content-Type, Accept");
+
+        // csv headers
+        $contentType = 'application/json';
+        header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+        header("Content-type: $contentType");
+    }
+
+    protected function respond404()
+    {
+        $this->jsonResponseHeaders();
+        echo '{status: 404,message: "Not Found",trace: null}';
+        die();
+    }
+
+    /**
+     * Returns the requested item resource.
+     * Responds to path 'api/<version>/item/{route}'.
+     * This endpoint is public but the resources are restricted by "RestrictedAccessBehavior".
+     *
+     * @param string $route the route of the item to get, e.g."/1234", "/terms".
+     */
+    public function actionGetByRoute($route)
+    {
+
+        if (ctype_digit($route)) {
+            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Invalid route %s - routes must start with "/".'), $route));
+        }
+
+        $command = Barebones::fpdo()
+            ->from('route')
+            ->select('item.id, item.model_class, route.translation_route_language')
+            ->leftJoin('item ON item.node_id=route.node_id')
+            ->where('route.route = :route', array(':route' => $route));
+
+        $row = $command->fetch();
+
+        $modelId = (int) $row['id'];
+        $modelClass = (string) $row['model_class'];
+        // Set the application language to the route language.
+        // This way we know which language the item and it's relations should be returned in.
+        if (!empty($row['translation_route_language']) && Yii::app()->language !== $row['translation_route_language']) {
+            Yii::app()->language = $row['translation_route_language'];
+        }
+
+        if (empty($modelId) || empty($modelClass)) {
+            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find node by route %s.'), $route));
+        }
+        if (!isset(self::$classMap[$modelClass])) {
+            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find resource for %s.'), $modelClass));
+        }
+
+        var_dump($route);
+        return $this->{"actionGet" . $modelClass}($modelId);
+
+    }
+
+    public function actionGetPage($modelId)
+    {
+        throw new Exception("TODO");
+    }
+
+    public function actionGetComposition($modelId)
+    {
+        throw new Exception("TODO");
+    }
+
     {
         echo "TODO";
     }
