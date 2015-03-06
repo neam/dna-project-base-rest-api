@@ -44,8 +44,7 @@ class ContributorItems
     protected static function getProfilePictureUrl($mediaId)
     {
         if (!empty($mediaId)) {
-            $url = Barebones::createUrl($mediaId, 'user-profile-picture', true);
-            return str_replace(array("api/", "internal/"), "files-api/", $url);
+            return Barebones::createMediaUrl($mediaId, 'user-profile-picture');
         }
         return null;
     }
