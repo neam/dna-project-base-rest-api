@@ -150,4 +150,7 @@ $config['components']['errorHandler'] = array(
 // Uncomment to easily see the active merged configuration
 //echo "<pre>";print_r($config);echo "</pre>";die();
 
+// Cache the resulting config as a file
+file_put_contents($applicationDirectory . '/config/cached-main.php', '<?php return '.var_export($config, true) . ';');
+
 return $config;
