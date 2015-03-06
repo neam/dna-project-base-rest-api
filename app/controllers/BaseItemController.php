@@ -31,7 +31,8 @@ class BaseItemController extends AppRestController
                 'allow',
                 'actions' => array(
                     'preflight',
-                    'get',
+                    'getByRoute',
+                    'getByNodeId',
                 )
             ),
             // Logged in users can do whatever they want to.
@@ -42,56 +43,94 @@ class BaseItemController extends AppRestController
     }
 
     /**
-     * Returns the requested item resource.
-     * Responds to path 'api/<version>/item/{id}'.
+     * Returns the requested item resource by node id.
+     * Responds to path 'api/<version>/item/{node_id}'.
      * This endpoint is public but the resources are restricted by "RestrictedAccessBehavior".
      *
-     * @param int|string $id the node id or the route of the item to get.
+     * @param int $node_id the node id of the item to get, e.g 1234
      */
-    public function actionGet($id)
+    public function actionGetByNodeId($node_id)
     {
-        $model = $this->loadModel($id);
+        if (!ctype_digit($node_id)) {
+            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Invalid node id %s - node ids must be numerical.'), $node_id));
+        }
+        list($modelId, $modelClass) = $this->loadByNodeId($node_id);
+        $model = $this->loadModelByIdAndClass($modelId, $modelClass);
         $this->sendResponse(200, $model->getAllAttributes());
     }
 
     /**
-     * Loads a Rest API model based on node id or model route.
+     * Returns the requested item resource.
+     * Responds to path 'api/<version>/item/{route}'.
+     * This endpoint is public but the resources are restricted by "RestrictedAccessBehavior".
      *
-     * @param int|string $id either node id or model route, e.g. 1234, "/1234", "/terms".
+     * @param string $route the route of the item to get, e.g."/1234", "/terms".
+     */
+    public function actionGetByRoute($route)
+    {
+        if (ctype_digit($route)) {
+            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Invalid route %s - routes must start with "/".'), $route));
+        }
+        list($modelId, $modelClass) = $this->loadByRoute($route);
+        $model = $this->loadModelByIdAndClass($modelId, $modelClass);
+        $this->sendResponse(200, $model->getAllAttributes());
+    }
+
+    /**
+     * @param int $node_id the node id of the item to get, e.g 1234
+     */
+    public function loadByNodeId($id)
+    {
+        $modelId = null;
+        $modelClass = null;
+        $command = Yii::app()->getDb()->createCommand()
+            ->select('id, model_class')
+            ->from('item')
+            ->where('node_id=:nodeId');
+        $row = $command->queryRow(true, array(':nodeId' => (int) $id));
+        if (!empty($row)) {
+            $modelId = (int) $row['id'];
+            $modelClass = (string) $row['model_class'];
+        }
+        return [$modelId, $modelClass];
+    }
+
+    /**
+     * @param string $route the route of the item to get, e.g."/1234", "/terms".
+     */
+    public function loadByRoute($route)
+    {
+        $modelId = null;
+        $modelClass = null;
+        $command = Yii::app()->getDb()->createCommand()
+            ->select('item.id, item.model_class, route.translation_route_language')
+            ->from('route')
+            ->leftJoin('item', 'item.node_id=route.node_id')
+            ->where('route.route=:route');
+        $row = $command->queryRow(true, array(':route' => strtolower((string) $route)));
+        if (!empty($row)) {
+            $modelId = (int) $row['id'];
+            $modelClass = (string) $row['model_class'];
+            // Set the application language to the route language.
+            // This way we know which language the item and it's relations should be returned in.
+            if (!empty($row['translation_route_language']) && Yii::app()->language !== $row['translation_route_language']) {
+                Yii::app()->language = $row['translation_route_language'];
+            }
+        }
+        return [$modelId, $modelClass];
+    }
+
+    /**
+     * Loads a Rest API model based on model id and class
+     *
+     * @param $modelId
+     * @param $modelClass
      * @return ActiveRecord the Rest API model.
      * @throws CHttpException
      */
-    public function loadModel($id)
+    public function loadModelByIdAndClass($modelId, $modelClass)
     {
-        $node = null;
-        if (ctype_digit($id)) {
-            $command = Yii::app()->getDb()->createCommand()
-                ->select('id, model_class')
-                ->from('item')
-                ->where('node_id=:nodeId');
-            $row = $command->queryRow(true, array(':nodeId' => (int)$id));
-            if (!empty($row)) {
-                $modelId = (int)$row['id'];
-                $modelClass = (string)$row['model_class'];
-            }
-        } else {
-            $command = Yii::app()->getDb()->createCommand()
-                ->select('item.id, item.model_class, route.translation_route_language')
-                ->from('route')
-                ->leftJoin('item', 'item.node_id=route.node_id')
-                ->where('route.route=:route');
-            $row = $command->queryRow(true, array(':route' => strtolower((string)$id)));
-            if (!empty($row)) {
-                $modelId = (int)$row['id'];
-                $modelClass = (string)$row['model_class'];
-                // Set the application language to the route language.
-                // This way we know which language the item and it's relations should be returned in.
-                if (!empty($row['translation_route_language']) && Yii::app()->language !== $row['translation_route_language']) {
-                    Yii::app()->language = $row['translation_route_language'];
-                }
-            }
-        }
-        if (!isset($modelId, $modelClass)) {
+        if (empty($modelId) || empty($modelClass)) {
             throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find node %s.'), $id));
         }
         if (!isset(self::$classMap[$modelClass])) {
