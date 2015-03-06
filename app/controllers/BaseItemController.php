@@ -84,6 +84,9 @@ class BaseItemController extends AppRestController
             $modelId = (int) $row['id'];
             $modelClass = (string) $row['model_class'];
         }
+        if (empty($modelId) || empty($modelClass)) {
+            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find node by node id %s.'), $node_id));
+        }
         return [$modelId, $modelClass];
     }
 
@@ -109,6 +112,9 @@ class BaseItemController extends AppRestController
                 Yii::app()->language = $row['translation_route_language'];
             }
         }
+        if (empty($modelId) || empty($modelClass)) {
+            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find node by route %s.'), $route));
+        }
         return [$modelId, $modelClass];
     }
 
@@ -122,9 +128,6 @@ class BaseItemController extends AppRestController
      */
     public function loadModelByIdAndClass($modelId, $modelClass)
     {
-        if (empty($modelId) || empty($modelClass)) {
-            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find node %s.'), $id));
-        }
         if (!isset(self::$classMap[$modelClass])) {
             throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find resource for %s.'), $modelClass));
         }
