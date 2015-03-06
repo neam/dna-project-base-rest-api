@@ -19,12 +19,6 @@
  * @method array getCreateAttributes
  * @method array getUpdateAttributes
  *
- * Methods made available through the ContributorBehavior class:
- * @method array getContributors()
- *
- * Methods made available through the RelatedBehavior class:
- * @method array getRelatedItems()
- *
  * Methods made available through the SirTrevorBehavior class:
  * @method array populateSirTrevorBlocks()
  */
@@ -49,12 +43,6 @@ class RestApiComposition extends Composition implements RelatedResource
                 'rest-model-behavior' => array(
                     'class' => 'WRestModelBehavior',
                 ),
-                'contributor-behavior' => array(
-                    'class' => 'ContributorBehavior',
-                ),
-                'related-behavior' => array(
-                    'class' => 'RelatedBehavior',
-                ),
                 'sir-trevor-behavior' => array(
                     'class' => 'SirTrevorBehavior',
                 ),
@@ -74,8 +62,8 @@ class RestApiComposition extends Composition implements RelatedResource
             'attributes' => array_merge($this->getListableAttributes(), array(
                 'composition' => $this->populateSirTrevorBlocks($this->composition)
             )),
-            'contributors' => $this->getContributors(),
-            'related' => $this->getRelatedItems(),
+            'contributors' => ContributorItems::getItems($this->node_id),
+            'related' => RelatedItems::getItems($this->node_id),
         );
     }
 

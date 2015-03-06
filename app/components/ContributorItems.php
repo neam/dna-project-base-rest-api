@@ -1,14 +1,15 @@
 <?php
 
-class ContributorBehavior extends CActiveRecordBehavior
+class ContributorItems
 {
     /**
      * Returns a list of contributors for the owner node.
      * Only contributors who's profile has been made "public" will be included.
      *
+     * @param int $nodeId
      * @return array the list of contributors.
      */
-    public function getContributors()
+    public static function getItems($nodeId)
     {
         // todo: access rights join statement is hard-coded
 
@@ -22,13 +23,13 @@ class ContributorBehavior extends CActiveRecordBehavior
             ->group('changeset.user_id');
 
         $contributors = array();
-        foreach ($command->queryAll(true, array(':nodeId' => (int)$this->owner->node_id)) as $row) {
+        foreach ($command->queryAll(true, array(':nodeId' => (int)$nodeId)) as $row) {
             $contributors[] = array(
                 'user_id' => (int)$row['user_id'],
                 'username' => (string)$row['username'],
                 'first_name' => (string)$row['first_name'],
                 'last_name' => (string)$row['last_name'],
-                'thumbnail_url' => $this->getProfilePictureUrl((int)$row['profile_picture_media_id']),
+                'thumbnail_url' => self::getProfilePictureUrl((int)$row['profile_picture_media_id']),
             );
         }
         return $contributors;
@@ -40,7 +41,7 @@ class ContributorBehavior extends CActiveRecordBehavior
      * @param int $mediaId the picture media model id.
      * @return string|null
      */
-    protected function getProfilePictureUrl($mediaId)
+    protected static function getProfilePictureUrl($mediaId)
     {
         if (!empty($mediaId)) {
             /** @var P3Media $model */
@@ -52,4 +53,4 @@ class ContributorBehavior extends CActiveRecordBehavior
         }
         return null;
     }
-}
+} 

@@ -16,12 +16,6 @@
  * Properties made available through the RestrictedAccessBehavior class:
  * @property boolean $enableRestriction
  *
- * Methods made available through the ContributorBehavior class:
- * @method array getContributors()
- *
- * Methods made available through the RelatedBehavior class:
- * @method array getRelatedItems()
- *
  * Methods made available through the SirTrevorBehavior class:
  * @method array populateSirTrevorBlocks()
  */
@@ -45,12 +39,6 @@ class RestApiCustomPage extends Page
             array(
                 'rest-model-behavior' => array(
                     'class' => 'WRestModelBehavior',
-                ),
-                'contributor-behavior' => array(
-                    'class' => 'ContributorBehavior',
-                ),
-                'related-behavior' => array(
-                    'class' => 'RelatedBehavior',
                 ),
                 'sir-trevor-behavior' => array(
                     'class' => 'SirTrevorBehavior',
@@ -87,8 +75,8 @@ class RestApiCustomPage extends Page
             'nav_tree_to_use' => !empty($this->nav_tree_to_use) ? $this->nav_tree_to_use : 'home',
             'attributes' => $this->getListableAttributes(),
             'root_page' => $this->getRootPageHierarchy(),
-            'contributors' => $this->getContributors(),
-            'related' => $this->getRelatedItems(),
+            'contributors' => ContributorItems::getItems($this->node_id),
+            'related' => RelatedItems::getItems($this->node_id),
         );
     }
 

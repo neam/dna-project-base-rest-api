@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Behavior for resource models that includes a list of related items.
+ * Component for resource models that includes a list of related items.
  * This class provides helper methods for getting a properly formatted list of related resources.
  *
  * Example of a "composition" response structure with a list of related items:
@@ -16,7 +16,7 @@
  *   "related": []
  * }
  */
-class RelatedBehavior extends CActiveRecordBehavior
+class RelatedItems
 {
     /**
      * @var array map of rest resource models per related active record class name (models must implement RelatedResource interface).
@@ -28,9 +28,10 @@ class RelatedBehavior extends CActiveRecordBehavior
     /**
      * Returns any related items for the owner node.
      *
+     * @param int $nodeId
      * @return array
      */
-    public function getRelatedItems()
+    public static function getItems($nodeId)
     {
         $command = Yii::app()->getDb()->createCommand()
             ->select('related.id AS related_id, item.id AS item_id, item.model_class AS item_model_class')
@@ -43,7 +44,7 @@ class RelatedBehavior extends CActiveRecordBehavior
         $command->join .= 'INNER JOIN `item` `item` ON (`item`.`node_id`=`related`.`id`)';
 
         $related = array();
-        foreach ($command->queryAll(true, array(':nodeId' => (int)$this->owner->node_id)) as $row) {
+        foreach ($command->queryAll(true, array(':nodeId' => (int)$nodeId)) as $row) {
             $modelId = (int)$row['item_id'];
             $modelClass = (string)$row['item_model_class'];
             if (!isset(self::$relatedResourceMap[$modelClass])) {
@@ -59,4 +60,4 @@ class RelatedBehavior extends CActiveRecordBehavior
         }
         return $related;
     }
-}
+} 

@@ -17,9 +17,6 @@
  * Methods made available through the WRestModelBehavior class:
  * @method array getCreateAttributes
  * @method array getUpdateAttributes
- *
- * Methods made available through the RelatedBehavior class:
- * @method array getRelatedItems()
  */
 class RestApiVideoFile extends VideoFile implements SirTrevorBlock
 {
@@ -46,9 +43,6 @@ class RestApiVideoFile extends VideoFile implements SirTrevorBlock
                     'class' => 'I18nColumnsBehavior',
                     'translationAttributes' => array('slug'),
                 ),
-                'related-behavior' => array(
-                    'class' => 'RelatedBehavior',
-                ),
             )
         );
     }
@@ -63,7 +57,7 @@ class RestApiVideoFile extends VideoFile implements SirTrevorBlock
             'item_type' => 'video_file',
             'url' => $this->getRouteUrl(),
             'attributes' => $this->getListableAttributes(),
-            'related' => $this->getRelatedItems(),
+            'related' => RelatedItems::getItems($this->node_id),
         );
     }
 
