@@ -129,13 +129,10 @@ class RestApiComposition extends Composition implements RelatedResource
      */
     public function getThumbUrl($preset = 'original-public')
     {
-        // todo: refactor to not use AR
-
-        if (empty($this->thumbMedia)) {
-            return null;
+        if (!empty($this->thumb_media_id)) {
+            $url = Barebones::createUrl($this->thumb_media_id, $preset, true);
+            return str_replace(array("api/", "internal/"), "files-api/", $url);
         }
-        $url = $this->thumbMedia->createUrl($preset, true);
-        // Rewriting so that the temporary files-api app is used to serve the url.
-        return str_replace(array("api/", "internal/"), "files-api/", $url);
+        return null;
     }
 }

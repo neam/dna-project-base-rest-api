@@ -32,7 +32,6 @@ $mainConfig = array(
         'application.traits.*',
         'vendor.weavora.wrest.*',
         'vendor.weavora.wrest.actions.*',
-        'vendor.weavora.wrest.behaviors.*',
     ),
     // put rest-api-specific p3media presets here
     'modules' => array(

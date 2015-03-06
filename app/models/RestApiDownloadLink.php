@@ -56,13 +56,10 @@ class RestApiDownloadLink extends DownloadLink implements SirTrevorBlock
      */
     protected function getLinkUrl()
     {
-        // todo: refactor to not use AR
-
-        if (empty($this->fileMedia)) {
-            return null;
+        if (!empty($this->file_media_id)) {
+            $url = Barebones::createUrl($this->file_media_id, 'original', true);
+            return str_replace(array("api/", "internal/"), "files-api/", $url);
         }
-        $url = $this->fileMedia->createUrl('original', true);
-        // Rewriting so that the temporary files-api app is used to serve the url.
-        return str_replace(array("api/", "internal/"), "files-api/", $url);
+        return null;
     }
 }

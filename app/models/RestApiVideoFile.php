@@ -131,14 +131,11 @@ class RestApiVideoFile extends VideoFile implements SirTrevorBlock
      */
     protected function getThumbUrl($preset)
     {
-        // todo: refactor to not use AR
-
-        if (empty($this->thumbnailMedia)) {
-            return null;
+        if (!empty($this->thumbnail_media_id)) {
+            $url = Barebones::createUrl($this->thumbnail_media_id, $preset, true);
+            return str_replace(array("api/", "internal/"), "files-api/", $url);
         }
-        $url = $this->thumbnailMedia->createUrl($preset, true);
-        // Rewriting so that the temporary files-api app is used to serve the url.
-        return str_replace(array("api/", "internal/"), "files-api/", $url);
+        return null;
     }
 
     /**
@@ -148,14 +145,11 @@ class RestApiVideoFile extends VideoFile implements SirTrevorBlock
      */
     protected function getUrlMp4()
     {
-        // todo: refactor to not use AR
-
-        if (empty($this->clipMp4Media)) {
-            return null;
+        if (!empty($this->clip_mp4_media_id)) {
+            $url = Barebones::createUrl($this->clip_mp4_media_id, 'original-public-mp4', true);
+            return str_replace(array("api/", "internal/"), "files-api/", $url);
         }
-        $url = $this->clipMp4Media->createUrl('original-public-mp4', true);
-        // Rewriting so that the temporary files-api app is used to serve the url.
-        return str_replace(array("api/", "internal/"), "files-api/", $url);
+        return null;
     }
 
     /**
@@ -165,13 +159,10 @@ class RestApiVideoFile extends VideoFile implements SirTrevorBlock
      */
     protected function getUrlWebm()
     {
-        // todo: refactor to not use AR
-
-        if (empty($this->clipWebmMedia)) {
-            return null;
+        if (!empty($this->clip_webm_media_id)) {
+            $url = Barebones::createUrl($this->clip_webm_media_id, 'original-public-webm', true);
+            return str_replace(array("api/", "internal/"), "files-api/", $url);
         }
-        $url = $this->clipWebmMedia->createUrl('original-public-webm', true);
-        // Rewriting so that the temporary files-api app is used to serve the url.
-        return str_replace(array("api/", "internal/"), "files-api/", $url);
+        return null;
     }
 }

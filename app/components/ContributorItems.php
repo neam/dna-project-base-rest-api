@@ -43,15 +43,9 @@ class ContributorItems
      */
     protected static function getProfilePictureUrl($mediaId)
     {
-        // todo: refactor to not use AR
-        
         if (!empty($mediaId)) {
-            /** @var P3Media $model */
-            $model = P3Media::model()->findByPk($mediaId);
-            if ($model !== null) {
-                $url = $model->createUrl('user-profile-picture', true);
-                return str_replace(array("api/", "internal/"), "files-api/", $url);
-            }
+            $url = Barebones::createUrl($mediaId, 'user-profile-picture', true);
+            return str_replace(array("api/", "internal/"), "files-api/", $url);
         }
         return null;
     }
