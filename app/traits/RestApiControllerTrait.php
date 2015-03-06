@@ -1,6 +1,15 @@
 <?php
 
-trait RestApiControllerTrait {
+trait RestApiControllerTrait
+{
+
+    /**
+     * @var array map of AR classes to REST resource classes.
+     */
+    protected static $classMap = array(
+        'Composition' => 'RestApiComposition',
+        'Page' => 'RestApiCustomPage',
+    );
 
     private function _getStatusCodeMessage($status)
     {

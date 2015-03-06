@@ -13,14 +13,6 @@ class BaseItemController extends AppRestController
     protected $_modelName = 'Item';
 
     /**
-     * @var array map of AR classes to REST resource classes.
-     */
-    protected static $classMap = array(
-        'Composition' => 'RestApiComposition',
-        'Page' => 'RestApiCustomPage',
-    );
-
-    /**
      * @inheritdoc
      */
     public function accessRules()
