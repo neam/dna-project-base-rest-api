@@ -330,83 +330,77 @@
         ),
         9 => 
         array (
-          0 => '<version>/item/fastGet',
-          'pattern' => '<version:v\\d+>/_item/<id:\\d+|[\\w-\\/]+>',
-          'verb' => 'GET',
-        ),
-        10 => 
-        array (
           0 => '<version>/<controller>/list',
           'pattern' => '<version:v\\d+>/<controller:\\w+>',
           'verb' => 'GET',
         ),
-        11 => 
+        10 => 
         array (
           0 => '<version>/<controller>/create',
           'pattern' => '<version:v\\d+>/<controller:\\w+>',
           'verb' => 'POST',
         ),
-        12 => 
+        11 => 
         array (
           0 => '<version>/<controller>/get',
           'pattern' => '<version:v\\d+>/<controller:\\w+>/<id:\\d+|\\:[\\w-]+>',
           'verb' => 'GET',
         ),
-        13 => 
+        12 => 
         array (
           0 => '<version>/<controller>/update',
           'pattern' => '<version:v\\d+>/<controller:\\w+>/<id:\\d+|\\:[\\w-]+>',
           'verb' => 'PUT',
         ),
-        14 => 
+        13 => 
         array (
           0 => '<version>/<controller>/delete',
           'pattern' => '<version:v\\d+>/<controller:\\w+>/<id:\\d+|\\:[\\w-]+>',
           'verb' => 'DELETE',
         ),
-        15 => 
+        14 => 
         array (
           0 => '<version>/<controller>/<action>',
           'pattern' => '<version:v\\d+>/<controller:\\w+>/<action:\\w+>/<id:\\d+>',
           'verb' => 'GET',
         ),
-        16 => 
+        15 => 
         array (
           0 => '<version>/profile/preflight',
           'pattern' => '<version:v\\d+>/user/profile',
           'verb' => 'OPTIONS',
         ),
-        17 => 
+        16 => 
         array (
           0 => '<version>/profile/preflight',
           'pattern' => '<version:v\\d+>/user/<accountId:\\d+>/profile',
           'verb' => 'OPTIONS',
         ),
-        18 => 
+        17 => 
         array (
           0 => '<version>/item/preflight',
           'pattern' => '<version:v\\d+>/item/<id:\\d+|[\\w-\\/]+>',
           'verb' => 'OPTIONS',
         ),
-        19 => 
+        18 => 
         array (
           0 => '<version>/<controller>/preflight',
           'pattern' => '<version:v\\d+>/<controller:\\w+>',
           'verb' => 'OPTIONS',
         ),
-        20 => 
+        19 => 
         array (
           0 => '<version>/<controller>/preflight',
           'pattern' => '<version:v\\d+>/<controller:\\w+>/<action:\\w+>',
           'verb' => 'OPTIONS',
         ),
-        21 => 
+        20 => 
         array (
           0 => '<version>/<controller>/preflight',
           'pattern' => '<version:v\\d+>/<controller:\\w+>/<id:\\d+|\\:[\\w-]+>',
           'verb' => 'OPTIONS',
         ),
-        22 => 
+        21 => 
         array (
           0 => '<version>/<controller>/preflight',
           'pattern' => '<version:v\\d+>/<controller:\\w+>/<action:\\w+>/<id:\\d+>',
@@ -450,6 +444,26 @@
         0 => 'Anonymous',
         1 => 'Member',
       ),
+    ),
+    'user' => 
+    array (
+      'class' => 'WebUser',
+      'loginUrl' => NULL,
+      'behaviors' => 
+      array (
+        0 => 'dna-vendor.neam.yii-restricted-access.behaviors.RestrictedAccessWebUserBehavior',
+      ),
+      'allowAutoLogin' => false,
+    ),
+    'oauth2' => 
+    array (
+      'class' => 'OAuth2Yii\\Component\\ServerComponent',
+      'userClass' => 'OAuth2User',
+      'clientClass' => 'OAuth2Client',
+      'enableAuthorization' => false,
+      'enableImplicit' => false,
+      'enableUserCredentials' => true,
+      'enableClientCredentials' => false,
     ),
     'request' => 
     array (
@@ -566,13 +580,16 @@
     'ext.wrest.WRestResponse' => 'vendor.weavora.wrest.WRestResponse',
     'ext.wrest.JsonResponse' => 'vendor.weavora.wrest.JsonResponse',
   ),
+  'behaviors' => 
+  array (
+  ),
   'name' => 'Gapminder CMS DNA',
   'language' => 'en',
   'theme' => NULL,
   'sourceLanguage' => 'en',
   'preload' => 
   array (
-    0 => 'log',
+    1 => 'langHandler',
   ),
   'params' => 
   array (
