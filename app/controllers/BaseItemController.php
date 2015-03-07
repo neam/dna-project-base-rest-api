@@ -44,7 +44,7 @@ class BaseItemController extends AppRestController
     public function actionGetByNodeId($node_id)
     {
         if (!ctype_digit($node_id)) {
-            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Invalid node id %s - node ids must be numerical.'), $node_id));
+            throw new CHttpException(404, sprintf('Invalid node id %s - node ids must be numerical.', $node_id));
         }
         list($modelId, $modelClass) = $this->loadByNodeId($node_id);
         $model = $this->loadModelByIdAndClass($modelId, $modelClass);
@@ -61,7 +61,7 @@ class BaseItemController extends AppRestController
     public function actionGetByRoute($route)
     {
         if (ctype_digit($route)) {
-            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Invalid route %s - routes must start with "/".'), $route));
+            throw new CHttpException(404, sprintf('Invalid route %s - routes must start with "/".', $route));
         }
         list($modelId, $modelClass) = $this->loadByRoute($route);
         $model = $this->loadModelByIdAndClass($modelId, $modelClass);
@@ -85,7 +85,7 @@ class BaseItemController extends AppRestController
             $modelClass = (string) $row['model_class'];
         }
         if (empty($modelId) || empty($modelClass)) {
-            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find node by node id %s.'), $node_id));
+            throw new CHttpException(404, sprintf('Could not find node by node id %s.', $node_id));
         }
         return [$modelId, $modelClass];
     }
@@ -113,7 +113,7 @@ class BaseItemController extends AppRestController
             }
         }
         if (empty($modelId) || empty($modelClass)) {
-            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find node by route %s.'), $route));
+            throw new CHttpException(404, sprintf('Could not find node by route %s.', $route));
         }
         return [$modelId, $modelClass];
     }
@@ -129,13 +129,13 @@ class BaseItemController extends AppRestController
     public function loadModelByIdAndClass($modelId, $modelClass)
     {
         if (!isset(self::$classMap[$modelClass])) {
-            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find resource for %s.'), $modelClass));
+            throw new CHttpException(404, sprintf('Could not find resource for %s.', $modelClass));
         }
         $resourceClass = self::$classMap[$modelClass];
         /** @var ActiveRecord $model */
         $model = CActiveRecord::model($resourceClass)->findByPk($modelId);
         if ($model === null) {
-            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find resource for %s#%d.'), $modelClass, $modelId));
+            throw new CHttpException(404, sprintf('Could not find resource for %s#%d.', $modelClass, $modelId));
         }
         return $model;
     }

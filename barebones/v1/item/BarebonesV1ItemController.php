@@ -103,7 +103,7 @@ class BarebonesV1ItemController
     {
 
         if (ctype_digit($route)) {
-            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Invalid route %s - routes must start with "/".'), $route));
+            throw new CHttpException(404, sprintf('Invalid route %s - routes must start with "/".', $route));
         }
 
         $command = Barebones::fpdo()
@@ -124,10 +124,10 @@ class BarebonesV1ItemController
         }
 
         if (empty($modelId) || empty($modelClass)) {
-            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find node by route %s.'), $route));
+            throw new CHttpException(404, sprintf('Could not find node by route %s.', $route));
         }
         if (!isset(self::$classMap[$modelClass])) {
-            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find resource for %s.'), $modelClass));
+            throw new CHttpException(404, sprintf('Could not find resource for %s.', $modelClass));
         }
         unset($row);
 
