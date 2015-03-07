@@ -603,12 +603,11 @@
     38 => 'application.traits.*',
     39 => 'vendor.weavora.wrest.*',
     40 => 'vendor.weavora.wrest.actions.*',
-    41 => 'vendor.weavora.wrest.behaviors.*',
-    42 => 'vendor.neam.yii-dna-debug-modes-and-error-handling.components.*',
-    43 => 'vendor.neam.yii-dna-debug-modes-and-error-handling.exceptions.*',
-    44 => 'vendor.neam.yii-dna-debug-modes-and-error-handling.traits.YiiDnaWebApplicationTrait',
-    45 => 'vendor.crisu83.yii-sentry.components.SentryErrorHandler',
-    46 => 'vendor.crisu83.yii-sentry.components.SentryClient',
+    41 => 'vendor.neam.yii-dna-debug-modes-and-error-handling.components.*',
+    42 => 'vendor.neam.yii-dna-debug-modes-and-error-handling.exceptions.*',
+    43 => 'vendor.neam.yii-dna-debug-modes-and-error-handling.traits.YiiDnaWebApplicationTrait',
+    44 => 'vendor.crisu83.yii-sentry.components.SentryErrorHandler',
+    45 => 'vendor.crisu83.yii-sentry.components.SentryClient',
   ),
   'aliases' => 
   array (
