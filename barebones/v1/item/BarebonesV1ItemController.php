@@ -3,6 +3,7 @@
 /* @var string $root */
 
 use barebones\Barebones;
+use barebones\CHttpException;
 
 /* @var string $actionroot */
 class BarebonesV1ItemController
@@ -51,7 +52,25 @@ class BarebonesV1ItemController
         if ($this->request_method == "GET") {
             $urlEncodedRoute = $this->requestedItemRoute();
             $route = urldecode($urlEncodedRoute);
-            return $this->actionGetByRoute($route);
+            try {
+                $this->actionGetByRoute($route);
+            } catch (CHttpException $e) {
+                $this->sendResponseHeaders(404);
+                echo json_encode([
+                    "status" => 404,
+                    "message" => "Not Found",
+                    "trace" => $e->getMessage(),
+                ]);
+                die();
+            } catch (Exception $e) {
+                $this->sendResponseHeaders(500);
+                echo json_encode([
+                    "status" => 500,
+                    "message" => "Internal Server Error",
+                    "trace" => (DEV ? $e->getMessage() : ""),
+                ]);
+                die();
+            }
         }
         throw new Exception("Unhandled request");
     }
@@ -83,13 +102,6 @@ class BarebonesV1ItemController
         header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
         header("Content-type: $contentType");
 
-    }
-
-    protected function respond404()
-    {
-        $this->sendResponseHeaders(404);
-        echo '{status: 404,message: "Not Found",trace: null}';
-        die();
     }
 
     /**
