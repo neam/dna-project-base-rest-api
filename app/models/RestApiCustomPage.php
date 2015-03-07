@@ -112,12 +112,12 @@ class RestApiCustomPage extends Page
      */
     public function getCompositionTypeReference()
     {
-        $command = Yii::app()->getDb()->createCommand()
-            ->select('ref')
+        $command = \barebones\Barebones::fpdo()
+            //->select('ref')
             ->from('composition_type')
-            ->where('id=:compositionTypeId');
-        $ref = $command->queryScalar(array(':compositionTypeId' => (int)$this->composition_type_id));
-        return !empty($ref) ? $ref : null;
+            ->where('id=:compositionTypeId', array(':compositionTypeId' => (int)$this->composition_type_id));
+        $result = $command->fetch();
+        return !empty($result) ? $result['ref'] : null;
     }
 
     /**
@@ -126,12 +126,12 @@ class RestApiCustomPage extends Page
     public function getRouteUrl()
     {
         // todo: enable multi lingual support once ready.
-        $command = Yii::app()->getDb()->createCommand()
-            ->select('route')
+        $command = \barebones\Barebones::fpdo()
+            //->select('route')
             ->from('route')
-            ->where('canonical=1 AND node_id=:nodeId'/*translation_route_language=:lang*/);
-        $route = $command->queryScalar(array(':nodeId' => (int)$this->node_id/*, ':lang' => Yii::app()->language*/));
-        return !empty($route) ? $route : null;
+            ->where('canonical=1 AND node_id=:nodeId'/*translation_route_language=:lang*/, array(':nodeId' => (int)$this->node_id/*, ':lang' => Yii::app()->language*/));
+        $result = $command->fetch();
+        return !empty($result) ? $result['route'] : null;
     }
 
     /**
