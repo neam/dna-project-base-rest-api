@@ -3,7 +3,7 @@
 /* @var string $root */
 /* @var string $actionroot */
 
-require_once($root . '/dna/components/Barebones.php');
+//require_once($root . '/dna/components/Barebones.php');
 require_once($root . '/dna/vendor/neam/yii-relational-graph-db/traits/GraphRelatableItemTrait.php');
 require_once($root . '/dna/models/metadata/traits/CompositionTrait.php');
 require_once($root . '/dna/models/metadata/traits/PageTrait.php');

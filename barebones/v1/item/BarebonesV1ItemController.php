@@ -129,24 +129,11 @@ class BarebonesV1ItemController
         if (!isset(self::$classMap[$modelClass])) {
             throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find resource for %s.'), $modelClass));
         }
+        unset($row);
 
-        return $this->{"actionGet" . $modelClass}($table, $modelId);
+        $resourceModelClass = self::$classMap[$modelClass];
 
-    }
-
-    public function actionGetPage($modelId)
-    {
-        throw new Exception("TODO");
-    }
-
-    public function actionGetComposition($table, $modelId)
-    {
-
-        $command = Barebones::fpdo()
-            ->from($table, $modelId);
-        //var_dump($command->fetch());
-        $model = new RestApiComposition();
-        $model->attributes = $command->fetch();
+        $model = $resourceModelClass::model()->findByPk($modelId);
 
         //var_dump($model->flowSteps(), $model->getAllAttributes());
 

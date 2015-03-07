@@ -52,7 +52,7 @@ class RelatedItems
             }
             $relatedModelClass = self::$relatedResourceMap[$modelClass];
             /** @var RelatedResource $resource */
-            $resource = \barebones\ActiveRecord::model($relatedModelClass)->findByPk($modelId);
+            $resource = $relatedModelClass::model()->findByPk($modelId);
             if ($resource === null) {
                 continue;
             }

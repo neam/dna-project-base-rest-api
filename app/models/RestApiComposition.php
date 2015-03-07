@@ -99,7 +99,7 @@ class RestApiComposition extends Composition implements RelatedResource
      */
     public function getCompositionTypeReference()
     {
-        $command = Yii::app()->getDb()->createCommand()
+        $command = \barebones\Barebones::fpdo()
             //->select('ref')
             ->from('composition_type')
             ->where('id=:compositionTypeId', array(':compositionTypeId' => (int)$this->composition_type_id));

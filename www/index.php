@@ -11,6 +11,9 @@ require_once("$root/dna/vendor/autoload.php");
 // Make app config available as PHP constants
 require("$root/vendor/neam/php-app-config/include.php");
 
+// include barebones helper class
+require_once($root . '/dna/components/Barebones.php');
+
 // Use barebones php for public item GET requests for performance
 if (strpos($_SERVER['REQUEST_URI'], "/api/v1/item/") === 0) {
     $actionroot = $approot . "/barebones/v1/item";
