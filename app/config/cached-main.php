@@ -276,8 +276,8 @@
       array (
         0 => 
         array (
-          0 => '<version>/item/get',
-          'pattern' => '<version:v\\d+>/item/<id:\\d+>/test/<itemType:\\w+>',
+          0 => '<version>/item/getByNodeId',
+          'pattern' => '<version:v\\d+>/item/<node_id:\\d+>/test/<itemType:\\w+>',
           'verb' => 'GET',
         ),
         1 => 

@@ -26,6 +26,12 @@ class BarebonesV1ItemController
         if (strpos($this->request_uri, "/api/v1/item/") !== 0) {
             return false;
         }
+        if (strpos($this->request_uri, "/test/composition") !== false) {
+            return false;
+        }
+        if (strpos($this->request_uri, "/test/page") !== false) {
+            return false;
+        }
         if ($this->request_method == "OPTIONS") {
             return true;
         }
