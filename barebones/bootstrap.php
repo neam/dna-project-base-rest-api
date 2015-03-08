@@ -46,3 +46,7 @@ require_once($root . '/yiiapps/rest-api/app/models/RestApiDownloadLink.php');
 require_once($root . '/yiiapps/rest-api/app/components/SirTrevorParser.php');
 require_once($root . '/yiiapps/rest-api/app/components/ContributorItems.php');
 require_once($root . '/yiiapps/rest-api/app/components/RelatedItems.php');
+
+// Load p3media presets config
+$config = ["modules" => ["p3media" => ["params" => ["presets" => []]]]];
+require("$root/dna/config/includes/p3media-presets.php");
