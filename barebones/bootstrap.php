@@ -19,18 +19,21 @@ class Yii extends \barebones\Yii
 class Composition extends \barebones\ActiveRecord
 {
     use CompositionTrait;
+
     public $__table = 'composition';
 }
 
 class Page extends \barebones\ActiveRecord
 {
     use PageTrait;
+
     public $__table = 'page';
 }
 
 class DownloadLink extends \barebones\ActiveRecord
 {
     use DownloadLinkTrait;
+
     public $__table = 'download_link';
 }
 
