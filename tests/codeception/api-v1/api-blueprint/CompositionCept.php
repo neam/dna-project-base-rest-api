@@ -18,10 +18,10 @@ $I->seeResponseContainsJson(array(
         "caption" => "Test caption",
         "slug" => "test-go-item-slug",
         "thumb" => array(
-            "original" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg&lang=en",
-            "735x444" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg&lang=en",
-            "160x96" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg&lang=en",
-            "110x66" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg&lang=en"
+            "original" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+            "735x444" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+            "160x96" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+            "110x66" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
         ),
         "composition" => array(
             "data" => array(
@@ -55,7 +55,7 @@ $I->seeResponseContainsJson(array(
                                     "item_type" => "download_link",
                                     "attributes" => array(
                                         "title" => "Gapminder World 2012",
-                                        "url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf&lang=en"
+                                        "url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
                                     )
                                 )
                             )
@@ -67,7 +67,7 @@ $I->seeResponseContainsJson(array(
                     "data" => array(
                         "message" => "File",
                         "file" => array(
-                            "url" => "http://192.168.99.100:11111/files-api/p3media/file/image?id=10&preset=sir-trevor-image-block&title=video.png&extension=.jpeg&lang=en_us",
+                            "url" => "http://192.168.99.100:11111/files-api/p3media/file/image?id=10&preset=sir-trevor-image-block&title=video.png&extension=.jpeg",
                             "p3_media_id" => "10"
                         )
                     )
@@ -111,10 +111,10 @@ $I->seeResponseContainsJson(array(
                                         "caption" => "Test caption",
                                         "slug" => "test-go-item-slug",
                                         "thumb" =>  array(
-                                        "original" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg&lang=en",
-                                            "735x444" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg&lang=en",
-                                            "160x96" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg&lang=en",
-                                            "110x66" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg&lang=en"
+                                        "original" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                                            "735x444" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                                            "160x96" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                                            "110x66" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                                         )
                                     )
                                 ),
@@ -130,10 +130,10 @@ $I->seeResponseContainsJson(array(
                                         "caption" => "Test caption 2",
                                         "slug" => "test-go-item-slug-2",
                                         "thumb" =>  array(
-                                        "original" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg&lang=en",
-                                            "735x444" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg&lang=en",
-                                            "160x96" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg&lang=en",
-                                            "110x66" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg&lang=en"
+                                        "original" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                                            "735x444" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                                            "160x96" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                                            "110x66" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                                         )
                                     )
                                 )
@@ -196,7 +196,7 @@ $I->seeResponseContainsJson(array(
                                         )
                                     ),
                                     "contributions" => array(),
-                                    "profile_picture" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg&lang=en",
+                                    "profile_picture" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg",
                                     "groups" => array(
                                         array(
                                             "id" => "16",
@@ -336,10 +336,10 @@ $I->seeResponseContainsJson(array(
                 "caption" => "Test caption 2",
                 "slug" => "test-go-item-slug-2",
                 "thumb" => array(
-                    "original" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg&lang=en",
-                    "735x444" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg&lang=en",
-                    "160x96" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg&lang=en",
-                    "110x66" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg&lang=en"
+                    "original" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                    "735x444" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                    "160x96" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                    "110x66" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                 )
             )
         )

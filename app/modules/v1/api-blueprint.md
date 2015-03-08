@@ -91,7 +91,7 @@ The profile is only returned if it is marked as "published", e.g. public.
                 ]
             },
             "contributions": [ ],
-            "profile_picture": "http://172.17.42.1:11111/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg&lang=en",
+            "profile_picture": "http://172.17.42.1:11111/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg",
             "groups": [
                 {
                     "id": "16",
@@ -167,7 +167,7 @@ The profile is only returned if it is marked as "published", e.g. public.
                 ]
             },
             "contributions": [ ],
-            "profile_picture": "http://172.17.42.1:11111/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg&lang=en",
+            "profile_picture": "http://172.17.42.1:11111/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg",
             "groups": [
                 {
                     "id": "16",
@@ -278,15 +278,15 @@ Video file related resources
                     "about": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
                     "caption": "No. Its the opposite.",
                     "slug": "will-saving-poor-children-lead-to-overpopulation",
-                    "url_mp4": "http://172.17.42.1:11111/files-api/p3media/file/image?id=2&preset=original-public-mp4&title=media&extension=.mp4&lang=en",
-                    "url_webm": "http://172.17.42.1:11111/files-api/p3media/file/image?id=1&preset=original-public-webm&title=media&extension=.webm&lang=en",
+                    "url_mp4": "http://172.17.42.1:11111/files-api/p3media/file/image?id=2&preset=original-public-mp4&title=media&extension=.mp4",
+                    "url_webm": "http://172.17.42.1:11111/files-api/p3media/file/image?id=1&preset=original-public-webm&title=media&extension=.webm",
                     "url_youtube": null,
                     "url_subtitles": "http://172.17.42.1:11111/api/v1/videoFile/subtitles/1?lang=en",
                     "thumb": {
-                        "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=original-public&title=media&extension=.jpeg&lang=en",
-                        "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=735x444&title=media&extension=.jpg&lang=en",
-                        "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=160x96&title=media&extension=.jpg&lang=en",
-                        "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=110x66&title=media&extension=.jpg&lang=en"
+                        "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=original-public&title=media&extension=.jpeg",
+                        "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=735x444&title=media&extension=.jpg",
+                        "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=160x96&title=media&extension=.jpg",
+                        "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=110x66&title=media&extension=.jpg"
                     }
                 },
                 "related": [ ]
@@ -300,15 +300,15 @@ Video file related resources
                     "about": "In this video Hans talks about how income and lifespan are related to each other.",
                     "caption": null,
                     "slug": "are-income-and-lifespan-related",
-                    "url_mp4": "http://172.17.42.1:11111/files-api/p3media/file/image?id=4&preset=original-public-mp4&title=media&extension=.mp4&lang=en",
-                    "url_webm": "http://172.17.42.1:11111/files-api/p3media/file/image?id=3&preset=original-public-webm&title=media&extension=.webm&lang=en",
+                    "url_mp4": "http://172.17.42.1:11111/files-api/p3media/file/image?id=4&preset=original-public-mp4&title=media&extension=.mp4",
+                    "url_webm": "http://172.17.42.1:11111/files-api/p3media/file/image?id=3&preset=original-public-webm&title=media&extension=.webm",
                     "url_youtube": null,
                     "url_subtitles": "http://172.17.42.1:11111/api/v1/videoFile/subtitles/2?lang=en",
                     "thumb": {
-                        "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=6&preset=original-public&title=media&extension=.jpeg&lang=en",
-                        "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=6&preset=735x444&title=media&extension=.jpg&lang=en",
-                        "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=6&preset=160x96&title=media&extension=.jpg&lang=en",
-                        "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=6&preset=110x66&title=media&extension=.jpg&lang=en"
+                        "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=6&preset=original-public&title=media&extension=.jpeg",
+                        "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=6&preset=735x444&title=media&extension=.jpg",
+                        "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=6&preset=160x96&title=media&extension=.jpg",
+                        "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=6&preset=110x66&title=media&extension=.jpg"
                     }
                 },
                 "related": [ ]
@@ -333,15 +333,15 @@ Video file related resources
                 "about": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
                 "caption": "No. Its the opposite.",
                 "slug": "will-saving-poor-children-lead-to-overpopulation",
-                "url_mp4": "http://172.17.42.1:11111/files-api/p3media/file/image?id=2&preset=original-public-mp4&title=media&extension=.mp4&lang=en",
-                "url_webm": "http://172.17.42.1:11111/files-api/p3media/file/image?id=1&preset=original-public-webm&title=media&extension=.webm&lang=en",
+                "url_mp4": "http://172.17.42.1:11111/files-api/p3media/file/image?id=2&preset=original-public-mp4&title=media&extension=.mp4",
+                "url_webm": "http://172.17.42.1:11111/files-api/p3media/file/image?id=1&preset=original-public-webm&title=media&extension=.webm",
                 "url_youtube": null,
                 "url_subtitles": "http://172.17.42.1:11111/api/v1/videoFile/subtitles/1?lang=en",
                 "thumb": {
-                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=original-public&title=media&extension=.jpeg&lang=en",
-                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=735x444&title=media&extension=.jpg&lang=en",
-                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=160x96&title=media&extension=.jpg&lang=en",
-                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=110x66&title=media&extension=.jpg&lang=en"
+                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=original-public&title=media&extension=.jpeg",
+                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=735x444&title=media&extension=.jpg",
+                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=160x96&title=media&extension=.jpg",
+                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=110x66&title=media&extension=.jpg"
                 }
             },
             "related": [ ]
@@ -1132,10 +1132,10 @@ New social links are created for the currently authentcated user.
                 "caption": "Test caption",
                 "slug": "test-go-item-slug",
                 "thumb": {
-                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg&lang=en",
-                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg&lang=en",
-                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg&lang=en",
-                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg&lang=en"
+                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                 },
                 "composition": {
                     "data": [
@@ -1169,7 +1169,7 @@ New social links are created for the currently authentcated user.
                                             "item_type": "download_link",
                                             "attributes": {
                                                 "title": "Gapminder World 2012",
-                                                "url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf&lang=en"
+                                                "url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
                                             }
                                         }
                                     }
@@ -1181,7 +1181,7 @@ New social links are created for the currently authentcated user.
                             "data": {
                                 "message": "File",
                                 "file": {
-                                    "url": "http://192.168.99.100:11111/files-api/p3media/file/image?id=10&preset=sir-trevor-image-block&title=video.png&extension=.jpeg&lang=en_us",
+                                    "url": "http://192.168.99.100:11111/files-api/p3media/file/image?id=10&preset=sir-trevor-image-block&title=video.png&extension=.jpeg",
                                     "p3_media_id": "10"
                                 }
                             }
@@ -1225,10 +1225,10 @@ New social links are created for the currently authentcated user.
                                                 "caption": "Test caption",
                                                 "slug": "test-go-item-slug",
                                                 "thumb": {
-                                                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg&lang=en",
-                                                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg&lang=en",
-                                                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg&lang=en",
-                                                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg&lang=en"
+                                                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                                                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                                                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                                                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                                                 }
                                             }
                                         },
@@ -1244,10 +1244,10 @@ New social links are created for the currently authentcated user.
                                                 "caption": "Test caption 2",
                                                 "slug": "test-go-item-slug-2",
                                                 "thumb": {
-                                                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg&lang=en",
-                                                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg&lang=en",
-                                                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg&lang=en",
-                                                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg&lang=en"
+                                                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                                                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                                                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                                                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                                                 }
                                             }
                                         }
@@ -1310,7 +1310,7 @@ New social links are created for the currently authentcated user.
                                                 ]
                                             },
                                             "contributions": [],
-                                            "profile_picture": "http://172.17.42.1:11111/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg&lang=en",
+                                            "profile_picture": "http://172.17.42.1:11111/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg",
                                             "groups": [
                                                 {
                                                     "id": "16",
@@ -1450,10 +1450,10 @@ New social links are created for the currently authentcated user.
                         "caption": "Test caption 2",
                         "slug": "test-go-item-slug-2",
                         "thumb": {
-                            "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg&lang=en",
-                            "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg&lang=en",
-                            "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg&lang=en",
-                            "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg&lang=en"
+                            "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                            "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                            "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                            "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                         }
                     }
                 }
@@ -1505,7 +1505,7 @@ New social links are created for the currently authentcated user.
                                             "item_type": "download_link",
                                             "attributes": {
                                                 "title": "Gapminder World 2012",
-                                                "url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf&lang=en"
+                                                "url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
                                             }
                                         }
                                     }
@@ -1517,7 +1517,7 @@ New social links are created for the currently authentcated user.
                             "data": {
                                 "message": "File",
                                 "file": {
-                                    "url": "http://192.168.99.100:11111/files-api/p3media/file/image?id=8&preset=sir-trevor-image-block&title=video.png&extension=.jpeg&lang=en_us",
+                                    "url": "http://192.168.99.100:11111/files-api/p3media/file/image?id=8&preset=sir-trevor-image-block&title=video.png&extension=.jpeg",
                                     "p3_media_id": "8"
                                 }
                             }
@@ -1567,10 +1567,10 @@ New social links are created for the currently authentcated user.
                         "caption": "Test caption 2",
                         "slug": "test-go-item-slug-2",
                         "thumb": {
-                            "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg&lang=en",
-                            "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg&lang=en",
-                            "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg&lang=en",
-                            "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg&lang=en"
+                            "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                            "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                            "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                            "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                         }
                     }
                 }
@@ -1602,10 +1602,10 @@ It is a workaround for not being able to choose the response when multiple are d
                 "caption": "Test caption",
                 "slug": "test-go-item-slug",
                 "thumb": {
-                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg&lang=en",
-                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg&lang=en",
-                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg&lang=en",
-                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg&lang=en"
+                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                 },
                 "composition": {
                     "data": [
@@ -1639,7 +1639,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                             "item_type": "download_link",
                                             "attributes": {
                                                 "title": "Gapminder World 2012",
-                                                "url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf&lang=en"
+                                                "url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
                                             }
                                         }
                                     }
@@ -1651,7 +1651,7 @@ It is a workaround for not being able to choose the response when multiple are d
                             "data": {
                                 "message": "File",
                                 "file": {
-                                    "url": "http://192.168.99.100:11111/files-api/p3media/file/image?id=10&preset=sir-trevor-image-block&title=video.png&extension=.jpeg&lang=en_us",
+                                    "url": "http://192.168.99.100:11111/files-api/p3media/file/image?id=10&preset=sir-trevor-image-block&title=video.png&extension=.jpeg",
                                     "p3_media_id": "10"
                                 }
                             }
@@ -1695,10 +1695,10 @@ It is a workaround for not being able to choose the response when multiple are d
                                                 "caption": "Test caption",
                                                 "slug": "test-go-item-slug",
                                                 "thumb": {
-                                                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg&lang=en",
-                                                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg&lang=en",
-                                                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg&lang=en",
-                                                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg&lang=en"
+                                                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                                                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                                                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                                                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                                                 }
                                             }
                                         },
@@ -1714,10 +1714,10 @@ It is a workaround for not being able to choose the response when multiple are d
                                                 "caption": "Test caption 2",
                                                 "slug": "test-go-item-slug-2",
                                                 "thumb": {
-                                                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg&lang=en",
-                                                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg&lang=en",
-                                                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg&lang=en",
-                                                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg&lang=en"
+                                                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                                                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                                                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                                                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                                                 }
                                             }
                                         }
@@ -1780,7 +1780,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                                 ]
                                             },
                                             "contributions": [],
-                                            "profile_picture": "http://172.17.42.1:11111/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg&lang=en",
+                                            "profile_picture": "http://172.17.42.1:11111/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg",
                                             "groups": [
                                                 {
                                                     "id": "16",
@@ -1920,10 +1920,10 @@ It is a workaround for not being able to choose the response when multiple are d
                         "caption": "Test caption 2",
                         "slug": "test-go-item-slug-2",
                         "thumb": {
-                            "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg&lang=en",
-                            "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg&lang=en",
-                            "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg&lang=en",
-                            "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg&lang=en"
+                            "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                            "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                            "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                            "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                         }
                     }
                 }
@@ -1986,7 +1986,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                             "item_type": "download_link",
                                             "attributes": {
                                                 "title": "Gapminder World 2012",
-                                                "url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf&lang=en"
+                                                "url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
                                             }
                                         }
                                     }
@@ -1998,7 +1998,7 @@ It is a workaround for not being able to choose the response when multiple are d
                             "data": {
                                 "message": "File",
                                 "file": {
-                                    "url": "http://192.168.99.100:11111/files-api/p3media/file/image?id=8&preset=sir-trevor-image-block&title=video.png&extension=.jpeg&lang=en_us",
+                                    "url": "http://192.168.99.100:11111/files-api/p3media/file/image?id=8&preset=sir-trevor-image-block&title=video.png&extension=.jpeg",
                                     "p3_media_id": "8"
                                 }
                             }
@@ -2048,10 +2048,10 @@ It is a workaround for not being able to choose the response when multiple are d
                         "caption": "Test caption 2",
                         "slug": "test-go-item-slug-2",
                         "thumb": {
-                            "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg&lang=en",
-                            "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg&lang=en",
-                            "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg&lang=en",
-                            "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg&lang=en"
+                            "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                            "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                            "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                            "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                         }
                     }
                 }
