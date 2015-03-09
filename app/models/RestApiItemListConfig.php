@@ -58,11 +58,12 @@ class RestApiItemListConfig extends ItemListConfig implements SirTrevorBlock
     protected function getCompositionItems()
     {
         $items = array();
-        if (!empty($this->queryFilterByItemTypeOption)) {
-            $className = $this->getResourceModelName();
+        if (!empty($this->query_filter_by_item_type_option_id)) {
+            $config = $this->getConfig();
+            $className = $this->getResourceModelName($config);
             if ($className !== false) {
 
-                $query = $this->getQuery();
+                $query = $this->getQuery($config);
 
                 /** @var RelatedResource[] $models */
                 foreach ($query as $row) {
@@ -88,44 +89,43 @@ class RestApiItemListConfig extends ItemListConfig implements SirTrevorBlock
      *
      * @return bool|string
      */
-    protected function getResourceModelName()
+    protected function getResourceModelName($config)
     {
-        if (empty($this->queryFilterByItemTypeOption) || !isset(self::$itemResourceMap[$this->queryFilterByItemTypeOption->model_class])) {
+        if (empty($config['query_filter_by_item_type_model_class']) || !isset(self::$itemResourceMap[$config['query_filter_by_item_type_model_class']])) {
             return false;
         }
-        return self::$itemResourceMap[$this->queryFilterByItemTypeOption->model_class];
+        return self::$itemResourceMap[$config['query_filter_by_item_type_model_class']];
     }
 
     /**
-     * Gets the query for finding this resource's items.
+     * Fetch necessary data to build the item list config command
      *
-     * @return \SelectQuery
+     * Example:
+     * query_filter_by_item_type_table: "composition"
+     * query_filter_by_composition_type_id: 2
+     * query_pageSize: 5
+     * display_extent: "titles-only"
+     * query_filter_by_item_type_model_class: "Composition"
+     * query_filter_by_item_type_table: "composition"
+     * query_sort_order: "created DESC"
+     * query_sort_join: "footable ON baz.id = composition.footable_id"
+     *
+     * @return mixed
      */
-    protected function getQuery()
+    protected function getConfig()
     {
 
-        // fetch necessary data to build the item list config command
         $command = \barebones\Barebones::fpdo()
             ->from('item_list_config', $this->id)
             ->innerJoin('display_extent_option ON display_extent_option.id = item_list_config.display_extent_option_id')
             ->select('display_extent_option.ref as display_extent')
             ->innerJoin('query_filter_by_item_type_option ON query_filter_by_item_type_option.id = item_list_config.query_filter_by_item_type_option_id')
             ->select('query_filter_by_item_type_option.table as query_filter_by_item_type_table')
+            ->select('query_filter_by_item_type_option.model_class as query_filter_by_item_type_model_class')
             ->leftJoin('sort_option ON sort_option.id = item_list_config.query_sort_option_id')
             ->select('sort_option.criteria_order as query_sort_order')
             ->select('sort_option.criteria_join as query_sort_join')
             ->limit(1);
-
-        /**
-         * Example:
-         * query_filter_by_item_type_table: "composition"
-         * query_filter_by_composition_type_id: 2
-         * query_pageSize: 5
-         * display_extent: "titles-only"
-         * query_filter_by_item_type: "Composition"
-         * query_sort_order: "created DESC"
-         * query_sort_join: "footable ON baz.id = composition.footable_id"
-         */
 
         $config = $command->fetch();
 
@@ -134,6 +134,16 @@ class RestApiItemListConfig extends ItemListConfig implements SirTrevorBlock
             $config['query_pageSize'] = 5;
         }
 
+        return $config;
+    }
+
+    /**
+     * Gets the query for finding this resource's items.
+     *
+     * @return \SelectQuery
+     */
+    protected function getQuery($config)
+    {
         // build query
         $query = \barebones\Barebones::fpdo()
             ->from($config['query_filter_by_item_type_table']);
