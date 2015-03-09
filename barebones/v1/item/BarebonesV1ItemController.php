@@ -23,6 +23,9 @@ class BarebonesV1ItemController
 
     public function requestIsHandled()
     {
+        if ($this->getIsOAuth2Request()) {
+            return false;
+        }
         if (strpos($this->request_uri, "/api/v1/item/") !== 0) {
             return false;
         }
@@ -50,6 +53,25 @@ class BarebonesV1ItemController
         return true;
     }
 
+    /**
+     * @return bool whether the current request contains an OAuth2 access token. This is the case
+     * if an "Authorization: Bearer ..." header is found.
+     */
+    public function getIsOAuth2Request()
+    {
+        if(isset($_SERVER['HTTP_AUTHORIZATION'])) {
+            $authorization = $_SERVER['HTTP_AUTHORIZATION'];
+        } else if(isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION'])) {
+            $authorization = $_SERVER['REDIRECT_HTTP_AUTHORIZATION'];
+        } elseif(function_exists('apache_request_headers')) {
+            $headers = apache_request_headers();
+            $authorization = isset($headers['Authorization']) ? $headers['Authorization'] : '';
+        } else {
+            return false;
+        }
+
+        return substr($authorization,0,6)==='Bearer';
+    }
     public function run()
     {
         if ($this->request_method == "OPTIONS") {
