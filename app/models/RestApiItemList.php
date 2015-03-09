@@ -61,10 +61,13 @@ class RestApiItemList extends ItemListConfig implements SirTrevorBlock
         if (!empty($this->queryFilterByItemTypeOption)) {
             $className = $this->getResourceModelName();
             if ($className !== false) {
-                $criteria = $this->getResourceCriteria();
+
+                $query = $this->getQuery();
+
                 /** @var RelatedResource[] $models */
-                $models = CActiveRecord::model($className)->findAll($criteria);
-                foreach ($models as $model) {
+                foreach ($query as $row) {
+                    $model = $className::model();
+                    $model->attributes = $row;
                     $items[] = $model->getRelatedAttributes();
                 }
             }
@@ -94,26 +97,63 @@ class RestApiItemList extends ItemListConfig implements SirTrevorBlock
     }
 
     /**
-     * Gets the criteria for finding this resources items.
+     * Gets the query for finding this resource's items.
      *
-     * @return CDbCriteria
+     * @return \SelectQuery
      */
-    protected function getResourceCriteria()
+    protected function getQuery()
     {
-        $model = CActiveRecord::model($this->getResourceModelName());
-        $criteria = new CDbCriteria();
-        if (!empty($this->query_filter_by_composition_type_id) && $model->hasProperty('composition_type_id')) {
-            $criteria->compare('composition_type_id', (int) $this->query_filter_by_composition_type_id);
+
+        // fetch necessary data to build the item list config command
+        $command = \barebones\Barebones::fpdo()
+            ->from('item_list_config', $this->id)
+            ->innerJoin('display_extent_option ON display_extent_option.id = item_list_config.display_extent_option_id')
+            ->select('display_extent_option.ref as display_extent')
+            ->innerJoin('query_filter_by_item_type_option ON query_filter_by_item_type_option.id = item_list_config.query_filter_by_item_type_option_id')
+            ->select('query_filter_by_item_type_option.table as query_filter_by_item_type_table')
+            ->leftJoin('sort_option ON sort_option.id = item_list_config.query_sort_option_id')
+            ->select('sort_option.criteria_order as query_sort_order')
+            ->select('sort_option.criteria_join as query_sort_join')
+            ->limit(1);
+
+        /**
+         * Example:
+         * query_filter_by_item_type_table: "composition"
+         * query_filter_by_composition_type_id: 2
+         * query_pageSize: 5
+         * display_extent: "titles-only"
+         * query_filter_by_item_type: "Composition"
+         * query_sort_order: "created DESC"
+         * query_sort_join: "footable ON baz.id = composition.footable_id"
+         */
+
+        $config = $command->fetch();
+
+        // set defaults
+        if (is_null($config['query_pageSize'])) {
+            $config['query_pageSize'] = 5;
         }
-        if (!empty($this->querySortOption)) {
-            // note that both criteria_order criteria_join needs to be valid for direct use with CDbCriteria
-            if (!empty($this->querySortOption->criteria_order)) {
-                $criteria->order = $this->querySortOption->criteria_order;
-            }
-            if (!empty($this->querySortOption->criteria_join)) {
-                $criteria->join = $this->querySortOption->criteria_join;
-            }
+
+        // build query
+        $query = \barebones\Barebones::fpdo()
+            ->from($config['query_filter_by_item_type_table']);
+
+        if (!is_null($config['query_sort_join'])) {
+            $query = $query->join($config['query_sort_join']);
         }
-        return $criteria;
+
+        if (!is_null($config['query_filter_by_composition_type_id'])) {
+            $query = $query->where('composition_type_id', $config['query_filter_by_composition_type_id']);
+        }
+
+        if (!is_null($config['query_sort_order'])) {
+            $query = $query->orderBy($config['query_sort_order']);
+        }
+
+        $query = $query->limit($config['query_pageSize']);
+
+        \barebones\Barebones::restrictQueryToPublishedItems($query);
+
+        return $query;
     }
 }
