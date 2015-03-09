@@ -67,7 +67,7 @@ $I->seeResponseContainsJson(array(
                     "data" => array(
                         "message" => "File",
                         "file" => array(
-                            "url" => "http://192.168.99.100:11111/files-api/p3media/file/image?id=10&preset=sir-trevor-image-block&title=video.png&extension=.jpeg",
+                            "url" => "http://192.168.99.100:11111/files-api/p3media/file/image?id=10&preset=sir-trevor-image-block&title=media&extension=.jpeg",
                             "p3_media_id" => "10"
                         )
                     )

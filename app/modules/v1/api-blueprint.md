@@ -1181,7 +1181,7 @@ New social links are created for the currently authentcated user.
                             "data": {
                                 "message": "File",
                                 "file": {
-                                    "url": "http://192.168.99.100:11111/files-api/p3media/file/image?id=10&preset=sir-trevor-image-block&title=video.png&extension=.jpeg",
+                                    "url": "http://192.168.99.100:11111/files-api/p3media/file/image?id=10&preset=sir-trevor-image-block&title=media&extension=.jpeg",
                                     "p3_media_id": "10"
                                 }
                             }
@@ -1517,7 +1517,7 @@ New social links are created for the currently authentcated user.
                             "data": {
                                 "message": "File",
                                 "file": {
-                                    "url": "http://192.168.99.100:11111/files-api/p3media/file/image?id=8&preset=sir-trevor-image-block&title=video.png&extension=.jpeg",
+                                    "url": "http://192.168.99.100:11111/files-api/p3media/file/image?id=8&preset=sir-trevor-image-block&title=media&extension=.jpeg",
                                     "p3_media_id": "8"
                                 }
                             }
@@ -1651,7 +1651,7 @@ It is a workaround for not being able to choose the response when multiple are d
                             "data": {
                                 "message": "File",
                                 "file": {
-                                    "url": "http://192.168.99.100:11111/files-api/p3media/file/image?id=10&preset=sir-trevor-image-block&title=video.png&extension=.jpeg",
+                                    "url": "http://192.168.99.100:11111/files-api/p3media/file/image?id=10&preset=sir-trevor-image-block&title=media&extension=.jpeg",
                                     "p3_media_id": "10"
                                 }
                             }
@@ -1998,7 +1998,7 @@ It is a workaround for not being able to choose the response when multiple are d
                             "data": {
                                 "message": "File",
                                 "file": {
-                                    "url": "http://192.168.99.100:11111/files-api/p3media/file/image?id=8&preset=sir-trevor-image-block&title=video.png&extension=.jpeg",
+                                    "url": "http://192.168.99.100:11111/files-api/p3media/file/image?id=8&preset=sir-trevor-image-block&title=media&extension=.jpeg",
                                     "p3_media_id": "8"
                                 }
                             }
