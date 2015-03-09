@@ -283,7 +283,7 @@
         1 => 
         array (
           0 => '<version>/item/getByRoute',
-          'pattern' => '<version:v\\d+>/item/<route:[\\w-]+>/test-by-route/<itemType:\\w+>',
+          'pattern' => '<version:v\\d+>/item/<route:[\\w-\\/]+>/test-by-route/<itemType:\\w+>',
           'verb' => 'GET',
         ),
         2 => 
@@ -337,7 +337,7 @@
         10 => 
         array (
           0 => '<version>/item/getByRoute',
-          'pattern' => '<version:v\\d+>/item/<route:[\\w-]+>',
+          'pattern' => '<version:v\\d+>/item/<route:[\\w-\\/]+>',
           'verb' => 'GET',
         ),
         11 => 
