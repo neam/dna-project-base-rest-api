@@ -120,7 +120,7 @@ class RestApiVideoFile extends VideoFile implements SirTrevorBlock
      */
     protected function getUrlSubtitles()
     {
-        return \barebones\Barebones::createAbsoluteUrl('/v1/videoFile/subtitles/' . $this->id);
+        return \barebones\Barebones::createAbsoluteUrl('/v1/videoFile/subtitles/' . $this->id, ["lang"=>Yii::app()->language]);
     }
 
     /**
@@ -147,7 +147,7 @@ class RestApiVideoFile extends VideoFile implements SirTrevorBlock
     {
         $mediaId = $this->clip_mp4_media_id;
         if (!empty($mediaId)) {
-            return Barebones::createMediaUrl($mediaId, 'original-public-mp4');
+            return \barebones\Barebones::createMediaUrl($mediaId, 'original-public-mp4');
         }
         return null;
     }
