@@ -1,20 +1,8 @@
 <?php
 $scenario->group('data:test-db,coverage:basic');
-$I = new ApiGuy($scenario);
+$I = new \ApiGuy\ApiClientSteps($scenario);
 
-$I->wantTo('login user via the REST API as defined in api blueprint');
-$I->sendPOST('user/login', array(
-    'grant_type' => 'password',
-    'client_id' => 'TestClient',
-    'username' => 'admin',
-    'password' => 'admin'
-));
-$I->seeResponseCodeIs(200);
-$I->seeResponseIsJson();
-// We cannot check the access_token here, as we don't know it when testing against real db.
-$I->seeResponseContainsJson(array('token_type' => 'bearer', 'expires_in' => 3600, 'scope' => null));
-// Bu we can grab it, which will fail if is not present, and use it in the next request.
-$accessToken = $I->grabDataFromJsonResponse('access_token');
+$accessToken = $I->authenticateAsAdmin();
 
 $I->wantTo('check if user is logged in via the REST API as defined in api blueprint');
 $I->amBearerAuthenticated($accessToken);

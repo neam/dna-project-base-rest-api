@@ -1,6 +1,6 @@
 <?php
 $scenario->group('data:test-db,coverage:basic');
-$I = new ApiGuy($scenario);
+$I = new \ApiGuy\ApiClientSteps($scenario);
 
 $I->wantTo('retrieve users public profile via the REST API as defined in api blueprint');
 $I->sendGET('user/2/profile');
@@ -73,19 +73,7 @@ $I->seeResponseContainsJson(array(
 ));
 
 // Log in to be able to see your own profile that is not public.
-$I->wantTo('login user via the REST API as defined in api blueprint');
-$I->sendPOST('user/login', array(
-    'grant_type' => 'password',
-    'client_id' => 'TestClient',
-    'username' => 'testuser',
-    'password' => 'demo1234Q'
-));
-$I->seeResponseCodeIs(200);
-$I->seeResponseIsJson();
-// We cannot check the access_token here, as we don't know it when testing against real db.
-$I->seeResponseContainsJson(array('token_type' => 'bearer', 'expires_in' => 3600, 'scope' => null));
-// But we can grab it, which will fail if is not present, and use it in the next request.
-$accessToken = $I->grabDataFromJsonResponse('access_token');
+$accessToken = $I->authenticateAsTestUser();
 
 $I->wantTo('retrieve logged in users via the REST API as defined in api blueprint');
 $I->amBearerAuthenticated($accessToken);

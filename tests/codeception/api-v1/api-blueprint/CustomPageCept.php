@@ -1,6 +1,6 @@
 <?php
 $scenario->group('data:test-db,coverage:basic');
-$I = new ApiGuy($scenario);
+$I = new \ApiGuy\ApiClientSteps($scenario);
 
 $expectedResponse = array(
     "node_id" => 4,

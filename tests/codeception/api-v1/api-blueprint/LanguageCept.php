@@ -1,6 +1,6 @@
 <?php
 $scenario->group('data:test-db,coverage:basic');
-$I = new ApiGuy($scenario);
+$I = new \ApiGuy\ApiClientSteps($scenario);
 
 $I->wantTo('retrieve language items via the REST API as defined in api blueprint');
 $I->sendGET('language');
