@@ -2,11 +2,7 @@
 $scenario->group('data:test-db,coverage:basic');
 $I = new ApiGuy($scenario);
 
-$I->wantTo('retrieve custom page items via the REST API as defined in api blueprint');
-$I->sendGET('item/4/test/page');
-$I->seeResponseCodeIs(200);
-$I->seeResponseIsJson();
-$I->seeResponseContainsJson(array(
+$expectedResponse = array(
     "node_id" => 4,
     "item_type" => "custom_page",
     "url" => "/test-page-slug/",
@@ -119,4 +115,16 @@ $I->seeResponseContainsJson(array(
             )
         )
     )
-));
+);
+
+$I->wantTo('retrieve custom page items via the REST API as defined in api blueprint');
+$I->sendGET('item/4/test/page');
+$I->seeResponseCodeIs(200);
+$I->seeResponseIsJson();
+$I->seeResponseContainsJson($expectedResponse);
+
+$I->wantTo('retrieve custom page items by route via the barebones php REST API as defined in api blueprint');
+$I->sendGET('item/%2Ftest-page-slug%2F');
+$I->seeResponseCodeIs(200);
+$I->seeResponseIsJson();
+$I->seeResponseContainsJson($expectedResponse);

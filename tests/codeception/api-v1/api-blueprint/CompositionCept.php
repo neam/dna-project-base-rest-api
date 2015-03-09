@@ -2,11 +2,7 @@
 $scenario->group('data:test-db,coverage:basic');
 $I = new ApiGuy($scenario);
 
-$I->wantTo('retrieve composition items via the REST API as defined in api blueprint');
-$I->sendGET('item/6/test/composition');
-$I->seeResponseCodeIs(200);
-$I->seeResponseIsJson();
-$I->seeResponseContainsJson(array(
+$expectedResponse = array(
     "node_id" => 6,
     "item_type" => "go_item",
     "url" => "/answers/test-go-item-slug/",
@@ -344,4 +340,16 @@ $I->seeResponseContainsJson(array(
             )
         )
     )
-));
+);
+
+$I->wantTo('retrieve composition items via the REST API as defined in api blueprint');
+$I->sendGET('item/6/test/composition');
+$I->seeResponseCodeIs(200);
+$I->seeResponseIsJson();
+$I->seeResponseContainsJson($expectedResponse);
+
+$I->wantTo('retrieve composition items by route via the barebones php REST API as defined in api blueprint');
+$I->sendGET('item/%2Fanswers%2Ftest-go-item-slug%2F');
+$I->seeResponseCodeIs(200);
+$I->seeResponseIsJson();
+$I->seeResponseContainsJson($expectedResponse);
