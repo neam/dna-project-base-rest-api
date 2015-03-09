@@ -282,131 +282,137 @@
         ),
         1 => 
         array (
+          0 => '<version>/item/getByRoute',
+          'pattern' => '<version:v\\d+>/item/<route:[\\w-]+>/test-by-route/<itemType:\\w+>',
+          'verb' => 'GET',
+        ),
+        2 => 
+        array (
           0 => '<version>/profile/get',
           'pattern' => '<version:v\\d+>/profile',
           'verb' => 'GET',
         ),
-        2 => 
+        3 => 
         array (
           0 => '<version>/profile/update',
           'pattern' => '<version:v\\d+>/profile',
           'verb' => 'PUT',
         ),
-        3 => 
+        4 => 
         array (
           0 => '<version>/user/login',
           'pattern' => '<version:v\\d+>/user/login',
           'verb' => 'POST',
         ),
-        4 => 
+        5 => 
         array (
           0 => '<version>/profile/get',
           'pattern' => '<version:v\\d+>/user/profile',
           'verb' => 'GET',
         ),
-        5 => 
+        6 => 
         array (
           0 => '<version>/profile/update',
           'pattern' => '<version:v\\d+>/user/profile',
           'verb' => 'PUT',
         ),
-        6 => 
+        7 => 
         array (
           0 => '<version>/user/authenticate',
           'pattern' => '<version:v\\d+>/user/authenticate',
           'verb' => 'POST',
         ),
-        7 => 
+        8 => 
         array (
           0 => '<version>/profile/public',
           'pattern' => '<version:v\\d+>/user/<accountId:\\d+>/profile',
           'verb' => 'GET',
         ),
-        8 => 
+        9 => 
         array (
           0 => '<version>/item/getByNodeId',
           'pattern' => '<version:v\\d+>/item/<node_id:\\d+>',
           'verb' => 'GET',
         ),
-        9 => 
+        10 => 
         array (
           0 => '<version>/item/getByRoute',
-          'pattern' => '<version:v\\d+>/item/<route:[\\w-\\/]+>',
+          'pattern' => '<version:v\\d+>/item/<route:[\\w-]+>',
           'verb' => 'GET',
         ),
-        10 => 
+        11 => 
         array (
           0 => '<version>/<controller>/list',
           'pattern' => '<version:v\\d+>/<controller:\\w+>',
           'verb' => 'GET',
         ),
-        11 => 
+        12 => 
         array (
           0 => '<version>/<controller>/create',
           'pattern' => '<version:v\\d+>/<controller:\\w+>',
           'verb' => 'POST',
         ),
-        12 => 
+        13 => 
         array (
           0 => '<version>/<controller>/get',
           'pattern' => '<version:v\\d+>/<controller:\\w+>/<id:\\d+|\\:[\\w-]+>',
           'verb' => 'GET',
         ),
-        13 => 
+        14 => 
         array (
           0 => '<version>/<controller>/update',
           'pattern' => '<version:v\\d+>/<controller:\\w+>/<id:\\d+|\\:[\\w-]+>',
           'verb' => 'PUT',
         ),
-        14 => 
+        15 => 
         array (
           0 => '<version>/<controller>/delete',
           'pattern' => '<version:v\\d+>/<controller:\\w+>/<id:\\d+|\\:[\\w-]+>',
           'verb' => 'DELETE',
         ),
-        15 => 
+        16 => 
         array (
           0 => '<version>/<controller>/<action>',
           'pattern' => '<version:v\\d+>/<controller:\\w+>/<action:\\w+>/<id:\\d+>',
           'verb' => 'GET',
         ),
-        16 => 
+        17 => 
         array (
           0 => '<version>/profile/preflight',
           'pattern' => '<version:v\\d+>/user/profile',
           'verb' => 'OPTIONS',
         ),
-        17 => 
+        18 => 
         array (
           0 => '<version>/profile/preflight',
           'pattern' => '<version:v\\d+>/user/<accountId:\\d+>/profile',
           'verb' => 'OPTIONS',
         ),
-        18 => 
+        19 => 
         array (
           0 => '<version>/item/preflight',
           'pattern' => '<version:v\\d+>/item/<id:\\d+|[\\w-\\/]+>',
           'verb' => 'OPTIONS',
         ),
-        19 => 
+        20 => 
         array (
           0 => '<version>/<controller>/preflight',
           'pattern' => '<version:v\\d+>/<controller:\\w+>',
           'verb' => 'OPTIONS',
         ),
-        20 => 
+        21 => 
         array (
           0 => '<version>/<controller>/preflight',
           'pattern' => '<version:v\\d+>/<controller:\\w+>/<action:\\w+>',
           'verb' => 'OPTIONS',
         ),
-        21 => 
+        22 => 
         array (
           0 => '<version>/<controller>/preflight',
           'pattern' => '<version:v\\d+>/<controller:\\w+>/<id:\\d+|\\:[\\w-]+>',
           'verb' => 'OPTIONS',
         ),
-        22 => 
+        23 => 
         array (
           0 => '<version>/<controller>/preflight',
           'pattern' => '<version:v\\d+>/<controller:\\w+>/<action:\\w+>/<id:\\d+>',

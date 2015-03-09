@@ -124,7 +124,7 @@ $I->seeResponseIsJson();
 $I->seeResponseContainsJson($expectedResponse);
 
 $I->wantTo('retrieve custom page items by route via the barebones php REST API as defined in api blueprint');
-$I->sendGET('item/%2Ftest-page-slug%2F');
+$I->sendGET('item/%2Ftest-page-slug%2F/test-by-route/page');
 $I->seeResponseCodeIs(200);
 $I->seeResponseIsJson();
 $I->seeResponseContainsJson($expectedResponse);

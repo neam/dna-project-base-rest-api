@@ -106,6 +106,7 @@ class BarebonesV1ItemController
     protected function requestedItemRoute()
     {
         $path = parse_url("http://example.com" . $this->request_uri, PHP_URL_PATH);
+        $path = str_replace(["/test-by-route/composition", "/test-by-route/page"], "", $path);
         $idOrRoute = str_replace("/api/v1/item/", "", rtrim($path, "/"));
         return $idOrRoute;
     }

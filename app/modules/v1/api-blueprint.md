@@ -2058,7 +2058,7 @@ It is a workaround for not being able to choose the response when multiple are d
             ]
         }
 
-## Composition [/item/%2Fanswers%2Ftest-go-item-slug%2F]
+## Composition [/item/{route}/test-by-route/composition]
 
 ### Get a composition item for testing the barebones api override [GET]
 
@@ -2406,7 +2406,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
             ]
         }
 
-## Page [/item/%2Ftest-page-slug%2F]
+## Page [/item/{route}/test-by-route/page]
 
 ### Get a page item by route for testing the barebones api override [GET]
 
