@@ -144,18 +144,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/crisu83/yiistrap.git",
-                "reference": "730fd9cde214d7ff9115cc36a025e54b3e216c94"
+                "reference": "94dfec5b642edc7f9bb50ffbabb476707f86e6ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/crisu83/yiistrap/zipball/730fd9cde214d7ff9115cc36a025e54b3e216c94",
-                "reference": "730fd9cde214d7ff9115cc36a025e54b3e216c94",
+                "url": "https://api.github.com/repos/crisu83/yiistrap/zipball/94dfec5b642edc7f9bb50ffbabb476707f86e6ab",
+                "reference": "94dfec5b642edc7f9bb50ffbabb476707f86e6ab",
                 "shasum": ""
             },
             "require": {
-                "twbs/bootstrap": ">=3.0.0"
+                "twbs/bootstrap": ">=3.1.1"
             },
             "require-dev": {
+                "apigen/apigen": "~4.0",
                 "codeception/codeception": "@stable",
                 "crisu83/yii-composer": ">=1.0.0",
                 "yiisoft/yii": ">=1.1.13"
@@ -197,7 +198,7 @@
                 "bootstrap",
                 "yii"
             ],
-            "time": "2014-08-20 04:38:41"
+            "time": "2015-02-27 14:48:18"
         },
         {
             "name": "ircmaxell/random-lib",
@@ -258,12 +259,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ircmaxell/SecurityLib.git",
-                "reference": "66746af9e34dfc4a6d11a845f07f2b0479232009"
+                "reference": "fd6f940455ad6481455544b741c9aca3a2455f87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ircmaxell/SecurityLib/zipball/66746af9e34dfc4a6d11a845f07f2b0479232009",
-                "reference": "66746af9e34dfc4a6d11a845f07f2b0479232009",
+                "url": "https://api.github.com/repos/ircmaxell/SecurityLib/zipball/fd6f940455ad6481455544b741c9aca3a2455f87",
+                "reference": "fd6f940455ad6481455544b741c9aca3a2455f87",
                 "shasum": ""
             },
             "require": {
@@ -295,8 +296,8 @@
                 }
             ],
             "description": "A Base Security Library",
-            "homepage": "https://github.com/ircmaxell/PHP-SecurityLib",
-            "time": "2014-03-28 19:54:20"
+            "homepage": "https://github.com/ircmaxell/SecurityLib",
+            "time": "2015-02-04 19:31:56"
         },
         {
             "name": "neam/yii-dna-debug-modes-and-error-handling",
@@ -304,12 +305,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-dna-debug-modes-and-error-handling.git",
-                "reference": "ad9a4090c82394fada6f5a4d2f7fad8e8bf4e8e8"
+                "reference": "ae792eb7629d92853f3b8c9bb819a561856036a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-dna-debug-modes-and-error-handling/zipball/ad9a4090c82394fada6f5a4d2f7fad8e8bf4e8e8",
-                "reference": "ad9a4090c82394fada6f5a4d2f7fad8e8bf4e8e8",
+                "url": "https://api.github.com/repos/neam/yii-dna-debug-modes-and-error-handling/zipball/ae792eb7629d92853f3b8c9bb819a561856036a2",
+                "reference": "ae792eb7629d92853f3b8c9bb819a561856036a2",
                 "shasum": ""
             },
             "require": {
@@ -344,7 +345,7 @@
                 "php",
                 "yii"
             ],
-            "time": "2014-10-16 12:42:37"
+            "time": "2014-12-02 13:44:44"
         },
         {
             "name": "nordsoftware/yii-account",
@@ -446,12 +447,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/getsentry/raven-php.git",
-                "reference": "dc64b9a45211c4efb25c95334eb103d2945a09d3"
+                "reference": "3147bd170c9b324d37afd7b405d4c04f441a2ac1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/getsentry/raven-php/zipball/dc64b9a45211c4efb25c95334eb103d2945a09d3",
-                "reference": "dc64b9a45211c4efb25c95334eb103d2945a09d3",
+                "url": "https://api.github.com/repos/getsentry/raven-php/zipball/3147bd170c9b324d37afd7b405d4c04f441a2ac1",
+                "reference": "3147bd170c9b324d37afd7b405d4c04f441a2ac1",
                 "shasum": ""
             },
             "require": {
@@ -490,7 +491,7 @@
                 "log",
                 "logging"
             ],
-            "time": "2014-09-24 15:51:54"
+            "time": "2015-02-27 19:09:42"
         },
         {
             "name": "twbs/bootstrap",
@@ -498,12 +499,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "5bb08c50fa866a05e657c5f912809ba98c10c1bb"
+                "reference": "e7efd810339eb538c4103a6d116956f1917c43d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/5bb08c50fa866a05e657c5f912809ba98c10c1bb",
-                "reference": "5bb08c50fa866a05e657c5f912809ba98c10c1bb",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/e7efd810339eb538c4103a6d116956f1917c43d8",
+                "reference": "e7efd810339eb538c4103a6d116956f1917c43d8",
                 "shasum": ""
             },
             "replace": {
@@ -512,7 +513,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.2.x-dev"
+                    "dev-master": "3.3.x-dev"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -541,7 +542,7 @@
                 "responsive",
                 "web"
             ],
-            "time": "2014-10-03 06:17:49"
+            "time": "2015-03-07 08:11:28"
         },
         {
             "name": "weavora/wrest",
@@ -681,6 +682,7 @@
         "neam/yii-dna-debug-modes-and-error-handling": 20
     },
     "prefer-stable": false,
+    "prefer-lowest": false,
     "platform": {
         "php": ">=5.4.0"
     },

@@ -8,15 +8,15 @@
  * @property string $about
  * @property string $menu_label
  *
- * @property RestApiCustomPage[] $children
- * @property RestApiCustomPage[] $siblings
- * @property RestApiCustomPage[] $recParentPages
- * @property RestApiCustomPage $parent
+ * @property RestApiPage[] $children
+ * @property RestApiPage[] $siblings
+ * @property RestApiPage[] $recParentPages
+ * @property RestApiPage $parent
  *
  * Properties made available through the RestrictedAccessBehavior class:
  * @property boolean $enableRestriction
  */
-class RestApiCustomPage extends Page
+class RestApiPage extends Page
 {
     /**
      * @inheritdoc
@@ -68,8 +68,8 @@ class RestApiCustomPage extends Page
         return array_merge(
             parent::relations(),
             array(
-                'restApiCustomPageChildren' => array(self::HAS_MANY, 'RestApiCustomPage', 'parent_page_id'),
-                'restApiCustomPageParent' => array(self::BELONGS_TO, 'RestApiCustomPage', 'parent_page_id'),
+                'restApiCustomPageChildren' => array(self::HAS_MANY, 'RestApiPage', 'parent_page_id'),
+                'restApiCustomPageParent' => array(self::BELONGS_TO, 'RestApiPage', 'parent_page_id'),
             )
         );
     }
@@ -146,12 +146,12 @@ class RestApiCustomPage extends Page
      */
     public function getCompositionTypeReference()
     {
-        $command = Yii::app()->getDb()->createCommand()
-            ->select('ref')
+        $command = \barebones\Barebones::fpdo()
+            //->select('ref')
             ->from('composition_type')
-            ->where('id=:compositionTypeId');
-        $ref = $command->queryScalar(array(':compositionTypeId' => (int)$this->composition_type_id));
-        return !empty($ref) ? $ref : null;
+            ->where('id=:compositionTypeId', array(':compositionTypeId' => (int)$this->composition_type_id));
+        $result = $command->fetch();
+        return !empty($result) ? $result['ref'] : null;
     }
 
     /**
@@ -160,34 +160,36 @@ class RestApiCustomPage extends Page
     public function getRouteUrl()
     {
         // todo: enable multi lingual support once ready.
-        $command = Yii::app()->getDb()->createCommand()
-            ->select('route')
+        $command = \barebones\Barebones::fpdo()
+            //->select('route')
             ->from('route')
-            ->where('canonical=1 AND node_id=:nodeId'/*translation_route_language=:lang*/);
-        $route = $command->queryScalar(array(':nodeId' => (int)$this->node_id/*, ':lang' => Yii::app()->language*/));
-        return !empty($route) ? $route : null;
+            ->where('canonical=1 AND node_id=:nodeId'/*translation_route_language=:lang*/, array(':nodeId' => (int)$this->node_id/*, ':lang' => Yii::app()->language*/));
+        $result = $command->fetch();
+        return !empty($result) ? $result['route'] : null;
     }
 
     /**
-     * @param RestApiCustomPage $page
-     * @return RestApiCustomPage
+     * @param RestApiPage $page
+     * @return RestApiPage
      */
     public function loadRootPage($page)
     {
-        if (empty($page->restApiCustomPageParent)) {
+        $parent = $page->restApiCustomPageParent;
+        if (empty($parent)) {
             return $page;
         }
         return $this->loadRootPage($page->restApiCustomPageParent);
     }
 
     /**
-     * @param RestApiCustomPage $page
+     * @param RestApiPage $page
      * @param array $hierarchy
      */
     public function setChildren($page, &$hierarchy)
     {
-        if (!empty($page->restApiCustomPageChildren)) {
-            foreach ($page->restApiCustomPageChildren as $child) {
+        $children = $page->restApiCustomPageChildren;
+        if (!empty($children)) {
+            foreach ($children as $child) {
                 $childHierarchy = $child->getHierarchyAttributes();
                 $child->setChildren($child, $childHierarchy);
                 $hierarchy['children'][] = $childHierarchy;

@@ -68,11 +68,12 @@ class RestApiProfile extends Profile implements RelatedResource
                 'datetime' => $contribution->datetime,
             );
         }
-        $response->profile_picture = $this->getPictureUrl();
+        $response->profile_picture = $this->getProfilePictureUrl();
 
         $groups = array();
         foreach ($this->account->groupHasAccounts as $gha) {
-            if (!isset($groups[$gha->group->id])) {
+            $group = $gha->group;
+            if (!isset($groups[$group->id])) {
                 $groups[$gha->group->id] = array(
                     'id' => $gha->group->id,
                     'name' => $gha->group->title,
@@ -91,5 +92,21 @@ class RestApiProfile extends Profile implements RelatedResource
     public function getRelatedAttributes()
     {
         return $this->getAllAttributes();
+    }
+
+    /**
+     * Returns absolute url for the profile picture image.
+     *
+     * @param string $preset the image preset to use when generating the url.
+     * @return null|string the url or null if not found.
+     */
+    public function getProfilePictureUrl($preset = 'user-profile-picture')
+    {
+        $mediaId = $this->profile_picture_media_id;
+        if (!empty($mediaId)) {
+            return \barebones\Barebones::createMediaUrl($mediaId, $preset);
+        }
+        // TODO: provide a fallback profile picture when it is done/exists
+        return null;
     }
 }

@@ -29,6 +29,7 @@ $mainConfig = array(
         'application.controllers.*',
         'application.interfaces.*',
         'application.models.*',
+        'application.traits.*',
         'vendor.weavora.wrest.*',
         'vendor.weavora.wrest.actions.*',
     ),
@@ -64,7 +65,8 @@ $mainConfig = array(
             'rules' => array(
                 // These are special endpoints used for testing purposes only.
                 // It is a workaround for not being able to choose the response when multiple are defined per request when testing the API format.
-                array('<version>/item/get', 'pattern' => '<version:v\d+>/item/<id:\d+>/test/<itemType:\w+>', 'verb' => 'GET'),
+                array('<version>/item/getByNodeId', 'pattern' => '<version:v\d+>/item/<node_id:\d+>/test/<itemType:\w+>', 'verb' => 'GET'),
+                array('<version>/item/getByRoute', 'pattern' => '<version:v\d+>/item/<route:[\w-\/]+>/test-by-route/<itemType:\w+>', 'verb' => 'GET'),
 
                 // custom rules
                 array('<version>/profile/get', 'pattern' => '<version:v\d+>/profile', 'verb' => 'GET'),
@@ -74,7 +76,8 @@ $mainConfig = array(
                 array('<version>/profile/update', 'pattern' => '<version:v\d+>/user/profile', 'verb' => 'PUT'),
                 array('<version>/user/authenticate', 'pattern' => '<version:v\d+>/user/authenticate', 'verb' => 'POST'),
                 array('<version>/profile/public', 'pattern' => '<version:v\d+>/user/<accountId:\d+>/profile', 'verb' => 'GET'),
-                array('<version>/item/get', 'pattern' => '<version:v\d+>/item/<id:\d+|[\w-\/]+>', 'verb' => 'GET'),
+                array('<version>/item/getByNodeId', 'pattern' => '<version:v\d+>/item/<node_id:\d+>', 'verb' => 'GET'),
+                array('<version>/item/getByRoute', 'pattern' => '<version:v\d+>/item/<route:[\w-\/]+>', 'verb' => 'GET'),
 
                 // common CRUD rules
                 // slugs are required to be prefixed by an ":" character, due to rule collisions
@@ -146,7 +149,15 @@ $config['components']['errorHandler'] = array(
     'class' => 'YiiDnaRestErrorHandler',
 );
 
+// Not used in rest api and should thus not be loaded (performance reasons)
+unset($config['modules']['gii']);
+unset($config['behaviors']['eventBridge']);
+unset($config['components']['events']);
+
 // Uncomment to easily see the active merged configuration
 //echo "<pre>";print_r($config);echo "</pre>";die();
+
+// Cache the resulting config as a file
+file_put_contents($applicationDirectory . '/config/cached-main.php', '<?php return '.var_export($config, true) . ';');
 
 return $config;

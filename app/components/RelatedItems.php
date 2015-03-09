@@ -33,18 +33,18 @@ class RelatedItems
      */
     public static function getItems($nodeId)
     {
-        $command = Yii::app()->getDb()->createCommand()
-            ->select('related.id AS related_id, item.id AS item_id, item.model_class AS item_model_class')
+        $command = \barebones\Barebones::fpdo()
             ->from('node related')
-            ->where('(`relation`="related") AND (`relation`="related") AND (`node`.`id`=:nodeId)')
-            ->order('outEdges.weight ASC');
-        $command->join = 'LEFT OUTER JOIN `node` `outNodes` ON (`outNodes`.`id`=`related`.`id`)';
-        $command->join .= 'LEFT OUTER JOIN `edge` `outEdges` ON (`outEdges`.`to_node_id`=`outNodes`.`id`)';
-        $command->join .= 'LEFT OUTER JOIN `node` `node` ON (`node`.`id`=`outEdges`.`from_node_id`)';
-        $command->join .= 'INNER JOIN `item` `item` ON (`item`.`node_id`=`related`.`id`)';
+            ->select('related.id AS related_id, item.id AS item_id, item.model_class AS item_model_class')
+            ->where('(`relation`="related") AND (`relation`="related") AND (`node`.`id`=:nodeId)', array(':nodeId' => (int)$nodeId))
+            ->order('outEdges.weight ASC')
+            ->leftOuterJoin('`node` `outNodes` ON (`outNodes`.`id`=`related`.`id`)')
+            ->leftOuterJoin('`edge` `outEdges` ON (`outEdges`.`to_node_id`=`outNodes`.`id`)')
+            ->leftOuterJoin('`node` `node` ON (`node`.`id`=`outEdges`.`from_node_id`)')
+            ->innerJoin('`item` `item` ON (`item`.`node_id`=`related`.`id`)');
 
         $related = array();
-        foreach ($command->queryAll(true, array(':nodeId' => (int)$nodeId)) as $row) {
+        foreach ($command as $row) {
             $modelId = (int)$row['item_id'];
             $modelClass = (string)$row['item_model_class'];
             if (!isset(self::$relatedResourceMap[$modelClass])) {
@@ -52,7 +52,7 @@ class RelatedItems
             }
             $relatedModelClass = self::$relatedResourceMap[$modelClass];
             /** @var RelatedResource $resource */
-            $resource = ActiveRecord::model($relatedModelClass)->findByPk($modelId);
+            $resource = $relatedModelClass::model()->findByPk($modelId);
             if ($resource === null) {
                 continue;
             }

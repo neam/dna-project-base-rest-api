@@ -133,7 +133,7 @@ class RestApiVideoFile extends VideoFile implements SirTrevorBlock
      */
     protected function getUrlSubtitles()
     {
-        return Yii::app()->createAbsoluteUrl('/v1/videoFile/subtitles/' . $this->id);
+        return \barebones\Barebones::createAbsoluteUrl('/v1/videoFile/subtitles/' . $this->id, ["lang"=>Yii::app()->language]);
     }
 
     /**
@@ -144,9 +144,9 @@ class RestApiVideoFile extends VideoFile implements SirTrevorBlock
      */
     protected function getThumbUrl($preset)
     {
-        if (!empty($this->thumbnail_media_id)) {
-            $url = Barebones::createUrl($this->thumbnail_media_id, $preset, true);
-            return str_replace(array("api/", "internal/"), "files-api/", $url);
+        $mediaId = $this->thumbnail_media_id;
+        if (!empty($mediaId)) {
+            return \barebones\Barebones::createMediaUrl($mediaId, $preset);
         }
         return null;
     }
@@ -158,9 +158,9 @@ class RestApiVideoFile extends VideoFile implements SirTrevorBlock
      */
     protected function getUrlMp4()
     {
-        if (!empty($this->clip_mp4_media_id)) {
-            $url = Barebones::createUrl($this->clip_mp4_media_id, 'original-public-mp4', true);
-            return str_replace(array("api/", "internal/"), "files-api/", $url);
+        $mediaId = $this->clip_mp4_media_id;
+        if (!empty($mediaId)) {
+            return \barebones\Barebones::createMediaUrl($mediaId, 'original-public-mp4');
         }
         return null;
     }
@@ -172,9 +172,9 @@ class RestApiVideoFile extends VideoFile implements SirTrevorBlock
      */
     protected function getUrlWebm()
     {
-        if (!empty($this->clip_webm_media_id)) {
-            $url = Barebones::createUrl($this->clip_webm_media_id, 'original-public-webm', true);
-            return str_replace(array("api/", "internal/"), "files-api/", $url);
+        $mediaId = $this->clip_webm_media_id;
+        if (!empty($mediaId)) {
+            return \barebones\Barebones::createMediaUrl($mediaId, 'original-public-webm');
         }
         return null;
     }

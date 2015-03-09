@@ -28,7 +28,7 @@ class SirTrevorParser
         'video_file' => 'RestApiVideoFile',
         'html_chunk' => 'RestApiHtmlChunk',
         'download_link' => 'RestApiDownloadLink',
-        'item_list_config' => 'RestApiItemList',
+        'item_list_config' => 'RestApiItemListConfig',
         'slideshow_file' => 'RestApiSlideshowFile',
         'visualization' => 'RestApiVisualization',
     );
@@ -93,14 +93,15 @@ class SirTrevorParser
             return null;
         }
         $resourceClass = self::$sirTrevorItemMap[$block->data->item_type];
-        $command = Yii::app()->getDb()->createCommand()
-            ->select('id')
+        $command = \barebones\Barebones::fpdo()
+            //->select('id')
             ->from('item')
-            ->where('node_id=:nodeId');
-        $modelId = $command->queryScalar(array(':nodeId' => (int)$block->data->node_id));
-        if (empty($modelId)) {
+            ->where('node_id=:nodeId', array(':nodeId' => (int)$block->data->node_id));
+        $result = $command->fetch();
+        if (empty($result)) {
             return null;
         }
-        return CActiveRecord::model($resourceClass)->findByPk($modelId);
+        $modelId = $result['id'];
+        return $resourceClass::model()->findByPk($modelId);
     }
 }
