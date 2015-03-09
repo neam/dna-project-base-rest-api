@@ -36,12 +36,12 @@ class BarebonesV1ItemController
             return true;
         }
         if ($this->request_method == "GET") {
-            return $this->requestIsForPublicItemByRoute();
+            return $this->requestIsForItemByRoute();
         }
         return false;
     }
 
-    protected function requestIsForPublicItemByRoute()
+    protected function requestIsForItemByRoute()
     {
         $idOrRoute = $this->requestedItemRoute();
         if (ctype_digit($idOrRoute)) {
