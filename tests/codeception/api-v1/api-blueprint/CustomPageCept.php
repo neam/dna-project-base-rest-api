@@ -128,3 +128,20 @@ $I->sendGET('item/%2Ftest-page-slug%2F/test-by-route/page?lang=en');
 $I->seeResponseCodeIs(200);
 $I->seeResponseIsJson();
 $I->seeResponseContainsJson($expectedResponse);
+
+// Same as above but as an authenticated user
+$accessToken = $I->authenticateAsTestUser();
+
+$I->wantTo('(authenticated request) retrieve custom page items via the REST API as defined in api blueprint');
+$I->amBearerAuthenticated($accessToken);
+$I->sendGET('item/4/test/page?lang=en');
+$I->seeResponseCodeIs(200);
+$I->seeResponseIsJson();
+$I->seeResponseContainsJson($expectedResponse);
+
+$I->wantTo('(authenticated request) retrieve custom page items by route via the barebones php REST API as defined in api blueprint');
+$I->amBearerAuthenticated($accessToken);
+$I->sendGET('item/%2Ftest-page-slug%2F/test-by-route/page?lang=en');
+$I->seeResponseCodeIs(200);
+$I->seeResponseIsJson();
+$I->seeResponseContainsJson($expectedResponse);
