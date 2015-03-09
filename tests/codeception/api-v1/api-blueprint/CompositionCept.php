@@ -343,13 +343,13 @@ $expectedResponse = array(
 );
 
 $I->wantTo('retrieve composition items via the REST API as defined in api blueprint');
-$I->sendGET('item/6/test/composition');
+$I->sendGET('item/6/test/composition?lang=en');
 $I->seeResponseCodeIs(200);
 $I->seeResponseIsJson();
 $I->seeResponseContainsJson($expectedResponse);
 
 $I->wantTo('retrieve composition items by route via the barebones php REST API as defined in api blueprint');
-$I->sendGET('item/%2Fanswers%2Ftest-go-item-slug%2F/test-by-route/composition');
+$I->sendGET('item/%2Fanswers%2Ftest-go-item-slug%2F/test-by-route/composition?lang=en');
 $I->seeResponseCodeIs(200);
 $I->seeResponseIsJson();
 $I->seeResponseContainsJson($expectedResponse);
