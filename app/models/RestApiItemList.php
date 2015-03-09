@@ -27,13 +27,13 @@ class RestApiItemList extends ItemListConfig implements SirTrevorBlock
     public function getCompositionAttributes()
     {
         return array(
-           'display_extent' => !empty($this->displayExtentOption) ? $this->displayExtentOption->ref : null,
-           'query' => array(
-               'item_type' => !empty($this->queryFilterByItemTypeOption) ? $this->queryFilterByItemTypeOption->table : null,
-               'composition_type' => !empty($this->queryFilterByCompositionType) ? $this->queryFilterByCompositionType->ref : null,
-               'sort' => (!empty($this->querySortOption) && !empty($this->querySortOption->ref)) ? $this->querySortOption->ref : null,
-               'pageSize' => (int)$this->query_pageSize,
-           ),
+            'display_extent' => !empty($this->displayExtentOption) ? $this->displayExtentOption->ref : null,
+            'query' => array(
+                'item_type' => !empty($this->queryFilterByItemTypeOption) ? $this->queryFilterByItemTypeOption->table : null,
+                'composition_type' => !empty($this->queryFilterByCompositionType) ? $this->queryFilterByCompositionType->ref : null,
+                'sort' => (!empty($this->querySortOption) && !empty($this->querySortOption->ref)) ? $this->querySortOption->ref : null,
+                'pageSize' => (int) $this->query_pageSize,
+            ),
             // todo: do this once we have pagination.
 //           'pagination_metadata' => array(
 //                'currentPage' => '1',
@@ -46,7 +46,7 @@ class RestApiItemList extends ItemListConfig implements SirTrevorBlock
 //                'params' => '???',
 //                'route' => '/sdfsdf/'
 //           ),
-           'items' => $this->getCompositionItems(),
+            'items' => $this->getCompositionItems(),
         );
     }
 
@@ -103,7 +103,7 @@ class RestApiItemList extends ItemListConfig implements SirTrevorBlock
         $model = CActiveRecord::model($this->getResourceModelName());
         $criteria = new CDbCriteria();
         if (!empty($this->query_filter_by_composition_type_id) && $model->hasProperty('composition_type_id')) {
-            $criteria->compare('composition_type_id', (int)$this->query_filter_by_composition_type_id);
+            $criteria->compare('composition_type_id', (int) $this->query_filter_by_composition_type_id);
         }
         if (!empty($this->querySortOption)) {
             // note that both criteria_order criteria_join needs to be valid for direct use with CDbCriteria
