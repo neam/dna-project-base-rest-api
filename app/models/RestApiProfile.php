@@ -59,7 +59,8 @@ class RestApiProfile extends Profile implements RelatedResource
 
         $groups = array();
         foreach ($this->account->groupHasAccounts as $gha) {
-            if (!isset($groups[$gha->group->id])) {
+            $group = $gha->group;
+            if (!isset($groups[$group->id])) {
                 $groups[$gha->group->id] = array(
                     'id' => $gha->group->id,
                     'name' => $gha->group->title,

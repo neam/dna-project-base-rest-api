@@ -58,7 +58,8 @@ class RestApiItemListConfig extends ItemListConfig implements SirTrevorBlock
     protected function getCompositionItems()
     {
         $items = array();
-        if (!empty($this->query_filter_by_item_type_option_id)) {
+        $itemTypeOptionId = $this->query_filter_by_item_type_option_id;
+        if (!empty($itemTypeOptionId)) {
             $config = $this->getConfig();
             $className = $this->getResourceModelName($config);
             if ($className !== false) {
