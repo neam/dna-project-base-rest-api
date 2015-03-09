@@ -9,7 +9,7 @@ $I->seeResponseIsJson();
 $I->seeResponseContainsJson(array(
     "node_id" => 6,
     "item_type" => "go_item",
-    "url" => null,
+    "url" => "/answers/test-go-item-slug/",
     "attributes" => array(
         "composition_type" => "qna",
         "heading" => "Test heading",
@@ -102,7 +102,7 @@ $I->seeResponseContainsJson(array(
                                 array(
                                     "node_id" => 6,
                                     "item_type" => "go_item",
-                                    "url" => null,
+                                    "url" => "/answers/test-go-item-slug/",
                                     "attributes" => array(
                                     "composition_type" => "qna",
                                         "heading"=> "Test heading",

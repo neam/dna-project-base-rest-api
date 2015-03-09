@@ -1123,7 +1123,7 @@ New social links are created for the currently authentcated user.
         {
             "node_id": 6,
             "item_type": "go_item",
-            "url": null,
+            "url": "/answers/test-go-item-slug/",
             "attributes": {
                 "composition_type": "qna",
                 "heading": "Test heading",
@@ -1216,7 +1216,7 @@ New social links are created for the currently authentcated user.
                                         {
                                             "node_id": 6,
                                             "item_type": "go_item",
-                                            "url": null,
+                                            "url": "/answers/test-go-item-slug/",
                                             "attributes": {
                                                 "composition_type": "qna",
                                                 "heading": "Test heading",
@@ -1465,7 +1465,7 @@ New social links are created for the currently authentcated user.
         {
             "node_id": 4,
             "item_type": "custom_page",
-            "url": null,
+            "url": "/test-page-slug/",
             "nav_tree_to_use": "home",
             "attributes": {
                 "composition_type": "presentation",
@@ -1542,7 +1542,7 @@ New social links are created for the currently authentcated user.
                 "node_id": 4,
                 "item_type": "custom_page",
                 "menu_label": "Test page",
-                "url": null,
+                "url": "/test-page-slug/",
                 "children": [
                     {
                         "node_id": 5,
@@ -1593,7 +1593,7 @@ It is a workaround for not being able to choose the response when multiple are d
         {
             "node_id": 6,
             "item_type": "go_item",
-            "url": null,
+            "url": "/answers/test-go-item-slug/",
             "attributes": {
                 "composition_type": "qna",
                 "heading": "Test heading",
@@ -1686,7 +1686,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                         {
                                             "node_id": 6,
                                             "item_type": "go_item",
-                                            "url": null,
+                                            "url": "/answers/test-go-item-slug/",
                                             "attributes": {
                                                 "composition_type": "qna",
                                                 "heading": "Test heading",
@@ -1946,7 +1946,7 @@ It is a workaround for not being able to choose the response when multiple are d
         {
             "node_id": 4,
             "item_type": "custom_page",
-            "url": null,
+            "url": "/test-page-slug/",
             "nav_tree_to_use": "home",
             "attributes": {
                 "composition_type": "presentation",
@@ -2023,7 +2023,7 @@ It is a workaround for not being able to choose the response when multiple are d
                 "node_id": 4,
                 "item_type": "custom_page",
                 "menu_label": "Test page",
-                "url": null,
+                "url": "/test-page-slug/",
                 "children": [
                     {
                         "node_id": 5,

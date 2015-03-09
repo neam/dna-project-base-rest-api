@@ -9,7 +9,7 @@ $I->seeResponseIsJson();
 $I->seeResponseContainsJson(array(
     "node_id" => 4,
     "item_type" => "custom_page",
-    "url" => null,
+    "url" => "/test-page-slug/",
     "nav_tree_to_use" => "home",
     "attributes" => array(
         "composition_type" => "presentation",
@@ -86,7 +86,7 @@ $I->seeResponseContainsJson(array(
         "node_id" => 4,
         "item_type" => "custom_page",
         "menu_label" => "Test page",
-        "url" => null,
+        "url" => "/test-page-slug/",
         "children" => array(
             array(
                 "node_id" => 5,
