@@ -5,6 +5,9 @@
  */
 class RestApiItemListConfig extends ItemListConfig implements SirTrevorBlock
 {
+
+    public $config;
+
     /**
      * @var array map of rest resource models per item active record class name (models must implement RelatedResource interface).
      */
@@ -119,6 +122,10 @@ class RestApiItemListConfig extends ItemListConfig implements SirTrevorBlock
     protected function getConfig()
     {
 
+        if (!is_null($this->config)) {
+            return $this->config;
+        }
+
         $command = \barebones\Barebones::fpdo()
             ->from('item_list_config', $this->id)
             ->leftJoin('display_extent_option ON display_extent_option.id = item_list_config.display_extent_option_id')
@@ -146,7 +153,7 @@ class RestApiItemListConfig extends ItemListConfig implements SirTrevorBlock
             $config['query_pageSize'] = 5;
         }
 
-        return $config;
+        return $this->config = $config;
     }
 
     /**
