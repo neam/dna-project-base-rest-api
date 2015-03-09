@@ -3,7 +3,7 @@
 /**
  * Item list resource.
  */
-class RestApiItemList extends ItemListConfig implements SirTrevorBlock
+class RestApiItemListConfig extends ItemListConfig implements SirTrevorBlock
 {
     /**
      * @var array map of rest resource models per item active record class name (models must implement RelatedResource interface).

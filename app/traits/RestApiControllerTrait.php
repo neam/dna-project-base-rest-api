@@ -8,7 +8,7 @@ trait RestApiControllerTrait
      */
     protected static $classMap = array(
         'Composition' => 'RestApiComposition',
-        'Page' => 'RestApiCustomPage',
+        'Page' => 'RestApiPage',
     );
 
     private function _getStatusCodeMessage($status)

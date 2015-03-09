@@ -28,7 +28,7 @@ class SirTrevorParser
         'video_file' => 'RestApiVideoFile',
         'html_chunk' => 'RestApiHtmlChunk',
         'download_link' => 'RestApiDownloadLink',
-        'item_list_config' => 'RestApiItemList',
+        'item_list_config' => 'RestApiItemListConfig',
         'slideshow_file' => 'RestApiSlideshowFile',
         'visualization' => 'RestApiVisualization',
     );

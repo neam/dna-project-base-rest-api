@@ -8,15 +8,15 @@
  * @property string $about
  * @property string $menu_label
  *
- * @property RestApiCustomPage[] $children
- * @property RestApiCustomPage[] $siblings
- * @property RestApiCustomPage[] $recParentPages
- * @property RestApiCustomPage $parent
+ * @property RestApiPage[] $children
+ * @property RestApiPage[] $siblings
+ * @property RestApiPage[] $recParentPages
+ * @property RestApiPage $parent
  *
  * Properties made available through the RestrictedAccessBehavior class:
  * @property boolean $enableRestriction
  */
-class RestApiCustomPage extends Page
+class RestApiPage extends Page
 {
     /**
      * @inheritdoc
@@ -34,8 +34,8 @@ class RestApiCustomPage extends Page
         return array_merge(
             parent::relations(),
             array(
-                'restApiCustomPageChildren' => array(self::HAS_MANY, 'RestApiCustomPage', 'parent_page_id'),
-                'restApiCustomPageParent' => array(self::BELONGS_TO, 'RestApiCustomPage', 'parent_page_id'),
+                'restApiCustomPageChildren' => array(self::HAS_MANY, 'RestApiPage', 'parent_page_id'),
+                'restApiCustomPageParent' => array(self::BELONGS_TO, 'RestApiPage', 'parent_page_id'),
             )
         );
     }
@@ -135,8 +135,8 @@ class RestApiCustomPage extends Page
     }
 
     /**
-     * @param RestApiCustomPage $page
-     * @return RestApiCustomPage
+     * @param RestApiPage $page
+     * @return RestApiPage
      */
     public function loadRootPage($page)
     {
@@ -147,7 +147,7 @@ class RestApiCustomPage extends Page
     }
 
     /**
-     * @param RestApiCustomPage $page
+     * @param RestApiPage $page
      * @param array $hierarchy
      */
     public function setChildren($page, &$hierarchy)
