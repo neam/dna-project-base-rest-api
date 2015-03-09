@@ -26,12 +26,13 @@ class RestApiItemListConfig extends ItemListConfig implements SirTrevorBlock
      */
     public function getCompositionAttributes()
     {
+        $config = $this->getConfig();
         return array(
-            'display_extent' => !empty($this->displayExtentOption) ? $this->displayExtentOption->ref : null,
+            'display_extent' => !empty($config['display_extent']) ? $config['display_extent'] : null,
             'query' => array(
-                'item_type' => !empty($this->queryFilterByItemTypeOption) ? $this->queryFilterByItemTypeOption->table : null,
-                'composition_type' => !empty($this->queryFilterByCompositionType) ? $this->queryFilterByCompositionType->ref : null,
-                'sort' => (!empty($this->querySortOption) && !empty($this->querySortOption->ref)) ? $this->querySortOption->ref : null,
+                'item_type' => !empty($config['query_filter_by_item_type_table']) ? $config['query_filter_by_item_type_table'] : null,
+                'composition_type' => !empty($config['composition_type_ref']) ? $config['composition_type_ref'] : null,
+                'sort' => !empty($config['query_sort_ref']) ? $config['query_sort_ref'] : null,
                 'pageSize' => (int) $this->query_pageSize,
             ),
             // todo: do this once we have pagination.
@@ -100,6 +101,8 @@ class RestApiItemListConfig extends ItemListConfig implements SirTrevorBlock
 
     /**
      * Fetch necessary data to build the item list config command
+     * Uses a single joined query instead of multiple individual ones as would be the case when using
+     * active record relations.
      *
      * Example:
      * query_filter_by_item_type_table: "composition"
@@ -118,17 +121,25 @@ class RestApiItemListConfig extends ItemListConfig implements SirTrevorBlock
 
         $command = \barebones\Barebones::fpdo()
             ->from('item_list_config', $this->id)
-            ->innerJoin('display_extent_option ON display_extent_option.id = item_list_config.display_extent_option_id')
+            ->leftJoin('display_extent_option ON display_extent_option.id = item_list_config.display_extent_option_id')
             ->select('display_extent_option.ref as display_extent')
-            ->innerJoin('query_filter_by_item_type_option ON query_filter_by_item_type_option.id = item_list_config.query_filter_by_item_type_option_id')
+            ->leftJoin('query_filter_by_item_type_option ON query_filter_by_item_type_option.id = item_list_config.query_filter_by_item_type_option_id')
             ->select('query_filter_by_item_type_option.table as query_filter_by_item_type_table')
             ->select('query_filter_by_item_type_option.model_class as query_filter_by_item_type_model_class')
+            //->select('query_filter_by_item_type_option.item_type as query_filter_by_item_type_item_type')
+            ->leftJoin('composition_type ON composition_type.id = item_list_config.query_filter_by_composition_type_id')
+            ->select('composition_type.ref as composition_type_ref')
             ->leftJoin('sort_option ON sort_option.id = item_list_config.query_sort_option_id')
+            ->select('sort_option.ref as query_sort_ref')
             ->select('sort_option.criteria_order as query_sort_order')
             ->select('sort_option.criteria_join as query_sort_join')
             ->limit(1);
 
         $config = $command->fetch();
+
+        if (empty($config)) {
+            throw new \Exception("Empty item list query config");
+        }
 
         // set defaults
         if (is_null($config['query_pageSize'])) {
