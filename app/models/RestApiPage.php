@@ -140,7 +140,8 @@ class RestApiPage extends Page
      */
     public function loadRootPage($page)
     {
-        if (empty($page->restApiCustomPageParent)) {
+        $parent = $page->restApiCustomPageParent;
+        if (empty($parent)) {
             return $page;
         }
         return $this->loadRootPage($page->restApiCustomPageParent);
@@ -152,8 +153,9 @@ class RestApiPage extends Page
      */
     public function setChildren($page, &$hierarchy)
     {
-        if (!empty($page->restApiCustomPageChildren)) {
-            foreach ($page->restApiCustomPageChildren as $child) {
+        $children = $page->restApiCustomPageChildren;
+        if (!empty($children)) {
+            foreach ($children as $child) {
                 $childHierarchy = $child->getHierarchyAttributes();
                 $child->setChildren($child, $childHierarchy);
                 $hierarchy['children'][] = $childHierarchy;

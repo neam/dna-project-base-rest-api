@@ -45,6 +45,17 @@ class Page extends \barebones\ActiveRecord
     use PageTrait;
 
     public $__table = 'page';
+
+    public function relationRestApiCustomPageChildren()
+    {
+        return $this->attributes["restApiCustomPageChildren"] = RestApiPage::model()->findAll('parent_page_id = ?', $this->id);
+    }
+
+    public function relationRestApiCustomPageParent()
+    {
+        return $this->attributes["restApiCustomPageParent"] = RestApiPage::model()->findByPk($this->parent_page_id);
+    }
+
 }
 
 class DownloadLink extends \barebones\ActiveRecord
