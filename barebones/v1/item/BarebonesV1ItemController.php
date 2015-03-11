@@ -23,6 +23,9 @@ class BarebonesV1ItemController
 
     public function requestIsHandled()
     {
+        if (strpos($this->request_uri, "/api/v1/error") === 0) {
+            return true;
+        }
         if ($this->getIsOAuth2Request()) {
             return false;
         }
@@ -77,6 +80,15 @@ class BarebonesV1ItemController
     {
         if ($this->request_method == "OPTIONS") {
             return $this->actionPreflight();
+        }
+        if (strpos($this->request_uri, "/api/v1/error") === 0) {
+            $this->sendResponseHeaders(404);
+            echo json_encode([
+                "status" => 500,
+                "message" => "Internal Server Error (relayed)",
+                "trace" => $_GET,
+            ]);
+            die();
         }
         if ($this->request_method == "GET") {
             $urlEncodedRoute = $this->requestedItemRoute();

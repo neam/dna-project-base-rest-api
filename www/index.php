@@ -15,7 +15,7 @@ require("$root/vendor/neam/php-app-config/include.php");
 require_once($root . '/dna/components/Barebones.php');
 
 // Use barebones php for public item GET requests for performance
-if (strpos($_SERVER['REQUEST_URI'], "/api/v1/item/") === 0) {
+if (strpos($_SERVER['REQUEST_URI'], "/api/v1/item/") === 0 || strpos($_SERVER['REQUEST_URI'], "/api/v1/error") === 0) {
     $actionroot = $approot . "/barebones/v1/item";
     require_once($approot . "/app/traits/RestApiControllerTrait.php");
     require_once($actionroot . "/BarebonesV1ItemController.php");
