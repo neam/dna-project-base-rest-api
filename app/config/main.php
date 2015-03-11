@@ -114,7 +114,7 @@ $mainConfig = array(
             'class' => 'CLogRouter',
             'routes' => array(
                 array(
-                    'class' => 'CFileLogRoute',
+                    'class' => '\neam\yii_streamlog\LogRoute', // output to stdout/err
                     'levels' => 'error, warning',
                 ),
 //                array(
