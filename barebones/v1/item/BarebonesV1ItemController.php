@@ -59,19 +59,20 @@ class BarebonesV1ItemController
      */
     public function getIsOAuth2Request()
     {
-        if(isset($_SERVER['HTTP_AUTHORIZATION'])) {
+        if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
             $authorization = $_SERVER['HTTP_AUTHORIZATION'];
-        } else if(isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION'])) {
+        } else if (isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION'])) {
             $authorization = $_SERVER['REDIRECT_HTTP_AUTHORIZATION'];
-        } elseif(function_exists('apache_request_headers')) {
+        } elseif (function_exists('apache_request_headers')) {
             $headers = apache_request_headers();
             $authorization = isset($headers['Authorization']) ? $headers['Authorization'] : '';
         } else {
             return false;
         }
 
-        return substr($authorization,0,6)==='Bearer';
+        return substr($authorization, 0, 6) === 'Bearer';
     }
+
     public function run()
     {
         if ($this->request_method == "OPTIONS") {
