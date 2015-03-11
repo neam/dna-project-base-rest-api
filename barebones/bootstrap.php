@@ -15,6 +15,7 @@ $itemTypes = [
     "I18nCatalog",
     "Tool",
     "Visualization",
+    "SlideshowFile",
     "Group",
     "GroupHasAccount",
     "Account",
@@ -155,6 +156,14 @@ class Visualization extends \barebones\ActiveRecord
 
 }
 
+class SlideshowFile extends \barebones\ActiveRecord
+{
+    use SlideshowFileTrait;
+
+    public $__table = 'slideshow_file';
+
+}
+
 class Group extends \barebones\ActiveRecord
 {
     use GroupTrait;
@@ -237,6 +246,7 @@ $restApiItemTypes = [
     "DownloadLink",
     "ItemListConfig",
     "Visualization",
+    "SlideshowFile",
     "Profile",
 ];
 foreach ($restApiItemTypes as $modelClass) {
