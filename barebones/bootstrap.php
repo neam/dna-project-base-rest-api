@@ -28,6 +28,14 @@ foreach ($itemTypes as $modelClass) {
 
 //require_once($root . '/');
 
+// Init sentry
+$sentryClient = new Raven_Client(SENTRY_DSN);
+$errorHandler = new Raven_ErrorHandler($sentryClient);
+
+// Register error handler callbacks
+set_error_handler(array($errorHandler, 'handleError'));
+set_exception_handler(array($errorHandler, 'handleException'));
+
 class Yii extends \barebones\Yii
 {
 
