@@ -2,6 +2,10 @@
 
 /**
  * Item list resource.
+ *
+ * @property int $id
+ * @property int $query_pageSize
+ * @property int $query_filter_by_item_type_option_id
  */
 class RestApiItemListConfig extends ItemListConfig implements SirTrevorBlock
 {
@@ -67,11 +71,9 @@ class RestApiItemListConfig extends ItemListConfig implements SirTrevorBlock
             $config = $this->getConfig();
             $className = $this->getResourceModelName($config);
             if ($className !== false) {
-
                 $query = $this->getQuery($config);
-
-                /** @var RelatedResource[] $models */
                 foreach ($query as $row) {
+                    /** @var RelatedResource $model */
                     $model = $className::model();
                     $model->attributes = $row;
                     $items[] = $model->getRelatedAttributes();
@@ -92,7 +94,8 @@ class RestApiItemListConfig extends ItemListConfig implements SirTrevorBlock
     /**
      * Gets the resource model class name for this resources items.
      *
-     * @return bool|string
+     * @param array $config the item list config.
+     * @return bool|string the model name or false if not supported.
      */
     protected function getResourceModelName($config)
     {
@@ -117,7 +120,8 @@ class RestApiItemListConfig extends ItemListConfig implements SirTrevorBlock
      * query_sort_order: "created DESC"
      * query_sort_join: "footable ON baz.id = composition.footable_id"
      *
-     * @return mixed
+     * @return array the config.
+     * @throws \Exception if config cannot be found.
      */
     protected function getConfig()
     {
@@ -159,23 +163,25 @@ class RestApiItemListConfig extends ItemListConfig implements SirTrevorBlock
     /**
      * Gets the query for finding this resource's items.
      *
+     * @param array $config the config.
      * @return \SelectQuery
      */
     protected function getQuery($config)
     {
-        // build query
+        /** @var \SelectQuery $query */
         $query = \barebones\Barebones::fpdo()
             ->from($config['query_filter_by_item_type_table']);
 
-        if (!is_null($config['query_sort_join'])) {
+        if (!empty($config['query_sort_join'])) {
             $query = $query->join($config['query_sort_join']);
         }
 
-        if (!is_null($config['query_filter_by_composition_type_id'])) {
-            $query = $query->where('composition_type_id', $config['query_filter_by_composition_type_id']);
+        if (!empty($config['query_filter_by_composition_type_id'])) {
+            // todo: if the table we are querying does not have the column "composition_type_id", this will cause a crash. e.g. if this item list is for profiles, then this option will crash it all.
+           $query = $query->where('composition_type_id', $config['query_filter_by_composition_type_id']);
         }
 
-        if (!is_null($config['query_sort_order'])) {
+        if (!empty($config['query_sort_order'])) {
             $query = $query->orderBy($config['query_sort_order']);
         }
 
