@@ -123,6 +123,7 @@ class RestApiPage extends Page
     {
         return array(
             'composition_type' => $this->getCompositionTypeReference(),
+            'icon_url' => $this->getIconUrl(),
             'heading' => $this->heading,
             'subheading' => $this->subheading,
             'about' => $this->about,
@@ -206,5 +207,18 @@ class RestApiPage extends Page
                 $hierarchy['children'][] = $childHierarchy;
             }
         }
+    }
+
+    /**
+     * Returns the page icon url.
+     *
+     * @return null|string the url.
+     */
+    public function getIconUrl()
+    {
+        if (!empty($this->icon_media_id)) {
+            return \barebones\Barebones::createMediaUrl($this->icon_media_id, 'icon-80');
+        }
+        return null;
     }
 }

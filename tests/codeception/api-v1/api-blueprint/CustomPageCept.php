@@ -9,6 +9,7 @@ $expectedResponse = array(
     "nav_tree_to_use" => "home",
     "attributes" => array(
         "composition_type" => "presentation",
+        "icon_url" => null,
         "heading" => "Test heading",
         "subheading" => null,
         "about" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis commodo ante nec venenatis. Vivamus maximus massa lectus, ut fermentum arcu tempus in. Mauris laoreet nisl sagittis orci tincidunt egestas. ",

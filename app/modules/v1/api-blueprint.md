@@ -1469,6 +1469,7 @@ New social links are created for the currently authentcated user.
             "nav_tree_to_use": "home",
             "attributes": {
                 "composition_type": "presentation",
+                "icon_url": null,
                 "heading": "Test heading",
                 "subheading": null,
                 "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis commodo ante nec venenatis. Vivamus maximus massa lectus, ut fermentum arcu tempus in. Mauris laoreet nisl sagittis orci tincidunt egestas. ",
@@ -1950,6 +1951,7 @@ It is a workaround for not being able to choose the response when multiple are d
             "nav_tree_to_use": "home",
             "attributes": {
                 "composition_type": "presentation",
+                "icon_url": null,
                 "heading": "Test heading",
                 "subheading": null,
                 "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis commodo ante nec venenatis. Vivamus maximus massa lectus, ut fermentum arcu tempus in. Mauris laoreet nisl sagittis orci tincidunt egestas. ",
@@ -2421,6 +2423,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
             "nav_tree_to_use": "home",
             "attributes": {
                 "composition_type": "presentation",
+                "icon_url": null,
                 "heading": "Test heading",
                 "subheading": null,
                 "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis commodo ante nec venenatis. Vivamus maximus massa lectus, ut fermentum arcu tempus in. Mauris laoreet nisl sagittis orci tincidunt egestas. ",
