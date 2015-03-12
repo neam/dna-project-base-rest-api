@@ -2,6 +2,22 @@
 
 use \barebones\Barebones;
 
+/**
+ * Component for resource models that includes a list of contributor items.
+ * This class provides helper methods for getting a properly formatted list of contributors.
+ *
+ * Example of a "contributor" response structure:
+ * {
+ *   {
+ *     "user_id": 1,
+ *     "username": "admin",
+ *     "first_name": "Super",
+ *     "last_name": "Admin",
+ *     "thumbnail_url": "http://url-to-contributors-profile-picture.jpg"
+ *   },
+ *   ...
+ * }
+ */
 class ContributorItems
 {
     /**
@@ -16,7 +32,6 @@ class ContributorItems
         // todo: access rights join statement is hard-coded
 
         $command = Barebones::fpdo()
-            //->select('changeset.user_id, account.username, profile.first_name, profile.last_name, profile.profile_picture_media_id')
             ->from('changeset')
             ->select('changeset.user_id, account.username, profile.first_name, profile.last_name, profile.profile_picture_media_id')
             ->leftJoin('account ON account.id=changeset.user_id')

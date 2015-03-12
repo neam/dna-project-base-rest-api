@@ -1,17 +1,23 @@
 <?php
 
 /**
- * Custom page resource model.
+ * Page resource model.
+ *
+ * Attributes:
  * @property string $heading
  * @property string $subheading
  * @property string $caption
  * @property string $about
  * @property string $menu_label
+ * @property string $nav_tree_to_use
+ * @property string $composition
+ * @property int $node_id
+ * @property int $composition_type_id
+ * @property int $icon_media_id
  *
- * @property RestApiPage[] $children
- * @property RestApiPage[] $siblings
- * @property RestApiPage[] $recParentPages
- * @property RestApiPage $parent
+ * Relations:
+ * @property RestApiPage[] $restApiCustomPageChildren
+ * @property RestApiPage $restApiCustomPageParent
  *
  * Properties made available through the RestrictedAccessBehavior class:
  * @property boolean $enableRestriction
@@ -142,12 +148,13 @@ class RestApiPage extends Page
     }
 
     /**
-     * @return string|null
+     * Returns the pages composition reference key.
+     *
+     * @return string|null the ref or null if not found.
      */
     public function getCompositionTypeReference()
     {
         $command = \barebones\Barebones::fpdo()
-            //->select('ref')
             ->from('composition_type')
             ->where('id=:compositionTypeId', array(':compositionTypeId' => (int)$this->composition_type_id));
         $result = $command->fetch();
@@ -155,15 +162,19 @@ class RestApiPage extends Page
     }
 
     /**
-     * @return string|null
+     * Returns the canonical route for this page.
+     *
+     * @return string|null the route or null if none is found.
      */
     public function getRouteUrl()
     {
         // todo: enable multi lingual support once ready.
         $command = \barebones\Barebones::fpdo()
-            //->select('route')
             ->from('route')
-            ->where('canonical=1 AND node_id=:nodeId'/*translation_route_language=:lang*/, array(':nodeId' => (int)$this->node_id/*, ':lang' => Yii::app()->language*/));
+            ->where(
+                'canonical=1 AND node_id=:nodeId'/*translation_route_language=:lang*/,
+                array(':nodeId' => (int)$this->node_id/*, ':lang' => Yii::app()->language*/)
+            );
         $result = $command->fetch();
         return !empty($result) ? $result['route'] : null;
     }
