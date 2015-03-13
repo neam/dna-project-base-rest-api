@@ -40,6 +40,7 @@ class BaseItemController extends AppRestController
      * This endpoint is public but the resources are restricted by "RestrictedAccessBehavior".
      *
      * @param int $node_id the node id of the item to get, e.g 1234
+     * @throws CHttpException
      */
     public function actionGetByNodeId($node_id)
     {
@@ -57,6 +58,7 @@ class BaseItemController extends AppRestController
      * This endpoint is public but the resources are restricted by "RestrictedAccessBehavior".
      *
      * @param string $route the route of the item to get, e.g."/1234", "/terms".
+     * @throws CHttpException
      */
     public function actionGetByRoute($route)
     {
@@ -70,6 +72,8 @@ class BaseItemController extends AppRestController
 
     /**
      * @param int $node_id the node id of the item to get, e.g 1234
+     * @return array
+     * @throws CHttpException
      */
     public function loadByNodeId($node_id)
     {
@@ -92,6 +96,8 @@ class BaseItemController extends AppRestController
 
     /**
      * @param string $route the route of the item to get, e.g."/1234", "/terms".
+     * @return array
+     * @throws CHttpException
      */
     public function loadByRoute($route)
     {
