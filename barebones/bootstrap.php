@@ -4,6 +4,11 @@
 /* @var string $actionroot */
 
 //require_once($root . '/dna/components/Barebones.php');
+
+// Activate error handling via sentry - Note: this runs ini_set('display_errors', false)
+\barebones\SentryErrorHandling::activate(SENTRY_DSN);
+
+// Include necessary files and define barebones model classes
 require_once($root . '/dna/config/ItemTypes.php');
 require_once($root . '/dna/vendor/neam/yii-relational-graph-db/traits/GraphRelatableItemTrait.php');
 // TODO: use ItemTypes::where('generate_yii_rest_api_crud') or similar when in use
@@ -27,58 +32,6 @@ $itemTypes = [
 foreach ($itemTypes as $modelClass) {
     require_once($root . '/dna/models/metadata/traits/' . $modelClass . 'Trait.php');
 }
-
-//require_once($root . '/');
-
-// Init sentry
-$sentryClient = new Raven_Client(SENTRY_DSN);
-$errorHandler = new Raven_ErrorHandler($sentryClient);
-
-// Register error handler callbacks
-set_error_handler(array($errorHandler, 'handleError'));
-set_exception_handler(array($errorHandler, 'handleException'));
-
-// Handle fatal errors
-register_shutdown_function(function () {
-    $error = error_get_last();
-    if ($error !== null) {
-
-        // The information that we show to the end-user
-        $publicInfo = array(
-            'code' => 500,
-        );
-
-        // Set the error as public when in debug mode
-        if (YII_DEBUG) {
-            $publicInfo["error"] = $error;
-        }
-
-        // Error has already been reported by sentry - redirect to error-page instead of letting the user stare
-        // at a white screen of death
-        $errorQs = http_build_query($publicInfo);
-
-        $isFatal = ($error["type"] == E_ERROR);
-
-        // todo: fix hard-coded path
-        if (strpos(Yii::app()->request->requestUri, "api/v1/error") === false) {
-
-            $url = Yii::app()->request->baseUrl . "/api/v1/error?$errorQs";
-            if (!headers_sent($filename, $linenum)) {
-                header("Location: $url");
-                exit;
-            } else {
-                throw new Exception("Shutdown handler error redirect to $url failed since headers were sent in $filename on line $linenum. Error: " . print_r($error, true));
-                exit;
-            }
-
-        } else {
-            // Error when loading site/error - we can't do much but throw an exception about the error
-            throw new Exception("Error when loading site/error: " . print_r($error, true));
-        }
-    }
-});
-// Necessary in order for locations to work
-ini_set('display_errors', false);
 
 class Yii extends \barebones\Yii
 {
