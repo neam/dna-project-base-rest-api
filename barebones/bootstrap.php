@@ -244,49 +244,11 @@ class NavigationTreeItem extends \barebones\ActiveRecord
 
     public $__table = 'navigation_tree_item';
 
-    public $criteria = array(
-        'condition' => null,
-        'orderBy' => null,
-    );
-
     public $hasManyRoots=true;
     public $rootAttribute='root';
     public $leftAttribute='lft';
     public $rightAttribute='rgt';
     public $levelAttribute='level';
-
-    function findAll($where, $params = [], $limit = 100)
-    {
-        if (!is_null($this->criteria['condition'])) {
-            $where .= $this->criteria['condition'];
-        }
-
-        $command = \barebones\Barebones::fpdo()
-            ->from("`{$this->__table}`")
-            ->where($where, $params)
-            ->limit($limit);
-
-        if (!is_null($this->criteria['orderBy'])) {
-            // todo: this seems to add 2 ORDER BY clauses, one empty and then the right one.
-            // $command->orderBy($this->criteria['orderBy']);
-        }
-
-        \barebones\Barebones::restrictQueryToPublishedItems($command);
-
-        $rows = $command->fetchAll();
-
-        $models = [];
-        foreach ($rows as $row) {
-            $model = static::model();
-            $model->attributes = $row;
-            $models[] = $model;
-        }
-
-        // Reset the criteria in case another findAll is ran for the same instance.
-        $this->criteria = array('condition' => null, 'orderBy' => null);
-
-        return $models;
-    }
 
     /**
      * @return NavigationTreeItem
