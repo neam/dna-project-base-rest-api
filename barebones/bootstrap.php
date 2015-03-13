@@ -22,6 +22,7 @@ $itemTypes = [
     "SocialLink",
     "Contribution",
     "Profile",
+    "NavigationTreeItem",
 ];
 foreach ($itemTypes as $modelClass) {
     require_once($root . '/dna/models/metadata/traits/' . $modelClass . 'Trait.php');
@@ -237,6 +238,98 @@ class Profile extends \barebones\ActiveRecord
 
 }
 
+class NavigationTreeItem extends \barebones\ActiveRecord
+{
+    use NavigationTreeItemTrait;
+
+    public $__table = 'navigation_tree_item';
+
+    public $criteria = array(
+        'condition' => null,
+        'orderBy' => null,
+    );
+
+    public $hasManyRoots=true;
+    public $rootAttribute='root';
+    public $leftAttribute='lft';
+    public $rightAttribute='rgt';
+    public $levelAttribute='level';
+
+    function findAll($where, $params = [], $limit = 100)
+    {
+        if (!is_null($this->criteria['condition'])) {
+            $where .= $this->criteria['condition'];
+        }
+
+        $command = \barebones\Barebones::fpdo()
+            ->from("`{$this->__table}`")
+            ->where($where, $params)
+            ->limit($limit);
+
+        if (!is_null($this->criteria['orderBy'])) {
+            // todo: this seems to add 2 ORDER BY clauses, one empty and then the right one.
+            // $command->orderBy($this->criteria['orderBy']);
+        }
+
+        \barebones\Barebones::restrictQueryToPublishedItems($command);
+
+//        $s = microtime(true);
+
+        $rows = $command->fetchAll();
+
+//        var_dump($command->getQuery(), microtime(true) - $s);
+
+        $models = [];
+        foreach ($rows as $row) {
+            $model = static::model();
+            $model->attributes = $row;
+            $models[] = $model;
+        }
+
+        // Reset the criteria in case another findAll is ran for the same instance.
+        $this->criteria = array('condition' => null, 'orderBy' => null);
+
+        return $models;
+    }
+
+    /**
+     * @return NavigationTreeItem
+     */
+    public function children()
+    {
+        return $this->descendants(1);
+    }
+
+    /**
+     * @param null|int $depth
+     * @return NavigationTreeItem
+     */
+    public function descendants($depth = null)
+    {
+        $leftAttr = $this->leftAttribute;
+        $leftValue = (int)$this->{$leftAttr};
+        $rightAttr = $this->rightAttribute;
+        $rightValue = (int)$this->{$rightAttr};
+
+        $this->criteria['orderBy'] = "ORDER BY {$leftAttr} ASC";
+        $this->criteria['condition'] = "{$leftAttr}>{$leftValue} AND {$rightAttr}<{$rightValue}";
+
+        if (!is_null($depth)) {
+            $lvlAttr = $this->levelAttribute;
+            $lvlValue = (int)($this->{$lvlAttr} + (int)$depth);
+            $this->criteria['condition'] .= " AND {$lvlAttr}<={$lvlValue}";
+        }
+
+        if ($this->hasManyRoots) {
+            $rootAttr = $this->rootAttribute;
+            $rootValue = (int)$this->{$rootAttr};
+            $this->criteria['condition'] .= " AND {$rootAttr}={$rootValue}";
+        }
+
+        return $this;
+    }
+}
+
 require_once($root . '/yiiapps/rest-api/app/interfaces/RelatedResource.php');
 require_once($root . '/yiiapps/rest-api/app/interfaces/SirTrevorBlock.php');
 
@@ -248,6 +341,7 @@ $restApiItemTypes = [
     "Visualization",
     "SlideshowFile",
     "Profile",
+    "NavigationTreeItem",
 ];
 foreach ($restApiItemTypes as $modelClass) {
     require_once($root . '/yiiapps/rest-api/app/models/RestApi' . $modelClass . '.php');

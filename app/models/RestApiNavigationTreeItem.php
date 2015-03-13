@@ -44,9 +44,6 @@ class RestApiNavigationTreeItem extends NavigationTreeItem
                 'displayedMessageSourceComponent' => 'displayedMessages',
                 'editedMessageSourceComponent' => 'editedMessages',
             ),
-            'RestrictedAccessBehavior' => array(
-                'class' => '\RestrictedAccessBehavior',
-            ),
             'NestedSetBehavior' => array(
                 'class' => '\NestedSetBehavior',
                 'hasManyRoots' => true,
@@ -61,8 +58,9 @@ class RestApiNavigationTreeItem extends NavigationTreeItem
      */
     public function getIconUrl()
     {
-        if (!empty($this->icon_media_id)) {
-            return \barebones\Barebones::createMediaUrl($this->icon_media_id, 'icon-32');
+        $mediaId = $this->icon_media_id;
+        if (!empty($mediaId)) {
+            return \barebones\Barebones::createMediaUrl($mediaId, 'icon-32');
         }
         return null;
     }

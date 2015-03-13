@@ -219,8 +219,9 @@ class RestApiPage extends Page
      */
     public function getIconUrl()
     {
-        if (!empty($this->icon_media_id)) {
-            return \barebones\Barebones::createMediaUrl($this->icon_media_id, 'icon-80');
+        $mediaId = $this->icon_media_id;
+        if (!empty($mediaId)) {
+            return \barebones\Barebones::createMediaUrl($mediaId, 'icon-80');
         }
         return null;
     }

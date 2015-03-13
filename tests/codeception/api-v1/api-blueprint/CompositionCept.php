@@ -339,6 +339,156 @@ $expectedResponse = array(
                 )
             )
         )
+    ),
+    "home_navigation_tree" => array(
+        "data" => array(
+            array(
+                "type" => "navigation_tree_item",
+                "data" => array(
+                    "node_id" => 16,
+                    "item_type" => "navigation_tree_item",
+                    "attributes" => array(
+                        "ref" => "home",
+                        "about" => "This is the root item of general home tree.",
+                        "menu_label" => "Home",
+                        "heading" => "Home",
+                        "subheading" => "Gapminder.org - Start Here",
+                        "url" => "/friends",
+                        "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=13&preset=icon-32&title=media&extension=.jpg"
+                    ),
+                    "children" => array(
+                        array(
+                            "type" => "navigation_tree_item",
+                            "data" => array(
+                                "node_id" => 17,
+                                "item_type" => "navigation_tree_item",
+                                "attributes" => array(
+                                    "ref" => "health",
+                                    "about" => "This tree item links to the main gapminder health page",
+                                    "menu_label" => "Health",
+                                    "heading" => "Health",
+                                    "subheading" => "About health",
+                                    "url" => null,
+                                    "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=14&preset=icon-32&title=media&extension=.jpg"
+                                ),
+                                "children" => array(
+                                    array(
+                                        "type" => "navigation_tree_item",
+                                        "data" => array(
+                                            "node_id" => 18,
+                                            "item_type" => "navigation_tree_item",
+                                            "attributes" => array(
+                                                "ref" => "ebola",
+                                                "about" => "Most people need more money to lead a good life.",
+                                                "menu_label" => "Ebola",
+                                                "heading" => "Ebola",
+                                                "subheading" => "Read more about ebola",
+                                                "url" => "/ebola",
+                                                "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=15&preset=icon-32&title=media&extension=.jpg"
+                                            ),
+                                            "children" => array()
+                                        )
+                                    )
+                                )
+                            )
+                        ),
+                        array(
+                            "type" => "navigation_tree_item",
+                            "data" => array(
+                                "node_id" => 19,
+                                "item_type" => "navigation_tree_item",
+                                "attributes" => array(
+                                    "ref" => "exercises",
+                                    "about" => "This tree item links to the main starting page for exercises",
+                                    "menu_label" => "Exercises",
+                                    "heading" => "Exercises",
+                                    "subheading" => "For teachers and tutors",
+                                    "url" => "/exercises",
+                                    "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=16&preset=icon-32&title=media&extension=.jpg"
+                                ),
+                                "children" => array()
+                            )
+                        )
+                    )
+                )
+            )
+        )
+    ),
+    "footer_navigation_tree_1" => array(
+        "data" => array(
+            array(
+                "type" => "navigation_tree_item",
+                "data" => array(
+                    "node_id" => 21,
+                    "item_type" => "navigation_tree_item",
+                    "attributes" => array(
+                        "ref" => "world",
+                        "about" => null,
+                        "menu_label" => "Gapminder World",
+                        "heading" => "Gapminder World",
+                        "subheading" => null,
+                        "url" => "/world",
+                        "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=17&preset=icon-32&title=media&extension=.jpg"
+                    ),
+                    "children" => array()
+                )
+            ),
+            array(
+                "type" => "navigation_tree_item",
+                "data" => array(
+                    "node_id" => 22,
+                    "item_type" => "navigation_tree_item",
+                    "attributes" => array(
+                        "ref" => "for-teachers",
+                        "about" => null,
+                        "menu_label" => "For teachers",
+                        "heading" => "For teachers",
+                        "subheading" => null,
+                        "url" => "/for-teachers",
+                        "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=18&preset=icon-32&title=media&extension=.jpg"
+                    ),
+                    "children" => array()
+                )
+            )
+        )
+    ),
+    "footer_navigation_tree_2" => array(
+        "data" => array(
+            array(
+                "type" => "navigation_tree_item",
+                "data" => array(
+                    "node_id" => 24,
+                    "item_type" => "navigation_tree_item",
+                    "attributes" => array(
+                        "ref" => "about",
+                        "about" => "about",
+                        "menu_label" => "About",
+                        "heading" => "About",
+                        "subheading" => null,
+                        "url" => "/about",
+                        "icon_url" => null
+                    ),
+                    "children" => array()
+                )
+            ),
+            array(
+                "type" => "navigation_tree_item",
+                "data" => array(
+                    "node_id" => 25,
+                    "item_type" => "navigation_tree_item",
+                    "attributes" => array(
+                        "ref" => "help",
+                        "about" => null,
+                        "menu_label" => "Help",
+                        "heading" => "Help",
+                        "subheading" => null,
+                        "url" => "/help",
+                        "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=20&preset=icon-32&title=media&extension=.jpg"
+                    ),
+                    "children" => array()
+                )
+            )
+        )
     )
 );
 
