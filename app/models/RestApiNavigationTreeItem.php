@@ -121,7 +121,7 @@ class RestApiNavigationTreeItem extends NavigationTreeItem
         return array(
             'type' => 'navigation_tree_item',
             'data' => array(
-                'node_id' => (int)$model->node_id,
+                'node_id' => (int) $model->node_id,
                 'item_type' => 'navigation_tree_item',
                 'attributes' => array(
                     'ref' => $model->ref,
