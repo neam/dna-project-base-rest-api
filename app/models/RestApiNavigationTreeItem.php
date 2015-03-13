@@ -74,6 +74,8 @@ class RestApiNavigationTreeItem extends NavigationTreeItem
      */
     public static function buildTree($ref, $inclRoot = false)
     {
+        // todo: this takes to long to run, ~200ms. Refactor to load all items under the root at once and then structure it in PHP.
+
         $tree = array();
         /** @var RestApiNavigationTreeItem|NestedSetBehavior $root */
         $root = RestApiNavigationTreeItem::model()->findByAttributes(array('ref' => $ref));

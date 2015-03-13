@@ -273,11 +273,7 @@ class NavigationTreeItem extends \barebones\ActiveRecord
 
         \barebones\Barebones::restrictQueryToPublishedItems($command);
 
-//        $s = microtime(true);
-
         $rows = $command->fetchAll();
-
-//        var_dump($command->getQuery(), microtime(true) - $s);
 
         $models = [];
         foreach ($rows as $row) {
