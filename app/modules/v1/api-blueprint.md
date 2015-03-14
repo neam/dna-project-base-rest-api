@@ -1432,6 +1432,17 @@ New social links are created for the currently authentcated user.
                                     }
                                 }
                             }
+                        },
+                        {
+                            "type": "slideshow_file",
+                            "data": {
+                                "node_id": 14,
+                                "item_type": "slideshow_file",
+                                "attributes": {
+                                    "google_docs_id": null,
+                                    "slideshare_id": null
+                                }
+                            }
                         }
                     ]
                 }
@@ -1472,7 +1483,7 @@ New social links are created for the currently authentcated user.
                                 "heading": "Home",
                                 "subheading": "Gapminder.org - Start Here",
                                 "url": "/friends",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=13&preset=icon-32&title=media&extension=.jpg"
+                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=13&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": [
                                 {
@@ -1487,7 +1498,7 @@ New social links are created for the currently authentcated user.
                                             "heading": "Health",
                                             "subheading": "About health",
                                             "url": null,
-                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=14&preset=icon-32&title=media&extension=.jpg"
+                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=14&preset=navtree-icon&title=media&extension=.gif"
                                         },
                                         "children": [
                                             {
@@ -1502,7 +1513,7 @@ New social links are created for the currently authentcated user.
                                                         "heading": "Ebola",
                                                         "subheading": "Read more about ebola",
                                                         "url": "/ebola",
-                                                        "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=15&preset=icon-32&title=media&extension=.jpg"
+                                                        "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=15&preset=navtree-icon&title=media&extension=.gif"
                                                     },
                                                     "children": []
                                                 }
@@ -1522,7 +1533,7 @@ New social links are created for the currently authentcated user.
                                             "heading": "Exercises",
                                             "subheading": "For teachers and tutors",
                                             "url": "/exercises",
-                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=16&preset=icon-32&title=media&extension=.jpg"
+                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=16&preset=navtree-icon&title=media&extension=.gif"
                                         },
                                         "children": []
                                     }
@@ -1546,7 +1557,7 @@ New social links are created for the currently authentcated user.
                                 "heading": "Gapminder World",
                                 "subheading": null,
                                 "url": "/world",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=17&preset=icon-32&title=media&extension=.jpg"
+                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=17&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -1563,7 +1574,7 @@ New social links are created for the currently authentcated user.
                                 "heading": "For teachers",
                                 "subheading": null,
                                 "url": "/for-teachers",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=18&preset=icon-32&title=media&extension=.jpg"
+                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=18&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -1601,7 +1612,7 @@ New social links are created for the currently authentcated user.
                                 "heading": "Help",
                                 "subheading": null,
                                 "url": "/help",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=20&preset=icon-32&title=media&extension=.jpg"
+                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=20&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -1740,7 +1751,7 @@ New social links are created for the currently authentcated user.
                                 "heading": "Home",
                                 "subheading": "Gapminder.org - Start Here",
                                 "url": "/friends",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=13&preset=icon-32&title=media&extension=.jpg"
+                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=13&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": [
                                 {
@@ -1755,7 +1766,7 @@ New social links are created for the currently authentcated user.
                                             "heading": "Health",
                                             "subheading": "About health",
                                             "url": null,
-                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=14&preset=icon-32&title=media&extension=.jpg"
+                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=14&preset=navtree-icon&title=media&extension=.gif"
                                         },
                                         "children": [
                                             {
@@ -1770,7 +1781,7 @@ New social links are created for the currently authentcated user.
                                                         "heading": "Ebola",
                                                         "subheading": "Read more about ebola",
                                                         "url": "/ebola",
-                                                        "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=15&preset=icon-32&title=media&extension=.jpg"
+                                                        "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=15&preset=navtree-icon&title=media&extension=.gif"
                                                     },
                                                     "children": []
                                                 }
@@ -1790,7 +1801,7 @@ New social links are created for the currently authentcated user.
                                             "heading": "Exercises",
                                             "subheading": "For teachers and tutors",
                                             "url": "/exercises",
-                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=16&preset=icon-32&title=media&extension=.jpg"
+                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=16&preset=navtree-icon&title=media&extension=.gif"
                                         },
                                         "children": []
                                     }
@@ -1814,7 +1825,7 @@ New social links are created for the currently authentcated user.
                                 "heading": "Gapminder World",
                                 "subheading": null,
                                 "url": "/world",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=17&preset=icon-32&title=media&extension=.jpg"
+                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=17&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -1831,7 +1842,7 @@ New social links are created for the currently authentcated user.
                                 "heading": "For teachers",
                                 "subheading": null,
                                 "url": "/for-teachers",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=18&preset=icon-32&title=media&extension=.jpg"
+                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=18&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -1869,7 +1880,7 @@ New social links are created for the currently authentcated user.
                                 "heading": "Help",
                                 "subheading": null,
                                 "url": "/help",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=20&preset=icon-32&title=media&extension=.jpg"
+                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=20&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -2203,6 +2214,17 @@ It is a workaround for not being able to choose the response when multiple are d
                                     }
                                 }
                             }
+                        },
+                        {
+                            "type": "slideshow_file",
+                            "data": {
+                                "node_id": 14,
+                                "item_type": "slideshow_file",
+                                "attributes": {
+                                    "google_docs_id": null,
+                                    "slideshare_id": null
+                                }
+                            }
                         }
                     ]
                 }
@@ -2243,7 +2265,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                 "heading": "Home",
                                 "subheading": "Gapminder.org - Start Here",
                                 "url": "/friends",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=13&preset=icon-32&title=media&extension=.jpg"
+                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=13&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": [
                                 {
@@ -2258,7 +2280,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                             "heading": "Health",
                                             "subheading": "About health",
                                             "url": null,
-                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=14&preset=icon-32&title=media&extension=.jpg"
+                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=14&preset=navtree-icon&title=media&extension=.gif"
                                         },
                                         "children": [
                                             {
@@ -2273,7 +2295,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                                         "heading": "Ebola",
                                                         "subheading": "Read more about ebola",
                                                         "url": "/ebola",
-                                                        "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=15&preset=icon-32&title=media&extension=.jpg"
+                                                        "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=15&preset=navtree-icon&title=media&extension=.gif"
                                                     },
                                                     "children": []
                                                 }
@@ -2293,7 +2315,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                             "heading": "Exercises",
                                             "subheading": "For teachers and tutors",
                                             "url": "/exercises",
-                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=16&preset=icon-32&title=media&extension=.jpg"
+                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=16&preset=navtree-icon&title=media&extension=.gif"
                                         },
                                         "children": []
                                     }
@@ -2317,7 +2339,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                 "heading": "Gapminder World",
                                 "subheading": null,
                                 "url": "/world",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=17&preset=icon-32&title=media&extension=.jpg"
+                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=17&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -2334,7 +2356,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                 "heading": "For teachers",
                                 "subheading": null,
                                 "url": "/for-teachers",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=18&preset=icon-32&title=media&extension=.jpg"
+                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=18&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -2372,7 +2394,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                 "heading": "Help",
                                 "subheading": null,
                                 "url": "/help",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=20&preset=icon-32&title=media&extension=.jpg"
+                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=20&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -2522,7 +2544,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                 "heading": "Home",
                                 "subheading": "Gapminder.org - Start Here",
                                 "url": "/friends",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=13&preset=icon-32&title=media&extension=.jpg"
+                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=13&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": [
                                 {
@@ -2537,7 +2559,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                             "heading": "Health",
                                             "subheading": "About health",
                                             "url": null,
-                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=14&preset=icon-32&title=media&extension=.jpg"
+                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=14&preset=navtree-icon&title=media&extension=.gif"
                                         },
                                         "children": [
                                             {
@@ -2552,7 +2574,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                                         "heading": "Ebola",
                                                         "subheading": "Read more about ebola",
                                                         "url": "/ebola",
-                                                        "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=15&preset=icon-32&title=media&extension=.jpg"
+                                                        "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=15&preset=navtree-icon&title=media&extension=.gif"
                                                     },
                                                     "children": []
                                                 }
@@ -2572,7 +2594,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                             "heading": "Exercises",
                                             "subheading": "For teachers and tutors",
                                             "url": "/exercises",
-                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=16&preset=icon-32&title=media&extension=.jpg"
+                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=16&preset=navtree-icon&title=media&extension=.gif"
                                         },
                                         "children": []
                                     }
@@ -2596,7 +2618,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                 "heading": "Gapminder World",
                                 "subheading": null,
                                 "url": "/world",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=17&preset=icon-32&title=media&extension=.jpg"
+                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=17&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -2613,7 +2635,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                 "heading": "For teachers",
                                 "subheading": null,
                                 "url": "/for-teachers",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=18&preset=icon-32&title=media&extension=.jpg"
+                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=18&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -2651,7 +2673,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                 "heading": "Help",
                                 "subheading": null,
                                 "url": "/help",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=20&preset=icon-32&title=media&extension=.jpg"
+                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=20&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -2980,6 +3002,17 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                     }
                                 }
                             }
+                        },
+                        {
+                            "type": "slideshow_file",
+                            "data": {
+                                "node_id": 14,
+                                "item_type": "slideshow_file",
+                                "attributes": {
+                                    "google_docs_id": null,
+                                    "slideshare_id": null
+                                }
+                            }
                         }
                     ]
                 }
@@ -3020,7 +3053,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                 "heading": "Home",
                                 "subheading": "Gapminder.org - Start Here",
                                 "url": "/friends",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=13&preset=icon-32&title=media&extension=.jpg"
+                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=13&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": [
                                 {
@@ -3035,7 +3068,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                             "heading": "Health",
                                             "subheading": "About health",
                                             "url": null,
-                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=14&preset=icon-32&title=media&extension=.jpg"
+                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=14&preset=navtree-icon&title=media&extension=.gif"
                                         },
                                         "children": [
                                             {
@@ -3050,7 +3083,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                                         "heading": "Ebola",
                                                         "subheading": "Read more about ebola",
                                                         "url": "/ebola",
-                                                        "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=15&preset=icon-32&title=media&extension=.jpg"
+                                                        "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=15&preset=navtree-icon&title=media&extension=.gif"
                                                     },
                                                     "children": []
                                                 }
@@ -3070,7 +3103,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                             "heading": "Exercises",
                                             "subheading": "For teachers and tutors",
                                             "url": "/exercises",
-                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=16&preset=icon-32&title=media&extension=.jpg"
+                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=16&preset=navtree-icon&title=media&extension=.gif"
                                         },
                                         "children": []
                                     }
@@ -3094,7 +3127,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                 "heading": "Gapminder World",
                                 "subheading": null,
                                 "url": "/world",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=17&preset=icon-32&title=media&extension=.jpg"
+                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=17&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -3111,7 +3144,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                 "heading": "For teachers",
                                 "subheading": null,
                                 "url": "/for-teachers",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=18&preset=icon-32&title=media&extension=.jpg"
+                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=18&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -3149,7 +3182,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                 "heading": "Help",
                                 "subheading": null,
                                 "url": "/help",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=20&preset=icon-32&title=media&extension=.jpg"
+                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=20&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -3294,7 +3327,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                 "heading": "Home",
                                 "subheading": "Gapminder.org - Start Here",
                                 "url": "/friends",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=13&preset=icon-32&title=media&extension=.jpg"
+                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=13&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": [
                                 {
@@ -3309,7 +3342,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                             "heading": "Health",
                                             "subheading": "About health",
                                             "url": null,
-                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=14&preset=icon-32&title=media&extension=.jpg"
+                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=14&preset=navtree-icon&title=media&extension=.gif"
                                         },
                                         "children": [
                                             {
@@ -3324,7 +3357,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                                         "heading": "Ebola",
                                                         "subheading": "Read more about ebola",
                                                         "url": "/ebola",
-                                                        "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=15&preset=icon-32&title=media&extension=.jpg"
+                                                        "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=15&preset=navtree-icon&title=media&extension=.gif"
                                                     },
                                                     "children": []
                                                 }
@@ -3344,7 +3377,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                             "heading": "Exercises",
                                             "subheading": "For teachers and tutors",
                                             "url": "/exercises",
-                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=16&preset=icon-32&title=media&extension=.jpg"
+                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=16&preset=navtree-icon&title=media&extension=.gif"
                                         },
                                         "children": []
                                     }
@@ -3368,7 +3401,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                 "heading": "Gapminder World",
                                 "subheading": null,
                                 "url": "/world",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=17&preset=icon-32&title=media&extension=.jpg"
+                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=17&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -3385,7 +3418,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                 "heading": "For teachers",
                                 "subheading": null,
                                 "url": "/for-teachers",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=18&preset=icon-32&title=media&extension=.jpg"
+                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=18&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -3423,7 +3456,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                 "heading": "Help",
                                 "subheading": null,
                                 "url": "/help",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=20&preset=icon-32&title=media&extension=.jpg"
+                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=20&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }

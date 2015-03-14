@@ -88,10 +88,12 @@ class RestApiNavigationTreeItem extends NavigationTreeItem
     }
 
     /**
-     * Recursively build nav tree items for use in rest api responses.
+     * Recursively build nav tree structure from the nested set.
      *
-     * @param RestApiNavigationTreeItem $model the root menu item to recursively build from.
-     * @param array $items the recursively built items.
+     * @param $treeItems
+     * @param int $left
+     * @param null $right
+     * @return array
      */
     protected static function recBuildTree($treeItems, $left = 0, $right = null)
     {
@@ -99,8 +101,9 @@ class RestApiNavigationTreeItem extends NavigationTreeItem
         foreach ($treeItems as $k => $treeItem) {
             $range = ['left' => $treeItem->lft, 'right' => $treeItem->rgt];
             if ($range['left'] == $left + 1 && (is_null($right) || $range['right'] < $right)) {
-                $tree[$k] = self::buildTreeItem($treeItem);
-                $tree[$k]["data"]["children"] = static::recBuildTree($treeItems, $range['left'], $range['right']);
+                $node = self::buildTreeItem($treeItem);
+                $node["data"]["children"] = static::recBuildTree($treeItems, $range['left'], $range['right']);
+                $tree[] = $node;
                 $left = $range['right'];
             }
         }

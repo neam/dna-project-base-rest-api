@@ -130,7 +130,7 @@ $expectedResponse = array(
                         "heading" => "Home",
                         "subheading" => "Gapminder.org - Start Here",
                         "url" => "/friends",
-                        "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=13&preset=icon-32&title=media&extension=.jpg"
+                        "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=13&preset=navtree-icon&title=media&extension=.gif"
                     ),
                     "children" => array(
                         array(
@@ -145,7 +145,7 @@ $expectedResponse = array(
                                     "heading" => "Health",
                                     "subheading" => "About health",
                                     "url" => null,
-                                    "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=14&preset=icon-32&title=media&extension=.jpg"
+                                    "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=14&preset=navtree-icon&title=media&extension=.gif"
                                 ),
                                 "children" => array(
                                     array(
@@ -160,7 +160,7 @@ $expectedResponse = array(
                                                 "heading" => "Ebola",
                                                 "subheading" => "Read more about ebola",
                                                 "url" => "/ebola",
-                                                "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=15&preset=icon-32&title=media&extension=.jpg"
+                                                "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=15&preset=navtree-icon&title=media&extension=.gif"
                                             ),
                                             "children" => array()
                                         )
@@ -180,7 +180,7 @@ $expectedResponse = array(
                                     "heading" => "Exercises",
                                     "subheading" => "For teachers and tutors",
                                     "url" => "/exercises",
-                                    "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=16&preset=icon-32&title=media&extension=.jpg"
+                                    "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=16&preset=navtree-icon&title=media&extension=.gif"
                                 ),
                                 "children" => array()
                             )
@@ -204,7 +204,7 @@ $expectedResponse = array(
                         "heading" => "Gapminder World",
                         "subheading" => null,
                         "url" => "/world",
-                        "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=17&preset=icon-32&title=media&extension=.jpg"
+                        "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=17&preset=navtree-icon&title=media&extension=.gif"
                     ),
                     "children" => array()
                 )
@@ -221,7 +221,7 @@ $expectedResponse = array(
                         "heading" => "For teachers",
                         "subheading" => null,
                         "url" => "/for-teachers",
-                        "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=18&preset=icon-32&title=media&extension=.jpg"
+                        "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=18&preset=navtree-icon&title=media&extension=.gif"
                     ),
                     "children" => array()
                 )
@@ -259,7 +259,7 @@ $expectedResponse = array(
                         "heading" => "Help",
                         "subheading" => null,
                         "url" => "/help",
-                        "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=20&preset=icon-32&title=media&extension=.jpg"
+                        "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=20&preset=navtree-icon&title=media&extension=.gif"
                     ),
                     "children" => array()
                 )
