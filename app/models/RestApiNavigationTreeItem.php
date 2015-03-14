@@ -60,7 +60,7 @@ class RestApiNavigationTreeItem extends NavigationTreeItem
     {
         $mediaId = $this->icon_media_id;
         if (!empty($mediaId)) {
-            return \barebones\Barebones::createMediaUrl($mediaId, 'original');
+            return \barebones\Barebones::createMediaUrl($mediaId, 'navtree-icon');
         }
         return null;
     }
