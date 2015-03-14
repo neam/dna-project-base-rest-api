@@ -72,23 +72,17 @@ class RestApiNavigationTreeItem extends NavigationTreeItem
      * @param boolean $inclRoot if the root nav item is to be included (defaults to false).
      * @return array the tree structure.
      */
-    public static function buildTree($ref, $inclRoot = false)
+    public static function buildTree($ref)
     {
-        // todo: this takes to long to run, ~200ms. Refactor to load all items under the root at once and then structure it in PHP.
 
         $tree = array();
         /** @var RestApiNavigationTreeItem|NestedSetBehavior $root */
-        $root = RestApiNavigationTreeItem::model()->findByAttributes(array('ref' => $ref));
-        if (!is_null($root)) {
-            $tree['data'] = array();
-            if ($inclRoot) {
-                $item = self::buildTreeItem($root);
-                self::recBuildTreeItems($root, $item['data']['children']);
-                $tree['data'][] = $item;
-            } else {
-                self::recBuildTreeItems($root, $tree['data']);
-            }
+        $root = RestApiNavigationTreeItem::model()->findAll('ref = :ref', [":ref"=>$ref]);
+        if (!empty($root)) {
+            $treeItems = RestApiNavigationTreeItem::model()->findAll('root = :root', [":root"=>$root[0]->id]);
+            $tree['data'] = static::recBuildTree($treeItems);
         }
+
         return $tree;
     }
 
@@ -98,16 +92,18 @@ class RestApiNavigationTreeItem extends NavigationTreeItem
      * @param RestApiNavigationTreeItem $model the root menu item to recursively build from.
      * @param array $items the recursively built items.
      */
-    protected static function recBuildTreeItems(RestApiNavigationTreeItem $model, &$items = array())
+    protected static function recBuildTree($treeItems, $left = 0, $right = null)
     {
-        /** @var RestApiNavigationTreeItem|NestedSetBehavior $model */
-        /** @var RestApiNavigationTreeItem[]|NestedSetBehavior[] $children */
-        $children = $model->children()->findAll();
-        foreach ($children as $child) {
-            $item = self::buildTreeItem($child);
-            self::recBuildTreeItems($child, $item['data']['children']);
-            $items[] = $item;
+        $tree = array();
+        foreach ($treeItems as $k => $treeItem) {
+            $range = ['left' => $treeItem->lft, 'right' => $treeItem->rgt];
+            if ($range['left'] == $left + 1 && (is_null($right) || $range['right'] < $right)) {
+                $tree[$k] = self::buildTreeItem($treeItem);
+                $tree[$k]["children"] = static::recBuildTree($treeItems, $range['left'], $range['right']);
+                $left = $range['right'];
+            }
         }
+        return $tree;
     }
 
     /**

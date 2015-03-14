@@ -197,48 +197,6 @@ class NavigationTreeItem extends \barebones\ActiveRecord
 
     public $__table = 'navigation_tree_item';
 
-    public $hasManyRoots=true;
-    public $rootAttribute='root';
-    public $leftAttribute='lft';
-    public $rightAttribute='rgt';
-    public $levelAttribute='level';
-
-    /**
-     * @return NavigationTreeItem
-     */
-    public function children()
-    {
-        return $this->descendants(1);
-    }
-
-    /**
-     * @param null|int $depth
-     * @return NavigationTreeItem
-     */
-    public function descendants($depth = null)
-    {
-        $leftAttr = $this->leftAttribute;
-        $leftValue = (int)$this->{$leftAttr};
-        $rightAttr = $this->rightAttribute;
-        $rightValue = (int)$this->{$rightAttr};
-
-        $this->criteria['orderBy'] = "ORDER BY {$leftAttr} ASC";
-        $this->criteria['condition'] = "{$leftAttr}>{$leftValue} AND {$rightAttr}<{$rightValue}";
-
-        if (!is_null($depth)) {
-            $lvlAttr = $this->levelAttribute;
-            $lvlValue = (int)($this->{$lvlAttr} + (int)$depth);
-            $this->criteria['condition'] .= " AND {$lvlAttr}<={$lvlValue}";
-        }
-
-        if ($this->hasManyRoots) {
-            $rootAttr = $this->rootAttribute;
-            $rootValue = (int)$this->{$rootAttr};
-            $this->criteria['condition'] .= " AND {$rootAttr}={$rootValue}";
-        }
-
-        return $this;
-    }
 }
 
 require_once($root . '/yiiapps/rest-api/app/interfaces/RelatedResource.php');
