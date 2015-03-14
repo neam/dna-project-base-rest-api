@@ -80,7 +80,8 @@ class RestApiNavigationTreeItem extends NavigationTreeItem
         $root = RestApiNavigationTreeItem::model()->findAll('ref = :ref', [":ref"=>$ref]);
         if (!empty($root)) {
             $treeItems = RestApiNavigationTreeItem::model()->findAll('root = :root', [":root"=>$root[0]->id]);
-            $tree['data'] = static::recBuildTree($treeItems);
+            $treeIncludingRoot = static::recBuildTree($treeItems);
+            $tree['data'] = $treeIncludingRoot[0]["data"]["children"];
         }
 
         return $tree;
@@ -99,7 +100,7 @@ class RestApiNavigationTreeItem extends NavigationTreeItem
             $range = ['left' => $treeItem->lft, 'right' => $treeItem->rgt];
             if ($range['left'] == $left + 1 && (is_null($right) || $range['right'] < $right)) {
                 $tree[$k] = self::buildTreeItem($treeItem);
-                $tree[$k]["children"] = static::recBuildTree($treeItems, $range['left'], $range['right']);
+                $tree[$k]["data"]["children"] = static::recBuildTree($treeItems, $range['left'], $range['right']);
                 $left = $range['right'];
             }
         }
