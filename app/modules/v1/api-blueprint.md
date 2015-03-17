@@ -1425,7 +1425,18 @@ New social links are created for the currently authentcated user.
                                             "id": "en",
                                             "strings": {
                                                 "en": {
-                                                    "title": "Test visualization"
+                                                    "title": "Test visualization",
+                                                    "buttons/find": "Find",
+                                                    "buttons/colors": "Colors",
+                                                    "buttons/size": "size",
+                                                    "buttons/more_options": "Options",
+                                                    "indicator/lex": "Life expectancy",
+                                                    "indicator/gdp_per_cap": "GDP per capita",
+                                                    "indicator/pop": "Population",
+                                                    "indicator/geo.region": "Region",
+                                                    "indicator/geo": "Geo code",
+                                                    "indicator/time": "Time",
+                                                    "indicator/geo.category": "Geo category"
                                                 }
                                             }
                                         }
@@ -2207,7 +2218,18 @@ It is a workaround for not being able to choose the response when multiple are d
                                             "id": "en",
                                             "strings": {
                                                 "en": {
-                                                    "title": "Test visualization"
+                                                    "title": "Test visualization",
+                                                    "buttons/find": "Find",
+                                                    "buttons/colors": "Colors",
+                                                    "buttons/size": "size",
+                                                    "buttons/more_options": "Options",
+                                                    "indicator/lex": "Life expectancy",
+                                                    "indicator/gdp_per_cap": "GDP per capita",
+                                                    "indicator/pop": "Population",
+                                                    "indicator/geo.region": "Region",
+                                                    "indicator/geo": "Geo code",
+                                                    "indicator/time": "Time",
+                                                    "indicator/geo.category": "Geo category"
                                                 }
                                             }
                                         }
@@ -2995,7 +3017,18 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                             "id": "en",
                                             "strings": {
                                                 "en": {
-                                                    "title": "Test visualization"
+                                                    "title": "Test visualization",
+                                                    "buttons/find": "Find",
+                                                    "buttons/colors": "Colors",
+                                                    "buttons/size": "size",
+                                                    "buttons/more_options": "Options",
+                                                    "indicator/lex": "Life expectancy",
+                                                    "indicator/gdp_per_cap": "GDP per capita",
+                                                    "indicator/pop": "Population",
+                                                    "indicator/geo.region": "Region",
+                                                    "indicator/geo": "Geo code",
+                                                    "indicator/time": "Time",
+                                                    "indicator/geo.category": "Geo category"
                                                 }
                                             }
                                         }

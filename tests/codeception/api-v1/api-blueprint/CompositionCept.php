@@ -308,6 +308,17 @@ $expectedResponse = array(
                                     "strings" => array (
                                         "en" => array (
                                             "title" => "Test visualization",
+                                            "buttons/find" => "Find",
+                                            "buttons/colors" => "Colors",
+                                            "buttons/size" => "size",
+                                            "buttons/more_options" => "Options",
+                                            "indicator/lex" => "Life expectancy",
+                                            "indicator/gdp_per_cap" => "GDP per capita",
+                                            "indicator/pop" => "Population",
+                                            "indicator/geo.region" => "Region",
+                                            "indicator/geo" => "Geo code",
+                                            "indicator/time" => "Time",
+                                            "indicator/geo.category" => "Geo category",
                                         )
                                     )
                                 )
