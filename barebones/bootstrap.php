@@ -11,6 +11,8 @@
 // Include necessary files and define barebones model classes
 require_once($root . '/dna/config/ItemTypes.php');
 require_once($root . '/dna/vendor/neam/yii-relational-graph-db/traits/GraphRelatableItemTrait.php');
+require_once($root . '/dna/vendor/neam/yii-i18n-tools/traits/PoContentsAttributeTrait.php');
+
 // TODO: use ItemTypes::where('generate_yii_rest_api_crud') or similar when in use
 $itemTypes = [
     "Composition",
@@ -80,6 +82,7 @@ class ItemListConfig extends \barebones\ActiveRecord
 class I18nCatalog extends \barebones\ActiveRecord
 {
     use I18nCatalogTrait;
+    use PoContentsAttributeTrait;
 
     public $__table = 'i18n_catalog';
 }
