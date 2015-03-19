@@ -31,6 +31,9 @@ abstract class RestApiSirTrevorBlock extends CModel
      * - html_chunk
      * - download_link
      * - video_file
+     * - item_list_config
+     * - slideshow_file
+     * - visualization
      */
     public $type;
 
@@ -52,7 +55,7 @@ abstract class RestApiSirTrevorBlock extends CModel
         return array(
             array('context, id, type', 'required'),
             array('id', 'length', 'is' => 32),
-            array('type', 'in', 'range' => array('text', 'heading', 'quote', 'list', 'linked_image', 'html_chunk', 'download_link', 'video_file')),
+            array('type', 'in', 'range' => array('text', 'heading', 'quote', 'list', 'linked_image', 'html_chunk', 'download_link', 'video_file', 'item_list_config', 'slideshow_file', 'visualization')),
         );
     }
 
