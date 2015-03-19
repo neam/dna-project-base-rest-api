@@ -14,19 +14,6 @@
  *
  * Properties made available through the RestrictedAccessBehavior class:
  * @property boolean $enableRestriction
- *
- * Methods made available through the WRestModelBehavior class:
- * @method array getCreateAttributes
- * @method array getUpdateAttributes
- *
- * Methods made available through the ContributorBehavior class:
- * @method array getContributors()
- *
- * Methods made available through the RelatedBehavior class:
- * @method array getRelatedItems()
- *
- * Methods made available through the SirTrevorBehavior class:
- * @method array populateSirTrevorBlocks()
  */
 class RestApiComposition extends Composition implements RelatedResource, TranslatableResource
 {
@@ -43,27 +30,38 @@ class RestApiComposition extends Composition implements RelatedResource, Transla
      */
     public function behaviors()
     {
-        return array_merge(
-            parent::behaviors(),
-            array(
-                'rest-model-behavior' => array(
-                    'class' => 'WRestModelBehavior',
+        // Implement only the behaviors we need instead of inheriting them to increase performance.
+        return array(
+            'i18n-attribute-messages' => array(
+                'class' => 'I18nAttributeMessagesBehavior',
+                'translationAttributes' => array(
+                    'heading',
+                    'subheading',
+                    'caption',
+                    'about',
                 ),
-                'contributor-behavior' => array(
-                    'class' => 'ContributorBehavior',
+                'languageSuffixes' => LanguageHelper::getCodes(),
+                'behaviorKey' => 'i18n-attribute-messages',
+                'displayedMessageSourceComponent' => 'displayedMessages',
+                'editedMessageSourceComponent' => 'editedMessages',
+            ),
+            'i18n-columns' => array(
+                'class' => 'I18nColumnsBehavior',
+                'translationAttributes' => array(
+                    'slug',
                 ),
-                'related-behavior' => array(
-                    'class' => 'RelatedBehavior',
-                ),
-                'sir-trevor-behavior' => array(
-                    'class' => 'SirTrevorBehavior',
-                ),
-            )
+                'multilingualRelations' => array(),
+            ),
+            'RestrictedAccessBehavior' => array(
+                'class' => '\RestrictedAccessBehavior',
+            ),
         );
     }
 
     /**
-     * @inheritdoc
+     * Returns "all" attributes for this resource.
+     *
+     * @return array
      */
     public function getAllAttributes()
     {
@@ -72,11 +70,14 @@ class RestApiComposition extends Composition implements RelatedResource, Transla
             'item_type' => 'go_item',
             'url' => $this->getRouteUrl(),
             'attributes' => array_merge($this->getListableAttributes(), array(
-                'composition' => $this->populateSirTrevorBlocks($this->composition, array('localize' => true))
+                'composition' => SirTrevorParser::populateSirTrevorBlocks($this->composition, array('localize' => true))
             )),
-            'contributors' => $this->getContributors(),
-            'related' => $this->getRelatedItems(),
+            'contributors' => ContributorItems::getItems($this->node_id),
+            'related' => RelatedItems::getItems($this->node_id),
             'groups' => $this->getGroupData(),
+            'home_navigation_tree' => RestApiNavigationTreeItem::buildTree(RestApiNavigationTreeItem::REF_HOME),
+            'footer_navigation_tree_1' => RestApiNavigationTreeItem::buildTree(RestApiNavigationTreeItem::REF_FOOTER1),
+            'footer_navigation_tree_2' => RestApiNavigationTreeItem::buildTree(RestApiNavigationTreeItem::REF_FOOTER2),
         );
     }
 
@@ -90,7 +91,7 @@ class RestApiComposition extends Composition implements RelatedResource, Transla
             'item_type' => 'go_item',
             'url' => $this->getRouteUrl(),
             'attributes' =>  array(
-                'composition_type' => ($this->compositionType !== null) ? $this->compositionType->ref : null,
+                'composition_type' => $this->getCompositionTypeReference(),
                 'heading' => $this->heading,
                 'subheading' => $this->subheading,
                 'about' => $this->about,
@@ -115,7 +116,7 @@ class RestApiComposition extends Composition implements RelatedResource, Transla
     public function getListableAttributes()
     {
         return array(
-            'composition_type' => ($this->compositionType !== null) ? $this->compositionType->ref : null,
+            'composition_type' => $this->getCompositionTypeReference(),
             'heading' => $this->heading,
             'subheading' => $this->subheading,
             'about' => $this->about,
@@ -203,19 +204,31 @@ class RestApiComposition extends Composition implements RelatedResource, Transla
     /**
      * @return string|null
      */
+    public function getCompositionTypeReference()
+    {
+        $command = \barebones\Barebones::fpdo()
+            //->select('ref')
+            ->from('composition_type')
+            ->where('id=:compositionTypeId', array(':compositionTypeId' => (int)$this->composition_type_id));
+        $result = $command->fetch();
+        return !empty($result) ? $result['ref'] : null;
+    }
+
+    /**
+     * @return string|null
+     */
     public function getRouteUrl()
     {
-        if (empty($this->node_id)) {
-            return null;
-        }
-
-        $route = Route::model()->findByAttributes(array(
-            'node_id' => (int)$this->node_id,
-            'canonical' => true,
-            'translation_route_language' => Yii::app()->language,
-        ));
-
-        return ($route !== null) ? $route->route : null;
+        // todo: enable multi lingual support once ready.
+        $command = \barebones\Barebones::fpdo()
+            //->select('route')
+            ->from('route')
+            ->where(
+                'canonical=1 AND node_id=:nodeId AND translation_route_language=:lang',
+                array(':nodeId' => (int)$this->node_id, ':lang' => Yii::app()->language)
+            );
+        $result = $command->fetch();
+        return !empty($result) ? $result['route'] : null;
     }
 
     /**
@@ -226,12 +239,11 @@ class RestApiComposition extends Composition implements RelatedResource, Transla
      */
     public function getThumbUrl($preset = 'original-public')
     {
-        if (empty($this->thumbMedia)) {
-            return null;
+        $mediaId = $this->thumb_media_id;
+        if (!empty($mediaId)) {
+            return \barebones\Barebones::createMediaUrl($this->thumb_media_id, $preset);
         }
-        $url = $this->thumbMedia->createUrl($preset, true);
-        // Rewriting so that the temporary files-api app is used to serve the url.
-        return str_replace(array("api/", "internal/"), "files-api/", $url);
+        return null;
     }
 
     /**
@@ -249,6 +261,7 @@ class RestApiComposition extends Composition implements RelatedResource, Transla
      */
     protected function getGroupData()
     {
+        // todo: refactor with barebones
         $groups = array();
         foreach ($this->node->nodeHasGroups as $gha) {
             $groups[] = $gha->group->title;

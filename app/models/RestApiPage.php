@@ -1,20 +1,28 @@
 <?php
 
 /**
- * Custom page resource model.
+ * Page resource model.
+ *
+ * Attributes:
  * @property string $heading
  * @property string $subheading
  * @property string $caption
  * @property string $about
  * @property string $menu_label
+ * @property string $nav_tree_to_use
+ * @property string $composition
+ * @property int $node_id
+ * @property int $composition_type_id
+ * @property int $icon_media_id
  *
- * @property RestApiCustomPage[] $restApiCustomPageChildren
- * @property RestApiCustomPage $restApiCustomPageParent
+ * Relations:
+ * @property RestApiPage[] $restApiCustomPageChildren
+ * @property RestApiPage $restApiCustomPageParent
  *
  * Properties made available through the RestrictedAccessBehavior class:
  * @property boolean $enableRestriction
  */
-class RestApiCustomPage extends Page implements TranslatableResource
+class RestApiPage extends Page
 {
     /**
      * @inheritdoc
@@ -29,6 +37,7 @@ class RestApiCustomPage extends Page implements TranslatableResource
      */
     public function behaviors()
     {
+        // Implement only the behaviors we need instead of inheriting them to increase performance.
         return array(
             'i18n-attribute-messages' => array(
                 'class' => 'I18nAttributeMessagesBehavior',
@@ -65,16 +74,16 @@ class RestApiCustomPage extends Page implements TranslatableResource
         return array_merge(
             parent::relations(),
             array(
-                'restApiCustomPageChildren' => array(self::HAS_MANY, 'RestApiCustomPage', 'parent_page_id'),
-                'restApiCustomPageParent' => array(self::BELONGS_TO, 'RestApiCustomPage', 'parent_page_id'),
+                'restApiCustomPageChildren' => array(self::HAS_MANY, 'RestApiPage', 'parent_page_id'),
+                'restApiCustomPageParent' => array(self::BELONGS_TO, 'RestApiPage', 'parent_page_id'),
             )
         );
     }
 
     /**
-     * The attributes that is returned by the REST api.
+     * Returns "all" attributes for this resource.
      *
-     * @return array the response.
+     * @return array
      */
     public function getAllAttributes()
     {
@@ -87,7 +96,9 @@ class RestApiCustomPage extends Page implements TranslatableResource
             'root_page' => $this->getRootPageHierarchy(),
             'contributors' => ContributorItems::getItems($this->node_id),
             'related' => RelatedItems::getItems($this->node_id),
-            'groups' => $this->getGroupData(),
+            'home_navigation_tree' => RestApiNavigationTreeItem::buildTree(RestApiNavigationTreeItem::REF_HOME),
+            'footer_navigation_tree_1' => RestApiNavigationTreeItem::buildTree(RestApiNavigationTreeItem::REF_FOOTER1),
+            'footer_navigation_tree_2' => RestApiNavigationTreeItem::buildTree(RestApiNavigationTreeItem::REF_FOOTER2),
         );
     }
 
@@ -114,12 +125,13 @@ class RestApiCustomPage extends Page implements TranslatableResource
     public function getListableAttributes()
     {
         return array(
-            'composition_type' => ($this->compositionType !== null) ? $this->compositionType->ref : null,
+            'composition_type' => $this->getCompositionTypeReference(),
+            'icon_url' => $this->getIconUrl(),
             'heading' => $this->heading,
             'subheading' => $this->subheading,
             'about' => $this->about,
             'caption' => $this->caption,
-            'composition' => SirTrevorParser::populateSirTrevorBlocks($this->composition, array('localize' => true)),
+            'composition' => SirTrevorParser::populateSirTrevorBlocks($this->composition),
         );
     }
 
@@ -140,104 +152,59 @@ class RestApiCustomPage extends Page implements TranslatableResource
     }
 
     /**
-     * @inheritdoc
+     * Returns the pages composition reference key.
+     *
+     * @return string|null the ref or null if not found.
      */
-    public function getTranslationAttributes()
+    public function getCompositionTypeReference()
     {
-        return array(
-            'heading',
-            'subheading',
-            'about',
-            'caption',
-            'composition',
-        );
+        $command = \barebones\Barebones::fpdo()
+            ->from('composition_type')
+            ->where('id=:compositionTypeId', array(':compositionTypeId' => (int)$this->composition_type_id));
+        $result = $command->fetch();
+        return !empty($result) ? $result['ref'] : null;
     }
 
     /**
-     * @inheritdoc
-     */
-    public function getTranslatedAttributes()
-    {
-        return array(
-            'node_id' => (int)$this->node_id,
-            'item_type' => 'custom_page',
-            'url' =>  $this->getRouteUrl(),
-            'attributes' => array(
-                'heading' => $this->_heading,
-                'subheading' => $this->_subheading,
-                'about' => $this->_about,
-                'caption' => $this->_caption,
-                'composition' => SirTrevorParser::populateSirTrevorBlocks(
-                    $this->composition,
-                    array(
-                        'localize' => false,
-                        'mode' => RestApiSirTrevorBlockNode::MODE_TRANSLATION,
-                    )
-                ),
-            ),
-            'translations' => array(
-                'heading' => $this->heading,
-                'subheading' => $this->subheading,
-                'about' => $this->about,
-                'caption' => $this->caption,
-                // We need to populate the blocks again, with localizations this time.
-                'composition' => SirTrevorParser::populateSirTrevorBlocks(
-                    $this->composition,
-                    array(
-                        'localize' => true,
-                        'mode' => RestApiSirTrevorBlockNode::MODE_TRANSLATION,
-                    )
-                ),
-            ),
-            'labels' => array(
-                // todo
-//                'heading' => $this->getAttributeLabel('heading'),
-//                'subheading' => $this->getAttributeLabel('subheading'),
-//                'about' => $this->getAttributeLabel('about'),
-//                'caption' => $this->getAttributeLabel('caption'),
-            ),
-        );
-    }
-
-    /**
-     * @return string|null
+     * Returns the canonical route for this page.
+     *
+     * @return string|null the route or null if none is found.
      */
     public function getRouteUrl()
     {
-        // todo: refactor with barebones
-        if (empty($this->node_id)) {
-            return null;
-        }
-
-        $route = Route::model()->findByAttributes(array(
-            'node_id' => (int)$this->node_id,
-            'canonical' => true,
-            'translation_route_language' => Yii::app()->language,
-        ));
-
-        return ($route !== null) ? $route->route : null;
+        // todo: enable multi lingual support once ready.
+        $command = \barebones\Barebones::fpdo()
+            ->from('route')
+            ->where(
+                'canonical=1 AND node_id=:nodeId'/*translation_route_language=:lang*/,
+                array(':nodeId' => (int)$this->node_id/*, ':lang' => Yii::app()->language*/)
+            );
+        $result = $command->fetch();
+        return !empty($result) ? $result['route'] : null;
     }
 
     /**
-     * @param RestApiCustomPage $page
-     * @return RestApiCustomPage
+     * @param RestApiPage $page
+     * @return RestApiPage
      */
     public function loadRootPage($page)
     {
-        if (empty($page->restApiCustomPageParent)) {
+        $parent = $page->restApiCustomPageParent;
+        if (empty($parent)) {
             return $page;
         }
         return $this->loadRootPage($page->restApiCustomPageParent);
     }
 
     /**
-     * @param RestApiCustomPage $page
+     * @param RestApiPage $page
      * @param array $hierarchy
      */
     public function setChildren($page, &$hierarchy)
     {
-        if (!empty($page->restApiCustomPageChildren)) {
-            foreach ($page->restApiCustomPageChildren as $child) {
+        $children = $page->restApiCustomPageChildren;
+        if (!empty($children)) {
+            foreach ($children as $child) {
                 $childHierarchy = $child->getHierarchyAttributes();
                 $child->setChildren($child, $childHierarchy);
                 $hierarchy['children'][] = $childHierarchy;
@@ -246,25 +213,16 @@ class RestApiCustomPage extends Page implements TranslatableResource
     }
 
     /**
-     * Gets the group data to include in the response.
+     * Returns the page icon url.
      *
-     * Format:
-     *
-     * array(
-     *     'GapminderOrg',
-     *     'Translators',
-     *     ...
-     * )
-     *
-     * @return array the data.
+     * @return null|string the url.
      */
-    protected function getGroupData()
+    public function getIconUrl()
     {
-        // todo: refactor with barebones
-        $groups = array();
-        foreach ($this->node->nodeHasGroups as $gha) {
-            $groups[] = $gha->group->title;
+        $mediaId = $this->icon_media_id;
+        if (!empty($mediaId)) {
+            return \barebones\Barebones::createMediaUrl($mediaId, 'icon-80');
         }
-        return array_unique($groups);
+        return null;
     }
 }

@@ -24,7 +24,7 @@ class SirTrevorBlockFactory extends \CApplicationComponent
      * The data must include at least an `id` and a `type`.
      *
      * @param array $data the data for the block model.
-     * @param TranslatableResource|SirTrevorBehavior $parent the context model that includes the block in it's composition.
+     * @param TranslatableResource $parent the context model that includes the block in it's composition.
      * @return RestApiSirTrevorBlock the block model.
      * @throws \CException if model cannot be created.
      */
@@ -36,6 +36,13 @@ class SirTrevorBlockFactory extends \CApplicationComponent
         if (!isset(self::$blocks[$data['type']])) {
             throw new \CException(sprintf('No block model found for `%s`.', $data['type']));
         }
+
+//        $command = \barebones\Barebones::fpdo()
+//            //->select('id')
+//            ->from('item')
+//            ->where('node_id=:nodeId', array(':nodeId' => (int)$block->data->node_id));
+//        $result = $command->fetch();
+
         /** @var RestApiSirTrevorBlock $model */
         $model = new self::$blocks[$data['type']]();
         // Only apply attributes to non-node referring blocks. Blocks referring nodes don't have any data anyways.

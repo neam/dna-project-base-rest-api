@@ -8,11 +8,6 @@
  *
  * Properties made available through the RestrictedAccessBehavior class:
  * @property boolean $enableRestriction
- *
- * Methods made available through the WRestModelBehavior class:
- * @method array getAllAttributes
- * @method array getCreateAttributes
- * @method array getUpdateAttributes
  */
 class RestApiDownloadLink extends DownloadLink
 {
@@ -29,13 +24,22 @@ class RestApiDownloadLink extends DownloadLink
      */
     public function behaviors()
     {
-        return array_merge(
-            parent::behaviors(),
-            array(
-                'rest-model-behavior' => array(
-                    'class' => 'WRestModelBehavior',
+        // Implement only the behaviors we need instead of inheriting them to increase performance.
+        return array(
+            'i18n-attribute-messages' => array(
+                'class' => 'I18nAttributeMessagesBehavior',
+                'translationAttributes' => array(
+                    'title',
+                    'slug',
                 ),
-            )
+                'languageSuffixes' => LanguageHelper::getCodes(),
+                'behaviorKey' => 'i18n-attribute-messages',
+                'displayedMessageSourceComponent' => 'displayedMessages',
+                'editedMessageSourceComponent' => 'editedMessages',
+            ),
+            'RestrictedAccessBehavior' => array(
+                'class' => '\RestrictedAccessBehavior',
+            ),
         );
     }
 
@@ -46,11 +50,10 @@ class RestApiDownloadLink extends DownloadLink
      */
     public function getLinkUrl()
     {
-        if (empty($this->fileMedia)) {
-            return null;
+        $mediaId = $this->file_media_id;
+        if (!empty($mediaId)) {
+            return \barebones\Barebones::createMediaUrl($mediaId, 'original');
         }
-        $url = $this->fileMedia->createUrl('original', true);
-        // Rewriting so that the temporary files-api app is used to serve the url.
-        return str_replace(array("api/", "internal/"), "files-api/", $url);
+        return null;
     }
 }

@@ -13,13 +13,6 @@
  *
  * Properties made available through the RestrictedAccessBehavior class:
  * @property boolean $enableRestriction
- *
- * Methods made available through the WRestModelBehavior class:
- * @method array getCreateAttributes
- * @method array getUpdateAttributes
- *
- * Methods made available through the RelatedBehavior class:
- * @method array getRelatedItems()
  */
 class RestApiVideoFile extends VideoFile
 {
@@ -36,21 +29,34 @@ class RestApiVideoFile extends VideoFile
      */
     public function behaviors()
     {
-        return array_merge(
-            parent::behaviors(),
-            array(
-                'rest-model-behavior' => array(
-                    'class' => 'WRestModelBehavior',
+        // Implement only the behaviors we need instead of inheriting them to increase performance.
+        return array(
+            'i18n-attribute-messages' => array(
+                'class' => 'I18nAttributeMessagesBehavior',
+                'translationAttributes' => array(
+                    'title',
+                    'caption',
+                    'about',
                 ),
-                'related-behavior' => array(
-                    'class' => 'RelatedBehavior',
-                ),
-            )
+                'languageSuffixes' => LanguageHelper::getCodes(),
+                'behaviorKey' => 'i18n-attribute-messages',
+                'displayedMessageSourceComponent' => 'displayedMessages',
+                'editedMessageSourceComponent' => 'editedMessages',
+            ),
+            'i18n-columns' => array(
+                'class' => 'I18nColumnsBehavior',
+                'translationAttributes' => array('slug'),
+            ),
+            'RestrictedAccessBehavior' => array(
+                'class' => '\RestrictedAccessBehavior',
+            ),
         );
     }
 
     /**
-     * @inheritdoc
+     * Returns "all" attributes for this resource.
+     *
+     * @return array
      */
     public function getAllAttributes()
     {
@@ -74,7 +80,7 @@ class RestApiVideoFile extends VideoFile
                     '110x66' => $this->getThumbUrl('110x66'),
                 ),
             ),
-            'related' => $this->getRelatedItems(),
+            'related' => RelatedItems::getItems($this->node_id),
         );
     }
 
@@ -83,17 +89,13 @@ class RestApiVideoFile extends VideoFile
      */
     public function getRouteUrl()
     {
-        if (empty($this->node_id)) {
-            return null;
-        }
-
-        $route = Route::model()->findByAttributes(array(
-            'node_id' => (int)$this->node_id,
-            'canonical' => true,
-            'translation_route_language' => Yii::app()->language,
-        ));
-
-        return ($route !== null) ? $route->route : null;
+        // todo: enable multi lingual support once ready.
+        $command = Yii::app()->getDb()->createCommand()
+            ->select('route')
+            ->from('route')
+            ->where('canonical=1 AND node_id=:nodeId AND translation_route_language=:lang');
+        $route = $command->queryScalar(array(':nodeId' => (int)$this->node_id, ':lang' => Yii::app()->language));
+        return !empty($route) ? $route : null;
     }
 
     /**
@@ -104,7 +106,7 @@ class RestApiVideoFile extends VideoFile
      */
     public function getUrlSubtitles()
     {
-        return Yii::app()->createAbsoluteUrl('/v1/videoFile/subtitles/' . $this->id);
+        return \barebones\Barebones::createAbsoluteUrl('/v1/videoFile/subtitles/' . $this->id, ["lang"=>Yii::app()->language]);
     }
 
     /**
@@ -115,12 +117,11 @@ class RestApiVideoFile extends VideoFile
      */
     public function getThumbUrl($preset)
     {
-        if (empty($this->thumbnailMedia)) {
-            return null;
+        $mediaId = $this->thumbnail_media_id;
+        if (!empty($mediaId)) {
+            return \barebones\Barebones::createMediaUrl($mediaId, $preset);
         }
-        $url = $this->thumbnailMedia->createUrl($preset, true);
-        // Rewriting so that the temporary files-api app is used to serve the url.
-        return str_replace(array("api/", "internal/"), "files-api/", $url);
+        return null;
     }
 
     /**
@@ -130,12 +131,11 @@ class RestApiVideoFile extends VideoFile
      */
     public function getUrlMp4()
     {
-        if (empty($this->clipMp4Media)) {
-            return null;
+        $mediaId = $this->clip_mp4_media_id;
+        if (!empty($mediaId)) {
+            return \barebones\Barebones::createMediaUrl($mediaId, 'original-public-mp4');
         }
-        $url = $this->clipMp4Media->createUrl('original-public-mp4', true);
-        // Rewriting so that the temporary files-api app is used to serve the url.
-        return str_replace(array("api/", "internal/"), "files-api/", $url);
+        return null;
     }
 
     /**
@@ -145,11 +145,10 @@ class RestApiVideoFile extends VideoFile
      */
     public function getUrlWebm()
     {
-        if (empty($this->clipWebmMedia)) {
-            return null;
+        $mediaId = $this->clip_webm_media_id;
+        if (!empty($mediaId)) {
+            return \barebones\Barebones::createMediaUrl($mediaId, 'original-public-webm');
         }
-        $url = $this->clipWebmMedia->createUrl('original-public-webm', true);
-        // Rewriting so that the temporary files-api app is used to serve the url.
-        return str_replace(array("api/", "internal/"), "files-api/", $url);
+        return null;
     }
 }

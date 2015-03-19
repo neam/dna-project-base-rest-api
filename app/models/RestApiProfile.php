@@ -36,18 +36,16 @@ class RestApiProfile extends Profile implements RelatedResource
      */
     public function behaviors()
     {
-        return array_merge(
-            parent::behaviors(),
-            array(
-                'rest-model-behavior' => array(
-                    'class' => 'WRestModelBehavior',
-                ),
-            )
+        // Implement only the behaviors we need instead of inheriting them to increase performance.
+        return array(
+            'RestrictedAccessBehavior' => array(
+                'class' => '\RestrictedAccessBehavior',
+            ),
         );
     }
 
     /**
-     * The attributes that is returned by the REST api.
+     * Returns "all" attributes for this resource.
      *
      * @return array the response.
      */
@@ -68,7 +66,7 @@ class RestApiProfile extends Profile implements RelatedResource
             'about_me' => json_decode(str_replace('\\\-', '-', $this->about_me)),
             'my_links' => json_decode(str_replace('\\\-', '-', $this->my_links)),
             'contributions' => $this->getContributionData(),
-            'profile_picture' => $this->getPictureUrl(),
+            'profile_picture' => $this->getProfilePictureUrl(),
             'groups' => $this->getGroupData(),
         );
     }
@@ -98,6 +96,7 @@ class RestApiProfile extends Profile implements RelatedResource
      */
     protected function getSocialLinkData()
     {
+        // todo: refactor with barebones
         $data = array();
         foreach ($this->socialLinks as $socialLink) {
             $data[] = array(
@@ -127,6 +126,7 @@ class RestApiProfile extends Profile implements RelatedResource
      */
     protected function getContributionData()
     {
+        // todo: refactor with barebones
         $data = array();
         foreach ($this->contributions as $contribution) {
             $data[] = array(
@@ -159,9 +159,11 @@ class RestApiProfile extends Profile implements RelatedResource
      */
     protected function getGroupData()
     {
+        // todo: refactor with barebones
         $groups = array();
         foreach ($this->account->groupHasAccounts as $gha) {
-            if (!isset($groups[$gha->group->id])) {
+            $group = $gha->group;
+            if (!isset($groups[$group->id])) {
                 $groups[$gha->group->id] = array(
                     'id' => (int)$gha->group->id,
                     'name' => $gha->group->title,
@@ -172,5 +174,21 @@ class RestApiProfile extends Profile implements RelatedResource
             $groups[$gha->group->id]['roles'][] = $gha->role->title;
         }
         return array_values($groups);
+    }
+
+    /**
+     * Returns absolute url for the profile picture image.
+     *
+     * @param string $preset the image preset to use when generating the url.
+     * @return null|string the url or null if not found.
+     */
+    public function getProfilePictureUrl($preset = 'user-profile-picture')
+    {
+        $mediaId = $this->profile_picture_media_id;
+        if (!empty($mediaId)) {
+            return \barebones\Barebones::createMediaUrl($mediaId, $preset);
+        }
+        // TODO: provide a fallback profile picture when it is done/exists
+        return null;
     }
 }

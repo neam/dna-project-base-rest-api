@@ -8,11 +8,6 @@
  *
  * Properties made available through the RestrictedAccessBehavior class:
  * @property boolean $enableRestriction
- *
- * Methods made available through the WRestModelBehavior class:
- * @method array getAllAttributes
- * @method array getCreateAttributes
- * @method array getUpdateAttributes
  */
 class RestApiHtmlChunk extends HtmlChunk
 {
@@ -29,13 +24,21 @@ class RestApiHtmlChunk extends HtmlChunk
      */
     public function behaviors()
     {
-        return array_merge(
-            parent::behaviors(),
-            array(
-                'rest-model-behavior' => array(
-                    'class' => 'WRestModelBehavior',
+        // Implement only the behaviors we need instead of inheriting them to increase performance.
+        return array(
+            'i18n-attribute-messages' => array(
+                'class' => 'I18nAttributeMessagesBehavior',
+                'translationAttributes' => array(
+                    'markup',
                 ),
-            )
+                'languageSuffixes' => LanguageHelper::getCodes(),
+                'behaviorKey' => 'i18n-attribute-messages',
+                'displayedMessageSourceComponent' => 'displayedMessages',
+                'editedMessageSourceComponent' => 'editedMessages',
+            ),
+            'RestrictedAccessBehavior' => array(
+                'class' => '\RestrictedAccessBehavior',
+            ),
         );
     }
 }

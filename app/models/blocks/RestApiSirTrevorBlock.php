@@ -11,7 +11,7 @@ abstract class RestApiSirTrevorBlock extends CModel
     const MODE_TRANSLATION = 'translation';
 
     /**
-     * @var TranslatableResource|SirTrevorBehavior the context model that includes this block in it's composition.
+     * @var TranslatableResource the context model that includes this block in it's composition.
      */
     public $context;
 
@@ -98,7 +98,7 @@ abstract class RestApiSirTrevorBlock extends CModel
             throw new \CException('Invalid block data. Errors: ' . print_r($this->errors, true));
         }
 
-        $sourceBlock = $this->context->getSirTrevorBlockById($this->id);
+        $sourceBlock = SirTrevorParser::getSirTrevorBlockById($this->context->composition, $this->id);
         foreach ($this->getTranslatableAttributes() as $attr) {
             if (!isset($this->{$attr}, $sourceBlock['data'][$attr]) || empty($sourceBlock['data'][$attr])) {
                 continue;

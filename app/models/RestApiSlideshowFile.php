@@ -8,11 +8,6 @@
  * @property string $about
  * @property string $google_docs_id
  * @property string $slideshare_id
- *
- * Methods made available through the WRestModelBehavior class:
- * @method array getAllAttributes
- * @method array getCreateAttributes
- * @method array getUpdateAttributes
  */
 class RestApiSlideshowFile extends SlideshowFile
 {
@@ -29,13 +24,23 @@ class RestApiSlideshowFile extends SlideshowFile
      */
     public function behaviors()
     {
-        return array_merge(
-            parent::behaviors(),
-            array(
-                'rest-model-behavior' => array(
-                    'class' => 'WRestModelBehavior',
+        // Implement only the behaviors we need instead of inheriting them to increase performance.
+        return array(
+            'i18n-attribute-messages' => array(
+                'class' => 'I18nAttributeMessagesBehavior',
+                'translationAttributes' => array(
+                    'slideshare_id',
+                    'google_docs_id',
+                    'processedFile',
                 ),
-            )
+                'languageSuffixes' => LanguageHelper::getCodes(),
+                'behaviorKey' => 'i18n-attribute-messages',
+                'displayedMessageSourceComponent' => 'displayedMessages',
+                'editedMessageSourceComponent' => 'editedMessages',
+            ),
+            'RestrictedAccessBehavior' => array(
+                'class' => '\RestrictedAccessBehavior',
+            ),
         );
     }
 }

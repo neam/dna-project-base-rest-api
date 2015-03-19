@@ -1,6 +1,6 @@
 <?php
 $scenario->group('data:test-db,coverage:basic');
-$I = new ApiGuy($scenario);
+$I = new \ApiGuy\ApiClientSteps($scenario);
 
 $I->wantTo('list all video files via the REST API as defined in api blueprint');
 $I->sendGET('videoFile');
@@ -16,15 +16,15 @@ $I->seeResponseContainsJson(array(
             "about" => "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
             "caption" => "No. Its the opposite.",
             "slug" => "will-saving-poor-children-lead-to-overpopulation",
-            "url_mp4" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=2&preset=original-public-mp4&title=saving-the-poor-children-gates-mp4-c73e4c2d0a-11.mp4&extension=.mp4&lang=en",
-            "url_webm" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=1&preset=original-public-webm&title=saving-the-poor-children-gates-webm-0037605f21-12.webm&extension=.webm&lang=en",
+            "url_mp4" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=2&preset=original-public-mp4&title=media&extension=.mp4",
+            "url_webm" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=1&preset=original-public-webm&title=media&extension=.webm",
             "url_youtube" => NULL,
             "url_subtitles" => "http://172.17.42.1:11111/api/v1/videoFile/subtitles/1?lang=en",
             "thumb" => array (
-                "original" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=original-public&title=video.png&extension=.jpeg&lang=en",
-                "735x444" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=735x444&title=video.png&extension=.jpg&lang=en",
-                "160x96" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=160x96&title=video.png&extension=.jpg&lang=en",
-                "110x66" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=110x66&title=video.png&extension=.jpg&lang=en",
+                "original" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=original-public&title=media&extension=.jpeg",
+                "735x444" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=735x444&title=media&extension=.jpg",
+                "160x96" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=160x96&title=media&extension=.jpg",
+                "110x66" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=110x66&title=media&extension=.jpg",
             ),
         ),
         "related" => array()
@@ -38,15 +38,15 @@ $I->seeResponseContainsJson(array(
             "about" => "In this video Hans talks about how income and lifespan are related to each other.",
             "caption" => NULL,
             "slug" => "are-income-and-lifespan-related",
-            "url_mp4" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=4&preset=original-public-mp4&title=q-inc-lex-static-countries-v10-mp4-mp4-1583575d67-21.mp4&extension=.mp4&lang=en",
-            "url_webm" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=3&preset=original-public-webm&title=q-inc-lex-static-countries-v10-webmsd-webm-426e265f5e-20.webm&extension=.webm&lang=en",
+            "url_mp4" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=4&preset=original-public-mp4&title=media&extension=.mp4",
+            "url_webm" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=3&preset=original-public-webm&title=media&extension=.webm",
             "url_youtube" => NULL,
             "url_subtitles" => "http://172.17.42.1:11111/api/v1/videoFile/subtitles/2?lang=en",
             "thumb" => array (
-                "original" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=6&preset=original-public&title=IncLexMini.png&extension=.jpeg&lang=en",
-                "735x444" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=6&preset=735x444&title=IncLexMini.png&extension=.jpg&lang=en",
-                "160x96" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=6&preset=160x96&title=IncLexMini.png&extension=.jpg&lang=en",
-                "110x66" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=6&preset=110x66&title=IncLexMini.png&extension=.jpg&lang=en",
+                "original" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=6&preset=original-public&title=media&extension=.jpeg",
+                "735x444" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=6&preset=735x444&title=media&extension=.jpg",
+                "160x96" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=6&preset=160x96&title=media&extension=.jpg",
+                "110x66" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=6&preset=110x66&title=media&extension=.jpg",
             ),
         ),
         "related" => array(),
@@ -66,15 +66,15 @@ $I->seeResponseContainsJson(array(
         "about" => "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
         "caption" => "No. Its the opposite.",
         "slug" => "will-saving-poor-children-lead-to-overpopulation",
-        "url_mp4" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=2&preset=original-public-mp4&title=saving-the-poor-children-gates-mp4-c73e4c2d0a-11.mp4&extension=.mp4&lang=en",
-        "url_webm" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=1&preset=original-public-webm&title=saving-the-poor-children-gates-webm-0037605f21-12.webm&extension=.webm&lang=en",
+        "url_mp4" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=2&preset=original-public-mp4&title=media&extension=.mp4",
+        "url_webm" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=1&preset=original-public-webm&title=media&extension=.webm",
         "url_youtube" => NULL,
         "url_subtitles" => "http://172.17.42.1:11111/api/v1/videoFile/subtitles/1?lang=en",
         "thumb" => array (
-            "original" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=original-public&title=video.png&extension=.jpeg&lang=en",
-            "735x444" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=735x444&title=video.png&extension=.jpg&lang=en",
-            "160x96" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=160x96&title=video.png&extension=.jpg&lang=en",
-            "110x66" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=110x66&title=video.png&extension=.jpg&lang=en",
+            "original" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=original-public&title=media&extension=.jpeg",
+            "735x444" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=735x444&title=media&extension=.jpg",
+            "160x96" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=160x96&title=media&extension=.jpg",
+            "110x66" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=110x66&title=media&extension=.jpg",
         ),
     ),
     "related" => array()
