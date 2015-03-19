@@ -98,7 +98,7 @@ abstract class RestApiSirTrevorBlock extends CModel
             throw new \CException('Invalid block data. Errors: ' . print_r($this->errors, true));
         }
 
-        $sourceBlock = SirTrevorParser::getSirTrevorBlockById($this->context->composition, $this->id);
+        $sourceBlock = SirTrevorParser::getSirTrevorBlockById($this->context->composition, $this->id, array('parent' => $this->context));
         foreach ($this->getTranslatableAttributes() as $attr) {
             if (!isset($this->{$attr}, $sourceBlock['data'][$attr]) || empty($sourceBlock['data'][$attr])) {
                 continue;

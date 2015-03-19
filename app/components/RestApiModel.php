@@ -47,7 +47,7 @@ class RestApiModel
         'DownloadLink' => 'RestApiDownloadLink',
         'SlideshowFile' => 'RestApiSlideshowFile',
         'VideoFile' => 'RestApiVideoFile',
-        'ItemListConfig' => 'RestApiItemList',
+        'ItemListConfig' => 'RestApiItemListConfig',
     );
 
     /**
@@ -60,80 +60,117 @@ class RestApiModel
     );
 
     /**
-     * Returns a Rest API `item` model based on given AR.
+     * Returns a Rest API `item` model based on id and class.
      *
      * @see RestApiModel::$itemModels
-     * @param ActiveRecord $item the AR to load the Rest API model by.
-     * @return WRestModelBehavior|null the model or null if not found.
+     * @param int $modelId the model id.
+     * @param string $modelClass the model class name.
+     * @return ActiveRecord|null the model or null if not found.
      */
-    public static function loadItem(ActiveRecord $item)
+    public static function loadItemByIdAndClass($modelId, $modelClass)
     {
-        return self::loadFromClassMap($item, self::$itemModels);
+        return self::loadByIdAndClass($modelId, $modelClass, self::$itemModels);
     }
 
     /**
-     * Returns a Rest API `related` model based on given AR.
+     * Returns a Rest API `related` model based on model id and class.
      *
      * @see RestApiModel::$relatedModels
-     * @param ActiveRecord $item the AR to load the Rest API model by.
+     * @param int $modelId the model id.
+     * @param string $modelClass the model class name.
      * @return RelatedResource|null the model or null if not found.
      */
-    public static function loadRelated(ActiveRecord $item)
+    public static function loadRelatedByIdAndClass($modelId, $modelClass)
     {
-        return self::loadFromClassMap($item, self::$relatedModels);
+        return self::loadByIdAndClass($modelId, $modelClass, self::$relatedModels);
     }
 
     /**
-     * Returns a Rest API `translatable` model based on given AR.
+     * Returns a Rest API `translatable` model based on node id.
      *
      * @see RestApiModel::$translatableModels
-     * @param ActiveRecord $item the AR to load the Rest API model by.
-     * @return TranslatableResource|null the model or null if not found.
+     * @param int $nodeId the node id.
+     * @return ActiveRecord|null the model or null if not found.
      */
-    public static function loadTranslatable(ActiveRecord $item)
+    public static function loadTranslatableById($nodeId)
     {
-        return self::loadFromClassMap($item, self::$translatableModels);
+        $result = self::loadByNodeId($nodeId);
+        if (is_null($result)) {
+            return null;
+        }
+        return self::loadByIdAndClass($result['modelId'], $result['modelClass'], self::$translatableModels);
     }
 
     /**
-     * Returns a Rest API `sir trevor block node` model based on given AR.
+     * Returns a Rest API `sir trevor block` model based on node id.
      *
      * @see RestApiModel::$sirTrevorBlockModels
-     * @param ActiveRecord $item the AR to load the Rest API model by.
-     * @return WRestModelBehavior|null the model or null if not found.
+     * @param int $nodeId the node id.
+     * @return ActiveRecord|null the model or null if not found.
      */
-    public static function loadSirTrevorBlockNode(ActiveRecord $item)
+    public static function loadSirTrevorBlockById($nodeId)
     {
-        return self::loadFromClassMap($item, self::$sirTrevorBlockModels);
+        $result = self::loadByNodeId($nodeId);
+        if (is_null($result)) {
+            return null;
+        }
+        return self::loadByIdAndClass($result['modelId'], $result['modelClass'], self::$sirTrevorBlockModels);
     }
 
     /**
      * Checks if given class has an `item_list_config` model and returns it's class name.
      *
      * @see RestApiModel::$itemListModels
-     * @param string $className the class name to search the model by.
+     * @param string $modelClass the class name to search the model by.
      * @return string|bool the class name or false if not found.
      */
-    public static function getItemListItemClass($className)
+    public static function getItemListConfigItemClass($modelClass)
     {
-        return isset(self::$itemListModels[$className]) ? self::$itemListModels[$className] : false;
+        return isset(self::$itemListModels[$modelClass]) ? self::$itemListModels[$modelClass] : false;
     }
 
     /**
-     * Loads an Rest API model from given class map based on provided AR's class.
+     * Loads the model id and class for given node id.
      *
-     * @param ActiveRecord $item the AR to load the Rest API model by.
-     * @param array $map the map where to find the model.
-     * @return ActiveRecord the model or null if not found.
+     * @param int $nodeId the node id.
+     * @return array|null an array with keys `modelId` and `modelClass` or null if not found.
      */
-    protected static function loadFromClassMap(ActiveRecord $item, array $map)
+    protected static function loadByNodeId($nodeId)
     {
-        $className = get_class($item);
-        if (!isset($map[$className])) {
+        $modelId = null;
+        $modelClass = null;
+        $command = Yii::app()->getDb()->createCommand()
+            ->select('id, model_class')
+            ->from('item')
+            ->where('node_id=:nodeId');
+        $row = $command->queryRow(true, array(':nodeId' => (int) $nodeId));
+        if (!empty($row)) {
+            $modelId = (int) $row['id'];
+            $modelClass = (string) $row['model_class'];
+        }
+        if (empty($modelId) || empty($modelClass)) {
             return null;
         }
-        return isset(self::$_arCache[$map[$className]][$item->id])
-            ? self::$_arCache[$map[$className]][$item->id]
-            : (self::$_arCache[$map[$className]][$item->id] = ActiveRecord::model($map[$className])->findByPk($item->id));
+        return array('modelId' => $modelId, 'modelClass' => $modelClass);
     }
-} 
+
+    /**
+     * Loads a model base don id and class from given map.
+     *
+     * @param int $modelId the model id.
+     * @param string $modelClass the model class.
+     * @param array $map the map.
+     * @return CActiveRecord|null the rest model or null if not found.
+     */
+    protected static function loadByIdAndClass($modelId, $modelClass, array $map)
+    {
+        if (!isset($map[$modelClass])) {
+            return null;
+        }
+        $restModelClass = $map[$modelClass];
+        if (!isset(self::$_arCache[$restModelClass][$modelId])) {
+            self::$_arCache[$restModelClass][$modelId] = CActiveRecord::model($restModelClass)->findByPk($modelId);
+        }
+        return self::$_arCache[$restModelClass][$modelId];
+    }
+}

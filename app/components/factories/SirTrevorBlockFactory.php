@@ -17,6 +17,7 @@ class SirTrevorBlockFactory extends \CApplicationComponent
         'video_file' => 'RestApiSirTrevorBlockVideoFile',
         'item_list_config' => 'RestApiSirTrevorBlockItemList',
         'slideshow_file' => 'RestApiSirTrevorBlockSlideshowFile',
+        'visualization' => 'RestApiSirTrevorBlockVisualization',
     );
 
     /**
@@ -31,17 +32,11 @@ class SirTrevorBlockFactory extends \CApplicationComponent
     public function forgeBlock(array $data, $parent)
     {
         if (!isset($data['type'], $data['id'])) {
-            throw new \CException('Block data is missing either `type` or `id`.');
+            throw new \RestApiInvalidBlockData('Block data is missing either `type` or `id`.');
         }
         if (!isset(self::$blocks[$data['type']])) {
-            throw new \CException(sprintf('No block model found for `%s`.', $data['type']));
+            throw new \RestApiNoBlockModelFound(sprintf('No block model found for `%s`.', $data['type']));
         }
-
-//        $command = \barebones\Barebones::fpdo()
-//            //->select('id')
-//            ->from('item')
-//            ->where('node_id=:nodeId', array(':nodeId' => (int)$block->data->node_id));
-//        $result = $command->fetch();
 
         /** @var RestApiSirTrevorBlock $model */
         $model = new self::$blocks[$data['type']]();
@@ -59,4 +54,14 @@ class SirTrevorBlockFactory extends \CApplicationComponent
         }
         return $model;
     }
+}
+
+class RestApiInvalidBlockData extends CException
+{
+
+}
+
+class RestApiNoBlockModelFound extends CException
+{
+
 }

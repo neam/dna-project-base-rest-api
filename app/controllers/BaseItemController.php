@@ -47,8 +47,7 @@ class BaseItemController extends AppRestController
         if (!ctype_digit($node_id)) {
             throw new CHttpException(404, sprintf('Invalid node id %s - node ids must be numerical.', $node_id));
         }
-        list($modelId, $modelClass) = $this->loadByNodeId($node_id);
-        $model = $this->loadModelByIdAndClass($modelId, $modelClass);
+        $model = $this->loadByNodeId($node_id);
         $this->sendResponse(200, $model->getAllAttributes());
     }
 
@@ -65,14 +64,13 @@ class BaseItemController extends AppRestController
         if (ctype_digit($route)) {
             throw new CHttpException(404, sprintf('Invalid route %s - routes must start with "/".', $route));
         }
-        list($modelId, $modelClass) = $this->loadByRoute($route);
-        $model = $this->loadModelByIdAndClass($modelId, $modelClass);
+        $model = $this->loadByRoute($route);
         $this->sendResponse(200, $model->getAllAttributes());
     }
 
     /**
      * @param int $node_id the node id of the item to get, e.g 1234
-     * @return array
+     * @return ActiveRecord
      * @throws CHttpException
      */
     public function loadByNodeId($node_id)
@@ -89,14 +87,18 @@ class BaseItemController extends AppRestController
             $modelClass = (string) $row['model_class'];
         }
         if (empty($modelId) || empty($modelClass)) {
-            throw new CHttpException(404, sprintf('Could not find node by node id %s.', $node_id));
+            throw new CHttpException(404, sprintf('Could not find node #%s.', $node_id));
         }
-        return [$modelId, $modelClass];
+        $model = RestApiModel::loadItemByIdAndClass($modelId, $modelClass);
+        if (is_null($model)) {
+            throw new CHttpException(404, sprintf('Could not find model %s#%d.', $modelClass, $modelId));
+        }
+        return $model;
     }
 
     /**
      * @param string $route the route of the item to get, e.g."/1234", "/terms".
-     * @return array
+     * @return ActiveRecord
      * @throws CHttpException
      */
     public function loadByRoute($route)
@@ -121,27 +123,9 @@ class BaseItemController extends AppRestController
         if (empty($modelId) || empty($modelClass)) {
             throw new CHttpException(404, sprintf('Could not find node by route %s.', $route));
         }
-        return [$modelId, $modelClass];
-    }
-
-    /**
-     * Loads a Rest API model based on model id and class
-     *
-     * @param $modelId
-     * @param $modelClass
-     * @return ActiveRecord the Rest API model.
-     * @throws CHttpException
-     */
-    public function loadModelByIdAndClass($modelId, $modelClass)
-    {
-        if (!isset(self::$classMap[$modelClass])) {
-            throw new CHttpException(404, sprintf('Could not find resource for %s.', $modelClass));
-        }
-        $resourceClass = self::$classMap[$modelClass];
-        /** @var ActiveRecord $model */
-        $model = CActiveRecord::model($resourceClass)->findByPk($modelId);
-        if ($model === null) {
-            throw new CHttpException(404, sprintf('Could not find resource for %s#%d.', $modelClass, $modelId));
+        $model = RestApiModel::loadItemByIdAndClass($modelId, $modelClass);
+        if (is_null($model)) {
+            throw new CHttpException(404, sprintf('Could not find model %s#%d.', $modelClass, $modelId));
         }
         return $model;
     }

@@ -131,7 +131,7 @@ class RestApiPage extends Page
             'subheading' => $this->subheading,
             'about' => $this->about,
             'caption' => $this->caption,
-            'composition' => SirTrevorParser::populateSirTrevorBlocks($this->composition),
+            'composition' => SirTrevorParser::populateSirTrevorBlocks($this->composition, array('localize' => true, 'parent' => $this)),
         );
     }
 

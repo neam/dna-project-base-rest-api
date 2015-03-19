@@ -70,7 +70,7 @@ class RestApiComposition extends Composition implements RelatedResource, Transla
             'item_type' => 'go_item',
             'url' => $this->getRouteUrl(),
             'attributes' => array_merge($this->getListableAttributes(), array(
-                'composition' => SirTrevorParser::populateSirTrevorBlocks($this->composition, array('localize' => true))
+                'composition' => SirTrevorParser::populateSirTrevorBlocks($this->composition, array('localize' => true, 'parent' => $this))
             )),
             'contributors' => ContributorItems::getItems($this->node_id),
             'related' => RelatedItems::getItems($this->node_id),

@@ -203,7 +203,7 @@ class NavigationTreeItem extends \barebones\ActiveRecord
 }
 
 require_once($root . '/yiiapps/rest-api/app/interfaces/RelatedResource.php');
-require_once($root . '/yiiapps/rest-api/app/interfaces/SirTrevorBlock.php');
+require_once($root . '/yiiapps/rest-api/app/interfaces/TranslatableResource.php');
 
 $restApiItemTypes = [
     "Composition",

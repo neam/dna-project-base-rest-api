@@ -22,18 +22,6 @@
 class SirTrevorParser
 {
     /**
-     * @var array map of rest resource models per sir trevor item types (models must implement SirTrevorBlock interface).
-     */
-    protected static $sirTrevorItemMap = array(
-        'video_file' => 'RestApiVideoFile',
-        'html_chunk' => 'RestApiHtmlChunk',
-        'download_link' => 'RestApiDownloadLink',
-        'item_list_config' => 'RestApiItemListConfig',
-        'slideshow_file' => 'RestApiSlideshowFile',
-        'visualization' => 'RestApiVisualization',
-    );
-
-    /**
      * Populates Sir Trevor blocks with data from the nodes they represent.
      * Also localizes the blocks if the "localize" key is set to true in the options array and the app language is
      * different from the source language.
@@ -59,12 +47,14 @@ class SirTrevorParser
      *
      * @param string $composition the composition where the block should reside.
      * @param string $blockId the md5 hash of the block data.
+     * @param array $options
      * @return array|bool the block structure or false if not found.
      */
-    public static function getSirTrevorBlockById($composition, $blockId)
+    public static function getSirTrevorBlockById($composition, $blockId, array $options = array())
     {
         // Get the "un-localized" blocks.
-        $blocks = self::populateSirTrevorBlocks($composition, array('localize' => false));
+        $options = array_merge($options, array('localize' => false));
+        $blocks = self::populateSirTrevorBlocks($composition, $options);
         if (!empty($blocks) && isset($blocks['data']) && is_array($blocks['data'])) {
             foreach ($blocks['data'] as $block) {
                 if (!empty($block['id']) && $block['id'] === $blockId) {
@@ -92,7 +82,7 @@ class SirTrevorParser
 
             try {
                 /** @var RestApiSirTrevorBlockNode $model */
-                $model = \Yii::app()->getComponent('sirTrevorBlockFactory')->forgeBlock($block, $this->getOwner());
+                $model = \Yii::app()->getComponent('sirTrevorBlockFactory')->forgeBlock($block, $options['parent']);
                 if (isset($options['mode'])) {
                     $model->mode = $options['mode'];
                 }
@@ -118,7 +108,7 @@ class SirTrevorParser
                         }
                     }
                 }
-            } catch (\CException $e) {
+            } catch (\RestApiNoBlockModelFound $e) {
                 // No block model exists for this type of block. Just ignore it.
 
                 // If we are fetching localized blocks, then add zero progress to all blocks that don't support translation.

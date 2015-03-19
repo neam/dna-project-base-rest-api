@@ -1,13 +1,13 @@
 <?php
 
-class RestApiSirTrevorBlockSlideshowFile extends RestApiSirTrevorBlockNode
+class RestApiSirTrevorBlockVisualization extends RestApiSirTrevorBlockNode
 {
     /**
      * @inheritdoc
      */
     public function getTranslatableAttributes()
     {
-        // slideshow contain only data from it's item type. these are not currently translatable.
+        // visualization contain only data from it's item type. these are not currently translatable.
         return array();
     }
 
@@ -16,7 +16,7 @@ class RestApiSirTrevorBlockSlideshowFile extends RestApiSirTrevorBlockNode
      */
     public function getItemType()
     {
-        return 'slideshow_file';
+        return 'visualization';
     }
 
     /**
@@ -40,15 +40,16 @@ class RestApiSirTrevorBlockSlideshowFile extends RestApiSirTrevorBlockNode
      */
     protected function getBlockData()
     {
-        /** @var RestApiSlideshowFile $model */
+        /** @var RestApiVisualization $model */
         $model = $this->loadReferredModel($this->nodeId);
         if (is_null($model)) {
             return array();
         }
 
         return array(
-            'google_docs_id' => $model->google_docs_id,
-            'slideshare_id' => $model->slideshare_id,
+            'state' => json_decode($model->state, true),
+            'title' => $model->title,
+            'tool' => $model->getToolCompositionAttributes(),
         );
     }
 }

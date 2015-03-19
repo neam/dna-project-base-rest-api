@@ -86,21 +86,23 @@ class RestApiSirTrevorBlockVideoFile extends RestApiSirTrevorBlockNode
     {
         /** @var RestApiVideoFile $model */
         $model = $this->loadReferredModel($this->nodeId);
-        if ($model !== null) {
-            $this->title = $model->_title;
-            $this->about = $model->_about;
-            $this->caption = $model->_caption;
-            $this->slug = $model->{"slug_".Yii::app()->sourceLanguage};
+        if (is_null($model)) {
+            return array();
+        }
 
-            $subtitles = $model->getParsedSubtitles();
-            $this->subtitles = array();
-            if (!empty($subtitles)) {
-                foreach ($subtitles as $subtitle) {
-                    $this->subtitles[] = array(
-                        'id' => (int)$subtitle->id,
-                        'sourceMessage' => $subtitle->sourceMessage,
-                    );
-                }
+        $this->title = $model->_title;
+        $this->about = $model->_about;
+        $this->caption = $model->_caption;
+        $this->slug = $model->{"slug_".Yii::app()->sourceLanguage};
+
+        $subtitles = $model->getParsedSubtitles();
+        $this->subtitles = array();
+        if (!empty($subtitles)) {
+            foreach ($subtitles as $subtitle) {
+                $this->subtitles[] = array(
+                    'id' => (int)$subtitle->id,
+                    'sourceMessage' => $subtitle->sourceMessage,
+                );
             }
         }
     }
@@ -112,7 +114,7 @@ class RestApiSirTrevorBlockVideoFile extends RestApiSirTrevorBlockNode
     {
         /** @var RestApiVideoFile $model */
         $model = $this->loadReferredModel($this->nodeId);
-        if ($model === null) {
+        if (is_null($model)) {
             return;
         }
 

@@ -88,7 +88,6 @@ $mainConfig = array(
 
                 array('<version>/translation/get', 'pattern' => '<version:v\d+>/item/translation/<nodeId:\d+>', 'verb' => 'GET'),
                 array('<version>/translation/update', 'pattern' => '<version:v\d+>/item/translation/<nodeId:\d+>', 'verb' => 'PUT, POST'),
-                array('<version>/item/get', 'pattern' => '<version:v\d+>/item/<id:\d+|[\w-\/]+>', 'verb' => 'GET'),
 
                 array('<version>/item/getByNodeId', 'pattern' => '<version:v\d+>/item/<node_id:\d+>', 'verb' => 'GET'),
                 array('<version>/item/getByRoute', 'pattern' => '<version:v\d+>/item/<route:[\w-\/]+>', 'verb' => 'GET'),

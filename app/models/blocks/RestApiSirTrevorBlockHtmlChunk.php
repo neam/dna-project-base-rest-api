@@ -58,9 +58,11 @@ class RestApiSirTrevorBlockHtmlChunk extends RestApiSirTrevorBlockNode
     {
         /** @var RestApiHtmlChunk $model */
         $model = $this->loadReferredModel($this->nodeId);
-        if ($model !== null) {
-            $this->markup = $model->_markup;
+        if (is_null($model)) {
+            return;
         }
+
+        $this->markup = $model->_markup;
     }
 
     /**
@@ -70,13 +72,13 @@ class RestApiSirTrevorBlockHtmlChunk extends RestApiSirTrevorBlockNode
     {
         /** @var RestApiHtmlChunk $model */
         $model = $this->loadReferredModel($this->nodeId);
-        if ($model === null) {
+        if (is_null($model)) {
             return array();
-        } else {
-            return array(
-                'markup' => $this->markup,
-            );
         }
+
+        return array(
+            'markup' => $this->markup,
+        );
     }
 
     /**
@@ -86,13 +88,15 @@ class RestApiSirTrevorBlockHtmlChunk extends RestApiSirTrevorBlockNode
     {
         /** @var RestApiHtmlChunk $model */
         $model = $this->loadReferredModel($this->nodeId);
-        if ($model !== null) {
-            foreach ($this->getTranslatableAttributes() as $attr) {
-                if (isset($this->{$attr}, $model->{$attr})) {
-                    if ($model->{$attr} !== $this->{$attr}) {
-                        $this->{$attr} = $model->{$attr};
-                        $this->countTranslated++;
-                    }
+        if (is_null($model)) {
+            return;
+        }
+
+        foreach ($this->getTranslatableAttributes() as $attr) {
+            if (isset($this->{$attr}, $model->{$attr})) {
+                if ($model->{$attr} !== $this->{$attr}) {
+                    $this->{$attr} = $model->{$attr};
+                    $this->countTranslated++;
                 }
             }
         }

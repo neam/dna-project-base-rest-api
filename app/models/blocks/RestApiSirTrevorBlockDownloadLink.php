@@ -58,9 +58,11 @@ class RestApiSirTrevorBlockDownloadLink extends RestApiSirTrevorBlockNode
     {
         /** @var RestApiDownloadLink $model */
         $model = $this->loadReferredModel($this->nodeId);
-        if ($model !== null) {
-            $this->title = $model->_title;
+        if (is_null($model)) {
+            return;
         }
+
+        $this->title = $model->_title;
     }
 
     /**
@@ -70,14 +72,14 @@ class RestApiSirTrevorBlockDownloadLink extends RestApiSirTrevorBlockNode
     {
         /** @var RestApiDownloadLink $model */
         $model = $this->loadReferredModel($this->nodeId);
-        if ($model === null) {
+        if (is_null($model)) {
             return array();
-        } else {
-            return array(
-                'title' => $this->title,
-                'url' => $model->getLinkUrl(),
-            );
         }
+
+        return array(
+            'title' => $this->title,
+            'url' => $model->getLinkUrl(),
+        );
     }
 
     /**
@@ -87,13 +89,15 @@ class RestApiSirTrevorBlockDownloadLink extends RestApiSirTrevorBlockNode
     {
         /** @var RestApiDownloadLink $model */
         $model = $this->loadReferredModel($this->nodeId);
-        if ($model !== null) {
-            foreach ($this->getTranslatableAttributes() as $attr) {
-                if (isset($this->{$attr}, $model->{$attr})) {
-                    if ($model->{$attr} !== $this->{$attr}) {
-                        $this->{$attr} = $model->{$attr};
-                        $this->countTranslated++;
-                    }
+        if (is_null($model)) {
+            return;
+        }
+
+        foreach ($this->getTranslatableAttributes() as $attr) {
+            if (isset($this->{$attr}, $model->{$attr})) {
+                if ($model->{$attr} !== $this->{$attr}) {
+                    $this->{$attr} = $model->{$attr};
+                    $this->countTranslated++;
                 }
             }
         }

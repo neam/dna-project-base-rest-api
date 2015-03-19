@@ -11,11 +11,6 @@ abstract class RestApiSirTrevorBlockNode extends RestApiSirTrevorBlock
     public $nodeId;
 
     /**
-     * @var array runtime cache for Node models.
-     */
-    private static $_nodeCache = array();
-
-    /**
      * @inheritdoc
      */
     public function translate(array $block)
@@ -30,7 +25,7 @@ abstract class RestApiSirTrevorBlockNode extends RestApiSirTrevorBlock
         }
 
         $model = $this->loadReferredModel((int)$block['data']['node_id']);
-        if ($model === null) {
+        if (is_null($model)) {
             return;
         }
 
@@ -51,19 +46,15 @@ abstract class RestApiSirTrevorBlockNode extends RestApiSirTrevorBlock
      * Loads the translatable node resource that acts as a Sir Trevor block.
      *
      * @param int|string $nodeId the node id of the referred resource.
-     * @return null|TranslatableResource the resource model.
-     * @throws CException if the model cannot be found.
+     * @return TranslatableResource|ActiveRecord|null the resource model or null if not found.
      */
     protected function loadReferredModel($nodeId)
     {
-        $node = isset(self::$_nodeCache[$nodeId])
-            ? self::$_nodeCache[$nodeId]
-            : (self::$_nodeCache[$nodeId] = Node::model()->findByPk((int)$nodeId));
-        if ($node === null) {
-            throw new \CException(sprintf('Failed to find node #%s.', $nodeId));
+        $model = RestApiModel::loadSirTrevorBlockById($nodeId);
+        if (is_null($model)) {
+            return null;
         }
-        $item = $node->item();
-        return RestApiModel::loadSirTrevorBlockNode($item);
+        return $model;
     }
 
     /**
@@ -73,9 +64,8 @@ abstract class RestApiSirTrevorBlockNode extends RestApiSirTrevorBlock
      */
     public function getBlockAttributeLabels()
     {
-        /** @var ActiveRecord $model */
         $model = $this->loadReferredModel($this->nodeId);
-        if ($model === null) {
+        if (is_null($model)) {
             return array();
         } else {
             $labels = array();

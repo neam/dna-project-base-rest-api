@@ -7,18 +7,12 @@
  * @property int $query_pageSize
  * @property int $query_filter_by_item_type_option_id
  */
-class RestApiItemListConfig extends ItemListConfig implements SirTrevorBlock
+class RestApiItemListConfig extends ItemListConfig
 {
-
-    public $config;
-
     /**
-     * @var array map of rest resource models per item active record class name (models must implement RelatedResource interface).
+     * @var array|null
      */
-    protected static $itemResourceMap = array(
-        'Composition' => 'RestApiComposition',
-        'Profile' => 'RestApiProfile',
-    );
+    public $config;
 
     /**
      * @inheritdoc
@@ -29,41 +23,11 @@ class RestApiItemListConfig extends ItemListConfig implements SirTrevorBlock
     }
 
     /**
-     * @inheritdoc
-     */
-    public function getCompositionAttributes()
-    {
-        $config = $this->getConfig();
-        return array(
-            'display_extent' => !empty($config['display_extent']) ? $config['display_extent'] : null,
-            'query' => array(
-                'item_type' => !empty($config['query_filter_by_item_type_table']) ? $config['query_filter_by_item_type_table'] : null,
-                'composition_type' => !empty($config['composition_type_ref']) ? $config['composition_type_ref'] : null,
-                'sort' => !empty($config['query_sort_ref']) ? $config['query_sort_ref'] : null,
-                'pageSize' => (int) $this->query_pageSize,
-            ),
-            // todo: do this once we have pagination.
-//           'pagination_metadata' => array(
-//                'currentPage' => '1',
-//                'itemCount' => '68',
-//                'limit' => '100',
-//                'offset' => '0',
-//                'pageCount' => '14',
-//                'pageSize' => '5',
-//                'pageVar' => 'foo',
-//                'params' => '???',
-//                'route' => '/sdfsdf/'
-//           ),
-            'items' => $this->getCompositionItems(),
-        );
-    }
-
-    /**
      * Gets the items for this resource model.
      *
      * @return array
      */
-    protected function getCompositionItems()
+    public function getItems()
     {
         $items = array();
         $itemTypeOptionId = $this->query_filter_by_item_type_option_id;
@@ -84,28 +48,6 @@ class RestApiItemListConfig extends ItemListConfig implements SirTrevorBlock
     }
 
     /**
-     * @inheritdoc
-     */
-    public function getCompositionItemType()
-    {
-        return 'item_list';
-    }
-
-    /**
-     * Gets the resource model class name for this resources items.
-     *
-     * @param array $config the item list config.
-     * @return bool|string the model name or false if not supported.
-     */
-    protected function getResourceModelName($config)
-    {
-        if (empty($config['query_filter_by_item_type_model_class']) || !isset(self::$itemResourceMap[$config['query_filter_by_item_type_model_class']])) {
-            return false;
-        }
-        return self::$itemResourceMap[$config['query_filter_by_item_type_model_class']];
-    }
-
-    /**
      * Fetch necessary data to build the item list config command
      * Uses a single joined query instead of multiple individual ones as would be the case when using
      * active record relations.
@@ -123,7 +65,7 @@ class RestApiItemListConfig extends ItemListConfig implements SirTrevorBlock
      * @return array the config.
      * @throws \Exception if config cannot be found.
      */
-    protected function getConfig()
+    public function getConfig()
     {
 
         if (!is_null($this->config)) {
@@ -158,6 +100,20 @@ class RestApiItemListConfig extends ItemListConfig implements SirTrevorBlock
         }
 
         return $this->config = $config;
+    }
+
+    /**
+     * Gets the resource model class name for this resources items.
+     *
+     * @param array $config the item list config.
+     * @return bool|string the model name or false if not supported.
+     */
+    protected function getResourceModelName($config)
+    {
+        if (!isset($config['query_filter_by_item_type_model_class'])) {
+            return false;
+        }
+        return RestApiModel::getItemListConfigItemClass($config['query_filter_by_item_type_model_class']);
     }
 
     /**

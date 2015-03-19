@@ -45,19 +45,20 @@ class RestApiSirTrevorBlockItemList extends RestApiSirTrevorBlockNode
             return array();
         }
 
-        /** @var RestApiItemList $model */
+        /** @var RestApiItemListConfig $model */
         $model = $this->loadReferredModel($this->nodeId);
-        if ($model === null) {
+        if (is_null($model)) {
             return array();
         }
+        $config = $model->getConfig();
 
         return array(
-            'display_extent' => !empty($model->displayExtentOption) ? $model->displayExtentOption->ref : null,
+            'display_extent' => !empty($config['display_extent']) ? $config['display_extent'] : null,
             'query' => array(
-                'item_type' => !empty($model->queryFilterByItemType) ? $model->queryFilterByItemType->table : null,
-                'composition_type' => !empty($model->queryFilterByCompositionType) ? $model->queryFilterByCompositionType->ref : null,
-                'sort' => (!empty($model->querySortOption) && !empty($model->querySortOption->ref)) ? $model->querySortOption->ref : null,
-                'pageSize' => (int)$model->query_pageSize,
+                'item_type' => !empty($config['query_filter_by_item_type_table']) ? $config['query_filter_by_item_type_table'] : null,
+                'composition_type' => !empty($config['composition_type_ref']) ? $config['composition_type_ref'] : null,
+                'sort' => !empty($config['query_sort_ref']) ? $config['query_sort_ref'] : null,
+                'pageSize' => (int) $model->query_pageSize,
             ),
             // todo: do this once we have pagination.
 //           'pagination_metadata' => array(

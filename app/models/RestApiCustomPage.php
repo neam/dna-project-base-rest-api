@@ -119,7 +119,7 @@ class RestApiCustomPage extends Page implements TranslatableResource
             'subheading' => $this->subheading,
             'about' => $this->about,
             'caption' => $this->caption,
-            'composition' => SirTrevorParser::populateSirTrevorBlocks($this->composition, array('localize' => true)),
+            'composition' => SirTrevorParser::populateSirTrevorBlocks($this->composition, array('localize' => true, 'parent' => $this)),
         );
     }
 
@@ -172,6 +172,7 @@ class RestApiCustomPage extends Page implements TranslatableResource
                     array(
                         'localize' => false,
                         'mode' => RestApiSirTrevorBlockNode::MODE_TRANSLATION,
+                        'parent' => $this
                     )
                 ),
             ),
@@ -186,6 +187,7 @@ class RestApiCustomPage extends Page implements TranslatableResource
                     array(
                         'localize' => true,
                         'mode' => RestApiSirTrevorBlockNode::MODE_TRANSLATION,
+                        'parent' => $this
                     )
                 ),
             ),

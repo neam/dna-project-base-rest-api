@@ -84,19 +84,17 @@ class BaseTranslationController extends AppRestController
     }
 
     /**
-     * Loads a Rest API model based on node id or model route.
+     * Loads a Rest API model based on node id.
      *
-     * @param int|string $id either node id or model route, e.g. 1234, "/1234", "/terms".
-     * @return WRestModelBehavior the Rest API model.
+     * @param int|string $id either node id.
+     * @return TranslatableResource|ActiveRecord the Rest API model.
      * @throws CHttpException
      */
     public function loadModel($id)
     {
-        $node = $this->loadNodeByIdOrRoute($id);
-        $item = $this->loadItemByNode($node);
-        $model = RestApiModel::loadTranslatable($item);
-        if ($model === null) {
-            throw new CHttpException(404, sprintf(Yii::t('rest-api', 'Could not find resource for "%s".'), get_class($item)));
+        $model = RestApiModel::loadTranslatableById($id);
+        if (is_null($model)) {
+            throw new CHttpException(404, sprintf('Could not find resource for node #%s.', $id));
         }
         return $model;
     }
