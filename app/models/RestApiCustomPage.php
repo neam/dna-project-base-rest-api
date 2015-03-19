@@ -192,11 +192,10 @@ class RestApiCustomPage extends Page implements TranslatableResource
                 ),
             ),
             'labels' => array(
-                // todo
-//                'heading' => $this->getAttributeLabel('heading'),
-//                'subheading' => $this->getAttributeLabel('subheading'),
-//                'about' => $this->getAttributeLabel('about'),
-//                'caption' => $this->getAttributeLabel('caption'),
+                'heading' => $this->getAttributeLabel('heading'),
+                'subheading' => $this->getAttributeLabel('subheading'),
+                'about' => $this->getAttributeLabel('about'),
+                'caption' => $this->getAttributeLabel('caption'),
             ),
         );
     }
@@ -206,18 +205,15 @@ class RestApiCustomPage extends Page implements TranslatableResource
      */
     public function getRouteUrl()
     {
-        // todo: refactor with barebones
-        if (empty($this->node_id)) {
-            return null;
-        }
-
-        $route = Route::model()->findByAttributes(array(
-            'node_id' => (int)$this->node_id,
-            'canonical' => true,
-            'translation_route_language' => Yii::app()->language,
-        ));
-
-        return ($route !== null) ? $route->route : null;
+        $command = \barebones\Barebones::fpdo()
+            //->select('route')
+            ->from('route')
+            ->where(
+                'canonical=1 AND node_id=:nodeId AND translation_route_language=:lang',
+                array(':nodeId' => (int)$this->node_id, ':lang' => Yii::app()->language)
+            );
+        $result = $command->fetch();
+        return !empty($result) ? $result['route'] : null;
     }
 
     /**
@@ -262,10 +258,14 @@ class RestApiCustomPage extends Page implements TranslatableResource
      */
     protected function getGroupData()
     {
-        // todo: refactor with barebones
         $groups = array();
-        foreach ($this->node->nodeHasGroups as $gha) {
-            $groups[] = $gha->group->title;
+        $command = Yii::app()->getDb()->createCommand()
+            ->select('title')
+            ->from('group')
+            ->leftJoin('node_has_group', '`node_has_group`.`group_id`=`group`.`id`')
+            ->where('`node_has_group`.`node_id`=:nodeId', array(':nodeId' => (int) $this->node_id));
+        foreach ($command->queryAll() as $row) {
+            $groups[] = $row['title'];
         }
         return array_unique($groups);
     }

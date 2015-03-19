@@ -96,12 +96,15 @@ class RestApiProfile extends Profile implements RelatedResource
      */
     protected function getSocialLinkData()
     {
-        // todo: refactor with barebones
         $data = array();
-        foreach ($this->socialLinks as $socialLink) {
+        $command = Yii::app()->getDb()->createCommand()
+            ->select('ref, url')
+            ->from('social_link')
+            ->where('profile_id=:profileId', array(':profileId' => (int) $this->id));
+        foreach ($command->queryAll() as $row) {
             $data[] = array(
-                'name' => MetaData::socialLinkRefToLabel($socialLink->ref),
-                'url' => $socialLink->url,
+                'name' => MetaData::socialLinkRefToLabel($row['ref']),
+                'url' => $row['url'],
             );
         }
         return $data;
@@ -126,13 +129,16 @@ class RestApiProfile extends Profile implements RelatedResource
      */
     protected function getContributionData()
     {
-        // todo: refactor with barebones
         $data = array();
-        foreach ($this->contributions as $contribution) {
+        $command = Yii::app()->getDb()->createCommand()
+            ->select('label, url, datetime')
+            ->from('contribution')
+            ->where('profile_id=:profileId', array(':profileId' => (int) $this->id));
+        foreach ($command->queryAll() as $row) {
             $data[] = array(
-                'label' => $contribution->label,
-                'url' => $contribution->url,
-                'datetime' => $contribution->datetime,
+                'label' => $row['label'],
+                'url' => $row['url'],
+                'datetime' => $row['datetime'],
             );
         }
         return $data;
@@ -159,19 +165,25 @@ class RestApiProfile extends Profile implements RelatedResource
      */
     protected function getGroupData()
     {
-        // todo: refactor with barebones
         $groups = array();
-        foreach ($this->account->groupHasAccounts as $gha) {
-            $group = $gha->group;
-            if (!isset($groups[$group->id])) {
-                $groups[$gha->group->id] = array(
-                    'id' => (int)$gha->group->id,
-                    'name' => $gha->group->title,
+        $command = Yii::app()->getDb()->createCommand()
+            ->select('group.id AS group_id, group.title AS group_title, role.title AS role_title')
+            ->from('account')
+            ->leftJoin('group_has_account', '`group_has_account`.`account_id`=`account`.`id`')
+            ->leftJoin('group', '`group`.`id`=`group_has_account`.`group_id`')
+            ->leftJoin('role', '`role`.`id`=`group_has_account`.`role_id`')
+            ->where('account.id=:accountId', array(':accountId' => (int) $this->account_id));
+        foreach ($command->queryAll() as $row) {
+            $groupId = (int) $row['group_id'];
+            if (!isset($groups[$groupId])) {
+                $groups[$groupId] = array(
+                    'id' => $groupId,
+                    'name' => $row['group_title'],
                     'member_label' => 'Member', // todo: this is hard-coded for now (ask Fredrik & ChrisL for solution)
                     'roles' => array()
                 );
             }
-            $groups[$gha->group->id]['roles'][] = $gha->role->title;
+            $groups[$groupId]['roles'][] = $row['role_title'];
         }
         return array_values($groups);
     }

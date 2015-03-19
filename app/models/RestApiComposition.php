@@ -3,11 +3,20 @@
 /**
  * Composite item resource model.
  *
+ * @property int $node_id
+ * @property string $composition
+ * @property string $composition_type_id
+ * @property string $thumb_media_id
+ * @property string $_heading
+ * @property string $_subheading
+ * @property string $_about
+ * @property string $_caption
+ *
  * Properties made available through the I18nAttributeMessagesBehavior class:
- * @property string heading
- * @property string subheading
- * @property string about
- * @property string caption
+ * @property string $heading
+ * @property string $$subheading
+ * @property string $about
+ * @property string $caption
  *
  * Properties made available through the I18nColumnsBehavior class:
  * @property string $slug
@@ -90,20 +99,7 @@ class RestApiComposition extends Composition implements RelatedResource, Transla
             'node_id' => (int)$this->node_id,
             'item_type' => 'go_item',
             'url' => $this->getRouteUrl(),
-            'attributes' =>  array(
-                'composition_type' => $this->getCompositionTypeReference(),
-                'heading' => $this->heading,
-                'subheading' => $this->subheading,
-                'about' => $this->about,
-                'caption' => $this->caption,
-                'slug' => $this->slug,
-                'thumb' => array(
-                    'original' => $this->getThumbUrl('original-public'),
-                    '735x444' => $this->getThumbUrl('735x444'),
-                    '160x96' => $this->getThumbUrl('160x96'),
-                    '110x66' => $this->getThumbUrl('110x66'),
-                )
-            )
+            'attributes' => $this->getListableAttributes(),
         );
     }
 
@@ -159,11 +155,12 @@ class RestApiComposition extends Composition implements RelatedResource, Transla
                 'subheading' => $this->_subheading,
                 'about' => $this->_about,
                 'caption' => $this->_caption,
-                'composition' => $this->populateSirTrevorBlocks(
+                'composition' => SirTrevorParser::populateSirTrevorBlocks(
                         $this->composition,
                         array(
                             'localize' => false,
                             'mode' => RestApiSirTrevorBlockNode::MODE_TRANSLATION,
+                            'parent' => $this
                         )
                     ),
             ),
@@ -173,11 +170,12 @@ class RestApiComposition extends Composition implements RelatedResource, Transla
                 'about' => $this->about,
                 'caption' => $this->caption,
                 // We need to populate the blocks again, with localizations this time.
-                'composition' => $this->populateSirTrevorBlocks(
+                'composition' => SirTrevorParser::populateSirTrevorBlocks(
                         $this->composition,
                         array(
                             'localize' => true,
                             'mode' => RestApiSirTrevorBlockNode::MODE_TRANSLATION,
+                            'parent' => $this
                         )
                     ),
             ),
@@ -219,7 +217,6 @@ class RestApiComposition extends Composition implements RelatedResource, Transla
      */
     public function getRouteUrl()
     {
-        // todo: enable multi lingual support once ready.
         $command = \barebones\Barebones::fpdo()
             //->select('route')
             ->from('route')
@@ -261,10 +258,14 @@ class RestApiComposition extends Composition implements RelatedResource, Transla
      */
     protected function getGroupData()
     {
-        // todo: refactor with barebones
         $groups = array();
-        foreach ($this->node->nodeHasGroups as $gha) {
-            $groups[] = $gha->group->title;
+        $command = Yii::app()->getDb()->createCommand()
+            ->select('title')
+            ->from('group')
+            ->leftJoin('node_has_group', '`node_has_group`.`group_id`=`group`.`id`')
+            ->where('`node_has_group`.`node_id`=:nodeId', array(':nodeId' => (int) $this->node_id));
+        foreach ($command->queryAll() as $row) {
+            $groups[] = $row['title'];
         }
         return array_unique($groups);
     }

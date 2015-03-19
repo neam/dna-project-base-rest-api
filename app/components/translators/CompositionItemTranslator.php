@@ -45,18 +45,12 @@ class CompositionItemTranslator extends ItemTranslator
      */
     protected function translateSirTrevorBlock(TranslatableResource $parent, array $block)
     {
-        /** @var SirTrevorBehavior $parent */
-        if ($parent->asa('sir-trevor-behavior') === null) {
-            throw new \CException('Invalid parent node. Must implement `SirTrevorBehavior` keyed by `sir-trevor-behavior` in behaviors list.');
-        }
-        /** @var RestApiSirTrevorBlock $model */
         try {
+            /** @var RestApiSirTrevorBlock $model */
             $model = \Yii::app()->getComponent('sirTrevorBlockFactory')->forgeBlock($block, $parent);
-        } catch (\CException $e) {
-            // No block model exists for this type of block. Just ignore it.
-        }
-        if (isset($model)) {
             $model->translate($block);
+        } catch (\RestApiNoBlockModelFound $e) {
+            // No block model exists for this type of block. Just ignore it.
         }
 
         if (isset($block['type'])) {

@@ -108,11 +108,19 @@ class BaseTranslationController extends AppRestController
      */
     protected function canUserTranslateModel($model)
     {
-        foreach ($model->node()->nodeHasGroups as $nhg) {
-            if (PermissionHelper::hasRole((int)Yii::app()->getUser()->id, PermissionHelper::groupIdToName($nhg->group_id), Role::GROUP_TRANSLATOR)) {
+        $command = Yii::app()->getDb()->createCommand()
+            ->select('group.id AS group_id')
+            ->from('group')
+            ->leftJoin('node_has_group', '`node_has_group`.`group_id`=`group`.`id`')
+            ->where('`node_has_group`.`node_id`=:nodeId', array(':nodeId' => (int) $model->node_id));
+
+        $userId = (int)Yii::app()->getUser()->id;
+        foreach ($command->queryAll() as $row) {
+            if (PermissionHelper::hasRole($userId, PermissionHelper::groupIdToName($row['group_id']), Role::GROUP_TRANSLATOR)) {
                 return true;
             }
         }
+
         return false;
     }
 }
