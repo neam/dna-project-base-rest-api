@@ -41,7 +41,6 @@ class BaseTranslationController extends AppRestController
      */
     public function actionGet($nodeId)
     {
-        /** @var TranslatableResource $model */
         $model = $this->loadModel($nodeId);
         // todo: does the user need "translation" access to fetch the translations?
         $this->sendResponse(200, $model->getTranslatedAttributes());
@@ -57,7 +56,6 @@ class BaseTranslationController extends AppRestController
      */
     public function actionUpdate($nodeId)
     {
-        /** @var TranslatableResource $model */
         $model = $this->loadModel($nodeId);
         if (!$this->canUserTranslateModel($model)) {
             throw new CHttpException(403, Yii::t('rest-api', 'You are not allowed to translate this resource.'));
