@@ -22,7 +22,7 @@ class BaseTranslationController extends AppRestController
                 'allow',
                 'actions' => array(
                     'preflight',
-                    'get',
+                    'get', // todo: should anonymous users be able to request the translations?
                 )
             ),
             // Logged in users can do whatever they want to.
@@ -43,6 +43,7 @@ class BaseTranslationController extends AppRestController
     {
         /** @var TranslatableResource $model */
         $model = $this->loadModel($nodeId);
+        // todo: does the user need "translation" access to fetch the translations?
         $this->sendResponse(200, $model->getTranslatedAttributes());
     }
 
