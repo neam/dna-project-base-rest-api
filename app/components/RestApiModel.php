@@ -35,7 +35,7 @@ class RestApiModel
      * Must implement `TranslatableResource` interface.
      */
     protected static $translatableModels = array(
-        'Page' => 'RestApiPage',
+        // 'Page' => 'RestApiPage',
         'Composition' => 'RestApiComposition',
     );
 
