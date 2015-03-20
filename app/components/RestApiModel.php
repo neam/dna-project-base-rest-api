@@ -17,7 +17,7 @@ class RestApiModel
      */
     protected static $itemModels = array(
         'Composition' => 'RestApiComposition',
-        'Page' => 'RestApiCustomPage',
+        'Page' => 'RestApiPage',
     );
 
     /**
@@ -35,7 +35,7 @@ class RestApiModel
      * Must implement `TranslatableResource` interface.
      */
     protected static $translatableModels = array(
-        'Page' => 'RestApiCustomPage',
+        'Page' => 'RestApiPage',
         'Composition' => 'RestApiComposition',
     );
 
@@ -48,6 +48,7 @@ class RestApiModel
         'SlideshowFile' => 'RestApiSlideshowFile',
         'VideoFile' => 'RestApiVideoFile',
         'ItemListConfig' => 'RestApiItemListConfig',
+        'Visualization' => 'RestApiVisualization',
     );
 
     /**
@@ -169,7 +170,7 @@ class RestApiModel
         }
         $restModelClass = $map[$modelClass];
         if (!isset(self::$_arCache[$restModelClass][$modelId])) {
-            self::$_arCache[$restModelClass][$modelId] = CActiveRecord::model($restModelClass)->findByPk($modelId);
+            self::$_arCache[$restModelClass][$modelId] = $restModelClass::model()->findByPk($modelId);
         }
         return self::$_arCache[$restModelClass][$modelId];
     }

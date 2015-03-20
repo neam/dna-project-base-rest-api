@@ -34,7 +34,7 @@ class BaseTranslationController extends AppRestController
 
     /**
      * Gets a translation resource for requested item.
-     * Responds to path 'api/<version>/item/translation/{nodeId}'.
+     * Responds to path 'api/<version>/translation/{nodeId}'.
      * This endpoint is public but the resources are restricted by "RestrictedAccessBehavior".
      *
      * @param int $nodeId the item node ID.
@@ -48,7 +48,7 @@ class BaseTranslationController extends AppRestController
 
     /**
      * Updates a translation resource for requested item.
-     * Responds to path 'api/<version>/item/translation/{nodeId}'.
+     * Responds to path 'api/<version>/translation/{nodeId}'.
      *
      * @param int $nodeId the item node ID.
      * @throws CException

@@ -82,6 +82,7 @@ class SirTrevorParser
 
             try {
                 /** @var RestApiSirTrevorBlockNode $model */
+                // todo: getComponent method does not exists when running with barebones.
                 $model = \Yii::app()->getComponent('sirTrevorBlockFactory')->forgeBlock($block, $options['parent']);
                 if (isset($options['mode'])) {
                     $model->mode = $options['mode'];
@@ -96,7 +97,9 @@ class SirTrevorParser
                         // Pure Sir Trevor blocks have their translations directly under `data`.
                         $block['data'] = array_merge($block['data'], $model->getTranslatedBlockData());
                     }
-                    $block['progress'] = $model->getTranslationProgress();
+                    if ($model->mode === RestApiSirTrevorBlockNode::MODE_TRANSLATION) {
+                        $block['progress'] = $model->getTranslationProgress();
+                    }
                 } else {
                     // When we want the un-translated block data, we only need to care about the node referring blocks,
                     // as the pure Sir Trevor ones already have their data populated.
@@ -112,7 +115,7 @@ class SirTrevorParser
                 // No block model exists for this type of block. Just ignore it.
 
                 // If we are fetching localized blocks, then add zero progress to all blocks that don't support translation.
-                if (isset($options['localize']) && $options['localize'] === true) {
+                if (isset($options['localize'], $options['mode']) && $options['localize'] === true && $options['mode'] === RestApiSirTrevorBlockNode::MODE_TRANSLATION) {
                     $block['progress'] = 0;
                 }
             }

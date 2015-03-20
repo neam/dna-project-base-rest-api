@@ -76,6 +76,8 @@ $mainConfig = array(
                 // It is a workaround for not being able to choose the response when multiple are defined per request when testing the API format.
                 array('<version>/item/getByNodeId', 'pattern' => '<version:v\d+>/item/<node_id:\d+>/test/<itemType:\w+>', 'verb' => 'GET'),
                 array('<version>/item/getByRoute', 'pattern' => '<version:v\d+>/item/<route:[\w-\/]+>/test-by-route/<itemType:\w+>', 'verb' => 'GET'),
+                array('<version>/translation/get', 'pattern' => '<version:v\d+>/translation/<nodeId:\d+>/test/<itemType:\w+>', 'verb' => 'GET'),
+                array('<version>/translation/update', 'pattern' => '<version:v\d+>/translation/<nodeId:\d+>/test/<itemType:\w+>', 'verb' => 'PUT, POST'),
 
                 // custom rules
                 array('<version>/profile/get', 'pattern' => '<version:v\d+>/profile', 'verb' => 'GET'),
@@ -85,10 +87,8 @@ $mainConfig = array(
                 array('<version>/profile/update', 'pattern' => '<version:v\d+>/user/profile', 'verb' => 'PUT'),
                 array('<version>/user/authenticate', 'pattern' => '<version:v\d+>/user/authenticate', 'verb' => 'POST'),
                 array('<version>/profile/public', 'pattern' => '<version:v\d+>/user/<accountId:\d+>/profile', 'verb' => 'GET'),
-
-                array('<version>/translation/get', 'pattern' => '<version:v\d+>/item/translation/<nodeId:\d+>', 'verb' => 'GET'),
-                array('<version>/translation/update', 'pattern' => '<version:v\d+>/item/translation/<nodeId:\d+>', 'verb' => 'PUT, POST'),
-
+                array('<version>/translation/get', 'pattern' => '<version:v\d+>/translation/<nodeId:\d+>', 'verb' => 'GET'),
+                array('<version>/translation/update', 'pattern' => '<version:v\d+>/translation/<nodeId:\d+>', 'verb' => 'PUT, POST'),
                 array('<version>/item/getByNodeId', 'pattern' => '<version:v\d+>/item/<node_id:\d+>', 'verb' => 'GET'),
                 array('<version>/item/getByRoute', 'pattern' => '<version:v\d+>/item/<route:[\w-\/]+>', 'verb' => 'GET'),
 

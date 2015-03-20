@@ -217,12 +217,13 @@ class RestApiComposition extends Composition implements RelatedResource, Transla
      */
     public function getRouteUrl()
     {
+        // todo: the language restriction together with the canonical restriction does not really work.
         $command = \barebones\Barebones::fpdo()
             //->select('route')
             ->from('route')
             ->where(
-                'canonical=1 AND node_id=:nodeId AND translation_route_language=:lang',
-                array(':nodeId' => (int)$this->node_id, ':lang' => Yii::app()->language)
+                'canonical=1 AND node_id=:nodeId'/* AND translation_route_language=:lang'*/,
+                array(':nodeId' => (int)$this->node_id/*, ':lang' => Yii::app()->language*/)
             );
         $result = $command->fetch();
         return !empty($result) ? $result['route'] : null;
@@ -259,12 +260,12 @@ class RestApiComposition extends Composition implements RelatedResource, Transla
     protected function getGroupData()
     {
         $groups = array();
-        $command = Yii::app()->getDb()->createCommand()
-            ->select('title')
-            ->from('group')
-            ->leftJoin('node_has_group', '`node_has_group`.`group_id`=`group`.`id`')
+        $command = \barebones\Barebones::fpdo()
+            //->select('title')
+            ->from('`group`')
+            ->leftJoin('`node_has_group` ON `node_has_group`.`group_id`=`group`.`id`')
             ->where('`node_has_group`.`node_id`=:nodeId', array(':nodeId' => (int) $this->node_id));
-        foreach ($command->queryAll() as $row) {
+        foreach ($command->fetchAll() as $row) {
             $groups[] = $row['title'];
         }
         return array_unique($groups);

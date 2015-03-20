@@ -20,20 +20,23 @@ $expectedResponse = array(
                     "type" => "heading",
                     "data" => array(
                         "text" => "Test heading"
-                    )
+                    ),
+                    "id" => "25cefe3f2d19b4784368c2f0ec4ee123"
                 ),
                 array(
                     "type" => "text",
                     "data" => array(
                         "text" => "Test text"
-                    )
+                    ),
+                    "id" => "ebd8341ac4f233251d1e7bd91f918e8b"
                 ),
                 array(
                     "type" => "quote",
                     "data" => array(
                         "cite" => "Test credit",
                         "text" => "> Test quote"
-                    )
+                    ),
+                    "id" => "1db0bcb68d798b40ebaaca2e42737be2"
                 ),
                 array(
                     "type" => "download_links",
@@ -48,10 +51,12 @@ $expectedResponse = array(
                                         "title" => "Gapminder World 2012",
                                         "url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
                                     )
-                                )
+                                ),
+                                "id" => "c6165892b571041826b6562311eebf48"
                             )
                        )
-                    )
+                    ),
+                    "id" => "a6c6ff85dc6716fe5d3e6498d542829d"
                 ),
                 array(
                     "type" => "image",
@@ -61,20 +66,23 @@ $expectedResponse = array(
                             "url" => "http://192.168.99.100:11111/files-api/p3media/file/image?id=8&preset=sir-trevor-image-block&title=media&extension=.jpeg",
                             "p3_media_id" => "8"
                         )
-                    )
+                    ),
+                    "id" => "74582504d5ec5e4ad1cf1836ca10e41e"
                 ),
                 array(
                     "type" => "video",
                     "data" => array(
                         "source" => "youtube",
                         "remote_id" => "BkSO9pOVpRM"
-                    )
+                    ),
+                    "id" => "f78b6d53bdf075b1f95a397010915c03"
                 ),
                 array(
                     "type" => "slideshare",
                     "data" => array(
                         "remote_id" => "42241898"
-                    )
+                    ),
+                    "id" => "6e9923bf3a72248641143fc02eb1a23b"
                 )
             )
         )
@@ -115,6 +123,9 @@ $expectedResponse = array(
                 )
             )
         )
+    ),
+    "groups" => array(
+        "GapminderOrg"
     ),
     "home_navigation_tree" => array(
         "data" => array(
@@ -269,13 +280,13 @@ $expectedResponse = array(
 );
 
 $I->wantTo('retrieve custom page items via the REST API as defined in api blueprint');
-$I->sendGET('item/4/test/page?lang=en');
+$I->sendGET('item/4/test/page?_lang=en');
 $I->seeResponseCodeIs(200);
 $I->seeResponseIsJson();
 $I->seeResponseContainsJson($expectedResponse);
 
 $I->wantTo('retrieve custom page items by route via the barebones php REST API as defined in api blueprint');
-$I->sendGET('item/%2Ftest-page-slug%2F/test-by-route/page?lang=en');
+$I->sendGET('item/%2Ftest-page-slug%2F/test-by-route/page?_lang=en');
 $I->seeResponseCodeIs(200);
 $I->seeResponseIsJson();
 $I->seeResponseContainsJson($expectedResponse);
@@ -285,14 +296,14 @@ $accessToken = $I->authenticateAsTestUser();
 
 $I->wantTo('(authenticated request) retrieve custom page items via the REST API as defined in api blueprint');
 $I->amBearerAuthenticated($accessToken);
-$I->sendGET('item/4/test/page?lang=en');
+$I->sendGET('item/4/test/page?_lang=en');
 $I->seeResponseCodeIs(200);
 $I->seeResponseIsJson();
 $I->seeResponseContainsJson($expectedResponse);
 
 $I->wantTo('(authenticated request) retrieve custom page items by route via the barebones php REST API as defined in api blueprint');
 $I->amBearerAuthenticated($accessToken);
-$I->sendGET('item/%2Ftest-page-slug%2F/test-by-route/page?lang=en');
+$I->sendGET('item/%2Ftest-page-slug%2F/test-by-route/page?_lang=en');
 $I->seeResponseCodeIs(200);
 $I->seeResponseIsJson();
 $I->seeResponseContainsJson($expectedResponse);

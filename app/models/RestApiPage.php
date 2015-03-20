@@ -22,7 +22,7 @@
  * Properties made available through the RestrictedAccessBehavior class:
  * @property boolean $enableRestriction
  */
-class RestApiPage extends Page
+class RestApiPage extends Page implements TranslatableResource
 {
     /**
      * @inheritdoc
@@ -96,6 +96,7 @@ class RestApiPage extends Page
             'root_page' => $this->getRootPageHierarchy(),
             'contributors' => ContributorItems::getItems($this->node_id),
             'related' => RelatedItems::getItems($this->node_id),
+            'groups' => $this->getGroupData(),
             'home_navigation_tree' => RestApiNavigationTreeItem::buildTree(RestApiNavigationTreeItem::REF_HOME),
             'footer_navigation_tree_1' => RestApiNavigationTreeItem::buildTree(RestApiNavigationTreeItem::REF_FOOTER1),
             'footer_navigation_tree_2' => RestApiNavigationTreeItem::buildTree(RestApiNavigationTreeItem::REF_FOOTER2),
@@ -152,6 +153,67 @@ class RestApiPage extends Page
     }
 
     /**
+     * @inheritdoc
+     */
+    public function getTranslationAttributes()
+    {
+        return array(
+            'heading',
+            'subheading',
+            'about',
+            'caption',
+            'composition',
+        );
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getTranslatedAttributes()
+    {
+        return array(
+            'node_id' => (int)$this->node_id,
+            'item_type' => 'custom_page',
+            'url' =>  $this->getRouteUrl(),
+            'attributes' => array(
+                'heading' => $this->_heading,
+                'subheading' => $this->_subheading,
+                'about' => $this->_about,
+                'caption' => $this->_caption,
+                'composition' => SirTrevorParser::populateSirTrevorBlocks(
+                        $this->composition,
+                        array(
+                            'localize' => false,
+                            'mode' => RestApiSirTrevorBlockNode::MODE_TRANSLATION,
+                            'parent' => $this
+                        )
+                    ),
+            ),
+            'translations' => array(
+                'heading' => $this->heading,
+                'subheading' => $this->subheading,
+                'about' => $this->about,
+                'caption' => $this->caption,
+                // We need to populate the blocks again, with localizations this time.
+                'composition' => SirTrevorParser::populateSirTrevorBlocks(
+                        $this->composition,
+                        array(
+                            'localize' => true,
+                            'mode' => RestApiSirTrevorBlockNode::MODE_TRANSLATION,
+                            'parent' => $this
+                        )
+                    ),
+            ),
+            'labels' => array(
+                'heading' => $this->getAttributeLabel('heading'),
+                'subheading' => $this->getAttributeLabel('subheading'),
+                'about' => $this->getAttributeLabel('about'),
+                'caption' => $this->getAttributeLabel('caption'),
+            ),
+        );
+    }
+
+    /**
      * Returns the pages composition reference key.
      *
      * @return string|null the ref or null if not found.
@@ -172,11 +234,12 @@ class RestApiPage extends Page
      */
     public function getRouteUrl()
     {
-        // todo: enable multi lingual support once ready.
+        // todo: the language restriction together with the canonical restriction does not really work.
         $command = \barebones\Barebones::fpdo()
+            //->select('route')
             ->from('route')
             ->where(
-                'canonical=1 AND node_id=:nodeId'/*translation_route_language=:lang*/,
+                'canonical=1 AND node_id=:nodeId'/* AND translation_route_language=:lang'*/,
                 array(':nodeId' => (int)$this->node_id/*, ':lang' => Yii::app()->language*/)
             );
         $result = $command->fetch();
@@ -210,6 +273,33 @@ class RestApiPage extends Page
                 $hierarchy['children'][] = $childHierarchy;
             }
         }
+    }
+
+    /**
+     * Gets the group data to include in the response.
+     *
+     * Format:
+     *
+     * array(
+     *     'GapminderOrg',
+     *     'Translators',
+     *     ...
+     * )
+     *
+     * @return array the data.
+     */
+    protected function getGroupData()
+    {
+        $groups = array();
+        $command = Yii::app()->getDb()->createCommand()
+            ->select('title')
+            ->from('group')
+            ->leftJoin('node_has_group', '`node_has_group`.`group_id`=`group`.`id`')
+            ->where('`node_has_group`.`node_id`=:nodeId', array(':nodeId' => (int) $this->node_id));
+        foreach ($command->queryAll() as $row) {
+            $groups[] = $row['title'];
+        }
+        return array_unique($groups);
     }
 
     /**

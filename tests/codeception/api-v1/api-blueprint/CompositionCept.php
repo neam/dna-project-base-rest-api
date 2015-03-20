@@ -25,20 +25,23 @@ $expectedResponse = array(
                     "type" => "heading",
                     "data" => array(
                         "text" => "Test heading"
-                    )
+                    ),
+                    "id" => "25cefe3f2d19b4784368c2f0ec4ee123"
                 ),
                 array(
                     "type" => "text",
                     "data" => array(
                         "text" => "Test text\n"
-                    )
+                    ),
+                    "id" => "3f6652553ac1cfd59c2d544202213945"
                 ),
                 array(
                     "type" => "quote",
                     "data" => array(
                         "cite" => "Test credit",
                         "text" => "> Test quote"
-                    )
+                    ),
+                    "id" => "1db0bcb68d798b40ebaaca2e42737be2"
                 ),
                 array(
                     "type" => "download_links",
@@ -53,10 +56,12 @@ $expectedResponse = array(
                                         "title" => "Gapminder World 2012",
                                         "url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
                                     )
-                                )
+                                ),
+                                "id" => "c6165892b571041826b6562311eebf48"
                             )
                         )
-                    )
+                    ),
+                    "id" => "a6c6ff85dc6716fe5d3e6498d542829d"
                 ),
                 array(
                     "type" => "image",
@@ -66,20 +71,23 @@ $expectedResponse = array(
                             "url" => "http://192.168.99.100:11111/files-api/p3media/file/image?id=10&preset=sir-trevor-image-block&title=media&extension=.jpeg",
                             "p3_media_id" => "10"
                         )
-                    )
+                    ),
+                    "id" => "7ac27a63a5ef487c8e54334989c98b41"
                 ),
                 array(
                     "type" => "slideshare",
                     "data" => array(
                         "remote_id" => "42268387"
-                    )
+                    ),
+                    "id" => "a57ca60762865d426d73904a18ab8e4b"
                 ),
                 array(
                     "type" => "video",
                     "data" => array(
                         "source" => "youtube",
                         "remote_id" => "BkSO9pOVpRM"
-                    )
+                    ),
+                    "id" => "f78b6d53bdf075b1f95a397010915c03"
                 ),
                 array(
                     "type" => "item_list",
@@ -135,7 +143,8 @@ $expectedResponse = array(
                                 )
                             )
                         )
-                    )
+                    ),
+                    "id" => "f9b53e29ed861e483ce6642a07baa8ce"
                 ),
                 array(
                     "type" => "item_list",
@@ -195,30 +204,44 @@ $expectedResponse = array(
                                     "profile_picture" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg",
                                     "groups" => array(
                                         array(
-                                            "id" => "16",
+                                            "id" => 16,
                                             "name" => "Translators",
-                                            "member_label" => "Member"
+                                            "member_label" => "Member",
+                                            "roles" => array(
+                                                "GroupTranslator"
+                                            )
                                         ),
                                         array(
-                                            "id" => "17",
+                                            "id" => 17,
                                             "name" => "Reviewers",
-                                            "member_label" => "Member"
+                                            "member_label" => "Member",
+                                            "roles" => array(
+                                                "GroupReviewer"
+                                            )
                                         ),
                                         array(
-                                            "id" => "1",
+                                            "id" => 1,
                                             "name" => "GapminderOrg",
-                                            "member_label" => "Member"
+                                            "member_label" => "Member",
+                                            "roles" => array(
+                                                "GroupTranslator",
+                                                "GroupReviewer"
+                                            )
                                         ),
                                         array(
-                                            "id" => "15",
+                                            "id" => 15,
                                             "name" => "SneakPeeks",
-                                            "member_label" => "Member"
+                                            "member_label" => "Member",
+                                            "roles" => array(
+                                                "GroupMember"
+                                            )
                                         )
                                     )
                                 )
                             )
                         )
-                    )
+                    ),
+                    "id" => "65821809c8b31557b57344abe34a7224"
                 ),
                 array(
                     "type" => "visualization",
@@ -324,20 +347,20 @@ $expectedResponse = array(
                                 )
                             )
                         )
-                    )
+                    ),
+                    "id" => "d27605ace311f6d81d26ac184c74ef95"
                 ),
                 array(
-                    'type' => 'slideshow_file',
-                    'data' =>
-                        array(
-                            'node_id' => 14,
-                            'item_type' => 'slideshow_file',
-                            'attributes' =>
-                                array(
-                                    'google_docs_id' => NULL,
-                                    'slideshare_id' => NULL,
-                                ),
+                    "type" => "slideshow_file",
+                    "data" => array(
+                        "node_id" => 14,
+                        "item_type" => "slideshow_file",
+                        "attributes" => array(
+                            "google_docs_id" => null,
+                            "slideshare_id" => null,
                         ),
+                    ),
+                    "id" => "b3a06fa50ff950daed8b2448c94efc2e"
                 ),
             )
         )
@@ -363,6 +386,9 @@ $expectedResponse = array(
                 )
             )
         )
+    ),
+    "groups" => array(
+        "GapminderOrg"
     ),
     "home_navigation_tree" => array(
         "data" => array(
@@ -517,13 +543,13 @@ $expectedResponse = array(
 );
 
 $I->wantTo('retrieve composition items via the REST API as defined in api blueprint');
-$I->sendGET('item/6/test/composition?lang=en');
+$I->sendGET('item/6/test/composition?_lang=en');
 $I->seeResponseCodeIs(200);
 $I->seeResponseIsJson();
 $I->seeResponseContainsJson($expectedResponse);
 
 $I->wantTo('retrieve composition items by route via the barebones php REST API as defined in api blueprint');
-$I->sendGET('item/%2Fanswers%2Ftest-go-item-slug%2F/test-by-route/composition?lang=en');
+$I->sendGET('item/%2Fanswers%2Ftest-go-item-slug%2F/test-by-route/composition?_lang=en');
 $I->seeResponseCodeIs(200);
 $I->seeResponseIsJson();
 $I->seeResponseContainsJson($expectedResponse);
@@ -533,14 +559,14 @@ $accessToken = $I->authenticateAsTestUser();
 
 $I->wantTo('(authenticated request) retrieve composition items via the REST API as defined in api blueprint');
 $I->amBearerAuthenticated($accessToken);
-$I->sendGET('item/6/test/composition?lang=en');
+$I->sendGET('item/6/test/composition?_lang=en');
 $I->seeResponseCodeIs(200);
 $I->seeResponseIsJson();
 $I->seeResponseContainsJson($expectedResponse);
 
 $I->wantTo('(authenticated request) retrieve composition items by route via the barebones php REST API as defined in api blueprint');
 $I->amBearerAuthenticated($accessToken);
-$I->sendGET('item/%2Fanswers%2Ftest-go-item-slug%2F/test-by-route/composition?lang=en');
+$I->sendGET('item/%2Fanswers%2Ftest-go-item-slug%2F/test-by-route/composition?_lang=en');
 $I->seeResponseCodeIs(200);
 $I->seeResponseIsJson();
 $I->seeResponseContainsJson($expectedResponse);

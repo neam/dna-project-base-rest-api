@@ -50,24 +50,37 @@ $I->seeResponseContainsJson(array(
     'profile_picture' => 'http://172.17.42.1:11111/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg',
     'groups' => array(
         array(
-            'id' => '16',
+            'id' => 16,
             'name' => 'Translators',
             'member_label' => 'Member',
+            'roles' => array(
+                'GroupTranslator'
+            )
         ),
         array(
-            'id' => '17',
+            'id' => 17,
             'name' => 'Reviewers',
             'member_label' => 'Member',
+            'roles' => array(
+                'GroupReviewer'
+            )
         ),
         array(
-            'id' => '1',
+            'id' => 1,
             'name' => 'GapminderOrg',
             'member_label' => 'Member',
+            'roles' => array(
+                'GroupTranslator',
+                'GroupReviewer'
+            )
         ),
         array(
-            'id' => '15',
+            'id' => 15,
             'name' => 'SneakPeeks',
             'member_label' => 'Member',
+            'roles' => array(
+                'GroupMember'
+            )
         )
     ),
 ));
@@ -124,24 +137,37 @@ $I->seeResponseContainsJson(array(
     'profile_picture' => 'http://172.17.42.1:11111/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg',
     'groups' => array(
         array(
-            'id' => '16',
+            'id' => 16,
             'name' => 'Translators',
             'member_label' => 'Member',
+            'roles' => array(
+                'GroupTranslator'
+            )
         ),
         array(
-            'id' => '17',
+            'id' => 17,
             'name' => 'Reviewers',
             'member_label' => 'Member',
+            'roles' => array(
+                'GroupReviewer'
+            )
         ),
         array(
-            'id' => '1',
+            'id' => 1,
             'name' => 'GapminderOrg',
             'member_label' => 'Member',
+            'roles' => array(
+                'GroupTranslator',
+                'GroupReviewer'
+            )
         ),
         array(
-            'id' => '15',
+            'id' => 15,
             'name' => 'SneakPeeks',
             'member_label' => 'Member',
+            'roles' => array(
+                'GroupMember'
+            )
         )
     ),
 ));

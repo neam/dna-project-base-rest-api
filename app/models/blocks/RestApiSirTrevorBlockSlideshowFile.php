@@ -40,6 +40,10 @@ class RestApiSirTrevorBlockSlideshowFile extends RestApiSirTrevorBlockNode
      */
     protected function getBlockData()
     {
+        if ($this->mode === self::MODE_TRANSLATION) {
+            return array();
+        }
+
         /** @var RestApiSlideshowFile $model */
         $model = $this->loadReferredModel($this->nodeId);
         if (is_null($model)) {
