@@ -58,13 +58,13 @@ class BaseTranslationController extends AppRestController
     {
         $model = $this->loadModel($nodeId);
         if (!$this->canUserTranslateModel($model)) {
-            throw new CHttpException(403, Yii::t('rest-api', 'You are not allowed to translate this resource.'));
+            throw new CHttpException(403, 'You are not allowed to translate this resource.');
         }
         $params = Yii::app()->getRequest()->parseJsonParams();
         // Hack for converting stdClass to Array as the Wrest extension does not allow us to get the params as Array.
         $params = json_decode(json_encode($params), true);
         if (empty($params) || empty($params['translations'])) {
-            throw new CHttpException(400, Yii::t('rest-api', 'Invalid input data.'));
+            throw new CHttpException(400, 'Invalid input data.');
         }
         $trx = Yii::app()->getDb()->beginTransaction();
         try {
@@ -72,7 +72,7 @@ class BaseTranslationController extends AppRestController
             $translator = Yii::app()->getComponent('itemTranslatorFactory')->forgeTranslator($model);
             $translator->translate($model, $params['translations']);
             if (!$model->save()) {
-                throw new CHttpException(400, Yii::t('rest-api', 'Unable to save translations.'));
+                throw new CHttpException(400, 'Unable to save translations.');
             }
             $trx->commit();
         } catch (CException $e) {
