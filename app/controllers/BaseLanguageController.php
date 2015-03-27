@@ -3,7 +3,7 @@
 /**
  * Language resource controller.
  */
-class BaseLanguageController extends AppRestController
+abstract class BaseLanguageController extends AppRestController
 {
     /**
      * Lists all language resources.

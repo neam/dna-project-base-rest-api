@@ -3,6 +3,44 @@ Gapminder CMS REST API
 
 Versioned API:s used by Gapminder frontends.
 
+API spec can be found in blueprint format under `modules/{api-version}/api-blueprint.md`.
+
+## Adding content
+
+### Add new resource for `item/{nodeId}` endpoint
+
+* Create a new model under `models/RestApi{name}` and extend the appropriate dna model
+* Implement `getAllAttributes` method that should return an assoc array with the response
+* Add new model to class map `RestApiModel::$itemModels`
+
+### Add new resource for `translation{nodeId}` endpoint
+
+* Create a new model under `models/RestApi{name}` and extend the appropriate dna model
+* Ensure the resource model implements the `TranslatableResource` interface
+* Add new model to class map `RestApiModel::$translatableModels`
+
+### Add new resource in sir trevor compositions
+
+Notice: These are needed only for those blocks that refer to a Node model and needs data from it, or you want to translate that block.
+
+* Ensure the resource has a model under `models/RestApi{name}`
+* Ensure the resource model exists in class map `RestApiModel::$sirTrevorBlockModels`
+* Create a new model under `models/blocks/RestApiSirTrevorBlock{name}` and extend `RestApiSirTrevorBlockNode` (use `RestApiSirTrevorBlock` if block does not refer a node model)
+* Implement abstract methods from extended class
+* Add new model to factory class map `SirTrevorBlockFactory::$blocks`
+
+### Add new resources to item list configs
+
+* Ensure the resource has a model under `models/RestApi{name}`
+* Ensure the resource model implements the `RelatedResource` interface
+* Add model to class map `RestApiModel::$itemListModels`
+
+### Add new related resources in custom pages and go items
+
+* Ensure the resource has a model under `models/RestApi{name}`
+* Ensure the resource model implements the `RelatedResource` interface
+* Add model to class map `RestApiModel::$relatedModels`
+
 ## Tests
 
 ### Test suites

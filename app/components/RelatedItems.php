@@ -19,13 +19,6 @@
 class RelatedItems
 {
     /**
-     * @var array map of rest resource models per related active record class name (models must implement RelatedResource interface).
-     */
-    protected static $relatedResourceMap = array(
-        'Composition' => 'RestApiComposition',
-    );
-
-    /**
      * Returns any related items for the owner node.
      *
      * @param int $nodeId
@@ -47,16 +40,11 @@ class RelatedItems
         foreach ($command as $row) {
             $modelId = (int)$row['item_id'];
             $modelClass = (string)$row['item_model_class'];
-            if (!isset(self::$relatedResourceMap[$modelClass])) {
+            $model = RestApiModel::loadRelatedByIdAndClass($modelId, $modelClass);
+            if (is_null($model)) {
                 continue;
             }
-            $relatedModelClass = self::$relatedResourceMap[$modelClass];
-            /** @var RelatedResource $resource */
-            $resource = $relatedModelClass::model()->findByPk($modelId);
-            if ($resource === null) {
-                continue;
-            }
-            $related[] = $resource->getRelatedAttributes();
+            $related[] = $model->getRelatedAttributes();
         }
         return $related;
     }

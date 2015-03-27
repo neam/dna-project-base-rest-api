@@ -1,7 +1,7 @@
 FORMAT: 1A
 HOST: http://develop-cms.gapminder.org/api/v1
 
-# gapminder
+# Gapminder
 
 # Group User
 User related resources
@@ -91,27 +91,40 @@ The profile is only returned if it is marked as "published", e.g. public.
                 ]
             },
             "contributions": [ ],
-            "profile_picture": "http://172.17.42.1:11111/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg",
+            "profile_picture": "http://web/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg",
             "groups": [
                 {
-                    "id": "16",
+                    "id": 16,
                     "name": "Translators",
-                    "member_label": "Member"
+                    "member_label": "Member",
+                    "roles": [
+                        "GroupTranslator"
+                    ]
                 },
                 {
-                    "id": "17",
+                    "id": 17,
                     "name": "Reviewers",
-                    "member_label": "Member"
+                    "member_label": "Member",
+                    "roles": [
+                        "GroupReviewer"
+                    ]
                 },
                 {
-                    "id": "1",
+                    "id": 1,
                     "name": "GapminderOrg",
-                    "member_label": "Member"
+                    "member_label": "Member",
+                    "roles": [
+                        "GroupTranslator",
+                        "GroupReviewer"
+                    ]
                 },
                 {
-                    "id": "15",
+                    "id": 15,
                     "name": "SneakPeeks",
-                    "member_label": "Member"
+                    "member_label": "Member",
+                    "roles": [
+                        "GroupMember"
+                    ]
                 }
             ]
         }
@@ -167,27 +180,40 @@ The profile is only returned if it is marked as "published", e.g. public.
                 ]
             },
             "contributions": [ ],
-            "profile_picture": "http://172.17.42.1:11111/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg",
+            "profile_picture": "http://web/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg",
             "groups": [
                 {
-                    "id": "16",
+                    "id": 16,
                     "name": "Translators",
-                    "member_label": "Member"
+                    "member_label": "Member",
+                    "roles": [
+                        "GroupTranslator"
+                    ]
                 },
                 {
-                    "id": "17",
+                    "id": 17,
                     "name": "Reviewers",
-                    "member_label": "Member"
+                    "member_label": "Member",
+                    "roles": [
+                        "GroupReviewer"
+                    ]
                 },
                 {
-                    "id": "1",
+                    "id": 1,
                     "name": "GapminderOrg",
-                    "member_label": "Member"
+                    "member_label": "Member",
+                    "roles": [
+                        "GroupTranslator",
+                        "GroupReviewer"
+                    ]
                 },
                 {
-                    "id": "15",
+                    "id": 15,
                     "name": "SneakPeeks",
-                    "member_label": "Member"
+                    "member_label": "Member",
+                    "roles": [
+                        "GroupMember"
+                    ]
                 }
             ]
         }
@@ -278,15 +304,15 @@ Video file related resources
                     "about": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
                     "caption": "No. Its the opposite.",
                     "slug": "will-saving-poor-children-lead-to-overpopulation",
-                    "url_mp4": "http://172.17.42.1:11111/files-api/p3media/file/image?id=2&preset=original-public-mp4&title=media&extension=.mp4",
-                    "url_webm": "http://172.17.42.1:11111/files-api/p3media/file/image?id=1&preset=original-public-webm&title=media&extension=.webm",
+                    "url_mp4": "http://web/files-api/p3media/file/image?id=2&preset=original-public-mp4&title=media&extension=.mp4",
+                    "url_webm": "http://web/files-api/p3media/file/image?id=1&preset=original-public-webm&title=media&extension=.webm",
                     "url_youtube": null,
-                    "url_subtitles": "http://172.17.42.1:11111/api/v1/videoFile/subtitles/1?lang=en",
+                    "url_subtitles": "http://web/api/v1/videoFile/subtitles/1?lang=en",
                     "thumb": {
-                        "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=original-public&title=media&extension=.jpeg",
-                        "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=735x444&title=media&extension=.jpg",
-                        "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=160x96&title=media&extension=.jpg",
-                        "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=110x66&title=media&extension=.jpg"
+                        "original": "http://web/files-api/p3media/file/image?id=5&preset=original-public&title=media&extension=.jpeg",
+                        "735x444": "http://web/files-api/p3media/file/image?id=5&preset=735x444&title=media&extension=.jpg",
+                        "160x96": "http://web/files-api/p3media/file/image?id=5&preset=160x96&title=media&extension=.jpg",
+                        "110x66": "http://web/files-api/p3media/file/image?id=5&preset=110x66&title=media&extension=.jpg"
                     }
                 },
                 "related": [ ]
@@ -300,15 +326,15 @@ Video file related resources
                     "about": "In this video Hans talks about how income and lifespan are related to each other.",
                     "caption": null,
                     "slug": "are-income-and-lifespan-related",
-                    "url_mp4": "http://172.17.42.1:11111/files-api/p3media/file/image?id=4&preset=original-public-mp4&title=media&extension=.mp4",
-                    "url_webm": "http://172.17.42.1:11111/files-api/p3media/file/image?id=3&preset=original-public-webm&title=media&extension=.webm",
+                    "url_mp4": "http://web/files-api/p3media/file/image?id=4&preset=original-public-mp4&title=media&extension=.mp4",
+                    "url_webm": "http://web/files-api/p3media/file/image?id=3&preset=original-public-webm&title=media&extension=.webm",
                     "url_youtube": null,
-                    "url_subtitles": "http://172.17.42.1:11111/api/v1/videoFile/subtitles/2?lang=en",
+                    "url_subtitles": "http://web/api/v1/videoFile/subtitles/2?lang=en",
                     "thumb": {
-                        "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=6&preset=original-public&title=media&extension=.jpeg",
-                        "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=6&preset=735x444&title=media&extension=.jpg",
-                        "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=6&preset=160x96&title=media&extension=.jpg",
-                        "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=6&preset=110x66&title=media&extension=.jpg"
+                        "original": "http://web/files-api/p3media/file/image?id=6&preset=original-public&title=media&extension=.jpeg",
+                        "735x444": "http://web/files-api/p3media/file/image?id=6&preset=735x444&title=media&extension=.jpg",
+                        "160x96": "http://web/files-api/p3media/file/image?id=6&preset=160x96&title=media&extension=.jpg",
+                        "110x66": "http://web/files-api/p3media/file/image?id=6&preset=110x66&title=media&extension=.jpg"
                     }
                 },
                 "related": [ ]
@@ -333,15 +359,15 @@ Video file related resources
                 "about": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
                 "caption": "No. Its the opposite.",
                 "slug": "will-saving-poor-children-lead-to-overpopulation",
-                "url_mp4": "http://172.17.42.1:11111/files-api/p3media/file/image?id=2&preset=original-public-mp4&title=media&extension=.mp4",
-                "url_webm": "http://172.17.42.1:11111/files-api/p3media/file/image?id=1&preset=original-public-webm&title=media&extension=.webm",
+                "url_mp4": "http://web/files-api/p3media/file/image?id=2&preset=original-public-mp4&title=media&extension=.mp4",
+                "url_webm": "http://web/files-api/p3media/file/image?id=1&preset=original-public-webm&title=media&extension=.webm",
                 "url_youtube": null,
-                "url_subtitles": "http://172.17.42.1:11111/api/v1/videoFile/subtitles/1?lang=en",
+                "url_subtitles": "http://web/api/v1/videoFile/subtitles/1?lang=en",
                 "thumb": {
-                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=original-public&title=media&extension=.jpeg",
-                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=735x444&title=media&extension=.jpg",
-                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=160x96&title=media&extension=.jpg",
-                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=110x66&title=media&extension=.jpg"
+                    "original": "http://web/files-api/p3media/file/image?id=5&preset=original-public&title=media&extension=.jpeg",
+                    "735x444": "http://web/files-api/p3media/file/image?id=5&preset=735x444&title=media&extension=.jpg",
+                    "160x96": "http://web/files-api/p3media/file/image?id=5&preset=160x96&title=media&extension=.jpg",
+                    "110x66": "http://web/files-api/p3media/file/image?id=5&preset=110x66&title=media&extension=.jpg"
                 }
             },
             "related": [ ]
@@ -516,286 +542,6 @@ Video file related resources
         40
         00:03:20,699 --> 00:03:28,099
         So ending population growth starts by saving the poorest children.
-
-# Group Translation
-
-Translation related resources
-
-## Composition Items [/translation/composition/{id}/{language}]
-
-+ Parameters
-
-    + id (int) ... ID of the resource
-    + language (string) ... Language code for the translations, e.g. es
-    
-### Get translation data for a composition item [GET]
-
-+ Response 200 (application/json)
-
-        {
-            "itemType": "composition",
-            "compositionType": "exercise",
-            "id": 1,
-            "targetLanguage": "es",
-            "original": {
-                "slug": "example-exercise",
-                "heading": "Example Exercise",
-                "subheading": "This is the subheading.",
-                "about": "About this video.",
-                "composition": {
-                    "data": [
-                        {
-                            "type": "video",
-                            "data": {
-                                "source": "youtube",
-                                "remote_id": "18MZmVDv7uo"
-                            }
-                        },
-                        {
-                            "type": "about",
-                            "data": {
-                                "renderHere": true
-                            }
-                        },
-                        {
-                            "type": "slideshare",
-                            "data": {
-                                "remote_id": "40978775"
-                            }
-                        },
-                        {
-                            "type": "html",
-                            "data": {
-                                "src": "<p>And below we have some responsive SlideShare presentations.</p>"
-                            }
-                        }
-                    ]
-                }
-            },
-            "translation": {
-                "slug": "ejemplo-de-ejericicio",
-                "heading": "Ejemplo de ejercicio",
-                "subheading": "Este es el subtítulo.",
-                "about": "Sobre este vídeo.",
-                "composition": {
-                    "data": [
-                        {
-                            "type": "video",
-                            "data": {
-                                "source": "youtube",
-                                "remote_id": ""
-                            }
-                        },
-                        {
-                            "type": "about",
-                            "data": {
-                                "renderHere": true
-                            }
-                        },
-                        {
-                            "type": "slideshare",
-                            "data": {
-                                "remote_id": ""
-                            }
-                        },
-                        {
-                            "type": "html",
-                            "data": {
-                                "src": ""
-                            }
-                        }
-                    ]
-                }
-            }
-        }
-
-### Save translations for a composition item [PUT]
-
-+ Request (application/json)
-
-        {
-            "itemType": "composition",
-            "compositionType": "exercise",
-            "id": 1,
-            "targetLanguage": "es",
-            "translation": {
-                "slug": "ejemplo-de-ejericicio",
-                "heading": "Ejemplo de ejercicio",
-                "subheading": "Este es el subtítulo.",
-                "about": "Sobre este vídeo.",
-                "composition": {
-                    "data": [
-                        {
-                            "type": "video",
-                            "data": {
-                                "source": "youtube",
-                                "remote_id": "PN2gYHJNT3Y"
-                            }
-                        },
-                        {
-                            "type": "about",
-                            "data": {
-                                "renderHere": true
-                            }
-                        },
-                        {
-                            "type": "slideshare",
-                            "data": {
-                                "remote_id": "39910208"
-                            }
-                        },
-                        {
-                            "type": "html",
-                            "data": {
-                                "src": "<p>Y abajo tenemos algunas presentaciones de SlideShare que son responsivas.</p>"
-                            }
-                        }
-                    ]
-                }
-            }
-        }
-        
-+ Response 200 (application/json)
-
-## VideoFile Items [/translation/videoFile/{id}/{language}]
-
-+ Parameters
-
-    + id (int) ... ID of the resource
-    + language (string) ... Language code for the translations, e.g. es
-
-### Get translations for a VideoFile item [GET]
-+ Response 200 (application/json)
-
-        {
-            "id": 1,
-            "itemType": "VideoFile",
-            "title": "Population Growth",
-            "version": 1,
-            "thumbnailUrl": "http://placehold.it/200x120",
-            "progress": 33.33,
-            "targetLanguage": {"code": "es", "label": "Spanish"},
-            "sections": [
-                {
-                    "step": "info",
-                    "label": "Info",
-                    "fields": [
-                        {
-                            "property": "title",
-                            "label": "Title",
-                            "original": "Population Growth",
-                            "translation": "",
-                            "validators": [
-                                {
-                                    "validator": "required"
-                                },
-                                {
-                                    "validator": "length",
-                                    "min": 10,
-                                    "max": 255
-                                }
-                            ]
-                        },
-                        {
-                            "property": "slug",
-                            "label": "Slug",
-                            "original": "population-growth",
-                            "translation": "",
-                            "validators": [
-                                {
-                                    "validator": "length",
-                                    "min": 10,
-                                    "max": 255
-                                }
-                            ]
-                        },
-                        {
-                            "property": "caption",
-                            "label": "Caption",
-                            "original": "A video on population growth",
-                            "translation": "Un vídeo sobre el crecimiento de la población"
-                        },
-                        {
-                            "property": "about",
-                            "label": "About",
-                            "original": "This is an in-depth analysis of population growth.",
-                            "translation": ""
-                        }
-                    ]
-                },
-                {
-                    "step": "subtitles",
-                    "label": "Subtitles",
-                    "fields": [
-                        {
-                            "id": 1,
-                            "original": "Hi, this is a video about common misconceptions concerning population growth.",
-                            "translation": "Hola, esto es un vídeo sobre los conceptos erróneos comunes sobre crecimiento de la población."
-                        },
-                        {
-                            "id": 2,
-                            "original": "My name is John Smith, and I will be your host.",
-                            "translation": ""
-                        }
-                    ]
-                }
-            ]
-        }
-
-### Save translations for a VideoFile item [PUT]
-
-+ Request (application/json)
-
-        {
-            "id": 1,
-            "itemType": "VideoFile",
-            "version": 1,
-            "targetLanguage": {"code": "es", "label": "Spanish"},
-            "sections": [
-                {
-                    "step": "info",
-                    "fields": [
-                        {   
-                            "property": "title",
-                            "original": "Population Growth",
-                            "translation": "",
-                        },
-                        {
-                            "property": "slug",
-                            "original": "population-growth",
-                            "translation": "",
-                        },
-                        {
-                            "property": "caption",
-                            "original": "A video on population growth",
-                            "translation": "Un vídeo sobre el crecimiento de la población"
-                        },
-                        {
-                            "property": "about",
-                            "original": "This is an in-depth analysis of population growth.",
-                            "translation": ""
-                        }
-                    ]
-                },
-                {
-                    "step": "subtitles",
-                    "fields": [
-                        {
-                            "id": 1,
-                            "original": "Hi, this is a video about common misconceptions concerning population growth.",
-                            "translation": "Hola, esto es un vídeo sobre los conceptos erróneos comunes sobre crecimiento de la población."
-                        },
-                        {
-                            "id": 2,
-                            "original": "My name is John Smith, and I will be your host.",
-                            "translation": "Me llamo John Smith, y yo seré su anfitrión."
-                        }
-                    ]
-                }
-            ]
-        }
-        
-+ Response 200 (application/json)
 
 # Group Language
 Language related resources
@@ -984,117 +730,6 @@ Language related resources
             }
         }
 
-# Group File
-File related resources
-
-## Managing files [/files]
-
-### Upload files [POST]
-
-Curl example: curl -F "image[file]=@file.jpg" http://cms.gapminder.org/api/v1/files
-
-+ Request (multipart/form-data; boundary=---BOUNDARY)
-
-        -----BOUNDARY
-        Content-Disposition: form-data; name="image[file]"; filename="image.jpg"
-        Content-Type: image/jpeg
-        Content-Transfer-Encoding: base64
-
-        /9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
-        HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
-        MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAABAAEDASIA
-        AhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFAEB
-        AAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AL+AD//Z
-        -----BOUNDARY
-
-+ Response 201 (application/json)
-
-# Group socialLink
-Social link releated resources
-
-## Existing social links [/socialLink/{id}]
-Social link resource can only be accessed by the owner of the social link.
-
-+ Parameters
-    
-    + id (int) ... the id of the social link resource
-
-### Get a social link [GET]
-
-+ Request (application/json)
-
-    + Headers
-    
-            Authorization: Bearer 03807cb390319329bdf6c777d4dfae9c0d3b3c35
-
-+ Response 200 (application/json)
-
-        {
-            "id": "2",
-            "name": "Facebook",
-            "url": "facebook.com"
-        }
-        
-### Update a social link [PUT]
-
-+ Request (application/json)
-
-    + Headers
-    
-            Authorization: Bearer 03807cb390319329bdf6c777d4dfae9c0d3b3c35
-            
-    + Body
-    
-            {
-                "id": "2",
-                "name": "Facebook",
-                "url": "facebook.fi"
-            }
-
-+ Response 200 (application/json)
-
-        {
-            "id": "2",
-            "name": "Facebook",
-            "url": "facebook.fi"
-        }
-        
-### Delete a social link [DELETE]
-
-+ Request (application/json)
-
-    + Headers
-    
-            Authorization: Bearer 03807cb390319329bdf6c777d4dfae9c0d3b3c35
-
-+ Response 204 (application/json)
-
-## New social links [/socialLink]
-New social links are created for the currently authentcated user.
-
-### Create a social link [POST]
-
-+ Request (application/json)
-
-    + Headers
-    
-            Authorization: Bearer 03807cb390319329bdf6c777d4dfae9c0d3b3c35
-            
-    + Body
-    
-            {
-                "name": "Twitter",
-                "url": "twitter.fi"
-            }
-
-+ Response 200 (application/json)
-
-        {
-            "id": "3",
-            "name": "Twitter",
-            "url": "twitter.fi"
-        }
-
 # Group Items
 
 + Trait Composable ... For items composed using *Sir Trevor*
@@ -1132,10 +767,10 @@ New social links are created for the currently authentcated user.
                 "caption": "Test caption",
                 "slug": "test-go-item-slug",
                 "thumb": {
-                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                    "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                    "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                    "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                 },
                 "composition": {
                     "data": [
@@ -1169,7 +804,7 @@ New social links are created for the currently authentcated user.
                                             "item_type": "download_link",
                                             "attributes": {
                                                 "title": "Gapminder World 2012",
-                                                "url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
+                                                "url": "http://web/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
                                             }
                                         }
                                     }
@@ -1225,10 +860,10 @@ New social links are created for the currently authentcated user.
                                                 "caption": "Test caption",
                                                 "slug": "test-go-item-slug",
                                                 "thumb": {
-                                                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                                                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                                                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                                                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                                                    "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                                                    "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                                                    "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                                                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                                                 }
                                             }
                                         },
@@ -1244,10 +879,10 @@ New social links are created for the currently authentcated user.
                                                 "caption": "Test caption 2",
                                                 "slug": "test-go-item-slug-2",
                                                 "thumb": {
-                                                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                                                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                                                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                                                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                                                    "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                                                    "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                                                    "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                                                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                                                 }
                                             }
                                         }
@@ -1310,27 +945,40 @@ New social links are created for the currently authentcated user.
                                                 ]
                                             },
                                             "contributions": [],
-                                            "profile_picture": "http://172.17.42.1:11111/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg",
+                                            "profile_picture": "http://web/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg",
                                             "groups": [
                                                 {
-                                                    "id": "16",
+                                                    "id": 16,
                                                     "name": "Translators",
-                                                    "member_label": "Member"
+                                                    "member_label": "Member",
+                                                    "roles": [
+                                                        "GroupTranslator"
+                                                    ]
                                                 },
                                                 {
-                                                    "id": "17",
+                                                    "id": 17,
                                                     "name": "Reviewers",
-                                                    "member_label": "Member"
+                                                    "member_label": "Member",
+                                                    "roles": [
+                                                        "GroupReviewer"
+                                                    ]
                                                 },
                                                 {
-                                                    "id": "1",
+                                                    "id": 1,
                                                     "name": "GapminderOrg",
-                                                    "member_label": "Member"
+                                                    "member_label": "Member",
+                                                    "roles": [
+                                                        "GroupTranslator",
+                                                        "GroupReviewer"
+                                                    ]
                                                 },
                                                 {
-                                                    "id": "15",
+                                                    "id": 15,
                                                     "name": "SneakPeeks",
-                                                    "member_label": "Member"
+                                                    "member_label": "Member",
+                                                    "roles": [
+                                                        "GroupMember"
+                                                    ]
                                                 }
                                             ]
                                         }
@@ -1472,13 +1120,16 @@ New social links are created for the currently authentcated user.
                         "caption": "Test caption 2",
                         "slug": "test-go-item-slug-2",
                         "thumb": {
-                            "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                            "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                            "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                            "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                            "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                            "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                            "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                            "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                         }
                     }
                 }
+            ],
+            "groups": [
+                "GapminderOrg"
             ],
             "home_navigation_tree": {
                 "data": [
@@ -1494,7 +1145,7 @@ New social links are created for the currently authentcated user.
                                 "heading": "Home",
                                 "subheading": "Gapminder.org - Start Here",
                                 "url": "/friends",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=13&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=13&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": [
                                 {
@@ -1509,7 +1160,7 @@ New social links are created for the currently authentcated user.
                                             "heading": "Health",
                                             "subheading": "About health",
                                             "url": null,
-                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=14&preset=navtree-icon&title=media&extension=.gif"
+                                            "icon_url": "http://web/files-api/p3media/file/image?id=14&preset=navtree-icon&title=media&extension=.gif"
                                         },
                                         "children": [
                                             {
@@ -1524,7 +1175,7 @@ New social links are created for the currently authentcated user.
                                                         "heading": "Ebola",
                                                         "subheading": "Read more about ebola",
                                                         "url": "/ebola",
-                                                        "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=15&preset=navtree-icon&title=media&extension=.gif"
+                                                        "icon_url": "http://web/files-api/p3media/file/image?id=15&preset=navtree-icon&title=media&extension=.gif"
                                                     },
                                                     "children": []
                                                 }
@@ -1544,7 +1195,7 @@ New social links are created for the currently authentcated user.
                                             "heading": "Exercises",
                                             "subheading": "For teachers and tutors",
                                             "url": "/exercises",
-                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=16&preset=navtree-icon&title=media&extension=.gif"
+                                            "icon_url": "http://web/files-api/p3media/file/image?id=16&preset=navtree-icon&title=media&extension=.gif"
                                         },
                                         "children": []
                                     }
@@ -1568,7 +1219,7 @@ New social links are created for the currently authentcated user.
                                 "heading": "Gapminder World",
                                 "subheading": null,
                                 "url": "/world",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=17&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=17&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -1585,7 +1236,7 @@ New social links are created for the currently authentcated user.
                                 "heading": "For teachers",
                                 "subheading": null,
                                 "url": "/for-teachers",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=18&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=18&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -1623,7 +1274,7 @@ New social links are created for the currently authentcated user.
                                 "heading": "Help",
                                 "subheading": null,
                                 "url": "/help",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=20&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=20&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -1678,7 +1329,7 @@ New social links are created for the currently authentcated user.
                                             "item_type": "download_link",
                                             "attributes": {
                                                 "title": "Gapminder World 2012",
-                                                "url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
+                                                "url": "http://web/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
                                             }
                                         }
                                     }
@@ -1740,13 +1391,16 @@ New social links are created for the currently authentcated user.
                         "caption": "Test caption 2",
                         "slug": "test-go-item-slug-2",
                         "thumb": {
-                            "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                            "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                            "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                            "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                            "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                            "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                            "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                            "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                         }
                     }
                 }
+            ],
+            "groups": [
+                "GapminderOrg"
             ],
             "home_navigation_tree": {
                 "data": [
@@ -1762,7 +1416,7 @@ New social links are created for the currently authentcated user.
                                 "heading": "Home",
                                 "subheading": "Gapminder.org - Start Here",
                                 "url": "/friends",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=13&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=13&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": [
                                 {
@@ -1777,7 +1431,7 @@ New social links are created for the currently authentcated user.
                                             "heading": "Health",
                                             "subheading": "About health",
                                             "url": null,
-                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=14&preset=navtree-icon&title=media&extension=.gif"
+                                            "icon_url": "http://web/files-api/p3media/file/image?id=14&preset=navtree-icon&title=media&extension=.gif"
                                         },
                                         "children": [
                                             {
@@ -1792,7 +1446,7 @@ New social links are created for the currently authentcated user.
                                                         "heading": "Ebola",
                                                         "subheading": "Read more about ebola",
                                                         "url": "/ebola",
-                                                        "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=15&preset=navtree-icon&title=media&extension=.gif"
+                                                        "icon_url": "http://web/files-api/p3media/file/image?id=15&preset=navtree-icon&title=media&extension=.gif"
                                                     },
                                                     "children": []
                                                 }
@@ -1812,7 +1466,7 @@ New social links are created for the currently authentcated user.
                                             "heading": "Exercises",
                                             "subheading": "For teachers and tutors",
                                             "url": "/exercises",
-                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=16&preset=navtree-icon&title=media&extension=.gif"
+                                            "icon_url": "http://web/files-api/p3media/file/image?id=16&preset=navtree-icon&title=media&extension=.gif"
                                         },
                                         "children": []
                                     }
@@ -1836,7 +1490,7 @@ New social links are created for the currently authentcated user.
                                 "heading": "Gapminder World",
                                 "subheading": null,
                                 "url": "/world",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=17&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=17&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -1853,7 +1507,7 @@ New social links are created for the currently authentcated user.
                                 "heading": "For teachers",
                                 "subheading": null,
                                 "url": "/for-teachers",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=18&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=18&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -1891,7 +1545,7 @@ New social links are created for the currently authentcated user.
                                 "heading": "Help",
                                 "subheading": null,
                                 "url": "/help",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=20&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=20&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -1925,10 +1579,10 @@ It is a workaround for not being able to choose the response when multiple are d
                 "caption": "Test caption",
                 "slug": "test-go-item-slug",
                 "thumb": {
-                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                    "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                    "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                    "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                 },
                 "composition": {
                     "data": [
@@ -1962,7 +1616,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                             "item_type": "download_link",
                                             "attributes": {
                                                 "title": "Gapminder World 2012",
-                                                "url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
+                                                "url": "http://web/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
                                             }
                                         }
                                     }
@@ -2018,10 +1672,10 @@ It is a workaround for not being able to choose the response when multiple are d
                                                 "caption": "Test caption",
                                                 "slug": "test-go-item-slug",
                                                 "thumb": {
-                                                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                                                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                                                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                                                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                                                    "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                                                    "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                                                    "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                                                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                                                 }
                                             }
                                         },
@@ -2037,10 +1691,10 @@ It is a workaround for not being able to choose the response when multiple are d
                                                 "caption": "Test caption 2",
                                                 "slug": "test-go-item-slug-2",
                                                 "thumb": {
-                                                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                                                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                                                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                                                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                                                    "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                                                    "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                                                    "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                                                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                                                 }
                                             }
                                         }
@@ -2103,27 +1757,40 @@ It is a workaround for not being able to choose the response when multiple are d
                                                 ]
                                             },
                                             "contributions": [],
-                                            "profile_picture": "http://172.17.42.1:11111/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg",
+                                            "profile_picture": "http://web/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg",
                                             "groups": [
                                                 {
-                                                    "id": "16",
+                                                    "id": 16,
                                                     "name": "Translators",
-                                                    "member_label": "Member"
+                                                    "member_label": "Member",
+                                                    "roles": [
+                                                        "GroupTranslator"
+                                                    ]
                                                 },
                                                 {
-                                                    "id": "17",
+                                                    "id": 17,
                                                     "name": "Reviewers",
-                                                    "member_label": "Member"
+                                                    "member_label": "Member",
+                                                    "roles": [
+                                                        "GroupReviewer"
+                                                    ]
                                                 },
                                                 {
-                                                    "id": "1",
+                                                    "id": 1,
                                                     "name": "GapminderOrg",
-                                                    "member_label": "Member"
+                                                    "member_label": "Member",
+                                                    "roles": [
+                                                        "GroupTranslator",
+                                                        "GroupReviewer"
+                                                    ]
                                                 },
                                                 {
-                                                    "id": "15",
+                                                    "id": 15,
                                                     "name": "SneakPeeks",
-                                                    "member_label": "Member"
+                                                    "member_label": "Member",
+                                                    "roles": [
+                                                        "GroupMember"
+                                                    ]
                                                 }
                                             ]
                                         }
@@ -2265,13 +1932,16 @@ It is a workaround for not being able to choose the response when multiple are d
                         "caption": "Test caption 2",
                         "slug": "test-go-item-slug-2",
                         "thumb": {
-                            "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                            "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                            "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                            "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                            "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                            "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                            "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                            "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                         }
                     }
                 }
+            ],
+            "groups": [
+                "GapminderOrg"
             ],
             "home_navigation_tree": {
                 "data": [
@@ -2287,7 +1957,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                 "heading": "Home",
                                 "subheading": "Gapminder.org - Start Here",
                                 "url": "/friends",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=13&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=13&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": [
                                 {
@@ -2302,7 +1972,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                             "heading": "Health",
                                             "subheading": "About health",
                                             "url": null,
-                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=14&preset=navtree-icon&title=media&extension=.gif"
+                                            "icon_url": "http://web/files-api/p3media/file/image?id=14&preset=navtree-icon&title=media&extension=.gif"
                                         },
                                         "children": [
                                             {
@@ -2317,7 +1987,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                                         "heading": "Ebola",
                                                         "subheading": "Read more about ebola",
                                                         "url": "/ebola",
-                                                        "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=15&preset=navtree-icon&title=media&extension=.gif"
+                                                        "icon_url": "http://web/files-api/p3media/file/image?id=15&preset=navtree-icon&title=media&extension=.gif"
                                                     },
                                                     "children": []
                                                 }
@@ -2337,7 +2007,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                             "heading": "Exercises",
                                             "subheading": "For teachers and tutors",
                                             "url": "/exercises",
-                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=16&preset=navtree-icon&title=media&extension=.gif"
+                                            "icon_url": "http://web/files-api/p3media/file/image?id=16&preset=navtree-icon&title=media&extension=.gif"
                                         },
                                         "children": []
                                     }
@@ -2361,7 +2031,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                 "heading": "Gapminder World",
                                 "subheading": null,
                                 "url": "/world",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=17&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=17&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -2378,7 +2048,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                 "heading": "For teachers",
                                 "subheading": null,
                                 "url": "/for-teachers",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=18&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=18&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -2416,7 +2086,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                 "heading": "Help",
                                 "subheading": null,
                                 "url": "/help",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=20&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=20&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -2482,7 +2152,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                             "item_type": "download_link",
                                             "attributes": {
                                                 "title": "Gapminder World 2012",
-                                                "url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
+                                                "url": "http://web/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
                                             }
                                         }
                                     }
@@ -2544,13 +2214,16 @@ It is a workaround for not being able to choose the response when multiple are d
                         "caption": "Test caption 2",
                         "slug": "test-go-item-slug-2",
                         "thumb": {
-                            "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                            "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                            "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                            "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                            "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                            "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                            "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                            "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                         }
                     }
                 }
+            ],
+            "groups": [
+                "GapminderOrg"
             ],
             "home_navigation_tree": {
                 "data": [
@@ -2566,7 +2239,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                 "heading": "Home",
                                 "subheading": "Gapminder.org - Start Here",
                                 "url": "/friends",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=13&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=13&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": [
                                 {
@@ -2581,7 +2254,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                             "heading": "Health",
                                             "subheading": "About health",
                                             "url": null,
-                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=14&preset=navtree-icon&title=media&extension=.gif"
+                                            "icon_url": "http://web/files-api/p3media/file/image?id=14&preset=navtree-icon&title=media&extension=.gif"
                                         },
                                         "children": [
                                             {
@@ -2596,7 +2269,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                                         "heading": "Ebola",
                                                         "subheading": "Read more about ebola",
                                                         "url": "/ebola",
-                                                        "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=15&preset=navtree-icon&title=media&extension=.gif"
+                                                        "icon_url": "http://web/files-api/p3media/file/image?id=15&preset=navtree-icon&title=media&extension=.gif"
                                                     },
                                                     "children": []
                                                 }
@@ -2616,7 +2289,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                             "heading": "Exercises",
                                             "subheading": "For teachers and tutors",
                                             "url": "/exercises",
-                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=16&preset=navtree-icon&title=media&extension=.gif"
+                                            "icon_url": "http://web/files-api/p3media/file/image?id=16&preset=navtree-icon&title=media&extension=.gif"
                                         },
                                         "children": []
                                     }
@@ -2640,7 +2313,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                 "heading": "Gapminder World",
                                 "subheading": null,
                                 "url": "/world",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=17&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=17&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -2657,7 +2330,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                 "heading": "For teachers",
                                 "subheading": null,
                                 "url": "/for-teachers",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=18&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=18&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -2695,7 +2368,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                 "heading": "Help",
                                 "subheading": null,
                                 "url": "/help",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=20&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=20&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -2724,10 +2397,10 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                 "caption": "Test caption",
                 "slug": "test-go-item-slug",
                 "thumb": {
-                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                    "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                    "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                    "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                 },
                 "composition": {
                     "data": [
@@ -2761,7 +2434,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                             "item_type": "download_link",
                                             "attributes": {
                                                 "title": "Gapminder World 2012",
-                                                "url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
+                                                "url": "http://web/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
                                             }
                                         }
                                     }
@@ -2817,10 +2490,10 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                                 "caption": "Test caption",
                                                 "slug": "test-go-item-slug",
                                                 "thumb": {
-                                                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                                                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                                                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                                                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                                                    "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                                                    "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                                                    "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                                                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                                                 }
                                             }
                                         },
@@ -2836,10 +2509,10 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                                 "caption": "Test caption 2",
                                                 "slug": "test-go-item-slug-2",
                                                 "thumb": {
-                                                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                                                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                                                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                                                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                                                    "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                                                    "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                                                    "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                                                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                                                 }
                                             }
                                         }
@@ -2902,27 +2575,40 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                                 ]
                                             },
                                             "contributions": [],
-                                            "profile_picture": "http://172.17.42.1:11111/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg",
+                                            "profile_picture": "http://web/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg",
                                             "groups": [
                                                 {
-                                                    "id": "16",
+                                                    "id": 16,
                                                     "name": "Translators",
-                                                    "member_label": "Member"
+                                                    "member_label": "Member",
+                                                    "roles": [
+                                                        "GroupTranslator"
+                                                    ]
                                                 },
                                                 {
-                                                    "id": "17",
+                                                    "id": 17,
                                                     "name": "Reviewers",
-                                                    "member_label": "Member"
+                                                    "member_label": "Member",
+                                                    "roles": [
+                                                        "GroupReviewer"
+                                                    ]
                                                 },
                                                 {
-                                                    "id": "1",
+                                                    "id": 1,
                                                     "name": "GapminderOrg",
-                                                    "member_label": "Member"
+                                                    "member_label": "Member",
+                                                    "roles": [
+                                                        "GroupTranslator",
+                                                        "GroupReviewer"
+                                                    ]
                                                 },
                                                 {
-                                                    "id": "15",
+                                                    "id": 15,
                                                     "name": "SneakPeeks",
-                                                    "member_label": "Member"
+                                                    "member_label": "Member",
+                                                    "roles": [
+                                                        "GroupMember"
+                                                    ]
                                                 }
                                             ]
                                         }
@@ -3064,13 +2750,16 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                         "caption": "Test caption 2",
                         "slug": "test-go-item-slug-2",
                         "thumb": {
-                            "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                            "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                            "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                            "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                            "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                            "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                            "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                            "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                         }
                     }
                 }
+            ],
+            "groups": [
+                "GapminderOrg"
             ],
             "home_navigation_tree": {
                 "data": [
@@ -3086,7 +2775,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                 "heading": "Home",
                                 "subheading": "Gapminder.org - Start Here",
                                 "url": "/friends",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=13&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=13&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": [
                                 {
@@ -3101,7 +2790,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                             "heading": "Health",
                                             "subheading": "About health",
                                             "url": null,
-                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=14&preset=navtree-icon&title=media&extension=.gif"
+                                            "icon_url": "http://web/files-api/p3media/file/image?id=14&preset=navtree-icon&title=media&extension=.gif"
                                         },
                                         "children": [
                                             {
@@ -3116,7 +2805,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                                         "heading": "Ebola",
                                                         "subheading": "Read more about ebola",
                                                         "url": "/ebola",
-                                                        "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=15&preset=navtree-icon&title=media&extension=.gif"
+                                                        "icon_url": "http://web/files-api/p3media/file/image?id=15&preset=navtree-icon&title=media&extension=.gif"
                                                     },
                                                     "children": []
                                                 }
@@ -3136,7 +2825,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                             "heading": "Exercises",
                                             "subheading": "For teachers and tutors",
                                             "url": "/exercises",
-                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=16&preset=navtree-icon&title=media&extension=.gif"
+                                            "icon_url": "http://web/files-api/p3media/file/image?id=16&preset=navtree-icon&title=media&extension=.gif"
                                         },
                                         "children": []
                                     }
@@ -3160,7 +2849,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                 "heading": "Gapminder World",
                                 "subheading": null,
                                 "url": "/world",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=17&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=17&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -3177,7 +2866,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                 "heading": "For teachers",
                                 "subheading": null,
                                 "url": "/for-teachers",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=18&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=18&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -3215,7 +2904,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                 "heading": "Help",
                                 "subheading": null,
                                 "url": "/help",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=20&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=20&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -3276,7 +2965,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                             "item_type": "download_link",
                                             "attributes": {
                                                 "title": "Gapminder World 2012",
-                                                "url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
+                                                "url": "http://web/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
                                             }
                                         }
                                     }
@@ -3338,13 +3027,16 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                         "caption": "Test caption 2",
                         "slug": "test-go-item-slug-2",
                         "thumb": {
-                            "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                            "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                            "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                            "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                            "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                            "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                            "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                            "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                         }
                     }
                 }
+            ],
+            "groups": [
+                "GapminderOrg"
             ],
             "home_navigation_tree": {
                 "data": [
@@ -3360,7 +3052,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                 "heading": "Home",
                                 "subheading": "Gapminder.org - Start Here",
                                 "url": "/friends",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=13&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=13&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": [
                                 {
@@ -3375,7 +3067,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                             "heading": "Health",
                                             "subheading": "About health",
                                             "url": null,
-                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=14&preset=navtree-icon&title=media&extension=.gif"
+                                            "icon_url": "http://web/files-api/p3media/file/image?id=14&preset=navtree-icon&title=media&extension=.gif"
                                         },
                                         "children": [
                                             {
@@ -3390,7 +3082,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                                         "heading": "Ebola",
                                                         "subheading": "Read more about ebola",
                                                         "url": "/ebola",
-                                                        "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=15&preset=navtree-icon&title=media&extension=.gif"
+                                                        "icon_url": "http://web/files-api/p3media/file/image?id=15&preset=navtree-icon&title=media&extension=.gif"
                                                     },
                                                     "children": []
                                                 }
@@ -3410,7 +3102,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                             "heading": "Exercises",
                                             "subheading": "For teachers and tutors",
                                             "url": "/exercises",
-                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=16&preset=navtree-icon&title=media&extension=.gif"
+                                            "icon_url": "http://web/files-api/p3media/file/image?id=16&preset=navtree-icon&title=media&extension=.gif"
                                         },
                                         "children": []
                                     }
@@ -3434,7 +3126,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                 "heading": "Gapminder World",
                                 "subheading": null,
                                 "url": "/world",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=17&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=17&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -3451,7 +3143,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                 "heading": "For teachers",
                                 "subheading": null,
                                 "url": "/for-teachers",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=18&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=18&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -3489,7 +3181,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                 "heading": "Help",
                                 "subheading": null,
                                 "url": "/help",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=20&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=20&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -3497,568 +3189,3 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                 ]
             }
         }
-
-# Group Navbar
-
-Navbar items.
-
-## Navbar items [/navbar/{language}]
-
-### Get navbar items [GET]
-
-+ Response 200 (application/json)
-
-        {
-            "type": "menu_items",
-            "data": [
-                {
-                    "node_id": 1,
-                    "menu_label": "Top Level Item Label",
-                    "caption": null,
-                    "url": '/foo',
-                    "children": [
-                        {
-                            "node_id": 2,
-                            "menu_label": "Second Level Item Label",
-                            "caption": null,
-                            "url": "/foo/1"
-                        },
-                        {
-                            "node_id": 3,
-                            "menu_label": "Second Level Item Label",
-                            "caption": null,
-                            "url": "/foo/2",
-                            "children": [
-                                {
-                                    "node_id": 4,
-                                    "menu_label": "Third Level Item Label",
-                                    "caption": null,
-                                    "url": "/foo/2/1"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "node_id": 100,
-                    "menu_label": "Top Level Item Label",
-                    "caption": null,
-                    "url": '/bar',
-                    "children": [
-                        {
-                            "node_id": 102,
-                            "menu_label": "Second Level Item Label",
-                            "caption": null,
-                            "url": "/bar/1"
-                        },
-                        {
-                            "node_id": 103,
-                            "menu_label": "Second Level Item Label",
-                            "caption": null,
-                            "url": "/bar/2",
-                            "children": [
-                                {
-                                    "node_id": 104,
-                                    "menu_label": "Third Level Item Label",
-                                    "caption": null,
-                                    "url": "/bar/2/1"
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        }
-
-+ Response 200 (application/json)
-
-        [
-            {
-                "title": "Learn",
-                "categories": [
-                    {
-                        "category": "Realize",
-                        "type": "icons",
-                        "columnCount": 2,
-                        "items": [
-                            {
-                                "title": "Massive Global Ignorance",
-                                "description": "Among humans",
-                                "icon": "",
-                                "url": "http://www.gapminder.org/massive-global-ignorance"
-                            },
-                            {
-                                "title": "Snail Trends",
-                                "description": "What could never happen has already happened",
-                                "icon": "",
-                                "url": "http://www.gapminder.org/what-could-never-happen"
-                            },
-                            {
-                                "title": "Important Money",
-                                "description": "Most people need more money to lead a good life",
-                                "icon": "",
-                                "url": "http://www.gapminder.org/most-people-need-more-money"
-                            }
-                        ],
-                        "more": {
-                            "title": "More Insights",
-                            "url": "http://www.gapminder.org/realize"
-                        }
-                    },
-                    {
-                        "category": "Explore",
-                        "type": "icons",
-                        "columnCount": 2,
-                        "items": [
-                            {
-                                "title": "Dollar Street",
-                                "description": "The world sorted by income",
-                                "icon": "",
-                                "url": "http://www.gapminder.org/dollar-street"
-                            },
-                            {
-                                "title": "Visual Tools",
-                                "description": "Explore global and local statistics",
-                                "icon": "",
-                                "url": "http://www.gapminder.org/visual-tools"
-                            }
-                        ],
-                        "more": {
-                            "title": "More Explorations",
-                            "url": "http://www.gapminder.org/explorations"
-                        }
-                    }
-                ]
-            },
-            {
-                "title": "Teach",
-                "categories": [
-                    {
-                        "category": "Getting Started",
-                        "type": "bulletpoints",
-                        "columnCount": 1,
-                        "items": [
-                            {
-                                "title": "90-sec Intro Video",
-                                "description": "In the classroom",
-                                "url": "http://www.gapminder.org/90-sec-intro-video"
-                            },
-                            {
-                                "title": "3 Simple Exercises",
-                                "description": "1-minute Planning",
-                                "url": "http://www.gapminder.org/3-simple-exercises"
-                            },
-                            {
-                                "title": "Students' Favorites",
-                                "description": "Teach your parents",
-                                "url": "http://www.gapminder.org/students-favorites"
-                            }
-                        ]
-                    },
-                    {
-                        "category": "Curriculum",
-                        "type": "bulletpoints",
-                        "columnCount": 1,
-                        "items": [
-                            {
-                                "title": "Social Sciences",
-                                "description": "Discuss based on facts",
-                                "url": "http://www.gapminder.org/social-sciences"
-                            }
-                        ]
-                    },
-                    {
-                        "category": "Curriculum",
-                        "type": "bulletpoints",
-                        "columnCount": 1,
-                        "items": [
-                            {
-                                "title": "Quizzes",
-                                "description": "Fun quizzes",
-                                "url": "http://www.gapminder.org/quizzes"
-                            },
-                            {
-                                "title": "Slideshows",
-                                "description": "Entertainin slideshows",
-                                "url": "http://www.gapminder.org/slideshows"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "title": "Participate",
-                "categories": [
-                    {
-                        "type": "plain",
-                        "columnCount": 1,
-                        "items": [
-                            {
-                                "title": "News",
-                                "description": "Follow our global activity",
-                                "url": "http://www.gapminder.org/news"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "plain",
-                        "columnCount": 1,
-                        "items": [
-                            {
-                                "title": "Organization",
-                                "description": "Mission, constitution, team, funding, and more",
-                                "url": "http://www.gapminder.org/organization"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "plain",
-                        "columnCount": 1,
-                        "items": [
-                            {
-                                "title": "Projects",
-                                "description": "About Dollar Street, Teaching Tools, and more",
-                                "url": "http://www.gapminder.org/projects"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "plain",
-                        "columnCount": 1,
-                        "items": [
-                            {
-                                "title": "Friends",
-                                "description": "Follow our global activity",
-                                "url": "http://www.gapminder.org/friends"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "title": "About",
-                "url": "http://www.gapminder.org/about"
-            }
-        ]
-
-
-# Group Footer
-
-Common footer items and links to be rendered by client apps.
-
-## Footer items [/footer/{language}]
-
-### Get footer items [GET]
-
-+ Response 200 (application/json)
-
-        {
-            "socialLinks": [
-                {
-                    "label": "Twitter",
-                    "url": "https://twitter.com/HansRosling"
-                },
-                {
-                    "label": "Facebook",
-                    "url": "https://www.facebook.com/gapminder.org"
-                }
-            ],
-            "groupLinks": [
-                {
-                    "label": "Gapminder World",
-                    "url": "http://www.gapminder.org/gapminder-world"
-                },
-                {
-                    "label": "For Teachers",
-                    "url": "http://www.gapminder.org/for-teachers"
-                }
-            ],
-            "brandLinks": [
-                {
-                    "label": "About",
-                    "url": "http://www.gapminder.org/about"
-                },
-                {
-                    "label": "Help",
-                    "url": "http://www.gapminder.org/help"
-                },
-                {
-                    "label": "Contact",
-                    "url": "http://www.gapminder.org/contact"
-                },
-                {
-                    "label": "Blog",
-                    "url": "http://www.gapminder.org/blog"
-                },
-                {
-                    "label": "Terms",
-                    "url": "http://www.gapminder.org/terms"
-                },
-                {
-                    "label": "Privacy",
-                    "url": "http://www.gapminder.org/privacy"
-                },
-                {
-                    "label": "Donate",
-                    "url": "http://www.gapminder.org/donate"
-                },
-                {
-                    "label": "Media",
-                    "url": "http://www.gapminder.org/media"
-                }
-            ]
-        }
-
-# Group Translate UI
-
-Translated UI strings.
-
-## Translation items [/translateui/{project}/{language}]
-
-+ Parameters
-    
-    + project (string) ... the string ID of the project (e.g. pages)
-    + language (string) ... the target language (e.g. fi)
-
-### Get all translated UI strings for the given language items [GET]
-
-+ Response 200 (application/json)
-
-        {
-            "navbar": {
-                "login": "Kirjaudu",
-                "logout": "Kirjaudu ulos"
-            },
-            "login-page": {
-                "please-login-help": "Kirjaudu sisään syöttämällä käyttäjätunnuksesi",
-                "site-uses-cookies": "(Tämä sivusto käyttää evästeitä)",
-                "username-placeholder": "Käyttäjätunnus",
-                "password-placeholder": "Salasana",
-                "login-button-label": "Kirjaudu"
-            },
-            "item-page": {
-                "item-not-found": "Sivua ei löydy",
-                "share-heading": "Jaa",
-                "thanks-to-heading": "Kiitokset",
-                "participate-link-label": "Ota osaa",
-                "related-heading": "Muita samanlaisia"
-            },
-            "page-title": {
-                "home": "Etusivu",
-                "login": "Kirjaudu"
-            },
-            "item-category": {
-                "exercises": "Harjoitukset",
-                "presentations": "Esitelmät",
-                "qna": "Kysymykset ja vastaukset",
-                "wall-charts": "Seinäkaaviot",
-                "vizabi": "Vizabi"
-            }
-        }
-        
-# Group Route
-
-Routing related resource end-points.
-
-## Route [/route/{route}]
-
-+ Parameters
-    
-    + route (string) ... the url encoded route for the item (e.g. %2Febola)
-    
-### Get routing info for an item [GET]
-
-+ Response 200 (application/json)
-
-        {
-            "page_header_menu_tree": [
-                {
-                    "title": "Learn",
-                    "categories": [
-                        {
-                            "category": "Realize",
-                            "type": "icons",
-                            "columnCount": 2,
-                            "items": [
-                                {
-                                    "title": "Massive Global Ignorance",
-                                    "description": "Among humans",
-                                    "icon": "",
-                                    "url": "http://www.gapminder.org/massive-global-ignorance"
-                                },
-                                {
-                                    "title": "Snail Trends",
-                                    "description": "What could never happen has already happened",
-                                    "icon": "",
-                                    "url": "http://www.gapminder.org/what-could-never-happen"
-                                },
-                                {
-                                    "title": "Important Money",
-                                    "description": "Most people need more money to lead a good life",
-                                    "icon": "",
-                                    "url": "http://www.gapminder.org/most-people-need-more-money"
-                                }
-                            ],
-                            "more": {
-                                "title": "More Insights",
-                                "url": "http://www.gapminder.org/realize"
-                            }
-                        },
-                        {
-                            "category": "Explore",
-                            "type": "icons",
-                            "columnCount": 2,
-                            "items": [
-                                {
-                                    "title": "Dollar Street",
-                                    "description": "The world sorted by income",
-                                    "icon": "",
-                                    "url": "http://www.gapminder.org/dollar-street"
-                                },
-                                {
-                                    "title": "Visual Tools",
-                                    "description": "Explore global and local statistics",
-                                    "icon": "",
-                                    "url": "http://www.gapminder.org/visual-tools"
-                                }
-                            ],
-                            "more": {
-                                "title": "More Explorations",
-                                "url": "http://www.gapminder.org/explorations"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "title": "Teach",
-                    "categories": [
-                        {
-                            "category": "Getting Started",
-                            "type": "bulletpoints",
-                            "columnCount": 1,
-                            "items": [
-                                {
-                                    "title": "90-sec Intro Video",
-                                    "description": "In the classroom",
-                                    "url": "http://www.gapminder.org/90-sec-intro-video"
-                                },
-                                {
-                                    "title": "3 Simple Exercises",
-                                    "description": "1-minute Planning",
-                                    "url": "http://www.gapminder.org/3-simple-exercises"
-                                },
-                                {
-                                    "title": "Students' Favorites",
-                                    "description": "Teach your parents",
-                                    "url": "http://www.gapminder.org/students-favorites"
-                                }
-                            ]
-                        },
-                        {
-                            "category": "Curriculum",
-                            "type": "bulletpoints",
-                            "columnCount": 1,
-                            "items": [
-                                {
-                                    "title": "Social Sciences",
-                                    "description": "Discuss based on facts",
-                                    "url": "http://www.gapminder.org/social-sciences"
-                                }
-                            ]
-                        },
-                        {
-                            "category": "Curriculum",
-                            "type": "bulletpoints",
-                            "columnCount": 1,
-                            "items": [
-                                {
-                                    "title": "Quizzes",
-                                    "description": "Fun quizzes",
-                                    "url": "http://www.gapminder.org/quizzes"
-                                },
-                                {
-                                    "title": "Slideshows",
-                                    "description": "Entertainin slideshows",
-                                    "url": "http://www.gapminder.org/slideshows"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "title": "Participate",
-                    "categories": [
-                        {
-                            "type": "plain",
-                            "columnCount": 1,
-                            "items": [
-                                {
-                                    "title": "News",
-                                    "description": "Follow our global activity",
-                                    "url": "http://www.gapminder.org/news"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "plain",
-                            "columnCount": 1,
-                            "items": [
-                                {
-                                    "title": "Organization",
-                                    "description": "Mission, constitution, team, funding, and more",
-                                    "url": "http://www.gapminder.org/organization"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "plain",
-                            "columnCount": 1,
-                            "items": [
-                                {
-                                    "title": "Projects",
-                                    "description": "About Dollar Street, Teaching Tools, and more",
-                                    "url": "http://www.gapminder.org/projects"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "plain",
-                            "columnCount": 1,
-                            "items": [
-                                {
-                                    "title": "Friends",
-                                    "description": "Follow our global activity",
-                                    "url": "http://www.gapminder.org/friends"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "title": "About",
-                    "url": "http://www.gapminder.org/about"
-                }
-            ],
-            "mobile_menu_tree": {},
-            "current_item": {
-                "node_id": 896,
-                "item_type": "custom_page",
-                "url": null,
-                "attributes": {
-                    "composition_type": null,
-                    "heading": null,
-                    "subheading": null,
-                    "about": null,
-                    "caption": null
-                },
-                "page_hierarchy": {
-                    "siblings": [],
-                    "children": [],
-                    "parent_path": []
-                },
-                "composition": null,
-                "contributors": [],
-                "related": []
-            }
-        }
-        

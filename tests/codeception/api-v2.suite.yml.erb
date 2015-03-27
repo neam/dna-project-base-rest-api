@@ -1,0 +1,22 @@
+class_name: ApiGuy
+modules:
+    enabled: [PhpBrowser, REST, ApiHelper]
+    config:
+      PhpBrowser:
+          url: http://<%= ENV['API_HOST'] %>
+      REST:
+          url: http://foo.com/the-url-property-of-REST-needs-to-be-set-for-codecept-build-to-work-but-should-be-overwritten-by-env-config-during-actual-testing.php
+
+env:
+    apiary:
+        modules:
+            config:
+                REST:
+                    url: http://127.0.0.1:3000/
+
+    cms-rest-api:
+        modules:
+            config:
+                REST:
+                    url: http://<%= ENV['API_HOST'] %>/v2/
+

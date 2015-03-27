@@ -20,20 +20,20 @@ $expectedResponse = array(
                     "type" => "heading",
                     "data" => array(
                         "text" => "Test heading"
-                    )
+                    ),
                 ),
                 array(
                     "type" => "text",
                     "data" => array(
                         "text" => "Test text"
-                    )
+                    ),
                 ),
                 array(
                     "type" => "quote",
                     "data" => array(
                         "cite" => "Test credit",
                         "text" => "> Test quote"
-                    )
+                    ),
                 ),
                 array(
                     "type" => "download_links",
@@ -46,12 +46,12 @@ $expectedResponse = array(
                                     "item_type" => "download_link",
                                     "attributes" => array(
                                         "title" => "Gapminder World 2012",
-                                        "url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
+                                        "url" => "http://web/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
                                     )
-                                )
+                                ),
                             )
                        )
-                    )
+                    ),
                 ),
                 array(
                     "type" => "image",
@@ -61,20 +61,20 @@ $expectedResponse = array(
                             "url" => "http://192.168.99.100:11111/files-api/p3media/file/image?id=8&preset=sir-trevor-image-block&title=media&extension=.jpeg",
                             "p3_media_id" => "8"
                         )
-                    )
+                    ),
                 ),
                 array(
                     "type" => "video",
                     "data" => array(
                         "source" => "youtube",
                         "remote_id" => "BkSO9pOVpRM"
-                    )
+                    ),
                 ),
                 array(
                     "type" => "slideshare",
                     "data" => array(
                         "remote_id" => "42241898"
-                    )
+                    ),
                 )
             )
         )
@@ -108,13 +108,16 @@ $expectedResponse = array(
                 "caption" => "Test caption 2",
                 "slug" => "test-go-item-slug-2",
                 "thumb" => array(
-                "original" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                    "735x444" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                    "160x96" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                    "110x66" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                "original" => "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                    "735x444" => "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                    "160x96" => "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                    "110x66" => "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                 )
             )
         )
+    ),
+    "groups" => array(
+        "GapminderOrg"
     ),
     "home_navigation_tree" => array(
         "data" => array(
@@ -130,7 +133,7 @@ $expectedResponse = array(
                         "heading" => "Home",
                         "subheading" => "Gapminder.org - Start Here",
                         "url" => "/friends",
-                        "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=13&preset=navtree-icon&title=media&extension=.gif"
+                        "icon_url" => "http://web/files-api/p3media/file/image?id=13&preset=navtree-icon&title=media&extension=.gif"
                     ),
                     "children" => array(
                         array(
@@ -145,7 +148,7 @@ $expectedResponse = array(
                                     "heading" => "Health",
                                     "subheading" => "About health",
                                     "url" => null,
-                                    "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=14&preset=navtree-icon&title=media&extension=.gif"
+                                    "icon_url" => "http://web/files-api/p3media/file/image?id=14&preset=navtree-icon&title=media&extension=.gif"
                                 ),
                                 "children" => array(
                                     array(
@@ -160,7 +163,7 @@ $expectedResponse = array(
                                                 "heading" => "Ebola",
                                                 "subheading" => "Read more about ebola",
                                                 "url" => "/ebola",
-                                                "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=15&preset=navtree-icon&title=media&extension=.gif"
+                                                "icon_url" => "http://web/files-api/p3media/file/image?id=15&preset=navtree-icon&title=media&extension=.gif"
                                             ),
                                             "children" => array()
                                         )
@@ -180,7 +183,7 @@ $expectedResponse = array(
                                     "heading" => "Exercises",
                                     "subheading" => "For teachers and tutors",
                                     "url" => "/exercises",
-                                    "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=16&preset=navtree-icon&title=media&extension=.gif"
+                                    "icon_url" => "http://web/files-api/p3media/file/image?id=16&preset=navtree-icon&title=media&extension=.gif"
                                 ),
                                 "children" => array()
                             )
@@ -204,7 +207,7 @@ $expectedResponse = array(
                         "heading" => "Gapminder World",
                         "subheading" => null,
                         "url" => "/world",
-                        "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=17&preset=navtree-icon&title=media&extension=.gif"
+                        "icon_url" => "http://web/files-api/p3media/file/image?id=17&preset=navtree-icon&title=media&extension=.gif"
                     ),
                     "children" => array()
                 )
@@ -221,7 +224,7 @@ $expectedResponse = array(
                         "heading" => "For teachers",
                         "subheading" => null,
                         "url" => "/for-teachers",
-                        "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=18&preset=navtree-icon&title=media&extension=.gif"
+                        "icon_url" => "http://web/files-api/p3media/file/image?id=18&preset=navtree-icon&title=media&extension=.gif"
                     ),
                     "children" => array()
                 )
@@ -259,7 +262,7 @@ $expectedResponse = array(
                         "heading" => "Help",
                         "subheading" => null,
                         "url" => "/help",
-                        "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=20&preset=navtree-icon&title=media&extension=.gif"
+                        "icon_url" => "http://web/files-api/p3media/file/image?id=20&preset=navtree-icon&title=media&extension=.gif"
                     ),
                     "children" => array()
                 )
@@ -269,13 +272,13 @@ $expectedResponse = array(
 );
 
 $I->wantTo('retrieve custom page items via the REST API as defined in api blueprint');
-$I->sendGET('item/4/test/page?lang=en');
+$I->sendGET('item/4/test/page?_lang=en');
 $I->seeResponseCodeIs(200);
 $I->seeResponseIsJson();
 $I->seeResponseContainsJson($expectedResponse);
 
 $I->wantTo('retrieve custom page items by route via the barebones php REST API as defined in api blueprint');
-$I->sendGET('item/%2Ftest-page-slug%2F/test-by-route/page?lang=en');
+$I->sendGET('item/%2Ftest-page-slug%2F/test-by-route/page?_lang=en');
 $I->seeResponseCodeIs(200);
 $I->seeResponseIsJson();
 $I->seeResponseContainsJson($expectedResponse);
@@ -285,14 +288,14 @@ $accessToken = $I->authenticateAsTestUser();
 
 $I->wantTo('(authenticated request) retrieve custom page items via the REST API as defined in api blueprint');
 $I->amBearerAuthenticated($accessToken);
-$I->sendGET('item/4/test/page?lang=en');
+$I->sendGET('item/4/test/page?_lang=en');
 $I->seeResponseCodeIs(200);
 $I->seeResponseIsJson();
 $I->seeResponseContainsJson($expectedResponse);
 
 $I->wantTo('(authenticated request) retrieve custom page items by route via the barebones php REST API as defined in api blueprint');
 $I->amBearerAuthenticated($accessToken);
-$I->sendGET('item/%2Ftest-page-slug%2F/test-by-route/page?lang=en');
+$I->sendGET('item/%2Ftest-page-slug%2F/test-by-route/page?_lang=en');
 $I->seeResponseCodeIs(200);
 $I->seeResponseIsJson();
 $I->seeResponseContainsJson($expectedResponse);

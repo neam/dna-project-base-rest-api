@@ -22,30 +22,59 @@ $mainConfig = array(
         'ext.wrest.WRestResponse' => 'vendor.weavora.wrest.WRestResponse',
         'ext.wrest.JsonResponse' => 'vendor.weavora.wrest.JsonResponse',
     ),
-    // autoloading model and component classes
-    'import' => array(
-        'application.behaviors.*',
-        'application.components.*',
-        'application.controllers.*',
-        'application.interfaces.*',
-        'application.models.*',
-        'application.traits.*',
-        'vendor.weavora.wrest.*',
-        'vendor.weavora.wrest.actions.*',
-    ),
-    // put rest-api-specific p3media presets here
     'modules' => array(
-        'p3media' => array(
-            'params' => array(
-                'presets' => array()
+        // API version 1
+        'v1' => array(
+            'import' => array(
+                // base classes
+                'application.behaviors.*',
+                'application.components.*',
+                'application.controllers.*',
+                'application.interfaces.*',
+                'application.models.*',
+                'application.traits.*',
+                'vendor.weavora.wrest.*',
+                'vendor.weavora.wrest.actions.*',
+                // v1 specific classes
+                'application.modules.v1.behaviors.*',
+                'application.modules.v1.components.*',
+                'application.modules.v1.controllers.*',
+                'application.modules.v1.interfaces.*',
+                'application.modules.v1.models.*',
             ),
         ),
-        'v1' => array(
-            // API version 1 specific configuration goes in here
+        // API version 2
+        'v2' => array(
+            'import' => array(
+                // base classes
+                'application.behaviors.*',
+                'application.components.*',
+                'application.controllers.*',
+                'application.interfaces.*',
+                'application.models.*',
+                'application.traits.*',
+                'vendor.weavora.wrest.*',
+                'vendor.weavora.wrest.actions.*',
+                // v2 specific classes
+                'application.modules.v2.behaviors.*',
+                'application.modules.v2.components.*',
+                'application.modules.v2.components.factories.*',
+                'application.modules.v2.components.translators.*',
+                'application.modules.v2.controllers.*',
+                'application.modules.v2.interfaces.*',
+                'application.modules.v2.models.*',
+                'application.modules.v2.models.blocks.*',
+            ),
         ),
     ),
     // application components
     'components' => array(
+        'itemTranslatorFactory' => array(
+            'class' => 'ItemTranslatorFactory',
+        ),
+        'sirTrevorBlockFactory' => array(
+            'class' => 'SirTrevorBlockFactory',
+        ),
         'oauth2' => array(
             'class' => 'OAuth2Yii\Component\ServerComponent',
             'userClass' => 'OAuth2User',
@@ -66,7 +95,11 @@ $mainConfig = array(
                 // These are special endpoints used for testing purposes only.
                 // It is a workaround for not being able to choose the response when multiple are defined per request when testing the API format.
                 array('<version>/item/getByNodeId', 'pattern' => '<version:v\d+>/item/<node_id:\d+>/test/<itemType:\w+>', 'verb' => 'GET'),
+                array('<version>/item/getByNodeId', 'pattern' => '<version:v\d+>/item/<node_id:\d+>/test/<itemType:\w+>/<lang:[\w-]+>', 'verb' => 'GET'),
                 array('<version>/item/getByRoute', 'pattern' => '<version:v\d+>/item/<route:[\w-\/]+>/test-by-route/<itemType:\w+>', 'verb' => 'GET'),
+                array('<version>/item/getByRoute', 'pattern' => '<version:v\d+>/item/<route:[\w-\/]+>/test-by-route/<itemType:\w+>/<lang:[\w-]+>', 'verb' => 'GET'),
+                array('<version>/translation/get', 'pattern' => '<version:v\d+>/translation/<nodeId:\d+>/test/<itemType:\w+>', 'verb' => 'GET'),
+                array('<version>/translation/update', 'pattern' => '<version:v\d+>/translation/<nodeId:\d+>/test/<itemType:\w+>', 'verb' => 'PUT, POST'),
 
                 // custom rules
                 array('<version>/profile/get', 'pattern' => '<version:v\d+>/profile', 'verb' => 'GET'),
@@ -76,6 +109,8 @@ $mainConfig = array(
                 array('<version>/profile/update', 'pattern' => '<version:v\d+>/user/profile', 'verb' => 'PUT'),
                 array('<version>/user/authenticate', 'pattern' => '<version:v\d+>/user/authenticate', 'verb' => 'POST'),
                 array('<version>/profile/public', 'pattern' => '<version:v\d+>/user/<accountId:\d+>/profile', 'verb' => 'GET'),
+                array('<version>/translation/get', 'pattern' => '<version:v\d+>/translation/<nodeId:\d+>', 'verb' => 'GET'),
+                array('<version>/translation/update', 'pattern' => '<version:v\d+>/translation/<nodeId:\d+>', 'verb' => 'PUT, POST'),
                 array('<version>/item/getByNodeId', 'pattern' => '<version:v\d+>/item/<node_id:\d+>', 'verb' => 'GET'),
                 array('<version>/item/getByRoute', 'pattern' => '<version:v\d+>/item/<route:[\w-\/]+>', 'verb' => 'GET'),
 
@@ -153,6 +188,9 @@ $config['components']['errorHandler'] = array(
 unset($config['modules']['gii']);
 unset($config['behaviors']['eventBridge']);
 unset($config['components']['events']);
+unset($config['components']['workflowUi']);
+unset($config['components']['langHandler']);
+unset($config['components']['authManager']);
 
 // Uncomment to easily see the active merged configuration
 //echo "<pre>";print_r($config);echo "</pre>";die();

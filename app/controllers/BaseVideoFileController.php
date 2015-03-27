@@ -3,7 +3,7 @@
 /**
  * Video file resource controller.
  */
-class BaseVideoFileController extends AppRestController
+abstract class BaseVideoFileController extends AppRestController
 {
     /**
      * @var string the resource model name.

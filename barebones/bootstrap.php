@@ -203,7 +203,8 @@ class NavigationTreeItem extends \barebones\ActiveRecord
 }
 
 require_once($root . '/yiiapps/rest-api/app/interfaces/RelatedResource.php');
-require_once($root . '/yiiapps/rest-api/app/interfaces/SirTrevorBlock.php');
+// todo: this is only for API V1
+require_once($root . '/yiiapps/rest-api/app/modules/v1/interfaces/SirTrevorBlockNode.php');
 
 $restApiItemTypes = [
     "Composition",
@@ -216,12 +217,16 @@ $restApiItemTypes = [
     "NavigationTreeItem",
 ];
 foreach ($restApiItemTypes as $modelClass) {
-    require_once($root . '/yiiapps/rest-api/app/models/RestApi' . $modelClass . '.php');
+    require_once($root . '/yiiapps/rest-api/app/models/BaseRestApi' . $modelClass . '.php');
+    // todo: this is only for API V1
+    require_once($root . '/yiiapps/rest-api/app/modules/v1/models/RestApi' . $modelClass . '.php');
 }
 
 require_once($root . '/yiiapps/rest-api/app/components/ContributorItems.php');
 require_once($root . '/yiiapps/rest-api/app/components/RelatedItems.php');
-require_once($root . '/yiiapps/rest-api/app/components/SirTrevorParser.php');
+require_once($root . '/yiiapps/rest-api/app/components/RestApiModel.php');
+// todo: this is only for API V1
+require_once($root . '/yiiapps/rest-api/app/modules/v1/components/SirTrevorParser.php');
 
 // Load p3media presets config
 $config = ["modules" => ["p3media" => ["params" => ["presets" => []]]]];
