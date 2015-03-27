@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: http://develop-cms.gapminder.org/api/v1
+HOST: http://develop-cms.gapminder.org/api/v2
 
 # Gapminder
 
@@ -3235,5 +3235,1211 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                         }
                     }
                 ]
+            }
+        }
+
+# Group Translations
+
+## Item Translation [/translation/{nodeId}{?_lang}]
+
++ Parameters
+
+    + nodeId (int) ... ID of the resource node
+    + _lang (optional, string) ... the language code for the translation
+
+### Get translation data for an item [GET]
+
++ Response 200 (application/json)
+
+        {
+            "node_id": 6,
+            "item_type": "go_item",
+            "url": "/answers/test-go-item-slug/",
+            "attributes": {
+                "heading": "Test heading",
+                "subheading": null,
+                "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis commodo ante nec venenatis. Vivamus maximus massa lectus, ut fermentum arcu tempus in.",
+                "caption": "Test caption",
+                "composition": {
+                    "data": [
+                        {
+                            "type": "heading",
+                            "data": {
+                                "text": "Test heading"
+                            },
+                            "id": "25cefe3f2d19b4784368c2f0ec4ee123"
+                        },
+                        {
+                            "type": "text",
+                            "data": {
+                                "text": "Test text\n"
+                            },
+                            "id": "3f6652553ac1cfd59c2d544202213945"
+                        },
+                        {
+                            "type": "quote",
+                            "data": {
+                                "cite": "Test credit",
+                                "text": "> Test quote"
+                            },
+                            "id": "1db0bcb68d798b40ebaaca2e42737be2"
+                        },
+                        {
+                            "type": "download_links",
+                            "data": {
+                                "download_links": [
+                                    {
+                                        "type": "download_link",
+                                        "data": {
+                                            "node_id": 3,
+                                            "item_type": "download_link",
+                                            "attributes": {
+                                                "title": "Gapminder World 2012",
+                                                "url": "http://192.168.59.103:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
+                                            },
+                                            "labels": {
+                                                "title": "Title"
+                                            }
+                                        },
+                                        "id": "c6165892b571041826b6562311eebf48"
+                                    }
+                                ]
+                            },
+                            "id": "a6c6ff85dc6716fe5d3e6498d542829d"
+                        },
+                        {
+                            "type": "image",
+                            "data": {
+                                "message": "File",
+                                "file": {
+                                    "url": "http://192.168.99.100:11111/files-api/p3media/file/image?id=10&preset=sir-trevor-image-block&title=media&extension=.jpeg",
+                                    "p3_media_id": "10"
+                                }
+                            },
+                            "id": "7ac27a63a5ef487c8e54334989c98b41"
+                        },
+                        {
+                            "type": "slideshare",
+                            "data": {
+                                "remote_id": "42268387"
+                            },
+                            "id": "a57ca60762865d426d73904a18ab8e4b"
+                        },
+                        {
+                            "type": "video",
+                            "data": {
+                                "source": "youtube",
+                                "remote_id": "BkSO9pOVpRM"
+                            },
+                            "id": "f78b6d53bdf075b1f95a397010915c03"
+                        },
+                        {
+                            "type": "item_list",
+                            "data": {
+                                "node_id": 9,
+                                "item_type": "item_list",
+                                "attributes": [],
+                                "labels": []
+                            },
+                            "id": "f9b53e29ed861e483ce6642a07baa8ce"
+                        },
+                        {
+                            "type": "item_list",
+                            "data": {
+                                "node_id": 10,
+                                "item_type": "item_list",
+                                "attributes": [],
+                                "labels": []
+                            },
+                            "id": "65821809c8b31557b57344abe34a7224"
+                        },
+                        {
+                            "type": "visualization",
+                            "data": {
+                                "node_id": 12,
+                                "item_type": "visualization",
+                                "attributes": [],
+                                "labels": []
+                            },
+                            "id": "d27605ace311f6d81d26ac184c74ef95"
+                        },
+                        {
+                            "type": "slideshow_file",
+                            "data": {
+                                "node_id": 14,
+                                "item_type": "slideshow_file",
+                                "attributes": [],
+                                "labels": []
+                            },
+                            "id": "b3a06fa50ff950daed8b2448c94efc2e"
+                        }
+                    ]
+                }
+            },
+            "translations": {
+                "heading": "Test heading",
+                "subheading": null,
+                "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis commodo ante nec venenatis. Vivamus maximus massa lectus, ut fermentum arcu tempus in.",
+                "caption": "Test caption",
+                "composition": {
+                    "data": [
+                        {
+                            "type": "heading",
+                            "data": {
+                                "text": "Test heading"
+                            },
+                            "id": "25cefe3f2d19b4784368c2f0ec4ee123",
+                            "progress": 0
+                        },
+                        {
+                            "type": "text",
+                            "data": {
+                                "text": "Test text\n"
+                            },
+                            "id": "3f6652553ac1cfd59c2d544202213945",
+                            "progress": 0
+                        },
+                        {
+                            "type": "quote",
+                            "data": {
+                                "cite": "Test credit",
+                                "text": "> Test quote"
+                            },
+                            "id": "1db0bcb68d798b40ebaaca2e42737be2",
+                            "progress": 0
+                        },
+                        {
+                            "type": "download_links",
+                            "data": {
+                                "download_links": [
+                                    {
+                                        "type": "download_link",
+                                        "data": {
+                                            "node_id": 3,
+                                            "item_type": "download_link",
+                                            "attributes": {
+                                                "title": "Gapminder World 2012",
+                                                "url": "http://192.168.59.103:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
+                                            }
+                                        },
+                                        "id": "c6165892b571041826b6562311eebf48",
+                                        "progress": 0
+                                    }
+                                ]
+                            },
+                            "id": "a6c6ff85dc6716fe5d3e6498d542829d",
+                            "progress": 0
+                        },
+                        {
+                            "type": "image",
+                            "data": {
+                                "message": "File",
+                                "file": {
+                                    "url": "http://192.168.99.100:11111/files-api/p3media/file/image?id=10&preset=sir-trevor-image-block&title=media&extension=.jpeg",
+                                    "p3_media_id": "10"
+                                }
+                            },
+                            "id": "7ac27a63a5ef487c8e54334989c98b41",
+                            "progress": 0
+                        },
+                        {
+                            "type": "slideshare",
+                            "data": {
+                                "remote_id": "42268387"
+                            },
+                            "id": "a57ca60762865d426d73904a18ab8e4b",
+                            "progress": 0
+                        },
+                        {
+                            "type": "video",
+                            "data": {
+                                "source": "youtube",
+                                "remote_id": "BkSO9pOVpRM"
+                            },
+                            "id": "f78b6d53bdf075b1f95a397010915c03",
+                            "progress": 0
+                        },
+                        {
+                            "type": "item_list",
+                            "data": {
+                                "node_id": 9,
+                                "item_type": "item_list",
+                                "attributes": []
+                            },
+                            "id": "f9b53e29ed861e483ce6642a07baa8ce",
+                            "progress": 0
+                        },
+                        {
+                            "type": "item_list",
+                            "data": {
+                                "node_id": 10,
+                                "item_type": "item_list",
+                                "attributes": []
+                            },
+                            "id": "65821809c8b31557b57344abe34a7224",
+                            "progress": 0
+                        },
+                        {
+                            "type": "visualization",
+                            "data": {
+                                "node_id": 12,
+                                "item_type": "visualization",
+                                "attributes": []
+                            },
+                            "id": "d27605ace311f6d81d26ac184c74ef95",
+                            "progress": 0
+                        },
+                        {
+                            "type": "slideshow_file",
+                            "data": {
+                                "node_id": 14,
+                                "item_type": "slideshow_file",
+                                "attributes": []
+                            },
+                            "id": "b3a06fa50ff950daed8b2448c94efc2e",
+                            "progress": 0
+                        }
+                    ]
+                }
+            },
+            "labels": {
+                "heading": "Heading",
+                "subheading": "Subheading",
+                "about": "About",
+                "caption": "Caption"
+            }
+        }
+
+### Save translation data for an item [PUT]
+
++ Request (application/json)
+
+        {
+            "node_id": 6,
+            "item_type": "go_item",
+            "url": "/answers/test-go-item-slug/",
+            "translations": {
+                "heading": "ES Test heading",
+                "subheading": null,
+                "about": "ES Test about",
+                "caption": "ES Test caption",
+                "composition": {
+                    "data": [
+                        {
+                            "type": "heading",
+                            "data": {
+                                "text": "ES Test heading"
+                            },
+                            "id": "25cefe3f2d19b4784368c2f0ec4ee123"
+                        },
+                        {
+                            "type": "text",
+                            "data": {
+                                "text": "ES Test text\n"
+                            },
+                            "id": "3f6652553ac1cfd59c2d544202213945"
+                        },
+                        {
+                            "type": "quote",
+                            "data": {
+                                "cite": "ES Test credit",
+                                "text": "> ES Test quote"
+                            },
+                            "id": "1db0bcb68d798b40ebaaca2e42737be2"
+                        },
+                        {
+                            "type": "download_links",
+                            "data": {
+                                "download_links": [
+                                    {
+                                        "type": "download_link",
+                                        "data": {
+                                            "node_id": 3,
+                                            "item_type": "download_link",
+                                            "attributes": {
+                                                "title": "ES Gapminder World 2012",
+                                                "url": "http://192.168.59.103:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
+                                            }
+                                        },
+                                        "id": "c6165892b571041826b6562311eebf48"
+                                    }
+                                ]
+                            },
+                            "id": "a6c6ff85dc6716fe5d3e6498d542829d"
+                        }
+                    ]
+                }
+            },
+            "labels": {
+                "heading": "Heading",
+                "subheading": "Subheading",
+                "about": "About",
+                "caption": "Caption"
+            }
+        }
+
++ Response 200 (application/json)
+
+        {
+            "node_id": 6,
+            "item_type": "go_item",
+            "url": "/answers/test-go-item-slug/",
+            "attributes": {
+                "heading": "Test heading",
+                "subheading": null,
+                "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis commodo ante nec venenatis. Vivamus maximus massa lectus, ut fermentum arcu tempus in.",
+                "caption": "Test caption",
+                "composition": {
+                    "data": [
+                        {
+                            "type": "heading",
+                            "data": {
+                                "text": "Test heading"
+                            },
+                            "id": "25cefe3f2d19b4784368c2f0ec4ee123"
+                        },
+                        {
+                            "type": "text",
+                            "data": {
+                                "text": "Test text\n"
+                            },
+                            "id": "3f6652553ac1cfd59c2d544202213945"
+                        },
+                        {
+                            "type": "quote",
+                            "data": {
+                                "cite": "Test credit",
+                                "text": "> Test quote"
+                            },
+                            "id": "1db0bcb68d798b40ebaaca2e42737be2"
+                        },
+                        {
+                            "type": "download_links",
+                            "data": {
+                                "download_links": [
+                                    {
+                                        "type": "download_link",
+                                        "data": {
+                                            "node_id": 3,
+                                            "item_type": "download_link",
+                                            "attributes": {
+                                                "title": "Gapminder World 2012",
+                                                "url": "http://192.168.59.103:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
+                                            },
+                                            "labels": {
+                                                "title": "Title"
+                                            }
+                                        },
+                                        "id": "c6165892b571041826b6562311eebf48"
+                                    }
+                                ]
+                            },
+                            "id": "a6c6ff85dc6716fe5d3e6498d542829d"
+                        },
+                        {
+                            "type": "image",
+                            "data": {
+                                "message": "File",
+                                "file": {
+                                    "url": "http://192.168.99.100:11111/files-api/p3media/file/image?id=10&preset=sir-trevor-image-block&title=media&extension=.jpeg",
+                                    "p3_media_id": "10"
+                                }
+                            },
+                            "id": "7ac27a63a5ef487c8e54334989c98b41"
+                        },
+                        {
+                            "type": "slideshare",
+                            "data": {
+                                "remote_id": "42268387"
+                            },
+                            "id": "a57ca60762865d426d73904a18ab8e4b"
+                        },
+                        {
+                            "type": "video",
+                            "data": {
+                                "source": "youtube",
+                                "remote_id": "BkSO9pOVpRM"
+                            },
+                            "id": "f78b6d53bdf075b1f95a397010915c03"
+                        },
+                        {
+                            "type": "item_list",
+                            "data": {
+                                "node_id": 9,
+                                "item_type": "item_list",
+                                "attributes": [],
+                                "labels": []
+                            },
+                            "id": "f9b53e29ed861e483ce6642a07baa8ce"
+                        },
+                        {
+                            "type": "item_list",
+                            "data": {
+                                "node_id": 10,
+                                "item_type": "item_list",
+                                "attributes": [],
+                                "labels": []
+                            },
+                            "id": "65821809c8b31557b57344abe34a7224"
+                        },
+                        {
+                            "type": "visualization",
+                            "data": {
+                                "node_id": 12,
+                                "item_type": "visualization",
+                                "attributes": [],
+                                "labels": []
+                            },
+                            "id": "d27605ace311f6d81d26ac184c74ef95"
+                        },
+                        {
+                            "type": "slideshow_file",
+                            "data": {
+                                "node_id": 14,
+                                "item_type": "slideshow_file",
+                                "attributes": [],
+                                "labels": []
+                            },
+                            "id": "b3a06fa50ff950daed8b2448c94efc2e"
+                        }
+                    ]
+                }
+            },
+            "translations": {
+                "heading": "ES Test heading",
+                "subheading": null,
+                "about": "ES Test about",
+                "caption": "ES Test caption",
+                "composition": {
+                    "data": [
+                        {
+                            "type": "heading",
+                            "data": {
+                                "text": "ES Test heading"
+                            },
+                            "id": "25cefe3f2d19b4784368c2f0ec4ee123",
+                            "progress": 100
+                        },
+                        {
+                            "type": "text",
+                            "data": {
+                                "text": "ES Test text\n"
+                            },
+                            "id": "3f6652553ac1cfd59c2d544202213945",
+                            "progress": 100
+                        },
+                        {
+                            "type": "quote",
+                            "data": {
+                                "cite": "ES Test credit",
+                                "text": "> ES Test quote"
+                            },
+                            "id": "1db0bcb68d798b40ebaaca2e42737be2",
+                            "progress": 100
+                        },
+                        {
+                            "type": "download_links",
+                            "data": {
+                                "download_links": [
+                                    {
+                                        "type": "download_link",
+                                        "data": {
+                                            "node_id": 3,
+                                            "item_type": "download_link",
+                                            "attributes": {
+                                                "title": "ES Gapminder World 2012",
+                                                "url": "http://192.168.59.103:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
+                                            }
+                                        },
+                                        "id": "c6165892b571041826b6562311eebf48",
+                                        "progress": 100
+                                    }
+                                ]
+                            },
+                            "id": "a6c6ff85dc6716fe5d3e6498d542829d",
+                            "progress": 0
+                        },
+                        {
+                            "type": "image",
+                            "data": {
+                                "message": "File",
+                                "file": {
+                                    "url": "http://192.168.99.100:11111/files-api/p3media/file/image?id=10&preset=sir-trevor-image-block&title=media&extension=.jpeg",
+                                    "p3_media_id": "10"
+                                }
+                            },
+                            "id": "7ac27a63a5ef487c8e54334989c98b41",
+                            "progress": 0
+                        },
+                        {
+                            "type": "slideshare",
+                            "data": {
+                                "remote_id": "42268387"
+                            },
+                            "id": "a57ca60762865d426d73904a18ab8e4b",
+                            "progress": 0
+                        },
+                        {
+                            "type": "video",
+                            "data": {
+                                "source": "youtube",
+                                "remote_id": "BkSO9pOVpRM"
+                            },
+                            "id": "f78b6d53bdf075b1f95a397010915c03",
+                            "progress": 0
+                        },
+                        {
+                            "type": "item_list",
+                            "data": {
+                                "node_id": 9,
+                                "item_type": "item_list",
+                                "attributes": []
+                            },
+                            "id": "f9b53e29ed861e483ce6642a07baa8ce",
+                            "progress": 0
+                        },
+                        {
+                            "type": "item_list",
+                            "data": {
+                                "node_id": 10,
+                                "item_type": "item_list",
+                                "attributes": []
+                            },
+                            "id": "65821809c8b31557b57344abe34a7224",
+                            "progress": 0
+                        },
+                        {
+                            "type": "visualization",
+                            "data": {
+                                "node_id": 12,
+                                "item_type": "visualization",
+                                "attributes": []
+                            },
+                            "id": "d27605ace311f6d81d26ac184c74ef95",
+                            "progress": 0
+                        },
+                        {
+                            "type": "slideshow_file",
+                            "data": {
+                                "node_id": 14,
+                                "item_type": "slideshow_file",
+                                "attributes": []
+                            },
+                            "id": "b3a06fa50ff950daed8b2448c94efc2e",
+                            "progress": 0
+                        }
+                    ]
+                }
+            },
+            "labels": {
+                "heading": "Heading",
+                "subheading": "Subheading",
+                "about": "About",
+                "caption": "Caption"
+            }
+        }
+
+## TESTING Composition Translation [/translation/{nodeId}/test/composition{?_lang}]
+
++ Parameters
+
+    + nodeId (int) ... ID of the resource node
+    + _lang (optional, string) ... the language code for the translation
+
+### TESTING Get translation data for a composition [GET]
+
+This endpoint is for testing purposes only and will not be available in the real API.
+It is a workaround for not being able to choose the response when multiple are defined per request when testing the API format.
+
++ Response 200 (application/json)
+
+        {
+            "node_id": 6,
+            "item_type": "go_item",
+            "url": "/answers/test-go-item-slug/",
+            "attributes": {
+                "heading": "Test heading",
+                "subheading": null,
+                "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis commodo ante nec venenatis. Vivamus maximus massa lectus, ut fermentum arcu tempus in.",
+                "caption": "Test caption",
+                "composition": {
+                    "data": [
+                        {
+                            "type": "heading",
+                            "data": {
+                                "text": "Test heading"
+                            },
+                            "id": "25cefe3f2d19b4784368c2f0ec4ee123"
+                        },
+                        {
+                            "type": "text",
+                            "data": {
+                                "text": "Test text\n"
+                            },
+                            "id": "3f6652553ac1cfd59c2d544202213945"
+                        },
+                        {
+                            "type": "quote",
+                            "data": {
+                                "cite": "Test credit",
+                                "text": "> Test quote"
+                            },
+                            "id": "1db0bcb68d798b40ebaaca2e42737be2"
+                        },
+                        {
+                            "type": "download_links",
+                            "data": {
+                                "download_links": [
+                                    {
+                                        "type": "download_link",
+                                        "data": {
+                                            "node_id": 3,
+                                            "item_type": "download_link",
+                                            "attributes": {
+                                                "title": "Gapminder World 2012",
+                                                "url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
+                                            },
+                                            "labels": {
+                                                "title": "Title"
+                                            }
+                                        },
+                                        "id": "c6165892b571041826b6562311eebf48"
+                                    }
+                                ]
+                            },
+                            "id": "a6c6ff85dc6716fe5d3e6498d542829d"
+                        },
+                        {
+                            "type": "image",
+                            "data": {
+                                "message": "File",
+                                "file": {
+                                    "url": "http://192.168.99.100:11111/files-api/p3media/file/image?id=10&preset=sir-trevor-image-block&title=media&extension=.jpeg",
+                                    "p3_media_id": "10"
+                                }
+                            },
+                            "id": "7ac27a63a5ef487c8e54334989c98b41"
+                        },
+                        {
+                            "type": "slideshare",
+                            "data": {
+                                "remote_id": "42268387"
+                            },
+                            "id": "a57ca60762865d426d73904a18ab8e4b"
+                        },
+                        {
+                            "type": "video",
+                            "data": {
+                                "source": "youtube",
+                                "remote_id": "BkSO9pOVpRM"
+                            },
+                            "id": "f78b6d53bdf075b1f95a397010915c03"
+                        },
+                        {
+                            "type": "item_list",
+                            "data": {
+                                "node_id": 9,
+                                "item_type": "item_list",
+                                "attributes": [],
+                                "labels": []
+                            },
+                            "id": "f9b53e29ed861e483ce6642a07baa8ce"
+                        },
+                        {
+                            "type": "item_list",
+                            "data": {
+                                "node_id": 10,
+                                "item_type": "item_list",
+                                "attributes": [],
+                                "labels": []
+                            },
+                            "id": "65821809c8b31557b57344abe34a7224"
+                        },
+                        {
+                            "type": "visualization",
+                            "data": {
+                                "node_id": 12,
+                                "item_type": "visualization",
+                                "attributes": [],
+                                "labels": []
+                            },
+                            "id": "d27605ace311f6d81d26ac184c74ef95"
+                        },
+                        {
+                            "type": "slideshow_file",
+                            "data": {
+                                "node_id": 14,
+                                "item_type": "slideshow_file",
+                                "attributes": [],
+                                "labels": []
+                            },
+                            "id": "b3a06fa50ff950daed8b2448c94efc2e"
+                        }
+                    ]
+                }
+            },
+            "translations": {
+                "heading": "Test heading",
+                "subheading": null,
+                "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis commodo ante nec venenatis. Vivamus maximus massa lectus, ut fermentum arcu tempus in.",
+                "caption": "Test caption",
+                "composition": {
+                    "data": [
+                        {
+                            "type": "heading",
+                            "data": {
+                                "text": "Test heading"
+                            },
+                            "id": "25cefe3f2d19b4784368c2f0ec4ee123",
+                            "progress": 0
+                        },
+                        {
+                            "type": "text",
+                            "data": {
+                                "text": "Test text\n"
+                            },
+                            "id": "3f6652553ac1cfd59c2d544202213945",
+                            "progress": 0
+                        },
+                        {
+                            "type": "quote",
+                            "data": {
+                                "cite": "Test credit",
+                                "text": "> Test quote"
+                            },
+                            "id": "1db0bcb68d798b40ebaaca2e42737be2",
+                            "progress": 0
+                        },
+                        {
+                            "type": "download_links",
+                            "data": {
+                                "download_links": [
+                                    {
+                                        "type": "download_link",
+                                        "data": {
+                                            "node_id": 3,
+                                            "item_type": "download_link",
+                                            "attributes": {
+                                                "title": "Gapminder World 2012",
+                                                "url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
+                                            }
+                                        },
+                                        "id": "c6165892b571041826b6562311eebf48",
+                                        "progress": 0
+                                    }
+                                ]
+                            },
+                            "id": "a6c6ff85dc6716fe5d3e6498d542829d",
+                            "progress": 0
+                        },
+                        {
+                            "type": "image",
+                            "data": {
+                                "message": "File",
+                                "file": {
+                                    "url": "http://192.168.99.100:11111/files-api/p3media/file/image?id=10&preset=sir-trevor-image-block&title=media&extension=.jpeg",
+                                    "p3_media_id": "10"
+                                }
+                            },
+                            "id": "7ac27a63a5ef487c8e54334989c98b41",
+                            "progress": 0
+                        },
+                        {
+                            "type": "slideshare",
+                            "data": {
+                                "remote_id": "42268387"
+                            },
+                            "id": "a57ca60762865d426d73904a18ab8e4b",
+                            "progress": 0
+                        },
+                        {
+                            "type": "video",
+                            "data": {
+                                "source": "youtube",
+                                "remote_id": "BkSO9pOVpRM"
+                            },
+                            "id": "f78b6d53bdf075b1f95a397010915c03",
+                            "progress": 0
+                        },
+                        {
+                            "type": "item_list",
+                            "data": {
+                                "node_id": 9,
+                                "item_type": "item_list",
+                                "attributes": []
+                            },
+                            "id": "f9b53e29ed861e483ce6642a07baa8ce",
+                            "progress": 0
+                        },
+                        {
+                            "type": "item_list",
+                            "data": {
+                                "node_id": 10,
+                                "item_type": "item_list",
+                                "attributes": []
+                            },
+                            "id": "65821809c8b31557b57344abe34a7224",
+                            "progress": 0
+                        },
+                        {
+                            "type": "visualization",
+                            "data": {
+                                "node_id": 12,
+                                "item_type": "visualization",
+                                "attributes": []
+                            },
+                            "id": "d27605ace311f6d81d26ac184c74ef95",
+                            "progress": 0
+                        },
+                        {
+                            "type": "slideshow_file",
+                            "data": {
+                                "node_id": 14,
+                                "item_type": "slideshow_file",
+                                "attributes": []
+                            },
+                            "id": "b3a06fa50ff950daed8b2448c94efc2e",
+                            "progress": 0
+                        }
+                    ]
+                }
+            },
+            "labels": {
+                "heading": "Heading",
+                "subheading": "Subheading",
+                "about": "About",
+                "caption": "Caption"
+            }
+        }
+
+### TESTING Save translation data for a composition [PUT]
+
+This endpoint is for testing purposes only and will not be available in the real API.
+It is a workaround for not being able to choose the response when multiple are defined per request when testing the API format.
+
++ Request (application/json)
+
+        {
+            "node_id": 6,
+            "item_type": "go_item",
+            "url": "/answers/test-go-item-slug/",
+            "translations": {
+                "heading": "ES Test heading",
+                "subheading": null,
+                "about": "ES Test about",
+                "caption": "ES Test caption",
+                "composition": {
+                    "data": [
+                        {
+                            "type": "heading",
+                            "data": {
+                                "text": "ES Test heading"
+                            },
+                            "id": "25cefe3f2d19b4784368c2f0ec4ee123"
+                        },
+                        {
+                            "type": "text",
+                            "data": {
+                                "text": "ES Test text\n"
+                            },
+                            "id": "3f6652553ac1cfd59c2d544202213945"
+                        },
+                        {
+                            "type": "quote",
+                            "data": {
+                                "cite": "ES Test credit",
+                                "text": "> ES Test quote"
+                            },
+                            "id": "1db0bcb68d798b40ebaaca2e42737be2"
+                        },
+                        {
+                            "type": "download_links",
+                            "data": {
+                                "download_links": [
+                                    {
+                                        "type": "download_link",
+                                        "data": {
+                                            "node_id": 3,
+                                            "item_type": "download_link",
+                                            "attributes": {
+                                                "title": "ES Gapminder World 2012",
+                                                "url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
+                                            }
+                                        },
+                                        "id": "c6165892b571041826b6562311eebf48"
+                                    }
+                                ]
+                            },
+                            "id": "a6c6ff85dc6716fe5d3e6498d542829d"
+                        }
+                    ]
+                }
+            },
+            "labels": {
+                "heading": "Heading",
+                "subheading": "Subheading",
+                "about": "About",
+                "caption": "Caption"
+            }
+        }
+
++ Response 200 (application/json)
+
+        {
+            "node_id": 6,
+            "item_type": "go_item",
+            "url": "/answers/test-go-item-slug/",
+            "attributes": {
+                "heading": "Test heading",
+                "subheading": null,
+                "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis commodo ante nec venenatis. Vivamus maximus massa lectus, ut fermentum arcu tempus in.",
+                "caption": "Test caption",
+                "composition": {
+                    "data": [
+                        {
+                            "type": "heading",
+                            "data": {
+                                "text": "Test heading"
+                            },
+                            "id": "25cefe3f2d19b4784368c2f0ec4ee123"
+                        },
+                        {
+                            "type": "text",
+                            "data": {
+                                "text": "Test text\n"
+                            },
+                            "id": "3f6652553ac1cfd59c2d544202213945"
+                        },
+                        {
+                            "type": "quote",
+                            "data": {
+                                "cite": "Test credit",
+                                "text": "> Test quote"
+                            },
+                            "id": "1db0bcb68d798b40ebaaca2e42737be2"
+                        },
+                        {
+                            "type": "download_links",
+                            "data": {
+                                "download_links": [
+                                    {
+                                        "type": "download_link",
+                                        "data": {
+                                            "node_id": 3,
+                                            "item_type": "download_link",
+                                            "attributes": {
+                                                "title": "Gapminder World 2012",
+                                                "url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
+                                            },
+                                            "labels": {
+                                                "title": "Title"
+                                            }
+                                        },
+                                        "id": "c6165892b571041826b6562311eebf48"
+                                    }
+                                ]
+                            },
+                            "id": "a6c6ff85dc6716fe5d3e6498d542829d"
+                        },
+                        {
+                            "type": "image",
+                            "data": {
+                                "message": "File",
+                                "file": {
+                                    "url": "http://192.168.99.100:11111/files-api/p3media/file/image?id=10&preset=sir-trevor-image-block&title=media&extension=.jpeg",
+                                    "p3_media_id": "10"
+                                }
+                            },
+                            "id": "7ac27a63a5ef487c8e54334989c98b41"
+                        },
+                        {
+                            "type": "slideshare",
+                            "data": {
+                                "remote_id": "42268387"
+                            },
+                            "id": "a57ca60762865d426d73904a18ab8e4b"
+                        },
+                        {
+                            "type": "video",
+                            "data": {
+                                "source": "youtube",
+                                "remote_id": "BkSO9pOVpRM"
+                            },
+                            "id": "f78b6d53bdf075b1f95a397010915c03"
+                        },
+                        {
+                            "type": "item_list",
+                            "data": {
+                                "node_id": 9,
+                                "item_type": "item_list",
+                                "attributes": [],
+                                "labels": []
+                            },
+                            "id": "f9b53e29ed861e483ce6642a07baa8ce"
+                        },
+                        {
+                            "type": "item_list",
+                            "data": {
+                                "node_id": 10,
+                                "item_type": "item_list",
+                                "attributes": [],
+                                "labels": []
+                            },
+                            "id": "65821809c8b31557b57344abe34a7224"
+                        },
+                        {
+                            "type": "visualization",
+                            "data": {
+                                "node_id": 12,
+                                "item_type": "visualization",
+                                "attributes": [],
+                                "labels": []
+                            },
+                            "id": "d27605ace311f6d81d26ac184c74ef95"
+                        },
+                        {
+                            "type": "slideshow_file",
+                            "data": {
+                                "node_id": 14,
+                                "item_type": "slideshow_file",
+                                "attributes": [],
+                                "labels": []
+                            },
+                            "id": "b3a06fa50ff950daed8b2448c94efc2e"
+                        }
+                    ]
+                }
+            },
+            "translations": {
+                "heading": "ES Test heading",
+                "subheading": null,
+                "about": "ES Test about",
+                "caption": "ES Test caption",
+                "composition": {
+                    "data": [
+                        {
+                            "type": "heading",
+                            "data": {
+                                "text": "ES Test heading"
+                            },
+                            "id": "25cefe3f2d19b4784368c2f0ec4ee123",
+                            "progress": 100
+                        },
+                        {
+                            "type": "text",
+                            "data": {
+                                "text": "ES Test text\n"
+                            },
+                            "id": "3f6652553ac1cfd59c2d544202213945",
+                            "progress": 100
+                        },
+                        {
+                            "type": "quote",
+                            "data": {
+                                "cite": "ES Test credit",
+                                "text": "> ES Test quote"
+                            },
+                            "id": "1db0bcb68d798b40ebaaca2e42737be2",
+                            "progress": 100
+                        },
+                        {
+                            "type": "download_links",
+                            "data": {
+                                "download_links": [
+                                    {
+                                        "type": "download_link",
+                                        "data": {
+                                            "node_id": 3,
+                                            "item_type": "download_link",
+                                            "attributes": {
+                                                "title": "ES Gapminder World 2012",
+                                                "url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
+                                            }
+                                        },
+                                        "id": "c6165892b571041826b6562311eebf48",
+                                        "progress": 100
+                                    }
+                                ]
+                            },
+                            "id": "a6c6ff85dc6716fe5d3e6498d542829d",
+                            "progress": 0
+                        },
+                        {
+                            "type": "image",
+                            "data": {
+                                "message": "File",
+                                "file": {
+                                    "url": "http://192.168.99.100:11111/files-api/p3media/file/image?id=10&preset=sir-trevor-image-block&title=media&extension=.jpeg",
+                                    "p3_media_id": "10"
+                                }
+                            },
+                            "id": "7ac27a63a5ef487c8e54334989c98b41",
+                            "progress": 0
+                        },
+                        {
+                            "type": "slideshare",
+                            "data": {
+                                "remote_id": "42268387"
+                            },
+                            "id": "a57ca60762865d426d73904a18ab8e4b",
+                            "progress": 0
+                        },
+                        {
+                            "type": "video",
+                            "data": {
+                                "source": "youtube",
+                                "remote_id": "BkSO9pOVpRM"
+                            },
+                            "id": "f78b6d53bdf075b1f95a397010915c03",
+                            "progress": 0
+                        },
+                        {
+                            "type": "item_list",
+                            "data": {
+                                "node_id": 9,
+                                "item_type": "item_list",
+                                "attributes": []
+                            },
+                            "id": "f9b53e29ed861e483ce6642a07baa8ce",
+                            "progress": 0
+                        },
+                        {
+                            "type": "item_list",
+                            "data": {
+                                "node_id": 10,
+                                "item_type": "item_list",
+                                "attributes": []
+                            },
+                            "id": "65821809c8b31557b57344abe34a7224",
+                            "progress": 0
+                        },
+                        {
+                            "type": "visualization",
+                            "data": {
+                                "node_id": 12,
+                                "item_type": "visualization",
+                                "attributes": []
+                            },
+                            "id": "d27605ace311f6d81d26ac184c74ef95",
+                            "progress": 0
+                        },
+                        {
+                            "type": "slideshow_file",
+                            "data": {
+                                "node_id": 14,
+                                "item_type": "slideshow_file",
+                                "attributes": []
+                            },
+                            "id": "b3a06fa50ff950daed8b2448c94efc2e",
+                            "progress": 0
+                        }
+                    ]
+                }
+            },
+            "labels": {
+                "heading": "Heading",
+                "subheading": "Subheading",
+                "about": "About",
+                "caption": "Caption"
             }
         }

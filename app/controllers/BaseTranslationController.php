@@ -4,7 +4,7 @@
  * Translation resource controller.
  * This is a wrapper for all item translation resources, e.g. pages, go items, video files etc.
  */
-class BaseTranslationController extends AppRestController
+abstract class BaseTranslationController extends AppRestController
 {
     /**
      * @inheritdoc

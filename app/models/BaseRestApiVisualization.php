@@ -4,16 +4,8 @@
  * Properties available through the `I18nAttributeMessagesBehavior`:
  * @property $title
  */
-class RestApiVisualization extends Visualization
+abstract class BaseRestApiVisualization extends Visualization
 {
-    /**
-     * @inheritdoc
-     */
-    public static function model($className = __CLASS__)
-    {
-        return parent::model($className);
-    }
-
     /**
      * @inheritdoc
      */

@@ -7,20 +7,12 @@
  * @property int $query_pageSize
  * @property int $query_filter_by_item_type_option_id
  */
-class RestApiItemListConfig extends ItemListConfig
+abstract class BaseRestApiItemListConfig extends ItemListConfig
 {
     /**
      * @var array|null
      */
     public $config;
-
-    /**
-     * @inheritdoc
-     */
-    public static function model($className = __CLASS__)
-    {
-        return parent::model($className);
-    }
 
     /**
      * Gets the items for this resource model.
@@ -67,7 +59,6 @@ class RestApiItemListConfig extends ItemListConfig
      */
     public function getConfig()
     {
-
         if (!is_null($this->config)) {
             return $this->config;
         }

@@ -10,19 +10,11 @@
  * @property string $heading
  * @property string $subheading
  */
-class RestApiNavigationTreeItem extends NavigationTreeItem
+abstract class BaseRestApiNavigationTreeItem extends NavigationTreeItem
 {
     const REF_HOME = 'home_navigation_tree';
     const REF_FOOTER1 = 'footer_navigation_tree_1';
     const REF_FOOTER2 = 'footer_navigation_tree_2';
-
-    /**
-     * @inheritdoc
-     */
-    public static function model($className = __CLASS__)
-    {
-        return parent::model($className);
-    }
 
     /**
      * @inheritdoc
@@ -69,7 +61,6 @@ class RestApiNavigationTreeItem extends NavigationTreeItem
      * Builds a default nav tree for use in rest api responses.
      *
      * @param string $ref the ref key to find the tree root by.
-     * @param boolean $inclRoot if the root nav item is to be included (defaults to false).
      * @return array the tree structure.
      */
     public static function buildTree($ref)

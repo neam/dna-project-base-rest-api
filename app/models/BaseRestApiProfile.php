@@ -21,16 +21,8 @@
  * Properties made available through the RestrictedAccessBehavior class:
  * @property boolean $enableRestriction
  */
-class RestApiProfile extends Profile implements RelatedResource
+abstract class BaseRestApiProfile extends Profile implements RelatedResource
 {
-    /**
-     * @inheritdoc
-     */
-    public static function model($className = __CLASS__)
-    {
-        return parent::model($className);
-    }
-
     /**
      * @inheritdoc
      */

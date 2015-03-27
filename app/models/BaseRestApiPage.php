@@ -14,6 +14,7 @@
  * @property int $node_id
  * @property int $composition_type_id
  * @property int $icon_media_id
+ * @property string $source_language
  *
  * Relations:
  * @property RestApiPage[] $restApiCustomPageChildren
@@ -22,16 +23,8 @@
  * Properties made available through the RestrictedAccessBehavior class:
  * @property boolean $enableRestriction
  */
-class RestApiPage extends Page implements TranslatableResource
+abstract class BaseRestApiPage extends Page
 {
-    /**
-     * @inheritdoc
-     */
-    public static function model($className = __CLASS__)
-    {
-        return parent::model($className);
-    }
-
     /**
      * @inheritdoc
      */
@@ -77,29 +70,6 @@ class RestApiPage extends Page implements TranslatableResource
                 'restApiCustomPageChildren' => array(self::HAS_MANY, 'RestApiPage', 'parent_page_id'),
                 'restApiCustomPageParent' => array(self::BELONGS_TO, 'RestApiPage', 'parent_page_id'),
             )
-        );
-    }
-
-    /**
-     * Returns "all" attributes for this resource.
-     *
-     * @return array
-     */
-    public function getAllAttributes()
-    {
-        return array(
-            'node_id' => (int)$this->node_id,
-            'item_type' => 'custom_page',
-            'url' => $this->getRouteUrl(),
-            'nav_tree_to_use' => !empty($this->nav_tree_to_use) ? $this->nav_tree_to_use : 'home',
-            'attributes' => $this->getListableAttributes(),
-            'root_page' => $this->getRootPageHierarchy(),
-            'contributors' => ContributorItems::getItems($this->node_id),
-            'related' => RelatedItems::getItems($this->node_id),
-            'groups' => $this->getGroupData(),
-            'home_navigation_tree' => RestApiNavigationTreeItem::buildTree(RestApiNavigationTreeItem::REF_HOME),
-            'footer_navigation_tree_1' => RestApiNavigationTreeItem::buildTree(RestApiNavigationTreeItem::REF_FOOTER1),
-            'footer_navigation_tree_2' => RestApiNavigationTreeItem::buildTree(RestApiNavigationTreeItem::REF_FOOTER2),
         );
     }
 
@@ -153,67 +123,6 @@ class RestApiPage extends Page implements TranslatableResource
     }
 
     /**
-     * @inheritdoc
-     */
-    public function getTranslationAttributes()
-    {
-        return array(
-            'heading',
-            'subheading',
-            'about',
-            'caption',
-            'composition',
-        );
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function getTranslatedAttributes()
-    {
-        return array(
-            'node_id' => (int)$this->node_id,
-            'item_type' => 'custom_page',
-            'url' =>  $this->getRouteUrl(),
-            'attributes' => array(
-                'heading' => $this->_heading,
-                'subheading' => $this->_subheading,
-                'about' => $this->_about,
-                'caption' => $this->_caption,
-                'composition' => SirTrevorParser::populateSirTrevorBlocks(
-                        $this->composition,
-                        array(
-                            'localize' => false,
-                            'mode' => RestApiSirTrevorBlockNode::MODE_TRANSLATION,
-                            'parent' => $this
-                        )
-                    ),
-            ),
-            'translations' => array(
-                'heading' => $this->heading,
-                'subheading' => $this->subheading,
-                'about' => $this->about,
-                'caption' => $this->caption,
-                // We need to populate the blocks again, with localizations this time.
-                'composition' => SirTrevorParser::populateSirTrevorBlocks(
-                        $this->composition,
-                        array(
-                            'localize' => true,
-                            'mode' => RestApiSirTrevorBlockNode::MODE_TRANSLATION,
-                            'parent' => $this
-                        )
-                    ),
-            ),
-            'labels' => array(
-                'heading' => $this->getAttributeLabel('heading'),
-                'subheading' => $this->getAttributeLabel('subheading'),
-                'about' => $this->getAttributeLabel('about'),
-                'caption' => $this->getAttributeLabel('caption'),
-            ),
-        );
-    }
-
-    /**
      * Returns the pages composition reference key.
      *
      * @return string|null the ref or null if not found.
@@ -228,21 +137,23 @@ class RestApiPage extends Page implements TranslatableResource
     }
 
     /**
-     * Returns the canonical route for this page.
+     * Returns the items `route`.
      *
-     * @return string|null the route or null if none is found.
+     * The route is always the `canonical` route in the item's source language, regardless of what language the item
+     * was requested in.
+     *
+     * @return string|null
      */
     public function getRouteUrl()
     {
-        // todo: the language restriction together with the canonical restriction does not really work.
         $command = \barebones\Barebones::fpdo()
-            //->select('route')
             ->from('route')
             ->where(
-                'canonical=1 AND node_id=:nodeId'/* AND translation_route_language=:lang'*/,
-                array(':nodeId' => (int)$this->node_id/*, ':lang' => Yii::app()->language*/)
+                'canonical=1 AND node_id=:nodeId',
+                array(':nodeId' => (int)$this->node_id)
             );
         $result = $command->fetch();
+
         return !empty($result) ? $result['route'] : null;
     }
 

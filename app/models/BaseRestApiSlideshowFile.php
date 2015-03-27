@@ -1,24 +1,16 @@
 <?php
 
 /**
- * Html chunk item resource.
+ * Slide show file item resource.
  *
  * Properties made available through the I18nAttributeMessagesBehavior class:
- * @property string $markup
- *
- * Properties made available through the RestrictedAccessBehavior class:
- * @property boolean $enableRestriction
+ * @property string $title
+ * @property string $about
+ * @property string $google_docs_id
+ * @property string $slideshare_id
  */
-class RestApiHtmlChunk extends HtmlChunk
+abstract class BaseRestApiSlideshowFile extends SlideshowFile
 {
-    /**
-     * @inheritdoc
-     */
-    public static function model($className = __CLASS__)
-    {
-        return parent::model($className);
-    }
-
     /**
      * @inheritdoc
      */
@@ -29,7 +21,9 @@ class RestApiHtmlChunk extends HtmlChunk
             'i18n-attribute-messages' => array(
                 'class' => 'I18nAttributeMessagesBehavior',
                 'translationAttributes' => array(
-                    'markup',
+                    'slideshare_id',
+                    'google_docs_id',
+                    'processedFile',
                 ),
                 'languageSuffixes' => LanguageHelper::getCodes(),
                 'behaviorKey' => 'i18n-attribute-messages',

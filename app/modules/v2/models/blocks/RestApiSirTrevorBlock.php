@@ -111,7 +111,7 @@ abstract class RestApiSirTrevorBlock extends CModel
             $sourceMessageModel = \SourceMessage::ensureSourceMessage(
                 $this->getTranslationCategory($attr),
                 $sourceMessage,
-                Yii::app()->sourceLanguage
+                Yii::app()->sourceLanguage // todo: what is the correct source, this i not an ActiveRecord?
             );
             $messageModel = \Message::model()
                 ->findByAttributes(array('id' => $sourceMessageModel->id, 'language' => Yii::app()->language));

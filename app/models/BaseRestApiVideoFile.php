@@ -14,16 +14,8 @@
  * Properties made available through the RestrictedAccessBehavior class:
  * @property boolean $enableRestriction
  */
-class RestApiVideoFile extends VideoFile
+abstract class BaseRestApiVideoFile extends VideoFile
 {
-    /**
-     * @inheritdoc
-     */
-    public static function model($className = __CLASS__)
-    {
-        return parent::model($className);
-    }
-
     /**
      * @inheritdoc
      */
@@ -89,12 +81,11 @@ class RestApiVideoFile extends VideoFile
      */
     public function getRouteUrl()
     {
-        // todo: enable multi lingual support once ready.
         $command = Yii::app()->getDb()->createCommand()
             ->select('route')
             ->from('route')
-            ->where('canonical=1 AND node_id=:nodeId AND translation_route_language=:lang');
-        $route = $command->queryScalar(array(':nodeId' => (int)$this->node_id, ':lang' => Yii::app()->language));
+            ->where('canonical=1 AND node_id=:nodeId');
+        $route = $command->queryScalar(array(':nodeId' => (int)$this->node_id));
         return !empty($route) ? $route : null;
     }
 

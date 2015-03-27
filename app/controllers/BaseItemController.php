@@ -5,7 +5,7 @@
  * This is a wrapper for all item resources, e.g. compositions, video files etc.
  * It works based on the node ID of the item which is provided instead of the resource ID when performing actions.
  */
-class BaseItemController extends AppRestController
+abstract class BaseItemController extends AppRestController
 {
     /**
      * @inheritdoc

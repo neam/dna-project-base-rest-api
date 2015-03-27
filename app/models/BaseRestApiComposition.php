@@ -11,10 +11,11 @@
  * @property string $_subheading
  * @property string $_about
  * @property string $_caption
+ * @property string $source_language
  *
  * Properties made available through the I18nAttributeMessagesBehavior class:
  * @property string $heading
- * @property string $$subheading
+ * @property string $subheading
  * @property string $about
  * @property string $caption
  *
@@ -24,16 +25,8 @@
  * Properties made available through the RestrictedAccessBehavior class:
  * @property boolean $enableRestriction
  */
-class RestApiComposition extends Composition implements RelatedResource, TranslatableResource
+abstract class BaseRestApiComposition extends Composition implements RelatedResource
 {
-    /**
-     * @inheritdoc
-     */
-    public static function model($className = __CLASS__)
-    {
-        return parent::model($className);
-    }
-
     /**
      * @inheritdoc
      */
@@ -64,29 +57,6 @@ class RestApiComposition extends Composition implements RelatedResource, Transla
             'RestrictedAccessBehavior' => array(
                 'class' => '\RestrictedAccessBehavior',
             ),
-        );
-    }
-
-    /**
-     * Returns "all" attributes for this resource.
-     *
-     * @return array
-     */
-    public function getAllAttributes()
-    {
-        return array(
-            'node_id' => (int)$this->node_id,
-            'item_type' => 'go_item',
-            'url' => $this->getRouteUrl(),
-            'attributes' => array_merge($this->getListableAttributes(), array(
-                'composition' => SirTrevorParser::populateSirTrevorBlocks($this->composition, array('localize' => true, 'parent' => $this))
-            )),
-            'contributors' => ContributorItems::getItems($this->node_id),
-            'related' => RelatedItems::getItems($this->node_id),
-            'groups' => $this->getGroupData(),
-            'home_navigation_tree' => RestApiNavigationTreeItem::buildTree(RestApiNavigationTreeItem::REF_HOME),
-            'footer_navigation_tree_1' => RestApiNavigationTreeItem::buildTree(RestApiNavigationTreeItem::REF_FOOTER1),
-            'footer_navigation_tree_2' => RestApiNavigationTreeItem::buildTree(RestApiNavigationTreeItem::REF_FOOTER2),
         );
     }
 
@@ -128,84 +98,11 @@ class RestApiComposition extends Composition implements RelatedResource, Transla
     }
 
     /**
-     * @inheritdoc
-     */
-    public function getTranslationAttributes()
-    {
-        return array(
-            'heading',
-            'subheading',
-            'about',
-            'caption',
-            'composition',
-        );
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function getTranslatedAttributes()
-    {
-        return array(
-            'node_id' => (int)$this->node_id,
-            'item_type' => 'go_item',
-            'url' =>  $this->getRouteUrl(),
-            'attributes' => array(
-                'heading' => $this->_heading,
-                'subheading' => $this->_subheading,
-                'about' => $this->_about,
-                'caption' => $this->_caption,
-                'composition' => SirTrevorParser::populateSirTrevorBlocks(
-                        $this->composition,
-                        array(
-                            'localize' => false,
-                            'mode' => RestApiSirTrevorBlockNode::MODE_TRANSLATION,
-                            'parent' => $this
-                        )
-                    ),
-            ),
-            'translations' => array(
-                'heading' => $this->heading,
-                'subheading' => $this->subheading,
-                'about' => $this->about,
-                'caption' => $this->caption,
-                // We need to populate the blocks again, with localizations this time.
-                'composition' => SirTrevorParser::populateSirTrevorBlocks(
-                        $this->composition,
-                        array(
-                            'localize' => true,
-                            'mode' => RestApiSirTrevorBlockNode::MODE_TRANSLATION,
-                            'parent' => $this
-                        )
-                    ),
-            ),
-            'labels' => array(
-                'heading' => $this->getAttributeLabel('heading'),
-                'subheading' => $this->getAttributeLabel('subheading'),
-                'about' => $this->getAttributeLabel('about'),
-                'caption' => $this->getAttributeLabel('caption'),
-            ),
-        );
-    }
-
-    /**
-     * @todo move to trait or behavior or something. also thing about moving TranslatableResource to trait or behavior.
-     *
-     * @param string $attribute
-     * @return int
-     */
-    protected function getAttributeTranslationProgress($attribute)
-    {
-        return ($this->{"_{$attribute}"} !== $this->{$attribute}) ? 100 : 0;
-    }
-
-    /**
      * @return string|null
      */
     public function getCompositionTypeReference()
     {
         $command = \barebones\Barebones::fpdo()
-            //->select('ref')
             ->from('composition_type')
             ->where('id=:compositionTypeId', array(':compositionTypeId' => (int)$this->composition_type_id));
         $result = $command->fetch();
@@ -213,19 +110,23 @@ class RestApiComposition extends Composition implements RelatedResource, Transla
     }
 
     /**
+     * Returns the items `route`.
+     *
+     * The route is always the `canonical` route in the item's source language, regardless of what language the item
+     * was requested in.
+     *
      * @return string|null
      */
     public function getRouteUrl()
     {
-        // todo: the language restriction together with the canonical restriction does not really work.
         $command = \barebones\Barebones::fpdo()
-            //->select('route')
             ->from('route')
             ->where(
-                'canonical=1 AND node_id=:nodeId'/* AND translation_route_language=:lang'*/,
-                array(':nodeId' => (int)$this->node_id/*, ':lang' => Yii::app()->language*/)
+                'canonical=1 AND node_id=:nodeId',
+                array(':nodeId' => (int)$this->node_id)
             );
         $result = $command->fetch();
+
         return !empty($result) ? $result['route'] : null;
     }
 
@@ -261,7 +162,6 @@ class RestApiComposition extends Composition implements RelatedResource, Transla
     {
         $groups = array();
         $command = \barebones\Barebones::fpdo()
-            //->select('title')
             ->from('`group`')
             ->leftJoin('`node_has_group` ON `node_has_group`.`group_id`=`group`.`id`')
             ->where('`node_has_group`.`node_id`=:nodeId', array(':nodeId' => (int) $this->node_id));

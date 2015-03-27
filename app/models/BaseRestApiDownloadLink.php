@@ -2,23 +2,17 @@
 
 /**
  * Download link item resource.
+ * @property string $_title
  *
  * Properties made available through the I18nAttributeMessagesBehavior class:
  * @property string $title
+ * @property string $slug
  *
  * Properties made available through the RestrictedAccessBehavior class:
  * @property boolean $enableRestriction
  */
-class RestApiDownloadLink extends DownloadLink
+abstract class BaseRestApiDownloadLink extends DownloadLink
 {
-    /**
-     * @inheritdoc
-     */
-    public static function model($className = __CLASS__)
-    {
-        return parent::model($className);
-    }
-
     /**
      * @inheritdoc
      */

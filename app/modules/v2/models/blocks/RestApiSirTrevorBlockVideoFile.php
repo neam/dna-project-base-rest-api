@@ -93,7 +93,7 @@ class RestApiSirTrevorBlockVideoFile extends RestApiSirTrevorBlockNode
         $this->title = $model->_title;
         $this->about = $model->_about;
         $this->caption = $model->_caption;
-        $this->slug = $model->{"slug_".Yii::app()->sourceLanguage};
+        $this->slug = $model->{"slug_".$model->source_language};
 
         $subtitles = $model->getParsedSubtitles();
         $this->subtitles = array();
@@ -274,7 +274,7 @@ class RestApiSirTrevorBlockVideoFile extends RestApiSirTrevorBlockNode
             $sourceMessageModel = \SourceMessage::ensureSourceMessage(
                 $model->getTranslationCategory('subtitles'),
                 $sourceMessage,
-                Yii::app()->sourceLanguage
+                $model->source_language
             );
             $messageModel = \Message::model()
                 ->findByAttributes(array('id' => $sourceMessageModel->id, 'language' => Yii::app()->language));

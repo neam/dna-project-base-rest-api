@@ -22,29 +22,144 @@ $mainConfig = array(
         'ext.wrest.WRestResponse' => 'vendor.weavora.wrest.WRestResponse',
         'ext.wrest.JsonResponse' => 'vendor.weavora.wrest.JsonResponse',
     ),
-    // autoloading model and component classes
-    'import' => array(
-        'application.behaviors.*',
-        'application.components.*',
-        'application.components.factories.*',
-        'application.components.translators.*',
-        'application.controllers.*',
-        'application.interfaces.*',
-        'application.models.*',
-        'application.models.blocks.*',
-        'application.traits.*',
-        'vendor.weavora.wrest.*',
-        'vendor.weavora.wrest.actions.*',
-    ),
     'modules' => array(
-        // put rest-api-specific p3media presets here
-//        'p3media' => array(
-//            'params' => array(
-//                'presets' => array()
-//            ),
-//        ),
+        // API version 1
         'v1' => array(
-            // API version 1 specific configuration goes in here
+            'import' => array(
+                // base classes
+                'application.behaviors.*',
+                'application.components.*',
+                'application.controllers.*',
+                'application.interfaces.*',
+                'application.models.*',
+                'application.traits.*',
+                'vendor.weavora.wrest.*',
+                'vendor.weavora.wrest.actions.*',
+                // v1 specific classes
+                'application.modules.v1.behaviors.*',
+                'application.modules.v1.components.*',
+                'application.modules.v1.controllers.*',
+                'application.modules.v1.models.*',
+            ),
+            'components' => array(
+                'urlManager' => array(
+                    'urlFormat' => 'path',
+                    'useStrictParsing' => true,
+                    'showScriptName' => false,
+                    'rules' => array(
+                        // These are special endpoints used for testing purposes only.
+                        // It is a workaround for not being able to choose the response when multiple are defined per request when testing the API format.
+                        array('<version>/item/getByNodeId', 'pattern' => '<version:v\d+>/item/<node_id:\d+>/test/<itemType:\w+>', 'verb' => 'GET'),
+                        array('<version>/item/getByRoute', 'pattern' => '<version:v\d+>/item/<route:[\w-\/]+>/test-by-route/<itemType:\w+>', 'verb' => 'GET'),
+
+                        // custom rules
+                        array('<version>/profile/get', 'pattern' => '<version:v\d+>/profile', 'verb' => 'GET'),
+                        array('<version>/profile/update', 'pattern' => '<version:v\d+>/profile', 'verb' => 'PUT'),
+                        array('<version>/user/login', 'pattern' => '<version:v\d+>/user/login', 'verb' => 'POST'),
+                        array('<version>/profile/get', 'pattern' => '<version:v\d+>/user/profile', 'verb' => 'GET'),
+                        array('<version>/profile/update', 'pattern' => '<version:v\d+>/user/profile', 'verb' => 'PUT'),
+                        array('<version>/user/authenticate', 'pattern' => '<version:v\d+>/user/authenticate', 'verb' => 'POST'),
+                        array('<version>/profile/public', 'pattern' => '<version:v\d+>/user/<accountId:\d+>/profile', 'verb' => 'GET'),
+                        array('<version>/item/getByNodeId', 'pattern' => '<version:v\d+>/item/<node_id:\d+>', 'verb' => 'GET'),
+                        array('<version>/item/getByRoute', 'pattern' => '<version:v\d+>/item/<route:[\w-\/]+>', 'verb' => 'GET'),
+
+                        // common CRUD rules
+                        // slugs are required to be prefixed by an ":" character, due to rule collisions
+                        array('<version>/<controller>/list', 'pattern' => '<version:v\d+>/<controller:\w+>', 'verb' => 'GET'),
+                        array('<version>/<controller>/create', 'pattern' => '<version:v\d+>/<controller:\w+>', 'verb' => 'POST'),
+                        array('<version>/<controller>/get', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'GET'),
+                        array('<version>/<controller>/update', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'PUT'),
+                        array('<version>/<controller>/delete', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'DELETE'),
+                        array('<version>/<controller>/<action>', 'pattern' => '<version:v\d+>/<controller:\w+>/<action:\w+>/<id:\d+>', 'verb' => 'GET'),
+
+                        // CORS rules
+                        // todo: the cors allow methods are currently hard-coded. think of better solution.
+
+                        // custom rules
+                        array('<version>/profile/preflight', 'pattern' => '<version:v\d+>/user/profile', 'verb' => 'OPTIONS'),
+                        array('<version>/profile/preflight', 'pattern' => '<version:v\d+>/user/<accountId:\d+>/profile', 'verb' => 'OPTIONS'),
+                        array('<version>/item/preflight', 'pattern' => '<version:v\d+>/item/<id:\d+|[\w-\/]+>', 'verb' => 'OPTIONS'),
+                        // common rules
+                        array('<version>/<controller>/preflight', 'pattern' => '<version:v\d+>/<controller:\w+>', 'verb' => 'OPTIONS'),
+                        array('<version>/<controller>/preflight', 'pattern' => '<version:v\d+>/<controller:\w+>/<action:\w+>', 'verb' => 'OPTIONS'),
+                        array('<version>/<controller>/preflight', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'OPTIONS'),
+                        array('<version>/<controller>/preflight', 'pattern' => '<version:v\d+>/<controller:\w+>/<action:\w+>/<id:\d+>', 'verb' => 'OPTIONS'),
+                    ),
+                ),
+            ),
+        ),
+        // API version 2
+        'v2' => array(
+            'import' => array(
+                // base classes
+                'application.behaviors.*',
+                'application.components.*',
+                'application.controllers.*',
+                'application.interfaces.*',
+                'application.models.*',
+                'application.traits.*',
+                'vendor.weavora.wrest.*',
+                'vendor.weavora.wrest.actions.*',
+                // v2 specific classes
+                'application.modules.v2.behaviors.*',
+                'application.modules.v2.components.*',
+                'application.modules.v2.components.factories.*',
+                'application.modules.v2.components.translators.*',
+                'application.modules.v2.controllers.*',
+                'application.modules.v2.interfaces.*',
+                'application.modules.v2.models.*',
+                'application.modules.v2.models.blocks.*',
+            ),
+            'components' => array(
+                'urlManager' => array(
+                    'urlFormat' => 'path',
+                    'useStrictParsing' => true,
+                    'showScriptName' => false,
+                    'rules' => array(
+                        // These are special endpoints used for testing purposes only.
+                        // It is a workaround for not being able to choose the response when multiple are defined per request when testing the API format.
+                        array('<version>/item/getByNodeId', 'pattern' => '<version:v\d+>/item/<node_id:\d+>/test/<itemType:\w+>', 'verb' => 'GET'),
+                        array('<version>/item/getByRoute', 'pattern' => '<version:v\d+>/item/<route:[\w-\/]+>/test-by-route/<itemType:\w+>', 'verb' => 'GET'),
+                        array('<version>/translation/get', 'pattern' => '<version:v\d+>/translation/<nodeId:\d+>/test/<itemType:\w+>', 'verb' => 'GET'),
+                        array('<version>/translation/update', 'pattern' => '<version:v\d+>/translation/<nodeId:\d+>/test/<itemType:\w+>', 'verb' => 'PUT, POST'),
+
+                        // custom rules
+                        array('<version>/profile/get', 'pattern' => '<version:v\d+>/profile', 'verb' => 'GET'),
+                        array('<version>/profile/update', 'pattern' => '<version:v\d+>/profile', 'verb' => 'PUT'),
+                        array('<version>/user/login', 'pattern' => '<version:v\d+>/user/login', 'verb' => 'POST'),
+                        array('<version>/profile/get', 'pattern' => '<version:v\d+>/user/profile', 'verb' => 'GET'),
+                        array('<version>/profile/update', 'pattern' => '<version:v\d+>/user/profile', 'verb' => 'PUT'),
+                        array('<version>/user/authenticate', 'pattern' => '<version:v\d+>/user/authenticate', 'verb' => 'POST'),
+                        array('<version>/profile/public', 'pattern' => '<version:v\d+>/user/<accountId:\d+>/profile', 'verb' => 'GET'),
+                        array('<version>/translation/get', 'pattern' => '<version:v\d+>/translation/<nodeId:\d+>', 'verb' => 'GET'),
+                        array('<version>/translation/update', 'pattern' => '<version:v\d+>/translation/<nodeId:\d+>', 'verb' => 'PUT, POST'),
+                        array('<version>/item/getByNodeId', 'pattern' => '<version:v\d+>/item/<node_id:\d+>', 'verb' => 'GET'),
+                        array('<version>/item/getByRoute', 'pattern' => '<version:v\d+>/item/<route:[\w-\/]+>', 'verb' => 'GET'),
+
+                        // common CRUD rules
+                        // slugs are required to be prefixed by an ":" character, due to rule collisions
+                        array('<version>/<controller>/list', 'pattern' => '<version:v\d+>/<controller:\w+>', 'verb' => 'GET'),
+                        array('<version>/<controller>/create', 'pattern' => '<version:v\d+>/<controller:\w+>', 'verb' => 'POST'),
+                        array('<version>/<controller>/get', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'GET'),
+                        array('<version>/<controller>/update', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'PUT'),
+                        array('<version>/<controller>/delete', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'DELETE'),
+                        array('<version>/<controller>/<action>', 'pattern' => '<version:v\d+>/<controller:\w+>/<action:\w+>/<id:\d+>', 'verb' => 'GET'),
+
+                        // CORS rules
+                        // todo: the cors allow methods are currently hard-coded. think of better solution.
+
+                        // custom rules
+                        array('<version>/profile/preflight', 'pattern' => '<version:v\d+>/user/profile', 'verb' => 'OPTIONS'),
+                        array('<version>/profile/preflight', 'pattern' => '<version:v\d+>/user/<accountId:\d+>/profile', 'verb' => 'OPTIONS'),
+                        array('<version>/item/preflight', 'pattern' => '<version:v\d+>/item/<id:\d+|[\w-\/]+>', 'verb' => 'OPTIONS'),
+                        // common rules
+                        array('<version>/<controller>/preflight', 'pattern' => '<version:v\d+>/<controller:\w+>', 'verb' => 'OPTIONS'),
+                        array('<version>/<controller>/preflight', 'pattern' => '<version:v\d+>/<controller:\w+>/<action:\w+>', 'verb' => 'OPTIONS'),
+                        array('<version>/<controller>/preflight', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'OPTIONS'),
+                        array('<version>/<controller>/preflight', 'pattern' => '<version:v\d+>/<controller:\w+>/<action:\w+>/<id:\d+>', 'verb' => 'OPTIONS'),
+                    ),
+                ),
+            ),
         ),
     ),
     // application components
@@ -66,54 +181,6 @@ $mainConfig = array(
         ),
         'request' => array(
             'baseUrl' => $baseUrl,
-        ),
-        'urlManager' => array(
-            'urlFormat' => 'path',
-            'useStrictParsing' => true,
-            'showScriptName' => false,
-            'rules' => array(
-                // These are special endpoints used for testing purposes only.
-                // It is a workaround for not being able to choose the response when multiple are defined per request when testing the API format.
-                array('<version>/item/getByNodeId', 'pattern' => '<version:v\d+>/item/<node_id:\d+>/test/<itemType:\w+>', 'verb' => 'GET'),
-                array('<version>/item/getByRoute', 'pattern' => '<version:v\d+>/item/<route:[\w-\/]+>/test-by-route/<itemType:\w+>', 'verb' => 'GET'),
-                array('<version>/translation/get', 'pattern' => '<version:v\d+>/translation/<nodeId:\d+>/test/<itemType:\w+>', 'verb' => 'GET'),
-                array('<version>/translation/update', 'pattern' => '<version:v\d+>/translation/<nodeId:\d+>/test/<itemType:\w+>', 'verb' => 'PUT, POST'),
-
-                // custom rules
-                array('<version>/profile/get', 'pattern' => '<version:v\d+>/profile', 'verb' => 'GET'),
-                array('<version>/profile/update', 'pattern' => '<version:v\d+>/profile', 'verb' => 'PUT'),
-                array('<version>/user/login', 'pattern' => '<version:v\d+>/user/login', 'verb' => 'POST'),
-                array('<version>/profile/get', 'pattern' => '<version:v\d+>/user/profile', 'verb' => 'GET'),
-                array('<version>/profile/update', 'pattern' => '<version:v\d+>/user/profile', 'verb' => 'PUT'),
-                array('<version>/user/authenticate', 'pattern' => '<version:v\d+>/user/authenticate', 'verb' => 'POST'),
-                array('<version>/profile/public', 'pattern' => '<version:v\d+>/user/<accountId:\d+>/profile', 'verb' => 'GET'),
-                array('<version>/translation/get', 'pattern' => '<version:v\d+>/translation/<nodeId:\d+>', 'verb' => 'GET'),
-                array('<version>/translation/update', 'pattern' => '<version:v\d+>/translation/<nodeId:\d+>', 'verb' => 'PUT, POST'),
-                array('<version>/item/getByNodeId', 'pattern' => '<version:v\d+>/item/<node_id:\d+>', 'verb' => 'GET'),
-                array('<version>/item/getByRoute', 'pattern' => '<version:v\d+>/item/<route:[\w-\/]+>', 'verb' => 'GET'),
-
-                // common CRUD rules
-                // slugs are required to be prefixed by an ":" character, due to rule collisions
-                array('<version>/<controller>/list', 'pattern' => '<version:v\d+>/<controller:\w+>', 'verb' => 'GET'),
-                array('<version>/<controller>/create', 'pattern' => '<version:v\d+>/<controller:\w+>', 'verb' => 'POST'),
-                array('<version>/<controller>/get', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'GET'),
-                array('<version>/<controller>/update', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'PUT'),
-                array('<version>/<controller>/delete', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'DELETE'),
-                array('<version>/<controller>/<action>', 'pattern' => '<version:v\d+>/<controller:\w+>/<action:\w+>/<id:\d+>', 'verb' => 'GET'),
-
-                // CORS rules
-                // todo: the cors allow methods are currently hard-coded. think of better solution.
-
-                // custom rules
-                array('<version>/profile/preflight', 'pattern' => '<version:v\d+>/user/profile', 'verb' => 'OPTIONS'),
-                array('<version>/profile/preflight', 'pattern' => '<version:v\d+>/user/<accountId:\d+>/profile', 'verb' => 'OPTIONS'),
-                array('<version>/item/preflight', 'pattern' => '<version:v\d+>/item/<id:\d+|[\w-\/]+>', 'verb' => 'OPTIONS'),
-                // common rules
-                array('<version>/<controller>/preflight', 'pattern' => '<version:v\d+>/<controller:\w+>', 'verb' => 'OPTIONS'),
-                array('<version>/<controller>/preflight', 'pattern' => '<version:v\d+>/<controller:\w+>/<action:\w+>', 'verb' => 'OPTIONS'),
-                array('<version>/<controller>/preflight', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'OPTIONS'),
-                array('<version>/<controller>/preflight', 'pattern' => '<version:v\d+>/<controller:\w+>/<action:\w+>/<id:\d+>', 'verb' => 'OPTIONS'),
-            ),
         ),
         'user' => array(
             'class' => 'WebUser',

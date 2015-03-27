@@ -3,7 +3,7 @@
 /**
  * Profile resource controller.
  */
-class BaseProfileController extends AppRestController
+abstract class BaseProfileController extends AppRestController
 {
     /**
      * @var string the resource model name.

@@ -3,7 +3,7 @@
 /**
  * User resource controller.
  */
-class BaseUserController extends AppRestController
+abstract class BaseUserController extends AppRestController
 {
     /**
      * @inheritdoc
