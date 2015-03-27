@@ -167,9 +167,6 @@ $mainConfig = array(
             'schemaCacheID' => 'dbSchemaCache',
             'schemaCachingDuration' => 172800, // 48 hours
         ),
-        'displayedMessages' => array(
-            'class' => 'RestApiDbMessageSource',
-        ),
     ),
 );
 
