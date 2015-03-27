@@ -39,6 +39,7 @@ $mainConfig = array(
                 'application.modules.v1.behaviors.*',
                 'application.modules.v1.components.*',
                 'application.modules.v1.controllers.*',
+                'application.modules.v1.interfaces.*',
                 'application.modules.v1.models.*',
             ),
         ),

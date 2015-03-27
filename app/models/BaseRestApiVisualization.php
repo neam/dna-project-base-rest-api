@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * @property string $state
+ *
  * Properties available through the `I18nAttributeMessagesBehavior`:
  * @property $title
  */

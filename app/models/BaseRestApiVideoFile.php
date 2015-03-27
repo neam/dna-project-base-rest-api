@@ -2,6 +2,7 @@
 
 /**
  * Video file resource.
+ * @property string youtube_url
  *
  * Properties made available through the I18nAttributeMessagesBehavior class:
  * @property string $title
