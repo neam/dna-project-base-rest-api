@@ -88,25 +88,6 @@ abstract class BaseRestApiPage extends Page
     }
 
     /**
-     * Returns att "listable" attributes.
-     * Listable attributes are ones that appear inside an "attributes" section for a "custom_page" in any response.
-     *
-     * @return array
-     */
-    public function getListableAttributes()
-    {
-        return array(
-            'composition_type' => $this->getCompositionTypeReference(),
-            'icon_url' => $this->getIconUrl(),
-            'heading' => $this->heading,
-            'subheading' => $this->subheading,
-            'about' => $this->about,
-            'caption' => $this->caption,
-            'composition' => SirTrevorParser::populateSirTrevorBlocks($this->composition, array('localize' => true, 'parent' => $this)),
-        );
-    }
-
-    /**
      * The attributes that are returned by the REST api when this resource acts as an hierarchy item.
      *
      * @return array
