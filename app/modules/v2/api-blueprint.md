@@ -2367,7 +2367,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                             "node_id": 3,
                                             "item_type": "download_link",
                                             "attributes": {
-                                                "title": "Gapminder World 2012",
+                                                "title": "Gapminder World 2012 (Portuguese)",
                                                 "url": "http://web/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
                                             }
                                         },
@@ -3899,7 +3899,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                             "node_id": 3,
                                             "item_type": "download_link",
                                             "attributes": {
-                                                "title": "Gapminder World 2012",
+                                                "title": "Gapminder World 2012 (Portuguese)",
                                                 "url": "http://web/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
                                             }
                                         },
