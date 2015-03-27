@@ -95,7 +95,9 @@ $mainConfig = array(
                 // These are special endpoints used for testing purposes only.
                 // It is a workaround for not being able to choose the response when multiple are defined per request when testing the API format.
                 array('<version>/item/getByNodeId', 'pattern' => '<version:v\d+>/item/<node_id:\d+>/test/<itemType:\w+>', 'verb' => 'GET'),
+                array('<version>/item/getByNodeId', 'pattern' => '<version:v\d+>/item/<node_id:\d+>/test/<itemType:\w+>/<lang:[\w-]+>', 'verb' => 'GET'),
                 array('<version>/item/getByRoute', 'pattern' => '<version:v\d+>/item/<route:[\w-\/]+>/test-by-route/<itemType:\w+>', 'verb' => 'GET'),
+                array('<version>/item/getByRoute', 'pattern' => '<version:v\d+>/item/<route:[\w-\/]+>/test-by-route/<itemType:\w+>/<lang:[\w-]+>', 'verb' => 'GET'),
                 array('<version>/translation/get', 'pattern' => '<version:v\d+>/translation/<nodeId:\d+>/test/<itemType:\w+>', 'verb' => 'GET'),
                 array('<version>/translation/update', 'pattern' => '<version:v\d+>/translation/<nodeId:\d+>/test/<itemType:\w+>', 'verb' => 'PUT, POST'),
 

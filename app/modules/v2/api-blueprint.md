@@ -2256,6 +2256,606 @@ It is a workaround for not being able to choose the response when multiple are d
             }
         }
 
+## Composition Portuguese [/item/{node_id}/test/composition/pt-pt]
+
++ Parameters
+
+    + node_id (string) ... the node ID of the item (note: currently it will only work if the item is an item in the composition table)
+
+### Get a portuguese composition item for testing [GET]
+
+This endpoint is for testing purposes only and will not be available in the real API.
+It is a workaround for not being able to choose the response when multiple are defined per request when testing the API format.
+
++ Response 200 (application/json)
+
+        {
+            "node_id": 6,
+            "item_type": "go_item",
+            "url": "/answers/test-go-item-slug/",
+            "url_translations": {
+                "en": "/en/6",
+                "ar": "/ar/6",
+                "bg": "/bg/6",
+                "ca": "/ca/6",
+                "cs": "/cs/6",
+                "da": "/da/6",
+                "de": "/de/6",
+                "en_gb": "/en-gb/6",
+                "en_us": "/en-us/6",
+                "el": "/el/6",
+                "es": "/es/6",
+                "fa": "/fa/6",
+                "fi": "/fi/6",
+                "fil": "/fil/6",
+                "fr": "/fr/6",
+                "he": "/he/6",
+                "hi": "/hi/6",
+                "hr": "/hr/6",
+                "hu": "/hu/6",
+                "id": "/id/6",
+                "it": "/it/6",
+                "ja": "/ja/6",
+                "ko": "/ko/6",
+                "lt": "/lt/6",
+                "lv": "/lv/6",
+                "nl": "/nl/6",
+                "no": "/no/6",
+                "pl": "/pl/6",
+                "pt": "/pt/6",
+                "pt_br": "/pt-br/6",
+                "pt_pt": "/pt-pt/6",
+                "ro": "/ro/6",
+                "ru": "/ru/6",
+                "sk": "/sk/6",
+                "sl": "/sl/6",
+                "sr": "/sr/6",
+                "sv": "/sv/6",
+                "th": "/th/6",
+                "tr": "/tr/6",
+                "uk": "/uk/6",
+                "vi": "/vi/6",
+                "zh": "/zh/6",
+                "zh_cn": "/zh-cn/6",
+                "zh_tw": "/zh-tw/6"
+            },
+            "source_language": "en",
+            "attributes": {
+                "composition_type": "qna",
+                "heading": "título de teste",
+                "subheading": null,
+                "about": "om teste",
+                "caption": "caption teste",
+                "slug": null,
+                "thumb": {
+                    "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                    "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                    "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                },
+                "composition": {
+                    "data": [
+                        {
+                            "type": "heading",
+                            "data": {
+                                "text": "título de teste"
+                            },
+                            "id": "25cefe3f2d19b4784368c2f0ec4ee123"
+                        },
+                        {
+                            "type": "text",
+                            "data": {
+                                "text": "teste texto"
+                            },
+                            "id": "3f6652553ac1cfd59c2d544202213945"
+                        },
+                        {
+                            "type": "quote",
+                            "data": {
+                                "cite": "teste de crédito",
+                                "text": "> Citação de teste"
+                            },
+                            "id": "1db0bcb68d798b40ebaaca2e42737be2"
+                        },
+                        {
+                            "type": "download_links",
+                            "data": {
+                                "download_links": [
+                                    {
+                                        "type": "download_link",
+                                        "data": {
+                                            "node_id": 3,
+                                            "item_type": "download_link",
+                                            "attributes": {
+                                                "title": "Gapminder World 2012",
+                                                "url": "http://web/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
+                                            }
+                                        },
+                                        "id": "c6165892b571041826b6562311eebf48"
+                                    }
+                                ]
+                            },
+                            "id": "a6c6ff85dc6716fe5d3e6498d542829d"
+                        },
+                        {
+                            "type": "image",
+                            "data": {
+                                "message": "File",
+                                "file": {
+                                    "url": "http://192.168.99.100:11111/files-api/p3media/file/image?id=10&preset=sir-trevor-image-block&title=media&extension=.jpeg",
+                                    "p3_media_id": "10"
+                                }
+                            },
+                            "id": "7ac27a63a5ef487c8e54334989c98b41"
+                        },
+                        {
+                            "type": "slideshare",
+                            "data": {
+                                "remote_id": "42268387"
+                            },
+                            "id": "a57ca60762865d426d73904a18ab8e4b"
+                        },
+                        {
+                            "type": "video",
+                            "data": {
+                                "source": "youtube",
+                                "remote_id": "BkSO9pOVpRM"
+                            },
+                            "id": "f78b6d53bdf075b1f95a397010915c03"
+                        },
+                        {
+                            "type": "item_list",
+                            "data": {
+                                "node_id": 9,
+                                "item_type": "item_list",
+                                "attributes": {
+                                    "display_extent": "titles-only",
+                                    "query": {
+                                        "item_type": "composition",
+                                        "composition_type": null,
+                                        "sort": null,
+                                        "pageSize": 0
+                                    },
+                                    "items": [
+                                        {
+                                            "node_id": 6,
+                                            "item_type": "go_item",
+                                            "url": "/answers/test-go-item-slug/",
+                                            "attributes": {
+                                                "composition_type": "qna",
+                                                "heading": "Test heading",
+                                                "subheading": null,
+                                                "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis commodo ante nec venenatis. Vivamus maximus massa lectus, ut fermentum arcu tempus in.",
+                                                "caption": "Test caption",
+                                                "slug": null,
+                                                "thumb": {
+                                                    "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                                                    "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                                                    "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                                                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "node_id": 7,
+                                            "item_type": "go_item",
+                                            "url": null,
+                                            "attributes": {
+                                                "composition_type": "presentation",
+                                                "heading": "Test heading 2",
+                                                "subheading": null,
+                                                "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis commodo ante nec venenatis. Vivamus maximus massa lectus, ut fermentum arcu tempus in.",
+                                                "caption": "Test caption 2",
+                                                "slug": null,
+                                                "thumb": {
+                                                    "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                                                    "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                                                    "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                                                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            "id": "f9b53e29ed861e483ce6642a07baa8ce"
+                        },
+                        {
+                            "type": "item_list",
+                            "data": {
+                                "node_id": 10,
+                                "item_type": "item_list",
+                                "attributes": {
+                                    "display_extent": "titles-only",
+                                    "query": {
+                                        "item_type": "profile",
+                                        "composition_type": null,
+                                        "sort": null,
+                                        "pageSize": 0
+                                    },
+                                    "items": [
+                                        {
+                                            "first_name": "Test",
+                                            "last_name": "User",
+                                            "email": "testuser@example.com",
+                                            "social_links": [],
+                                            "may_contact": true,
+                                            "professional_title": {
+                                                "data": [
+                                                    {
+                                                        "type": "text",
+                                                        "data": {
+                                                            "text": "I'm a professional"
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            "lives_in": "Uganda",
+                                            "language1": "en",
+                                            "language2": "sv",
+                                            "language3": "fi",
+                                            "about_me": {
+                                                "data": [
+                                                    {
+                                                        "type": "text",
+                                                        "data": {
+                                                            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed semper quam sem, sit amet viverra ante mattis imperdiet."
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            "my_links": {
+                                                "data": [
+                                                    {
+                                                        "type": "text",
+                                                        "data": {
+                                                            "text": "http://gapminder.com"
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            "contributions": [],
+                                            "profile_picture": "http://web/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg",
+                                            "groups": [
+                                                {
+                                                    "id": 16,
+                                                    "name": "Translators",
+                                                    "member_label": "Member",
+                                                    "roles": [
+                                                        "GroupTranslator"
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 17,
+                                                    "name": "Reviewers",
+                                                    "member_label": "Member",
+                                                    "roles": [
+                                                        "GroupReviewer"
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 1,
+                                                    "name": "GapminderOrg",
+                                                    "member_label": "Member",
+                                                    "roles": [
+                                                        "GroupTranslator",
+                                                        "GroupReviewer"
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 15,
+                                                    "name": "SneakPeeks",
+                                                    "member_label": "Member",
+                                                    "roles": [
+                                                        "GroupMember"
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            "id": "65821809c8b31557b57344abe34a7224"
+                        },
+                        {
+                            "type": "visualization",
+                            "data": {
+                                "node_id": 12,
+                                "item_type": "visualization",
+                                "attributes": {
+                                    "state": {
+                                        "time": {
+                                            "start": 1990,
+                                            "end": 2012,
+                                            "value": 1995,
+                                            "step": 1,
+                                            "speed": 300,
+                                            "formatInput": "%Y"
+                                        },
+                                        "entities": {
+                                            "show": {
+                                                "dim": "geo",
+                                                "filter": {
+                                                    "geo": [
+                                                        "swe",
+                                                        "nor",
+                                                        "fin",
+                                                        "bra",
+                                                        "usa",
+                                                        "chn",
+                                                        "jpn",
+                                                        "zaf",
+                                                        "ind",
+                                                        "ago"
+                                                    ],
+                                                    "geo.category": [
+                                                        "country"
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        "marker": {
+                                            "hook_to": [
+                                                "entities",
+                                                "time",
+                                                "data",
+                                                "language"
+                                            ],
+                                            "type": "geometry",
+                                            "shape": "circle",
+                                            "label": {
+                                                "hook": "property",
+                                                "value": "geo.name"
+                                            },
+                                            "axis_y": {
+                                                "hook": "indicator",
+                                                "value": "lex",
+                                                "scale": "linear"
+                                            },
+                                            "axis_x": {
+                                                "hook": "indicator",
+                                                "value": "gdp_per_cap",
+                                                "scale": "linear",
+                                                "unit": 100
+                                            },
+                                            "size": {
+                                                "hook": "indicator",
+                                                "value": "pop",
+                                                "scale": "log"
+                                            },
+                                            "color": {
+                                                "hook": "indicator",
+                                                "value": "lex",
+                                                "domain": [
+                                                    "#F77481",
+                                                    "#E1CE00",
+                                                    "#B4DE79"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "title": "Test visualization",
+                                    "tool": {
+                                        "ref": "test-tool",
+                                        "title": "Test Tool",
+                                        "slug": null,
+                                        "about": null,
+                                        "language": {
+                                            "id": "pt_pt",
+                                            "strings": {
+                                                "pt_pt": {
+                                                    "title": "Test visualization",
+                                                    "buttons/find": "Find",
+                                                    "buttons/colors": "Colors",
+                                                    "buttons/size": "Size",
+                                                    "buttons/more_options": "Options",
+                                                    "indicator/lex": "Life expectancy",
+                                                    "indicator/gdp_per_cap": "GDP per capita",
+                                                    "indicator/pop": "Population",
+                                                    "indicator/geo.region": "Region",
+                                                    "indicator/geo": "Geo code",
+                                                    "indicator/time": "Time",
+                                                    "indicator/geo.category": "Geo category"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "id": "d27605ace311f6d81d26ac184c74ef95"
+                        },
+                        {
+                            "type": "slideshow_file",
+                            "data": {
+                                "node_id": 14,
+                                "item_type": "slideshow_file",
+                                "attributes": {
+                                    "google_docs_id": null,
+                                    "slideshare_id": null
+                                }
+                            },
+                            "id": "b3a06fa50ff950daed8b2448c94efc2e"
+                        }
+                    ]
+                }
+            },
+            "contributors": [],
+            "related": [
+                {
+                    "node_id": 7,
+                    "item_type": "go_item",
+                    "url": null,
+                    "attributes": {
+                        "composition_type": "presentation",
+                        "heading": "Test heading 2",
+                        "subheading": null,
+                        "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis commodo ante nec venenatis. Vivamus maximus massa lectus, ut fermentum arcu tempus in.",
+                        "caption": "Test caption 2",
+                        "slug": null,
+                        "thumb": {
+                            "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                            "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                            "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                            "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                        }
+                    }
+                }
+            ],
+            "groups": [
+                "GapminderOrg"
+            ],
+            "home_navigation_tree": {
+                "data": [
+                    {
+                        "type": "navigation_tree_item",
+                        "data": {
+                            "node_id": 16,
+                            "item_type": "navigation_tree_item",
+                            "attributes": {
+                                "ref": "home",
+                                "about": "This is the root item of general home tree.",
+                                "menu_label": "Home",
+                                "heading": "Home",
+                                "subheading": "Gapminder.org - Start Here",
+                                "url": "/friends",
+                                "icon_url": "http://web/files-api/p3media/file/image?id=13&preset=navtree-icon&title=media&extension=.gif"
+                            },
+                            "children": [
+                                {
+                                    "type": "navigation_tree_item",
+                                    "data": {
+                                        "node_id": 17,
+                                        "item_type": "navigation_tree_item",
+                                        "attributes": {
+                                            "ref": "health",
+                                            "about": "This tree item links to the main gapminder health page",
+                                            "menu_label": "Health",
+                                            "heading": "Health",
+                                            "subheading": "About health",
+                                            "url": null,
+                                            "icon_url": "http://web/files-api/p3media/file/image?id=14&preset=navtree-icon&title=media&extension=.gif"
+                                        },
+                                        "children": [
+                                            {
+                                                "type": "navigation_tree_item",
+                                                "data": {
+                                                    "node_id": 18,
+                                                    "item_type": "navigation_tree_item",
+                                                    "attributes": {
+                                                        "ref": "ebola",
+                                                        "about": "Most people need more money to lead a good life.",
+                                                        "menu_label": "Ebola",
+                                                        "heading": "Ebola",
+                                                        "subheading": "Read more about ebola",
+                                                        "url": "/ebola",
+                                                        "icon_url": "http://web/files-api/p3media/file/image?id=15&preset=navtree-icon&title=media&extension=.gif"
+                                                    },
+                                                    "children": []
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "type": "navigation_tree_item",
+                                    "data": {
+                                        "node_id": 19,
+                                        "item_type": "navigation_tree_item",
+                                        "attributes": {
+                                            "ref": "exercises",
+                                            "about": "This tree item links to the main starting page for exercises",
+                                            "menu_label": "Exercises",
+                                            "heading": "Exercises",
+                                            "subheading": "For teachers and tutors",
+                                            "url": "/exercises",
+                                            "icon_url": "http://web/files-api/p3media/file/image?id=16&preset=navtree-icon&title=media&extension=.gif"
+                                        },
+                                        "children": []
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "footer_navigation_tree_1": {
+                "data": [
+                    {
+                        "type": "navigation_tree_item",
+                        "data": {
+                            "node_id": 21,
+                            "item_type": "navigation_tree_item",
+                            "attributes": {
+                                "ref": "world",
+                                "about": null,
+                                "menu_label": "Gapminder World",
+                                "heading": "Gapminder World",
+                                "subheading": null,
+                                "url": "/world",
+                                "icon_url": "http://web/files-api/p3media/file/image?id=17&preset=navtree-icon&title=media&extension=.gif"
+                            },
+                            "children": []
+                        }
+                    },
+                    {
+                        "type": "navigation_tree_item",
+                        "data": {
+                            "node_id": 22,
+                            "item_type": "navigation_tree_item",
+                            "attributes": {
+                                "ref": "for-teachers",
+                                "about": null,
+                                "menu_label": "For teachers",
+                                "heading": "For teachers",
+                                "subheading": null,
+                                "url": "/for-teachers",
+                                "icon_url": "http://web/files-api/p3media/file/image?id=18&preset=navtree-icon&title=media&extension=.gif"
+                            },
+                            "children": []
+                        }
+                    }
+                ]
+            },
+            "footer_navigation_tree_2": {
+                "data": [
+                    {
+                        "type": "navigation_tree_item",
+                        "data": {
+                            "node_id": 24,
+                            "item_type": "navigation_tree_item",
+                            "attributes": {
+                                "ref": "about",
+                                "about": "about",
+                                "menu_label": "About",
+                                "heading": "About",
+                                "subheading": null,
+                                "url": "/about",
+                                "icon_url": null
+                            },
+                            "children": []
+                        }
+                    },
+                    {
+                        "type": "navigation_tree_item",
+                        "data": {
+                            "node_id": 25,
+                            "item_type": "navigation_tree_item",
+                            "attributes": {
+                                "ref": "help",
+                                "about": null,
+                                "menu_label": "Help",
+                                "heading": "Help",
+                                "subheading": null,
+                                "url": "/help",
+                                "icon_url": "http://web/files-api/p3media/file/image?id=20&preset=navtree-icon&title=media&extension=.gif"
+                            },
+                            "children": []
+                        }
+                    }
+                ]
+            }
+        }
+
 ## Page [/item/{node_id}/test/page]
 
 + Parameters
@@ -3024,6 +3624,606 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                         "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis commodo ante nec venenatis. Vivamus maximus massa lectus, ut fermentum arcu tempus in.",
                         "caption": "Test caption 2",
                         "slug": "test-go-item-slug-2",
+                        "thumb": {
+                            "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                            "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                            "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                            "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                        }
+                    }
+                }
+            ],
+            "groups": [
+                "GapminderOrg"
+            ],
+            "home_navigation_tree": {
+                "data": [
+                    {
+                        "type": "navigation_tree_item",
+                        "data": {
+                            "node_id": 16,
+                            "item_type": "navigation_tree_item",
+                            "attributes": {
+                                "ref": "home",
+                                "about": "This is the root item of general home tree.",
+                                "menu_label": "Home",
+                                "heading": "Home",
+                                "subheading": "Gapminder.org - Start Here",
+                                "url": "/friends",
+                                "icon_url": "http://web/files-api/p3media/file/image?id=13&preset=navtree-icon&title=media&extension=.gif"
+                            },
+                            "children": [
+                                {
+                                    "type": "navigation_tree_item",
+                                    "data": {
+                                        "node_id": 17,
+                                        "item_type": "navigation_tree_item",
+                                        "attributes": {
+                                            "ref": "health",
+                                            "about": "This tree item links to the main gapminder health page",
+                                            "menu_label": "Health",
+                                            "heading": "Health",
+                                            "subheading": "About health",
+                                            "url": null,
+                                            "icon_url": "http://web/files-api/p3media/file/image?id=14&preset=navtree-icon&title=media&extension=.gif"
+                                        },
+                                        "children": [
+                                            {
+                                                "type": "navigation_tree_item",
+                                                "data": {
+                                                    "node_id": 18,
+                                                    "item_type": "navigation_tree_item",
+                                                    "attributes": {
+                                                        "ref": "ebola",
+                                                        "about": "Most people need more money to lead a good life.",
+                                                        "menu_label": "Ebola",
+                                                        "heading": "Ebola",
+                                                        "subheading": "Read more about ebola",
+                                                        "url": "/ebola",
+                                                        "icon_url": "http://web/files-api/p3media/file/image?id=15&preset=navtree-icon&title=media&extension=.gif"
+                                                    },
+                                                    "children": []
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "type": "navigation_tree_item",
+                                    "data": {
+                                        "node_id": 19,
+                                        "item_type": "navigation_tree_item",
+                                        "attributes": {
+                                            "ref": "exercises",
+                                            "about": "This tree item links to the main starting page for exercises",
+                                            "menu_label": "Exercises",
+                                            "heading": "Exercises",
+                                            "subheading": "For teachers and tutors",
+                                            "url": "/exercises",
+                                            "icon_url": "http://web/files-api/p3media/file/image?id=16&preset=navtree-icon&title=media&extension=.gif"
+                                        },
+                                        "children": []
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "footer_navigation_tree_1": {
+                "data": [
+                    {
+                        "type": "navigation_tree_item",
+                        "data": {
+                            "node_id": 21,
+                            "item_type": "navigation_tree_item",
+                            "attributes": {
+                                "ref": "world",
+                                "about": null,
+                                "menu_label": "Gapminder World",
+                                "heading": "Gapminder World",
+                                "subheading": null,
+                                "url": "/world",
+                                "icon_url": "http://web/files-api/p3media/file/image?id=17&preset=navtree-icon&title=media&extension=.gif"
+                            },
+                            "children": []
+                        }
+                    },
+                    {
+                        "type": "navigation_tree_item",
+                        "data": {
+                            "node_id": 22,
+                            "item_type": "navigation_tree_item",
+                            "attributes": {
+                                "ref": "for-teachers",
+                                "about": null,
+                                "menu_label": "For teachers",
+                                "heading": "For teachers",
+                                "subheading": null,
+                                "url": "/for-teachers",
+                                "icon_url": "http://web/files-api/p3media/file/image?id=18&preset=navtree-icon&title=media&extension=.gif"
+                            },
+                            "children": []
+                        }
+                    }
+                ]
+            },
+            "footer_navigation_tree_2": {
+                "data": [
+                    {
+                        "type": "navigation_tree_item",
+                        "data": {
+                            "node_id": 24,
+                            "item_type": "navigation_tree_item",
+                            "attributes": {
+                                "ref": "about",
+                                "about": "about",
+                                "menu_label": "About",
+                                "heading": "About",
+                                "subheading": null,
+                                "url": "/about",
+                                "icon_url": null
+                            },
+                            "children": []
+                        }
+                    },
+                    {
+                        "type": "navigation_tree_item",
+                        "data": {
+                            "node_id": 25,
+                            "item_type": "navigation_tree_item",
+                            "attributes": {
+                                "ref": "help",
+                                "about": null,
+                                "menu_label": "Help",
+                                "heading": "Help",
+                                "subheading": null,
+                                "url": "/help",
+                                "icon_url": "http://web/files-api/p3media/file/image?id=20&preset=navtree-icon&title=media&extension=.gif"
+                            },
+                            "children": []
+                        }
+                    }
+                ]
+            }
+        }
+
+## Composition Portuguese [/item/{route}/test-by-route/composition/pt-pt]
+
++ Parameters
+
+    + node_id (string) ... the node ID of the item (note: currently it will only work if the item is an item in the composition table)
+
+### Get a portuguese composition item for testing [GET]
+
+This endpoint is for testing purposes only and will not be available in the real API.
+It is a workaround for not being able to choose the response when multiple are defined per request when testing the API format.
+
++ Response 200 (application/json)
+
+        {
+            "node_id": 6,
+            "item_type": "go_item",
+            "url": "/answers/test-go-item-slug/",
+            "url_translations": {
+                "en": "/en/6",
+                "ar": "/ar/6",
+                "bg": "/bg/6",
+                "ca": "/ca/6",
+                "cs": "/cs/6",
+                "da": "/da/6",
+                "de": "/de/6",
+                "en_gb": "/en-gb/6",
+                "en_us": "/en-us/6",
+                "el": "/el/6",
+                "es": "/es/6",
+                "fa": "/fa/6",
+                "fi": "/fi/6",
+                "fil": "/fil/6",
+                "fr": "/fr/6",
+                "he": "/he/6",
+                "hi": "/hi/6",
+                "hr": "/hr/6",
+                "hu": "/hu/6",
+                "id": "/id/6",
+                "it": "/it/6",
+                "ja": "/ja/6",
+                "ko": "/ko/6",
+                "lt": "/lt/6",
+                "lv": "/lv/6",
+                "nl": "/nl/6",
+                "no": "/no/6",
+                "pl": "/pl/6",
+                "pt": "/pt/6",
+                "pt_br": "/pt-br/6",
+                "pt_pt": "/pt-pt/6",
+                "ro": "/ro/6",
+                "ru": "/ru/6",
+                "sk": "/sk/6",
+                "sl": "/sl/6",
+                "sr": "/sr/6",
+                "sv": "/sv/6",
+                "th": "/th/6",
+                "tr": "/tr/6",
+                "uk": "/uk/6",
+                "vi": "/vi/6",
+                "zh": "/zh/6",
+                "zh_cn": "/zh-cn/6",
+                "zh_tw": "/zh-tw/6"
+            },
+            "source_language": "en",
+            "attributes": {
+                "composition_type": "qna",
+                "heading": "título de teste",
+                "subheading": null,
+                "about": "om teste",
+                "caption": "caption teste",
+                "slug": null,
+                "thumb": {
+                    "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                    "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                    "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                },
+                "composition": {
+                    "data": [
+                        {
+                            "type": "heading",
+                            "data": {
+                                "text": "título de teste"
+                            },
+                            "id": "25cefe3f2d19b4784368c2f0ec4ee123"
+                        },
+                        {
+                            "type": "text",
+                            "data": {
+                                "text": "teste texto"
+                            },
+                            "id": "3f6652553ac1cfd59c2d544202213945"
+                        },
+                        {
+                            "type": "quote",
+                            "data": {
+                                "cite": "teste de crédito",
+                                "text": "> Citação de teste"
+                            },
+                            "id": "1db0bcb68d798b40ebaaca2e42737be2"
+                        },
+                        {
+                            "type": "download_links",
+                            "data": {
+                                "download_links": [
+                                    {
+                                        "type": "download_link",
+                                        "data": {
+                                            "node_id": 3,
+                                            "item_type": "download_link",
+                                            "attributes": {
+                                                "title": "Gapminder World 2012",
+                                                "url": "http://web/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
+                                            }
+                                        },
+                                        "id": "c6165892b571041826b6562311eebf48"
+                                    }
+                                ]
+                            },
+                            "id": "a6c6ff85dc6716fe5d3e6498d542829d"
+                        },
+                        {
+                            "type": "image",
+                            "data": {
+                                "message": "File",
+                                "file": {
+                                    "url": "http://192.168.99.100:11111/files-api/p3media/file/image?id=10&preset=sir-trevor-image-block&title=media&extension=.jpeg",
+                                    "p3_media_id": "10"
+                                }
+                            },
+                            "id": "7ac27a63a5ef487c8e54334989c98b41"
+                        },
+                        {
+                            "type": "slideshare",
+                            "data": {
+                                "remote_id": "42268387"
+                            },
+                            "id": "a57ca60762865d426d73904a18ab8e4b"
+                        },
+                        {
+                            "type": "video",
+                            "data": {
+                                "source": "youtube",
+                                "remote_id": "BkSO9pOVpRM"
+                            },
+                            "id": "f78b6d53bdf075b1f95a397010915c03"
+                        },
+                        {
+                            "type": "item_list",
+                            "data": {
+                                "node_id": 9,
+                                "item_type": "item_list",
+                                "attributes": {
+                                    "display_extent": "titles-only",
+                                    "query": {
+                                        "item_type": "composition",
+                                        "composition_type": null,
+                                        "sort": null,
+                                        "pageSize": 0
+                                    },
+                                    "items": [
+                                        {
+                                            "node_id": 6,
+                                            "item_type": "go_item",
+                                            "url": "/answers/test-go-item-slug/",
+                                            "attributes": {
+                                                "composition_type": "qna",
+                                                "heading": "Test heading",
+                                                "subheading": null,
+                                                "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis commodo ante nec venenatis. Vivamus maximus massa lectus, ut fermentum arcu tempus in.",
+                                                "caption": "Test caption",
+                                                "slug": null,
+                                                "thumb": {
+                                                    "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                                                    "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                                                    "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                                                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "node_id": 7,
+                                            "item_type": "go_item",
+                                            "url": null,
+                                            "attributes": {
+                                                "composition_type": "presentation",
+                                                "heading": "Test heading 2",
+                                                "subheading": null,
+                                                "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis commodo ante nec venenatis. Vivamus maximus massa lectus, ut fermentum arcu tempus in.",
+                                                "caption": "Test caption 2",
+                                                "slug": null,
+                                                "thumb": {
+                                                    "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                                                    "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                                                    "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                                                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            "id": "f9b53e29ed861e483ce6642a07baa8ce"
+                        },
+                        {
+                            "type": "item_list",
+                            "data": {
+                                "node_id": 10,
+                                "item_type": "item_list",
+                                "attributes": {
+                                    "display_extent": "titles-only",
+                                    "query": {
+                                        "item_type": "profile",
+                                        "composition_type": null,
+                                        "sort": null,
+                                        "pageSize": 0
+                                    },
+                                    "items": [
+                                        {
+                                            "first_name": "Test",
+                                            "last_name": "User",
+                                            "email": "testuser@example.com",
+                                            "social_links": [],
+                                            "may_contact": true,
+                                            "professional_title": {
+                                                "data": [
+                                                    {
+                                                        "type": "text",
+                                                        "data": {
+                                                            "text": "I'm a professional"
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            "lives_in": "Uganda",
+                                            "language1": "en",
+                                            "language2": "sv",
+                                            "language3": "fi",
+                                            "about_me": {
+                                                "data": [
+                                                    {
+                                                        "type": "text",
+                                                        "data": {
+                                                            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed semper quam sem, sit amet viverra ante mattis imperdiet."
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            "my_links": {
+                                                "data": [
+                                                    {
+                                                        "type": "text",
+                                                        "data": {
+                                                            "text": "http://gapminder.com"
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            "contributions": [],
+                                            "profile_picture": "http://web/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg",
+                                            "groups": [
+                                                {
+                                                    "id": 16,
+                                                    "name": "Translators",
+                                                    "member_label": "Member",
+                                                    "roles": [
+                                                        "GroupTranslator"
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 17,
+                                                    "name": "Reviewers",
+                                                    "member_label": "Member",
+                                                    "roles": [
+                                                        "GroupReviewer"
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 1,
+                                                    "name": "GapminderOrg",
+                                                    "member_label": "Member",
+                                                    "roles": [
+                                                        "GroupTranslator",
+                                                        "GroupReviewer"
+                                                    ]
+                                                },
+                                                {
+                                                    "id": 15,
+                                                    "name": "SneakPeeks",
+                                                    "member_label": "Member",
+                                                    "roles": [
+                                                        "GroupMember"
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            "id": "65821809c8b31557b57344abe34a7224"
+                        },
+                        {
+                            "type": "visualization",
+                            "data": {
+                                "node_id": 12,
+                                "item_type": "visualization",
+                                "attributes": {
+                                    "state": {
+                                        "time": {
+                                            "start": 1990,
+                                            "end": 2012,
+                                            "value": 1995,
+                                            "step": 1,
+                                            "speed": 300,
+                                            "formatInput": "%Y"
+                                        },
+                                        "entities": {
+                                            "show": {
+                                                "dim": "geo",
+                                                "filter": {
+                                                    "geo": [
+                                                        "swe",
+                                                        "nor",
+                                                        "fin",
+                                                        "bra",
+                                                        "usa",
+                                                        "chn",
+                                                        "jpn",
+                                                        "zaf",
+                                                        "ind",
+                                                        "ago"
+                                                    ],
+                                                    "geo.category": [
+                                                        "country"
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        "marker": {
+                                            "hook_to": [
+                                                "entities",
+                                                "time",
+                                                "data",
+                                                "language"
+                                            ],
+                                            "type": "geometry",
+                                            "shape": "circle",
+                                            "label": {
+                                                "hook": "property",
+                                                "value": "geo.name"
+                                            },
+                                            "axis_y": {
+                                                "hook": "indicator",
+                                                "value": "lex",
+                                                "scale": "linear"
+                                            },
+                                            "axis_x": {
+                                                "hook": "indicator",
+                                                "value": "gdp_per_cap",
+                                                "scale": "linear",
+                                                "unit": 100
+                                            },
+                                            "size": {
+                                                "hook": "indicator",
+                                                "value": "pop",
+                                                "scale": "log"
+                                            },
+                                            "color": {
+                                                "hook": "indicator",
+                                                "value": "lex",
+                                                "domain": [
+                                                    "#F77481",
+                                                    "#E1CE00",
+                                                    "#B4DE79"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "title": "Test visualization",
+                                    "tool": {
+                                        "ref": "test-tool",
+                                        "title": "Test Tool",
+                                        "slug": null,
+                                        "about": null,
+                                        "language": {
+                                            "id": "pt_pt",
+                                            "strings": {
+                                                "pt_pt": {
+                                                    "title": "Test visualization",
+                                                    "buttons/find": "Find",
+                                                    "buttons/colors": "Colors",
+                                                    "buttons/size": "Size",
+                                                    "buttons/more_options": "Options",
+                                                    "indicator/lex": "Life expectancy",
+                                                    "indicator/gdp_per_cap": "GDP per capita",
+                                                    "indicator/pop": "Population",
+                                                    "indicator/geo.region": "Region",
+                                                    "indicator/geo": "Geo code",
+                                                    "indicator/time": "Time",
+                                                    "indicator/geo.category": "Geo category"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "id": "d27605ace311f6d81d26ac184c74ef95"
+                        },
+                        {
+                            "type": "slideshow_file",
+                            "data": {
+                                "node_id": 14,
+                                "item_type": "slideshow_file",
+                                "attributes": {
+                                    "google_docs_id": null,
+                                    "slideshare_id": null
+                                }
+                            },
+                            "id": "b3a06fa50ff950daed8b2448c94efc2e"
+                        }
+                    ]
+                }
+            },
+            "contributors": [],
+            "related": [
+                {
+                    "node_id": 7,
+                    "item_type": "go_item",
+                    "url": null,
+                    "attributes": {
+                        "composition_type": "presentation",
+                        "heading": "Test heading 2",
+                        "subheading": null,
+                        "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis commodo ante nec venenatis. Vivamus maximus massa lectus, ut fermentum arcu tempus in.",
+                        "caption": "Test caption 2",
+                        "slug": null,
                         "thumb": {
                             "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
                             "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
