@@ -536,9 +536,6 @@ $I->seeResponseCodeIs(200);
 $I->seeResponseIsJson();
 $I->seeResponseContainsJson($expectedResponse);
 
-//file_put_contents('test_expected.log', json_encode($expectedResponse, JSON_PRETTY_PRINT));
-//file_put_contents('test_real.log', json_encode(json_decode($I->grabResponse()), JSON_PRETTY_PRINT));
-
 $I->wantTo('retrieve composition items by route via the barebones php REST API as defined in api blueprint');
 $I->sendGET('item/%2Fanswers%2Ftest-go-item-slug%2F/test-by-route/composition?_lang=en');
 $I->seeResponseCodeIs(200);
