@@ -91,7 +91,7 @@ The profile is only returned if it is marked as "published", e.g. public.
                 ]
             },
             "contributions": [ ],
-            "profile_picture": "http://172.17.42.1:11111/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg",
+            "profile_picture": "http://web/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg",
             "groups": [
                 {
                     "id": 16,
@@ -180,7 +180,7 @@ The profile is only returned if it is marked as "published", e.g. public.
                 ]
             },
             "contributions": [ ],
-            "profile_picture": "http://172.17.42.1:11111/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg",
+            "profile_picture": "http://web/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg",
             "groups": [
                 {
                     "id": 16,
@@ -304,15 +304,15 @@ Video file related resources
                     "about": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
                     "caption": "No. Its the opposite.",
                     "slug": "will-saving-poor-children-lead-to-overpopulation",
-                    "url_mp4": "http://172.17.42.1:11111/files-api/p3media/file/image?id=2&preset=original-public-mp4&title=media&extension=.mp4",
-                    "url_webm": "http://172.17.42.1:11111/files-api/p3media/file/image?id=1&preset=original-public-webm&title=media&extension=.webm",
+                    "url_mp4": "http://web/files-api/p3media/file/image?id=2&preset=original-public-mp4&title=media&extension=.mp4",
+                    "url_webm": "http://web/files-api/p3media/file/image?id=1&preset=original-public-webm&title=media&extension=.webm",
                     "url_youtube": null,
-                    "url_subtitles": "http://172.17.42.1:11111/api/v1/videoFile/subtitles/1?lang=en",
+                    "url_subtitles": "http://web/api/v1/videoFile/subtitles/1?lang=en",
                     "thumb": {
-                        "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=original-public&title=media&extension=.jpeg",
-                        "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=735x444&title=media&extension=.jpg",
-                        "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=160x96&title=media&extension=.jpg",
-                        "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=110x66&title=media&extension=.jpg"
+                        "original": "http://web/files-api/p3media/file/image?id=5&preset=original-public&title=media&extension=.jpeg",
+                        "735x444": "http://web/files-api/p3media/file/image?id=5&preset=735x444&title=media&extension=.jpg",
+                        "160x96": "http://web/files-api/p3media/file/image?id=5&preset=160x96&title=media&extension=.jpg",
+                        "110x66": "http://web/files-api/p3media/file/image?id=5&preset=110x66&title=media&extension=.jpg"
                     }
                 },
                 "related": [ ]
@@ -326,15 +326,15 @@ Video file related resources
                     "about": "In this video Hans talks about how income and lifespan are related to each other.",
                     "caption": null,
                     "slug": "are-income-and-lifespan-related",
-                    "url_mp4": "http://172.17.42.1:11111/files-api/p3media/file/image?id=4&preset=original-public-mp4&title=media&extension=.mp4",
-                    "url_webm": "http://172.17.42.1:11111/files-api/p3media/file/image?id=3&preset=original-public-webm&title=media&extension=.webm",
+                    "url_mp4": "http://web/files-api/p3media/file/image?id=4&preset=original-public-mp4&title=media&extension=.mp4",
+                    "url_webm": "http://web/files-api/p3media/file/image?id=3&preset=original-public-webm&title=media&extension=.webm",
                     "url_youtube": null,
-                    "url_subtitles": "http://172.17.42.1:11111/api/v1/videoFile/subtitles/2?lang=en",
+                    "url_subtitles": "http://web/api/v1/videoFile/subtitles/2?lang=en",
                     "thumb": {
-                        "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=6&preset=original-public&title=media&extension=.jpeg",
-                        "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=6&preset=735x444&title=media&extension=.jpg",
-                        "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=6&preset=160x96&title=media&extension=.jpg",
-                        "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=6&preset=110x66&title=media&extension=.jpg"
+                        "original": "http://web/files-api/p3media/file/image?id=6&preset=original-public&title=media&extension=.jpeg",
+                        "735x444": "http://web/files-api/p3media/file/image?id=6&preset=735x444&title=media&extension=.jpg",
+                        "160x96": "http://web/files-api/p3media/file/image?id=6&preset=160x96&title=media&extension=.jpg",
+                        "110x66": "http://web/files-api/p3media/file/image?id=6&preset=110x66&title=media&extension=.jpg"
                     }
                 },
                 "related": [ ]
@@ -359,15 +359,15 @@ Video file related resources
                 "about": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
                 "caption": "No. Its the opposite.",
                 "slug": "will-saving-poor-children-lead-to-overpopulation",
-                "url_mp4": "http://172.17.42.1:11111/files-api/p3media/file/image?id=2&preset=original-public-mp4&title=media&extension=.mp4",
-                "url_webm": "http://172.17.42.1:11111/files-api/p3media/file/image?id=1&preset=original-public-webm&title=media&extension=.webm",
+                "url_mp4": "http://web/files-api/p3media/file/image?id=2&preset=original-public-mp4&title=media&extension=.mp4",
+                "url_webm": "http://web/files-api/p3media/file/image?id=1&preset=original-public-webm&title=media&extension=.webm",
                 "url_youtube": null,
-                "url_subtitles": "http://172.17.42.1:11111/api/v1/videoFile/subtitles/1?lang=en",
+                "url_subtitles": "http://web/api/v1/videoFile/subtitles/1?lang=en",
                 "thumb": {
-                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=original-public&title=media&extension=.jpeg",
-                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=735x444&title=media&extension=.jpg",
-                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=160x96&title=media&extension=.jpg",
-                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=5&preset=110x66&title=media&extension=.jpg"
+                    "original": "http://web/files-api/p3media/file/image?id=5&preset=original-public&title=media&extension=.jpeg",
+                    "735x444": "http://web/files-api/p3media/file/image?id=5&preset=735x444&title=media&extension=.jpg",
+                    "160x96": "http://web/files-api/p3media/file/image?id=5&preset=160x96&title=media&extension=.jpg",
+                    "110x66": "http://web/files-api/p3media/file/image?id=5&preset=110x66&title=media&extension=.jpg"
                 }
             },
             "related": [ ]
@@ -767,10 +767,10 @@ Language related resources
                 "caption": "Test caption",
                 "slug": "test-go-item-slug",
                 "thumb": {
-                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                    "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                    "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                    "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                 },
                 "composition": {
                     "data": [
@@ -804,7 +804,7 @@ Language related resources
                                             "item_type": "download_link",
                                             "attributes": {
                                                 "title": "Gapminder World 2012",
-                                                "url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
+                                                "url": "http://web/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
                                             }
                                         }
                                     }
@@ -860,10 +860,10 @@ Language related resources
                                                 "caption": "Test caption",
                                                 "slug": "test-go-item-slug",
                                                 "thumb": {
-                                                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                                                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                                                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                                                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                                                    "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                                                    "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                                                    "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                                                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                                                 }
                                             }
                                         },
@@ -879,10 +879,10 @@ Language related resources
                                                 "caption": "Test caption 2",
                                                 "slug": "test-go-item-slug-2",
                                                 "thumb": {
-                                                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                                                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                                                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                                                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                                                    "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                                                    "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                                                    "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                                                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                                                 }
                                             }
                                         }
@@ -945,7 +945,7 @@ Language related resources
                                                 ]
                                             },
                                             "contributions": [],
-                                            "profile_picture": "http://172.17.42.1:11111/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg",
+                                            "profile_picture": "http://web/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg",
                                             "groups": [
                                                 {
                                                     "id": 16,
@@ -1120,10 +1120,10 @@ Language related resources
                         "caption": "Test caption 2",
                         "slug": "test-go-item-slug-2",
                         "thumb": {
-                            "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                            "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                            "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                            "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                            "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                            "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                            "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                            "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                         }
                     }
                 }
@@ -1145,7 +1145,7 @@ Language related resources
                                 "heading": "Home",
                                 "subheading": "Gapminder.org - Start Here",
                                 "url": "/friends",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=13&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=13&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": [
                                 {
@@ -1160,7 +1160,7 @@ Language related resources
                                             "heading": "Health",
                                             "subheading": "About health",
                                             "url": null,
-                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=14&preset=navtree-icon&title=media&extension=.gif"
+                                            "icon_url": "http://web/files-api/p3media/file/image?id=14&preset=navtree-icon&title=media&extension=.gif"
                                         },
                                         "children": [
                                             {
@@ -1175,7 +1175,7 @@ Language related resources
                                                         "heading": "Ebola",
                                                         "subheading": "Read more about ebola",
                                                         "url": "/ebola",
-                                                        "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=15&preset=navtree-icon&title=media&extension=.gif"
+                                                        "icon_url": "http://web/files-api/p3media/file/image?id=15&preset=navtree-icon&title=media&extension=.gif"
                                                     },
                                                     "children": []
                                                 }
@@ -1195,7 +1195,7 @@ Language related resources
                                             "heading": "Exercises",
                                             "subheading": "For teachers and tutors",
                                             "url": "/exercises",
-                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=16&preset=navtree-icon&title=media&extension=.gif"
+                                            "icon_url": "http://web/files-api/p3media/file/image?id=16&preset=navtree-icon&title=media&extension=.gif"
                                         },
                                         "children": []
                                     }
@@ -1219,7 +1219,7 @@ Language related resources
                                 "heading": "Gapminder World",
                                 "subheading": null,
                                 "url": "/world",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=17&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=17&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -1236,7 +1236,7 @@ Language related resources
                                 "heading": "For teachers",
                                 "subheading": null,
                                 "url": "/for-teachers",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=18&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=18&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -1274,7 +1274,7 @@ Language related resources
                                 "heading": "Help",
                                 "subheading": null,
                                 "url": "/help",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=20&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=20&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -1303,23 +1303,20 @@ Language related resources
                             "type": "heading",
                             "data": {
                                 "text": "Test heading"
-                            },
-                            "id": "25cefe3f2d19b4784368c2f0ec4ee123"
+                            }
                         },
                         {
                             "type": "text",
                             "data": {
                                 "text": "Test text"
-                            },
-                            "id": "ebd8341ac4f233251d1e7bd91f918e8b"
+                            }
                         },
                         {
                             "type": "quote",
                             "data": {
                                 "cite": "Test credit",
                                 "text": "> Test quote"
-                            },
-                            "id": "1db0bcb68d798b40ebaaca2e42737be2"
+                            }
                         },
                         {
                             "type": "download_links",
@@ -1332,14 +1329,12 @@ Language related resources
                                             "item_type": "download_link",
                                             "attributes": {
                                                 "title": "Gapminder World 2012",
-                                                "url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
+                                                "url": "http://web/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
                                             }
-                                        },
-                                        "id": "c6165892b571041826b6562311eebf48"
+                                        }
                                     }
                                 ]
-                            },
-                            "id": "a6c6ff85dc6716fe5d3e6498d542829d"
+                            }
                         },
                         {
                             "type": "image",
@@ -1349,23 +1344,20 @@ Language related resources
                                     "url": "http://192.168.99.100:11111/files-api/p3media/file/image?id=8&preset=sir-trevor-image-block&title=media&extension=.jpeg",
                                     "p3_media_id": "8"
                                 }
-                            },
-                            "id": "74582504d5ec5e4ad1cf1836ca10e41e"
+                            }
                         },
                         {
                             "type": "video",
                             "data": {
                                 "source": "youtube",
                                 "remote_id": "BkSO9pOVpRM"
-                            },
-                            "id": "f78b6d53bdf075b1f95a397010915c03"
+                            }
                         },
                         {
                             "type": "slideshare",
                             "data": {
                                 "remote_id": "42241898"
-                            },
-                            "id": "6e9923bf3a72248641143fc02eb1a23b"
+                            }
                         }
                     ]
                 }
@@ -1399,10 +1391,10 @@ Language related resources
                         "caption": "Test caption 2",
                         "slug": "test-go-item-slug-2",
                         "thumb": {
-                            "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                            "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                            "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                            "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                            "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                            "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                            "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                            "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                         }
                     }
                 }
@@ -1424,7 +1416,7 @@ Language related resources
                                 "heading": "Home",
                                 "subheading": "Gapminder.org - Start Here",
                                 "url": "/friends",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=13&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=13&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": [
                                 {
@@ -1439,7 +1431,7 @@ Language related resources
                                             "heading": "Health",
                                             "subheading": "About health",
                                             "url": null,
-                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=14&preset=navtree-icon&title=media&extension=.gif"
+                                            "icon_url": "http://web/files-api/p3media/file/image?id=14&preset=navtree-icon&title=media&extension=.gif"
                                         },
                                         "children": [
                                             {
@@ -1454,7 +1446,7 @@ Language related resources
                                                         "heading": "Ebola",
                                                         "subheading": "Read more about ebola",
                                                         "url": "/ebola",
-                                                        "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=15&preset=navtree-icon&title=media&extension=.gif"
+                                                        "icon_url": "http://web/files-api/p3media/file/image?id=15&preset=navtree-icon&title=media&extension=.gif"
                                                     },
                                                     "children": []
                                                 }
@@ -1474,7 +1466,7 @@ Language related resources
                                             "heading": "Exercises",
                                             "subheading": "For teachers and tutors",
                                             "url": "/exercises",
-                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=16&preset=navtree-icon&title=media&extension=.gif"
+                                            "icon_url": "http://web/files-api/p3media/file/image?id=16&preset=navtree-icon&title=media&extension=.gif"
                                         },
                                         "children": []
                                     }
@@ -1498,7 +1490,7 @@ Language related resources
                                 "heading": "Gapminder World",
                                 "subheading": null,
                                 "url": "/world",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=17&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=17&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -1515,7 +1507,7 @@ Language related resources
                                 "heading": "For teachers",
                                 "subheading": null,
                                 "url": "/for-teachers",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=18&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=18&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -1553,7 +1545,7 @@ Language related resources
                                 "heading": "Help",
                                 "subheading": null,
                                 "url": "/help",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=20&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=20&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -1587,10 +1579,10 @@ It is a workaround for not being able to choose the response when multiple are d
                 "caption": "Test caption",
                 "slug": "test-go-item-slug",
                 "thumb": {
-                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                    "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                    "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                    "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                 },
                 "composition": {
                     "data": [
@@ -1598,23 +1590,20 @@ It is a workaround for not being able to choose the response when multiple are d
                             "type": "heading",
                             "data": {
                                 "text": "Test heading"
-                            },
-                            "id": "25cefe3f2d19b4784368c2f0ec4ee123"
+                            }
                         },
                         {
                             "type": "text",
                             "data": {
                                 "text": "Test text\n"
-                            },
-                            "id": "3f6652553ac1cfd59c2d544202213945"
+                            }
                         },
                         {
                             "type": "quote",
                             "data": {
                                 "cite": "Test credit",
                                 "text": "> Test quote"
-                            },
-                            "id": "1db0bcb68d798b40ebaaca2e42737be2"
+                            }
                         },
                         {
                             "type": "download_links",
@@ -1627,14 +1616,12 @@ It is a workaround for not being able to choose the response when multiple are d
                                             "item_type": "download_link",
                                             "attributes": {
                                                 "title": "Gapminder World 2012",
-                                                "url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
+                                                "url": "http://web/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
                                             }
-                                        },
-                                        "id": "c6165892b571041826b6562311eebf48"
+                                        }
                                     }
                                 ]
-                            },
-                            "id": "a6c6ff85dc6716fe5d3e6498d542829d"
+                            }
                         },
                         {
                             "type": "image",
@@ -1644,23 +1631,20 @@ It is a workaround for not being able to choose the response when multiple are d
                                     "url": "http://192.168.99.100:11111/files-api/p3media/file/image?id=10&preset=sir-trevor-image-block&title=media&extension=.jpeg",
                                     "p3_media_id": "10"
                                 }
-                            },
-                            "id": "7ac27a63a5ef487c8e54334989c98b41"
+                            }
                         },
                         {
                             "type": "slideshare",
                             "data": {
                                 "remote_id": "42268387"
-                            },
-                            "id": "a57ca60762865d426d73904a18ab8e4b"
+                            }
                         },
                         {
                             "type": "video",
                             "data": {
                                 "source": "youtube",
                                 "remote_id": "BkSO9pOVpRM"
-                            },
-                            "id": "f78b6d53bdf075b1f95a397010915c03"
+                            }
                         },
                         {
                             "type": "item_list",
@@ -1688,10 +1672,10 @@ It is a workaround for not being able to choose the response when multiple are d
                                                 "caption": "Test caption",
                                                 "slug": "test-go-item-slug",
                                                 "thumb": {
-                                                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                                                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                                                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                                                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                                                    "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                                                    "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                                                    "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                                                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                                                 }
                                             }
                                         },
@@ -1707,17 +1691,16 @@ It is a workaround for not being able to choose the response when multiple are d
                                                 "caption": "Test caption 2",
                                                 "slug": "test-go-item-slug-2",
                                                 "thumb": {
-                                                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                                                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                                                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                                                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                                                    "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                                                    "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                                                    "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                                                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                                                 }
                                             }
                                         }
                                     ]
                                 }
-                            },
-                            "id": "f9b53e29ed861e483ce6642a07baa8ce"
+                            }
                         },
                         {
                             "type": "item_list",
@@ -1774,7 +1757,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                                 ]
                                             },
                                             "contributions": [],
-                                            "profile_picture": "http://172.17.42.1:11111/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg",
+                                            "profile_picture": "http://web/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg",
                                             "groups": [
                                                 {
                                                     "id": 16,
@@ -1813,8 +1796,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                         }
                                     ]
                                 }
-                            },
-                            "id": "65821809c8b31557b57344abe34a7224"
+                            }
                         },
                         {
                             "type": "visualization",
@@ -1920,8 +1902,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                         }
                                     }
                                 }
-                            },
-                            "id": "d27605ace311f6d81d26ac184c74ef95"
+                            }
                         },
                         {
                             "type": "slideshow_file",
@@ -1932,8 +1913,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                     "google_docs_id": null,
                                     "slideshare_id": null
                                 }
-                            },
-                            "id": "b3a06fa50ff950daed8b2448c94efc2e"
+                            }
                         }
                     ]
                 }
@@ -1952,10 +1932,10 @@ It is a workaround for not being able to choose the response when multiple are d
                         "caption": "Test caption 2",
                         "slug": "test-go-item-slug-2",
                         "thumb": {
-                            "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                            "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                            "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                            "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                            "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                            "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                            "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                            "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                         }
                     }
                 }
@@ -1977,7 +1957,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                 "heading": "Home",
                                 "subheading": "Gapminder.org - Start Here",
                                 "url": "/friends",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=13&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=13&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": [
                                 {
@@ -1992,7 +1972,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                             "heading": "Health",
                                             "subheading": "About health",
                                             "url": null,
-                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=14&preset=navtree-icon&title=media&extension=.gif"
+                                            "icon_url": "http://web/files-api/p3media/file/image?id=14&preset=navtree-icon&title=media&extension=.gif"
                                         },
                                         "children": [
                                             {
@@ -2007,7 +1987,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                                         "heading": "Ebola",
                                                         "subheading": "Read more about ebola",
                                                         "url": "/ebola",
-                                                        "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=15&preset=navtree-icon&title=media&extension=.gif"
+                                                        "icon_url": "http://web/files-api/p3media/file/image?id=15&preset=navtree-icon&title=media&extension=.gif"
                                                     },
                                                     "children": []
                                                 }
@@ -2027,7 +2007,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                             "heading": "Exercises",
                                             "subheading": "For teachers and tutors",
                                             "url": "/exercises",
-                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=16&preset=navtree-icon&title=media&extension=.gif"
+                                            "icon_url": "http://web/files-api/p3media/file/image?id=16&preset=navtree-icon&title=media&extension=.gif"
                                         },
                                         "children": []
                                     }
@@ -2051,7 +2031,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                 "heading": "Gapminder World",
                                 "subheading": null,
                                 "url": "/world",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=17&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=17&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -2068,7 +2048,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                 "heading": "For teachers",
                                 "subheading": null,
                                 "url": "/for-teachers",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=18&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=18&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -2106,7 +2086,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                 "heading": "Help",
                                 "subheading": null,
                                 "url": "/help",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=20&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=20&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -2146,23 +2126,20 @@ It is a workaround for not being able to choose the response when multiple are d
                             "type": "heading",
                             "data": {
                                 "text": "Test heading"
-                            },
-                            "id": "25cefe3f2d19b4784368c2f0ec4ee123"
+                            }
                         },
                         {
                             "type": "text",
                             "data": {
                                 "text": "Test text"
-                            },
-                            "id": "ebd8341ac4f233251d1e7bd91f918e8b"
+                            }
                         },
                         {
                             "type": "quote",
                             "data": {
                                 "cite": "Test credit",
                                 "text": "> Test quote"
-                            },
-                            "id": "1db0bcb68d798b40ebaaca2e42737be2"
+                            }
                         },
                         {
                             "type": "download_links",
@@ -2175,14 +2152,12 @@ It is a workaround for not being able to choose the response when multiple are d
                                             "item_type": "download_link",
                                             "attributes": {
                                                 "title": "Gapminder World 2012",
-                                                "url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
+                                                "url": "http://web/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
                                             }
-                                        },
-                                        "id": "c6165892b571041826b6562311eebf48"
+                                        }
                                     }
                                 ]
-                            },
-                            "id": "a6c6ff85dc6716fe5d3e6498d542829d"
+                            }
                         },
                         {
                             "type": "image",
@@ -2192,23 +2167,20 @@ It is a workaround for not being able to choose the response when multiple are d
                                     "url": "http://192.168.99.100:11111/files-api/p3media/file/image?id=8&preset=sir-trevor-image-block&title=media&extension=.jpeg",
                                     "p3_media_id": "8"
                                 }
-                            },
-                            "id": "74582504d5ec5e4ad1cf1836ca10e41e"
+                            }
                         },
                         {
                             "type": "video",
                             "data": {
                                 "source": "youtube",
                                 "remote_id": "BkSO9pOVpRM"
-                            },
-                            "id": "f78b6d53bdf075b1f95a397010915c03"
+                            }
                         },
                         {
                             "type": "slideshare",
                             "data": {
                                 "remote_id": "42241898"
-                            },
-                            "id": "6e9923bf3a72248641143fc02eb1a23b"
+                            }
                         }
                     ]
                 }
@@ -2242,10 +2214,10 @@ It is a workaround for not being able to choose the response when multiple are d
                         "caption": "Test caption 2",
                         "slug": "test-go-item-slug-2",
                         "thumb": {
-                            "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                            "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                            "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                            "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                            "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                            "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                            "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                            "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                         }
                     }
                 }
@@ -2267,7 +2239,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                 "heading": "Home",
                                 "subheading": "Gapminder.org - Start Here",
                                 "url": "/friends",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=13&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=13&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": [
                                 {
@@ -2282,7 +2254,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                             "heading": "Health",
                                             "subheading": "About health",
                                             "url": null,
-                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=14&preset=navtree-icon&title=media&extension=.gif"
+                                            "icon_url": "http://web/files-api/p3media/file/image?id=14&preset=navtree-icon&title=media&extension=.gif"
                                         },
                                         "children": [
                                             {
@@ -2297,7 +2269,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                                         "heading": "Ebola",
                                                         "subheading": "Read more about ebola",
                                                         "url": "/ebola",
-                                                        "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=15&preset=navtree-icon&title=media&extension=.gif"
+                                                        "icon_url": "http://web/files-api/p3media/file/image?id=15&preset=navtree-icon&title=media&extension=.gif"
                                                     },
                                                     "children": []
                                                 }
@@ -2317,7 +2289,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                             "heading": "Exercises",
                                             "subheading": "For teachers and tutors",
                                             "url": "/exercises",
-                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=16&preset=navtree-icon&title=media&extension=.gif"
+                                            "icon_url": "http://web/files-api/p3media/file/image?id=16&preset=navtree-icon&title=media&extension=.gif"
                                         },
                                         "children": []
                                     }
@@ -2341,7 +2313,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                 "heading": "Gapminder World",
                                 "subheading": null,
                                 "url": "/world",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=17&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=17&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -2358,7 +2330,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                 "heading": "For teachers",
                                 "subheading": null,
                                 "url": "/for-teachers",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=18&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=18&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -2396,7 +2368,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                 "heading": "Help",
                                 "subheading": null,
                                 "url": "/help",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=20&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=20&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -2425,10 +2397,10 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                 "caption": "Test caption",
                 "slug": "test-go-item-slug",
                 "thumb": {
-                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                    "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                    "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                    "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                 },
                 "composition": {
                     "data": [
@@ -2436,23 +2408,20 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                             "type": "heading",
                             "data": {
                                 "text": "Test heading"
-                            },
-                            "id": "25cefe3f2d19b4784368c2f0ec4ee123"
+                            }
                         },
                         {
                             "type": "text",
                             "data": {
                                 "text": "Test text\n"
-                            },
-                            "id": "3f6652553ac1cfd59c2d544202213945"
+                            }
                         },
                         {
                             "type": "quote",
                             "data": {
                                 "cite": "Test credit",
                                 "text": "> Test quote"
-                            },
-                            "id": "1db0bcb68d798b40ebaaca2e42737be2"
+                            }
                         },
                         {
                             "type": "download_links",
@@ -2465,14 +2434,12 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                             "item_type": "download_link",
                                             "attributes": {
                                                 "title": "Gapminder World 2012",
-                                                "url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
+                                                "url": "http://web/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
                                             }
-                                        },
-                                        "id": "c6165892b571041826b6562311eebf48"
+                                        }
                                     }
                                 ]
-                            },
-                            "id": "a6c6ff85dc6716fe5d3e6498d542829d"
+                            }
                         },
                         {
                             "type": "image",
@@ -2482,23 +2449,20 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                     "url": "http://192.168.99.100:11111/files-api/p3media/file/image?id=10&preset=sir-trevor-image-block&title=media&extension=.jpeg",
                                     "p3_media_id": "10"
                                 }
-                            },
-                            "id": "7ac27a63a5ef487c8e54334989c98b41"
+                            }
                         },
                         {
                             "type": "slideshare",
                             "data": {
                                 "remote_id": "42268387"
-                            },
-                            "id": "a57ca60762865d426d73904a18ab8e4b"
+                            }
                         },
                         {
                             "type": "video",
                             "data": {
                                 "source": "youtube",
                                 "remote_id": "BkSO9pOVpRM"
-                            },
-                            "id": "f78b6d53bdf075b1f95a397010915c03"
+                            }
                         },
                         {
                             "type": "item_list",
@@ -2526,10 +2490,10 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                                 "caption": "Test caption",
                                                 "slug": "test-go-item-slug",
                                                 "thumb": {
-                                                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                                                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                                                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                                                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                                                    "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                                                    "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                                                    "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                                                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                                                 }
                                             }
                                         },
@@ -2545,17 +2509,16 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                                 "caption": "Test caption 2",
                                                 "slug": "test-go-item-slug-2",
                                                 "thumb": {
-                                                    "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                                                    "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                                                    "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                                                    "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                                                    "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                                                    "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                                                    "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                                                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                                                 }
                                             }
                                         }
                                     ]
                                 }
-                            },
-                            "id": "f9b53e29ed861e483ce6642a07baa8ce"
+                            }
                         },
                         {
                             "type": "item_list",
@@ -2612,7 +2575,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                                 ]
                                             },
                                             "contributions": [],
-                                            "profile_picture": "http://172.17.42.1:11111/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg",
+                                            "profile_picture": "http://web/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg",
                                             "groups": [
                                                 {
                                                     "id": 16,
@@ -2651,8 +2614,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                         }
                                     ]
                                 }
-                            },
-                            "id": "65821809c8b31557b57344abe34a7224"
+                            }
                         },
                         {
                             "type": "visualization",
@@ -2758,8 +2720,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                         }
                                     }
                                 }
-                            },
-                            "id": "d27605ace311f6d81d26ac184c74ef95"
+                            }
                         },
                         {
                             "type": "slideshow_file",
@@ -2770,8 +2731,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                     "google_docs_id": null,
                                     "slideshare_id": null
                                 }
-                            },
-                            "id": "b3a06fa50ff950daed8b2448c94efc2e"
+                            }
                         }
                     ]
                 }
@@ -2790,10 +2750,10 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                         "caption": "Test caption 2",
                         "slug": "test-go-item-slug-2",
                         "thumb": {
-                            "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                            "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                            "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                            "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                            "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                            "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                            "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                            "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                         }
                     }
                 }
@@ -2815,7 +2775,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                 "heading": "Home",
                                 "subheading": "Gapminder.org - Start Here",
                                 "url": "/friends",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=13&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=13&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": [
                                 {
@@ -2830,7 +2790,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                             "heading": "Health",
                                             "subheading": "About health",
                                             "url": null,
-                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=14&preset=navtree-icon&title=media&extension=.gif"
+                                            "icon_url": "http://web/files-api/p3media/file/image?id=14&preset=navtree-icon&title=media&extension=.gif"
                                         },
                                         "children": [
                                             {
@@ -2845,7 +2805,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                                         "heading": "Ebola",
                                                         "subheading": "Read more about ebola",
                                                         "url": "/ebola",
-                                                        "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=15&preset=navtree-icon&title=media&extension=.gif"
+                                                        "icon_url": "http://web/files-api/p3media/file/image?id=15&preset=navtree-icon&title=media&extension=.gif"
                                                     },
                                                     "children": []
                                                 }
@@ -2865,7 +2825,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                             "heading": "Exercises",
                                             "subheading": "For teachers and tutors",
                                             "url": "/exercises",
-                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=16&preset=navtree-icon&title=media&extension=.gif"
+                                            "icon_url": "http://web/files-api/p3media/file/image?id=16&preset=navtree-icon&title=media&extension=.gif"
                                         },
                                         "children": []
                                     }
@@ -2889,7 +2849,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                 "heading": "Gapminder World",
                                 "subheading": null,
                                 "url": "/world",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=17&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=17&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -2906,7 +2866,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                 "heading": "For teachers",
                                 "subheading": null,
                                 "url": "/for-teachers",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=18&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=18&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -2944,7 +2904,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                 "heading": "Help",
                                 "subheading": null,
                                 "url": "/help",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=20&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=20&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -2979,23 +2939,20 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                             "type": "heading",
                             "data": {
                                 "text": "Test heading"
-                            },
-                            "id": "25cefe3f2d19b4784368c2f0ec4ee123"
+                            }
                         },
                         {
                             "type": "text",
                             "data": {
                                 "text": "Test text"
-                            },
-                            "id": "ebd8341ac4f233251d1e7bd91f918e8b"
+                            }
                         },
                         {
                             "type": "quote",
                             "data": {
                                 "cite": "Test credit",
                                 "text": "> Test quote"
-                            },
-                            "id": "1db0bcb68d798b40ebaaca2e42737be2"
+                            }
                         },
                         {
                             "type": "download_links",
@@ -3008,14 +2965,12 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                             "item_type": "download_link",
                                             "attributes": {
                                                 "title": "Gapminder World 2012",
-                                                "url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
+                                                "url": "http://web/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
                                             }
-                                        },
-                                        "id": "c6165892b571041826b6562311eebf48"
+                                        }
                                     }
                                 ]
-                            },
-                            "id": "a6c6ff85dc6716fe5d3e6498d542829d"
+                            }
                         },
                         {
                             "type": "image",
@@ -3025,23 +2980,20 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                     "url": "http://192.168.99.100:11111/files-api/p3media/file/image?id=8&preset=sir-trevor-image-block&title=media&extension=.jpeg",
                                     "p3_media_id": "8"
                                 }
-                            },
-                            "id": "74582504d5ec5e4ad1cf1836ca10e41e"
+                            }
                         },
                         {
                             "type": "video",
                             "data": {
                                 "source": "youtube",
                                 "remote_id": "BkSO9pOVpRM"
-                            },
-                            "id": "f78b6d53bdf075b1f95a397010915c03"
+                            }
                         },
                         {
                             "type": "slideshare",
                             "data": {
                                 "remote_id": "42241898"
-                            },
-                            "id": "6e9923bf3a72248641143fc02eb1a23b"
+                            }
                         }
                     ]
                 }
@@ -3075,10 +3027,10 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                         "caption": "Test caption 2",
                         "slug": "test-go-item-slug-2",
                         "thumb": {
-                            "original": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                            "735x444": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                            "160x96": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                            "110x66": "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                            "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                            "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                            "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                            "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                         }
                     }
                 }
@@ -3100,7 +3052,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                 "heading": "Home",
                                 "subheading": "Gapminder.org - Start Here",
                                 "url": "/friends",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=13&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=13&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": [
                                 {
@@ -3115,7 +3067,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                             "heading": "Health",
                                             "subheading": "About health",
                                             "url": null,
-                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=14&preset=navtree-icon&title=media&extension=.gif"
+                                            "icon_url": "http://web/files-api/p3media/file/image?id=14&preset=navtree-icon&title=media&extension=.gif"
                                         },
                                         "children": [
                                             {
@@ -3130,7 +3082,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                                         "heading": "Ebola",
                                                         "subheading": "Read more about ebola",
                                                         "url": "/ebola",
-                                                        "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=15&preset=navtree-icon&title=media&extension=.gif"
+                                                        "icon_url": "http://web/files-api/p3media/file/image?id=15&preset=navtree-icon&title=media&extension=.gif"
                                                     },
                                                     "children": []
                                                 }
@@ -3150,7 +3102,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                             "heading": "Exercises",
                                             "subheading": "For teachers and tutors",
                                             "url": "/exercises",
-                                            "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=16&preset=navtree-icon&title=media&extension=.gif"
+                                            "icon_url": "http://web/files-api/p3media/file/image?id=16&preset=navtree-icon&title=media&extension=.gif"
                                         },
                                         "children": []
                                     }
@@ -3174,7 +3126,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                 "heading": "Gapminder World",
                                 "subheading": null,
                                 "url": "/world",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=17&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=17&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -3191,7 +3143,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                 "heading": "For teachers",
                                 "subheading": null,
                                 "url": "/for-teachers",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=18&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=18&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }
@@ -3229,7 +3181,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                 "heading": "Help",
                                 "subheading": null,
                                 "url": "/help",
-                                "icon_url": "http://172.17.42.1:11111/files-api/p3media/file/image?id=20&preset=navtree-icon&title=media&extension=.gif"
+                                "icon_url": "http://web/files-api/p3media/file/image?id=20&preset=navtree-icon&title=media&extension=.gif"
                             },
                             "children": []
                         }

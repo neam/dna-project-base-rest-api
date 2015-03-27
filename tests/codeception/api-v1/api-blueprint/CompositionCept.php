@@ -14,10 +14,10 @@ $expectedResponse = array(
         "caption" => "Test caption",
         "slug" => "test-go-item-slug",
         "thumb" => array(
-            "original" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-            "735x444" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-            "160x96" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-            "110x66" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+            "original" => "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+            "735x444" => "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+            "160x96" => "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+            "110x66" => "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
         ),
         "composition" => array(
             "data" => array(
@@ -26,14 +26,12 @@ $expectedResponse = array(
                     "data" => array(
                         "text" => "Test heading"
                     ),
-                    "id" => "25cefe3f2d19b4784368c2f0ec4ee123"
                 ),
                 array(
                     "type" => "text",
                     "data" => array(
                         "text" => "Test text\n"
                     ),
-                    "id" => "3f6652553ac1cfd59c2d544202213945"
                 ),
                 array(
                     "type" => "quote",
@@ -41,7 +39,6 @@ $expectedResponse = array(
                         "cite" => "Test credit",
                         "text" => "> Test quote"
                     ),
-                    "id" => "1db0bcb68d798b40ebaaca2e42737be2"
                 ),
                 array(
                     "type" => "download_links",
@@ -54,14 +51,12 @@ $expectedResponse = array(
                                     "item_type" => "download_link",
                                     "attributes" => array(
                                         "title" => "Gapminder World 2012",
-                                        "url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
+                                        "url" => "http://web/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
                                     )
                                 ),
-                                "id" => "c6165892b571041826b6562311eebf48"
                             )
                         )
                     ),
-                    "id" => "a6c6ff85dc6716fe5d3e6498d542829d"
                 ),
                 array(
                     "type" => "image",
@@ -72,14 +67,12 @@ $expectedResponse = array(
                             "p3_media_id" => "10"
                         )
                     ),
-                    "id" => "7ac27a63a5ef487c8e54334989c98b41"
                 ),
                 array(
                     "type" => "slideshare",
                     "data" => array(
                         "remote_id" => "42268387"
                     ),
-                    "id" => "a57ca60762865d426d73904a18ab8e4b"
                 ),
                 array(
                     "type" => "video",
@@ -87,7 +80,6 @@ $expectedResponse = array(
                         "source" => "youtube",
                         "remote_id" => "BkSO9pOVpRM"
                     ),
-                    "id" => "f78b6d53bdf075b1f95a397010915c03"
                 ),
                 array(
                     "type" => "item_list",
@@ -115,10 +107,10 @@ $expectedResponse = array(
                                         "caption" => "Test caption",
                                         "slug" => "test-go-item-slug",
                                         "thumb" =>  array(
-                                        "original" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                                            "735x444" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                                            "160x96" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                                            "110x66" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                                        "original" => "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                                            "735x444" => "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                                            "160x96" => "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                                            "110x66" => "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                                         )
                                     )
                                 ),
@@ -134,17 +126,16 @@ $expectedResponse = array(
                                         "caption" => "Test caption 2",
                                         "slug" => "test-go-item-slug-2",
                                         "thumb" =>  array(
-                                        "original" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                                            "735x444" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                                            "160x96" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                                            "110x66" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                                        "original" => "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                                            "735x444" => "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                                            "160x96" => "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                                            "110x66" => "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                                         )
                                     )
                                 )
                             )
                         )
                     ),
-                    "id" => "f9b53e29ed861e483ce6642a07baa8ce"
                 ),
                 array(
                     "type" => "item_list",
@@ -201,7 +192,7 @@ $expectedResponse = array(
                                         )
                                     ),
                                     "contributions" => array(),
-                                    "profile_picture" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg",
+                                    "profile_picture" => "http://web/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg",
                                     "groups" => array(
                                         array(
                                             "id" => 16,
@@ -241,7 +232,6 @@ $expectedResponse = array(
                             )
                         )
                     ),
-                    "id" => "65821809c8b31557b57344abe34a7224"
                 ),
                 array(
                     "type" => "visualization",
@@ -348,7 +338,6 @@ $expectedResponse = array(
                             )
                         )
                     ),
-                    "id" => "d27605ace311f6d81d26ac184c74ef95"
                 ),
                 array(
                     "type" => "slideshow_file",
@@ -360,7 +349,6 @@ $expectedResponse = array(
                             "slideshare_id" => null,
                         ),
                     ),
-                    "id" => "b3a06fa50ff950daed8b2448c94efc2e"
                 ),
             )
         )
@@ -379,10 +367,10 @@ $expectedResponse = array(
                 "caption" => "Test caption 2",
                 "slug" => "test-go-item-slug-2",
                 "thumb" => array(
-                    "original" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                    "735x444" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                    "160x96" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                    "110x66" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                    "original" => "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                    "735x444" => "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                    "160x96" => "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                    "110x66" => "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                 )
             )
         )
@@ -404,7 +392,7 @@ $expectedResponse = array(
                         "heading" => "Home",
                         "subheading" => "Gapminder.org - Start Here",
                         "url" => "/friends",
-                        "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=13&preset=navtree-icon&title=media&extension=.gif"
+                        "icon_url" => "http://web/files-api/p3media/file/image?id=13&preset=navtree-icon&title=media&extension=.gif"
                     ),
                     "children" => array(
                         array(
@@ -419,7 +407,7 @@ $expectedResponse = array(
                                     "heading" => "Health",
                                     "subheading" => "About health",
                                     "url" => null,
-                                    "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=14&preset=navtree-icon&title=media&extension=.gif"
+                                    "icon_url" => "http://web/files-api/p3media/file/image?id=14&preset=navtree-icon&title=media&extension=.gif"
                                 ),
                                 "children" => array(
                                     array(
@@ -434,7 +422,7 @@ $expectedResponse = array(
                                                 "heading" => "Ebola",
                                                 "subheading" => "Read more about ebola",
                                                 "url" => "/ebola",
-                                                "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=15&preset=navtree-icon&title=media&extension=.gif"
+                                                "icon_url" => "http://web/files-api/p3media/file/image?id=15&preset=navtree-icon&title=media&extension=.gif"
                                             ),
                                             "children" => array()
                                         )
@@ -454,7 +442,7 @@ $expectedResponse = array(
                                     "heading" => "Exercises",
                                     "subheading" => "For teachers and tutors",
                                     "url" => "/exercises",
-                                    "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=16&preset=navtree-icon&title=media&extension=.gif"
+                                    "icon_url" => "http://web/files-api/p3media/file/image?id=16&preset=navtree-icon&title=media&extension=.gif"
                                 ),
                                 "children" => array()
                             )
@@ -478,7 +466,7 @@ $expectedResponse = array(
                         "heading" => "Gapminder World",
                         "subheading" => null,
                         "url" => "/world",
-                        "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=17&preset=navtree-icon&title=media&extension=.gif"
+                        "icon_url" => "http://web/files-api/p3media/file/image?id=17&preset=navtree-icon&title=media&extension=.gif"
                     ),
                     "children" => array()
                 )
@@ -495,7 +483,7 @@ $expectedResponse = array(
                         "heading" => "For teachers",
                         "subheading" => null,
                         "url" => "/for-teachers",
-                        "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=18&preset=navtree-icon&title=media&extension=.gif"
+                        "icon_url" => "http://web/files-api/p3media/file/image?id=18&preset=navtree-icon&title=media&extension=.gif"
                     ),
                     "children" => array()
                 )
@@ -533,7 +521,7 @@ $expectedResponse = array(
                         "heading" => "Help",
                         "subheading" => null,
                         "url" => "/help",
-                        "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=20&preset=navtree-icon&title=media&extension=.gif"
+                        "icon_url" => "http://web/files-api/p3media/file/image?id=20&preset=navtree-icon&title=media&extension=.gif"
                     ),
                     "children" => array()
                 )
@@ -547,6 +535,9 @@ $I->sendGET('item/6/test/composition?_lang=en');
 $I->seeResponseCodeIs(200);
 $I->seeResponseIsJson();
 $I->seeResponseContainsJson($expectedResponse);
+
+//file_put_contents('test_expected.log', json_encode($expectedResponse, JSON_PRETTY_PRINT));
+//file_put_contents('test_real.log', json_encode(json_decode($I->grabResponse()), JSON_PRETTY_PRINT));
 
 $I->wantTo('retrieve composition items by route via the barebones php REST API as defined in api blueprint');
 $I->sendGET('item/%2Fanswers%2Ftest-go-item-slug%2F/test-by-route/composition?_lang=en');

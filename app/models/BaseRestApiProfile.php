@@ -89,11 +89,10 @@ abstract class BaseRestApiProfile extends Profile implements RelatedResource
     protected function getSocialLinkData()
     {
         $data = array();
-        $command = Yii::app()->getDb()->createCommand()
-            ->select('ref, url')
+        $command = \barebones\Barebones::fpdo()
             ->from('social_link')
             ->where('profile_id=:profileId', array(':profileId' => (int) $this->id));
-        foreach ($command->queryAll() as $row) {
+        foreach ($command->fetchAll() as $row) {
             $data[] = array(
                 'name' => MetaData::socialLinkRefToLabel($row['ref']),
                 'url' => $row['url'],
@@ -122,11 +121,10 @@ abstract class BaseRestApiProfile extends Profile implements RelatedResource
     protected function getContributionData()
     {
         $data = array();
-        $command = Yii::app()->getDb()->createCommand()
-            ->select('label, url, datetime')
+        $command = \barebones\Barebones::fpdo()
             ->from('contribution')
             ->where('profile_id=:profileId', array(':profileId' => (int) $this->id));
-        foreach ($command->queryAll() as $row) {
+        foreach ($command->fetchAll() as $row) {
             $data[] = array(
                 'label' => $row['label'],
                 'url' => $row['url'],
@@ -158,14 +156,14 @@ abstract class BaseRestApiProfile extends Profile implements RelatedResource
     protected function getGroupData()
     {
         $groups = array();
-        $command = Yii::app()->getDb()->createCommand()
-            ->select('group.id AS group_id, group.title AS group_title, role.title AS role_title')
+        $command = \barebones\Barebones::fpdo()
             ->from('account')
-            ->leftJoin('group_has_account', '`group_has_account`.`account_id`=`account`.`id`')
-            ->leftJoin('group', '`group`.`id`=`group_has_account`.`group_id`')
-            ->leftJoin('role', '`role`.`id`=`group_has_account`.`role_id`')
+            ->select('`group`.id AS group_id, `group`.title AS group_title, role.title AS role_title')
+            ->leftJoin('`group_has_account` ON `group_has_account`.`account_id`=`account`.`id`')
+            ->leftJoin('`group` ON `group`.`id`=`group_has_account`.`group_id`')
+            ->leftJoin('`role` ON `role`.`id`=`group_has_account`.`role_id`')
             ->where('account.id=:accountId', array(':accountId' => (int) $this->account_id));
-        foreach ($command->queryAll() as $row) {
+        foreach ($command->fetchAll() as $row) {
             $groupId = (int) $row['group_id'];
             if (!isset($groups[$groupId])) {
                 $groups[$groupId] = array(

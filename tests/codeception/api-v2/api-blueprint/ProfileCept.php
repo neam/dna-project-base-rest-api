@@ -47,7 +47,7 @@ $I->seeResponseContainsJson(array(
         ),
     ),
     'contributions' => array(),
-    'profile_picture' => 'http://172.17.42.1:11111/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg',
+    'profile_picture' => 'http://web/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg',
     'groups' => array(
         array(
             'id' => 16,
@@ -134,7 +134,7 @@ $I->seeResponseContainsJson(array(
         ),
     ),
     'contributions' => array(),
-    'profile_picture' => 'http://172.17.42.1:11111/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg',
+    'profile_picture' => 'http://web/files-api/p3media/file/image?id=12&preset=user-profile-picture&title=media&extension=.jpg',
     'groups' => array(
         array(
             'id' => 16,

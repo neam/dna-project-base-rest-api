@@ -49,7 +49,7 @@ $expectedResponse = array(
                                     "item_type" => "download_link",
                                     "attributes" => array(
                                         "title" => "Gapminder World 2012",
-                                        "url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
+                                        "url" => "http://web/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
                                     )
                                 ),
                                 "id" => "c6165892b571041826b6562311eebf48"
@@ -116,10 +116,10 @@ $expectedResponse = array(
                 "caption" => "Test caption 2",
                 "slug" => "test-go-item-slug-2",
                 "thumb" => array(
-                "original" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                    "735x444" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                    "160x96" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                    "110x66" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                "original" => "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                    "735x444" => "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                    "160x96" => "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                    "110x66" => "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
                 )
             )
         )
@@ -141,7 +141,7 @@ $expectedResponse = array(
                         "heading" => "Home",
                         "subheading" => "Gapminder.org - Start Here",
                         "url" => "/friends",
-                        "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=13&preset=navtree-icon&title=media&extension=.gif"
+                        "icon_url" => "http://web/files-api/p3media/file/image?id=13&preset=navtree-icon&title=media&extension=.gif"
                     ),
                     "children" => array(
                         array(
@@ -156,7 +156,7 @@ $expectedResponse = array(
                                     "heading" => "Health",
                                     "subheading" => "About health",
                                     "url" => null,
-                                    "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=14&preset=navtree-icon&title=media&extension=.gif"
+                                    "icon_url" => "http://web/files-api/p3media/file/image?id=14&preset=navtree-icon&title=media&extension=.gif"
                                 ),
                                 "children" => array(
                                     array(
@@ -171,7 +171,7 @@ $expectedResponse = array(
                                                 "heading" => "Ebola",
                                                 "subheading" => "Read more about ebola",
                                                 "url" => "/ebola",
-                                                "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=15&preset=navtree-icon&title=media&extension=.gif"
+                                                "icon_url" => "http://web/files-api/p3media/file/image?id=15&preset=navtree-icon&title=media&extension=.gif"
                                             ),
                                             "children" => array()
                                         )
@@ -191,7 +191,7 @@ $expectedResponse = array(
                                     "heading" => "Exercises",
                                     "subheading" => "For teachers and tutors",
                                     "url" => "/exercises",
-                                    "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=16&preset=navtree-icon&title=media&extension=.gif"
+                                    "icon_url" => "http://web/files-api/p3media/file/image?id=16&preset=navtree-icon&title=media&extension=.gif"
                                 ),
                                 "children" => array()
                             )
@@ -215,7 +215,7 @@ $expectedResponse = array(
                         "heading" => "Gapminder World",
                         "subheading" => null,
                         "url" => "/world",
-                        "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=17&preset=navtree-icon&title=media&extension=.gif"
+                        "icon_url" => "http://web/files-api/p3media/file/image?id=17&preset=navtree-icon&title=media&extension=.gif"
                     ),
                     "children" => array()
                 )
@@ -232,7 +232,7 @@ $expectedResponse = array(
                         "heading" => "For teachers",
                         "subheading" => null,
                         "url" => "/for-teachers",
-                        "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=18&preset=navtree-icon&title=media&extension=.gif"
+                        "icon_url" => "http://web/files-api/p3media/file/image?id=18&preset=navtree-icon&title=media&extension=.gif"
                     ),
                     "children" => array()
                 )
@@ -270,7 +270,7 @@ $expectedResponse = array(
                         "heading" => "Help",
                         "subheading" => null,
                         "url" => "/help",
-                        "icon_url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=20&preset=navtree-icon&title=media&extension=.gif"
+                        "icon_url" => "http://web/files-api/p3media/file/image?id=20&preset=navtree-icon&title=media&extension=.gif"
                     ),
                     "children" => array()
                 )

@@ -48,7 +48,7 @@ $expectedUntranslatedResponse = array(
                                     "item_type" => "download_link",
                                     "attributes" => array(
                                     "title" => "Gapminder World 2012",
-                                        "url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
+                                        "url" => "http://web/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
                                     ),
                                     "labels" => array(
                                     "title" => "Title"
@@ -172,7 +172,7 @@ $expectedUntranslatedResponse = array(
                                     "item_type" => "download_link",
                                     "attributes" => array(
                                     "title" => "Gapminder World 2012",
-                                        "url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
+                                        "url" => "http://web/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
                                     )
                                 ),
                                 "id" => "c6165892b571041826b6562311eebf48",
@@ -307,7 +307,7 @@ $expectedTranslatedResponse = array(
                                     "item_type" => "download_link",
                                     "attributes" => array(
                                     "title" => "Gapminder World 2012",
-                                        "url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
+                                        "url" => "http://web/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
                                     ),
                                     "labels" => array(
                                     "title" => "Title"
@@ -431,7 +431,7 @@ $expectedTranslatedResponse = array(
                                     "item_type" => "download_link",
                                     "attributes" => array(
                                     "title" => "ES Gapminder World 2012",
-                                        "url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
+                                        "url" => "http://web/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
                                     )
                                 ),
                                 "id" => "c6165892b571041826b6562311eebf48",
@@ -576,7 +576,7 @@ $I->sendPUT('translation/6/test/composition?_lang=es', array(
                                     "item_type" => "download_link",
                                     "attributes" => array(
                                     "title" => "ES Gapminder World 2012",
-                                        "url" => "http://172.17.42.1:11111/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
+                                        "url" => "http://web/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
                                     )
                                 ),
                                 "id" => "c6165892b571041826b6562311eebf48",

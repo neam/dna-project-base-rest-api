@@ -140,11 +140,10 @@ class RestApiModel
     {
         $modelId = null;
         $modelClass = null;
-        $command = Yii::app()->getDb()->createCommand()
-            ->select('id, model_class')
+        $command = \barebones\Barebones::fpdo()
             ->from('item')
-            ->where('node_id=:nodeId');
-        $row = $command->queryRow(true, array(':nodeId' => (int) $nodeId));
+            ->where('node_id=:nodeId', array(':nodeId' => (int) $nodeId));
+        $row = $command->fetch();
         if (!empty($row)) {
             $modelId = (int) $row['id'];
             $modelClass = (string) $row['model_class'];
