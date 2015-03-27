@@ -15,7 +15,8 @@ require("$root/vendor/neam/php-app-config/include.php");
 require_once($root . '/dna/components/Barebones.php');
 
 // Use barebones php for public item GET requests for performance
-foreach (array('v1', 'v2') as $apiVersion) {
+// todo: enable API V2 once it works.
+foreach (array('v1'/*, 'v2'*/) as $apiVersion) {
     if (strpos($_SERVER['REQUEST_URI'], "/api/{$apiVersion}/item/") === 0 || strpos($_SERVER['REQUEST_URI'], "/api/{$apiVersion}/error") === 0) {
         $actionRoot = $appRoot . "/barebones/{$apiVersion}/item";
         require_once($appRoot . "/app/traits/RestApiControllerTrait.php");

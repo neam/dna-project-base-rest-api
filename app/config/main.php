@@ -70,10 +70,10 @@ $mainConfig = array(
     // application components
     'components' => array(
         'itemTranslatorFactory' => array(
-            'class' => 'application.components.factories.ItemTranslatorFactory',
+            'class' => 'ItemTranslatorFactory',
         ),
         'sirTrevorBlockFactory' => array(
-            'class' => 'application.components.factories.SirTrevorBlockFactory',
+            'class' => 'SirTrevorBlockFactory',
         ),
         'oauth2' => array(
             'class' => 'OAuth2Yii\Component\ServerComponent',
