@@ -25,7 +25,7 @@ class RestApiComposition extends BaseRestApiComposition
             'item_type' => 'go_item',
             'url' => $this->getRouteUrl(),
             'attributes' => array_merge($this->getListableAttributes(), array(
-                'composition' => SirTrevorParser::populateSirTrevorBlocks($this->composition, array('localize' => true, 'parent' => $this))
+                'composition' => SirTrevorParser::populateSirTrevorBlocks($this->composition)
             )),
             'contributors' => ContributorItems::getItems($this->node_id),
             'related' => RelatedItems::getItems($this->node_id),

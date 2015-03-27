@@ -687,7 +687,7 @@ $expectedTranslatedResponse = array(
                                     "node_id" => 3,
                                     "item_type" => "download_link",
                                     "attributes" => array(
-                                        "title" => "Gapminder World 2012",
+                                        "title" => "Gapminder World 2012 (Portuguese)",
                                         "url" => "http://web/files-api/p3media/file/image?id=7&preset=original&title=media&extension=.pdf"
                                     )
                                 ),
