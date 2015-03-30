@@ -24,6 +24,7 @@ class RestApiPage extends BaseRestApiPage implements TranslatableResource
             'node_id' => (int)$this->node_id,
             'item_type' => 'custom_page',
             'url' => $this->getRouteUrl(),
+            'requested_translation_language' => (!empty($GLOBALS["requested_translation_language"]) ? $GLOBALS["requested_translation_language"] : null),
             'url_translations' => $this->getTranslatedRouteUrls(),
             'source_language' => $this->source_language,
             'nav_tree_to_use' => !empty($this->nav_tree_to_use) ? $this->nav_tree_to_use : 'home',

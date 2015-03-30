@@ -118,6 +118,8 @@ abstract class BaseItemController extends AppRestController
             // This way we know which language the item and it's relations should be returned in.
             if (!empty($row['translation_route_language']) && Yii::app()->language !== $row['translation_route_language']) {
                 Yii::app()->language = $row['translation_route_language'];
+                // tmp global - used to populate requested_translation_language in response
+                $GLOBALS["requested_translation_language"] = $row['translation_route_language'];
             }
         }
         if (empty($modelId) || empty($modelClass)) {
