@@ -345,7 +345,7 @@ $expectedResponse = array(
                         "node_id" => 14,
                         "item_type" => "slideshow_file",
                         "attributes" => array(
-                            "google_docs_id" => null,
+                            "google_docs_id" => "abc",
                             "slideshare_id" => null,
                         ),
                     ),

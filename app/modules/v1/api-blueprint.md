@@ -1098,7 +1098,7 @@ Language related resources
                                 "node_id": 14,
                                 "item_type": "slideshow_file",
                                 "attributes": {
-                                    "google_docs_id": null,
+                                    "google_docs_id": "abc",
                                     "slideshare_id": null
                                 }
                             }
@@ -1910,7 +1910,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                 "node_id": 14,
                                 "item_type": "slideshow_file",
                                 "attributes": {
-                                    "google_docs_id": null,
+                                    "google_docs_id": "abc",
                                     "slideshare_id": null
                                 }
                             }
@@ -2728,7 +2728,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                 "node_id": 14,
                                 "item_type": "slideshow_file",
                                 "attributes": {
-                                    "google_docs_id": null,
+                                    "google_docs_id": "abc",
                                     "slideshare_id": null
                                 }
                             }
