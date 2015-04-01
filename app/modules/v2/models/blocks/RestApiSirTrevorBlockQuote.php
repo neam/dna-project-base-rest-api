@@ -16,7 +16,6 @@ class RestApiSirTrevorBlockQuote extends RestApiSirTrevorBlockText
             parent::rules(),
             array(
                 array('cite', 'required'),
-                array('cite', 'length', 'max' => 255),
             )
         );
     }

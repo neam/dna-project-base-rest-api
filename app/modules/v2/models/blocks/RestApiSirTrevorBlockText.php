@@ -16,7 +16,6 @@ class RestApiSirTrevorBlockText extends RestApiSirTrevorBlock
             parent::rules(),
             array(
                 array('text', 'required'),
-                array('text', 'length', 'max' => 255),
             )
         );
     }
