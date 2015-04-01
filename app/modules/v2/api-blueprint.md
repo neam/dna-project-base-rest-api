@@ -806,6 +806,7 @@ Language related resources
                 "zh_tw": "/zh-tw/6"
             },
             "source_language": "en",
+            "requested_translation_language": null,
             "attributes": {
                 "composition_type": "qna",
                 "heading": "Test heading",
@@ -1383,6 +1384,7 @@ Language related resources
                 "zh_tw": "/zh-tw/4"
             },
             "source_language": "en",
+            "requested_translation_language": null,
             "nav_tree_to_use": "home",
             "attributes": {
                 "composition_type": "presentation",
@@ -1720,6 +1722,7 @@ It is a workaround for not being able to choose the response when multiple are d
                 "zh_tw": "/zh-tw/6"
             },
             "source_language": "en",
+            "requested_translation_language": null,
             "attributes": {
                 "composition_type": "qna",
                 "heading": "Test heading",
@@ -2320,6 +2323,7 @@ It is a workaround for not being able to choose the response when multiple are d
                 "zh_tw": "/zh-tw/6"
             },
             "source_language": "en",
+            "requested_translation_language": "pt_pt",
             "attributes": {
                 "composition_type": "qna",
                 "heading": "título de teste",
@@ -2920,6 +2924,7 @@ It is a workaround for not being able to choose the response when multiple are d
                 "zh_tw": "/zh-tw/4"
             },
             "source_language": "en",
+            "requested_translation_language": null,
             "nav_tree_to_use": "home",
             "attributes": {
                 "composition_type": "presentation",
@@ -3252,6 +3257,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                 "zh_tw": "/zh-tw/6"
             },
             "source_language": "en",
+            "requested_translation_language": null,
             "attributes": {
                 "composition_type": "qna",
                 "heading": "Test heading",
@@ -3852,6 +3858,7 @@ It is a workaround for not being able to choose the response when multiple are d
                 "zh_tw": "/zh-tw/6"
             },
             "source_language": "en",
+            "requested_translation_language": "pt_pt",
             "attributes": {
                 "composition_type": "qna",
                 "heading": "título de teste",
@@ -4447,6 +4454,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                 "zh_tw": "/zh-tw/4"
             },
             "source_language": "en",
+            "requested_translation_language": null,
             "nav_tree_to_use": "home",
             "attributes": {
                 "composition_type": "presentation",
@@ -4784,6 +4792,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                 "zh_tw": "/zh-tw/6"
             },
             "source_language": "en",
+            "requested_translation_language": null,
             "attributes": {
                 "heading": "Test heading",
                 "subheading": null,
@@ -5160,6 +5169,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                 "zh_tw": "/zh-tw/6"
             },
             "source_language": "en",
+            "requested_translation_language": null,
             "attributes": {
                 "heading": "Test heading",
                 "subheading": null,
@@ -5480,6 +5490,7 @@ It is a workaround for not being able to choose the response when multiple are d
                 "zh_tw": "/zh-tw/6"
             },
             "source_language": "en",
+            "requested_translation_language": "es",
             "attributes": {
                 "heading": "Test heading",
                 "subheading": null,
@@ -5859,6 +5870,7 @@ It is a workaround for not being able to choose the response when multiple are d
                 "zh_tw": "/zh-tw/6"
             },
             "source_language": "en",
+            "requested_translation_language": "es",
             "attributes": {
                 "heading": "Test heading",
                 "subheading": null,

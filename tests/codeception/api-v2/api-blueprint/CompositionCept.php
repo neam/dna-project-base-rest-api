@@ -53,6 +53,7 @@ $expectedResponse = array(
         "zh_tw" => "/zh-tw/6"
     ),
     "source_language" => "en",
+    "requested_translation_language" => null,
     "attributes" => array(
         "composition_type" => "qna",
         "heading" => "Test heading",
@@ -640,6 +641,7 @@ $expectedTranslatedResponse = array(
         "zh_tw" => "/zh-tw/6"
     ),
     "source_language" => "en",
+    "requested_translation_language" => "pt_pt",
     "attributes" => array(
         "composition_type" => "qna",
         "heading" => "título de teste",

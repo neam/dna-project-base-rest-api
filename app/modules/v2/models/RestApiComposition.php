@@ -24,9 +24,9 @@ class RestApiComposition extends BaseRestApiComposition implements TranslatableR
             'node_id' => (int)$this->node_id,
             'item_type' => 'go_item',
             'url' => $this->getRouteUrl(),
-            'requested_translation_language' => (!empty($GLOBALS["requested_translation_language"]) ? $GLOBALS["requested_translation_language"] : null),
             'url_translations' => $this->getTranslatedRouteUrls(),
             'source_language' => $this->source_language,
+            'requested_translation_language' => (Yii::app()->language !== $this->source_language) ? Yii::app()->language : null,
             'attributes' => array_merge($this->getListableAttributes(), array(
                 'composition' => SirTrevorParser::populateSirTrevorBlocks($this->composition, array('localize' => true, 'parent' => $this))
             )),
@@ -64,6 +64,7 @@ class RestApiComposition extends BaseRestApiComposition implements TranslatableR
             'url' =>  $this->getRouteUrl(),
             'url_translations' => $this->getTranslatedRouteUrls(),
             'source_language' => $this->source_language,
+            'requested_translation_language' => (Yii::app()->language !== $this->source_language) ? Yii::app()->language : null,
             'attributes' => array(
                 'heading' => $this->_heading,
                 'subheading' => $this->_subheading,

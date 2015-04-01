@@ -55,6 +55,7 @@ $expectedUntranslatedResponse = array(
         "zh_tw" => "/zh-tw/6"
     ),
     "source_language" => "en",
+    "requested_translation_language" => "es",
     "attributes" => array(
         "heading" => "Test heading",
         "subheading" => null,
@@ -361,6 +362,7 @@ $expectedTranslatedResponse = array(
         "zh_tw" => "/zh-tw/6"
     ),
     "source_language" => "en",
+    "requested_translation_language" => "es",
     "attributes" => array(
         "heading" => "Test heading",
         "subheading" => null,
@@ -631,7 +633,7 @@ $I->sendPUT('translation/6/test/composition?_lang=es', array(
     "item_type" => "go_item",
     "url" => "/answers/test-go-item-slug/",
     "translations" => array(
-    "heading" => "ES Test heading",
+        "heading" => "ES Test heading",
         "subheading" => null,
         "about" => "ES Test about",
         "caption" => "ES Test caption",
