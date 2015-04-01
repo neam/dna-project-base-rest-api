@@ -169,8 +169,12 @@ $expectedUntranslatedResponse = array(
                     "data" => array(
                     "node_id" => 14,
                         "item_type" => "slideshow_file",
-                        "attributes" => [],
-                        "labels" => []
+                        "attributes" => array(
+                            "google_docs_id" => "abc",
+                        ),
+                        "labels" => array(
+                            "google_docs_id" => "Google Docs Id"
+                        )
                     ),
                     "id" => "b3a06fa50ff950daed8b2448c94efc2e"
                 )
@@ -295,7 +299,9 @@ $expectedUntranslatedResponse = array(
                     "data" => array(
                     "node_id" => 14,
                         "item_type" => "slideshow_file",
-                        "attributes" => []
+                        "attributes" => array(
+                            "google_docs_id" => "abc",
+                        )
                     ),
                     "id" => "b3a06fa50ff950daed8b2448c94efc2e",
                     "progress" => 0
@@ -476,8 +482,12 @@ $expectedTranslatedResponse = array(
                     "data" => array(
                     "node_id" => 14,
                         "item_type" => "slideshow_file",
-                        "attributes" => [],
-                        "labels" => []
+                        "attributes" => array(
+                            "google_docs_id" => "abc",
+                        ),
+                        "labels" => array(
+                            "google_docs_id" => "Google Docs Id"
+                        )
                     ),
                     "id" => "b3a06fa50ff950daed8b2448c94efc2e"
                 )
@@ -602,10 +612,12 @@ $expectedTranslatedResponse = array(
                     "data" => array(
                     "node_id" => 14,
                         "item_type" => "slideshow_file",
-                        "attributes" => []
+                        "attributes" => array(
+                            "google_docs_id" => "1ZhsSrEwD1Rg9shDinj5RWzbK4GmBBNAgmJhyMGUBRl4",
+                        )
                     ),
                     "id" => "b3a06fa50ff950daed8b2448c94efc2e",
-                    "progress" => 0
+                    "progress" => 100
                 )
             ]
         )
@@ -681,6 +693,17 @@ $I->sendPUT('translation/6/test/composition?_lang=es', array(
                     ),
                     "id" => "a6c6ff85dc6716fe5d3e6498d542829d",
                 ),
+                array(
+                    "type" => "slideshow_file",
+                    "data" => array(
+                        "node_id" => 14,
+                        "item_type" => "slideshow_file",
+                        "attributes" => array(
+                            "google_docs_id" => "1ZhsSrEwD1Rg9shDinj5RWzbK4GmBBNAgmJhyMGUBRl4",
+                        )
+                    ),
+                    "id" => "b3a06fa50ff950daed8b2448c94efc2e",
+                )
             ]
         )
     ),

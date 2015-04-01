@@ -1146,7 +1146,7 @@ Language related resources
                                 "node_id": 14,
                                 "item_type": "slideshow_file",
                                 "attributes": {
-                                    "google_docs_id": null,
+                                    "google_docs_id": "abc",
                                     "slideshare_id": null
                                 }
                             }
@@ -2073,7 +2073,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                 "node_id": 14,
                                 "item_type": "slideshow_file",
                                 "attributes": {
-                                    "google_docs_id": null,
+                                    "google_docs_id": "abc",
                                     "slideshare_id": null
                                 }
                             },
@@ -2674,7 +2674,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                 "node_id": 14,
                                 "item_type": "slideshow_file",
                                 "attributes": {
-                                    "google_docs_id": null,
+                                    "google_docs_id": "abc",
                                     "slideshare_id": null
                                 }
                             },
@@ -3608,7 +3608,7 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                 "node_id": 14,
                                 "item_type": "slideshow_file",
                                 "attributes": {
-                                    "google_docs_id": null,
+                                    "google_docs_id": "abc",
                                     "slideshare_id": null
                                 }
                             },
@@ -4209,7 +4209,7 @@ It is a workaround for not being able to choose the response when multiple are d
                                 "node_id": 14,
                                 "item_type": "slideshow_file",
                                 "attributes": {
-                                    "google_docs_id": null,
+                                    "google_docs_id": "abc",
                                     "slideshare_id": null
                                 }
                             },
@@ -4906,8 +4906,12 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                             "data": {
                                 "node_id": 14,
                                 "item_type": "slideshow_file",
-                                "attributes": [],
-                                "labels": []
+                                "attributes": {
+                                    "google_docs_id": "abc"
+                                },
+                                "labels": {
+                                    "google_docs_id": "Google Docs Id"
+                                }
                             },
                             "id": "b3a06fa50ff950daed8b2448c94efc2e"
                         }
@@ -5032,7 +5036,9 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                             "data": {
                                 "node_id": 14,
                                 "item_type": "slideshow_file",
-                                "attributes": []
+                                "attributes": {
+                                    "google_docs_id": "abc"
+                                }
                             },
                             "id": "b3a06fa50ff950daed8b2448c94efc2e",
                             "progress": 0
@@ -5104,6 +5110,17 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                 ]
                             },
                             "id": "a6c6ff85dc6716fe5d3e6498d542829d"
+                        },
+                        {
+                            "type": "slideshow_file",
+                            "data": {
+                                "node_id": 14,
+                                "item_type": "slideshow_file",
+                                "attributes": {
+                                    "google_docs_id": "1ZhsSrEwD1Rg9shDinj5RWzbK4GmBBNAgmJhyMGUBRl4"
+                                }
+                            },
+                            "id": "b3a06fa50ff950daed8b2448c94efc2e"
                         }
                     ]
                 }
@@ -5283,8 +5300,12 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                             "data": {
                                 "node_id": 14,
                                 "item_type": "slideshow_file",
-                                "attributes": [],
-                                "labels": []
+                                "attributes": {
+                                    "google_docs_id": "abc"
+                                },
+                                "labels": {
+                                    "google_docs_id": "Google Docs Id"
+                                }
                             },
                             "id": "b3a06fa50ff950daed8b2448c94efc2e"
                         }
@@ -5409,10 +5430,12 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                             "data": {
                                 "node_id": 14,
                                 "item_type": "slideshow_file",
-                                "attributes": []
+                                "attributes": {
+                                    "google_docs_id": "1ZhsSrEwD1Rg9shDinj5RWzbK4GmBBNAgmJhyMGUBRl4"
+                                }
                             },
                             "id": "b3a06fa50ff950daed8b2448c94efc2e",
-                            "progress": 0
+                            "progress": 100
                         }
                     ]
                 }
@@ -5604,8 +5627,12 @@ It is a workaround for not being able to choose the response when multiple are d
                             "data": {
                                 "node_id": 14,
                                 "item_type": "slideshow_file",
-                                "attributes": [],
-                                "labels": []
+                                "attributes": {
+                                    "google_docs_id": "abc"
+                                },
+                                "labels": {
+                                    "google_docs_id": "Google Docs Id"
+                                }
                             },
                             "id": "b3a06fa50ff950daed8b2448c94efc2e"
                         }
@@ -5730,7 +5757,9 @@ It is a workaround for not being able to choose the response when multiple are d
                             "data": {
                                 "node_id": 14,
                                 "item_type": "slideshow_file",
-                                "attributes": []
+                                "attributes": {
+                                    "google_docs_id": "abc"
+                                }
                             },
                             "id": "b3a06fa50ff950daed8b2448c94efc2e",
                             "progress": 0
@@ -5805,6 +5834,17 @@ It is a workaround for not being able to choose the response when multiple are d
                                 ]
                             },
                             "id": "a6c6ff85dc6716fe5d3e6498d542829d"
+                        },
+                        {
+                            "type": "slideshow_file",
+                            "data": {
+                                "node_id": 14,
+                                "item_type": "slideshow_file",
+                                "attributes": {
+                                    "google_docs_id": "1ZhsSrEwD1Rg9shDinj5RWzbK4GmBBNAgmJhyMGUBRl4"
+                                }
+                            },
+                            "id": "b3a06fa50ff950daed8b2448c94efc2e"
                         }
                     ]
                 }
@@ -5984,8 +6024,12 @@ It is a workaround for not being able to choose the response when multiple are d
                             "data": {
                                 "node_id": 14,
                                 "item_type": "slideshow_file",
-                                "attributes": [],
-                                "labels": []
+                                "attributes": {
+                                    "google_docs_id": "abc"
+                                },
+                                "labels": {
+                                    "google_docs_id": "Google Docs Id"
+                                }
                             },
                             "id": "b3a06fa50ff950daed8b2448c94efc2e"
                         }
@@ -6110,10 +6154,12 @@ It is a workaround for not being able to choose the response when multiple are d
                             "data": {
                                 "node_id": 14,
                                 "item_type": "slideshow_file",
-                                "attributes": []
+                                "attributes": {
+                                    "google_docs_id": "1ZhsSrEwD1Rg9shDinj5RWzbK4GmBBNAgmJhyMGUBRl4"
+                                }
                             },
                             "id": "b3a06fa50ff950daed8b2448c94efc2e",
-                            "progress": 0
+                            "progress": 100
                         }
                     ]
                 }

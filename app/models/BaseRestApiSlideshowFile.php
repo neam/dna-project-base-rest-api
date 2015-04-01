@@ -2,6 +2,8 @@
 
 /**
  * Slide show file item resource.
+ * @property string $_google_docs_id
+ * @property string $_slideshare_id
  *
  * Properties made available through the I18nAttributeMessagesBehavior class:
  * @property string $title
@@ -21,9 +23,10 @@ abstract class BaseRestApiSlideshowFile extends SlideshowFile
             'i18n-attribute-messages' => array(
                 'class' => 'I18nAttributeMessagesBehavior',
                 'translationAttributes' => array(
+                    'title',
+                    'about',
                     'slideshare_id',
                     'google_docs_id',
-                    'processedFile',
                 ),
                 'languageSuffixes' => LanguageHelper::getCodes(),
                 'behaviorKey' => 'i18n-attribute-messages',
