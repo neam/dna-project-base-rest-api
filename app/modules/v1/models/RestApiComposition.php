@@ -35,4 +35,25 @@ class RestApiComposition extends BaseRestApiComposition
             'footer_navigation_tree_2' => RestApiNavigationTreeItem::buildTree(RestApiNavigationTreeItem::REF_FOOTER2),
         );
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function getListableAttributes()
+    {
+        return array(
+            'composition_type' => $this->getCompositionTypeReference(),
+            'heading' => $this->heading,
+            'subheading' => $this->subheading,
+            'about' => $this->about,
+            'caption' => $this->caption,
+            'slug' => $this->slug,
+            'thumb' => array(
+                'original' => $this->getThumbUrl('original-public'),
+                '735x444' => $this->getThumbUrl('735x444'),
+                '160x96' => $this->getThumbUrl('160x96'),
+                '110x66' => $this->getThumbUrl('110x66'),
+            ),
+        );
+    }
 }

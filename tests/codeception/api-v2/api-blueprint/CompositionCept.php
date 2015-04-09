@@ -63,9 +63,16 @@ $expectedResponse = array(
         "slug" => "test-go-item-slug",
         "thumb" => array(
             "original" => "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-            "735x444" => "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-            "160x96" => "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-            "110x66" => "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+            "735x444"=> "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+            "160x96"=> "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+            "110x66"=> "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg",
+            "130x77"=> "http://web/files-api/p3media/file/image?id=10&preset=130x77&title=media&extension=.jpg",
+            "180x108"=> "http://web/files-api/p3media/file/image?id=10&preset=180x108&title=media&extension=.jpg",
+            "735x444-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=735x444-retina&title=media&extension=.jpg",
+            "160x96-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=160x96-retina&title=media&extension=.jpg",
+            "110x66-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=110x66-retina&title=media&extension=.jpg",
+            "130x77-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=130x77-retina&title=media&extension=.jpg",
+            "180x108-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=180x108-retina&title=media&extension=.jpg"
         ),
         "composition" => array(
             "data" => array(
@@ -163,10 +170,17 @@ $expectedResponse = array(
                                         "caption" => "Test caption",
                                         "slug" => "test-go-item-slug",
                                         "thumb" =>  array(
-                                        "original" => "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                                            "735x444" => "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                                            "160x96" => "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                                            "110x66" => "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                                            "original" => "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                                            "735x444"=> "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                                            "160x96"=> "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                                            "110x66"=> "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg",
+                                            "130x77"=> "http://web/files-api/p3media/file/image?id=10&preset=130x77&title=media&extension=.jpg",
+                                            "180x108"=> "http://web/files-api/p3media/file/image?id=10&preset=180x108&title=media&extension=.jpg",
+                                            "735x444-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=735x444-retina&title=media&extension=.jpg",
+                                            "160x96-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=160x96-retina&title=media&extension=.jpg",
+                                            "110x66-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=110x66-retina&title=media&extension=.jpg",
+                                            "130x77-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=130x77-retina&title=media&extension=.jpg",
+                                            "180x108-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=180x108-retina&title=media&extension=.jpg"
                                         )
                                     )
                                 ),
@@ -182,10 +196,17 @@ $expectedResponse = array(
                                         "caption" => "Test caption 2",
                                         "slug" => "test-go-item-slug-2",
                                         "thumb" =>  array(
-                                        "original" => "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                                            "735x444" => "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                                            "160x96" => "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                                            "110x66" => "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                                            "original" => "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
+                                            "735x444"=> "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                                            "160x96"=> "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                                            "110x66"=> "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg",
+                                            "130x77"=> "http://web/files-api/p3media/file/image?id=10&preset=130x77&title=media&extension=.jpg",
+                                            "180x108"=> "http://web/files-api/p3media/file/image?id=10&preset=180x108&title=media&extension=.jpg",
+                                            "735x444-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=735x444-retina&title=media&extension=.jpg",
+                                            "160x96-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=160x96-retina&title=media&extension=.jpg",
+                                            "110x66-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=110x66-retina&title=media&extension=.jpg",
+                                            "130x77-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=130x77-retina&title=media&extension=.jpg",
+                                            "180x108-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=180x108-retina&title=media&extension=.jpg"
                                         )
                                     )
                                 )
@@ -428,9 +449,16 @@ $expectedResponse = array(
                 "slug" => "test-go-item-slug-2",
                 "thumb" => array(
                     "original" => "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                    "735x444" => "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                    "160x96" => "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                    "110x66" => "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                    "735x444"=> "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                    "160x96"=> "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                    "110x66"=> "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg",
+                    "130x77"=> "http://web/files-api/p3media/file/image?id=10&preset=130x77&title=media&extension=.jpg",
+                    "180x108"=> "http://web/files-api/p3media/file/image?id=10&preset=180x108&title=media&extension=.jpg",
+                    "735x444-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=735x444-retina&title=media&extension=.jpg",
+                    "160x96-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=160x96-retina&title=media&extension=.jpg",
+                    "110x66-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=110x66-retina&title=media&extension=.jpg",
+                    "130x77-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=130x77-retina&title=media&extension=.jpg",
+                    "180x108-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=180x108-retina&title=media&extension=.jpg"
                 )
             )
         )
@@ -651,9 +679,16 @@ $expectedTranslatedResponse = array(
         "slug" => null,
         "thumb" => array(
             "original" => "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-            "735x444" => "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-            "160x96" => "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-            "110x66" => "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+            "735x444"=> "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+            "160x96"=> "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+            "110x66"=> "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg",
+            "130x77"=> "http://web/files-api/p3media/file/image?id=10&preset=130x77&title=media&extension=.jpg",
+            "180x108"=> "http://web/files-api/p3media/file/image?id=10&preset=180x108&title=media&extension=.jpg",
+            "735x444-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=735x444-retina&title=media&extension=.jpg",
+            "160x96-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=160x96-retina&title=media&extension=.jpg",
+            "110x66-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=110x66-retina&title=media&extension=.jpg",
+            "130x77-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=130x77-retina&title=media&extension=.jpg",
+            "180x108-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=180x108-retina&title=media&extension=.jpg"
         ),
         "composition" => array(
             "data" => array(
@@ -752,9 +787,16 @@ $expectedTranslatedResponse = array(
                                         "slug" => null,
                                         "thumb" =>  array(
                                             "original" => "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                                            "735x444" => "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                                            "160x96" => "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                                            "110x66" => "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                                            "735x444"=> "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                                            "160x96"=> "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                                            "110x66"=> "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg",
+                                            "130x77"=> "http://web/files-api/p3media/file/image?id=10&preset=130x77&title=media&extension=.jpg",
+                                            "180x108"=> "http://web/files-api/p3media/file/image?id=10&preset=180x108&title=media&extension=.jpg",
+                                            "735x444-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=735x444-retina&title=media&extension=.jpg",
+                                            "160x96-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=160x96-retina&title=media&extension=.jpg",
+                                            "110x66-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=110x66-retina&title=media&extension=.jpg",
+                                            "130x77-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=130x77-retina&title=media&extension=.jpg",
+                                            "180x108-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=180x108-retina&title=media&extension=.jpg"
                                         )
                                     )
                                 ),
@@ -771,9 +813,16 @@ $expectedTranslatedResponse = array(
                                         "slug" => null,
                                         "thumb" =>  array(
                                             "original" => "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                                            "735x444" => "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                                            "160x96" => "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                                            "110x66" => "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                                            "735x444"=> "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                                            "160x96"=> "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                                            "110x66"=> "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg",
+                                            "130x77"=> "http://web/files-api/p3media/file/image?id=10&preset=130x77&title=media&extension=.jpg",
+                                            "180x108"=> "http://web/files-api/p3media/file/image?id=10&preset=180x108&title=media&extension=.jpg",
+                                            "735x444-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=735x444-retina&title=media&extension=.jpg",
+                                            "160x96-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=160x96-retina&title=media&extension=.jpg",
+                                            "110x66-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=110x66-retina&title=media&extension=.jpg",
+                                            "130x77-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=130x77-retina&title=media&extension=.jpg",
+                                            "180x108-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=180x108-retina&title=media&extension=.jpg"
                                         )
                                     )
                                 )
@@ -1016,9 +1065,16 @@ $expectedTranslatedResponse = array(
                 "slug" => null,
                 "thumb" => array(
                     "original" => "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
-                    "735x444" => "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
-                    "160x96" => "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                    "110x66" => "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                    "735x444"=> "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
+                    "160x96"=> "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
+                    "110x66"=> "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg",
+                    "130x77"=> "http://web/files-api/p3media/file/image?id=10&preset=130x77&title=media&extension=.jpg",
+                    "180x108"=> "http://web/files-api/p3media/file/image?id=10&preset=180x108&title=media&extension=.jpg",
+                    "735x444-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=735x444-retina&title=media&extension=.jpg",
+                    "160x96-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=160x96-retina&title=media&extension=.jpg",
+                    "110x66-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=110x66-retina&title=media&extension=.jpg",
+                    "130x77-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=130x77-retina&title=media&extension=.jpg",
+                    "180x108-retina"=> "http://web/files-api/p3media/file/image?id=10&preset=180x108-retina&title=media&extension=.jpg"
                 )
             )
         )

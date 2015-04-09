@@ -221,6 +221,13 @@ class RestApiSirTrevorBlockVideoFile extends RestApiSirTrevorBlockNode
                     '735x444' => $model->getThumbUrl('735x444'),
                     '160x96' => $model->getThumbUrl('160x96'),
                     '110x66' => $model->getThumbUrl('110x66'),
+                    '130x77' => $model->getThumbUrl('130x77'),
+                    '180x108' => $model->getThumbUrl('180x108'),
+                    '735x444-retina' => $model->getThumbUrl('735x444-retina'),
+                    '160x96-retina' => $model->getThumbUrl('160x96-retina'),
+                    '110x66-retina' => $model->getThumbUrl('110x66-retina'),
+                    '130x77-retina' => $model->getThumbUrl('130x77-retina'),
+                    '180x108-retina' => $model->getThumbUrl('180x108-retina'),
                 ),
             );
         }
