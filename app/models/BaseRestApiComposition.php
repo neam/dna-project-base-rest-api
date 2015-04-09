@@ -79,23 +79,7 @@ abstract class BaseRestApiComposition extends Composition implements RelatedReso
      *
      * @return array
      */
-    public function getListableAttributes()
-    {
-        return array(
-            'composition_type' => $this->getCompositionTypeReference(),
-            'heading' => $this->heading,
-            'subheading' => $this->subheading,
-            'about' => $this->about,
-            'caption' => $this->caption,
-            'slug' => $this->slug,
-            'thumb' => array(
-                'original' => $this->getThumbUrl('original-public'),
-                '735x444' => $this->getThumbUrl('735x444'),
-                '160x96' => $this->getThumbUrl('160x96'),
-                '110x66' => $this->getThumbUrl('110x66'),
-            ),
-        );
-    }
+    abstract public function getListableAttributes();
 
     /**
      * @return string|null

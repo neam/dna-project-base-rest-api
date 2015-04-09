@@ -42,6 +42,34 @@ class RestApiComposition extends BaseRestApiComposition implements TranslatableR
     /**
      * @inheritdoc
      */
+    public function getListableAttributes()
+    {
+        return array(
+            'composition_type' => $this->getCompositionTypeReference(),
+            'heading' => $this->heading,
+            'subheading' => $this->subheading,
+            'about' => $this->about,
+            'caption' => $this->caption,
+            'slug' => $this->slug,
+            'thumb' => array(
+                'original' => $this->getThumbUrl('original-public'),
+                '735x444' => $this->getThumbUrl('735x444'),
+                '160x96' => $this->getThumbUrl('160x96'),
+                '110x66' => $this->getThumbUrl('110x66'),
+                '130x77' => $this->getThumbUrl('130x77'),
+                '180x108' => $this->getThumbUrl('180x108'),
+                '735x444-retina' => $this->getThumbUrl('735x444-retina'),
+                '160x96-retina' => $this->getThumbUrl('160x96-retina'),
+                '110x66-retina' => $this->getThumbUrl('110x66-retina'),
+                '130x77-retina' => $this->getThumbUrl('130x77-retina'),
+                '180x108-retina' => $this->getThumbUrl('180x108-retina'),
+            ),
+        );
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function getTranslationAttributes()
     {
         return array(

@@ -31,9 +31,9 @@ User related resources
 + Request
 
     + Headers
-        
+
                 Authorization: Bearer 03807cb390319329bdf6c777d4dfae9c0d3b3c35
-        
+
 + Response 200
 
 ## Public profile [/user/{accountId}/profile]
@@ -45,7 +45,7 @@ The profile is only returned if it is marked as "published", e.g. public.
 + Request
 
     + Headers
-        
+
             Authorization: Bearer 03807cb390319329bdf6c777d4dfae9c0d3b3c35
 
 + Response 200 (application/json)
@@ -134,9 +134,9 @@ The profile is only returned if it is marked as "published", e.g. public.
 + Request (application/json)
 
     + Headers
-    
+
             Authorization: Bearer 03807cb390319329bdf6c777d4dfae9c0d3b3c35
-        
+
 + Response 200 (application/json)
 
         {
@@ -222,11 +222,11 @@ The profile is only returned if it is marked as "published", e.g. public.
 + Request (application/json)
 
     + Headers
-    
+
             Authorization: Bearer 03807cb390319329bdf6c777d4dfae9c0d3b3c35
 
     + Body
-    
+
             {
                 "first_name": "Anna-Mia",
                 "last_name": "Ekström",
@@ -267,7 +267,7 @@ The profile is only returned if it is marked as "published", e.g. public.
                     {"type": "text", "data": {"text": "[www.example.com](http://www.example.com)"}}
                 ]}
             }
-        
+
 + Response 200
 
 ## Info [/user/info]
@@ -275,7 +275,7 @@ The profile is only returned if it is marked as "published", e.g. public.
 + Request (application/json)
 
     + Headers
-    
+
             Authorization: Bearer 03807cb390319329bdf6c777d4dfae9c0d3b3c35
 
 + Response 200 (application/json)
@@ -312,7 +312,14 @@ Video file related resources
                         "original": "http://web/files-api/p3media/file/image?id=5&preset=original-public&title=media&extension=.jpeg",
                         "735x444": "http://web/files-api/p3media/file/image?id=5&preset=735x444&title=media&extension=.jpg",
                         "160x96": "http://web/files-api/p3media/file/image?id=5&preset=160x96&title=media&extension=.jpg",
-                        "110x66": "http://web/files-api/p3media/file/image?id=5&preset=110x66&title=media&extension=.jpg"
+                        "110x66": "http://web/files-api/p3media/file/image?id=5&preset=110x66&title=media&extension=.jpg",
+                        "130x77": "http://web/files-api/p3media/file/image?id=5&preset=130x77&title=media&extension=.jpg",
+                        "180x108": "http://web/files-api/p3media/file/image?id=5&preset=180x108&title=media&extension=.jpg",
+                        "735x444-retina": "http://web/files-api/p3media/file/image?id=5&preset=735x444-retina&title=media&extension=.jpg",
+                        "160x96-retina": "http://web/files-api/p3media/file/image?id=5&preset=160x96-retina&title=media&extension=.jpg",
+                        "110x66-retina": "http://web/files-api/p3media/file/image?id=5&preset=110x66-retina&title=media&extension=.jpg",
+                        "130x77-retina": "http://web/files-api/p3media/file/image?id=5&preset=130x77-retina&title=media&extension=.jpg",
+                        "180x108-retina": "http://web/files-api/p3media/file/image?id=5&preset=180x108-retina&title=media&extension=.jpg"
                     }
                 },
                 "related": [ ]
@@ -334,7 +341,14 @@ Video file related resources
                         "original": "http://web/files-api/p3media/file/image?id=6&preset=original-public&title=media&extension=.jpeg",
                         "735x444": "http://web/files-api/p3media/file/image?id=6&preset=735x444&title=media&extension=.jpg",
                         "160x96": "http://web/files-api/p3media/file/image?id=6&preset=160x96&title=media&extension=.jpg",
-                        "110x66": "http://web/files-api/p3media/file/image?id=6&preset=110x66&title=media&extension=.jpg"
+                        "110x66": "http://web/files-api/p3media/file/image?id=6&preset=110x66&title=media&extension=.jpg",
+                        "130x77": "http://web/files-api/p3media/file/image?id=6&preset=130x77&title=media&extension=.jpg",
+                        "180x108": "http://web/files-api/p3media/file/image?id=6&preset=180x108&title=media&extension=.jpg",
+                        "735x444-retina": "http://web/files-api/p3media/file/image?id=6&preset=735x444-retina&title=media&extension=.jpg",
+                        "160x96-retina": "http://web/files-api/p3media/file/image?id=6&preset=160x96-retina&title=media&extension=.jpg",
+                        "110x66-retina": "http://web/files-api/p3media/file/image?id=6&preset=110x66-retina&title=media&extension=.jpg",
+                        "130x77-retina": "http://web/files-api/p3media/file/image?id=6&preset=130x77-retina&title=media&extension=.jpg",
+                        "180x108-retina": "http://web/files-api/p3media/file/image?id=6&preset=180x108-retina&title=media&extension=.jpg"
                     }
                 },
                 "related": [ ]
@@ -367,7 +381,14 @@ Video file related resources
                     "original": "http://web/files-api/p3media/file/image?id=5&preset=original-public&title=media&extension=.jpeg",
                     "735x444": "http://web/files-api/p3media/file/image?id=5&preset=735x444&title=media&extension=.jpg",
                     "160x96": "http://web/files-api/p3media/file/image?id=5&preset=160x96&title=media&extension=.jpg",
-                    "110x66": "http://web/files-api/p3media/file/image?id=5&preset=110x66&title=media&extension=.jpg"
+                    "110x66": "http://web/files-api/p3media/file/image?id=5&preset=110x66&title=media&extension=.jpg",
+                    "130x77": "http://web/files-api/p3media/file/image?id=5&preset=130x77&title=media&extension=.jpg",
+                    "180x108": "http://web/files-api/p3media/file/image?id=5&preset=180x108&title=media&extension=.jpg",
+                    "735x444-retina": "http://web/files-api/p3media/file/image?id=5&preset=735x444-retina&title=media&extension=.jpg",
+                    "160x96-retina": "http://web/files-api/p3media/file/image?id=5&preset=160x96-retina&title=media&extension=.jpg",
+                    "110x66-retina": "http://web/files-api/p3media/file/image?id=5&preset=110x66-retina&title=media&extension=.jpg",
+                    "130x77-retina": "http://web/files-api/p3media/file/image?id=5&preset=130x77-retina&title=media&extension=.jpg",
+                    "180x108-retina": "http://web/files-api/p3media/file/image?id=5&preset=180x108-retina&title=media&extension=.jpg"
                 }
             },
             "related": [ ]
@@ -818,7 +839,14 @@ Language related resources
                     "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
                     "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
                     "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg",
+                    "130x77": "http://web/files-api/p3media/file/image?id=10&preset=130x77&title=media&extension=.jpg",
+                    "180x108": "http://web/files-api/p3media/file/image?id=10&preset=180x108&title=media&extension=.jpg",
+                    "735x444-retina": "http://web/files-api/p3media/file/image?id=10&preset=735x444-retina&title=media&extension=.jpg",
+                    "160x96-retina": "http://web/files-api/p3media/file/image?id=10&preset=160x96-retina&title=media&extension=.jpg",
+                    "110x66-retina": "http://web/files-api/p3media/file/image?id=10&preset=110x66-retina&title=media&extension=.jpg",
+                    "130x77-retina": "http://web/files-api/p3media/file/image?id=10&preset=130x77-retina&title=media&extension=.jpg",
+                    "180x108-retina": "http://web/files-api/p3media/file/image?id=10&preset=180x108-retina&title=media&extension=.jpg"
                 },
                 "composition": {
                     "data": [
@@ -911,7 +939,14 @@ Language related resources
                                                     "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
                                                     "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
                                                     "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                                                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                                                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg",
+                                                    "130x77": "http://web/files-api/p3media/file/image?id=10&preset=130x77&title=media&extension=.jpg",
+                                                    "180x108": "http://web/files-api/p3media/file/image?id=10&preset=180x108&title=media&extension=.jpg",
+                                                    "735x444-retina": "http://web/files-api/p3media/file/image?id=10&preset=735x444-retina&title=media&extension=.jpg",
+                                                    "160x96-retina": "http://web/files-api/p3media/file/image?id=10&preset=160x96-retina&title=media&extension=.jpg",
+                                                    "110x66-retina": "http://web/files-api/p3media/file/image?id=10&preset=110x66-retina&title=media&extension=.jpg",
+                                                    "130x77-retina": "http://web/files-api/p3media/file/image?id=10&preset=130x77-retina&title=media&extension=.jpg",
+                                                    "180x108-retina": "http://web/files-api/p3media/file/image?id=10&preset=180x108-retina&title=media&extension=.jpg"
                                                 }
                                             }
                                         },
@@ -930,7 +965,14 @@ Language related resources
                                                     "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
                                                     "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
                                                     "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                                                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                                                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg",
+                                                    "130x77": "http://web/files-api/p3media/file/image?id=10&preset=130x77&title=media&extension=.jpg",
+                                                    "180x108": "http://web/files-api/p3media/file/image?id=10&preset=180x108&title=media&extension=.jpg",
+                                                    "735x444-retina": "http://web/files-api/p3media/file/image?id=10&preset=735x444-retina&title=media&extension=.jpg",
+                                                    "160x96-retina": "http://web/files-api/p3media/file/image?id=10&preset=160x96-retina&title=media&extension=.jpg",
+                                                    "110x66-retina": "http://web/files-api/p3media/file/image?id=10&preset=110x66-retina&title=media&extension=.jpg",
+                                                    "130x77-retina": "http://web/files-api/p3media/file/image?id=10&preset=130x77-retina&title=media&extension=.jpg",
+                                                    "180x108-retina": "http://web/files-api/p3media/file/image?id=10&preset=180x108-retina&title=media&extension=.jpg"
                                                 }
                                             }
                                         }
@@ -1171,7 +1213,14 @@ Language related resources
                             "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
                             "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
                             "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                            "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                            "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg",
+                            "130x77": "http://web/files-api/p3media/file/image?id=10&preset=130x77&title=media&extension=.jpg",
+                            "180x108": "http://web/files-api/p3media/file/image?id=10&preset=180x108&title=media&extension=.jpg",
+                            "735x444-retina": "http://web/files-api/p3media/file/image?id=10&preset=735x444-retina&title=media&extension=.jpg",
+                            "160x96-retina": "http://web/files-api/p3media/file/image?id=10&preset=160x96-retina&title=media&extension=.jpg",
+                            "110x66-retina": "http://web/files-api/p3media/file/image?id=10&preset=110x66-retina&title=media&extension=.jpg",
+                            "130x77-retina": "http://web/files-api/p3media/file/image?id=10&preset=130x77-retina&title=media&extension=.jpg",
+                            "180x108-retina": "http://web/files-api/p3media/file/image?id=10&preset=180x108-retina&title=media&extension=.jpg"
                         }
                     }
                 }
@@ -1522,7 +1571,14 @@ Language related resources
                             "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
                             "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
                             "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                            "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                            "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg",
+                            "130x77": "http://web/files-api/p3media/file/image?id=10&preset=130x77&title=media&extension=.jpg",
+                            "180x108": "http://web/files-api/p3media/file/image?id=10&preset=180x108&title=media&extension=.jpg",
+                            "735x444-retina": "http://web/files-api/p3media/file/image?id=10&preset=735x444-retina&title=media&extension=.jpg",
+                            "160x96-retina": "http://web/files-api/p3media/file/image?id=10&preset=160x96-retina&title=media&extension=.jpg",
+                            "110x66-retina": "http://web/files-api/p3media/file/image?id=10&preset=110x66-retina&title=media&extension=.jpg",
+                            "130x77-retina": "http://web/files-api/p3media/file/image?id=10&preset=130x77-retina&title=media&extension=.jpg",
+                            "180x108-retina": "http://web/files-api/p3media/file/image?id=10&preset=180x108-retina&title=media&extension=.jpg"
                         }
                     }
                 }
@@ -1758,7 +1814,14 @@ It is a workaround for not being able to choose the response when multiple are d
                     "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
                     "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
                     "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg",
+                    "130x77": "http://web/files-api/p3media/file/image?id=10&preset=130x77&title=media&extension=.jpg",
+                    "180x108": "http://web/files-api/p3media/file/image?id=10&preset=180x108&title=media&extension=.jpg",
+                    "735x444-retina": "http://web/files-api/p3media/file/image?id=10&preset=735x444-retina&title=media&extension=.jpg",
+                    "160x96-retina": "http://web/files-api/p3media/file/image?id=10&preset=160x96-retina&title=media&extension=.jpg",
+                    "110x66-retina": "http://web/files-api/p3media/file/image?id=10&preset=110x66-retina&title=media&extension=.jpg",
+                    "130x77-retina": "http://web/files-api/p3media/file/image?id=10&preset=130x77-retina&title=media&extension=.jpg",
+                    "180x108-retina": "http://web/files-api/p3media/file/image?id=10&preset=180x108-retina&title=media&extension=.jpg"
                 },
                 "composition": {
                     "data": [
@@ -1859,7 +1922,14 @@ It is a workaround for not being able to choose the response when multiple are d
                                                     "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
                                                     "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
                                                     "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                                                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                                                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg",
+                                                    "130x77": "http://web/files-api/p3media/file/image?id=10&preset=130x77&title=media&extension=.jpg",
+                                                    "180x108": "http://web/files-api/p3media/file/image?id=10&preset=180x108&title=media&extension=.jpg",
+                                                    "735x444-retina": "http://web/files-api/p3media/file/image?id=10&preset=735x444-retina&title=media&extension=.jpg",
+                                                    "160x96-retina": "http://web/files-api/p3media/file/image?id=10&preset=160x96-retina&title=media&extension=.jpg",
+                                                    "110x66-retina": "http://web/files-api/p3media/file/image?id=10&preset=110x66-retina&title=media&extension=.jpg",
+                                                    "130x77-retina": "http://web/files-api/p3media/file/image?id=10&preset=130x77-retina&title=media&extension=.jpg",
+                                                    "180x108-retina": "http://web/files-api/p3media/file/image?id=10&preset=180x108-retina&title=media&extension=.jpg"
                                                 }
                                             }
                                         },
@@ -1878,7 +1948,14 @@ It is a workaround for not being able to choose the response when multiple are d
                                                     "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
                                                     "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
                                                     "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                                                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                                                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg",
+                                                    "130x77": "http://web/files-api/p3media/file/image?id=10&preset=130x77&title=media&extension=.jpg",
+                                                    "180x108": "http://web/files-api/p3media/file/image?id=10&preset=180x108&title=media&extension=.jpg",
+                                                    "735x444-retina": "http://web/files-api/p3media/file/image?id=10&preset=735x444-retina&title=media&extension=.jpg",
+                                                    "160x96-retina": "http://web/files-api/p3media/file/image?id=10&preset=160x96-retina&title=media&extension=.jpg",
+                                                    "110x66-retina": "http://web/files-api/p3media/file/image?id=10&preset=110x66-retina&title=media&extension=.jpg",
+                                                    "130x77-retina": "http://web/files-api/p3media/file/image?id=10&preset=130x77-retina&title=media&extension=.jpg",
+                                                    "180x108-retina": "http://web/files-api/p3media/file/image?id=10&preset=180x108-retina&title=media&extension=.jpg"
                                                 }
                                             }
                                         }
@@ -2123,7 +2200,14 @@ It is a workaround for not being able to choose the response when multiple are d
                             "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
                             "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
                             "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                            "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                            "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg",
+                            "130x77": "http://web/files-api/p3media/file/image?id=10&preset=130x77&title=media&extension=.jpg",
+                            "180x108": "http://web/files-api/p3media/file/image?id=10&preset=180x108&title=media&extension=.jpg",
+                            "735x444-retina": "http://web/files-api/p3media/file/image?id=10&preset=735x444-retina&title=media&extension=.jpg",
+                            "160x96-retina": "http://web/files-api/p3media/file/image?id=10&preset=160x96-retina&title=media&extension=.jpg",
+                            "110x66-retina": "http://web/files-api/p3media/file/image?id=10&preset=110x66-retina&title=media&extension=.jpg",
+                            "130x77-retina": "http://web/files-api/p3media/file/image?id=10&preset=130x77-retina&title=media&extension=.jpg",
+                            "180x108-retina": "http://web/files-api/p3media/file/image?id=10&preset=180x108-retina&title=media&extension=.jpg"
                         }
                     }
                 }
@@ -2359,7 +2443,14 @@ It is a workaround for not being able to choose the response when multiple are d
                     "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
                     "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
                     "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg",
+                    "130x77": "http://web/files-api/p3media/file/image?id=10&preset=130x77&title=media&extension=.jpg",
+                    "180x108": "http://web/files-api/p3media/file/image?id=10&preset=180x108&title=media&extension=.jpg",
+                    "735x444-retina": "http://web/files-api/p3media/file/image?id=10&preset=735x444-retina&title=media&extension=.jpg",
+                    "160x96-retina": "http://web/files-api/p3media/file/image?id=10&preset=160x96-retina&title=media&extension=.jpg",
+                    "110x66-retina": "http://web/files-api/p3media/file/image?id=10&preset=110x66-retina&title=media&extension=.jpg",
+                    "130x77-retina": "http://web/files-api/p3media/file/image?id=10&preset=130x77-retina&title=media&extension=.jpg",
+                    "180x108-retina": "http://web/files-api/p3media/file/image?id=10&preset=180x108-retina&title=media&extension=.jpg"
                 },
                 "composition": {
                     "data": [
@@ -2460,7 +2551,14 @@ It is a workaround for not being able to choose the response when multiple are d
                                                     "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
                                                     "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
                                                     "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                                                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                                                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg",
+                                                    "130x77": "http://web/files-api/p3media/file/image?id=10&preset=130x77&title=media&extension=.jpg",
+                                                    "180x108": "http://web/files-api/p3media/file/image?id=10&preset=180x108&title=media&extension=.jpg",
+                                                    "735x444-retina": "http://web/files-api/p3media/file/image?id=10&preset=735x444-retina&title=media&extension=.jpg",
+                                                    "160x96-retina": "http://web/files-api/p3media/file/image?id=10&preset=160x96-retina&title=media&extension=.jpg",
+                                                    "110x66-retina": "http://web/files-api/p3media/file/image?id=10&preset=110x66-retina&title=media&extension=.jpg",
+                                                    "130x77-retina": "http://web/files-api/p3media/file/image?id=10&preset=130x77-retina&title=media&extension=.jpg",
+                                                    "180x108-retina": "http://web/files-api/p3media/file/image?id=10&preset=180x108-retina&title=media&extension=.jpg"
                                                 }
                                             }
                                         },
@@ -2479,7 +2577,14 @@ It is a workaround for not being able to choose the response when multiple are d
                                                     "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
                                                     "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
                                                     "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                                                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                                                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg",
+                                                    "130x77": "http://web/files-api/p3media/file/image?id=10&preset=130x77&title=media&extension=.jpg",
+                                                    "180x108": "http://web/files-api/p3media/file/image?id=10&preset=180x108&title=media&extension=.jpg",
+                                                    "735x444-retina": "http://web/files-api/p3media/file/image?id=10&preset=735x444-retina&title=media&extension=.jpg",
+                                                    "160x96-retina": "http://web/files-api/p3media/file/image?id=10&preset=160x96-retina&title=media&extension=.jpg",
+                                                    "110x66-retina": "http://web/files-api/p3media/file/image?id=10&preset=110x66-retina&title=media&extension=.jpg",
+                                                    "130x77-retina": "http://web/files-api/p3media/file/image?id=10&preset=130x77-retina&title=media&extension=.jpg",
+                                                    "180x108-retina": "http://web/files-api/p3media/file/image?id=10&preset=180x108-retina&title=media&extension=.jpg"
                                                 }
                                             }
                                         }
@@ -2724,7 +2829,14 @@ It is a workaround for not being able to choose the response when multiple are d
                             "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
                             "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
                             "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                            "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                            "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg",
+                            "130x77": "http://web/files-api/p3media/file/image?id=10&preset=130x77&title=media&extension=.jpg",
+                            "180x108": "http://web/files-api/p3media/file/image?id=10&preset=180x108&title=media&extension=.jpg",
+                            "735x444-retina": "http://web/files-api/p3media/file/image?id=10&preset=735x444-retina&title=media&extension=.jpg",
+                            "160x96-retina": "http://web/files-api/p3media/file/image?id=10&preset=160x96-retina&title=media&extension=.jpg",
+                            "110x66-retina": "http://web/files-api/p3media/file/image?id=10&preset=110x66-retina&title=media&extension=.jpg",
+                            "130x77-retina": "http://web/files-api/p3media/file/image?id=10&preset=130x77-retina&title=media&extension=.jpg",
+                            "180x108-retina": "http://web/files-api/p3media/file/image?id=10&preset=180x108-retina&title=media&extension=.jpg"
                         }
                     }
                 }
@@ -3086,7 +3198,14 @@ It is a workaround for not being able to choose the response when multiple are d
                             "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
                             "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
                             "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                            "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                            "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg",
+                            "130x77": "http://web/files-api/p3media/file/image?id=10&preset=130x77&title=media&extension=.jpg",
+                            "180x108": "http://web/files-api/p3media/file/image?id=10&preset=180x108&title=media&extension=.jpg",
+                            "735x444-retina": "http://web/files-api/p3media/file/image?id=10&preset=735x444-retina&title=media&extension=.jpg",
+                            "160x96-retina": "http://web/files-api/p3media/file/image?id=10&preset=160x96-retina&title=media&extension=.jpg",
+                            "110x66-retina": "http://web/files-api/p3media/file/image?id=10&preset=110x66-retina&title=media&extension=.jpg",
+                            "130x77-retina": "http://web/files-api/p3media/file/image?id=10&preset=130x77-retina&title=media&extension=.jpg",
+                            "180x108-retina": "http://web/files-api/p3media/file/image?id=10&preset=180x108-retina&title=media&extension=.jpg"
                         }
                     }
                 }
@@ -3317,7 +3436,14 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                     "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
                     "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
                     "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg",
+                    "130x77": "http://web/files-api/p3media/file/image?id=10&preset=130x77&title=media&extension=.jpg",
+                    "180x108": "http://web/files-api/p3media/file/image?id=10&preset=180x108&title=media&extension=.jpg",
+                    "735x444-retina": "http://web/files-api/p3media/file/image?id=10&preset=735x444-retina&title=media&extension=.jpg",
+                    "160x96-retina": "http://web/files-api/p3media/file/image?id=10&preset=160x96-retina&title=media&extension=.jpg",
+                    "110x66-retina": "http://web/files-api/p3media/file/image?id=10&preset=110x66-retina&title=media&extension=.jpg",
+                    "130x77-retina": "http://web/files-api/p3media/file/image?id=10&preset=130x77-retina&title=media&extension=.jpg",
+                    "180x108-retina": "http://web/files-api/p3media/file/image?id=10&preset=180x108-retina&title=media&extension=.jpg"
                 },
                 "composition": {
                     "data": [
@@ -3418,7 +3544,14 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                                     "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
                                                     "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
                                                     "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                                                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                                                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg",
+                                                    "130x77": "http://web/files-api/p3media/file/image?id=10&preset=130x77&title=media&extension=.jpg",
+                                                    "180x108": "http://web/files-api/p3media/file/image?id=10&preset=180x108&title=media&extension=.jpg",
+                                                    "735x444-retina": "http://web/files-api/p3media/file/image?id=10&preset=735x444-retina&title=media&extension=.jpg",
+                                                    "160x96-retina": "http://web/files-api/p3media/file/image?id=10&preset=160x96-retina&title=media&extension=.jpg",
+                                                    "110x66-retina": "http://web/files-api/p3media/file/image?id=10&preset=110x66-retina&title=media&extension=.jpg",
+                                                    "130x77-retina": "http://web/files-api/p3media/file/image?id=10&preset=130x77-retina&title=media&extension=.jpg",
+                                                    "180x108-retina": "http://web/files-api/p3media/file/image?id=10&preset=180x108-retina&title=media&extension=.jpg"
                                                 }
                                             }
                                         },
@@ -3437,7 +3570,14 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                                                     "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
                                                     "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
                                                     "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                                                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                                                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg",
+                                                    "130x77": "http://web/files-api/p3media/file/image?id=10&preset=130x77&title=media&extension=.jpg",
+                                                    "180x108": "http://web/files-api/p3media/file/image?id=10&preset=180x108&title=media&extension=.jpg",
+                                                    "735x444-retina": "http://web/files-api/p3media/file/image?id=10&preset=735x444-retina&title=media&extension=.jpg",
+                                                    "160x96-retina": "http://web/files-api/p3media/file/image?id=10&preset=160x96-retina&title=media&extension=.jpg",
+                                                    "110x66-retina": "http://web/files-api/p3media/file/image?id=10&preset=110x66-retina&title=media&extension=.jpg",
+                                                    "130x77-retina": "http://web/files-api/p3media/file/image?id=10&preset=130x77-retina&title=media&extension=.jpg",
+                                                    "180x108-retina": "http://web/files-api/p3media/file/image?id=10&preset=180x108-retina&title=media&extension=.jpg"
                                                 }
                                             }
                                         }
@@ -3682,7 +3822,14 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                             "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
                             "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
                             "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                            "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                            "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg",
+                            "130x77": "http://web/files-api/p3media/file/image?id=10&preset=130x77&title=media&extension=.jpg",
+                            "180x108": "http://web/files-api/p3media/file/image?id=10&preset=180x108&title=media&extension=.jpg",
+                            "735x444-retina": "http://web/files-api/p3media/file/image?id=10&preset=735x444-retina&title=media&extension=.jpg",
+                            "160x96-retina": "http://web/files-api/p3media/file/image?id=10&preset=160x96-retina&title=media&extension=.jpg",
+                            "110x66-retina": "http://web/files-api/p3media/file/image?id=10&preset=110x66-retina&title=media&extension=.jpg",
+                            "130x77-retina": "http://web/files-api/p3media/file/image?id=10&preset=130x77-retina&title=media&extension=.jpg",
+                            "180x108-retina": "http://web/files-api/p3media/file/image?id=10&preset=180x108-retina&title=media&extension=.jpg"
                         }
                     }
                 }
@@ -3918,7 +4065,14 @@ It is a workaround for not being able to choose the response when multiple are d
                     "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
                     "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
                     "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg",
+                    "130x77": "http://web/files-api/p3media/file/image?id=10&preset=130x77&title=media&extension=.jpg",
+                    "180x108": "http://web/files-api/p3media/file/image?id=10&preset=180x108&title=media&extension=.jpg",
+                    "735x444-retina": "http://web/files-api/p3media/file/image?id=10&preset=735x444-retina&title=media&extension=.jpg",
+                    "160x96-retina": "http://web/files-api/p3media/file/image?id=10&preset=160x96-retina&title=media&extension=.jpg",
+                    "110x66-retina": "http://web/files-api/p3media/file/image?id=10&preset=110x66-retina&title=media&extension=.jpg",
+                    "130x77-retina": "http://web/files-api/p3media/file/image?id=10&preset=130x77-retina&title=media&extension=.jpg",
+                    "180x108-retina": "http://web/files-api/p3media/file/image?id=10&preset=180x108-retina&title=media&extension=.jpg"
                 },
                 "composition": {
                     "data": [
@@ -4019,7 +4173,14 @@ It is a workaround for not being able to choose the response when multiple are d
                                                     "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
                                                     "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
                                                     "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                                                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                                                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg",
+                                                    "130x77": "http://web/files-api/p3media/file/image?id=10&preset=130x77&title=media&extension=.jpg",
+                                                    "180x108": "http://web/files-api/p3media/file/image?id=10&preset=180x108&title=media&extension=.jpg",
+                                                    "735x444-retina": "http://web/files-api/p3media/file/image?id=10&preset=735x444-retina&title=media&extension=.jpg",
+                                                    "160x96-retina": "http://web/files-api/p3media/file/image?id=10&preset=160x96-retina&title=media&extension=.jpg",
+                                                    "110x66-retina": "http://web/files-api/p3media/file/image?id=10&preset=110x66-retina&title=media&extension=.jpg",
+                                                    "130x77-retina": "http://web/files-api/p3media/file/image?id=10&preset=130x77-retina&title=media&extension=.jpg",
+                                                    "180x108-retina": "http://web/files-api/p3media/file/image?id=10&preset=180x108-retina&title=media&extension=.jpg"
                                                 }
                                             }
                                         },
@@ -4038,7 +4199,14 @@ It is a workaround for not being able to choose the response when multiple are d
                                                     "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
                                                     "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
                                                     "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                                                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                                                    "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg",
+                                                    "130x77": "http://web/files-api/p3media/file/image?id=10&preset=130x77&title=media&extension=.jpg",
+                                                    "180x108": "http://web/files-api/p3media/file/image?id=10&preset=180x108&title=media&extension=.jpg",
+                                                    "735x444-retina": "http://web/files-api/p3media/file/image?id=10&preset=735x444-retina&title=media&extension=.jpg",
+                                                    "160x96-retina": "http://web/files-api/p3media/file/image?id=10&preset=160x96-retina&title=media&extension=.jpg",
+                                                    "110x66-retina": "http://web/files-api/p3media/file/image?id=10&preset=110x66-retina&title=media&extension=.jpg",
+                                                    "130x77-retina": "http://web/files-api/p3media/file/image?id=10&preset=130x77-retina&title=media&extension=.jpg",
+                                                    "180x108-retina": "http://web/files-api/p3media/file/image?id=10&preset=180x108-retina&title=media&extension=.jpg"
                                                 }
                                             }
                                         }
@@ -4283,7 +4451,14 @@ It is a workaround for not being able to choose the response when multiple are d
                             "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
                             "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
                             "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                            "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                            "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg",
+                            "130x77": "http://web/files-api/p3media/file/image?id=10&preset=130x77&title=media&extension=.jpg",
+                            "180x108": "http://web/files-api/p3media/file/image?id=10&preset=180x108&title=media&extension=.jpg",
+                            "735x444-retina": "http://web/files-api/p3media/file/image?id=10&preset=735x444-retina&title=media&extension=.jpg",
+                            "160x96-retina": "http://web/files-api/p3media/file/image?id=10&preset=160x96-retina&title=media&extension=.jpg",
+                            "110x66-retina": "http://web/files-api/p3media/file/image?id=10&preset=110x66-retina&title=media&extension=.jpg",
+                            "130x77-retina": "http://web/files-api/p3media/file/image?id=10&preset=130x77-retina&title=media&extension=.jpg",
+                            "180x108-retina": "http://web/files-api/p3media/file/image?id=10&preset=180x108-retina&title=media&extension=.jpg"
                         }
                     }
                 }
@@ -4640,7 +4815,14 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                             "original": "http://web/files-api/p3media/file/image?id=10&preset=original-public&title=media&extension=.jpeg",
                             "735x444": "http://web/files-api/p3media/file/image?id=10&preset=735x444&title=media&extension=.jpg",
                             "160x96": "http://web/files-api/p3media/file/image?id=10&preset=160x96&title=media&extension=.jpg",
-                            "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg"
+                            "110x66": "http://web/files-api/p3media/file/image?id=10&preset=110x66&title=media&extension=.jpg",
+                            "130x77": "http://web/files-api/p3media/file/image?id=10&preset=130x77&title=media&extension=.jpg",
+                            "180x108": "http://web/files-api/p3media/file/image?id=10&preset=180x108&title=media&extension=.jpg",
+                            "735x444-retina": "http://web/files-api/p3media/file/image?id=10&preset=735x444-retina&title=media&extension=.jpg",
+                            "160x96-retina": "http://web/files-api/p3media/file/image?id=10&preset=160x96-retina&title=media&extension=.jpg",
+                            "110x66-retina": "http://web/files-api/p3media/file/image?id=10&preset=110x66-retina&title=media&extension=.jpg",
+                            "130x77-retina": "http://web/files-api/p3media/file/image?id=10&preset=130x77-retina&title=media&extension=.jpg",
+                            "180x108-retina": "http://web/files-api/p3media/file/image?id=10&preset=180x108-retina&title=media&extension=.jpg"
                         }
                     }
                 }
