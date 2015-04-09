@@ -1466,18 +1466,42 @@ Language related resources
                     ]
                 }
             },
-            "root_page": {
-                "node_id": 4,
-                "item_type": "custom_page",
-                "menu_label": "Test page",
-                "url": "/test-page-slug/",
-                "children": [
+           "root_page": {
+                "data": [
                     {
-                        "node_id": 5,
-                        "item_type": "custom_page",
-                        "menu_label": "Test page 2",
-                        "url": null,
-                        "children": [ ]
+                        "type": "custom_page",
+                        "data": {
+                            "node_id": 4,
+                            "item_type": "custom_page",
+                            "attributes": {
+                                "ref": null,
+                                "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis commodo ante nec venenatis. Vivamus maximus massa lectus, ut fermentum arcu tempus in. Mauris laoreet nisl sagittis orci tincidunt egestas. ",
+                                "menu_label": "Test page",
+                                "heading": "Test heading",
+                                "subheading": null,
+                                "url": "/test-page-slug/",
+                                "icon_url": null
+                            },
+                            "children": [
+                                {
+                                    "type": "custom_page",
+                                    "data": {
+                                        "node_id": 5,
+                                        "item_type": "custom_page",
+                                        "attributes": {
+                                            "ref": null,
+                                            "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis commodo ante nec venenatis. Vivamus maximus massa lectus, ut fermentum arcu tempus in. Mauris laoreet nisl sagittis orci tincidunt egestas. ",
+                                            "menu_label": "Test page 2",
+                                            "heading": "Test heading 2",
+                                            "subheading": null,
+                                            "url": null,
+                                            "icon_url": null
+                                        },
+                                        "children": [ ]
+                                    }
+                                }
+                            ]
+                        }
                     }
                 ]
             },
@@ -3007,17 +3031,41 @@ It is a workaround for not being able to choose the response when multiple are d
                 }
             },
             "root_page": {
-                "node_id": 4,
-                "item_type": "custom_page",
-                "menu_label": "Test page",
-                "url": "/test-page-slug/",
-                "children": [
+                "data": [
                     {
-                        "node_id": 5,
-                        "item_type": "custom_page",
-                        "menu_label": "Test page 2",
-                        "url": null,
-                        "children": [ ]
+                        "type": "custom_page",
+                        "data": {
+                            "node_id": 4,
+                            "item_type": "custom_page",
+                            "attributes": {
+                                "ref": null,
+                                "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis commodo ante nec venenatis. Vivamus maximus massa lectus, ut fermentum arcu tempus in. Mauris laoreet nisl sagittis orci tincidunt egestas. ",
+                                "menu_label": "Test page",
+                                "heading": "Test heading",
+                                "subheading": null,
+                                "url": "/test-page-slug/",
+                                "icon_url": null
+                            },
+                            "children": [
+                                {
+                                    "type": "custom_page",
+                                    "data": {
+                                        "node_id": 5,
+                                        "item_type": "custom_page",
+                                        "attributes": {
+                                            "ref": null,
+                                            "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis commodo ante nec venenatis. Vivamus maximus massa lectus, ut fermentum arcu tempus in. Mauris laoreet nisl sagittis orci tincidunt egestas. ",
+                                            "menu_label": "Test page 2",
+                                            "heading": "Test heading 2",
+                                            "subheading": null,
+                                            "url": null,
+                                            "icon_url": null
+                                        },
+                                        "children": [ ]
+                                    }
+                                }
+                            ]
+                        }
                     }
                 ]
             },
@@ -4536,18 +4584,42 @@ This endpoint is included in this api blueprint for testing purposes. It's outpu
                     ]
                 }
             },
-            "root_page": {
-                "node_id": 4,
-                "item_type": "custom_page",
-                "menu_label": "Test page",
-                "url": "/test-page-slug/",
-                "children": [
+           "root_page": {
+                "data": [
                     {
-                        "node_id": 5,
-                        "item_type": "custom_page",
-                        "menu_label": "Test page 2",
-                        "url": null,
-                        "children": [ ]
+                        "type": "custom_page",
+                        "data": {
+                            "node_id": 4,
+                            "item_type": "custom_page",
+                            "attributes": {
+                                "ref": null,
+                                "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis commodo ante nec venenatis. Vivamus maximus massa lectus, ut fermentum arcu tempus in. Mauris laoreet nisl sagittis orci tincidunt egestas. ",
+                                "menu_label": "Test page",
+                                "heading": "Test heading",
+                                "subheading": null,
+                                "url": "/test-page-slug/",
+                                "icon_url": null
+                            },
+                            "children": [
+                                {
+                                    "type": "custom_page",
+                                    "data": {
+                                        "node_id": 5,
+                                        "item_type": "custom_page",
+                                        "attributes": {
+                                            "ref": null,
+                                            "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis commodo ante nec venenatis. Vivamus maximus massa lectus, ut fermentum arcu tempus in. Mauris laoreet nisl sagittis orci tincidunt egestas. ",
+                                            "menu_label": "Test page 2",
+                                            "heading": "Test heading 2",
+                                            "subheading": null,
+                                            "url": null,
+                                            "icon_url": null
+                                        },
+                                        "children": [ ]
+                                    }
+                                }
+                            ]
+                        }
                     }
                 ]
             },

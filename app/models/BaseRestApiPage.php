@@ -74,36 +74,6 @@ abstract class BaseRestApiPage extends Page
     }
 
     /**
-     * @return array
-     */
-    public function getRootPageHierarchy()
-    {
-        $hierarchy = array();
-        $rootPage = $this->loadRootPage($this);
-        if ($rootPage !== null) {
-            $hierarchy = $rootPage->getHierarchyAttributes();
-            $rootPage->setChildren($rootPage, $hierarchy);
-        }
-        return $hierarchy;
-    }
-
-    /**
-     * The attributes that are returned by the REST api when this resource acts as an hierarchy item.
-     *
-     * @return array
-     */
-    public function getHierarchyAttributes()
-    {
-        return array(
-            'node_id' => (int)$this->node_id,
-            'item_type' => 'custom_page',
-            'menu_label' => $this->menu_label,
-            'url' => $this->getRouteUrl(),
-            'children' => array(),
-        );
-    }
-
-    /**
      * Returns the pages composition reference key.
      *
      * @return string|null the ref or null if not found.
@@ -149,22 +119,6 @@ abstract class BaseRestApiPage extends Page
             return $page;
         }
         return $this->loadRootPage($page->restApiCustomPageParent);
-    }
-
-    /**
-     * @param RestApiPage $page
-     * @param array $hierarchy
-     */
-    public function setChildren($page, &$hierarchy)
-    {
-        $children = $page->restApiCustomPageChildren;
-        if (!empty($children)) {
-            foreach ($children as $child) {
-                $childHierarchy = $child->getHierarchyAttributes();
-                $child->setChildren($child, $childHierarchy);
-                $hierarchy['children'][] = $childHierarchy;
-            }
-        }
     }
 
     /**

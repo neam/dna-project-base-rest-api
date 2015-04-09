@@ -29,7 +29,7 @@ class RestApiPage extends BaseRestApiPage implements TranslatableResource
             'requested_translation_language' => (Yii::app()->language !== $this->source_language) ? Yii::app()->language : null,
             'nav_tree_to_use' => !empty($this->nav_tree_to_use) ? $this->nav_tree_to_use : 'home',
             'attributes' => $this->getListableAttributes(),
-            'root_page' => $this->getRootPageHierarchy(),
+            'root_page' => $this->getRootPageTree(),
             'contributors' => ContributorItems::getItems($this->node_id),
             'related' => RelatedItems::getItems($this->node_id),
             'groups' => $this->getGroupData(),
@@ -150,5 +150,108 @@ class RestApiPage extends BaseRestApiPage implements TranslatableResource
         }
 
         return $routes;
+    }
+
+    /**
+     * Returns the pages root tree.
+     *
+     * Format:
+     *
+     * [
+     *   "data" => [
+     *     [
+     *       "type" => "custom_page",
+     *       "data" => [
+     *         "node_id" => 4,
+     *         "item_type" => "custom_page",
+     *         "attributes" => [
+     *           "ref" => null,
+     *           "about" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+     *           "menu_label" => "Test page",
+     *           "heading" => "Test heading",
+     *           "subheading" => null,
+     *           "url" => "/test-page-slug/",
+     *           "icon_url" => "http://web/files-api/p3media/file/image?id=5&preset=icon-80&title=media&extension=.jpg"
+     *         ],
+     *         "children" => [
+     *           [
+     *             "type" => "custom_page",
+     *             "data" => [
+     *               "node_id" => 5,
+     *               "item_type" => "custom_page",
+     *               "attributes" => [
+     *                 "ref" => null,
+     *                 "about" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+     *                 "menu_label" => "Test page 2",
+     *                 "heading" => "Test heading 2",
+     *                 "subheading" => null,
+     *                 "url" => "/test-page2-slug/",
+     *                 "icon_url" => "http://web/files-api/p3media/file/image?id=6&preset=icon-80&title=media&extension=.jpg"
+     *               ],
+     *               "children" => [ ]
+     *             ]
+     *           ]
+     *         ]
+     *       ]
+     *     ]
+     *   ]
+     * ]
+     *
+     * @return array
+     */
+    public function getRootPageTree()
+    {
+        $tree = array();
+        $rootPage = $this->loadRootPage($this);
+        if (!is_null($rootPage)) {
+            $treeItem = $rootPage->getRootPageTreeItem();
+            $rootPage->recBuildRootPageTree($rootPage, $treeItem);
+            $tree['data'] = array($treeItem);
+        }
+        return $tree;
+    }
+
+    /**
+     * Recursively builds the pages root tree by traversing all children.
+     *
+     * @param RestApiPage $page the model to start from.
+     * @param array $treeItem the start models tree structure to add data to.
+     */
+    protected function recBuildRootPageTree($page, &$treeItem)
+    {
+        $children = $page->restApiCustomPageChildren;
+        if (!empty($children)) {
+            foreach ($children as $child) {
+                $childTreeItem = $child->getRootPageTreeItem();
+                $child->recBuildRootPageTree($child, $childTreeItem);
+                $treeItem['data']['children'][] = $childTreeItem;
+            }
+        }
+    }
+
+    /**
+     * Returns one root tree items data.
+     *
+     * @return array the data.
+     */
+    protected function getRootPageTreeItem()
+    {
+        return array(
+            'type' => 'custom_page',
+            'data' => array(
+                'node_id' => (int) $this->node_id,
+                'item_type' => 'custom_page',
+                'attributes' => array(
+                    'ref' => null, // todo: do we have this? do we need this?
+                    'about' => $this->about,
+                    'menu_label' => $this->menu_label,
+                    'heading' => $this->heading,
+                    'subheading' => $this->subheading,
+                    'url' => $this->getRouteUrl(),
+                    'icon_url' => $this->getIconUrl(),
+                ),
+                'children' => array(),
+            ),
+        );
     }
 }

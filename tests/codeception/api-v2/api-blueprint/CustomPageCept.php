@@ -135,17 +135,41 @@ $expectedResponse = array(
         )
     ),
     "root_page" => array(
-        "node_id" => 4,
-        "item_type" => "custom_page",
-        "menu_label" => "Test page",
-        "url" => "/test-page-slug/",
-        "children" => array(
+        "data" => array(
             array(
-                "node_id" => 5,
-                "item_type" => "custom_page",
-                "menu_label" => "Test page 2",
-                "url" => null,
-                "children" => array()
+                "type" => "custom_page",
+                "data" => array(
+                "node_id" => 4,
+                    "item_type" => "custom_page",
+                    "attributes" => array(
+                        "ref" => null,
+                        "about" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis commodo ante nec venenatis. Vivamus maximus massa lectus, ut fermentum arcu tempus in. Mauris laoreet nisl sagittis orci tincidunt egestas. ",
+                        "menu_label" => "Test page",
+                        "heading" => "Test heading",
+                        "subheading" => null,
+                        "url" => "/test-page-slug/",
+                        "icon_url" => null
+                    ),
+                    "children" => array(
+                        array(
+                            "type" => "custom_page",
+                            "data" => array(
+                            "node_id" => 5,
+                                "item_type" => "custom_page",
+                                "attributes" => array(
+                                    "ref" => null,
+                                    "about" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus convallis commodo ante nec venenatis. Vivamus maximus massa lectus, ut fermentum arcu tempus in. Mauris laoreet nisl sagittis orci tincidunt egestas. ",
+                                    "menu_label" => "Test page 2",
+                                    "heading" => "Test heading 2",
+                                    "subheading" => null,
+                                    "url" => null,
+                                    "icon_url" => null
+                                ),
+                                "children" => array()
+                            )
+                        )
+                    )
+                )
             )
         )
     ),
