@@ -16,13 +16,30 @@ $mainConfig = array(
         'dna' => $projectRoot . '/dna',
         // fix hard-coded aliases
         'OAuth2Yii' => 'vendor.codemix.oauth2yii.src.OAuth2Yii',
-        'ext.wrest' => 'vendor.weavora.wrest',
-        'ext.wrest.WRestController' => 'vendor.weavora.wrest.WRestController',
-        'ext.wrest.WHttpRequest' => 'vendor.weavora.wrest.WHttpRequest',
-        'ext.wrest.WRestResponse' => 'vendor.weavora.wrest.WRestResponse',
-        'ext.wrest.JsonResponse' => 'vendor.weavora.wrest.JsonResponse',
     ),
     'modules' => array(
+        // API version 0 (neamtime workaround to not interfere with upstream api versions)
+        'v0' => array(
+            'import' => array(
+                // base classes
+                'application.behaviors.*',
+                'application.components.*',
+                'application.controllers.*',
+                'application.interfaces.*',
+                'application.models.*',
+                'application.models.*',
+                'application.traits.*',
+                'vendor.weavora.wrest.*',
+                'vendor.weavora.wrest.actions.*',
+                // v0 specific classes
+                'application.modules.v0.behaviors.*',
+                'application.modules.v0.components.*',
+                'application.modules.v0.controllers.*',
+                'application.modules.v0.interfaces.*',
+                'application.modules.v0.models.base.*',
+                'application.modules.v0.models.*',
+            ),
+        ),
         // API version 1
         'v1' => array(
             'import' => array(
@@ -114,6 +131,12 @@ $mainConfig = array(
                 array('<version>/item/getByNodeId', 'pattern' => '<version:v\d+>/item/<node_id:\d+>', 'verb' => 'GET'),
                 array('<version>/item/getByRoute', 'pattern' => '<version:v\d+>/item/<route:[\w-\/]+>', 'verb' => 'GET'),
 
+                // auth requests
+                array('<version>/auth/loginNotify', 'pattern' => '<version:v\d+>/auth/loginNotify', 'verb' => 'POST'),
+                array('<version>/auth/logoutNotify', 'pattern' => '<version:v\d+>/auth/logoutNotify', 'verb' => 'POST'),
+                array('<version>/auth/loginNotify', 'pattern' => '<version:v\d+>/auth/loginNotify', 'verb' => 'GET'), // for dev
+                array('<version>/auth/logoutNotify', 'pattern' => '<version:v\d+>/auth/logoutNotify', 'verb' => 'GET'), // for dev
+
                 // common CRUD rules
                 // slugs are required to be prefixed by an ":" character, due to rule collisions
                 array('<version>/<controller>/list', 'pattern' => '<version:v\d+>/<controller:\w+>', 'verb' => 'GET'),
@@ -122,6 +145,12 @@ $mainConfig = array(
                 array('<version>/<controller>/update', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'PUT'),
                 array('<version>/<controller>/delete', 'pattern' => '<version:v\d+>/<controller:\w+>/<id:\d+|\:[\w-]+>', 'verb' => 'DELETE'),
                 array('<version>/<controller>/<action>', 'pattern' => '<version:v\d+>/<controller:\w+>/<action:\w+>/<id:\d+>', 'verb' => 'GET'),
+
+                // special CRUD rules
+                array('<version>/<controller>/suggest', 'pattern' => '<version:v\d+>/<controller:\w+>/suggest', 'verb' => 'POST'),
+                array('<version>/<controller>/addEconomacsFileByUrl', 'pattern' => '<version:v\d+>/<controller:\w+>/addEconomacsFileByUrl', 'verb' => 'POST'),
+                array('<version>/<controller>/suggest', 'pattern' => '<version:v\d+>/<controller:\w+>/suggest', 'verb' => 'GET'), // for dev
+                array('<version>/<controller>/addEconomacsFileByUrl', 'pattern' => '<version:v\d+>/<controller:\w+>/addEconomacsFileByUrl', 'verb' => 'GET'), // for dev
 
                 // CORS rules
                 // todo: the cors allow methods are currently hard-coded. think of better solution.

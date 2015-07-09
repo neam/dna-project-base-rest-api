@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9acbda29ed45e27a7a6e9485e59b3157",
+    "hash": "7087e6247b7305b79f98a5a619fbd3b0",
     "packages": [
         {
             "name": "bshaffer/oauth2-server-php",
@@ -259,12 +259,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ircmaxell/SecurityLib.git",
-                "reference": "fd6f940455ad6481455544b741c9aca3a2455f87"
+                "reference": "f3db6de12c20c9bcd1aa3db4353a1bbe0e44e1b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ircmaxell/SecurityLib/zipball/fd6f940455ad6481455544b741c9aca3a2455f87",
-                "reference": "fd6f940455ad6481455544b741c9aca3a2455f87",
+                "url": "https://api.github.com/repos/ircmaxell/SecurityLib/zipball/f3db6de12c20c9bcd1aa3db4353a1bbe0e44e1b5",
+                "reference": "f3db6de12c20c9bcd1aa3db4353a1bbe0e44e1b5",
                 "shasum": ""
             },
             "require": {
@@ -297,7 +297,7 @@
             ],
             "description": "A Base Security Library",
             "homepage": "https://github.com/ircmaxell/SecurityLib",
-            "time": "2015-02-04 19:31:56"
+            "time": "2015-03-20 14:31:23"
         },
         {
             "name": "neam/yii-dna-debug-modes-and-error-handling",
@@ -305,12 +305,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-dna-debug-modes-and-error-handling.git",
-                "reference": "ae792eb7629d92853f3b8c9bb819a561856036a2"
+                "reference": "d37f5eb795e12a93c057f374b32df3da3e398478"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-dna-debug-modes-and-error-handling/zipball/ae792eb7629d92853f3b8c9bb819a561856036a2",
-                "reference": "ae792eb7629d92853f3b8c9bb819a561856036a2",
+                "url": "https://api.github.com/repos/neam/yii-dna-debug-modes-and-error-handling/zipball/d37f5eb795e12a93c057f374b32df3da3e398478",
+                "reference": "d37f5eb795e12a93c057f374b32df3da3e398478",
                 "shasum": ""
             },
             "require": {
@@ -345,7 +345,7 @@
                 "php",
                 "yii"
             ],
-            "time": "2014-12-02 13:44:44"
+            "time": "2015-06-03 12:34:11"
         },
         {
             "name": "nordsoftware/yii-account",
@@ -403,12 +403,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpnode/yiipassword.git",
-                "reference": "d0583ed8fa5b9dbcfa4a46c12377e631aee90c61"
+                "reference": "53f78186849c3b45d4affd353b07bf11e030e4a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpnode/yiipassword/zipball/d0583ed8fa5b9dbcfa4a46c12377e631aee90c61",
-                "reference": "d0583ed8fa5b9dbcfa4a46c12377e631aee90c61",
+                "url": "https://api.github.com/repos/phpnode/yiipassword/zipball/53f78186849c3b45d4affd353b07bf11e030e4a0",
+                "reference": "53f78186849c3b45d4affd353b07bf11e030e4a0",
                 "shasum": ""
             },
             "type": "yii-extension",
@@ -423,15 +423,14 @@
             ],
             "authors": [
                 {
-                    "name": "Charles Pick",
-                    "email": "charles.pick@gmail.com",
-                    "homepage": "https://github.com/phpnode",
-                    "role": "Base version developer"
-                },
-                {
                     "name": "Christoffer Niska",
                     "email": "ChristofferNiska@gmail.com",
                     "homepage": "http://crisu83.me"
+                },
+                {
+                    "name": "Charles Pick",
+                    "email": "charles.pick@gmail.com",
+                    "homepage": "http://github.com/phpnode"
                 }
             ],
             "description": "Password strategies for the Yii PHP framework.",
@@ -439,7 +438,7 @@
                 "bcrypt",
                 "password"
             ],
-            "time": "2014-07-17 15:41:09"
+            "time": "2015-05-12 05:00:16"
         },
         {
             "name": "raven/raven",
@@ -447,15 +446,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/getsentry/raven-php.git",
-                "reference": "3147bd170c9b324d37afd7b405d4c04f441a2ac1"
+                "reference": "dc64b9a45211c4efb25c95334eb103d2945a09d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/getsentry/raven-php/zipball/3147bd170c9b324d37afd7b405d4c04f441a2ac1",
-                "reference": "3147bd170c9b324d37afd7b405d4c04f441a2ac1",
+                "url": "https://api.github.com/repos/getsentry/raven-php/zipball/dc64b9a45211c4efb25c95334eb103d2945a09d3",
+                "reference": "dc64b9a45211c4efb25c95334eb103d2945a09d3",
                 "shasum": ""
             },
             "require": {
+                "ext-curl": "*",
                 "php": ">=5.2.4"
             },
             "require-dev": {
@@ -491,7 +491,7 @@
                 "log",
                 "logging"
             ],
-            "time": "2015-02-27 19:09:42"
+            "time": "2014-09-24 15:51:54"
         },
         {
             "name": "twbs/bootstrap",
@@ -499,12 +499,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "e7efd810339eb538c4103a6d116956f1917c43d8"
+                "reference": "3487898a6af8c1d5b12f7b040d30e71b19e34923"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/e7efd810339eb538c4103a6d116956f1917c43d8",
-                "reference": "e7efd810339eb538c4103a6d116956f1917c43d8",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/3487898a6af8c1d5b12f7b040d30e71b19e34923",
+                "reference": "3487898a6af8c1d5b12f7b040d30e71b19e34923",
                 "shasum": ""
             },
             "replace": {
@@ -542,7 +542,92 @@
                 "responsive",
                 "web"
             ],
-            "time": "2015-03-07 08:11:28"
+            "time": "2015-05-26 22:15:15"
+        },
+        {
+            "name": "userapp/userapp",
+            "version": "1.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/userapp-io/userapp-php.git",
+                "reference": "a1562d7dc37fce59124a71dbf2d22f4f73c8e9d4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/userapp-io/userapp-php/zipball/a1562d7dc37fce59124a71dbf2d22f4f73c8e9d4",
+                "reference": "a1562d7dc37fce59124a71dbf2d22f4f73c8e9d4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "UserApp\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Robin Orheden",
+                    "email": "robin.orheden@userapp.io",
+                    "homepage": "https://www.userapp.io/"
+                }
+            ],
+            "description": "PHP client library for UserApp.",
+            "homepage": "http://github.com/userapp-io/userapp-php",
+            "keywords": [
+                "User management",
+                "user authentication"
+            ],
+            "time": "2014-08-06 17:03:20"
+        },
+        {
+            "name": "userapp/widget",
+            "version": "0.6.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/userapp-io/userapp-php-widget.git",
+                "reference": "b0d114ede022cfcc00ea67b0ca637bdafa64410a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/userapp-io/userapp-php-widget/zipball/b0d114ede022cfcc00ea67b0ca637bdafa64410a",
+                "reference": "b0d114ede022cfcc00ea67b0ca637bdafa64410a",
+                "shasum": ""
+            },
+            "require": {
+                "userapp/userapp": "1.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "UserApp\\Widget\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Robin Orheden",
+                    "email": "robin.orheden@userapp.io",
+                    "homepage": "https://www.userapp.io/"
+                }
+            ],
+            "description": "PHP user widget for UserApp.",
+            "homepage": "http://github.com/userapp-io/userapp-php-widget",
+            "keywords": [
+                "User management",
+                "user authentication",
+                "user helper"
+            ],
+            "time": "2014-08-07 04:15:15"
         },
         {
             "name": "weavora/wrest",

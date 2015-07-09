@@ -29,7 +29,10 @@ class RelatedItems
         $command = \barebones\Barebones::fpdo()
             ->from('node related')
             ->select('related.id AS related_id, item.id AS item_id, item.model_class AS item_model_class')
-            ->where('(`relation`="related") AND (`relation`="related") AND (`node`.`id`=:nodeId)', array(':nodeId' => (int)$nodeId))
+            ->where(
+                '(`relation`="related") AND (`relation`="related") AND (`node`.`id`=:nodeId)',
+                array(':nodeId' => (int) $nodeId)
+            )
             ->order('outEdges.weight ASC')
             ->leftOuterJoin('`node` `outNodes` ON (`outNodes`.`id`=`related`.`id`)')
             ->leftOuterJoin('`edge` `outEdges` ON (`outEdges`.`to_node_id`=`outNodes`.`id`)')
@@ -38,8 +41,8 @@ class RelatedItems
 
         $related = array();
         foreach ($command as $row) {
-            $modelId = (int)$row['item_id'];
-            $modelClass = (string)$row['item_model_class'];
+            $modelId = (int) $row['item_id'];
+            $modelClass = (string) $row['item_model_class'];
             $model = RestApiModel::loadRelatedByIdAndClass($modelId, $modelClass);
             if (is_null($model)) {
                 continue;
@@ -48,4 +51,36 @@ class RelatedItems
         }
         return $related;
     }
-} 
+
+    public static function formatItems($modelClass, $items)
+    {
+        if (!is_array($items)) {
+            throw new CException("Non-array sent as \$items in RelatedItems::formatItems()");
+        }
+        $related = array();
+        /** @var CActiveRecord $model */
+        $model = $modelClass::model();
+        foreach ($items as $k => $item) {
+            $model->id = $item->id;
+            $model->attributes = $item->attributes;
+            $related[] = $model->getRelatedAttributes();
+        }
+        return $related;
+    }
+
+    public static function formatItem($modelClass, $item)
+    {
+        if (empty($item)) {
+            return null;
+        }
+        if (is_array($item)) {
+            throw new CException("Array sent as \$item in RelatedItems::formatItem()");
+        }
+        /** @var CActiveRecord $model */
+        $model = $modelClass::model();
+        $model->id = $item->id;
+        $model->attributes = $item->attributes;
+        $related = $model->getRelatedAttributes();
+        return $related;
+    }
+}

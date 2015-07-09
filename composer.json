@@ -34,6 +34,7 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.4.0",
+        "userapp/widget": "~0.6.3",
         "codemix/oauth2yii": "dev-master",
         "weavora/wrest": "dev-awaiting-prs",
         "nordsoftware/yii-account": "1.3.*",

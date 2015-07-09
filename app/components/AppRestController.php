@@ -97,18 +97,6 @@ class AppRestController extends WRestController
         return $model;
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function sendResponse($status = 200, $bodyParams = array(), $options = array())
-    {
-        $contentLanguage = Yii::app()->language;
-        header("Access-Control-Allow-Origin: *");
-        header("Access-Control-Allow-Headers: Authorization, Origin, Content-Type, Accept");
-        header("Content-Language: $contentLanguage");
-        return parent::sendResponse($status, $bodyParams, $options);
-    }
-
     public function runDefaultWrestListAction()
     {
         $actions = $this->actions();
