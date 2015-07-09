@@ -1,15 +1,15 @@
 <?php
 
 $appRoot = dirname(__FILE__) . DIRECTORY_SEPARATOR . '..';
-$root = dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..';
+$root = dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'app';
 
 // include composer autoloaders
 require_once("$appRoot/vendor/autoload.php");
 require_once("$root/vendor/autoload.php");
 require_once("$root/dna/vendor/autoload.php");
 
-// Make app config available as PHP constants
-require("$root/vendor/neam/php-app-config/include.php");
+// root-level bootstrap logic
+require("$root/bootstrap.php");
 
 // include barebones helper class
 require_once($root . '/dna/components/Barebones.php');
