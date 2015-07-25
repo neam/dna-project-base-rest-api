@@ -97,15 +97,20 @@ class WebUser extends \OAuth2Yii\Component\WebUser
                         throw new CException("Userapp's User::loginWithToken() returned false");
                     }
                 } catch (\UserApp\Exceptions\ServiceException $exception) {
-                    //throw $exception;
-                    var_dump($exception);
+                    throw $exception;
+                    //var_dump($exception);
                     $valid_token = false;
                 }
             } else {
                 // Anonymous request without authentication information
             }
         } else {
-            // Authorized since before, make sure to set the user as authenticated in Yii
+            // Authorized since before
+
+            // Double-check that authorized and token match
+            // TODO
+
+            // Make sure to set the user as authenticated in Yii
             /** @var UserApp\Widget\User $userappUser */
             $userappUser = User::current();
             $this->setUserAppId($userappUser->user_id);
@@ -121,7 +126,10 @@ class WebUser extends \OAuth2Yii\Component\WebUser
     public function getAccount()
     {
         if (empty($this->userAppId)) {
-            throw new CHttpException(403);
+            throw new CHttpException(
+                403,
+                "Current user userapp id must be available before matching account information can be fetched"
+            );
         }
         $accountModel = Account::model();
         // Support querying with and without restricted access behavior attached
@@ -130,7 +138,7 @@ class WebUser extends \OAuth2Yii\Component\WebUser
         }
         $model = $accountModel->findByAttributes(["userapp_user_id" => $this->getUserAppId()]);
         if ($model === null) {
-            throw new CHttpException(403);
+            throw new CHttpException(403, "No such user matching our records");
         }
         return $model;
     }
