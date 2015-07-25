@@ -41,10 +41,12 @@ class WebUser extends \OAuth2Yii\Component\WebUser
             session_start();
         }
         Yii::app()->sendCorsHeaders();
-        /*
-        $this->authUserapp();
-        $this->setId($this->getAccount()->id);
-        */
+        if ($_SERVER['REQUEST_METHOD'] != 'OPTIONS') {
+            /*
+            $this->authUserapp();
+            $this->setId($this->getAccount()->id);
+            */
+        }
         parent::init();
     }
 
