@@ -13,7 +13,7 @@ class AppRestController extends WRestController
         return array_merge(
             parent::filters(),
             array(
-                'accessControl',
+                'accessControl - preflight',
                 array(
                     'application.filters.ContentNegotiator',
                     'languages' => LanguageHelper::getCodes(),
