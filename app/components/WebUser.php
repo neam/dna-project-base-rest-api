@@ -91,7 +91,7 @@ class WebUser extends \OAuth2Yii\Component\WebUser
                         // Authorized
                         /** @var UserApp\Widget\User $userappUser */
                         $userappUser = User::current();
-                        $this->setId($userappUser->user_id);
+                        $this->setUserAppId($userappUser->user_id);
 
                     } else {
                         throw new CException("Userapp's User::loginWithToken() returned false");
