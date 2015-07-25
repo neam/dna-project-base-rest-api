@@ -52,35 +52,35 @@ class RelatedItems
         return $related;
     }
 
-    public static function formatItems($modelClass, $items)
+    public static function formatItems($relatedModelClass, $item, $relation)
     {
-        if (!is_array($items)) {
-            throw new CException("Non-array sent as \$items in RelatedItems::formatItems()");
+        $helperClass = "RestApi" . $relatedModelClass;
+        if (!is_array($item->$relation)) {
+            throw new CException("Non-array sent as \$item->\$relation in RelatedItems::formatItems()");
         }
         $related = array();
         /** @var CActiveRecord $model */
-        $model = $modelClass::model();
-        foreach ($items as $k => $item) {
-            $model->id = $item->id;
-            $model->attributes = $item->attributes;
-            $related[] = $model->getRelatedAttributes();
+        $relatedItems = $item->$relation;
+        if (!empty($relatedItems)) {
+            foreach ($relatedItems as $k => $relatedItem) {
+                $related[] = $helperClass::getRelatedAttributes($relatedItems);
+            }
         }
         return $related;
     }
 
-    public static function formatItem($modelClass, $item)
+    public static function formatItem($relatedModelClass, $item, $relation)
     {
-        if (empty($item)) {
-            return null;
-        }
-        if (is_array($item)) {
-            throw new CException("Array sent as \$item in RelatedItems::formatItem()");
+        $helperClass = "RestApi" . $relatedModelClass;
+        if (is_array($item->$relation)) {
+            throw new CException("Array sent as \$item->\$relation in RelatedItems::formatItem()");
         }
         /** @var CActiveRecord $model */
-        $model = $modelClass::model();
-        $model->id = $item->id;
-        $model->attributes = $item->attributes;
-        $related = $model->getRelatedAttributes();
+        $relatedItem = $item->$relation;
+        if (empty($relatedItem)) {
+            $relatedItem = $relatedModelClass::model();
+        }
+        $related = $helperClass::getRelatedAttributes($relatedItem);
         return $related;
     }
 }
