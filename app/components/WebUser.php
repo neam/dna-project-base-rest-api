@@ -66,6 +66,14 @@ class WebUser extends \OAuth2Yii\Component\WebUser
             $_COOKIE["ua_session_token"] = $data->token;
         }
 
+        // Allow passing token in Authorization header
+        $headers = getallheaders();
+        $authHeaderToken = str_replace("UserappToken ", "", $headers["Authorization"]);
+        if (!empty($authHeaderToken)) {
+            setcookie("ua_session_token", $authHeaderToken);
+            $_COOKIE["ua_session_token"] = $authHeaderToken;
+        }
+
         // For debugging
         if (isset($_GET['ua_session_token'])) {
             setcookie("ua_session_token", $_GET['ua_session_token']);
