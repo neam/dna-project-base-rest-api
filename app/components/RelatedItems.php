@@ -52,35 +52,36 @@ class RelatedItems
         return $related;
     }
 
-    public static function formatItems($relatedModelClass, $item, $relation)
+    public static function formatItems($relatedModelClass, $item, $relation, $level)
     {
         $helperClass = "RestApi" . $relatedModelClass;
         if (!is_array($item->$relation)) {
-            throw new CException("Non-array sent as \$item->\$relation in RelatedItems::formatItems()");
+            throw new CException("Non-array found at \$item->\$relation in RelatedItems::formatItems()");
         }
         $related = array();
-        /** @var CActiveRecord $model */
         $relatedItems = $item->$relation;
+        $level++;
         if (!empty($relatedItems)) {
             foreach ($relatedItems as $k => $relatedItem) {
-                $related[] = $helperClass::getRelatedAttributes($relatedItems);
+                $related[] = $helperClass::getRelatedAttributes($relatedItems, $level);
             }
         }
         return $related;
     }
 
-    public static function formatItem($relatedModelClass, $item, $relation)
+    public static function formatItem($relatedModelClass, $item, $relation, $level)
     {
         $helperClass = "RestApi" . $relatedModelClass;
         if (is_array($item->$relation)) {
-            throw new CException("Array sent as \$item->\$relation in RelatedItems::formatItem()");
+            throw new CException("Array found at \$item->\$relation in RelatedItems::formatItem()");
         }
-        /** @var CActiveRecord $model */
+        /** @var CActiveRecord $relatedItem */
         $relatedItem = $item->$relation;
         if (empty($relatedItem)) {
             $relatedItem = $relatedModelClass::model();
         }
-        $related = $helperClass::getRelatedAttributes($relatedItem);
+        $level++;
+        $related = $helperClass::getRelatedAttributes($relatedItem, $level);
         return $related;
     }
 }
