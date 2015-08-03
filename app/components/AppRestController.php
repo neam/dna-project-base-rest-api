@@ -14,10 +14,12 @@ class AppRestController extends WRestController
             parent::filters(),
             array(
                 'accessControl - preflight',
+                /*
                 array(
                     'application.filters.ContentNegotiator',
                     'languages' => LanguageHelper::getCodes(),
                 ),
+                */
             )
         );
     }
