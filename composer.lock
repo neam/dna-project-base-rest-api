@@ -635,16 +635,16 @@
         },
         {
             "name": "weavora/wrest",
-            "version": "dev-awaiting-prs",
+            "version": "dev-set-create-and-update-attributes-in-behavior",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/wrest.git",
-                "reference": "40a644bb74ef2013b2e68d74653b02411144f801"
+                "reference": "88d5ce20f0849efc3ef4bb42a680081134121525"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/wrest/zipball/40a644bb74ef2013b2e68d74653b02411144f801",
-                "reference": "40a644bb74ef2013b2e68d74653b02411144f801",
+                "url": "https://api.github.com/repos/neam/wrest/zipball/88d5ce20f0849efc3ef4bb42a680081134121525",
+                "reference": "88d5ce20f0849efc3ef4bb42a680081134121525",
                 "shasum": ""
             },
             "require": {
@@ -673,9 +673,9 @@
                 "yii"
             ],
             "support": {
-                "source": "https://github.com/neam/wrest/tree/awaiting-prs"
+                "source": "https://github.com/neam/wrest/tree/set-create-and-update-attributes-in-behavior"
             },
-            "time": "2014-01-28 21:26:50"
+            "time": "2015-08-03 13:23:37"
         },
         {
             "name": "yiisoft/yii",
