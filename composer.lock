@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7087e6247b7305b79f98a5a619fbd3b0",
+    "hash": "0b848458f2ef2d94499788aed99a83fb",
     "packages": [
         {
             "name": "bshaffer/oauth2-server-php",
@@ -259,12 +259,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ircmaxell/SecurityLib.git",
-                "reference": "f3db6de12c20c9bcd1aa3db4353a1bbe0e44e1b5"
+                "reference": "bd376c0db671e6845d297468ab171e8bc2fe485c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ircmaxell/SecurityLib/zipball/f3db6de12c20c9bcd1aa3db4353a1bbe0e44e1b5",
-                "reference": "f3db6de12c20c9bcd1aa3db4353a1bbe0e44e1b5",
+                "url": "https://api.github.com/repos/ircmaxell/SecurityLib/zipball/bd376c0db671e6845d297468ab171e8bc2fe485c",
+                "reference": "bd376c0db671e6845d297468ab171e8bc2fe485c",
                 "shasum": ""
             },
             "require": {
@@ -272,6 +272,10 @@
             },
             "require-dev": {
                 "mikey179/vfsstream": "1.1.*"
+            },
+            "suggest": {
+                "ext-bcmath": "BCMath will be used if GMP is not available",
+                "ext-gmp": "GMP will be used if available"
             },
             "type": "library",
             "extra": {
@@ -297,7 +301,7 @@
             ],
             "description": "A Base Security Library",
             "homepage": "https://github.com/ircmaxell/SecurityLib",
-            "time": "2015-03-20 14:31:23"
+            "time": "2015-06-24 15:23:14"
         },
         {
             "name": "neam/yii-dna-debug-modes-and-error-handling",
@@ -499,12 +503,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "3487898a6af8c1d5b12f7b040d30e71b19e34923"
+                "reference": "027b7efd792f4fab065bc6e71d8d2573cd13cadb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/3487898a6af8c1d5b12f7b040d30e71b19e34923",
-                "reference": "3487898a6af8c1d5b12f7b040d30e71b19e34923",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/027b7efd792f4fab065bc6e71d8d2573cd13cadb",
+                "reference": "027b7efd792f4fab065bc6e71d8d2573cd13cadb",
                 "shasum": ""
             },
             "replace": {
@@ -542,7 +546,7 @@
                 "responsive",
                 "web"
             ],
-            "time": "2015-05-26 22:15:15"
+            "time": "2015-08-01 06:42:23"
         },
         {
             "name": "userapp/userapp",
