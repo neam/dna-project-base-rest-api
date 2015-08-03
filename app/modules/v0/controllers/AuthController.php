@@ -32,7 +32,9 @@ class AuthController extends AppRestController
     public function actionLoginNotify()
     {
         Yii::app()->sendCorsHeaders();
-        $account = Yii::app()->getUser()->getAccount();
+        if (empty(Yii::app()->getUser()->id)) {
+            throw new CException("Local session user id is empty albeit user component is initialized");
+        }
         $this->sendResponse(200, (object) ["status" => "ok"]);
     }
 

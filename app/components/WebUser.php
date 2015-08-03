@@ -42,15 +42,39 @@ class WebUser extends \OAuth2Yii\Component\WebUser
         }
         Yii::app()->sendCorsHeaders();
         if ($_SERVER['REQUEST_METHOD'] != 'OPTIONS') {
-            /*
-            $this->authUserapp();
-            $this->setId($this->getAccount()->id);
-            */
+            $message = null;
+            try {
+                $this->authenticateUserapp();
+                $this->authorizeUserappUserLocally();
+            } catch (UserAppIdNotSetException $e) {
+                $message = "Current user userapp id must be available before matching account information can be fetched";
+            } catch (NoAccountMathchingUserAppIdException $e) {
+                $message = "No such user matching our records [and no new matching account was set to automatically be created]";
+            } catch (Exception $e) {
+                $message = "Exception: " . $e->getMessage();
+            }
+            if (!empty($message)) {
+                if (!DEV) {
+                    $message = "Unauthorized";
+                }
+                throw new CHttpException(
+                    403,
+                    $message
+                );
+            }
         }
         parent::init();
     }
 
-    public function authUserapp()
+    /**
+     * Authenticates a userapp user by userapp token
+     * Sets $this->userAppId if a valid userapp session is encountered
+     *
+     * @throws CException
+     * @throws Exception
+     * @throws \UserApp\Exceptions\ServiceException
+     */
+    protected function authenticateUserapp()
     {
 
         User::setAppId(USERAPP_ID);
@@ -68,10 +92,12 @@ class WebUser extends \OAuth2Yii\Component\WebUser
 
         // Allow passing token in Authorization header
         $headers = getallheaders();
-        $authHeaderToken = str_replace("UserappToken ", "", $headers["Authorization"]);
-        if (!empty($authHeaderToken)) {
-            setcookie("ua_session_token", $authHeaderToken);
-            $_COOKIE["ua_session_token"] = $authHeaderToken;
+        if (isset($headers["Authorization"])) {
+            $authHeaderToken = str_replace("UserappToken ", "", $headers["Authorization"]);
+            if (!empty($authHeaderToken)) {
+                setcookie("ua_session_token", $authHeaderToken);
+                $_COOKIE["ua_session_token"] = $authHeaderToken;
+            }
         }
 
         // For debugging
@@ -131,24 +157,76 @@ class WebUser extends \OAuth2Yii\Component\WebUser
 
     }
 
-    public function getAccount()
+    /**
+     * Authorizes a userapp user (or the lack of one) in the context
+     * of the Yii application.
+     * Sets $this->id if a valid yii user account is found authorized to be logged in.
+     *
+     * @throws CHttpException
+     */
+    protected function authorizeUserappUserLocally()
+    {
+
+        $userappUser = User::current();
+        $account = $this->getAccount();
+
+        // Make sure local permissions reflect remote permissions
+        if ($userappUser->hasPermission("admin_in_data_profile__" . DATA)) {
+            $account->superuser = 1;
+        }
+        //PermissionHelper::addAccountToGroup($this->id, Group::FOO, Role::GROUP_MEMBER);
+
+        // Update current heartbeat
+        $account->userapp_last_heartbeat_at = User::getSession()->get('ua_last_heartbeat_at');
+
+        // Save synchronized account info
+        if (!$account->save()) {
+            throw new SaveException($account);
+        }
+
+        // Actually login
+        $this->setId($account->id);
+
+    }
+
+    protected function getAccount()
     {
         if (empty($this->userAppId)) {
-            throw new CHttpException(
-                403,
-                "Current user userapp id must be available before matching account information can be fetched"
-            );
+            throw new UserAppIdNotSetException();
         }
         $accountModel = Account::model();
-        // Support querying with and without restricted access behavior attached
-        if (method_exists($accountModel, 'unrestricted')) {
-            $accountModel = $accountModel->unrestricted();
+        //$accountModel = $accountModel->unrestricted();
+        $account = $accountModel->findByAttributes(["userapp_user_id" => $this->getUserAppId()]);
+        if ($account === null) {
+
+            // Check if we are to automatically create new account
+            $userappUser = User::current();
+            if ($userappUser->hasPermission("account_in_data_profile__" . DATA)) {
+                $account = new Account();
+                $account->userapp_user_id = $userappUser->user_id;
+                $account->username = "ua_" . uniqid();
+                $account->email = $userappUser->email;
+                //$account = $account->unrestricted();
+                if (!$account->save()) {
+                    throw new SaveException($account);
+                }
+            } else {
+                throw new NoAccountMathchingUserAppIdException;
+            }
+
         }
-        $model = $accountModel->findByAttributes(["userapp_user_id" => $this->getUserAppId()]);
-        if ($model === null) {
-            throw new CHttpException(403, "No such user matching our records");
-        }
-        return $model;
+        //$account = $account->unrestricted();
+        return $account;
     }
+
+}
+
+class UserAppIdNotSetException extends Exception
+{
+
+}
+
+class NoAccountMathchingUserAppIdException extends Exception
+{
 
 }

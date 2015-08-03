@@ -35,8 +35,6 @@ class AppRestController extends WRestController
                 'allow',
                 'actions' => array(
                     'preflight',
-                    'get',
-                    'list',
                 )
             ),
             // Logged in users can do whatever they want to.
