@@ -41,7 +41,12 @@ class WebUser extends \OAuth2Yii\Component\WebUser
             session_start();
         }
         Yii::app()->sendCorsHeaders();
+
         if ($_SERVER['REQUEST_METHOD'] != 'OPTIONS') {
+
+            // Uncomment to enable offline direct auth of dev userapp user
+            //return $this->offlineLocalDevAuth();
+
             $message = null;
             try {
                 $this->authenticateUserapp();
@@ -64,6 +69,27 @@ class WebUser extends \OAuth2Yii\Component\WebUser
             }
         }
         parent::init();
+    }
+
+    protected function offlineLocalDevAuth()
+    {
+
+        /*
+        $this->setUserAppId("LXxiWjJBSxaMcROD5XPHaw");
+        $account = Account::model()->findByAttributes(["userapp_user_id" => $this->getUserAppId()]);
+
+        if ($account === null) {
+            throw new CException("No local user matches the offline userapp id");
+        }
+        */
+
+        // Simply auto-login as admin user
+        $account = Account::model()->findByPk(1);
+
+        $this->setId($account->id);
+
+        return parent::init();
+
     }
 
     /**
@@ -194,13 +220,16 @@ class WebUser extends \OAuth2Yii\Component\WebUser
         if (empty($this->userAppId)) {
             throw new UserAppIdNotSetException();
         }
+        $userappUser = User::current();
+        if (empty($userappUser)) {
+            throw new UserAppUserNotAvailableException();
+        }
         $accountModel = Account::model();
         //$accountModel = $accountModel->unrestricted();
         $account = $accountModel->findByAttributes(["userapp_user_id" => $this->getUserAppId()]);
         if ($account === null) {
 
             // Check if we are to automatically create new account
-            $userappUser = User::current();
             if ($userappUser->hasPermission("account_in_data_profile__" . DATA)) {
                 $account = new Account();
                 $account->userapp_user_id = $userappUser->user_id;
@@ -222,6 +251,11 @@ class WebUser extends \OAuth2Yii\Component\WebUser
 }
 
 class UserAppIdNotSetException extends Exception
+{
+
+}
+
+class UserAppUserNotAvailableException extends Exception
 {
 
 }
