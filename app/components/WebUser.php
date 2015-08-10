@@ -54,7 +54,7 @@ class WebUser extends \OAuth2Yii\Component\WebUser
             } catch (UserAppIdNotSetException $e) {
                 $message = "Current user userapp id must be available before matching account information can be fetched";
             } catch (NoAccountMathchingUserAppIdException $e) {
-                $message = "No such user matching our records [and no new matching account was set to automatically be created]";
+                $message = "No such user matching our records [and no new matching account was set to automatically be created] {$this->getUserAppId()}";
             } catch (Exception $e) {
                 $message = "Exception: " . $e->getMessage();
             }
