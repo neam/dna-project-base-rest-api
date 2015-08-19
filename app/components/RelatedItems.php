@@ -63,7 +63,7 @@ class RelatedItems
         $level++;
         if (!empty($relatedItems)) {
             foreach ($relatedItems as $k => $relatedItem) {
-                $related[] = $helperClass::getRelatedAttributes($relatedItems, $level);
+                $related[] = $helperClass::getRelatedAttributes($relatedItem, $level);
             }
         }
         return $related;
