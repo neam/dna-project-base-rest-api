@@ -127,43 +127,54 @@ class AppRestController extends WRestController
         $action->run();
     }
 
-    public $page = 'page';
-    public $limit = 'limit';
-    public $offset = 'offset';
-    public $order = 'order';
+    public $page = 'Foo_page';
+    public $limit = 'Foo_limit';
+    //public $offset = 'Foo_offset';
+    public $order = 'Foo_order';
     public $defaultLimit = 10;
+    public $nullString = 'null';
 
-    protected function getListCriteria()
+    protected function getFilterCriteria($filterBy)
     {
 
         $c = new CDbCriteria();
-        $model = $this->getModel();
+
+        // Make sure the filter parameters are allowed for rest-filtering
+        if (!empty($filterBy) && is_array($filterBy)) {
+            foreach ($filterBy as $key => $val) {
+                if (!is_null(Yii::app()->request->getParam($val))) {
+                    $param = Yii::app()->request->getParam($val);
+                    if ($param === $this->nullString) {
+                        $c->addCondition($key . ' IS NULL');
+                    } elseif ($param === "<>" . $this->nullString) {
+                        $c->addCondition($key . ' IS NOT NULL');
+                    } else {
+                        $c->compare($key, $param);
+                    }
+                }
+            }
+        }
+
+        return $c;
+
+    }
+
+    protected function getListCriteria($model)
+    {
 
         $actions = $this->actions();
         $params = $actions["list"];
 
         $filterBy = $params["filterBy"];
-        $paramsList = $model->getCreateAttributes();
+        $c = $this->getFilterCriteria($filterBy);
 
-        foreach ($paramsList as $columnName) {
-            if (isset($filterBy[$columnName])) {
-                $c->compare($columnName, $filterBy[$columnName]);
-            }
-        }
-
-        // Make sure the filter parameters are allowed for rest-filtering
-        if (!empty($filterBy) && is_array($filterBy)) {
-            foreach ($filterBy as $name_in_table => $request_param_name) {
-                if (!is_null(Yii::app()->request->getParam($request_param_name))) {
-                    $c->compare($name_in_table, Yii::app()->request->getParam($request_param_name));
-                }
-            }
-        }
-
+        /*
         $c->limit = (int) (($limit = Yii::app()->request->getParam($this->limit)) ? $limit : $this->defaultLimit);
         $page = (int) Yii::app()->request->getParam($this->page) - 1;
         $c->offset = ($offset = $limit * $page) ? $offset : 0;
-        $c->order = ($order = Yii::app()->request->getParam($this->order)) ? $order : $model->tableName() . "." . $model->getMetaData()->tableSchema->primaryKey;
+        */
+        $c->order = ($order = Yii::app()->request->getParam($this->order)) ? $order : "t." . $model->getMetaData(
+            )->tableSchema->primaryKey;
 
         $reverse = Yii::app()->request->getParam('reverse');
         if ($reverse == 1) {
@@ -174,4 +185,131 @@ class AppRestController extends WRestController
 
         return $c;
     }
+
+    protected function getCountCriteria($model)
+    {
+        $c = $this->getListCriteria($model);
+        return $c;
+    }
+
+    /**
+     * When the default wrest list action is not enough, this
+     * method comes in handy since it uses controller-specific overrides (if present)
+     * of getFilterCriteria($filterBy) and getListCriteria() above.
+     */
+    protected function getListActionResults($model)
+    {
+
+        $c = $this->getListCriteria($model);
+
+        $models = $model->findAll($c);
+        $result = array();
+        if ($models) {
+            foreach ($models as $item) {
+                $result[] = $item->getAllAttributes();
+            }
+        }
+
+        return $result;
+
+    }
+
+    protected function runNonPaginatedListAction()
+    {
+
+        $model = $this->getModel();
+        $result = $this->getListActionResults($model);
+        $this->sendResponse(200, $result);
+
+    }
+
+    protected function runPaginatedListAction()
+    {
+
+        $model = $this->getModel();
+        $result = $this->getPaginatedListActionResults($model);
+        $this->sendResponse(200, $result);
+
+    }
+
+    protected function getPaginatedListActionResults($model)
+    {
+
+        // Compile criteria
+        $criteria = $this->getListCriteria($model);
+        $countCriteria = $this->getCountCriteria($model);
+
+        // Get list action configuration from controller list action configuration
+        $actions = $this->actions();
+        $params = $actions["list"];
+        if (is_array($params)) {
+            foreach ($params as $param => $value) {
+                if (property_exists($this, $param)) {
+                    $this->$param = $value;
+                }
+            }
+        }
+
+        // Get pagination options from request parameters
+        $pageSize = (int) Yii::app()->request->getParam($this->limit);
+        $page = (int) Yii::app()->request->getParam($this->page);
+
+        // Support global (as in all item types) per-request defaults
+        if (empty($pageSize)) {
+            $pageSize = (int) Yii::app()->request->getParam("default_limit");
+        }
+        if (empty($page)) {
+            $page = (int) Yii::app()->request->getParam("default_page");
+        }
+
+        // Always set a page size
+        if (empty($pageSize)) {
+            $pageSize = $this->defaultLimit;
+        }
+
+        // Prepare data provider
+        $dataProvider = new CActiveDataProvider(
+            $model, array(
+                'criteria' => $criteria,
+                'countCriteria' => $countCriteria,
+                'pagination' => array(
+                    'pageSize' => $pageSize,
+                    'currentPage' => $page - 1, // CActiveDataProvider uses 0 for first page internally
+                ),
+            )
+        );
+        $models = $dataProvider->getData();
+
+        $result = array(
+            "items" => [],
+            "_meta" => [
+                "totalCount" => (int) $dataProvider->getTotalItemCount(),
+                "pageCount" => (int) $dataProvider->getPagination()->pageCount,
+                // CActiveDataProvider uses 0 for first page internally
+                "currentPage" => (int) $dataProvider->getPagination()->currentPage + 1,
+                "perPage" => (int) $dataProvider->getPagination()->pageSize
+            ],
+        );
+        if ($models) {
+            foreach ($models as $item) {
+                $result["items"][] = $item->getAllAttributes();
+            }
+        }
+
+        return $result;
+
+    }
+
+    /**
+     * The default list-action for the REST api controllers
+     */
+    public function actionList()
+    {
+
+        $model = $this->getModel();
+        $result = $this->getPaginatedListActionResults($model);
+        $this->sendResponse(200, $result);
+
+    }
+
 }

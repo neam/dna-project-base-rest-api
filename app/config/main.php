@@ -147,9 +147,9 @@ $mainConfig = array(
                 array('<version>/<controller>/<action>', 'pattern' => '<version:v\d+>/<controller:\w+>/<action:\w+>/<id:\d+>', 'verb' => 'GET'),
 
                 // special CRUD rules
-                array('<version>/<controller>/suggest', 'pattern' => '<version:v\d+>/<controller:\w+>/suggest', 'verb' => 'POST'),
+                array('<version>/<controller>/suggestions', 'pattern' => '<version:v\d+>/<controller:\w+>/suggestions', 'verb' => 'POST'),
                 array('<version>/<controller>/addEconomacsFileByUrl', 'pattern' => '<version:v\d+>/<controller:\w+>/addEconomacsFileByUrl', 'verb' => 'POST'),
-                array('<version>/<controller>/suggest', 'pattern' => '<version:v\d+>/<controller:\w+>/suggest', 'verb' => 'GET'), // for dev
+                array('<version>/<controller>/suggestions', 'pattern' => '<version:v\d+>/<controller:\w+>/suggestions', 'verb' => 'GET'), // for dev
                 array('<version>/<controller>/addEconomacsFileByUrl', 'pattern' => '<version:v\d+>/<controller:\w+>/addEconomacsFileByUrl', 'verb' => 'GET'), // for dev
 
                 // CORS rules
