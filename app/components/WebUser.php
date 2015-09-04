@@ -1,28 +1,64 @@
 <?php
 
-use \UserApp\Widget\User;
+use \Firebase\JWT\JWT;
 
 class WebUser extends \OAuth2Yii\Component\WebUser
 {
 
     use RestrictedAccessWebUserTrait;
 
-    public $userAppId = null;
+    public $auth0UserId = null;
 
     /**
      * @return null
      */
-    public function getUserAppId()
+    public function getAuth0UserId()
     {
-        return $this->userAppId;
+        return $this->auth0UserId;
     }
 
     /**
-     * @param null $userAppId
+     * @param null $auth0UserId
      */
-    public function setUserAppId($userAppId)
+    public function setAuth0UserId($auth0UserId)
     {
-        $this->userAppId = $userAppId;
+        $this->auth0UserId = $auth0UserId;
+    }
+
+    public $jwtToken = null;
+
+    /**
+     * @return null
+     */
+    public function getJwtToken()
+    {
+        return $this->jwtToken;
+    }
+
+    /**
+     * @param null $token
+     */
+    public function setJwtToken($token)
+    {
+        $this->jwtToken = $token;
+    }
+
+    public $jwtPayload = null;
+
+    /**
+     * @return null
+     */
+    public function getJwtPayload()
+    {
+        return $this->jwtPayload;
+    }
+
+    /**
+     * @param null $payload
+     */
+    public function setJwtPayload($payload)
+    {
+        $this->jwtPayload = $payload;
     }
 
     /**
@@ -44,18 +80,21 @@ class WebUser extends \OAuth2Yii\Component\WebUser
 
         if ($_SERVER['REQUEST_METHOD'] != 'OPTIONS') {
 
-            // Uncomment to enable offline direct auth of dev userapp user
+            // Uncomment to enable offline direct auth of dev auth0 user
             //return $this->offlineLocalDevAuth();
 
             $message = null;
             try {
-                $this->authenticateUserapp();
-                $this->authorizeUserappUserLocally();
-            } catch (UserAppIdNotSetException $e) {
-                $message = "Current user userapp id must be available before matching account information can be fetched";
-            } catch (NoAccountMathchingUserAppIdException $e) {
-                $message = "No such user matching our records [and no new matching account was set to automatically be created] {$this->getUserAppId()}";
+                $this->authenticateAuth0();
+                $this->authorizeAuth0UserLocally($this->getAuth0UserId());
+            } catch (Auth0UserIdNotSetException $e) {
+                $message = "Current user auth0 id must be available before matching account information can be fetched";
+            } catch (NoAccountMatchingAuth0UserIdException $e) {
+                $message = "No such user matching our records [and no new matching account was set to automatically be created] {$this->getAuth0UserId()}";
             } catch (Exception $e) {
+                if (DEV) {
+                    throw $e;
+                }
                 $message = "Exception: " . $e->getMessage();
             }
             if (!empty($message)) {
@@ -75,11 +114,11 @@ class WebUser extends \OAuth2Yii\Component\WebUser
     {
 
         /*
-        $this->setUserAppId("LXxiWjJBSxaMcROD5XPHaw");
-        $account = Account::model()->findByAttributes(["userapp_user_id" => $this->getUserAppId()]);
+        $this->setAuth0UserId("LXxiWjJBSxaMcROD5XPHaw");
+        $account = Account::model()->findByAttributes(["auth0_user_id" => $this->getAuth0UserId()]);
 
         if ($account === null) {
-            throw new CException("No local user matches the offline userapp id");
+            throw new CException("No local user matches the offline auth0 id");
         }
         */
 
@@ -93,117 +132,109 @@ class WebUser extends \OAuth2Yii\Component\WebUser
     }
 
     /**
-     * Authenticates a userapp user by userapp token
-     * Sets $this->userAppId if a valid userapp session is encountered
-     *
-     * @throws CException
-     * @throws Exception
-     * @throws \UserApp\Exceptions\ServiceException
+     * Authenticates a auth0 user by jwt token
+     * Sets $this->auth0UserId if a valid auth0 session is encountered
      */
-    protected function authenticateUserapp()
+    protected function authenticateAuth0()
     {
 
-        User::setAppId(USERAPP_ID);
+        //var_dump(__LINE__, "sid", session_id(), $_GET, $_COOKIE, $_SESSION, Yii::app()->session['foo'], file_get_contents('php://input'));
 
-        $valid_token = false;
-        //var_dump(__LINE__, "ua", User::authenticated(), "sid", session_id(), $_GET, $_COOKIE, $_SESSION, Yii::app()->session['foo'], file_get_contents('php://input'));
+        $token = null;
 
         // Allow passing token in request payload (workaround for different domains between client and rest api)
+        /*
         $request_body = file_get_contents('php://input');
         $data = json_decode($request_body);
         if (isset($data->token)) {
-            setcookie("ua_session_token", $data->token);
-            $_COOKIE["ua_session_token"] = $data->token;
+            $token = $data->token;
         }
+        */
 
         // Allow passing token in Authorization header
         $headers = getallheaders();
         if (isset($headers["Authorization"])) {
-            $authHeaderToken = str_replace("UserappToken ", "", $headers["Authorization"]);
+            $authHeaderToken = str_replace("Bearer ", "", $headers["Authorization"]);
             if (!empty($authHeaderToken)) {
-                setcookie("ua_session_token", $authHeaderToken);
-                $_COOKIE["ua_session_token"] = $authHeaderToken;
+                $token = $authHeaderToken;
             }
         }
 
         // For debugging
-        if (isset($_GET['ua_session_token'])) {
-            setcookie("ua_session_token", $_GET['ua_session_token']);
-            $_COOKIE["ua_session_token"] = $_GET['ua_session_token'];
+        /*
+        if (isset($_GET['jwt_session_token'])) {
+            $token = $_GET['jwt_session_token'];
+        }
+        */
+
+        // For persistence
+        /*
+            setcookie("jwt_session_token", $token);
+            $_COOKIE["jwt_session_token"] = $token;
+        */
+
+        if ($token == null) {
+            // Anonymous request without authentication information
+            header('HTTP/1.0 401 Unauthorized');
+            echo "No authorization header sent";
+            exit();
         }
 
-        if (!User::authenticated()) {
+        // Validate the token
+        $secret = base64_decode(AUTH0_CLIENT_SECRET);
+        $secret = AUTH0_CLIENT_SECRET;
+        $decoded_token = null;
+        try {
+            $decoded_token = JWT::decode($token, base64_decode(strtr($secret, '-_', '+/')), ["HS256"]);
 
-            // Get token information
-            $token = null;
-            switch (true) {
-                case isset($_COOKIE["ua_session_token"]):
-                    $token = $_COOKIE["ua_session_token"];
-                    break;
-                default:
-                    break;
-            }
-
-            if ($token) {
-                try {
-                    if ($valid_token = User::loginWithToken($token)) {
-
-                        // Authorized
-                        /** @var UserApp\Widget\User $userappUser */
-                        $userappUser = User::current();
-                        $this->setUserAppId($userappUser->user_id);
-
-                    } else {
-                        throw new CException("Userapp's User::loginWithToken() returned false");
-                    }
-                } catch (\UserApp\Exceptions\ServiceException $exception) {
-                    throw $exception;
-                    //var_dump($exception);
-                    $valid_token = false;
-                }
-            } else {
-                // Anonymous request without authentication information
-            }
-        } else {
-            // Authorized since before
-
-            // Double-check that authorized and token match
-            // TODO
-
-            // Make sure to set the user as authenticated in Yii
-            /** @var UserApp\Widget\User $userappUser */
-            $userappUser = User::current();
-            $this->setUserAppId($userappUser->user_id);
+        } catch (UnexpectedValueException $ex) {
+            throw $ex;
+            header('HTTP/1.0 401 Unauthorized');
+            echo "Invalid token";
+            exit();
         }
 
-        if (!$valid_token) {
-            // Not authorized
-        } else {
+        // Validate that this token was made for us
+        if ($decoded_token->aud != AUTH0_CLIENT_ID) {
+            header('HTTP/1.0 401 Unauthorized');
+            echo "Invalid token";
+            exit();
         }
+
+        // We have a valid token! authenticated the associated user
+        $auth0UserId = $decoded_token->sub;
+
+        // Authorized
+        $this->setAuth0UserId($auth0UserId);
+        $this->setJwtPayload($decoded_token);
+        $this->setJwtToken($token);
 
     }
 
     /**
-     * Authorizes a userapp user (or the lack of one) in the context
+     * Authorizes a auth0 user (or the lack of one) in the context
      * of the Yii application.
      * Sets $this->id if a valid yii user account is found authorized to be logged in.
      *
      * @throws CHttpException
      */
-    protected function authorizeUserappUserLocally()
+    protected function authorizeAuth0UserLocally($auth0UserId)
     {
 
-        $userappUser = User::current();
         $account = $this->getAccount();
 
         // Make sure local permissions reflect remote permissions
-        if ($userappUser->hasPermission("admin_in_data_profile__" . DATA)) {
+        $jwtPayload = $this->getJwtPayload();
+        $dataProfile = DATA;
+        if (isset($jwtPayload->app_metadata->r0->permissions->$dataProfile) && $jwtPayload->app_metadata->r0->permissions->$dataProfile->superuser == 1) {
             $account->superuser = 1;
         }
         //PermissionHelper::addAccountToGroup($this->id, Group::FOO, Role::GROUP_MEMBER);
 
-        // Update current heartbeat
-        $account->userapp_last_heartbeat_at = User::getSession()->get('ua_last_heartbeat_at');
+        // Save authorization activity metadata
+        $account->auth0_last_authentication_at = gmdate("Y-m-d H:i:s");
+        $account->auth0_last_verified_token = $this->getJwtToken();
+        $account->auth0_last_verified_token_expires = $jwtPayload->exp;
 
         // Save synchronized account info
         if (!$account->save()) {
@@ -217,30 +248,31 @@ class WebUser extends \OAuth2Yii\Component\WebUser
 
     protected function getAccount()
     {
-        if (empty($this->userAppId)) {
-            throw new UserAppIdNotSetException();
+        if (empty($this->auth0UserId)) {
+            throw new Auth0UserIdNotSetException();
         }
-        $userappUser = User::current();
-        if (empty($userappUser)) {
-            throw new UserAppUserNotAvailableException();
+        $jwtPayload = $this->getJwtPayload();
+        if (empty($jwtPayload)) {
+            throw new JwtPayloadNotAvailableException();
         }
         $accountModel = Account::model();
         //$accountModel = $accountModel->unrestricted();
-        $account = $accountModel->findByAttributes(["userapp_user_id" => $this->getUserAppId()]);
+        $account = $accountModel->findByAttributes(["auth0_user_id" => $this->getAuth0UserId()]);
         if ($account === null) {
 
-            // Check if we are to automatically create new account
-            if ($userappUser->hasPermission("account_in_data_profile__" . DATA)) {
+            // Check if we are to automatically create new account (having a permissions object for the data profile means that an account is allowed)
+            $dataProfile = DATA;
+            if (isset($jwtPayload->app_metadata->r0->permissions->$dataProfile)) {
                 $account = new Account();
-                $account->userapp_user_id = $userappUser->user_id;
+                $account->auth0_user_id = $this->auth0UserId;
                 $account->username = "ua_" . uniqid();
-                $account->email = $userappUser->email;
+                $account->email = isset($jwtPayload->email) ? $jwtPayload->email : null;
                 //$account = $account->unrestricted();
                 if (!$account->save()) {
                     throw new SaveException($account);
                 }
             } else {
-                throw new NoAccountMathchingUserAppIdException;
+                throw new NoAccountMatchingAuth0UserIdException;
             }
 
         }
@@ -250,17 +282,17 @@ class WebUser extends \OAuth2Yii\Component\WebUser
 
 }
 
-class UserAppIdNotSetException extends Exception
+class Auth0UserIdNotSetException extends Exception
 {
 
 }
 
-class UserAppUserNotAvailableException extends Exception
+class JwtPayloadNotAvailableException extends Exception
 {
 
 }
 
-class NoAccountMathchingUserAppIdException extends Exception
+class NoAccountMatchingAuth0UserIdException extends Exception
 {
 
 }

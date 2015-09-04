@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0b848458f2ef2d94499788aed99a83fb",
+    "hash": "fcf1d346518c44deafee6a2a72e044c8",
     "packages": [
         {
             "name": "bshaffer/oauth2-server-php",
@@ -199,6 +199,49 @@
                 "yii"
             ],
             "time": "2015-02-27 14:48:18"
+        },
+        {
+            "name": "firebase/php-jwt",
+            "version": "v3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/firebase/php-jwt.git",
+                "reference": "fa8a06e96526eb7c0eeaa47e4f39be59d21f16e1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/fa8a06e96526eb7c0eeaa47e4f39be59d21f16e1",
+                "reference": "fa8a06e96526eb7c0eeaa47e4f39be59d21f16e1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Firebase\\JWT\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Neuman Vong",
+                    "email": "neuman+pear@twilio.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Anant Narayanan",
+                    "email": "anant@php.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
+            "homepage": "https://github.com/firebase/php-jwt",
+            "time": "2015-07-22 18:31:08"
         },
         {
             "name": "ircmaxell/random-lib",
@@ -503,12 +546,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "027b7efd792f4fab065bc6e71d8d2573cd13cadb"
+                "reference": "3293350780300138b70aae9a7e454787945e6686"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/027b7efd792f4fab065bc6e71d8d2573cd13cadb",
-                "reference": "027b7efd792f4fab065bc6e71d8d2573cd13cadb",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/3293350780300138b70aae9a7e454787945e6686",
+                "reference": "3293350780300138b70aae9a7e454787945e6686",
                 "shasum": ""
             },
             "replace": {
@@ -546,92 +589,7 @@
                 "responsive",
                 "web"
             ],
-            "time": "2015-08-01 06:42:23"
-        },
-        {
-            "name": "userapp/userapp",
-            "version": "1.2.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/userapp-io/userapp-php.git",
-                "reference": "a1562d7dc37fce59124a71dbf2d22f4f73c8e9d4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/userapp-io/userapp-php/zipball/a1562d7dc37fce59124a71dbf2d22f4f73c8e9d4",
-                "reference": "a1562d7dc37fce59124a71dbf2d22f4f73c8e9d4",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "UserApp\\": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Robin Orheden",
-                    "email": "robin.orheden@userapp.io",
-                    "homepage": "https://www.userapp.io/"
-                }
-            ],
-            "description": "PHP client library for UserApp.",
-            "homepage": "http://github.com/userapp-io/userapp-php",
-            "keywords": [
-                "User management",
-                "user authentication"
-            ],
-            "time": "2014-08-06 17:03:20"
-        },
-        {
-            "name": "userapp/widget",
-            "version": "0.6.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/userapp-io/userapp-php-widget.git",
-                "reference": "b0d114ede022cfcc00ea67b0ca637bdafa64410a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/userapp-io/userapp-php-widget/zipball/b0d114ede022cfcc00ea67b0ca637bdafa64410a",
-                "reference": "b0d114ede022cfcc00ea67b0ca637bdafa64410a",
-                "shasum": ""
-            },
-            "require": {
-                "userapp/userapp": "1.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "UserApp\\Widget\\": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Robin Orheden",
-                    "email": "robin.orheden@userapp.io",
-                    "homepage": "https://www.userapp.io/"
-                }
-            ],
-            "description": "PHP user widget for UserApp.",
-            "homepage": "http://github.com/userapp-io/userapp-php-widget",
-            "keywords": [
-                "User management",
-                "user authentication",
-                "user helper"
-            ],
-            "time": "2014-08-07 04:15:15"
+            "time": "2015-09-02 03:27:19"
         },
         {
             "name": "weavora/wrest",
