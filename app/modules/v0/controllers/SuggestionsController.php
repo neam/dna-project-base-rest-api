@@ -51,8 +51,11 @@ class SuggestionsController extends AppRestController
             $suggestions = [$suggestions];
         }
 
+        $postedAlgorithms = $suggestions;
+        $algorithms = Suggestions::preparePostedAlgorithmData($postedAlgorithms);
+
         $itemTypesAffectedByAlgorithms = Suggestions::getItemTypesAffectedByAlgorithms(
-            $suggestions,
+            $algorithms,
             Suggestions::ANY
         );
 
@@ -60,7 +63,7 @@ class SuggestionsController extends AppRestController
             throw new CException("No item types affected by selected algorithms");
         }
 
-        $results = Suggestions::run($suggestions);
+        $results = Suggestions::run($algorithms);
 
         if ($save) {
             $results["transaction"]->commit();
@@ -69,11 +72,6 @@ class SuggestionsController extends AppRestController
         // Return item lists of all affected item types (filtered as usual)
 
         $return = [];
-
-        $itemTypesAffectedByAlgorithms = Suggestions::getItemTypesAffectedByAlgorithms(
-            $suggestions,
-            Suggestions::ANY
-        );
 
         foreach ($itemTypesAffectedByAlgorithms as $itemTypeAffected) {
             $modelClassSingular = $itemTypeAffected;
@@ -91,7 +89,7 @@ class SuggestionsController extends AppRestController
         // Rollback if we are not saving
 
         if (!$save) {
-            Suggestions::rollbackTransactionAndReclaimAutoIncrement($suggestions, $results["transaction"]);
+            Suggestions::rollbackTransactionAndReclaimAutoIncrement($algorithms, $results["transaction"]);
         }
 
         // Send response
