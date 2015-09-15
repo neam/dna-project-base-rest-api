@@ -42,6 +42,7 @@ class SuggestionsController extends AppRestController
 
         $suggestions = Yii::app()->request->getParam('suggestions');
         $save = Yii::app()->request->getParam('save');
+        $filters = Yii::app()->request->getParam('filters');
 
         if (empty($suggestions)) {
             throw new CHttpException(401, "No suggestions requested");
@@ -72,6 +73,11 @@ class SuggestionsController extends AppRestController
         // Return item lists of all affected item types (filtered as usual)
 
         $return = [];
+
+        // We set the filter params in $_GET so that the controller methods pick them up when they use getParam()
+        foreach ((array) $filters as $key => $filter) {
+            $_GET[$key] = $filter;
+        }
 
         foreach ($itemTypesAffectedByAlgorithms as $itemTypeAffected) {
             $modelClassSingular = $itemTypeAffected;
