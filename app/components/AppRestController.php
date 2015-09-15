@@ -235,10 +235,6 @@ class AppRestController extends WRestController
     protected function getPaginatedListActionResults($model)
     {
 
-        // Compile criteria
-        $criteria = $this->getListCriteria($model);
-        $countCriteria = $this->getCountCriteria($model);
-
         // Get list action configuration from controller list action configuration
         $actions = $this->actions();
         $params = $actions["list"];
@@ -249,6 +245,10 @@ class AppRestController extends WRestController
                 }
             }
         }
+
+        // Compile criteria
+        $criteria = $this->getListCriteria($model);
+        $countCriteria = $this->getCountCriteria($model);
 
         // Get pagination options from request parameters
         $pageSize = (int) Yii::app()->request->getParam($this->limit);
