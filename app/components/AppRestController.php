@@ -176,12 +176,14 @@ class AppRestController extends WRestController
         $c->order = ($order = Yii::app()->request->getParam($this->order)) ? $order : "t." . $model->getMetaData(
             )->tableSchema->primaryKey;
 
+        /*
         $reverse = Yii::app()->request->getParam('reverse');
         if ($reverse == 1) {
             $c->order .= " DESC";
         } else {
             $c->order .= " ASC";
         }
+        */
 
         return $c;
     }
