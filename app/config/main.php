@@ -15,7 +15,7 @@ $mainConfig = array(
         'vendor' => $applicationDirectory . '/../vendor',
         'dna' => $projectRoot . '/dna',
         // fix hard-coded aliases
-        'OAuth2Yii' => 'vendor.codemix.oauth2yii.src.OAuth2Yii',
+        //'OAuth2Yii' => 'vendor.codemix.oauth2yii.src.OAuth2Yii',
     ),
     'modules' => array(
         // API version 0 (neamtime workaround to not interfere with upstream api versions)
@@ -92,6 +92,7 @@ $mainConfig = array(
         'sirTrevorBlockFactory' => array(
             'class' => 'SirTrevorBlockFactory',
         ),
+        /*
         'oauth2' => array(
             'class' => 'OAuth2Yii\Component\ServerComponent',
             'userClass' => 'OAuth2User',
@@ -101,6 +102,7 @@ $mainConfig = array(
             'enableUserCredentials' => true,
             'enableClientCredentials' => false,
         ),
+        */
         'request' => array(
             'baseUrl' => $baseUrl,
         ),

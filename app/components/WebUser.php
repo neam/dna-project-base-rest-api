@@ -2,7 +2,7 @@
 
 use \Firebase\JWT\JWT;
 
-class WebUser extends \OAuth2Yii\Component\WebUser
+class WebUser extends CWebUser
 {
 
     use RestrictedAccessWebUserTrait;
