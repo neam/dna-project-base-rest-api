@@ -30,6 +30,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit();
 }
 
+// parse JWT token for bootstrap-level tenant-specific-config (auth0)
+require_once("$appRoot/auth0-jwt-bootstrap.php");
+
 // include barebones helper class
 require_once($root . '/dna/components/Barebones.php');
 

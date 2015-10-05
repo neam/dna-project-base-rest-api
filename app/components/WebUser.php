@@ -80,8 +80,10 @@ class WebUser extends CWebUser
 
         if ($_SERVER['REQUEST_METHOD'] != 'OPTIONS') {
 
-            // Uncomment to enable offline direct auth of dev auth0 user
-            //return $this->offlineLocalDevAuth();
+            // Enable offline direct auth of dev auth0 user
+            if (LOCAL_OFFLINE_DEV) {
+                return $this->offlineLocalDevAuth();
+            }
 
             $message = null;
             try {
@@ -137,76 +139,13 @@ class WebUser extends CWebUser
      */
     protected function authenticateAuth0()
     {
-
-        //var_dump(__LINE__, "sid", session_id(), $_GET, $_COOKIE, $_SESSION, Yii::app()->session['foo'], file_get_contents('php://input'));
-
-        $token = null;
-
-        // Allow passing token in request payload (workaround for different domains between client and rest api)
-        /*
-        $request_body = file_get_contents('php://input');
-        $data = json_decode($request_body);
-        if (isset($data->token)) {
-            $token = $data->token;
-        }
-        */
-
-        // Allow passing token in Authorization header
-        $headers = getallheaders();
-        if (isset($headers["Authorization"])) {
-            $authHeaderToken = str_replace("Bearer ", "", $headers["Authorization"]);
-            if (!empty($authHeaderToken)) {
-                $token = $authHeaderToken;
-            }
-        }
-
-        // For debugging
-        /*
-        if (isset($_GET['jwt_session_token'])) {
-            $token = $_GET['jwt_session_token'];
-        }
-        */
-
-        // For persistence
-        /*
-            setcookie("jwt_session_token", $token);
-            $_COOKIE["jwt_session_token"] = $token;
-        */
-
-        if ($token == null) {
-            // Anonymous request without authentication information
-            header('HTTP/1.0 401 Unauthorized');
-            echo "No authorization header sent";
-            exit();
-        }
-
-        // Validate the token
-        $secret = base64_decode(AUTH0_CLIENT_SECRET);
-        $secret = AUTH0_CLIENT_SECRET;
-        $decoded_token = null;
-        try {
-            $decoded_token = JWT::decode($token, base64_decode(strtr($secret, '-_', '+/')), ["HS256"]);
-
-        } catch (UnexpectedValueException $ex) {
-            throw $ex;
-            header('HTTP/1.0 401 Unauthorized');
-            echo "Invalid token";
-            exit();
-        }
-
-        // Validate that this token was made for us
-        if ($decoded_token->aud != AUTH0_CLIENT_ID) {
-            header('HTTP/1.0 401 Unauthorized');
-            echo "Invalid token";
-            exit();
-        }
-
-        // We have a valid token! authenticated the associated user
-        $auth0UserId = $decoded_token->sub;
+        $valid_decoded_token = unserialize(AUTH0_VALID_DECODED_TOKEN_SERIALIZED);
+        $auth0UserId = $valid_decoded_token->sub;
+        $token = AUTH0_REQUEST_TOKEN;
 
         // Authorized
         $this->setAuth0UserId($auth0UserId);
-        $this->setJwtPayload($decoded_token);
+        $this->setJwtPayload($valid_decoded_token);
         $this->setJwtToken($token);
 
     }
@@ -218,9 +157,10 @@ class WebUser extends CWebUser
      *
      * @throws CHttpException
      */
-    protected function authorizeAuth0UserLocally($auth0UserId)
+    protected function authorizeAuth0UserLocally()
     {
 
+        $auth0User = $this->getAuth0User();
         $account = $this->getAccount();
 
         // Make sure local permissions reflect remote permissions
@@ -232,13 +172,13 @@ class WebUser extends CWebUser
         //PermissionHelper::addAccountToGroup($this->id, Group::FOO, Role::GROUP_MEMBER);
 
         // Save authorization activity metadata
-        $account->auth0_last_authentication_at = gmdate("Y-m-d H:i:s");
-        $account->auth0_last_verified_token = $this->getJwtToken();
-        $account->auth0_last_verified_token_expires = $jwtPayload->exp;
+        $auth0User->auth0_last_authentication_at = gmdate("Y-m-d H:i:s");
+        $auth0User->auth0_last_verified_token = $this->getJwtToken();
+        $auth0User->auth0_last_verified_token_expires = $jwtPayload->exp;
 
         // Save synchronized account info
-        if (!$account->save()) {
-            throw new SaveException($account);
+        if (!$auth0User->save()) {
+            throw new SaveException($auth0User);
         }
 
         // Actually login
@@ -246,7 +186,7 @@ class WebUser extends CWebUser
 
     }
 
-    protected function getAccount()
+    protected function getAuth0User()
     {
         if (empty($this->auth0UserId)) {
             throw new Auth0UserIdNotSetException();
@@ -255,29 +195,91 @@ class WebUser extends CWebUser
         if (empty($jwtPayload)) {
             throw new JwtPayloadNotAvailableException();
         }
-        $accountModel = Account::model();
-        //$accountModel = $accountModel->unrestricted();
-        $account = $accountModel->findByAttributes(["auth0_user_id" => $this->getAuth0UserId()]);
-        if ($account === null) {
+        $auth0UserModel = Auth0User::model();
+        $auth0User = $auth0UserModel->findByAttributes(
+            ["auth0_app" => AUTH0_APP, "auth0_user_id" => $this->getAuth0UserId()]
+        );
+        if ($auth0User === null) {
+            // Create new auth0 user entry
+            $auth0User = new Auth0User();
+            $auth0User->auth0_app = AUTH0_APP;
+            $auth0User->auth0_user_id = $this->getAuth0UserId();
+            if (!$auth0User->save()) {
+                throw new SaveException($auth0User);
+            }
+        }
+        return $auth0User;
+    }
 
-            // Check if we are to automatically create new account (having a permissions object for the data profile means that an account is allowed)
-            $dataProfile = DATA;
-            if (isset($jwtPayload->app_metadata->r0->permissions->$dataProfile)) {
-                $account = new Account();
-                $account->auth0_user_id = $this->auth0UserId;
-                $account->username = "ua_" . uniqid();
-                $account->email = isset($jwtPayload->email) ? $jwtPayload->email : null;
-                //$account = $account->unrestricted();
-                if (!$account->save()) {
-                    throw new SaveException($account);
+    protected function getAccount()
+    {
+        $auth0User = $this->getAuth0User();
+        $jwtPayload = $this->getJwtPayload();
+        if (empty($jwtPayload)) {
+            throw new JwtPayloadNotAvailableException();
+        }
+
+        $transaction = Yii::app()->db->beginTransaction();
+
+        try {
+
+            if (empty($auth0User->account)) {
+
+                // Check if we are to automatically create new account (having a permissions object for the data profile means that an account is allowed)
+                $dataProfile = DATA;
+                if (isset($jwtPayload->app_metadata->r0->permissions->$dataProfile)) {
+                    $account = $this->ensureActiveMatchingAccount($auth0User, $jwtPayload);
+                } else {
+                    throw new NoAccountMatchingAuth0UserIdException;
                 }
-            } else {
-                throw new NoAccountMatchingAuth0UserIdException;
+
             }
 
+            $transaction->commit();
+        } catch (Exception $e) {
+            $transaction->rollback();
+            throw $e;
         }
+
+        return $auth0User->account;
+    }
+
+    /**
+     * First match against linked accounts (TODO)
+     * Then match against email (since it is a unique attribute in the local database)
+     */
+    protected function ensureActiveMatchingAccount(Auth0User &$auth0User, $jwtPayload)
+    {
+        // First match against linked accounts (TODO)
+        // TODO find by attributes $auth0UserModel
+
+        $accountModel = Account::model();
+        $account = null;
+
+        if (isset($jwtPayload->email)) {
+            // We may already have an account with this email with another auth0 app, check this first
+            $accountByEmail = $accountModel->findByAttributes(["email" => $jwtPayload->email]);
+            if (!empty($accountByEmail)) {
+                $account = $accountByEmail;
+            }
+        }
+
+        if (empty($account)) {
+            $account = new Account();
+            $account->username = "auth0_" . uniqid();
+        }
+
+        $account->email = isset($jwtPayload->email) ? $jwtPayload->email : null;
+
         //$account = $account->unrestricted();
-        return $account;
+        if (!$account->save()) {
+            throw new SaveException($account);
+        }
+        $auth0User->account_id = $account->id;
+        if (!$auth0User->save()) {
+            throw new SaveException($auth0User);
+        }
+
     }
 
 }
