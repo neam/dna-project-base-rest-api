@@ -276,6 +276,7 @@ class WebUser extends CWebUser
             throw new SaveException($account);
         }
         $auth0User->account_id = $account->id;
+        $auth0User->account = $account;
         if (!$auth0User->save()) {
             throw new SaveException($auth0User);
         }
