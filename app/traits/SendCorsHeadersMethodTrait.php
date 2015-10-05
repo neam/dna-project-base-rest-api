@@ -1,16 +1,6 @@
 <?php
+trait SendCorsHeadersMethodTrait {
 
-/**
- * WebApplication class file.
- * @inheritDoc
- */
-class WebApplication extends CWebApplication
-{
-    use YiiDnaRestApplicationTrait;
-
-    /**
-     * Duplicate of method in traits/SendCorsHeadersTrait
-     */
     public function sendCorsHeaders()
     {
 

@@ -18,6 +18,18 @@ if (defined('HHVM_VERSION')) {
     $_SERVER['PHP_SELF'] = $_SERVER['NGINX_SCRIPT_NAME'];
 }
 
+// handle OPTIONS requests in the most barebones manner possible
+require_once("$appRoot/app/traits/SendCorsHeadersMethodTrait.php");
+class BootstrapWebApplication
+{
+    use SendCorsHeadersMethodTrait;
+}
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    $app = new BootstrapWebApplication();
+    $app->sendCorsHeaders();
+    exit();
+}
+
 // include barebones helper class
 require_once($root . '/dna/components/Barebones.php');
 
