@@ -8,9 +8,6 @@ require_once("$appRoot/vendor/autoload.php");
 require_once("$root/vendor/autoload.php");
 require_once("$root/dna/vendor/autoload.php");
 
-// root-level bootstrap logic
-require("$root/bootstrap.php");
-
 // HHVM SCRIPT_NAME difference vs php-fpm workaround
 if (defined('HHVM_VERSION')) {
     $_SERVER['DOCUMENT_ROOT'] = $_SERVER['NGINX_DOCUMENT_ROOT'];
@@ -18,20 +15,24 @@ if (defined('HHVM_VERSION')) {
     $_SERVER['PHP_SELF'] = $_SERVER['NGINX_SCRIPT_NAME'];
 }
 
-// handle OPTIONS requests in the most barebones manner possible
+// root-level bootstrap logic
+require("$root/bootstrap.php");
+
+// the most barebones app possible
 require_once("$appRoot/app/traits/SendCorsHeadersMethodTrait.php");
+
 class BootstrapWebApplication
 {
     use SendCorsHeadersMethodTrait;
 }
+
+$app = new BootstrapWebApplication();
+
+// handle OPTIONS requests in the most barebones manner possible
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    $app = new BootstrapWebApplication();
     $app->sendCorsHeaders();
     exit();
 }
-
-// parse JWT token for bootstrap-level tenant-specific-config (auth0)
-require_once("$appRoot/auth0-jwt-bootstrap.php");
 
 // include barebones helper class
 require_once($root . '/dna/components/Barebones.php');

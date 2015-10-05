@@ -81,7 +81,7 @@ class WebUser extends CWebUser
         if ($_SERVER['REQUEST_METHOD'] != 'OPTIONS') {
 
             // Enable offline direct auth of dev auth0 user
-            if (LOCAL_OFFLINE_DEV) {
+            if (defined('LOCAL_OFFLINE_DATA') && !empty(LOCAL_OFFLINE_DATA)) {
                 return $this->offlineLocalDevAuth();
             }
 
