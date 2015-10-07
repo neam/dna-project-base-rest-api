@@ -24,6 +24,11 @@ require_once("$appRoot/app/traits/SendCorsHeadersMethodTrait.php");
 class BootstrapWebApplication
 {
     use SendCorsHeadersMethodTrait;
+
+    public function displayException(Exception $e)
+    {
+        echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);
+    }
 }
 
 $app = new BootstrapWebApplication();
@@ -77,4 +82,13 @@ $config = CMap::mergeArray($main, $env);
 
 // start web application
 require_once("$appRoot/app/components/WebApplication.php");
-Yii::createApplication('WebApplication', $config)->run();
+
+try {
+    Yii::createApplication('WebApplication', $config)->run();
+} catch (PDOException $e) {
+    $app->displayException($e);
+    //throw $e;
+} catch (\Propel\Runtime\Connection\Exception\ConnectionException $e) {
+    $app->displayException($e);
+    throw $e;
+}
