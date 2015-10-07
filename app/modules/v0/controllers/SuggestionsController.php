@@ -64,6 +64,9 @@ class SuggestionsController extends AppRestController
             throw new CException("No item types affected by selected algorithms");
         }
 
+        // Disable propel instance pooling for suggestion requests
+        \Propel\Runtime\Propel::disableInstancePooling();
+
         $results = Suggestions::run($algorithms);
 
         if ($save) {
