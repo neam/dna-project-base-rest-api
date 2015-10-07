@@ -52,14 +52,19 @@ class RelatedItems
         return $related;
     }
 
-    public static function formatItems($relatedModelClass, $item, $relation, $level)
-    {
+    public static function formatItems(
+        $relatedModelClass,
+        \Propel\Runtime\ActiveRecord\ActiveRecordInterface $item,
+        $relationAttributeCamelized,
+        $level
+    ) {
         $helperClass = "RestApi" . $relatedModelClass;
-        if (!is_array($item->$relation)) {
-            throw new CException("Non-array found at \$item->\$relation in RelatedItems::formatItems()");
+        $relatedItemsMethod = "get{$relatedModelClass}s";
+        if (!method_exists($item, $relatedItemsMethod)) {
+            $relatedItemsMethod = "get{$relatedModelClass}sRelatedBy" . $relationAttributeCamelized;
         }
+        $relatedItems = $item->$relatedItemsMethod();
         $related = array();
-        $relatedItems = $item->$relation;
         $level++;
         if (!empty($relatedItems)) {
             foreach ($relatedItems as $k => $relatedItem) {
@@ -69,19 +74,26 @@ class RelatedItems
         return $related;
     }
 
-    public static function formatItem($relatedModelClass, $item, $relation, $level)
-    {
+    public static function formatItem(
+        $relatedModelClass,
+        \Propel\Runtime\ActiveRecord\ActiveRecordInterface $item,
+        $relationAttributeCamelized,
+        $level
+    ) {
         $helperClass = "RestApi" . $relatedModelClass;
-        if (is_array($item->$relation)) {
-            throw new CException("Array found at \$item->\$relation in RelatedItems::formatItem()");
+        $relatedItemMethod = "get{$relatedModelClass}";
+        if (!method_exists($item, $relatedItemMethod)) {
+            $relatedItemMethod = "get{$relatedModelClass}RelatedBy" . $relationAttributeCamelized;
         }
-        /** @var CActiveRecord $relatedItem */
-        $relatedItem = $item->$relation;
+        /** @var \Propel\Runtime\ActiveRecord\ActiveRecordInterface $relatedItem */
+        $relatedItem = $item->$relatedItemMethod();
         if (empty($relatedItem)) {
-            $relatedItem = $relatedModelClass::model();
+            $relatedItemPropelObjectClass = "\\propel\\models\\$relatedModelClass";
+            $relatedItem = new $relatedItemPropelObjectClass;
         }
         $level++;
         $related = $helperClass::getRelatedAttributes($relatedItem, $level);
         return $related;
     }
+
 }

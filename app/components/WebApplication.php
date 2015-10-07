@@ -34,4 +34,17 @@ class WebApplication extends CWebApplication
         header("Access-Control-Allow-Headers: Authorization, Origin, Content-Type, Accept");
     }
 
+    /**
+     * Overridden to display errors as exceptions, including backtraces
+     * @param int $code
+     * @param string $message
+     * @param string $file
+     * @param string $line
+     */
+    public function displayError($code, $message, $file, $line)
+    {
+        $severity = null;
+        $this->displayException(new ErrorException($message, $code, $severity, $file, $line));
+    }
+
 }
