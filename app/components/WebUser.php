@@ -269,6 +269,7 @@ class WebUser extends CWebUser
             $account->username = "auth0_" . uniqid();
         }
 
+        $account->password = uniqid().uniqid();
         $account->email = isset($jwtPayload->email) ? $jwtPayload->email : null;
 
         //$account = $account->unrestricted();
