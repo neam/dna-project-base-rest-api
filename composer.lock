@@ -4,7 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fcf1d346518c44deafee6a2a72e044c8",
+    "hash": "076e4a875e91f2464fafa0d1c6e3797d",
+    "content-hash": "3743cb7f9baa2c4083439acb4c6c3982",
     "packages": [
         {
             "name": "bshaffer/oauth2-server-php",
@@ -352,12 +353,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neam/yii-dna-debug-modes-and-error-handling.git",
-                "reference": "d37f5eb795e12a93c057f374b32df3da3e398478"
+                "reference": "e17738e5ad2f03d4b530abab1e35086a2d9e91dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neam/yii-dna-debug-modes-and-error-handling/zipball/d37f5eb795e12a93c057f374b32df3da3e398478",
-                "reference": "d37f5eb795e12a93c057f374b32df3da3e398478",
+                "url": "https://api.github.com/repos/neam/yii-dna-debug-modes-and-error-handling/zipball/e17738e5ad2f03d4b530abab1e35086a2d9e91dc",
+                "reference": "e17738e5ad2f03d4b530abab1e35086a2d9e91dc",
                 "shasum": ""
             },
             "require": {
@@ -392,7 +393,7 @@
                 "php",
                 "yii"
             ],
-            "time": "2015-06-03 12:34:11"
+            "time": "2015-10-07 22:38:05"
         },
         {
             "name": "nordsoftware/yii-account",
@@ -546,12 +547,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "3293350780300138b70aae9a7e454787945e6686"
+                "reference": "5b46f3d9d98c4a6eb66472b82eae2c18dd0479f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/3293350780300138b70aae9a7e454787945e6686",
-                "reference": "3293350780300138b70aae9a7e454787945e6686",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/5b46f3d9d98c4a6eb66472b82eae2c18dd0479f6",
+                "reference": "5b46f3d9d98c4a6eb66472b82eae2c18dd0479f6",
                 "shasum": ""
             },
             "replace": {
@@ -589,7 +590,7 @@
                 "responsive",
                 "web"
             ],
-            "time": "2015-09-02 03:27:19"
+            "time": "2015-10-13 22:11:19"
         },
         {
             "name": "weavora/wrest",
@@ -637,16 +638,16 @@
         },
         {
             "name": "yiisoft/yii",
-            "version": "1.1.15",
+            "version": "1.1.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii.git",
-                "reference": "022a51d34ad2c95db2b77b2075e98f5dd78b08e0"
+                "reference": "bca0420b6799b0b2a7966aa90bcd15cb4aa73563"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii/zipball/022a51d34ad2c95db2b77b2075e98f5dd78b08e0",
-                "reference": "022a51d34ad2c95db2b77b2075e98f5dd78b08e0",
+                "url": "https://api.github.com/repos/yiisoft/yii/zipball/bca0420b6799b0b2a7966aa90bcd15cb4aa73563",
+                "reference": "bca0420b6799b0b2a7966aa90bcd15cb4aa73563",
                 "shasum": ""
             },
             "require": {
@@ -656,6 +657,12 @@
                 "framework/yiic"
             ],
             "type": "library",
+            "autoload": {
+                "classmap": [
+                    "framework/YiiBase.php",
+                    "framework/yii.php"
+                ]
+            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
@@ -717,7 +724,7 @@
                 "framework",
                 "yii"
             ],
-            "time": "2014-06-30 00:14:27"
+            "time": "2014-12-21 19:30:17"
         }
     ],
     "packages-dev": [],

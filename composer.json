@@ -39,7 +39,7 @@
         "weavora/wrest": "dev-set-create-and-update-attributes-in-behavior",
         "nordsoftware/yii-account": "1.3.*",
         "neam/yii-dna-debug-modes-and-error-handling": "dev-develop",
-        "yiisoft/yii": "1.1.15"
+        "yiisoft/yii": "1.1.16"
     },
     "require-dev": {
     },
