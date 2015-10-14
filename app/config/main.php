@@ -11,7 +11,8 @@ $mainConfig = array(
     'basePath' => $applicationDirectory,
     'aliases' => array(
         'root' => $projectRoot,
-        'app' => $applicationDirectory,
+        'rest-api' => $applicationDirectory,
+        'rest-api-dna' => $applicationDirectory . '/../../rest-api-dna/app',
         'vendor' => $applicationDirectory . '/../vendor',
         'dna' => $projectRoot . '/dna',
         // fix hard-coded aliases
@@ -20,71 +21,72 @@ $mainConfig = array(
     'modules' => array(
         // API version 0 (neamtime workaround to not interfere with upstream api versions)
         'v0' => array(
+            'class' => 'rest-api-dna.modules.v0.V0Module',
             'import' => array(
                 // base classes
-                'application.behaviors.*',
-                'application.components.*',
-                'application.controllers.*',
-                'application.interfaces.*',
-                'application.models.*',
-                'application.models.*',
-                'application.traits.*',
+                'rest-api.behaviors.*',
+                'rest-api.components.*',
+                'rest-api.controllers.*',
+                'rest-api.interfaces.*',
+                'rest-api.models.*',
+                'rest-api.models.*',
+                'rest-api.traits.*',
                 'vendor.weavora.wrest.*',
                 'vendor.weavora.wrest.actions.*',
                 // v0 specific classes
-                'application.modules.v0.behaviors.*',
-                'application.modules.v0.components.*',
-                'application.modules.v0.controllers.*',
-                'application.modules.v0.interfaces.*',
-                'application.modules.v0.models.base.*',
-                'application.modules.v0.models.*',
+                'rest-api-dna.modules.v0.behaviors.*',
+                'rest-api-dna.modules.v0.components.*',
+                'rest-api-dna.modules.v0.controllers.*',
+                'rest-api-dna.modules.v0.interfaces.*',
+                'rest-api-dna.modules.v0.models.base.*',
+                'rest-api-dna.modules.v0.models.*',
             ),
         ),
         // API version 1
         'v1' => array(
             'import' => array(
                 // base classes
-                'application.behaviors.*',
-                'application.components.*',
-                'application.controllers.*',
-                'application.interfaces.*',
-                'application.models.*',
-                'application.traits.*',
+                'rest-api.behaviors.*',
+                'rest-api.components.*',
+                'rest-api.controllers.*',
+                'rest-api.interfaces.*',
+                'rest-api.models.*',
+                'rest-api.traits.*',
                 'vendor.weavora.wrest.*',
                 'vendor.weavora.wrest.actions.*',
                 // v1 specific classes
-                'application.modules.v1.behaviors.*',
-                'application.modules.v1.components.*',
-                'application.modules.v1.controllers.*',
-                'application.modules.v1.interfaces.*',
-                'application.modules.v1.models.*',
+                'rest-api.modules.v1.behaviors.*',
+                'rest-api.modules.v1.components.*',
+                'rest-api.modules.v1.controllers.*',
+                'rest-api.modules.v1.interfaces.*',
+                'rest-api.modules.v1.models.*',
             ),
         ),
         // API version 2
         'v2' => array(
             'import' => array(
                 // base classes
-                'application.behaviors.*',
-                'application.components.*',
-                'application.controllers.*',
-                'application.interfaces.*',
-                'application.models.*',
-                'application.traits.*',
+                'rest-api.behaviors.*',
+                'rest-api.components.*',
+                'rest-api.controllers.*',
+                'rest-api.interfaces.*',
+                'rest-api.models.*',
+                'rest-api.traits.*',
                 'vendor.weavora.wrest.*',
                 'vendor.weavora.wrest.actions.*',
                 // v2 specific classes
-                'application.modules.v2.behaviors.*',
-                'application.modules.v2.components.*',
-                'application.modules.v2.components.factories.*',
-                'application.modules.v2.components.translators.*',
-                'application.modules.v2.controllers.*',
-                'application.modules.v2.interfaces.*',
-                'application.modules.v2.models.*',
-                'application.modules.v2.models.blocks.*',
+                'rest-api.modules.v2.behaviors.*',
+                'rest-api.modules.v2.components.*',
+                'rest-api.modules.v2.components.factories.*',
+                'rest-api.modules.v2.components.translators.*',
+                'rest-api.modules.v2.controllers.*',
+                'rest-api.modules.v2.interfaces.*',
+                'rest-api.modules.v2.models.*',
+                'rest-api.modules.v2.models.blocks.*',
             ),
         ),
     ),
-    // application components
+    // rest-api components
     'components' => array(
         'itemTranslatorFactory' => array(
             'class' => 'ItemTranslatorFactory',
