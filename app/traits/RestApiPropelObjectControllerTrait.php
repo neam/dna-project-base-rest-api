@@ -3,45 +3,26 @@
 trait RestApiPropelObjectControllerTrait
 {
 
-    public function loadModel($id)
-    {
-        if (is_int($id) || ctype_digit($id)) {
-            $model = CActiveRecord::model($this->_modelName)->findByPk($id);
-        } else {
-            $language = $this->request->getParam('lang', Yii::app()->getLanguage());
-            $attribute = "slug_{$language}";
-            $finder = CActiveRecord::model($this->_modelName);
-            if ($finder->hasAttribute($attribute)) {
-                // the slugs are prefixed by a ":" character, due to url rule collisions
-                $slug = ltrim($id, ':');
-                $model = $finder->findByattributes(array($attribute => $slug));
-            } else {
-                $model = null;
-            }
-        }
-        if ($model === null) {
-            $this->sendResponse(404);
-        }
-        return $model;
-    }
-
     /**
      * @inheritdoc
      */
-    public function getModel($scenario = '')
+    public function getModel()
     {
         $id = $this->request->getParam('id');
-        $modelName = ucfirst($this->_modelName);
-        if (empty($this->_modelName) && class_exists($modelName)) {
-            $this->sendResponse(400);
+        $modelName = '\\propel\\models\\' . ucfirst($this->_modelName);
+
+        var_dump(__LINE__, $this->_modelName, $modelName, class_exists($modelName));die();
+        if (empty($this->_modelName) || !class_exists($modelName)) {
+            throw new CHttpException(500, 'Invalid configuration');
         }
         if ($id) {
-            $model = $this->loadModel($id);
+            $queryClass = $modelName . 'Query';
+            $model = $queryClass::create()->findOneById($id);
         } else {
             $model = new $modelName();
         }
-        if ($scenario && $model) {
-            $model->setScenario($scenario);
+        if ($model === null) {
+            throw new CHttpException(404);
         }
         return $model;
     }
@@ -222,6 +203,99 @@ trait RestApiPropelObjectControllerTrait
         \Propel\Runtime\Util\PropelModelPager &$pager,
         \Propel\Runtime\ActiveQuery\ModelCriteria &$query
     ) {
+
+    }
+
+    public $scenario = null;
+
+    public function actionUpdate()
+    {
+
+        // Disable propel instance pooling for update requests
+        \Propel\Runtime\Propel::disableInstancePooling();
+
+        // set autocommit to 0 to prevent saving of data within transaction
+        Yii::app()->db->createCommand("SET autocommit=0")->execute();
+
+        // start transaction
+        $transaction = Yii::app()->db->beginTransaction();
+        $save = false;
+        try {
+
+            // Ordinary update logic
+            $requestAttributes = Yii::app()->request->getAllRestParams();
+
+            $model = $this->getModel();
+            $model->setUpdateAttributes($requestAttributes);
+            $save = $model->save();
+
+            $transaction->commit();
+
+        } catch (CDbException $e) {
+
+            $transaction->rollback();
+            throw $e;
+
+        }
+
+        if ($save) {
+            $this->sendResponse(200, $model->getAllAttributes());
+        } else {
+            $this->sendResponse(403, array('errors' => $model->getErrors()));
+        }
+
+
+    }
+
+    public function actionCreate()
+    {
+
+        // Disable propel instance pooling for update requests
+        \Propel\Runtime\Propel::disableInstancePooling();
+
+        // Ordinary update logic
+        $requestAttributes = Yii::app()->request->getAllRestParams();
+
+        $model = $this->getModel();
+
+        //$model->setCreateAttributes($requestAttributes);
+        $model->description = 'foo';
+
+        $item = \propel\models\ClerkLedgerEntryTypeQuery::create()->findOneById($model->id);
+        var_dump(__LINE__, $model->description, $item->getDescription());
+
+        if ($model->save()) {
+            var_dump(__LINE__, $model->description, $item->getDescription());
+            die();
+            $this->sendResponse(200, $model->getAllAttributes());
+        } else {
+            $this->sendResponse(500, array('errors' => $model->getErrors()));
+        }
+
+    }
+
+    public function actionDelete()
+    {
+
+        // Disable propel instance pooling for update requests
+        \Propel\Runtime\Propel::disableInstancePooling();
+
+
+        // Ordinary update logic
+        $model = $this->getModel();
+        if ($model->delete()) {
+            $this->sendResponse(200, array('id' => $model->id));
+        } else {
+            $this->sendResponse(500);
+        }
+
+    }
+
+    public function actionGet()
+    {
+
+        $model = $this->getModel();
+        $this->sendResponse(200, $model->getAllAttributes());
 
     }
 

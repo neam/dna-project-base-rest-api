@@ -4,47 +4,20 @@
  * WebApplication class file.
  * @inheritDoc
  */
-class WebApplication extends CWebApplication
+class WebApplication
 {
-    use YiiDnaRestApplicationTrait;
+    use SendCorsHeadersMethodTrait;
 
-    /**
-     * Duplicate of method in traits/SendCorsHeadersTrait
-     */
-    public function sendCorsHeaders()
+    public function displayException(Exception $e)
     {
-
-        if (!empty($_SERVER['HTTP_ORIGIN'])) {
-
-            $allowed_origins = explode(",", CORS_ACL_ORIGIN_HOSTS);
-            $http_origin = $_SERVER['HTTP_ORIGIN'];
-            $response_allowed_origin = $allowed_origins[0];
-            foreach ($allowed_origins as $allowed_origin) {
-                if (strpos($http_origin, "://" . $allowed_origin) !== false) {
-                    $response_allowed_origin = $http_origin;
-                }
-            }
-
-            header("Access-Control-Allow-Origin: " . $response_allowed_origin);
-            header("Access-Control-Allow-Credentials: true");
-
+        $response = [];
+        $response["status"] = ($e instanceof CHttpException) ? $e->statusCode : 500;
+        if (YII_DEBUG) {
+            $className = get_class($e);
+            $response["message"] = "{$className}({$e->getCode()}): {$e->getMessage()} ({$e->getFile()}:{$e->getLine()})";
+            $response["trace"] = $e->getTrace();
         }
-
-        header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
-        header("Access-Control-Allow-Headers: Authorization, Origin, Content-Type, Accept");
-    }
-
-    /**
-     * Overridden to display errors as exceptions, including backtraces
-     * @param int $code
-     * @param string $message
-     * @param string $file
-     * @param string $line
-     */
-    public function displayError($code, $message, $file, $line)
-    {
-        $severity = null;
-        $this->displayException(new ErrorException($message, $code, $severity, $file, $line));
+        echo json_encode($response);
     }
 
 }
