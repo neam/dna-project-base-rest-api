@@ -37,6 +37,7 @@
   "autoload": {
     "classmap": [
       "app/components/",
+      "app/controllers/",
       "app/traits/"
     ]
   },
