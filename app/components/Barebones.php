@@ -183,7 +183,7 @@ class RequestHandler
     public function displayException(Exception $e)
     {
         $response = [];
-        $response["status"] = ($e instanceof CHttpException) ? $e->statusCode : 500;
+        $response["status"] = ($e instanceof HttpException) ? $e->statusCode : 500;
         if (YII_DEBUG) {
             $className = get_class($e);
             $response["message"] = "{$className}({$e->getCode()}): {$e->getMessage()} ({$e->getFile()}:{$e->getLine()})";

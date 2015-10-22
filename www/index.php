@@ -115,6 +115,8 @@ try {
 } catch (\Propel\Runtime\Connection\Exception\ConnectionException $e) {
     $requestHandler->displayException($e);
     throw $e;
+} catch (HttpException $e) {
+    $requestHandler->displayException($e);
 } catch (\Exception $e) {
     $requestHandler->displayException($e);
     throw $e;

@@ -1,6 +1,8 @@
 <?php
 
 use Propel\Runtime\Propel;
+use Propel\Runtime\Exception\PropelException;
+use barebones\HttpException;
 
 trait RestApiPropelObjectControllerTrait
 {
@@ -22,7 +24,7 @@ trait RestApiPropelObjectControllerTrait
             $model = new $modelName();
         }
         if ($model === null) {
-            throw new CHttpException(404);
+            throw new HttpException(404);
         }
         return $model;
     }
@@ -225,7 +227,6 @@ trait RestApiPropelObjectControllerTrait
         $pdo->beginTransaction();
         try {
 
-            // Ordinary update logic
             $this->request->parseJsonParams();
             $requestAttributes = $this->request->getAllRestParams();
 
@@ -258,23 +259,38 @@ trait RestApiPropelObjectControllerTrait
         // Disable propel instance pooling for update requests
         Propel::disableInstancePooling();
 
-        // Ordinary update logic
-        $requestAttributes = $this->request->getAllRestParams();
+        // PDO
+        $pdo = Propel::getWriteConnection('default');
 
-        $model = $this->getModel();
+        // set autocommit to 0 to prevent saving of data within transaction
+        $pdo->exec("SET autocommit=0");
 
-        //$model->setCreateAttributes($requestAttributes);
-        $model->description = 'foo';
+        // start transaction
+        $pdo->beginTransaction();
+        try {
 
-        $item = \propel\models\ClerkLedgerEntryTypeQuery::create()->findOneById($model->id);
-        var_dump(__LINE__, $model->description, $item->getDescription());
+            $this->request->parseJsonParams();
+            $requestAttributes = $this->request->getAllRestParams();
 
-        if ($model->save()) {
-            var_dump(__LINE__, $model->description, $item->getDescription());
-            die();
-            $this->sendResponse(200, $model->getAllAttributes());
-        } else {
-            $this->sendResponse(500, array('errors' => $model->getErrors()));
+            $model = $this->getModel();
+            $restApiModelClass = $this->_modelName;
+            $restApiModelClass::setCreateAttributes($model, $requestAttributes);
+            $model->save();
+
+            $pdo->commit();
+            $this->sendResponse(200, $restApiModelClass::getApiAttributes($model));
+
+        } catch (PDOException $e) {
+
+            $pdo->rollback();
+            throw $e;
+
+        } catch (PropelException $e) {
+
+            $pdo->rollback();
+            $this->sendResponse(500, array('errors' => $e->getMessage()));
+            exit;
+
         }
 
     }
@@ -285,14 +301,10 @@ trait RestApiPropelObjectControllerTrait
         // Disable propel instance pooling for update requests
         Propel::disableInstancePooling();
 
-
-        // Ordinary update logic
         $model = $this->getModel();
-        if ($model->delete()) {
-            $this->sendResponse(200, array('id' => $model->id));
-        } else {
-            $this->sendResponse(500);
-        }
+        $id = $model->getId();
+        $model->delete();
+        $this->sendResponse(200, array('id' => $id));
 
     }
 
