@@ -1,5 +1,12 @@
 <?php
 
+use barebones\Barebones;
+use barebones\HttpException;
+use propel\models\Account;
+use propel\models\AccountQuery;
+use propel\models\Auth0User;
+use propel\models\Auth0UserQuery;
+
 class WebUser
 {
 
@@ -60,21 +67,36 @@ class WebUser
     }
 
     /**
-     * @var string the user model ID attribute.
+     * @var string the id.
      */
-    public $idAttribute = 'id';
+    public $id = null;
 
     /**
-     * @var string the user model name.
+     * @return null
      */
-    public $modelClass = 'Account';
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param null $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    public function __construct() {
+        $this->init();
+    }
 
     public function init()
     {
         if (session_status() !== PHP_SESSION_ACTIVE) {
             session_start();
         }
-        Yii::app()->sendCorsHeaders();
+        Barebones::$requestHandler->sendCorsHeaders();
 
         if ($_SERVER['REQUEST_METHOD'] != 'OPTIONS') {
 
@@ -101,13 +123,13 @@ class WebUser
                 if (!DEV) {
                     $message = "Unauthorized";
                 }
-                throw new CHttpException(
+                throw new HttpException(
                     403,
                     $message
                 );
             }
         }
-        parent::init();
+
     }
 
     protected function offlineLocalDevAuth()
@@ -123,11 +145,9 @@ class WebUser
         */
 
         // Simply auto-login as admin user
-        $account = Account::model()->findByPk(1);
+        $account = AccountQuery::create()->findOneById(1);
 
-        $this->setId($account->id);
-
-        return parent::init();
+        $this->setId($account->getId());
 
     }
 
@@ -153,7 +173,7 @@ class WebUser
      * of the Yii application.
      * Sets $this->id if a valid yii user account is found authorized to be logged in.
      *
-     * @throws CHttpException
+     * @throws HttpException
      */
     protected function authorizeAuth0UserLocally()
     {
@@ -170,9 +190,9 @@ class WebUser
         //PermissionHelper::addAccountToGroup($this->id, Group::FOO, Role::GROUP_MEMBER);
 
         // Save authorization activity metadata
-        $auth0User->auth0_last_authentication_at = gmdate("Y-m-d H:i:s");
-        $auth0User->auth0_last_verified_token = $this->getJwtToken();
-        $auth0User->auth0_last_verified_token_expires = $jwtPayload->exp;
+        $auth0User->setAuth0LastAuthenticationAt(gmdate("Y-m-d H:i:s"));
+        $auth0User->setAuth0LastVerifiedToken($this->getJwtToken());
+        $auth0User->setAuth0LastVerifiedTokenExpires($jwtPayload->exp);
 
         // Save synchronized account info
         if (!$auth0User->save()) {
@@ -180,7 +200,7 @@ class WebUser
         }
 
         // Actually login
-        $this->setId($account->id);
+        $this->setId($account->getId());
 
     }
 
@@ -217,7 +237,7 @@ class WebUser
             throw new JwtPayloadNotAvailableException();
         }
 
-        $transaction = Yii::app()->db->beginTransaction();
+        $transaction = Barebones::$app->db->beginTransaction();
 
         try {
 
