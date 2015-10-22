@@ -69,30 +69,30 @@ try {
         $actionMethod = "action" . ucfirst($requestParts[4]);
     } else {
 
-        // controller PUT
-        if ($controller->request->getIsPutRequest()) {
-            $actionMethod = "actionCreate";
-        } else {
+        if (empty($requestParts[4])) {
 
-            if (empty($requestParts[4])) {
+            if ($controller->request->getIsPostRequest()) {
+                // controller PUT
+                $actionMethod = "actionCreate";
+            } else {
                 // controller *
                 $actionMethod = "actionList";
+            }
+
+        } else {
+
+            // controller/<id> *
+            $id = $requestParts[4];
+
+            if ($controller->request->getIsPutRequest()) {
+                // controller/<id> PUT
+                $actionMethod = "actionUpdate";
+            } elseif ($controller->request->getIsDeleteRequest()) {
+                // controller/<id> DELETE
+                $actionMethod = "actionDelete";
             } else {
-
                 // controller/<id> *
-                $id = $requestParts[4];
-
-                if ($controller->request->getIsPostRequest()) {
-                    // controller/<id> POST
-                    $actionMethod = "actionUpdate";
-                } elseif ($controller->request->getIsDeleteRequest()) {
-                    // controller/<id> DELETE
-                    $actionMethod = "actionDelete";
-                } else {
-                    // controller/<id> *
-                    $actionMethod = "actionGet";
-                }
-
+                $actionMethod = "actionGet";
             }
 
         }

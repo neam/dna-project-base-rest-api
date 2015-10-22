@@ -215,36 +215,40 @@ trait RestApiPropelObjectControllerTrait
         // Disable propel instance pooling for update requests
         Propel::disableInstancePooling();
 
+        // PDO
+        $pdo = Propel::getWriteConnection('default');
+
         // set autocommit to 0 to prevent saving of data within transaction
-        Propel::getWriteConnection()->exec("SET autocommit=0");
+        $pdo->exec("SET autocommit=0");
 
         // start transaction
-        $transaction = Yii::app()->db->beginTransaction();
-        $save = false;
+        $pdo->beginTransaction();
         try {
 
             // Ordinary update logic
-            $requestAttributes = Yii::app()->request->getAllRestParams();
+            $this->request->parseJsonParams();
+            $requestAttributes = $this->request->getAllRestParams();
 
             $model = $this->getModel();
-            $model->setUpdateAttributes($requestAttributes);
-            $save = $model->save();
+            $restApiModelClass = $this->_modelName;
+            $restApiModelClass::setUpdateAttributes($model, $requestAttributes);
+            $model->save();
 
-            $transaction->commit();
+            $pdo->commit();
+            $this->sendResponse(200, $restApiModelClass::getApiAttributes($model));
 
-        } catch (CDbException $e) {
+        } catch (PDOException $e) {
 
-            $transaction->rollback();
+            $pdo->rollback();
             throw $e;
 
-        }
+        } catch (PropelException $e) {
 
-        if ($save) {
-            $this->sendResponse(200, $model->getAllAttributes());
-        } else {
-            $this->sendResponse(403, array('errors' => $model->getErrors()));
-        }
+            $pdo->rollback();
+            $this->sendResponse(500, array('errors' => $e->getMessage()));
+            exit;
 
+        }
 
     }
 
@@ -255,7 +259,7 @@ trait RestApiPropelObjectControllerTrait
         Propel::disableInstancePooling();
 
         // Ordinary update logic
-        $requestAttributes = Yii::app()->request->getAllRestParams();
+        $requestAttributes = $this->request->getAllRestParams();
 
         $model = $this->getModel();
 
