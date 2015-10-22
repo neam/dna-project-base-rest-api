@@ -288,8 +288,7 @@ trait RestApiPropelObjectControllerTrait
         } catch (PropelException $e) {
 
             $pdo->rollback();
-            $this->sendResponse(500, array('errors' => $e->getMessage()));
-            exit;
+            throw $e;
 
         }
 

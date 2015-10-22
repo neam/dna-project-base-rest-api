@@ -16,6 +16,9 @@ require_once("$root/dna/vendor/autoload.php");
 // root-level bootstrap logic, including propel orm init
 require("$root/bootstrap.php");
 
+// activate error handling via sentry - note: this runs ini_set('display_errors', false)
+SentryErrorHandling::activate(SENTRY_DSN);
+
 try {
 
     // include barebones helper class
@@ -30,9 +33,6 @@ try {
         $requestHandler->sendCorsHeaders();
         exit();
     }
-
-    // activate error handling via sentry - note: this runs ini_set('display_errors', false)
-    SentryErrorHandling::activate(SENTRY_DSN);
 
     // detect api version
     foreach (array('v0', 'v1', 'v2') as $apiVersion) {
@@ -115,8 +115,12 @@ try {
 } catch (\Propel\Runtime\Connection\Exception\ConnectionException $e) {
     $requestHandler->displayException($e);
     throw $e;
+} catch (PropelException $e) {
+    $requestHandler->displayException($e);
+    throw $e;
 } catch (HttpException $e) {
     $requestHandler->displayException($e);
+    throw $e;
 } catch (\Exception $e) {
     $requestHandler->displayException($e);
     throw $e;
