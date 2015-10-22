@@ -45,21 +45,68 @@ try {
         throw new HttpException(500, 'No API_VERSION specified');
     }
 
-    // use barebones php for API requests for performance
-    $requestParts = explode("/", $_SERVER['REQUEST_URI']);
-    $controllerClass = ucfirst($requestParts[3]) . "Controller";
+    // use barebones php request processing for performance
+    $request = parse_url($_SERVER['REQUEST_URI']);
+    $requestParts = explode("/", $request["path"]);
 
+    // controller
+    $controllerClass = ucfirst($requestParts[3]) . "Controller";
     if (empty($requestParts[3]) || !class_exists($controllerClass)) {
         throw new HttpException(400, 'Route not handled');
     }
 
+    /** @var \AppRestController $controller */
     $controller = new $controllerClass();
-    $actionMethod = "action" . ucfirst($requestParts[4]);
 
-    if (empty($requestParts[4]) || !method_exists($controller, $actionMethod)) {
+    // id param
+    $id = null;
+
+    // action method
+    $actionMethod = null;
+
+    // controller/:action *
+    if (!empty($requestParts[4]) && !ctype_digit($requestParts[4])) {
+        $actionMethod = "action" . ucfirst($requestParts[4]);
+    } else {
+
+        // controller PUT
+        if ($controller->request->getIsPutRequest()) {
+            $actionMethod = "actionCreate";
+        } else {
+
+            if (empty($requestParts[4])) {
+                // controller *
+                $actionMethod = "actionList";
+            } else {
+
+                // controller/<id> *
+                $id = $requestParts[4];
+
+                if ($controller->request->getIsPostRequest()) {
+                    // controller/<id> POST
+                    $actionMethod = "actionUpdate";
+                } elseif ($controller->request->getIsDeleteRequest()) {
+                    // controller/<id> DELETE
+                    $actionMethod = "actionDelete";
+                } else {
+                    // controller/<id> *
+                    $actionMethod = "actionGet";
+                }
+
+            }
+
+        }
+
+    }
+
+    if (!method_exists($controller, $actionMethod)) {
         throw new HttpException(400, 'Route not handled');
     }
 
+    // set id param
+    $controller->request->setParam('id', $id);
+
+    // execute action
     $controller->$actionMethod();
 
 } catch (\PDOException $e) {

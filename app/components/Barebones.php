@@ -178,6 +178,7 @@ class App
 class RequestHandler
 {
     use \SendCorsHeadersMethodTrait;
+    use \RestApiControllerTrait;
 
     public function displayException(Exception $e)
     {
@@ -188,7 +189,7 @@ class RequestHandler
             $response["message"] = "{$className}({$e->getCode()}): {$e->getMessage()} ({$e->getFile()}:{$e->getLine()})";
             $response["trace"] = $e->getTrace();
         }
-        echo json_encode($response);
+        $this->sendResponse(500, $response);
     }
 
 }

@@ -14,20 +14,29 @@ trait RestApiControllerTrait
         501 => array('Not Implemented' => 'The requested method is not implemented.'),
     );
 
+    public function sendStatusHeader($status = 200)
+    {
+        $status_header = 'HTTP/1.1 ' . $status . ' ' . $this->codes[$status];
+        header($status_header);
+    }
+
+    public function sendContentTypeHeaders($contentType = 'application/json')
+    {
+        header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+        header("Content-type: $contentType");
+    }
+
     public function sendResponseHeaders($status = 200)
     {
 
-        // set the status
-        $status_header = 'HTTP/1.1 ' . $status . ' ' . $this->codes[$status];
-        header($status_header);
+        // status
+        $this->sendStatusHeader($status);
 
         // cors
         \barebones\Barebones::$requestHandler->sendCorsHeaders();
 
         // content type headers
-        $contentType = 'application/json';
-        header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
-        header("Content-type: $contentType");
+        $this->sendContentTypeHeaders('application/json');
 
     }
 

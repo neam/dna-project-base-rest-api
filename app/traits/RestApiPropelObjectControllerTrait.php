@@ -1,5 +1,7 @@
 <?php
 
+use Propel\Runtime\Propel;
+
 trait RestApiPropelObjectControllerTrait
 {
 
@@ -9,9 +11,7 @@ trait RestApiPropelObjectControllerTrait
     public function getModel()
     {
         $id = $this->request->getParam('id');
-        $modelName = '\\propel\\models\\' . ucfirst($this->_modelName);
-
-        var_dump(__LINE__, $this->_modelName, $modelName, class_exists($modelName));die();
+        $modelName = '\\propel\\models\\' . ucfirst(str_replace("RestApi", "", $this->_modelName));
         if (empty($this->_modelName) || !class_exists($modelName)) {
             throw new CHttpException(500, 'Invalid configuration');
         }
@@ -40,12 +40,12 @@ trait RestApiPropelObjectControllerTrait
         // Make sure the filter parameters are allowed for rest-filtering
         if (!empty($filterBy) && is_array($filterBy)) {
             foreach ($filterBy as $key => $val) {
-                if (!is_null(Yii::app()->request->getParam($val))) {
+                if (!is_null($this->request->getParam($val))) {
                     // Add model name if no relation is specified
                     if (stripos($key, '.') === false) {
                         $key = $query->getModelShortName() . '.' . $key;
                     }
-                    $param = Yii::app()->request->getParam($val);
+                    $param = $this->request->getParam($val);
                     if ($param === $this->nullString) {
                         $query->where($key . ' IS NULL');
                     } elseif ($param === "<>" . $this->nullString) {
@@ -69,12 +69,12 @@ trait RestApiPropelObjectControllerTrait
         $this->applyFilterQuery($filterBy, $query);
 
         /*
-        $c->limit = (int) (($limit = Yii::app()->request->getParam($this->limit)) ? $limit : $this->defaultLimit);
-        $page = (int) Yii::app()->request->getParam($this->page) - 1;
+        $c->limit = (int) (($limit = $this->request->getParam($this->limit)) ? $limit : $this->defaultLimit);
+        $page = (int) $this->request->getParam($this->page) - 1;
         $c->offset = ($offset = $limit * $page) ? $offset : 0;
         */
 
-        $orderParam = Yii::app()->request->getParam($this->order);
+        $orderParam = $this->request->getParam($this->order);
 
         if (!empty($orderParam)) {
 
@@ -98,7 +98,7 @@ trait RestApiPropelObjectControllerTrait
         }
 
         /*
-        $reverse = Yii::app()->request->getParam('reverse');
+        $reverse = $this->request->getParam('reverse');
         if ($reverse == 1) {
             $c->order .= " DESC";
         } else {
@@ -123,7 +123,7 @@ trait RestApiPropelObjectControllerTrait
         }
 
         // Initiate propel object query
-        $propelObjectQueryClass = '\\propel\\models\\' . str_replace("RestApi", "", get_class($model)) . "Query";
+        $propelObjectQueryClass = get_class($model) . "Query";
 
         /** @var \Propel\Runtime\ActiveQuery\ModelCriteria $query */
         $query = $propelObjectQueryClass::create();
@@ -135,15 +135,15 @@ trait RestApiPropelObjectControllerTrait
         //var_dump(__LINE__, $query->toString());
 
         // Get pagination options from request parameters
-        $pageSize = (int) Yii::app()->request->getParam($this->limit);
-        $page = (int) Yii::app()->request->getParam($this->page);
+        $pageSize = (int) $this->request->getParam($this->limit);
+        $page = (int) $this->request->getParam($this->page);
 
         // Support global (as in all item types) per-request defaults
         if (empty($pageSize)) {
-            $pageSize = (int) Yii::app()->request->getParam("default_limit");
+            $pageSize = (int) $this->request->getParam("default_limit");
         }
         if (empty($page)) {
-            $page = (int) Yii::app()->request->getParam("default_page");
+            $page = (int) $this->request->getParam("default_page");
         }
 
         // Always set a page size
@@ -171,7 +171,8 @@ trait RestApiPropelObjectControllerTrait
 
         if ($models) {
             foreach ($models as $item) {
-                $result["items"][] = $model::getApiAttributes($item);
+                $restApiModelClass = $this->_modelName;
+                $result["items"][] = $restApiModelClass::getApiAttributes($item);
             }
         }
 
@@ -212,10 +213,10 @@ trait RestApiPropelObjectControllerTrait
     {
 
         // Disable propel instance pooling for update requests
-        \Propel\Runtime\Propel::disableInstancePooling();
+        Propel::disableInstancePooling();
 
         // set autocommit to 0 to prevent saving of data within transaction
-        Yii::app()->db->createCommand("SET autocommit=0")->execute();
+        Propel::getWriteConnection()->exec("SET autocommit=0");
 
         // start transaction
         $transaction = Yii::app()->db->beginTransaction();
@@ -251,7 +252,7 @@ trait RestApiPropelObjectControllerTrait
     {
 
         // Disable propel instance pooling for update requests
-        \Propel\Runtime\Propel::disableInstancePooling();
+        Propel::disableInstancePooling();
 
         // Ordinary update logic
         $requestAttributes = Yii::app()->request->getAllRestParams();
@@ -278,7 +279,7 @@ trait RestApiPropelObjectControllerTrait
     {
 
         // Disable propel instance pooling for update requests
-        \Propel\Runtime\Propel::disableInstancePooling();
+        Propel::disableInstancePooling();
 
 
         // Ordinary update logic
@@ -295,7 +296,8 @@ trait RestApiPropelObjectControllerTrait
     {
 
         $model = $this->getModel();
-        $this->sendResponse(200, $model->getAllAttributes());
+        $restApiModelClass = $this->_modelName;
+        $this->sendResponse(200, $restApiModelClass::getApiAttributes($model));
 
     }
 
