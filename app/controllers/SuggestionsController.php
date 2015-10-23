@@ -33,16 +33,14 @@ class SuggestionsController extends AppRestController
      * array('<version>/<controller>/create', 'pattern' => '<version:v\d+>/<controller:\w+>', 'verb' => 'POST'),
      *
      * @throws CDbException
-     * @throws CException
      * @throws CHttpException
      * @throws Exception
      */
     public function actionCreate()
     {
 
-        $suggestions = Yii::app()->request->getParam('suggestions');
-        $save = Yii::app()->request->getParam('save');
-        $filters = Yii::app()->request->getParam('filters');
+        $suggestions = $this->request->getParam('suggestions');
+        $save = $this->request->getParam('save');
 
         if (empty($suggestions)) {
             throw new CHttpException(401, "No suggestions requested");
@@ -52,22 +50,16 @@ class SuggestionsController extends AppRestController
             $suggestions = [$suggestions];
         }
 
-        $postedAlgorithms = $suggestions;
-        $algorithms = Suggestions::preparePostedAlgorithmData($postedAlgorithms);
-
         $itemTypesAffectedByAlgorithms = Suggestions::getItemTypesAffectedByAlgorithms(
-            $algorithms,
+            $suggestions,
             Suggestions::ANY
         );
 
         if (empty($itemTypesAffectedByAlgorithms)) {
-            throw new CException("No item types affected by selected algorithms");
+            throw new Exception("No item types affected by selected algorithms");
         }
 
-        // Disable propel instance pooling for suggestion requests
-        \Propel\Runtime\Propel::disableInstancePooling();
-
-        $results = Suggestions::run($algorithms);
+        $results = Suggestions::run($suggestions);
 
         if ($save) {
             $results["transaction"]->commit();
@@ -77,10 +69,10 @@ class SuggestionsController extends AppRestController
 
         $return = [];
 
-        // We set the filter params in $_GET so that the controller methods pick them up when they use getParam()
-        foreach ((array) $filters as $key => $filter) {
-            $_GET[$key] = $filter;
-        }
+        $itemTypesAffectedByAlgorithms = Suggestions::getItemTypesAffectedByAlgorithms(
+            $suggestions,
+            Suggestions::ANY
+        );
 
         foreach ($itemTypesAffectedByAlgorithms as $itemTypeAffected) {
             $modelClassSingular = $itemTypeAffected;
@@ -98,7 +90,7 @@ class SuggestionsController extends AppRestController
         // Rollback if we are not saving
 
         if (!$save) {
-            Suggestions::rollbackTransactionAndReclaimAutoIncrement($algorithms, $results["transaction"]);
+            Suggestions::rollbackTransactionAndReclaimAutoIncrement($suggestions, $results["transaction"]);
         }
 
         // Send response

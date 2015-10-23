@@ -1,47 +1,30 @@
 <?php
 
+use Propel\Runtime\Propel;
+use Propel\Runtime\Exception\PropelException;
+use barebones\HttpException;
+
 trait RestApiPropelObjectControllerTrait
 {
-
-    public function loadModel($id)
-    {
-        if (is_int($id) || ctype_digit($id)) {
-            $model = CActiveRecord::model($this->_modelName)->findByPk($id);
-        } else {
-            $language = $this->request->getParam('lang', Yii::app()->getLanguage());
-            $attribute = "slug_{$language}";
-            $finder = CActiveRecord::model($this->_modelName);
-            if ($finder->hasAttribute($attribute)) {
-                // the slugs are prefixed by a ":" character, due to url rule collisions
-                $slug = ltrim($id, ':');
-                $model = $finder->findByattributes(array($attribute => $slug));
-            } else {
-                $model = null;
-            }
-        }
-        if ($model === null) {
-            $this->sendResponse(404);
-        }
-        return $model;
-    }
 
     /**
      * @inheritdoc
      */
-    public function getModel($scenario = '')
+    public function getModel()
     {
         $id = $this->request->getParam('id');
-        $modelName = ucfirst($this->_modelName);
-        if (empty($this->_modelName) && class_exists($modelName)) {
-            $this->sendResponse(400);
+        $modelName = '\\propel\\models\\' . ucfirst(str_replace("RestApi", "", $this->_modelName));
+        if (empty($this->_modelName) || !class_exists($modelName)) {
+            throw new CHttpException(500, 'Invalid configuration');
         }
         if ($id) {
-            $model = $this->loadModel($id);
+            $queryClass = $modelName . 'Query';
+            $model = $queryClass::create()->findOneById($id);
         } else {
             $model = new $modelName();
         }
-        if ($scenario && $model) {
-            $model->setScenario($scenario);
+        if ($model === null) {
+            throw new HttpException(404);
         }
         return $model;
     }
@@ -59,12 +42,12 @@ trait RestApiPropelObjectControllerTrait
         // Make sure the filter parameters are allowed for rest-filtering
         if (!empty($filterBy) && is_array($filterBy)) {
             foreach ($filterBy as $key => $val) {
-                if (!is_null(Yii::app()->request->getParam($val))) {
+                if (!is_null($this->request->getParam($val))) {
                     // Add model name if no relation is specified
                     if (stripos($key, '.') === false) {
                         $key = $query->getModelShortName() . '.' . $key;
                     }
-                    $param = Yii::app()->request->getParam($val);
+                    $param = $this->request->getParam($val);
                     if ($param === $this->nullString) {
                         $query->where($key . ' IS NULL');
                     } elseif ($param === "<>" . $this->nullString) {
@@ -88,12 +71,12 @@ trait RestApiPropelObjectControllerTrait
         $this->applyFilterQuery($filterBy, $query);
 
         /*
-        $c->limit = (int) (($limit = Yii::app()->request->getParam($this->limit)) ? $limit : $this->defaultLimit);
-        $page = (int) Yii::app()->request->getParam($this->page) - 1;
+        $c->limit = (int) (($limit = $this->request->getParam($this->limit)) ? $limit : $this->defaultLimit);
+        $page = (int) $this->request->getParam($this->page) - 1;
         $c->offset = ($offset = $limit * $page) ? $offset : 0;
         */
 
-        $orderParam = Yii::app()->request->getParam($this->order);
+        $orderParam = $this->request->getParam($this->order);
 
         if (!empty($orderParam)) {
 
@@ -117,7 +100,7 @@ trait RestApiPropelObjectControllerTrait
         }
 
         /*
-        $reverse = Yii::app()->request->getParam('reverse');
+        $reverse = $this->request->getParam('reverse');
         if ($reverse == 1) {
             $c->order .= " DESC";
         } else {
@@ -142,7 +125,7 @@ trait RestApiPropelObjectControllerTrait
         }
 
         // Initiate propel object query
-        $propelObjectQueryClass = '\\propel\\models\\' . str_replace("RestApi", "", get_class($model)) . "Query";
+        $propelObjectQueryClass = get_class($model) . "Query";
 
         /** @var \Propel\Runtime\ActiveQuery\ModelCriteria $query */
         $query = $propelObjectQueryClass::create();
@@ -154,15 +137,15 @@ trait RestApiPropelObjectControllerTrait
         //var_dump(__LINE__, $query->toString());
 
         // Get pagination options from request parameters
-        $pageSize = (int) Yii::app()->request->getParam($this->limit);
-        $page = (int) Yii::app()->request->getParam($this->page);
+        $pageSize = (int) $this->request->getParam($this->limit);
+        $page = (int) $this->request->getParam($this->page);
 
         // Support global (as in all item types) per-request defaults
         if (empty($pageSize)) {
-            $pageSize = (int) Yii::app()->request->getParam("default_limit");
+            $pageSize = (int) $this->request->getParam("default_limit");
         }
         if (empty($page)) {
-            $page = (int) Yii::app()->request->getParam("default_page");
+            $page = (int) $this->request->getParam("default_page");
         }
 
         // Always set a page size
@@ -190,7 +173,8 @@ trait RestApiPropelObjectControllerTrait
 
         if ($models) {
             foreach ($models as $item) {
-                $result["items"][] = $model::getApiAttributes($item);
+                $restApiModelClass = $this->_modelName;
+                $result["items"][] = $restApiModelClass::getApiAttributes($item);
             }
         }
 
@@ -222,6 +206,113 @@ trait RestApiPropelObjectControllerTrait
         \Propel\Runtime\Util\PropelModelPager &$pager,
         \Propel\Runtime\ActiveQuery\ModelCriteria &$query
     ) {
+
+    }
+
+    public $scenario = null;
+
+    public function actionUpdate()
+    {
+
+        // Disable propel instance pooling for update requests
+        Propel::disableInstancePooling();
+
+        // PDO
+        $pdo = Propel::getWriteConnection('default');
+
+        // set autocommit to 0 to prevent saving of data within transaction
+        $pdo->exec("SET autocommit=0");
+
+        // start transaction
+        $pdo->beginTransaction();
+        try {
+
+            $this->request->parseJsonParams();
+            $requestAttributes = $this->request->getAllRestParams();
+
+            $model = $this->getModel();
+            $restApiModelClass = $this->_modelName;
+            $restApiModelClass::setUpdateAttributes($model, $requestAttributes);
+            $model->save();
+
+            $pdo->commit();
+            $this->sendResponse(200, $restApiModelClass::getApiAttributes($model));
+
+        } catch (PDOException $e) {
+
+            $pdo->rollback();
+            throw $e;
+
+        } catch (PropelException $e) {
+
+            $pdo->rollback();
+            $this->sendResponse(500, array('errors' => $e->getMessage()));
+            exit;
+
+        }
+
+    }
+
+    public function actionCreate()
+    {
+
+        // Disable propel instance pooling for update requests
+        Propel::disableInstancePooling();
+
+        // PDO
+        $pdo = Propel::getWriteConnection('default');
+
+        // set autocommit to 0 to prevent saving of data within transaction
+        $pdo->exec("SET autocommit=0");
+
+        // start transaction
+        $pdo->beginTransaction();
+        try {
+
+            $this->request->parseJsonParams();
+            $requestAttributes = $this->request->getAllRestParams();
+
+            $model = $this->getModel();
+            $restApiModelClass = $this->_modelName;
+            $restApiModelClass::setCreateAttributes($model, $requestAttributes);
+            $model->save();
+
+            $pdo->commit();
+            $this->sendResponse(200, $restApiModelClass::getApiAttributes($model));
+
+        } catch (PDOException $e) {
+
+            $pdo->rollback();
+            throw $e;
+
+        } catch (PropelException $e) {
+
+            $pdo->rollback();
+            throw $e;
+
+        }
+
+    }
+
+    public function actionDelete()
+    {
+
+        // Disable propel instance pooling for update requests
+        Propel::disableInstancePooling();
+
+        $model = $this->getModel();
+        $id = $model->getId();
+        $model->delete();
+        $this->sendResponse(200, array('id' => $id));
+
+    }
+
+    public function actionGet()
+    {
+
+        $model = $this->getModel();
+        $restApiModelClass = $this->_modelName;
+        $this->sendResponse(200, $restApiModelClass::getApiAttributes($model));
 
     }
 
