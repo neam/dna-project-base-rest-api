@@ -6,6 +6,7 @@ use propel\models\Account;
 use propel\models\AccountQuery;
 use propel\models\Auth0User;
 use propel\models\Auth0UserQuery;
+use Propel\Runtime\Propel;
 
 class WebUser
 {
@@ -185,7 +186,9 @@ class WebUser
         $jwtPayload = $this->getJwtPayload();
         $dataProfile = DATA;
         if (isset($jwtPayload->app_metadata->r0->permissions->$dataProfile) && $jwtPayload->app_metadata->r0->permissions->$dataProfile->superuser == 1) {
-            $account->superuser = 1;
+            $account->setSuperuser(1);
+        } else {
+            $account->setSuperuser(0);
         }
         //PermissionHelper::addAccountToGroup($this->id, Group::FOO, Role::GROUP_MEMBER);
 
@@ -195,9 +198,8 @@ class WebUser
         $auth0User->setAuth0LastVerifiedTokenExpires($jwtPayload->exp);
 
         // Save synchronized account info
-        if (!$auth0User->save()) {
-            throw new SaveException($auth0User);
-        }
+        $auth0User->save();
+        $account->save();
 
         // Actually login
         $this->setId($account->getId());
@@ -206,25 +208,21 @@ class WebUser
 
     protected function getAuth0User()
     {
-        if (empty($this->auth0UserId)) {
+        if (empty($this->getAuth0UserId())) {
             throw new Auth0UserIdNotSetException();
         }
         $jwtPayload = $this->getJwtPayload();
         if (empty($jwtPayload)) {
             throw new JwtPayloadNotAvailableException();
         }
-        $auth0UserModel = Auth0User::model();
-        $auth0User = $auth0UserModel->findByAttributes(
-            ["auth0_app" => AUTH0_APP, "auth0_user_id" => $this->getAuth0UserId()]
-        );
+        $auth0UserQuery = Auth0UserQuery::create();
+        $auth0User = $auth0UserQuery->filterByAuth0App(AUTH0_APP)->filterByAuth0UserId($this->getAuth0UserId())->findOne();
         if ($auth0User === null) {
             // Create new auth0 user entry
             $auth0User = new Auth0User();
-            $auth0User->auth0_app = AUTH0_APP;
-            $auth0User->auth0_user_id = $this->getAuth0UserId();
-            if (!$auth0User->save()) {
-                throw new SaveException($auth0User);
-            }
+            $auth0User->setAuth0App(AUTH0_APP);
+            $auth0User->setAuth0UserId($this->getAuth0UserId());
+            $auth0User->save();
         }
         return $auth0User;
     }
@@ -237,29 +235,36 @@ class WebUser
             throw new JwtPayloadNotAvailableException();
         }
 
-        $transaction = Barebones::$app->db->beginTransaction();
+        // PDO
+        $pdo = Propel::getWriteConnection('default');
+
+        // set autocommit to 0 to prevent saving of data within transaction
+        $pdo->exec("SET autocommit=0");
+
+        // start transaction
+        $pdo->beginTransaction();
 
         try {
 
-            if (empty($auth0User->account)) {
+            if (empty($auth0User->getAccount())) {
 
                 // Check if we are to automatically create new account (having a permissions object for the data profile means that an account is allowed)
                 $dataProfile = DATA;
                 if (isset($jwtPayload->app_metadata->r0->permissions->$dataProfile)) {
-                    $account = $this->ensureActiveMatchingAccount($auth0User, $jwtPayload);
+                    $this->ensureActiveMatchingAccount($auth0User, $jwtPayload);
                 } else {
                     throw new NoAccountMatchingAuth0UserIdException;
                 }
 
             }
 
-            $transaction->commit();
+            $pdo->commit();
         } catch (Exception $e) {
-            $transaction->rollback();
+            $pdo->rollback();
             throw $e;
         }
 
-        return $auth0User->account;
+        return $auth0User->getAccount();
     }
 
     /**
@@ -271,12 +276,12 @@ class WebUser
         // First match against linked accounts (TODO)
         // TODO find by attributes $auth0UserModel
 
-        $accountModel = Account::model();
+        $accountQuery = AccountQuery::create();
         $account = null;
 
         if (isset($jwtPayload->email)) {
             // We may already have an account with this email with another auth0 app, check this first
-            $accountByEmail = $accountModel->findByAttributes(["email" => $jwtPayload->email]);
+            $accountByEmail = $accountQuery->findOneByEmail($jwtPayload->email);
             if (!empty($accountByEmail)) {
                 $account = $accountByEmail;
             }
@@ -284,21 +289,17 @@ class WebUser
 
         if (empty($account)) {
             $account = new Account();
-            $account->username = "auth0_" . uniqid();
+            $account->setUsername("auth0_" . uniqid());
         }
 
-        $account->password = uniqid() . uniqid();
-        $account->email = isset($jwtPayload->email) ? $jwtPayload->email : null;
+        $account->setPassword(uniqid() . uniqid());
+        $account->setSalt(uniqid() . uniqid());
+        $account->setEmail(isset($jwtPayload->email) ? $jwtPayload->email : null);
 
         //$account = $account->unrestricted();
-        if (!$account->save()) {
-            throw new SaveException($account);
-        }
-        $auth0User->account_id = $account->id;
-        $auth0User->account = $account;
-        if (!$auth0User->save()) {
-            throw new SaveException($auth0User);
-        }
+        $account->save();
+        $auth0User->setAccountId($account->getId());
+        $auth0User->save();
 
     }
 
