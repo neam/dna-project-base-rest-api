@@ -43,6 +43,7 @@ class SuggestionsController extends AppRestController
 
         $suggestions = $this->request->getParam('suggestions');
         $save = $this->request->getParam('save');
+        $filters = $this->request->getParam('filters');
 
         if (empty($suggestions)) {
             throw new HttpException(401, "No suggestions requested");
@@ -52,8 +53,11 @@ class SuggestionsController extends AppRestController
             $suggestions = [$suggestions];
         }
 
+        $postedAlgorithms = $suggestions;
+        $algorithms = Suggestions::preparePostedAlgorithmData($postedAlgorithms);
+
         $itemTypesAffectedByAlgorithms = Suggestions::getItemTypesAffectedByAlgorithms(
-            $suggestions,
+            $algorithms,
             Suggestions::ANY
         );
 
@@ -61,7 +65,10 @@ class SuggestionsController extends AppRestController
             throw new Exception("No item types affected by selected algorithms");
         }
 
-        $results = Suggestions::run($suggestions);
+        // Disable propel instance pooling for suggestion requests
+        \Propel\Runtime\Propel::disableInstancePooling();
+
+        $results = Suggestions::run($algorithms);
 
         if ($save) {
             $results["transaction"]->commit();
@@ -71,10 +78,10 @@ class SuggestionsController extends AppRestController
 
         $return = [];
 
-        $itemTypesAffectedByAlgorithms = Suggestions::getItemTypesAffectedByAlgorithms(
-            $suggestions,
-            Suggestions::ANY
-        );
+        // We set the filter params in $_GET so that the controller methods pick them up when they use getParam()
+        foreach ((array) $filters as $key => $filter) {
+            $_GET[$key] = $filter;
+        }
 
         foreach ($itemTypesAffectedByAlgorithms as $itemTypeAffected) {
             $modelClassSingular = $itemTypeAffected;
@@ -92,7 +99,7 @@ class SuggestionsController extends AppRestController
         // Rollback if we are not saving
 
         if (!$save) {
-            Suggestions::rollbackTransactionAndReclaimAutoIncrement($suggestions, $results["transaction"]);
+            Suggestions::rollbackTransactionAndReclaimAutoIncrement($algorithms, $results["transaction"]);
         }
 
         // Send response
