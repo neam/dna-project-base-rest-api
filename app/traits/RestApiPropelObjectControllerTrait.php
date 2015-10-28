@@ -227,7 +227,6 @@ trait RestApiPropelObjectControllerTrait
         $pdo->beginTransaction();
         try {
 
-            $this->request->parseJsonParams();
             $requestAttributes = $this->request->getAllRestParams();
 
             $model = $this->getModel();
@@ -269,7 +268,6 @@ trait RestApiPropelObjectControllerTrait
         $pdo->beginTransaction();
         try {
 
-            $this->request->parseJsonParams();
             $requestAttributes = $this->request->getAllRestParams();
 
             $model = $this->getModel();

@@ -1,5 +1,7 @@
 <?php
 
+use barebones\HttpException;
+
 class SuggestionsController extends AppRestController
 {
 
@@ -43,7 +45,7 @@ class SuggestionsController extends AppRestController
         $save = $this->request->getParam('save');
 
         if (empty($suggestions)) {
-            throw new CHttpException(401, "No suggestions requested");
+            throw new HttpException(401, "No suggestions requested");
         }
 
         if (!empty($suggestions) && !is_array($suggestions)) {

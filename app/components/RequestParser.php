@@ -5,6 +5,10 @@ class RequestParser
 
     private $_restParams = array();
 
+    public function __construct() {
+        $this->parseJsonParams();
+    }
+
     public function getPut($name, $defaultValue = null)
     {
         if ($this->_restParams === array()) {
