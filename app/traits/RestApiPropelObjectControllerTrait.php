@@ -15,7 +15,7 @@ trait RestApiPropelObjectControllerTrait
         $id = $this->request->getParam('id');
         $modelName = '\\propel\\models\\' . ucfirst(str_replace("RestApi", "", $this->_modelName));
         if (empty($this->_modelName) || !class_exists($modelName)) {
-            throw new CHttpException(500, 'Invalid configuration');
+            throw new HttpException(500, 'Invalid configuration');
         }
         if ($id) {
             $queryClass = $modelName . 'Query';
