@@ -88,11 +88,10 @@ class SuggestionsController extends AppRestController
             $modelClassSingularWords = PhInflector::camel2words($modelClassSingular);
             $modelClassPluralWords = PhInflector::pluralize($modelClassSingularWords);
             $modelClassPlural = PhInflector::camelize($modelClassPluralWords);
-            $restApiModelClass = "RestApi" . $itemTypeAffected;
             $controllerClass = $itemTypeAffected . "Controller";
             $controller = new $controllerClass(false);
             $return[lcfirst($modelClassPlural)] = $controller->getPaginatedListActionResults(
-                $restApiModelClass::model()
+                Suggestions::getModelOfItemType($itemTypeAffected)
             );
         }
 
