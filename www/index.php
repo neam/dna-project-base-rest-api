@@ -110,6 +110,7 @@ try {
     // execute action
     $controller->$actionMethod();
 
+/*
 } catch (\PDOException $e) {
     $requestHandler->displayException($e);
     throw $e;
@@ -122,7 +123,13 @@ try {
 } catch (HttpException $e) {
     $requestHandler->displayException($e);
     throw $e;
+*/
 } catch (\Exception $e) {
+    // Ensures that the exception is logged to sentry
+    SentryErrorHandling::captureException($e);
+    // Ensures a proper response is returned to the client
     $requestHandler->displayException($e);
+    // Makes the exception logged in the error log and the request is terminated
     throw $e;
 }
+
