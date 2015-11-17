@@ -26,6 +26,7 @@ try {
 
     // the most barebones response class possible
     Barebones::init(new App(), new RequestHandler());
+    /** @var RequestHandler $requestHandler */
     $requestHandler = Barebones::$requestHandler;
 
     // handle OPTIONS requests in the most barebones manner possible

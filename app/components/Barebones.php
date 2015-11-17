@@ -19,7 +19,7 @@ class Barebones
     static public $app;
     static public $requestHandler;
 
-    static public function init($app, $requestHandler)
+    static public function init(App $app, RequestHandler $requestHandler)
     {
         static::$app = $app;
         static::$requestHandler = $requestHandler;
