@@ -30,7 +30,7 @@
   "require": {
     "php": ">=5.4.0",
     "firebase/php-jwt": "~3.0",
-    "raven/raven": "0.8.*"
+    "raven/raven": ">=0.8.0"
   },
   "require-dev": {
   },
