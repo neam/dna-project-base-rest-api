@@ -52,6 +52,12 @@ class RelatedItems
         if (!method_exists($item, $relatedItemMethod)) {
             $relatedItemMethod = "get{$relatedModelClass}RelatedBy" . $relationAttributeCamelized;
         }
+        if (!method_exists($item, $relatedItemMethod)) {
+            throw new Exception(
+                "Bad propel method name guess: " . get_class($item) . "->$relatedItemMethod() does not exist"
+            );
+        }
+
         /** @var \Propel\Runtime\ActiveRecord\ActiveRecordInterface $relatedItem */
         $relatedItem = $item->$relatedItemMethod();
         if (empty($relatedItem)) {
