@@ -16,8 +16,11 @@ require_once("$root/dna/vendor/autoload.php");
 // root-level bootstrap logic, including propel orm init
 require("$root/bootstrap.php");
 
-// activate error handling via sentry - note: this runs ini_set('display_errors', false)
-SentryErrorHandling::activate(SENTRY_DSN);
+// activate error handling via sentry
+$sentry = defined('SENTRY_DSN') && !empty(SENTRY_DSN);
+if ($sentry) {
+    SentryErrorHandling::activate(SENTRY_DSN);
+}
 
 try {
 
@@ -110,23 +113,25 @@ try {
     // execute action
     $controller->$actionMethod();
 
-/*
-} catch (\PDOException $e) {
-    $requestHandler->displayException($e);
-    throw $e;
-} catch (\Propel\Runtime\Connection\Exception\ConnectionException $e) {
-    $requestHandler->displayException($e);
-    throw $e;
-} catch (PropelException $e) {
-    $requestHandler->displayException($e);
-    throw $e;
-} catch (HttpException $e) {
-    $requestHandler->displayException($e);
-    throw $e;
-*/
+    /*
+    } catch (\PDOException $e) {
+        $requestHandler->displayException($e);
+        throw $e;
+    } catch (\Propel\Runtime\Connection\Exception\ConnectionException $e) {
+        $requestHandler->displayException($e);
+        throw $e;
+    } catch (PropelException $e) {
+        $requestHandler->displayException($e);
+        throw $e;
+    } catch (HttpException $e) {
+        $requestHandler->displayException($e);
+        throw $e;
+    */
 } catch (\Exception $e) {
-    // Ensures that the exception is logged to sentry
-    SentryErrorHandling::captureException($e);
+    if ($sentry) {
+        // Ensures that the exception is logged to sentry
+        SentryErrorHandling::captureException($e);
+    }
     // Ensures a proper response is returned to the client
     $requestHandler->displayException($e);
     // Makes the exception logged in the error log and the request is terminated
