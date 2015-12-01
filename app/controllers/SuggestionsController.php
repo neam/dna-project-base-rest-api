@@ -54,7 +54,8 @@ class SuggestionsController extends AppRestController
         }
 
         $postedAlgorithms = $suggestions;
-        $algorithms = Suggestions::preparePostedAlgorithmData($postedAlgorithms);
+        $requiresRollbackSupport = !$save;
+        $algorithms = Suggestions::preparePostedAlgorithmData($postedAlgorithms, $requiresRollbackSupport);
 
         $itemTypesAffectedByAlgorithms = Suggestions::getItemTypesAffectedByAlgorithms(
             $algorithms,
