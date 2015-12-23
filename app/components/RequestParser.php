@@ -43,16 +43,16 @@ class RequestParser
                 $this->_restParams
             );
         }
-            $result = array();
         if ($ignoreInlineParams) {
+            $result = new stdClass;
             foreach ($this->_restParams as $key => $val) {
                 if (!preg_match('|^_|si', $key)) {
-                    $result[$key] = $val;
+                    $result->$key = $val;
                 }
             }
             return $result;
         }
-        return $this->_restParams;
+        return (object) $this->_restParams;
     }
 
 
