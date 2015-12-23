@@ -69,4 +69,34 @@ class RelatedItems
         return $related;
     }
 
+    public static function setRelatedItemAttributes(
+        $relatedModelClass,
+        \Propel\Runtime\ActiveRecord\ActiveRecordInterface $item,
+        $requestAttributes,
+        $attribute,
+        $fkAttribute,
+        $relatedItemSetterMethod
+    ) {
+
+        // Update/create new if the attributes array is set in the related item request
+        if (isset($requestAttributes->attributes->$attribute->attributes)) {
+            // Existing or new
+            if ($requestAttributes->attributes->$attribute->id === null) {
+                $relatedItemClass = "\\propel\\models\\{$relatedModelClass}";
+                $relatedItem = new $relatedItemClass;
+            } else {
+                $relatedItemQueryClass = "\\propel\\models\\{$relatedModelClass}Query";
+                $relatedItem = $relatedItemQueryClass::create()->findPk(
+                    $requestAttributes->attributes->$attribute->id
+                );
+            }
+            $relatedRestApiItemClass = "RestApi{$relatedModelClass}";
+            $relatedRestApiItemClass::setItemAttributes($relatedItem, $requestAttributes->attributes->$attribute);
+            $item->$relatedItemSetterMethod($relatedItem);
+        } else {
+            $row[$fkAttribute] = $requestAttributes->attributes->$attribute->id;
+        }
+
+    }
+
 }
