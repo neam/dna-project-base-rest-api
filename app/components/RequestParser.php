@@ -32,10 +32,10 @@ class RequestParser
     }
 
     /**
-     * return all posible params from a request
+     * Return all possible params from a request
      * @return array()
      */
-    public function getAllRestParams($ignorInlineParams = false)
+    public function getAllRestParams($ignoreInlineParams = false)
     {
         if ($this->_restParams === array()) {
             $this->_restParams = array_merge(
@@ -43,8 +43,8 @@ class RequestParser
                 $this->_restParams
             );
         }
-        if ($ignorInlineParams) {
             $result = array();
+        if ($ignoreInlineParams) {
             foreach ($this->_restParams as $key => $val) {
                 if (!preg_match('|^_|si', $key)) {
                     $result[$key] = $val;
