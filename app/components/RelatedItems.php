@@ -19,35 +19,42 @@
 class RelatedItems
 {
 
+    public static function getRelatedItems(
+        $relatedModelClass,
+        \Propel\Runtime\ActiveRecord\ActiveRecordInterface $item,
+        $relationAttributeCamelized
+    ) {
+        $relatedItemsMethod = "get{$relatedModelClass}s";
+        if (!method_exists($item, $relatedItemsMethod)) {
+            $relatedItemsMethod = "get{$relatedModelClass}sRelatedBy" . $relationAttributeCamelized;
+        }
+        $relatedItems = $item->$relatedItemsMethod();
+        return $relatedItems;
+    }
+
     public static function formatItems(
         $relatedModelClass,
         \Propel\Runtime\ActiveRecord\ActiveRecordInterface $item,
         $relationAttributeCamelized,
         $level
     ) {
-        $helperClass = "RestApi" . $relatedModelClass;
-        $relatedItemsMethod = "get{$relatedModelClass}s";
-        if (!method_exists($item, $relatedItemsMethod)) {
-            $relatedItemsMethod = "get{$relatedModelClass}sRelatedBy" . $relationAttributeCamelized;
-        }
-        $relatedItems = $item->$relatedItemsMethod();
+        $relatedItems = static::getRelatedItems($relatedModelClass, $item, $relationAttributeCamelized);
+        $relatedRestApiItemClass = "RestApi" . $relatedModelClass;
         $related = array();
         $level++;
         if (!empty($relatedItems)) {
             foreach ($relatedItems as $k => $relatedItem) {
-                $related[] = $helperClass::getRelatedAttributes($relatedItem, $level);
+                $related[] = $relatedRestApiItemClass::getRelatedAttributes($relatedItem, $level);
             }
         }
         return $related;
     }
 
-    public static function formatItem(
+    public static function getRelatedItem(
         $relatedModelClass,
         \Propel\Runtime\ActiveRecord\ActiveRecordInterface $item,
-        $relationAttributeCamelized,
-        $level
+        $relationAttributeCamelized
     ) {
-        $helperClass = "RestApi" . $relatedModelClass;
         $relatedItemMethod = "get{$relatedModelClass}";
         if (!method_exists($item, $relatedItemMethod)) {
             $relatedItemMethod = "get{$relatedModelClass}RelatedBy" . $relationAttributeCamelized;
@@ -61,11 +68,22 @@ class RelatedItems
         /** @var \Propel\Runtime\ActiveRecord\ActiveRecordInterface $relatedItem */
         $relatedItem = $item->$relatedItemMethod();
         if (empty($relatedItem)) {
-            $relatedItemPropelObjectClass = "\\propel\\models\\$relatedModelClass";
-            $relatedItem = new $relatedItemPropelObjectClass;
+            $relatedItemClass = "\\propel\\models\\$relatedModelClass";
+            $relatedItem = new $relatedItemClass;
         }
+        return $relatedItem;
+    }
+
+    public static function formatItem(
+        $relatedModelClass,
+        \Propel\Runtime\ActiveRecord\ActiveRecordInterface $item,
+        $relationAttributeCamelized,
+        $level
+    ) {
+        $relatedItem = static::getRelatedItem($relatedModelClass, $item, $relationAttributeCamelized);
+        $relatedRestApiItemClass = "RestApi" . $relatedModelClass;
         $level++;
-        $related = $helperClass::getRelatedAttributes($relatedItem, $level);
+        $related = $relatedRestApiItemClass::getRelatedAttributes($relatedItem, $level);
         return $related;
     }
 
