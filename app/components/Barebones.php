@@ -165,15 +165,16 @@ class RequestHandler
 
     public function displayException(Exception $e)
     {
+        $statusCode = ($e instanceof HttpException) ? $e->statusCode : 500;
         $response = [];
-        $response["status"] = ($e instanceof HttpException) ? $e->statusCode : 500;
+        $response["status"] = $statusCode;
         if (YII_DEBUG) {
             $className = get_class($e);
             $response["debug"] = [];
             $response["debug"]["message"] = "{$className}({$e->getCode()}): {$e->getMessage()} ({$e->getFile()}:{$e->getLine()})";
             $response["debug"]["trace"] = $e->getTrace();
         }
-        $this->sendResponse(500, $response);
+        $this->sendResponse($statusCode, $response);
     }
 
 }
@@ -194,6 +195,9 @@ class HttpException extends Exception
     public function __construct($status, $message = null, $code = 0)
     {
         $this->statusCode = $status;
+        if (is_null($message)) {
+            $message = "HTTP Exception - status code: $status";
+        }
         parent::__construct($message, $code);
     }
 }
