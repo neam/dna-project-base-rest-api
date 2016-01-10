@@ -44,7 +44,7 @@ class RelatedItems
         $level++;
         if (!empty($relatedItems)) {
             foreach ($relatedItems as $k => $relatedItem) {
-                $related[] = $relatedRestApiItemClass::getRelatedAttributes($relatedItem, $level);
+                $related[] = $relatedRestApiItemClass::getWrapperAttributes($relatedItem, $level);
             }
         }
         return $related;
