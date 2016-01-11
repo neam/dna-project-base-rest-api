@@ -83,18 +83,23 @@ trait RestApiPropelObjectControllerTrait
             // Split into propel syntax, for instance 'Foo.official_ordinal DESC, Bar.ordinal'
             $orderByStatements = explode(",", $orderParam);
             foreach ($orderByStatements as $orderByStatement) {
+                // Handle DESC/ASC
+                $order = null;
                 if (stripos($orderByStatement, ' desc') !== false) {
                     $columnName = str_ireplace(' desc', '', $orderByStatement);
                     $order = 'desc';
-                    $query->orderBy(trim($columnName), $order);
                 } elseif (stripos($orderByStatement, ' asc') !== false) {
                     $columnName = str_ireplace(' asc', '', $orderByStatement);
                     $order = 'asc';
-                    $query->orderBy(trim($columnName), $order);
                 } else {
                     $columnName = $orderByStatement;
-                    $query->orderBy(trim($columnName));
                 }
+                // Handle calculated columns
+                if (stripos($columnName, ' is null') !== false) {
+                    $query->withColumn($columnName, md5($columnName));
+                    $columnName = md5($columnName);
+                }
+                $query->orderBy(trim($columnName), $order);
             }
 
         }
