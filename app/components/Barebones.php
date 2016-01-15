@@ -192,12 +192,12 @@ class HttpException extends Exception
      * @param string $message error message
      * @param integer $code error code
      */
-    public function __construct($status, $message = null, $code = 0)
+    public function __construct($status, $message = null, $code = 0, Exception $previous = null)
     {
         $this->statusCode = $status;
         if (is_null($message)) {
             $message = "HTTP Exception - status code: $status";
         }
-        parent::__construct($message, $code);
+        parent::__construct($message, $code, $previous);
     }
 }

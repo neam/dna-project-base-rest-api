@@ -65,11 +65,10 @@ class RequestParser
         $contentType = strtok($_SERVER['CONTENT_TYPE'], ';');
         if ($contentType == 'application/json') {
             $requestBody = file_get_contents("php://input");
-            $decoded = json_decode($requestBody);
-            if ($decoded === null
-                && json_last_error() !== JSON_ERROR_NONE
-            ) {
-                throw new \barebones\HttpException(400, "Request body contains invalid JSON");
+            try {
+                $decoded = \GuzzleHttp\Utils::jsonDecode($requestBody);
+            } catch (InvalidArgumentException $e) {
+                throw new \barebones\HttpException(400, "Request body contains invalid JSON", null, $e);
             }
             $this->_restParams = array_merge((array) $decoded, $this->_restParams);
         }
