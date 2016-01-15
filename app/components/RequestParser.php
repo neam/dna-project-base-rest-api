@@ -5,7 +5,8 @@ class RequestParser
 
     private $_restParams = array();
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->parseJsonParams();
     }
 
@@ -54,7 +55,6 @@ class RequestParser
         }
         return (object) $this->_restParams;
     }
-
 
     public function parseJsonParams()
     {
