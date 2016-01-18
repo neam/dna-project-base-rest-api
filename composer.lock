@@ -56,12 +56,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/getsentry/raven-php.git",
-                "reference": "9a114c7fa95d3c9960e6aefab47ee9657098b792"
+                "reference": "59375f93710e571c2787775c356dc972cbee90be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/getsentry/raven-php/zipball/9a114c7fa95d3c9960e6aefab47ee9657098b792",
-                "reference": "9a114c7fa95d3c9960e6aefab47ee9657098b792",
+                "url": "https://api.github.com/repos/getsentry/raven-php/zipball/59375f93710e571c2787775c356dc972cbee90be",
+                "reference": "59375f93710e571c2787775c356dc972cbee90be",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD"
+                "BSD-3-Clause"
             ],
             "authors": [
                 {
@@ -102,7 +102,7 @@
                 "log",
                 "logging"
             ],
-            "time": "2015-11-05 02:11:02"
+            "time": "2015-12-30 20:26:35"
         }
     ],
     "packages-dev": [],
