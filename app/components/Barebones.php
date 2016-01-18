@@ -201,3 +201,13 @@ class HttpException extends Exception
         parent::__construct($message, $code, $previous);
     }
 }
+
+/**
+ * Helper for var_dump() + exit style debugging
+ * @param int $code
+ */
+function corsExit($code = 1)
+{
+    RequestHandler::sendCorsHeaders();
+    exit($code);
+}
