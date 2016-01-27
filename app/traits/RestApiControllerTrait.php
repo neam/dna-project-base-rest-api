@@ -16,7 +16,8 @@ trait RestApiControllerTrait
 
     public function sendStatusHeader($status = 200)
     {
-        $statusText = array_shift(array_keys($this->codes[$status]));
+        $errorCodeKey = array_keys($this->codes[$status]);
+        $statusText = array_shift($errorCodeKey);
         $status_header = 'HTTP/1.1 ' . $status . ' ' . $statusText;
         header($status_header);
     }
