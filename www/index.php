@@ -2,6 +2,8 @@
 
 namespace barebones;
 
+use SentryErrorHandling;
+
 $appRoot = dirname(__FILE__) . DIRECTORY_SEPARATOR . '..';
 $root = dirname(
         __FILE__
@@ -128,13 +130,13 @@ try {
         throw $e;
     */
 } catch (\Exception $e) {
+    // Ensures that the exception is logged to error log
+    SentryErrorHandling::logException($e);
     if ($sentry) {
-        // Ensures that the exception is logged to sentry
+        // Ensures that the exception is sent to sentry
         SentryErrorHandling::captureException($e);
     }
     // Ensures a proper response is returned to the client
     $requestHandler->displayException($e);
-    // Makes the exception logged in the error log and the request is terminated
-    throw $e;
 }
 
