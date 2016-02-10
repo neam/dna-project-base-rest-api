@@ -232,15 +232,7 @@ trait RestApiPropelObjectControllerTrait
         $pdo->beginTransaction();
         try {
 
-            $requestAttributes = $this->request->getAllRestParams();
-
-            $model = $this->getModel();
-            $restApiModelClass = $this->_modelName;
-            $restApiModelClass::setUpdateAttributes($model, $requestAttributes);
-            $model->save();
-
-            $pdo->commit();
-            $this->sendResponse(200, $restApiModelClass::getApiAttributes($model));
+            $this->tryUpdate($pdo);
 
         } catch (PDOException $e) {
 
@@ -253,6 +245,21 @@ trait RestApiPropelObjectControllerTrait
             throw $e;
 
         }
+
+    }
+
+    protected function tryUpdate($pdo)
+    {
+
+        $requestAttributes = $this->request->getAllRestParams();
+
+        $model = $this->getModel();
+        $restApiModelClass = $this->_modelName;
+        $restApiModelClass::setUpdateAttributes($model, $requestAttributes);
+        $model->save();
+
+        $pdo->commit();
+        $this->sendResponse(200, $restApiModelClass::getApiAttributes($model));
 
     }
 
@@ -272,15 +279,7 @@ trait RestApiPropelObjectControllerTrait
         $pdo->beginTransaction();
         try {
 
-            $requestAttributes = $this->request->getAllRestParams();
-
-            $model = $this->getModel();
-            $restApiModelClass = $this->_modelName;
-            $restApiModelClass::setCreateAttributes($model, $requestAttributes);
-            $model->save();
-
-            $pdo->commit();
-            $this->sendResponse(200, $restApiModelClass::getApiAttributes($model));
+            $this->tryCreate($pdo);
 
         } catch (PDOException $e) {
 
@@ -293,6 +292,21 @@ trait RestApiPropelObjectControllerTrait
             throw $e;
 
         }
+
+    }
+
+    protected function tryCreate($pdo)
+    {
+
+        $requestAttributes = $this->request->getAllRestParams();
+
+        $model = $this->getModel();
+        $restApiModelClass = $this->_modelName;
+        $restApiModelClass::setCreateAttributes($model, $requestAttributes);
+        $model->save();
+
+        $pdo->commit();
+        $this->sendResponse(200, $restApiModelClass::getApiAttributes($model));
 
     }
 
