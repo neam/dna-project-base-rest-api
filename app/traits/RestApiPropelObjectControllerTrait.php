@@ -99,7 +99,11 @@ trait RestApiPropelObjectControllerTrait
                     $query->withColumn($columnName, md5($columnName));
                     $columnName = md5($columnName);
                 }
-                $query->orderBy(trim($columnName), $order);
+                if ($order) {
+                    $query->orderBy(trim($columnName), $order);
+                } else {
+                    $query->orderBy(trim($columnName));
+                }
             }
 
         }
