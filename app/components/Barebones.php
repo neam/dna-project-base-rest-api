@@ -117,13 +117,25 @@ class RequestHandler
         $statusCode = ($e instanceof HttpException) ? $e->statusCode : 500;
         $response = [];
         $response["status"] = $statusCode;
+        $this->wrapExceptionResponse($response, $e, false);
+        $this->sendResponse($statusCode, $response);
+    }
+
+    public function wrapExceptionResponse(& $response, \Exception $e, $previous = false)
+    {
+        $className = get_class($e);
+        $response["type"] = "{$className}({$e->getCode()})";
         if (YII_DEBUG) {
-            $className = get_class($e);
             $response["debug"] = [];
             $response["debug"]["message"] = "{$className}({$e->getCode()}): {$e->getMessage()} ({$e->getFile()}:{$e->getLine()})";
+            $response["debug"]["file"] = $e->getFile();
+            $response["debug"]["line"] = $e->getLine();
             $response["debug"]["trace"] = $e->getTrace();
         }
-        $this->sendResponse($statusCode, $response);
+        if ($e->getPrevious()) {
+            $response["previous"] = [];
+            $this->wrapExceptionResponse($response["previous"], $e->getPrevious(), true);
+        }
     }
 
 }
