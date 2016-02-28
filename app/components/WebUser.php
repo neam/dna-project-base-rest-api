@@ -148,6 +148,10 @@ class WebUser
         // Simply auto-login as admin user
         $account = AccountQuery::create()->findOneById(1);
 
+        if ($account === null) {
+            throw new CException("No local account with id 1 in the current database");
+        }
+
         $this->setId($account->getId());
 
     }
