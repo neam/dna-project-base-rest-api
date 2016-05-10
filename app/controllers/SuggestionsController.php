@@ -106,6 +106,11 @@ class SuggestionsController extends AppRestController
                 Suggestions::rollbackTransactionAndReclaimAutoIncrement($algorithms, $pdo);
             }
 
+            // Add status messages if we are in dev mode
+            if (DEV) {
+                $return["statusLog"] = Suggestions::$statusLog;
+            }
+
             // Send response
 
             $this->sendResponse(200, $return);
