@@ -69,42 +69,51 @@ class SuggestionsController extends AppRestController
         // Disable propel instance pooling for suggestion requests
         \Propel\Runtime\Propel::disableInstancePooling();
 
-        $results = Suggestions::run($algorithms);
+        $pdo = Suggestions::getPdoForSuggestions();
 
-        if ($save) {
-            $results["transaction"]->commit();
+        try {
+
+            $results = Suggestions::run($algorithms, $pdo);
+
+            if ($save) {
+                $pdo->commit();
+            }
+
+            // Return item lists of all affected item types (filtered as usual)
+
+            $return = [];
+
+            // We set the filter params in $_GET so that the controller methods pick them up when they use getParam()
+            foreach ((array) $filters as $key => $filter) {
+                $_GET[$key] = $filter;
+            }
+
+            foreach ($itemTypesAffectedByAlgorithms as $itemTypeAffected) {
+                $modelClassSingular = $itemTypeAffected;
+                $modelClassSingularWords = PhInflector::camel2words($modelClassSingular);
+                $modelClassPluralWords = PhInflector::pluralize($modelClassSingularWords);
+                $modelClassPlural = PhInflector::camelize($modelClassPluralWords);
+                $controllerClass = $itemTypeAffected . "Controller";
+                $controller = new $controllerClass(false);
+                $return[lcfirst($modelClassPlural)] = $controller->getPaginatedListActionResults(
+                    Suggestions::getModelOfItemType($itemTypeAffected)
+                );
+            }
+
+            // Rollback if we are not saving
+
+            if (!$save) {
+                Suggestions::rollbackTransactionAndReclaimAutoIncrement($algorithms, $pdo);
+            }
+
+            // Send response
+
+            $this->sendResponse(200, $return);
+
+        } catch (Exception $e) {
+            Suggestions::rollbackTransactionAndReclaimAutoIncrement($algorithms, $pdo);
+            throw $e;
         }
-
-        // Return item lists of all affected item types (filtered as usual)
-
-        $return = [];
-
-        // We set the filter params in $_GET so that the controller methods pick them up when they use getParam()
-        foreach ((array) $filters as $key => $filter) {
-            $_GET[$key] = $filter;
-        }
-
-        foreach ($itemTypesAffectedByAlgorithms as $itemTypeAffected) {
-            $modelClassSingular = $itemTypeAffected;
-            $modelClassSingularWords = PhInflector::camel2words($modelClassSingular);
-            $modelClassPluralWords = PhInflector::pluralize($modelClassSingularWords);
-            $modelClassPlural = PhInflector::camelize($modelClassPluralWords);
-            $controllerClass = $itemTypeAffected . "Controller";
-            $controller = new $controllerClass(false);
-            $return[lcfirst($modelClassPlural)] = $controller->getPaginatedListActionResults(
-                Suggestions::getModelOfItemType($itemTypeAffected)
-            );
-        }
-
-        // Rollback if we are not saving
-
-        if (!$save) {
-            Suggestions::rollbackTransactionAndReclaimAutoIncrement($algorithms, $results["transaction"]);
-        }
-
-        // Send response
-
-        $this->sendResponse(200, $return);
 
     }
 
