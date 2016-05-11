@@ -66,12 +66,12 @@ class SuggestionsController extends AppRestController
             throw new Exception("No item types affected by selected algorithms");
         }
 
-        // Disable propel instance pooling for suggestion requests
-        \Propel\Runtime\Propel::disableInstancePooling();
-
         $pdo = Suggestions::getPdoForSuggestions();
 
         try {
+
+            // Disable propel instance pooling while running algorithms
+            \Propel\Runtime\Propel::disableInstancePooling();
 
             $results = Suggestions::run($algorithms, $pdo);
 
@@ -87,6 +87,9 @@ class SuggestionsController extends AppRestController
             foreach ((array) $filters as $key => $filter) {
                 $_GET[$key] = $filter;
             }
+
+            // Enable propel instance pooling for returning the rest api response
+            \Propel\Runtime\Propel::enableInstancePooling();
 
             foreach ($itemTypesAffectedByAlgorithms as $itemTypeAffected) {
                 $modelClassSingular = $itemTypeAffected;
