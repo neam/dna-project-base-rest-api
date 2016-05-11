@@ -89,7 +89,8 @@ class SuggestionsController extends AppRestController
             }
 
             // Enable propel instance pooling for returning the rest api response
-            \Propel\Runtime\Propel::enableInstancePooling();
+            // TODO: Enable again after making sure that the same records are not supplied again and again in response listings
+            //\Propel\Runtime\Propel::enableInstancePooling();
 
             foreach ($itemTypesAffectedByAlgorithms as $itemTypeAffected) {
                 $modelClassSingular = $itemTypeAffected;
