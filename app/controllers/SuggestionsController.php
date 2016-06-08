@@ -40,48 +40,26 @@ class SuggestionsController extends AppRestController
      */
     public function actionCreate()
     {
-
         $suggestions = $this->request->getParam('suggestions');
         $save = $this->request->getParam('save');
         $filters = $this->request->getParam('filters');
+        $this->actionRun($suggestions, $save, $filters);
+    }
+
+    public function actionRun($suggestions, $save, $filters)
+    {
 
         if (empty($suggestions)) {
             throw new HttpException(401, "No suggestions requested");
         }
 
-        if (!empty($suggestions) && !is_array($suggestions)) {
-            $suggestions = [$suggestions];
-        }
+        $affectedItemTypesData = [];
 
-        $postedAlgorithms = $suggestions;
-        $requiresRollbackSupport = !$save;
-        $algorithms = Suggestions::preparePostedAlgorithmData($postedAlgorithms, $requiresRollbackSupport);
-
-        $itemTypesAffectedByAlgorithms = Suggestions::getItemTypesAffectedByAlgorithms(
-            $algorithms,
-            Suggestions::ANY
-        );
-
-        if (empty($itemTypesAffectedByAlgorithms)) {
-            throw new Exception("No item types affected by selected algorithms");
-        }
-
-        $pdo = Suggestions::getPdoForSuggestions();
-
-        try {
-
-            // Disable propel instance pooling while running algorithms
-            \Propel\Runtime\Propel::disableInstancePooling();
-
-            $results = Suggestions::run($algorithms, $pdo);
-
-            if ($save) {
-                $pdo->commit();
-            }
-
-            // Return item lists of all affected item types (filtered as usual)
-
-            $return = [];
+        // Hook that is guaranteed to have access to the results of the operations, used to return the affected item types response data
+        $hookToRunInModifiedState = function (&$itemTypesAffectedByAlgorithms, $pdo) use (
+            $filters,
+            &$affectedItemTypesData
+        ) {
 
             // We set the filter params in $_GET so that the controller methods pick them up when they use getParam()
             foreach ((array) $filters as $key => $filter) {
@@ -99,30 +77,23 @@ class SuggestionsController extends AppRestController
                 $modelClassPlural = PhInflector::camelize($modelClassPluralWords);
                 $controllerClass = $itemTypeAffected . "Controller";
                 $controller = new $controllerClass(false);
-                $return[lcfirst($modelClassPlural)] = $controller->getPaginatedListActionResults(
+                $affectedItemTypesData[lcfirst($modelClassPlural)] = $controller->getPaginatedListActionResults(
                     Suggestions::getModelOfItemType($itemTypeAffected)
                 );
             }
 
-            // Rollback if we are not saving
+        };
 
-            if (!$save) {
-                Suggestions::rollbackTransactionAndReclaimAutoIncrement($algorithms, $pdo);
-            }
+        // Run suggestions
+        Suggestions::run($suggestions, $save, $hookToRunInModifiedState);
 
-            // Add status messages if we are in dev mode
-            if (DEV) {
-                $return["statusLog"] = Suggestions::$statusLog;
-            }
-
-            // Send response
-
-            $this->sendResponse(200, $return);
-
-        } catch (Exception $e) {
-            Suggestions::rollbackTransactionAndReclaimAutoIncrement($algorithms, $pdo);
-            throw $e;
+        // Add status messages if we are in dev mode
+        if (DEV) {
+            $affectedItemTypesData["statusLog"] = Suggestions::$statusLog;
         }
+
+        // Send response
+        $this->sendResponse(200, $affectedItemTypesData);
 
     }
 
