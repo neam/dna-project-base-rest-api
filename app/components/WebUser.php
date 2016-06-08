@@ -141,7 +141,7 @@ class WebUser
         $account = Account::model()->findByAttributes(["auth0_user_id" => $this->getAuth0UserId()]);
 
         if ($account === null) {
-            throw new CException("No local user matches the offline auth0 id");
+            throw new Exception("No local user matches the offline auth0 id");
         }
         */
 
@@ -149,7 +149,7 @@ class WebUser
         $account = AccountQuery::create()->findOneById(1);
 
         if ($account === null) {
-            throw new CException("No local account with id 1 in the current database");
+            throw new Exception("No local account with id 1 in the current database");
         }
 
         $this->setId($account->getId());
