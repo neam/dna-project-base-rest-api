@@ -117,6 +117,9 @@ class RequestHandler
         $statusCode = ($e instanceof HttpException) ? $e->statusCode : 500;
         $response = [];
         $response["status"] = $statusCode;
+        if (YII_DEBUG) {
+            $response["suggestions-status-log"] = \Suggestions::flushStatusLog();
+        }
         $this->wrapExceptionResponse($response, $e, false);
         $this->sendResponse($statusCode, $response);
     }
