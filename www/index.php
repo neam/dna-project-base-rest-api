@@ -138,5 +138,14 @@ try {
     }
     // Ensures a proper response is returned to the client
     $requestHandler->displayException($e);
+} catch (\Error $e) {
+    // Ensures that the exception is logged to error log
+    SentryErrorHandling::logException($e);
+    if ($sentry) {
+        // Ensures that the exception is sent to sentry
+        SentryErrorHandling::captureException($e);
+    }
+    // Ensures a proper response is returned to the client
+    $requestHandler->displayException($e);
 }
 
