@@ -36,7 +36,11 @@ trait RestApiPropelObjectControllerTrait
     public $defaultLimit = 10;
     public $nullString = 'null';
 
-    protected function applyFilterQuery($filterBy, \Propel\Runtime\ActiveQuery\ModelCriteria &$query)
+    /**
+     * @param $filterBy
+     * @param \Propel\Runtime\ActiveQuery\ModelCriteria $query
+     */
+    protected function applyFilterQuery($filterBy, &$query)
     {
 
         // Make sure the filter parameters are allowed for rest-filtering
@@ -61,7 +65,10 @@ trait RestApiPropelObjectControllerTrait
 
     }
 
-    protected function applyListQuery(\Propel\Runtime\ActiveQuery\ModelCriteria &$query)
+    /**
+     * @param \Propel\Runtime\ActiveQuery\ModelCriteria $query
+     */
+    protected function applyListQuery(&$query)
     {
 
         $actions = $this->actions();
@@ -196,24 +203,30 @@ trait RestApiPropelObjectControllerTrait
 
     /**
      * Hook for controller to modify the collection before iterating through it to build the response tree
+     * @param $result
+     * @param \Propel\Runtime\Util\PropelModelPager $pager
+     * @param \Propel\Runtime\ActiveQuery\ModelCriteria $query
      * @return null
      */
     protected function beforeIteratingThroughPaginatedItems(
         &$result,
         \Propel\Runtime\Util\PropelModelPager &$pager,
-        \Propel\Runtime\ActiveQuery\ModelCriteria &$query
+        &$query
     ) {
 
     }
 
     /**
      * Hook for controller to override in order to modify the response, for instance in order to specify additional metadata about the collection
+     * @param $result
+     * @param \Propel\Runtime\Util\PropelModelPager $pager
+     * @param \Propel\Runtime\ActiveQuery\ModelCriteria $query
      * @return null
      */
     protected function beforeReturningPaginatedListActionResults(
         &$result,
         \Propel\Runtime\Util\PropelModelPager &$pager,
-        \Propel\Runtime\ActiveQuery\ModelCriteria &$query
+        &$query
     ) {
 
     }
