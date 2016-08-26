@@ -112,7 +112,7 @@ class RequestHandler
     use \SendCorsHeadersMethodTrait;
     use \RestApiControllerTrait;
 
-    public function displayException(Exception $e)
+    public function displayException(\Throwable $e)
     {
         $statusCode = ($e instanceof HttpException) ? $e->statusCode : 500;
         $response = [];
@@ -124,7 +124,7 @@ class RequestHandler
         $this->sendResponse($statusCode, $response);
     }
 
-    public function wrapExceptionResponse(& $response, \Exception $e, $previous = false)
+    public function wrapExceptionResponse(& $response, \Throwable $e, $previous = false)
     {
         $className = get_class($e);
         $response["type"] = "{$className}({$e->getCode()})";
