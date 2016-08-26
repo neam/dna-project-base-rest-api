@@ -1,7 +1,7 @@
 <?php
 trait SendCorsHeadersMethodTrait {
 
-    public function sendCorsHeaders()
+    static public function sendCorsHeaders()
     {
 
         if (!empty($_SERVER['HTTP_ORIGIN'])) {
