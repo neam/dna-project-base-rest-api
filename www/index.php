@@ -2,6 +2,7 @@
 
 namespace barebones;
 
+use ErrorException;
 use SentryErrorHandling;
 
 $appRoot = dirname(__FILE__) . DIRECTORY_SEPARATOR . '..';
@@ -17,6 +18,18 @@ require_once("$root/dna/vendor/autoload.php");
 
 // root-level bootstrap logic, including propel orm init
 require("$root/bootstrap.php");
+
+// Use set_error_handler() to change error messages into ErrorException
+function exception_error_handler($severity, $message, $file, $line)
+{
+    if (!(error_reporting() & $severity)) {
+        // This error code is not included in error_reporting
+        return;
+    }
+    throw new ErrorException($message, 0, $severity, $file, $line);
+}
+
+set_error_handler("\\barebones\\exception_error_handler");
 
 // activate error handling via sentry
 $sentry = defined('SENTRY_DSN') && !empty(SENTRY_DSN);
