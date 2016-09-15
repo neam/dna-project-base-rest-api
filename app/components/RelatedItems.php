@@ -39,9 +39,17 @@ class RelatedItems
         $level
     ) {
         $relatedItems = static::getRelatedItems($relatedModelClass, $item, $relationAttributeCamelized);
-        $relatedRestApiItemClass = "RestApi" . $relatedModelClass;
-        $related = array();
         $level++;
+        return static::formatRelatedItems($relatedItems, $relatedModelClass, $level);
+    }
+
+    public static function formatRelatedItems(
+        $relatedItems,
+        $relatedModelClass,
+        $level = 1
+    ) {
+        $relatedRestApiItemClass = "RestApi" . $relatedModelClass;
+        $related = [];
         if (!empty($relatedItems)) {
             foreach ($relatedItems as $k => $relatedItem) {
                 $related[] = $relatedRestApiItemClass::getWrapperAttributes($relatedItem, $level);
