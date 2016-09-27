@@ -4,7 +4,6 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fe68f04d563ef98132a811ebac5920d0",
     "content-hash": "64a14030f8ca204b1ec0a4e5bfdbf1e6",
     "packages": [
         {
@@ -56,12 +55,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/getsentry/raven-php.git",
-                "reference": "59375f93710e571c2787775c356dc972cbee90be"
+                "reference": "a90cdcf681a373b5150ee2b430db28d9f670abea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/getsentry/raven-php/zipball/59375f93710e571c2787775c356dc972cbee90be",
-                "reference": "59375f93710e571c2787775c356dc972cbee90be",
+                "url": "https://api.github.com/repos/getsentry/raven-php/zipball/a90cdcf681a373b5150ee2b430db28d9f670abea",
+                "reference": "a90cdcf681a373b5150ee2b430db28d9f670abea",
                 "shasum": ""
             },
             "require": {
@@ -78,7 +77,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.14.x-dev"
+                    "dev-master": "0.16.x-dev"
                 }
             },
             "autoload": {
@@ -102,7 +101,8 @@
                 "log",
                 "logging"
             ],
-            "time": "2015-12-30 20:26:35"
+            "abandoned": "sentry/sentry",
+            "time": "2016-04-29 11:51:40"
         }
     ],
     "packages-dev": [],
