@@ -4,6 +4,9 @@ trait SendCorsHeadersMethodTrait {
     static public function sendCorsHeaders()
     {
 
+        // Currently nginx sets these headers for us
+        return;
+
         if (!empty($_SERVER['HTTP_ORIGIN'])) {
 
             $allowed_origins = explode(",", CORS_ACL_ORIGIN_HOSTS);
