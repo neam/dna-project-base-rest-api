@@ -5,6 +5,7 @@ trait RestApiControllerTrait
 
     public $codes = Array(
         200 => array('OK' => 'OK'),
+        204 => array('No Content' => 'No Content'),
         400 => array('Bad Request' => 'Bad Request'),
         401 => array('Unauthorized' => 'You must be authorized to view this page.'),
         402 => array('Payment Required' => 'Payment Required'),

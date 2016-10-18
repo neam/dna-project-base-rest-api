@@ -49,6 +49,7 @@ try {
 
     // handle OPTIONS requests in the most barebones manner possible
     if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+        $requestHandler->sendStatusHeader(204);
         $requestHandler->sendCorsHeaders();
         exit();
     }
