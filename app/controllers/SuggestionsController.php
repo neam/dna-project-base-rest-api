@@ -43,10 +43,55 @@ class SuggestionsController extends AppRestController
         $suggestions = $this->request->getParam('suggestions');
         $save = $this->request->getParam('save');
         $filters = $this->request->getParam('filters');
-        $this->actionRun($suggestions, $save, $filters);
+        $refresh = $this->request->getParam('refresh');
+
+        // Use cache for non-saving requests which does not specifically state that cache should be bypassed (refresh=1)
+        $key = md5(serialize(compact("suggestions", "filters")));
+        $cachedValue = null;
+        if (!$refresh && !$save) {
+            $cachedValue = AppCache::redis()->get($key);
+        }
+
+        if ($cachedValue) {
+
+            $affectedItemTypesData = $cachedValue->affectedItemTypesData;
+
+            // Append to status log that this request was fetched from cache
+            $affectedItemTypesData["statusLog"][] = "Request fetched from cache. Originally generated {$cachedValue->requestStart->date}";
+
+        } else {
+
+            // Otherwise run the suggestions
+            $requestStart = (object) [
+                "microtime" => microtime(true),
+                "date" => (new DateTime())->format("Y-m-d H:i:s")
+            ];
+            $affectedItemTypesData = $this->run($suggestions, $save, $filters);
+
+            // Save to cache
+            $cachedValue = new stdClass();
+            $cachedValue->affectedItemTypesData = $affectedItemTypesData;
+            $cachedValue->requestStart = $requestStart;
+            $cachedValue->requestEnd = (object) [
+                "microtime" => microtime(true),
+                "date" => (new DateTime())->format("Y-m-d H:i:s")
+            ];
+            AppCache::redis()->set($key, $cachedValue);
+
+        }
+
+        // Send response
+        $this->sendResponse(200, $affectedItemTypesData);
+
     }
 
-    public function actionRun($suggestions, $save, $filters)
+    protected function runThroughCache($suggestions, $save, $filters)
+    {
+
+
+    }
+
+    protected function run($suggestions, $save, $filters)
     {
 
         if (empty($suggestions)) {
@@ -88,12 +133,12 @@ class SuggestionsController extends AppRestController
         Suggestions::run($suggestions, $save, $hookToRunInModifiedState);
 
         // Add status messages if we are in dev mode
+        $affectedItemTypesData["statusLog"] = [];
         if (DEV) {
             $affectedItemTypesData["statusLog"] = Suggestions::$statusLog;
         }
 
-        // Send response
-        $this->sendResponse(200, $affectedItemTypesData);
+        return $affectedItemTypesData;
 
     }
 
