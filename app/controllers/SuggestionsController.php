@@ -44,20 +44,27 @@ class SuggestionsController extends AppRestController
         $save = $this->request->getParam('save');
         $filters = $this->request->getParam('filters');
         $refresh = $this->request->getParam('refresh');
+        $activeItemIds = $this->request->getParam('activeItemIds');
 
         // Use cache for non-saving requests which does not specifically state that cache should be bypassed (refresh=1)
-        $key = md5(serialize(compact("suggestions", "filters")));
-        $cachedValue = null;
+        $serializationFormat = "20161021b"; // Increment to programmatically invalidate new cache requests due to format of the cached objects has changed in the code
+        $key = "affectedData_in_format_{$serializationFormat}_" . md5(
+                serialize(compact("suggestions", "filters", "itemIds"))
+            );
+        $cachedResponse = null;
         if (!$refresh && !$save) {
-            $cachedValue = AppCache::redis()->get($key);
+            $cachedResponse = AppCache::get($key);
         }
 
-        if ($cachedValue) {
+        if ($cachedResponse) {
 
-            $affectedItemTypesData = $cachedValue->affectedItemTypesData;
+            $response = $cachedResponse;
 
             // Append to status log that this request was fetched from cache
-            $affectedItemTypesData["statusLog"][] = "Request fetched from cache. Originally generated {$cachedValue->requestStart->date}";
+            $response->cachedFetch = [
+                "date" => (new DateTime())->format("Y-m-d H:i:s")
+            ];
+            $response->statusLog[] = "Request fetched from cache. Originally generated {$cachedResponse->requestStart->date}";
 
         } else {
 
@@ -66,44 +73,45 @@ class SuggestionsController extends AppRestController
                 "microtime" => microtime(true),
                 "date" => (new DateTime())->format("Y-m-d H:i:s")
             ];
-            $affectedItemTypesData = $this->run($suggestions, $save, $filters);
+            $response = $this->run($suggestions, $save, $filters, $activeItemIds);
 
-            // Save to cache
-            $cachedValue = new stdClass();
-            $cachedValue->affectedItemTypesData = $affectedItemTypesData;
-            $cachedValue->requestStart = $requestStart;
-            $cachedValue->requestEnd = (object) [
+            // Add timing data to response
+            $response->requestStart = $requestStart;
+            $response->requestEnd = (object) [
                 "microtime" => microtime(true),
                 "date" => (new DateTime())->format("Y-m-d H:i:s")
             ];
-            AppCache::redis()->set($key, $cachedValue);
+            $response->requestDuration = round(
+                $response->requestEnd->microtime - $response->requestStart->microtime,
+                2
+            );
+
+            // Save to cache
+            AppCache::set($key, $response);
 
         }
 
         // Send response
-        $this->sendResponse(200, $affectedItemTypesData);
+        $this->sendResponse(200, $response);
 
     }
 
-    protected function runThroughCache($suggestions, $save, $filters)
-    {
-
-
-    }
-
-    protected function run($suggestions, $save, $filters)
+    protected function run($suggestions, $save, $filters, $activeItemIds)
     {
 
         if (empty($suggestions)) {
             throw new HttpException(401, "No suggestions requested");
         }
 
-        $affectedItemTypesData = [];
+        $response = new stdClass();
+        $response->collections = [];
+        $response->items = [];
 
         // Hook that is guaranteed to have access to the results of the operations, used to return the affected item types response data
         $hookToRunInModifiedState = function (&$itemTypesAffectedByAlgorithms, $pdo) use (
             $filters,
-            &$affectedItemTypesData
+            $activeItemIds,
+            &$response
         ) {
 
             // We set the filter params in $_GET so that the controller methods pick them up when they use getParam()
@@ -113,6 +121,9 @@ class SuggestionsController extends AppRestController
 
             // Enable propel instance pooling for returning the rest api response
             // TODO: Enable again after making sure that the same records are not supplied again and again in response listings
+            // Relevant issue:
+            // Propel InstancePooling must be disabled for querying tables without a PrimaryKey (such as Views)
+            // https://github.com/propelorm/Propel2/issues/797
             //\Propel\Runtime\Propel::enableInstancePooling();
 
             foreach ($itemTypesAffectedByAlgorithms as $itemTypeAffected) {
@@ -121,10 +132,22 @@ class SuggestionsController extends AppRestController
                 $modelClassPluralWords = PhInflector::pluralize($modelClassSingularWords);
                 $modelClassPlural = PhInflector::camelize($modelClassPluralWords);
                 $controllerClass = $itemTypeAffected . "Controller";
+                $restApiModelClass = "RestApi" . $modelClassSingular;
+                /** @var RestApiPropelObjectControllerTrait $controller */
                 $controller = new $controllerClass(false);
-                $affectedItemTypesData[lcfirst($modelClassPlural)] = $controller->getPaginatedListActionResults(
-                    Suggestions::getModelOfItemType($itemTypeAffected)
+                $model = Suggestions::getModelOfItemType($itemTypeAffected);
+                // Collections
+                $response->collections[lcfirst($modelClassPlural)] = $controller->getPaginatedListActionResults(
+                    $model
                 );
+                // Items
+                $key = $itemTypeAffected . "Id";
+                if ($itemTypeAffected && isset($activeItemIds->$key)) {
+                    $_GET['id'] = $activeItemIds->$key;
+                    $response->items[lcfirst($modelClassSingular)] = $restApiModelClass::getApiAttributes(
+                        $controller->getModel()
+                    );
+                }
             }
 
         };
@@ -133,12 +156,12 @@ class SuggestionsController extends AppRestController
         Suggestions::run($suggestions, $save, $hookToRunInModifiedState);
 
         // Add status messages if we are in dev mode
-        $affectedItemTypesData["statusLog"] = [];
+        $response->statusLog = [];
         if (DEV) {
-            $affectedItemTypesData["statusLog"] = Suggestions::$statusLog;
+            $response->statusLog = Suggestions::$statusLog;
         }
 
-        return $affectedItemTypesData;
+        return $response;
 
     }
 
