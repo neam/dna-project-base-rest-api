@@ -36,7 +36,10 @@ trait RestApiControllerTrait
         $this->sendStatusHeader($status);
 
         // cors
-        \barebones\Barebones::$requestHandler->sendCorsHeaders();
+        if ($status !== 200) {
+            // Currently nginx sets these headers for us when status is 200
+            \barebones\Barebones::$requestHandler->sendCorsHeaders();
+        }
 
         // content type headers
         $this->sendContentTypeHeaders('application/json');
