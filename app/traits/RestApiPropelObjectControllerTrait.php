@@ -19,7 +19,7 @@ trait RestApiPropelObjectControllerTrait
         }
         if ($id) {
             $queryClass = $modelName . 'Query';
-            $model = $queryClass::create()->findOneById($id);
+            $model = $queryClass::create()->findPk($id);
         } else {
             $model = new $modelName();
         }
