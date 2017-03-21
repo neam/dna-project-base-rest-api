@@ -2,7 +2,7 @@
 
 use barebones\HttpException;
 
-class SuggestionsController extends AppRestController
+class OperationsController extends AppRestController
 {
 
     /**
@@ -29,7 +29,7 @@ class SuggestionsController extends AppRestController
     */
 
     /**
-     * Responds to POST against v0/suggestions
+     * Responds to POST against v0/operations
      *
      * Note: Action create is the default action due to the configured rule
      * array('<version>/<controller>/create', 'pattern' => '<version:v\d+>/<controller:\w+>', 'verb' => 'POST'),
@@ -135,7 +135,7 @@ class SuggestionsController extends AppRestController
                 $restApiModelClass = "RestApi" . $modelClassSingular;
                 /** @var RestApiPropelObjectControllerTrait $controller */
                 $controller = new $controllerClass(false);
-                $model = Suggestions::getModelOfItemType($itemTypeAffected);
+                $model = Operations::getModelOfItemType($itemTypeAffected);
                 // Collections
                 $response->collections[lcfirst($modelClassPlural)] = $controller->getPaginatedListActionResults(
                     $model
@@ -152,13 +152,13 @@ class SuggestionsController extends AppRestController
 
         };
 
-        // Run suggestions
-        Suggestions::run($suggestions, $save, $hookToRunInModifiedState);
+        // Run operations
+        Operations::run($suggestions, $save, $hookToRunInModifiedState);
 
         // Add status messages if we are in dev mode
         $response->statusLog = [];
         if (DEV) {
-            $response->statusLog = Suggestions::$statusLog;
+            $response->statusLog = Operations::$statusLog;
         }
 
         return $response;

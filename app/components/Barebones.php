@@ -118,7 +118,7 @@ class RequestHandler
         $response = [];
         $response["status"] = $statusCode;
         if (YII_DEBUG) {
-            $response["suggestions-status-log"] = \Suggestions::flushStatusLog();
+            $response["suggestions-status-log"] = \Operations::flushStatusLog();
         }
         $this->wrapExceptionResponse($response, $e, false);
         $this->sendResponse($statusCode, $response);
