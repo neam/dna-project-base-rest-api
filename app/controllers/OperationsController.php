@@ -158,7 +158,7 @@ class OperationsController extends AppRestController
         // Add status messages if we are in dev mode
         $response->statusLog = [];
         if (DEV) {
-            $response->statusLog = Operations::$statusLog;
+            $response->statusLog = Operations::flushStatusLog();
         }
 
         return $response;
