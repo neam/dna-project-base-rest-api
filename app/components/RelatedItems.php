@@ -35,24 +35,21 @@ class RelatedItems
     public static function formatItems(
         $relatedModelClass,
         \Propel\Runtime\ActiveRecord\ActiveRecordInterface $item,
-        $relationAttributeCamelized,
-        $level
+        $relationAttributeCamelized
     ) {
         $relatedItems = static::getRelatedItems($relatedModelClass, $item, $relationAttributeCamelized);
-        $level++;
-        return static::formatRelatedItems($relatedItems, $relatedModelClass, $level);
+        return static::formatRelatedItems($relatedItems, $relatedModelClass);
     }
 
     public static function formatRelatedItems(
         $relatedItems,
-        $relatedModelClass,
-        $level = 1
+        $relatedModelClass
     ) {
         $relatedRestApiItemClass = "RestApi" . $relatedModelClass;
         $related = [];
         if (!empty($relatedItems)) {
             foreach ($relatedItems as $k => $relatedItem) {
-                $related[] = $relatedRestApiItemClass::getWrapperAttributes($relatedItem, $level);
+                $related[] = $relatedRestApiItemClass::getWrapperAttributes($relatedItem);
             }
         }
         return $related;
