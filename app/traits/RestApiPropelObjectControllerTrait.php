@@ -57,7 +57,7 @@ trait RestApiPropelObjectControllerTrait
                     } elseif ($param === "<>" . $this->nullString) {
                         $query->where($key . ' IS NOT NULL');
                     } else {
-                        AppUtil::compare($query, $key, $param);
+                        AppPropelQueryHelper::compare($query, $key, $param);
                     }
                 }
             }
