@@ -103,8 +103,9 @@ trait RestApiPropelObjectControllerTrait
                 }
                 // Handle calculated columns
                 if (stripos($columnName, ' is null') !== false) {
-                    $query->withColumn($columnName, md5($columnName));
-                    $columnName = md5($columnName);
+                    $columnAlias = 'orderby_alias_' . md5($columnName);
+                    $query->withColumn($columnName, $columnAlias);
+                    $columnName = $columnAlias;
                 }
                 if ($order) {
                     $query->orderBy(trim($columnName), $order);
