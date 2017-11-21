@@ -11,8 +11,6 @@ use Propel\Runtime\Propel;
 class WebUser
 {
 
-    use RestrictedAccessWebUserTrait;
-
     public $auth0UserId = null;
 
     /**
