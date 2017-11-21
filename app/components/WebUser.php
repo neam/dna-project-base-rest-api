@@ -283,7 +283,7 @@ class WebUser
         $accountQuery = AccountQuery::create();
         $account = null;
 
-        if (isset($jwtPayload->email)) {
+        if (!empty($jwtPayload->email)) {
             // We may already have an account with this email with another auth0 app, check this first
             $accountByEmail = $accountQuery->findOneByEmail($jwtPayload->email);
             if (!empty($accountByEmail)) {
@@ -298,7 +298,7 @@ class WebUser
 
         $account->setPassword(uniqid() . uniqid());
         $account->setSalt(uniqid() . uniqid());
-        $account->setEmail(isset($jwtPayload->email) ? $jwtPayload->email : null);
+        $account->setEmail(!empty($jwtPayload->email) ? $jwtPayload->email : ''); // TODO: Make email nullable in db
 
         //$account = $account->unrestricted();
         $account->save();
