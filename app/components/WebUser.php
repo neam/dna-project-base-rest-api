@@ -209,6 +209,13 @@ class WebUser
 
     }
 
+    public function debugEnsureAuth0UserAndAccount()
+    {
+        $auth0User = $this->getAuth0User();
+        $account = $this->getAccount();
+        return [$auth0User, $account];
+    }
+
     protected function getAuth0User()
     {
         if (empty($this->getAuth0UserId())) {
