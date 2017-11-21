@@ -16,7 +16,13 @@ use ItemTypes;
  */
 class Barebones
 {
+    /**
+     * @var App
+     */
     static public $app;
+    /**
+     * @var RequestHandler
+     */
     static public $requestHandler;
 
     static public function init(App $app, RequestHandler $requestHandler)
@@ -81,6 +87,9 @@ class App
 
     public $db;
 
+    /**
+     * @var \WebUser
+     */
     public $user;
 
     public $request;

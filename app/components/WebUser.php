@@ -229,6 +229,11 @@ class WebUser
         return $auth0User;
     }
 
+    /**
+     * @return Account
+     * @throws Exception
+     * @throws JwtPayloadNotAvailableException
+     */
     protected function getAccount()
     {
         $auth0User = $this->getAuth0User();
